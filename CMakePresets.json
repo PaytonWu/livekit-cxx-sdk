@@ -1,0 +1,81 @@
+{
+  "version": 5,
+  "configurePresets": [
+    {
+      "name": "windows-base",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    },
+    {
+      "name": "windows-x64-base",
+      "inherits": "windows-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "hidden": true
+    },
+    {
+      "name": "mingw-ucrt64-base",
+      "inherits": "windows-x64-base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++"
+      },
+      "hidden": true
+    },
+    {
+      "name": "mingw-ucrt64-debug",
+      "displayName": "MinGW-UCRT64 Debug",
+      "description": "Target Windows (64-bit) with the MinGW-w64-ucrt-x86_64 development environment. (Debug)",
+      "inherits": "mingw-ucrt64-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "WITH_TESTS": "ON"
+      }
+    },
+    {
+      "name": "mingw-ucrt64-release",
+      "displayName": "MinGW-UCRT64 Release",
+      "description": "Target Windows (64-bit) with the MinGW-w64-ucrt-x86_64 development environment. (Release)",
+      "inherits": "mingw-ucrt64-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "msvc-x64-base",
+      "inherits": "windows-x64-base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "cl.exe",
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+      },
+      "hidden": true
+    },
+    {
+      "name": "msvc-x64-debug",
+      "inherits": "msvc-x64-base",
+      "displayName": "MSVC-x64 Debug",
+      "description": "Target Windows with the Visual Studio development environment (Debug)",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "WITH_TESTS": "ON"
+      }
+    },
+    {
+      "name": "msvc-x64-release",
+      "inherits": "msvc-x64-base",
+      "displayName": "MSVC-x64 Release",
+      "description": "Target Windows with the Visual Studio development environment (Release)",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ]
+}

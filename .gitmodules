@@ -1,0 +1,3 @@
+[submodule "third_party/rust-sdks"]
+	path = third_party/rust-sdks
+	url = https://github.com/livekit/rust-sdks.git
