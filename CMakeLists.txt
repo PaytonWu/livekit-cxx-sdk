@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.16)
 project(
         LIVEKIT_CXX_SDK
         VERSION 0.0.1
