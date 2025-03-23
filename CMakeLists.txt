@@ -26,4 +26,7 @@ aux_source_directory(src SRCS)
 add_library(${LIVEKIT_CXX_SDK_LIBRARY} ${SRCS})
 #target_link_libraries(${LIVEKIT_CXX_SDK_LIBRARY} PRIVATE fmt::fmt-header-only)
 
-# add_library(livekit_cxx_sdk STATIC library.cpp)
+if (WITH_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
