@@ -1,5 +1,8 @@
-#ifndef ABC_INCLUDE_ABC_THREADSAFE_QUEUE
-#define ABC_INCLUDE_ABC_THREADSAFE_QUEUE
+// Copyright(c) 2025 - present, Payton Wu (payton.wu@outlook.com) & the contributors.
+// Distributed under the MIT License (http://opensource.org/licenses/MIT)
+
+#ifndef LIVEKIT_CXX_SDK_INCLUDE_ABC_THREADSAFE_QUEUE
+#define LIVEKIT_CXX_SDK_INCLUDE_ABC_THREADSAFE_QUEUE
 
 #pragma once
 
@@ -28,6 +31,6 @@ auto ThreadSafeQueue<T>::get() const -> T
     return item;
 }
 
-}
+} // namespace abc
 
-#endif
+#endif // LIVEKIT_CXX_SDK_INCLUDE_ABC_THREADSAFE_QUEUE
