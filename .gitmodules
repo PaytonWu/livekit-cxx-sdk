@@ -1,6 +1,0 @@
-[submodule "third-party/rust-sdks"]
-	path = third-party/rust-sdks
-	url = https://github.com/livekit/rust-sdks.git
-[submodule "third-party/folly"]
-	path = third-party/folly
-	url = https://github.com/facebook/folly.git
