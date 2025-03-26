@@ -1,0 +1,6 @@
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../include/livekit/ffi/proto)
+set(LIVEKIT_CXX_PROTO_LIBRARY livekit_cxx_proto)
+add_subdirectory(proto)
+aux_source_directory(./ FFI_SRCS)
+add_library(${LIVEKIT_CXX_FFI_LIBRARY} ${FFI_SRCS})
+add_dependencies(${LIVEKIT_CXX_FFI_LIBRARY} ${LIVEKIT_CXX_PROTO_LIBRARY})

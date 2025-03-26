@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.16)
 project(
-        LIVEKIT_CXX_SDK
-        VERSION 0.0.1
-        DESCRIPTION "LiveKit C++ SDK based on LiveKit Rust FFI"
-        LANGUAGES CXX
+    LIVEKIT_CXX_SDK
+    VERSION 0.0.1
+    DESCRIPTION "LiveKit C++ SDK based on LiveKit Rust FFI"
+    LANGUAGES C CXX
 )
 
 set(CMAKE_CXX_STANDARD 23)
@@ -22,9 +22,7 @@ set(LIVEKIT_CXX_SDK_LIBRARY livekit_cxx_sdk)
 include_directories(include)
 include_directories(third_party/rust-sdks/livekit-ffi/include)
 
-aux_source_directory(src SRCS)
-add_library(${LIVEKIT_CXX_SDK_LIBRARY} ${SRCS})
-#target_link_libraries(${LIVEKIT_CXX_SDK_LIBRARY} PRIVATE fmt::fmt-header-only)
+add_subdirectory(src)
 
 if (WITH_TESTS)
     enable_testing()

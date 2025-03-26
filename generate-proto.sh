@@ -16,24 +16,27 @@
 
 FFI_PROTOCOL=third-party/rust-sdks/livekit-ffi/protocol
 LIVEKIT_PROTOCOL=third-party/rust-sdks/livekit-protocol/protocol/protobufs
-OUT_CPP=proto_cpp
+OUT_CPP=include/livekit/ffi/proto/
 
-mkdir $OUT_CPP
+# Create the output directory if it doesn't exist
+mkdir -p $OUT_CPP
 
 protoc \
     -I=$FFI_PROTOCOL \
     -I=$LIVEKIT_PROTOCOL \
     --cpp_out=$OUT_CPP \
     --experimental_allow_proto3_optional \
-    $FFI_PROTOCOL/ffi.proto \
-    $FFI_PROTOCOL/handle.proto \
-    $FFI_PROTOCOL/room.proto \
-    $FFI_PROTOCOL/track.proto \
-    $FFI_PROTOCOL/participant.proto \
-    $FFI_PROTOCOL/video_frame.proto \
     $FFI_PROTOCOL/audio_frame.proto \
     $FFI_PROTOCOL/e2ee.proto \
+    $FFI_PROTOCOL/ffi.proto \
+    $FFI_PROTOCOL/handle.proto \
+    $FFI_PROTOCOL/participant.proto \
+    $FFI_PROTOCOL/room.proto \
+    $FFI_PROTOCOL/rpc.proto \
     $FFI_PROTOCOL/stats.proto \
+    $FFI_PROTOCOL/track.proto \
+    $FFI_PROTOCOL/track_publication.proto \
+    $FFI_PROTOCOL/video_frame.proto \
     $LIVEKIT_PROTOCOL/livekit_egress.proto \
     $LIVEKIT_PROTOCOL/livekit_rtc.proto \
     $LIVEKIT_PROTOCOL/livekit_room.proto \
@@ -42,4 +45,5 @@ protoc \
     $LIVEKIT_PROTOCOL/livekit_models.proto \
     $LIVEKIT_PROTOCOL/livekit_agent_dispatch.proto \
     $LIVEKIT_PROTOCOL/livekit_ingress.proto \
-    $LIVEKIT_PROTOCOL/livekit_agent.proto
+    $LIVEKIT_PROTOCOL/livekit_agent.proto \
+    $LIVEKIT_PROTOCOL/livekit_metrics.proto

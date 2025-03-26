@@ -96,6 +96,7 @@
             "inherits": "linux-x64-base",
             "displayName": "Linux-GCC-x64 Debug",
             "description": "Target Linux with GCC development environment (Debug)",
+            "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "WITH_TESTS": "ON"

@@ -8,6 +8,8 @@
 
 #include "ffi_client_fwd_decl.h"
 
+#include "proto/ffi.pb.h"
+
 namespace livekit::ffi
 {
 
@@ -19,7 +21,7 @@ private:
 public:
     static auto instance() -> FfiClient &;
 
-    auto request(FfiRequest const & request) -> FfiResponse;
+    auto request(proto::FfiRequest const & request) -> proto::FfiResponse;
 };
 
 }
