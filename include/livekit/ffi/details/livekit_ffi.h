@@ -6,4 +6,6 @@
 
 #pragma once
 
+#include "livekit_ffi_decl.h"
+
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_DETAILS_LIVEKIT_FFI

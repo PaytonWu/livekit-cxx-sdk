@@ -13,7 +13,7 @@ namespace livekit::ffi
 
 class FfiHandle;
 using FfiHandleId = ::FfiHandleId;
-static inline constexpr const FfiHandleId INVALID_HANDLE = ::INVALID_HANDLE;
+static inline constexpr FfiHandleId INVALID_HANDLE = ::INVALID_HANDLE;
 
 }
 

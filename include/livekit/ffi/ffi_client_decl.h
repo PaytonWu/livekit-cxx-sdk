@@ -21,7 +21,7 @@ private:
 public:
     static auto instance() -> FfiClient &;
 
-    auto request(proto::FfiRequest const & request) -> proto::FfiResponse;
+    static auto request(proto::FfiRequest const & request) -> proto::FfiResponse;
 };
 
 }

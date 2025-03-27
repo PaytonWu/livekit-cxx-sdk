@@ -33,11 +33,11 @@ RefCounter::RefCounter() : impl_{ new RefCounterImpl() }
 {
 }
 
-RefCounter::RefCounter(abc::RefCounter const & other) : impl_{ other.impl_ }
+RefCounter::RefCounter(RefCounter const & other) : impl_{ other.impl_ }
 {
-    if (impl_)
+    if (other.impl_)
     {
-        impl_->increment();
+        other.impl_->increment();
     }
 }
 
@@ -45,7 +45,7 @@ auto RefCounter::operator=(RefCounter const & other) noexcept -> RefCounter &
 {
     if (this != &other)
     {
-        rel_ref();
+        [[maybe_unused]] auto _ = rel_ref();
 
         impl_ = other.impl_;
         if (impl_)
@@ -66,7 +66,7 @@ auto RefCounter::operator=(RefCounter && other) noexcept -> RefCounter &
 {
     if (this != &other)
     {
-        rel_ref();
+        [[maybe_unused]] auto _ = rel_ref();
 
         impl_ = other.impl_;
         other.impl_ = nullptr;
@@ -76,7 +76,7 @@ auto RefCounter::operator=(RefCounter && other) noexcept -> RefCounter &
 
 RefCounter::~RefCounter() noexcept
 {
-    rel_ref();
+    [[maybe_unused]] auto _ = rel_ref();
 }
 
 auto RefCounter::add_ref() -> void
@@ -87,13 +87,17 @@ auto RefCounter::add_ref() -> void
     }
 }
 
-auto RefCounter::rel_ref() -> void
+auto RefCounter::rel_ref() -> bool
 {
     if (impl_ && impl_->decrement())
     {
         delete impl_;
         impl_ = nullptr;
+
+        return true;
     }
+
+    return false;
 }
 
 auto RefCounter::use_count() const -> int

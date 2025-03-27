@@ -35,13 +35,13 @@ public:
 
     // Get the current reference count (for debugging/testing)
     // Note: This is a snapshot and may be immediately outdated in a multi-threaded context
-    auto use_count() const noexcept -> int;
+    [[nodiscard]] auto use_count() const noexcept -> int;
 };
 
 class RefCounter final
 {
 private:
-    RefCounterImpl * impl_;
+    RefCounterImpl * impl_{nullptr};
 
 public:
     RefCounter();
@@ -51,11 +51,11 @@ public:
     auto operator=(RefCounter && other) noexcept -> RefCounter &;
     ~RefCounter() noexcept;
 
-    auto use_count() const -> int;
+    [[nodiscard]] auto use_count() const -> int;
 
     // explicit add reference and release reference
     auto add_ref() -> void;
-    auto rel_ref() -> void;
+    [[nodiscard]] auto rel_ref() -> bool;
 };
 
 } // namespace abc

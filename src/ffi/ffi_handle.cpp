@@ -6,8 +6,25 @@
 namespace livekit::ffi
 {
 
-FfiHandle::FfiHandle(FfiHandleId const id) noexcept : ref_counter_{}, id_{ id }
+FfiHandle::FfiHandle(FfiHandleId const id) noexcept : ref_counter_{}, ffi_handle_id_{ id }
 {
+}
+
+FfiHandle::FfiHandle(FfiHandle const & other) noexcept : ref_counter_{ other.ref_counter_ }, ffi_handle_id_{ other.ffi_handle_id_ }
+{
+}
+
+FfiHandle::FfiHandle(FfiHandle && other) noexcept : ref_counter_{ std::move(other.ref_counter_) }, ffi_handle_id_{ other.ffi_handle_id_ }
+{
+    other.ffi_handle_id_ = INVALID_HANDLE;
+}
+
+FfiHandle::~FfiHandle() noexcept
+{
+    if (ref_counter_.rel_ref())
+    {
+        dispose();
+    }
 }
 
 auto FfiHandle::disposed() const noexcept -> bool
@@ -17,14 +34,14 @@ auto FfiHandle::disposed() const noexcept -> bool
 
 auto FfiHandle::dispose() noexcept -> void
 {
-    if (id_ != INVALID_HANDLE && !disposed_)
+    if (ffi_handle_id_ != INVALID_HANDLE && !disposed_)
     {
         disposed_ = true;
-        auto const id = id_;
-        id_ = INVALID_HANDLE;
+        auto const id = ffi_handle_id_;
+        ffi_handle_id_ = INVALID_HANDLE;
 
         livekit_ffi_drop_handle(id);
     }
 }
 
-}
+} // namespace livekit::ffi

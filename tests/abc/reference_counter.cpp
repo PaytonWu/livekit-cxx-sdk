@@ -19,7 +19,7 @@ TEST(RefCounterTest, BasicUsage) {
     EXPECT_EQ(ref.use_count(), 2);
     
     // Releasing a reference should decrement count
-    ref.rel_ref();
+    EXPECT_FALSE(ref.rel_ref());
     EXPECT_EQ(ref.use_count(), 1);
 }
 
@@ -121,7 +121,7 @@ TEST(RefCounterTest, ThreadSafety) {
     for (int i = 0; i < THREAD_COUNT; ++i) {
         threads.emplace_back([&ref]() {
             for (int j = 0; j < OPERATIONS_PER_THREAD; ++j) {
-                ref.rel_ref();
+                EXPECT_FALSE(ref.rel_ref());
             }
         });
     }
@@ -148,7 +148,7 @@ TEST(RefCounterTest, EdgeCases) {
     
     // These operations should not crash with null implementation
     ref1.add_ref();
-    ref1.rel_ref();
+    EXPECT_FALSE(ref1.rel_ref());
     EXPECT_EQ(ref1.use_count(), 0);
     
     // Move from null to existing
