@@ -8,6 +8,8 @@
 
 #include "ffi_queue_fwd_decl.h"
 
+#include <abc/threadsafe_queue.h>
+
 #include <memory>
 #include <mutex>
 #include <vector>
@@ -19,15 +21,15 @@ template <typename T>
 class FfiQueue
 {
 private:
-    std::vector<std::shared_ptr<ThreadSafeQueue<T>>> subscribers_;
+    std::vector<std::shared_ptr<abc::ThreadSafeQueue<T>>> subscribers_;
     std::mutex mutex_;
 
 public:
     auto put(T const & item) -> void;
 
-    auto subscribe() -> std::shared_ptr<ThreadSafeQueue<T>>;
+    auto subscribe() -> std::shared_ptr<abc::ThreadSafeQueue<T>>;
 
-    auto unsubscribe(std::shared_ptr<ThreadSafeQueue<T>> const & queue) -> void;
+    auto unsubscribe(std::shared_ptr<abc::ThreadSafeQueue<T>> const & queue) -> void;
 };
 
 }

@@ -6,8 +6,11 @@
 
 #pragma once
 
+#include <cstdint>
+
 namespace livekit::ffi
 {
+auto ffi_event_callback(std::uint8_t const *, std::size_t) -> void;
 class FfiClient;
 } // namespace livekit::ffi
 

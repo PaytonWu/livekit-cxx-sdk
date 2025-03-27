@@ -27,16 +27,16 @@ auto FfiQueue<T>::put(T const & item) -> void
 }
 
 template <typename T>
-auto FfiQueue<T>::subscribe() -> std::shared_ptr<ThreadSafeQueue<T>>
+auto FfiQueue<T>::subscribe() -> std::shared_ptr<abc::ThreadSafeQueue<T>>
 {
     std::lock_guard<std::mutex> lock(mutex_);
-    auto queue = std::make_shared<ThreadSafeQueue<T>>();
+    auto queue = std::make_shared<abc::ThreadSafeQueue<T>>();
     subscribers_.push_back(queue);
     return queue;
 }
 
 template <typename T>
-auto FfiQueue<T>::unsubscribe(std::shared_ptr<ThreadSafeQueue<T>> const & queue) -> void
+auto FfiQueue<T>::unsubscribe(std::shared_ptr<abc::ThreadSafeQueue<T>> const & queue) -> void
 {
     std::lock_guard<std::mutex> lock(mutex_);
     for (auto it = subscribers_.begin(); it != subscribers_.end(); ++it) {

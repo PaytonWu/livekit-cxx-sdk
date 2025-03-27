@@ -8,4 +8,6 @@
 
 #include "ffi_client_decl.h"
 
+#include "ffi_queue.h"
+
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_FFI_CLIENT
