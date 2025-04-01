@@ -20,7 +20,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(LIVEKIT_CXX_SDK_LIBRARY livekit_cxx_sdk)
 
 include_directories(include)
-include_directories(third_party/rust-sdks/livekit-ffi/include)
+include_directories(third-party/rust-sdks/livekit-ffi/include)
+include_directories(third-party/stdexec/include)
 
 add_subdirectory(src)
 

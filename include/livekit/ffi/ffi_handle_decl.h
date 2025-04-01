@@ -23,6 +23,7 @@ private:
     bool disposed_{ false };
 
 public:
+    FfiHandle() = default;
     explicit FfiHandle(FfiHandleId id) noexcept;
     FfiHandle(FfiHandle const & other) noexcept;
     FfiHandle(FfiHandle && other) noexcept;
