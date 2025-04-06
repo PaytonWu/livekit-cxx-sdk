@@ -8,6 +8,10 @@
 
 namespace livekit::rtc
 {
+enum class IceTransportType;
+enum class ContinualGatheringPolicy;
+struct IceServer;
+struct RtcConfiguration;
 struct RoomOptions;
 class Room;
 }

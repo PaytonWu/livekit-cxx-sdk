@@ -8,8 +8,8 @@
 
 #include "e2ee_fwd_decl.h"
 
-#include <string>
 #include <cstdint>
+#include <string>
 
 namespace livekit
 {
@@ -35,9 +35,9 @@ namespace livekit
 
 enum class EncryptionType
 {
-    NONE,
-    GCM,
-    CUSTOM
+    None,
+    Gcm,
+    Custom,
 };
 
 struct KeyProviderOptions
@@ -50,10 +50,10 @@ struct KeyProviderOptions
 
 struct E2eeOptions
 {
-    EncryptionType encryption_type{ EncryptionType::NONE };
+    EncryptionType encryption_type{ EncryptionType::None };
     KeyProviderOptions key_provider_options{};
 };
 
-}
+} // namespace livekit
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_E2EE_DECL

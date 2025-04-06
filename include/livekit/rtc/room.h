@@ -8,4 +8,7 @@
 
 #include "room_decl.h"
 
+#include "livekit/e2ee.h"
+#include "livekit/ffi/ffi_handle.h"
+
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_ROOM

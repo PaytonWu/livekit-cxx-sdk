@@ -19,9 +19,36 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <vector>
 
 namespace livekit::rtc
 {
+
+enum class IceTransportType
+{
+    Relay,
+    NoHost,
+    All,
+};
+enum class ContinualGatheringPolicy
+{
+    GatherOnce,
+    GatherContinually,
+};
+
+struct IceServer
+{
+    std::vector<std::string> urls;
+    std::optional<std::string> username;
+    std::optional<std::string> password;
+};
+
+struct RtcConfiguration
+{
+    std::vector<IceServer> ice_servers{};
+    IceTransportType ice_transport_type{IceTransportType::All};
+    ContinualGatheringPolicy continual_gathering_policy{ ContinualGatheringPolicy::GatherContinually };
+};
 
 struct RoomOptions
 {
@@ -29,6 +56,8 @@ struct RoomOptions
     bool adaptive_stream{ false };
     bool dynacast{ false };
     std::optional<E2eeOptions> e2ee_options{};
+    RtcConfiguration rtc_config{};
+    uint32_t join_retries{ 3 };
 };
 
 class Room
