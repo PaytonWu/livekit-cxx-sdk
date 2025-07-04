@@ -19,7 +19,22 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(LIVEKIT_CXX_SDK_LIBRARY livekit_cxx_sdk)
 
+include(ExternalProject)
+
+ExternalProject_Add(
+    ABC
+    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third-party/abc
+    BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/third-party/abc/build
+    CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
+    INSTALL_COMMAND ""
+)
+add_library(abc STATIC IMPORTED)
+set_property(TARGET abc PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/third-party/abc/build/libabc.a)
+add_dependencies(abc ABC)
+
 include_directories(include)
+include_directories(third-party/abc/include)
 include_directories(third-party/rust-sdks/livekit-ffi/include)
 include_directories(third-party/stdexec/include)
 

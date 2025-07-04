@@ -8,6 +8,8 @@
 
 #include "ffi_queue_decl.h"
 
+#include "abc/async_queue.h"
+
 #include <exception>
 
 namespace livekit::ffi
@@ -19,7 +21,7 @@ auto FfiQueue<T>::put(T const & item) -> void
     std::lock_guard<std::mutex> lock(mutex_);
     for (auto & queue : subscribers_) {
         try {
-            queue->put(item);
+            [[maybe_unused]] auto result = queue->enqueue(item);
         } catch (std::exception const & e) {
             std::cerr << "error putting to queue: " << e.what() << std::endl;   // todo: log to file.
         }
@@ -27,16 +29,16 @@ auto FfiQueue<T>::put(T const & item) -> void
 }
 
 template <typename T>
-auto FfiQueue<T>::subscribe() -> std::shared_ptr<abc::ThreadSafeQueue<T>>
+auto FfiQueue<T>::subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<abc::AsyncQueue<T>>
 {
     std::lock_guard<std::mutex> lock(mutex_);
-    auto queue = std::make_shared<abc::ThreadSafeQueue<T>>();
+    auto queue = std::make_shared<abc::AsyncQueue<T>>(scheduler);
     subscribers_.push_back(queue);
     return queue;
 }
 
 template <typename T>
-auto FfiQueue<T>::unsubscribe(std::shared_ptr<abc::ThreadSafeQueue<T>> const & queue) -> void
+auto FfiQueue<T>::unsubscribe(std::shared_ptr<abc::AsyncQueue<T>> const & queue) -> void
 {
     std::lock_guard<std::mutex> lock(mutex_);
     for (auto it = subscribers_.begin(); it != subscribers_.end(); ++it) {

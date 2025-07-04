@@ -11,6 +11,9 @@
 #include "ffi_queue_decl.h"
 #include "proto/ffi.pb.h"
 
+#include <stdexec/execution.hpp>
+#include <exec/static_thread_pool.hpp>
+
 namespace livekit::ffi
 {
 
@@ -27,6 +30,9 @@ public:
     static auto instance() -> FfiClient &;
 
     static auto request(proto::FfiRequest const & request) -> proto::FfiResponse;
+
+    auto subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<abc::AsyncQueue<proto::FfiEvent>>;
+    auto unsubscribe(std::shared_ptr<abc::AsyncQueue<proto::FfiEvent>> const & queue) -> void;
 };
 
 } // namespace livekit::ffi
