@@ -8,7 +8,7 @@
 
 #include "ffi_queue_decl.h"
 
-#include "abc/async_queue.h"
+#include "livekit/utils/async_queue.h"
 
 #include <exception>
 
@@ -29,16 +29,16 @@ auto FfiQueue<T>::put(T const & item) -> void
 }
 
 template <typename T>
-auto FfiQueue<T>::subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<abc::AsyncQueue<T>>
+auto FfiQueue<T>::subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<utils::AsyncQueue<T>>
 {
     std::lock_guard<std::mutex> lock(mutex_);
-    auto queue = std::make_shared<abc::AsyncQueue<T>>(scheduler);
+    auto queue = std::make_shared<utils::AsyncQueue<T>>(scheduler);
     subscribers_.push_back(queue);
     return queue;
 }
 
 template <typename T>
-auto FfiQueue<T>::unsubscribe(std::shared_ptr<abc::AsyncQueue<T>> const & queue) -> void
+auto FfiQueue<T>::unsubscribe(std::shared_ptr<utils::AsyncQueue<T>> const & queue) -> void
 {
     std::lock_guard<std::mutex> lock(mutex_);
     for (auto it = subscribers_.begin(); it != subscribers_.end(); ++it) {

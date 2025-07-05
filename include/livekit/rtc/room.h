@@ -10,5 +10,6 @@
 
 #include "livekit/e2ee.h"
 #include "livekit/ffi/ffi_handle.h"
+#include "livekit/utils/async_queue.h"
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_ROOM

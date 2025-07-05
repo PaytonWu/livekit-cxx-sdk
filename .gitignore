@@ -33,6 +33,7 @@
 
 # Building
 build/*
+cmake-build-debug/*
 
 # IDE
 .idea/*

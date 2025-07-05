@@ -8,9 +8,8 @@
 namespace livekit::rtc
 {
 
-Room::Room()
+Room::Room(exec::static_thread_pool::scheduler scheduler) : scheduler_{ scheduler }
 {
-
 }
 
 Room::~Room() noexcept
@@ -50,10 +49,10 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
 
     // TODO: RTC config
     auto * rtc_config = options->mutable_rtc_config();
-    for (const auto & server : room_options.rtc_config.ice_servers)
+    for (auto const & server : room_options.rtc_config.ice_servers)
     {
         auto * ice_server = rtc_config->add_ice_servers();
-        for (const auto & url : server.urls)
+        for (auto const & url : server.urls)
         {
             ice_server->add_urls(url);
         }
@@ -70,9 +69,25 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
     rtc_config->set_continual_gathering_policy(static_cast<proto::ContinualGatheringPolicy>(static_cast<int>(room_options.rtc_config.continual_gathering_policy)));
     options->set_join_retries(room_options.join_retries);
 
-    // livekit::ffi::FfiClient::instance()
+    event_queue_ = livekit::ffi::FfiClient::instance().subscribe(scheduler_);
+
+    auto queue = ffi::FfiClient::instance().subscribe(scheduler_);
+    auto response = ffi::FfiClient::instance().request(req);
+    proto::FfiEvent event = co_await queue->wait_for([&response](auto const & ev) { return ev.has_connect() ? ev.connect().async_id() == response.connect().async_id() : false; });
+    ffi::FfiClient::instance().unsubscribe(queue);
+
+    if (event.connect().has_error())
+    {
+        ffi::FfiClient::instance().unsubscribe(event_queue_);
+        throw std::runtime_error{ event.connect().error() };
+    }
+
+    ffi_handle_ = ffi::FfiHandle{ event.connect().result().room().handle().id() };
+    room_info_ = event.connect().result().room().info();
+    connection_state_ = proto::ConnectionState::CONN_CONNECTED;
+
 
     co_return;
 }
 
-}
+} // namespace livekit::rtc

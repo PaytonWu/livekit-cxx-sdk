@@ -41,12 +41,12 @@ auto FfiClient::request(proto::FfiRequest const & request) -> proto::FfiResponse
     return response;
 }
 
-auto FfiClient::subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<abc::AsyncQueue<proto::FfiEvent>>
+auto FfiClient::subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>
 {
     return queue_.subscribe(scheduler);
 }
 
-auto FfiClient::unsubscribe(const std::shared_ptr<abc::AsyncQueue<proto::FfiEvent>> & queue) -> void
+auto FfiClient::unsubscribe(const std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> & queue) -> void
 {
     queue_.unsubscribe(queue);
 }

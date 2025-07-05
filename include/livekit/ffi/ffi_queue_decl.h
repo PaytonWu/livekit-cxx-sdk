@@ -8,7 +8,7 @@
 
 #include "ffi_queue_fwd_decl.h"
 
-#include "abc/async_queue_decl.h"
+#include "../utils/async_queue_decl.h"
 
 #include <memory>
 #include <mutex>
@@ -23,15 +23,15 @@ class FfiQueue
 private:
     constexpr static std::size_t Capacity = 1024;
 
-    std::vector<std::shared_ptr<abc::AsyncQueue<T>>> subscribers_;
+    std::vector<std::shared_ptr<utils::AsyncQueue<T>>> subscribers_;
     std::mutex mutex_;
 
 public:
     auto put(T const & item) -> void;
 
-    auto subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<abc::AsyncQueue<T>>;
+    auto subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<utils::AsyncQueue<T>>;
 
-    auto unsubscribe(std::shared_ptr<abc::AsyncQueue<T>> const & queue) -> void;
+    auto unsubscribe(std::shared_ptr<utils::AsyncQueue<T>> const & queue) -> void;
 };
 
 }

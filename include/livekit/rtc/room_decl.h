@@ -11,9 +11,10 @@
 #include "livekit/e2ee_decl.h"
 #include "livekit/ffi/ffi_handle_decl.h"
 #include "livekit/ffi/proto/ffi.pb.h"
+#include "livekit/ffi/proto/room.pb.h"
+#include "livekit/utils/async_queue_decl.h"
 
-#include <abc/threadsafe_queue.h>
-
+#include <exec/static_thread_pool.hpp>
 #include <exec/task.hpp>
 
 #include <optional>
@@ -46,7 +47,7 @@ struct IceServer
 struct RtcConfiguration
 {
     std::vector<IceServer> ice_servers{};
-    IceTransportType ice_transport_type{IceTransportType::All};
+    IceTransportType ice_transport_type{ IceTransportType::All };
     ContinualGatheringPolicy continual_gathering_policy{ ContinualGatheringPolicy::GatherContinually };
 };
 
@@ -63,11 +64,16 @@ struct RoomOptions
 class Room
 {
 private:
+    exec::static_thread_pool::scheduler scheduler_;
+
     ffi::FfiHandle ffi_handle_{};
-    abc::ThreadSafeQueue<proto::FfiEvent> event_queue_{};
+    std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> event_queue_{};
+    // E2EEManager e2ee_mgr_;
+    proto::RoomInfo room_info_;
+    proto::ConnectionState connection_state_{ proto::ConnectionState::CONN_DISCONNECTED };
 
 public:
-    Room();
+    explicit Room(exec::static_thread_pool::scheduler scheduler);
     ~Room() noexcept;
 
     [[nodiscard]] auto sid() const -> exec::task<std::string>;

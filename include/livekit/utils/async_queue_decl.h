@@ -1,16 +1,17 @@
 // Copyright(c) 2025 - present, Payton Wu (payton.wu@outlook.com) & the contributors.
 // Distributed under the MIT License (http://opensource.org/licenses/MIT)
 
-#ifndef LIVEKIT_CXX_SDK_INCLUDE_ABC_ASYNC_QUEUE_DECL
-#define LIVEKIT_CXX_SDK_INCLUDE_ABC_ASYNC_QUEUE_DECL
+#ifndef LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_ASYNC_QUEUE_DECL
+#define LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_ASYNC_QUEUE_DECL
 
 #pragma once
 
 #include "async_queue_fwd_decl.h"
 
 #include <abc/async/queue.h>
+#include <exec/task.hpp>
 
-namespace abc
+namespace livekit::utils
 {
 
 template <typename T, stdexec::scheduler Scheduler>
@@ -27,9 +28,8 @@ public:
 
     explicit AsyncQueue(Scheduler scheduler);
 
-    auto async_enqueue(T const & value) -> stdexec::sender auto;
-    auto async_enqueue(T && value) -> stdexec::sender auto;
-    auto async_dequeue() -> stdexec::sender auto;
+    auto async_enqueue(T value) -> exec::task<void>;
+    auto async_dequeue() -> exec::task<T>;
 
     auto enqueue(T const & value) -> bool;
     auto enqueue(T && value) -> bool;
@@ -39,8 +39,10 @@ public:
     auto full() const noexcept -> bool;
     auto size() const noexcept -> std::size_t;
     constexpr auto capacity() const noexcept -> std::size_t;
+
+    auto wait_for(auto pred) -> exec::task<T>;
 };
 
 }
 
-#endif // LIVEKIT_CXX_SDK_INCLUDE_ABC_ASYNC_QUEUE_DECL
+#endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_ASYNC_QUEUE_DECL

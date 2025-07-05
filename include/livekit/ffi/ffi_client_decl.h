@@ -31,8 +31,8 @@ public:
 
     static auto request(proto::FfiRequest const & request) -> proto::FfiResponse;
 
-    auto subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<abc::AsyncQueue<proto::FfiEvent>>;
-    auto unsubscribe(std::shared_ptr<abc::AsyncQueue<proto::FfiEvent>> const & queue) -> void;
+    auto subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>;
+    auto unsubscribe(std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> const & queue) -> void;
 };
 
 } // namespace livekit::ffi

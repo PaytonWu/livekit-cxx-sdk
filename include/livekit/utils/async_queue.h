@@ -1,14 +1,14 @@
 // Copyright(c) 2025 - present, Payton Wu (payton.wu@outlook.com) & the contributors.
 // Distributed under the MIT License (http://opensource.org/licenses/MIT)
 
-#ifndef LIVEKIT_CXX_SDK_INCLUDE_ABC_ASYNC_QUEUE
-#define LIVEKIT_CXX_SDK_INCLUDE_ABC_ASYNC_QUEUE
+#ifndef LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_ASYNC_QUEUE
+#define LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_ASYNC_QUEUE
 
 #pragma once
 
 #include "async_queue_decl.h"
 
-namespace abc
+namespace livekit::utils
 {
 
 template <typename T, stdexec::scheduler Scheduler>
@@ -17,33 +17,27 @@ AsyncQueue<T, Scheduler>::AsyncQueue(Scheduler scheduler) : queue_{ scheduler }
 }
 
 template <typename T, stdexec::scheduler Scheduler>
-auto AsyncQueue<T, Scheduler>::async_enqueue(T const & value) -> stdexec::sender auto
+auto AsyncQueue<T, Scheduler>::async_enqueue(T value) -> exec::task<void>
 {
-    return queue_.enqueue(value);
+    return queue_.async_enqueue(std::move(value));
 }
 
 template <typename T, stdexec::scheduler Scheduler>
-auto AsyncQueue<T, Scheduler>::async_enqueue(T && value) -> stdexec::sender auto
+auto AsyncQueue<T, Scheduler>::async_dequeue() -> exec::task<T>
 {
-    return queue_.enqueue(std::move(value));
-}
-
-template <typename T, stdexec::scheduler Scheduler>
-auto AsyncQueue<T, Scheduler>::async_dequeue() -> stdexec::sender auto
-{
-    return queue_.dequeue();
+    return queue_.async_dequeue();
 }
 
 template <typename T, stdexec::scheduler Scheduler>
 auto AsyncQueue<T, Scheduler>::enqueue(T const & value) -> bool
 {
-    return queue_.try_enqueue(value);
+    return queue_.enqueue(value);
 }
 
 template <typename T, stdexec::scheduler Scheduler>
 auto AsyncQueue<T, Scheduler>::enqueue(T && value) -> bool
 {
-    return queue_.try_enqueue(std::move(value));
+    return queue_.enqueue(std::move(value));
 }
 
 template <typename T, stdexec::scheduler Scheduler>
@@ -76,6 +70,12 @@ constexpr auto AsyncQueue<T, Scheduler>::capacity() const noexcept -> std::size_
     return queue_.capacity();
 }
 
+template <typename T, stdexec::scheduler Scheduler>
+auto AsyncQueue<T, Scheduler>::wait_for(auto pred) -> exec::task<T>
+{
+    return queue_.wait_for(pred);
+}
+
 } // namespace abc
 
-#endif // LIVEKIT_CXX_SDK_INCLUDE_ABC_ASYNC_QUEUE
+#endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_ASYNC_QUEUE
