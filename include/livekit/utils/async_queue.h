@@ -19,13 +19,13 @@ AsyncQueue<T, Scheduler>::AsyncQueue(Scheduler scheduler) : queue_{ scheduler }
 template <typename T, stdexec::scheduler Scheduler>
 auto AsyncQueue<T, Scheduler>::async_enqueue(T value) -> exec::task<void>
 {
-    return queue_.async_enqueue(std::move(value));
+    co_return co_await queue_.async_enqueue(std::move(value));
 }
 
 template <typename T, stdexec::scheduler Scheduler>
 auto AsyncQueue<T, Scheduler>::async_dequeue() -> exec::task<T>
 {
-    return queue_.async_dequeue();
+    co_return co_await queue_.async_dequeue();
 }
 
 template <typename T, stdexec::scheduler Scheduler>
@@ -43,7 +43,7 @@ auto AsyncQueue<T, Scheduler>::enqueue(T && value) -> bool
 template <typename T, stdexec::scheduler Scheduler>
 auto AsyncQueue<T, Scheduler>::dequeue() -> std::optional<T>
 {
-    return queue_.try_dequeue();
+    return queue_.dequeue();
 }
 
 template <typename T, stdexec::scheduler Scheduler>
@@ -73,7 +73,7 @@ constexpr auto AsyncQueue<T, Scheduler>::capacity() const noexcept -> std::size_
 template <typename T, stdexec::scheduler Scheduler>
 auto AsyncQueue<T, Scheduler>::wait_for(auto pred) -> exec::task<T>
 {
-    return queue_.wait_for(pred);
+    co_return co_await queue_.wait_for(pred);
 }
 
 } // namespace abc
