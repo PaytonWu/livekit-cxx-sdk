@@ -6,10 +6,12 @@
 
 #pragma once
 
+#include <exec/static_thread_pool.hpp>
+
 namespace livekit::utils
 {
 
-template <typename T>
+template <typename T, stdexec::scheduler Scheduler = exec::static_thread_pool::scheduler>
 class BroadcastQueue;
 
 }

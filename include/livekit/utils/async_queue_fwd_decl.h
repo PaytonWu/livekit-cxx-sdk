@@ -6,7 +6,6 @@
 
 #pragma once
 
-#include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
 
 namespace livekit::utils

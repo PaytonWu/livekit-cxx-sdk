@@ -52,9 +52,9 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
     for (auto const & server : room_options.rtc_config.ice_servers)
     {
         auto * ice_server = rtc_config->add_ice_servers();
-        for (auto const & url : server.urls)
+        for (auto const & server_url : server.urls)
         {
-            ice_server->add_urls(url);
+            ice_server->add_urls(server_url);
         }
         if (server.username)
         {
@@ -72,8 +72,8 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
     event_queue_ = livekit::ffi::FfiClient::instance().subscribe(scheduler_);
 
     auto queue = ffi::FfiClient::instance().subscribe(scheduler_);
-    auto response = ffi::FfiClient::instance().request(req);
-    proto::FfiEvent event = co_await queue->wait_for([&response](auto const & ev) { return ev.has_connect() ? ev.connect().async_id() == response.connect().async_id() : false; });
+    auto response = livekit::ffi::FfiClient::request(req);
+    proto::FfiEvent event = co_await queue->wait_for([&response](auto const & ev) { return ev.has_connect() && ev.connect().async_id() == response.connect().async_id(); });
     ffi::FfiClient::instance().unsubscribe(queue);
 
     if (event.connect().has_error())

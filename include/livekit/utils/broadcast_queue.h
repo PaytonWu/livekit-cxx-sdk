@@ -8,55 +8,41 @@
 
 #include "broadcast_queue_decl.h"
 
+#include <algorithm>
+#include <range/v3/algorithm/remove.hpp>
+
 namespace livekit::utils
 {
 
-template <typename T>
-auto BroadcastQueue<T>::enqueue(T && item) -> void
+template <typename T, stdexec::scheduler Scheduler>
+BroadcastQueue<T, Scheduler>::BroadcastQueue(Scheduler scheduler) : scheduler_{ scheduler }
 {
-    std::lock_guard<std::mutex> lock(mutex_);
-    queue_.emplace_back(std::move(item));
 }
 
-template <typename T>
-auto BroadcastQueue<T>::enqueue(const T & item) -> void
+template <typename T, stdexec::scheduler Scheduler>
+auto BroadcastQueue<T, Scheduler>::enqueue(T item) -> void
 {
     std::lock_guard<std::mutex> lock(mutex_);
-    queue_.emplace_back(item);
-}
-
-template <typename T>
-auto BroadcastQueue<T>::dequeue() -> std::optional<T>
-{
-    std::unique_lock<std::mutex> lock(mutex_);
-    if (queue_.empty())
+    for (auto & subscriber : subscribers_)
     {
-        return std::nullopt;
+        subscriber->enqueue(item);
     }
-    auto item = std::move(queue_.front());
-    queue_.pop_front();
-    return std::move(item);
 }
 
-template <typename T>
-auto BroadcastQueue<T>::size() const -> size_t
+template <typename T, stdexec::scheduler Scheduler>
+auto BroadcastQueue<T, Scheduler>::subscribe() -> std::shared_ptr<AsyncQueue<T, Scheduler>>
 {
     std::lock_guard<std::mutex> lock(mutex_);
-    return queue_.size();
+    auto subscriber = std::make_shared<AsyncQueue<T, Scheduler>>(scheduler_);
+    subscribers_.push_back(subscriber);
+    return subscriber;
 }
 
-template <typename T>
-auto BroadcastQueue<T>::empty() const -> bool
+template <typename T, stdexec::scheduler Scheduler>
+auto BroadcastQueue<T, Scheduler>::unsubscribe(std::shared_ptr<AsyncQueue<T, Scheduler>> subscriber) -> void
 {
     std::lock_guard<std::mutex> lock(mutex_);
-    return queue_.empty();
-}
-
-template <typename T>
-auto BroadcastQueue<T>::clear() -> void
-{
-    std::lock_guard<std::mutex> lock(mutex_);
-    queue_.clear();
+    subscribers_.erase(ranges::remove(subscribers_, subscriber), subscribers_.end());
 }
 
 } // namespace livekit::utils

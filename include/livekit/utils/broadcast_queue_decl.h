@@ -8,32 +8,32 @@
 
 #include "broadcast_queue_fwd_decl.h"
 
+#include "async_queue_decl.h"
+
 #include <condition_variable>
 #include <deque>
 #include <mutex>
 #include <optional>
+#include <vector>
 
 namespace livekit::utils
 {
 
-template <typename T>
+template <typename T, stdexec::scheduler Scheduler>
 class BroadcastQueue
 {
 private:
-    std::deque<T> queue_;
+    Scheduler scheduler_;
+    std::vector<std::shared_ptr<AsyncQueue<T, Scheduler>>> subscribers_;
     mutable std::mutex mutex_;
 
 public:
-    auto enqueue(T && item) -> void;
-    auto enqueue(const T & item) -> void;
+    explicit BroadcastQueue(Scheduler scheduler);
 
-    auto dequeue() -> std::optional<T>;
+    auto enqueue(T item) -> void;
 
-    auto size() const -> size_t;
-    auto empty() const -> bool;
-
-    auto clear() -> void;
-
+    auto subscribe() -> std::shared_ptr<AsyncQueue<T>>;
+    auto unsubscribe(std::shared_ptr<AsyncQueue<T>> subscriber) -> void;
 };
 
 } // namespace livekit::utils
