@@ -3,6 +3,7 @@
 
 #include <livekit/rtc/local_participant.h>
 
+#include <livekit/error.h>
 #include <livekit/ffi/ffi_client.h>
 #include <livekit/ffi/proto/ffi.pb.h>
 
@@ -28,24 +29,24 @@ auto LocalParticipant::publish_data(std::vector<abc::byte> const & data, bool re
     publish_data->set_data_ptr(reinterpret_cast<std::uint64_t>(data.data()));
     publish_data->set_data_len(static_cast<std::uint64_t>(data.size()));
     publish_data->set_reliable(reliable);
-    auto * destination_sids = publish_data->mutable_destination_sids();
-    destination_sids->Add(destinations.begin(), destinations.end());
+    auto * destination_ids = publish_data->mutable_destination_identities();
+    destination_ids->Add(destinations.begin(), destinations.end());
     if (topic)
     {
         publish_data->set_topic(topic.value());
     }
 
-    auto queue = FfiClient::instance().subscribe(scheduler_);
-    auto resp = FfiClient::request(req);
+    auto queue = ffi::FfiClient::instance().subscribe(scheduler_);
+    auto resp = ffi::FfiClient::request(req);
     proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
         return event.has_publish_data() && event.publish_data().has_async_id() && event.publish_data().async_id() == resp.has_publish_data() &&
                resp.publish_data().has_async_id() && resp.publish_data().async_id();
     });
-    FfiClient::instance().unsubscribe(queue);
+    ffi::FfiClient::instance().unsubscribe(queue);
 
     if (event.publish_data().has_error())
     {
-        throw std::runtime_error(event.publish_data().error().message());
+        throw std::runtime_error(event.publish_data().error());
     }
 
     co_return;
