@@ -8,16 +8,33 @@
 
 #include "local_participant_fwd_decl.h"
 
+#include "livekit/utils/broadcast_queue_decl.h"
 #include "participant_decl.h"
+
+#include <abc/byte.h>
+#include <exec/static_thread_pool.hpp>
+#include <exec/task.hpp>
+
+#include <cstdint>
+#include <optional>
+#include <vector>
 
 namespace livekit::rtc
 {
 
 class LocalParticipant : public Participant
 {
+private:
+    utils::BroadcastQueue<proto::FfiEvent> * room_event_queue_{ nullptr };
+    exec::static_thread_pool::scheduler scheduler_{};
 
+public:
+    explicit LocalParticipant(proto::OwnedParticipant const & owned_participant, utils::BroadcastQueue<proto::FfiEvent> * room_event_queue, exec::static_thread_pool::scheduler scheduler);
+
+    auto publish_data(std::vector<abc::byte> const & data, bool reliable, std::vector<std::string> const & destinations, std::optional<std::string> const & topic)
+        -> exec::task<void>;
 };
 
-}
+} // namespace livekit::rtc
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_LOCAL_PARTICIPANT_DECL

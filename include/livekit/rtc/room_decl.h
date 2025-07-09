@@ -69,7 +69,7 @@ private:
 
     ffi::FfiHandle ffi_handle_{};
     std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> event_queue_{};
-    std::shared_ptr<utils::BroadcastQueue<proto::FfiEvent>> room_event_queue_{ scheduler_ };
+    utils::BroadcastQueue<proto::FfiEvent> room_event_queue_{ scheduler_ };
     // E2EEManager e2ee_mgr_;
     proto::RoomInfo room_info_;
     proto::ConnectionState connection_state_{ proto::ConnectionState::CONN_DISCONNECTED };

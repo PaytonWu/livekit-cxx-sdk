@@ -32,6 +32,8 @@ public:
     auto operator=(FfiHandle const &) noexcept -> FfiHandle &;
     auto operator=(FfiHandle && other) noexcept -> FfiHandle &;
 
+    [[nodiscard]] auto id() const noexcept -> FfiHandleId;
+
     [[nodiscard]] auto disposed() const noexcept -> bool;
     auto dispose() noexcept -> void;
 };

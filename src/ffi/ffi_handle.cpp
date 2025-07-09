@@ -27,6 +27,11 @@ FfiHandle::~FfiHandle() noexcept
     }
 }
 
+auto FfiHandle::id() const noexcept -> FfiHandleId
+{
+    return ffi_handle_id_;
+}
+
 auto FfiHandle::disposed() const noexcept -> bool
 {
     return ref_counter_.use_count() == 0 || disposed_;
