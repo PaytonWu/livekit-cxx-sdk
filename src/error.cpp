@@ -48,6 +48,10 @@ auto livekit_category() noexcept -> std::error_category const &
                     return "publish data failed";
                 case LivekitErrorCode::PublishDtmfFailed:
                     return "publish dtmf failed";
+                case LivekitErrorCode::GetStatsFailed:
+                    return "get stats failed";
+                case LivekitErrorCode::InvalidMediaData:
+                    return "invalid media data";
                 default:
                     assert(false);
                     return "unknown error";

@@ -14,23 +14,32 @@
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
 
+#include <atomic>
+
 namespace livekit::ffi
 {
 
 class FfiClient final
 {
 private:
-    FfiClient();
-    friend auto ffi_event_callback(std::uint8_t const *, std::size_t) -> void;
+    static constexpr std::size_t thread_pool_size_ = 4;
+    exec::static_thread_pool thread_pool_{ thread_pool_size_ };
+    FfiQueue<proto::FfiEvent> queue_{}; // queue for events
+    std::atomic<std::size_t> thread_pool_index_{ 0 };
 
 private:
-    FfiQueue<proto::FfiEvent> queue_{}; // queue for events
+    FfiClient();
+
+    auto next_thread_index() -> std::size_t;
+    
+    friend auto ffi_event_callback(std::uint8_t const *, std::size_t) -> void;
 
 public:
     static auto instance() -> FfiClient &;
 
     static auto request(proto::FfiRequest const & request) -> proto::FfiResponse;
 
+    auto subscribe() -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>;
     auto subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>;
     auto unsubscribe(std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> const & queue) -> void;
 };

@@ -36,6 +36,8 @@ enum class LivekitErrorCode
     Success = 0,
     PublishDataFailed = 1,
     PublishDtmfFailed = 2,
+    GetStatsFailed = 3,
+    InvalidMediaData = 4,
 };
 
 } // namespace livekit

@@ -15,6 +15,11 @@ FfiClient::FfiClient()
     livekit_ffi_initialize(ffi_event_callback, true);
 }
 
+auto FfiClient::next_thread_index() -> std::size_t
+{
+    return thread_pool_index_.fetch_add(1, std::memory_order_relaxed) % thread_pool_size_;
+}
+
 auto FfiClient::instance() -> FfiClient &
 {
     static FfiClient instance;
@@ -39,6 +44,12 @@ auto FfiClient::request(proto::FfiRequest const & request) -> proto::FfiResponse
     livekit_ffi_drop_handle(handle);
 
     return response;
+}
+
+auto FfiClient::subscribe() -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>
+{
+    auto scheduler = thread_pool_.get_scheduler_on_thread(next_thread_index());
+    return queue_.subscribe(scheduler);
 }
 
 auto FfiClient::subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>
