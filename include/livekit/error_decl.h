@@ -10,6 +10,7 @@
 
 #include <stdexcept>
 #include <string>
+#include <type_traits>
 
 namespace livekit
 {
@@ -32,8 +33,21 @@ public:
 
 enum class LivekitErrorCode
 {
+    Success = 0,
+    PublishDataFailed = 1,
+    PublishDtmfFailed = 2,
 };
 
 } // namespace livekit
+
+namespace std
+{
+
+template <>
+struct is_error_code_enum<livekit::LivekitErrorCode> : true_type
+{
+};
+
+} // namespace std
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_ERROR_DECL

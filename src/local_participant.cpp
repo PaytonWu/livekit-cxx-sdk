@@ -39,14 +39,39 @@ auto LocalParticipant::publish_data(std::vector<abc::byte> const & data, bool re
     auto queue = ffi::FfiClient::instance().subscribe(scheduler_);
     auto resp = ffi::FfiClient::request(req);
     proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
-        return event.has_publish_data() && event.publish_data().has_async_id() && event.publish_data().async_id() == resp.has_publish_data() &&
-               resp.publish_data().has_async_id() && resp.publish_data().async_id();
+        return event.has_publish_data() && event.publish_data().has_async_id() && resp.has_publish_data() && resp.publish_data().has_async_id() &&
+               event.publish_data().async_id() == resp.publish_data().async_id();
     });
     ffi::FfiClient::instance().unsubscribe(queue);
 
     if (event.publish_data().has_error())
     {
-        throw std::runtime_error(event.publish_data().error());
+        throw_error(LivekitErrorCode::PublishDataFailed, event.publish_data().error());
+    }
+
+    co_return;
+}
+
+auto LocalParticipant::publish_dtmf(std::uint32_t const code, std::string const & digit) -> exec::task<void>
+{
+    proto::FfiRequest req;
+
+    auto * publish_dtmf = req.mutable_publish_sip_dtmf();
+    publish_dtmf->set_local_participant_handle(ffi_handle_.id());
+    publish_dtmf->set_code(code);
+    publish_dtmf->set_digit(digit);
+
+    auto queue = ffi::FfiClient::instance().subscribe(scheduler_);
+    auto resp = ffi::FfiClient::request(req);
+    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
+        return event.has_publish_sip_dtmf() && event.publish_sip_dtmf().has_async_id() && resp.has_publish_sip_dtmf() && resp.publish_sip_dtmf().has_async_id() &&
+               event.publish_sip_dtmf().async_id() == resp.publish_sip_dtmf().async_id();
+    });
+    ffi::FfiClient::instance().unsubscribe(queue);
+
+    if (event.publish_sip_dtmf().has_error())
+    {
+        throw_error(LivekitErrorCode::PublishDtmfFailed, event.publish_sip_dtmf().error());
     }
 
     co_return;

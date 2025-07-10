@@ -29,30 +29,49 @@ auto make_error_code(LivekitErrorCode const ec) noexcept -> std::error_code
     return std::error_code{ static_cast<int>(ec), livekit_category() };
 }
 
-auto
-livekit_category() noexcept -> std::error_category const &
+auto livekit_category() noexcept -> std::error_category const &
 {
-    static struct
-        : std::error_category
+    static struct : std::error_category
     {
-        [[nodiscard]] auto
-        name() const noexcept -> char const * override
+        [[nodiscard]] auto name() const noexcept -> char const * override
         {
             return "livekit";
         }
 
-        [[nodiscard]] auto
-        message(int const ec) const -> std::string override
+        [[nodiscard]] auto message(int const ec) const -> std::string override
         {
             switch (static_cast<LivekitErrorCode>(ec))
             {
+                case LivekitErrorCode::Success:
+                    return "success";
+                case LivekitErrorCode::PublishDataFailed:
+                    return "publish data failed";
+                case LivekitErrorCode::PublishDtmfFailed:
+                    return "publish dtmf failed";
                 default:
                     assert(false);
                     return "unknown error";
             }
         }
     } category;
+
     return category;
+}
+
+void throw_error(std::error_code const & ec)
+{
+    if (ec)
+    {
+        throw LivekitError{ ec };
+    }
+}
+
+void throw_error(std::error_code const & ec, std::string_view error_msg)
+{
+    if (ec)
+    {
+        throw LivekitError{ ec, error_msg };
+    }
 }
 
 } // namespace livekit

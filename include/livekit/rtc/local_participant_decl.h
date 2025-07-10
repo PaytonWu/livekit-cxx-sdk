@@ -30,10 +30,16 @@ private:
     exec::static_thread_pool::scheduler scheduler_;
 
 public:
-    explicit LocalParticipant(proto::OwnedParticipant const & owned_participant, utils::BroadcastQueue<proto::FfiEvent> * room_event_queue, exec::static_thread_pool::scheduler scheduler);
+    explicit LocalParticipant(proto::OwnedParticipant const & owned_participant,
+                              utils::BroadcastQueue<proto::FfiEvent> * room_event_queue,
+                              exec::static_thread_pool::scheduler scheduler);
 
     auto publish_data(std::vector<abc::byte> const & data, bool reliable, std::vector<std::string> const & destinations, std::optional<std::string> const & topic)
         -> exec::task<void>;
+
+    auto publish_dtmf(std::uint32_t code, std::string const & digit) -> exec::task<void>;
+
+    // auto publish_track
 };
 
 } // namespace livekit::rtc
