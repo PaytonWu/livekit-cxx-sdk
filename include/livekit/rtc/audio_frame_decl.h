@@ -8,6 +8,8 @@
 
 #include "audio_frame_fwd_decl.h"
 
+#include "livekit/ffi/proto/audio_frame.pb.h"
+
 #include <abc/bytes.h>
 #include <abc/bytes_view.h>
 
@@ -42,6 +44,8 @@ public:
     auto num_of_channels() const -> int;
     auto samples_per_channel() const -> int;
     auto data() const -> std::vector<std::int16_t> const &;
+
+    auto proto_info() const -> proto::AudioFrameBufferInfo;
 };
 
 }

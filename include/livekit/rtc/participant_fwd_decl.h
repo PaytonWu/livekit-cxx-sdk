@@ -10,6 +10,7 @@ namespace livekit::rtc
 {
 
 class Participant;
+class LocalParticipant;
 
 }
 

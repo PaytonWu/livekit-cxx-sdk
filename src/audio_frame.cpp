@@ -66,4 +66,15 @@ auto AudioFrame::data() const -> std::vector<std::int16_t> const &
     return data_;
 }
 
+auto AudioFrame::proto_info() const -> proto::AudioFrameBufferInfo
+{
+    proto::AudioFrameBufferInfo info;
+    info.set_sample_rate(sample_rate_);
+    info.set_num_channels(num_of_channels_);
+    info.set_samples_per_channel(samples_per_channel_);
+    info.set_data_ptr(reinterpret_cast<std::uint64_t>(data_.data()));
+
+    return info;
+}
+
 } // namespace livekit::rtc

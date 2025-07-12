@@ -9,6 +9,7 @@
 #include "participant_decl.h"
 
 #include "livekit/ffi/ffi_handle.h"
+#include "livekit/utils/broadcast_queue.h"
 #include "sid.h"
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_PARTICIPANT

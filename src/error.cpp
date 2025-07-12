@@ -52,6 +52,8 @@ auto livekit_category() noexcept -> std::error_category const &
                     return "get stats failed";
                 case LivekitErrorCode::InvalidMediaData:
                     return "invalid media data";
+                case LivekitErrorCode::CaptureAudioFrameFailed:
+                    return "capture audio frame failed";
                 default:
                     assert(false);
                     return "unknown error";
