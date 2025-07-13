@@ -60,4 +60,9 @@ auto AudioSource::num_channels() const -> int
     return num_of_channels_;
 }
 
+auto AudioSource::ffi_handle() const -> ffi::FfiHandle const &
+{
+    return handle_;
+}
+
 }

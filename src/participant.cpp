@@ -50,11 +50,9 @@ auto Participant::disconnected_reason() -> std::optional<proto::DisconnectReason
 }
 
 LocalParticipant::LocalParticipant(proto::OwnedParticipant const & owned_participant,
-                                   utils::BroadcastQueue<proto::FfiEvent> * room_event_queue,
-                                   exec::static_thread_pool::scheduler scheduler)
+                                   utils::BroadcastQueue<proto::FfiEvent> * room_event_queue)
     : Participant{ owned_participant }
     , room_event_queue_{ room_event_queue }
-    , scheduler_{ scheduler }
 {
 }
 
@@ -75,7 +73,7 @@ auto LocalParticipant::publish_data(std::vector<abc::byte> const & data, bool re
         publish_data->set_topic(topic.value());
     }
 
-    auto queue = ffi::FfiClient::instance().subscribe(scheduler_);
+    auto queue = ffi::FfiClient::instance().subscribe();
     auto resp = ffi::FfiClient::request(req);
     proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
         return event.has_publish_data() && event.publish_data().has_async_id() && resp.has_publish_data() && resp.publish_data().has_async_id() &&
@@ -100,7 +98,7 @@ auto LocalParticipant::publish_dtmf(std::uint32_t const code, std::string const 
     publish_dtmf->set_code(code);
     publish_dtmf->set_digit(digit);
 
-    auto queue = ffi::FfiClient::instance().subscribe(scheduler_);
+    auto queue = ffi::FfiClient::instance().subscribe();
     auto resp = ffi::FfiClient::request(req);
     proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
         return event.has_publish_sip_dtmf() && event.publish_sip_dtmf().has_async_id() && resp.has_publish_sip_dtmf() && resp.publish_sip_dtmf().has_async_id() &&

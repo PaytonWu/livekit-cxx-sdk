@@ -37,6 +37,7 @@ public:
 
     auto sample_rate() const noexcept -> int;
     auto num_channels() const -> int;
+    auto ffi_handle() const -> ffi::FfiHandle const &;
 };
 
 }

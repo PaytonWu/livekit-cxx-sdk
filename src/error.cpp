@@ -54,6 +54,8 @@ auto livekit_category() noexcept -> std::error_category const &
                     return "invalid media data";
                 case LivekitErrorCode::CaptureAudioFrameFailed:
                     return "capture audio frame failed";
+                case LivekitErrorCode::PublishTrackFailed:
+                    return "publish track failed";
                 default:
                     assert(false);
                     return "unknown error";

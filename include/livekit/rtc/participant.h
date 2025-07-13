@@ -8,8 +8,41 @@
 
 #include "participant_decl.h"
 
-#include "livekit/ffi/ffi_handle.h"
-#include "livekit/utils/broadcast_queue.h"
+#include "livekit/error.h"
+#include "livekit/ffi/ffi_client.h"
 #include "sid.h"
+#include "track.h"
+#include "track_publication.h"
+
+namespace livekit::rtc
+{
+
+auto LocalParticipant::publish_track(LocalTrack auto const & track, proto::TrackPublishOptions const & options) -> exec::task<LocalTrackPublication>
+{
+    proto::FfiRequest req;
+
+    auto * publish_track = req.mutable_publish_track();
+    publish_track->set_track_handle(track.handle().id());
+    publish_track->set_local_participant_handle(ffi_handle_.id());
+    auto * op = publish_track->mutable_options();
+    op->CopyFrom(options);
+
+    auto queue = ffi::FfiClient::instance().subscribe();
+    auto resp = ffi::FfiClient::request(req);
+    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
+        return event.has_publish_track() && event.publish_track().has_async_id() && resp.has_publish_track() && resp.publish_track().has_async_id() &&
+               event.publish_track().async_id() == resp.publish_track().async_id();
+    });
+    ffi::FfiClient::instance().unsubscribe(queue);
+
+    if (event.publish_track().has_error())
+    {
+        throw_error(LivekitErrorCode::PublishTrackFailed, event.publish_track().error());
+    }
+
+    co_return LocalTrackPublication{ event.publish_track().publication() };
+}
+
+}
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_PARTICIPANT

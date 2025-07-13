@@ -39,6 +39,7 @@ enum class LivekitErrorCode
     GetStatsFailed = 3,
     InvalidMediaData = 4,
     CaptureAudioFrameFailed = 5,
+    PublishTrackFailed = 6,
 };
 
 } // namespace livekit

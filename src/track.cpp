@@ -6,6 +6,8 @@
 #include <livekit/error.h>
 #include <livekit/ffi/ffi_client.h>
 #include <livekit/ffi/proto/ffi.pb.h>
+#include <livekit/rtc/audio_source.h>
+#include <livekit/rtc/sid.h>
 
 namespace livekit::rtc
 {
@@ -66,7 +68,48 @@ LocalAudioTrack::LocalAudioTrack(proto::OwnedTrack const & owned_track) : Track{
 {
 }
 
+auto LocalAudioTrack::create_audio_track(std::string_view name, AudioSource const & source) -> LocalAudioTrack
+{
+    proto::FfiRequest req;
+    auto * create_audio_track = req.mutable_create_audio_track();
+    create_audio_track->set_name(name.data(), name.size());
+    create_audio_track->set_source_handle(source.ffi_handle().id());
+
+    auto resp = ffi::FfiClient::request(req);
+    return LocalAudioTrack{ resp.create_audio_track().track() };
+}
+
+auto LocalAudioTrack::mute() -> void
+{
+    proto::FfiRequest req;
+    auto * local_track_mute = req.mutable_local_track_mute();
+    local_track_mute->set_track_handle(this->ffi_handle_.id());
+    local_track_mute->set_mute(true);
+
+    ffi::FfiClient::request(req);
+    this->track_info_.set_muted(true);
+}
+
+auto LocalAudioTrack::unmute() -> void
+{
+    proto::FfiRequest req;
+    auto * local_track_mute = req.mutable_local_track_mute();
+    local_track_mute->set_track_handle(this->ffi_handle_.id());
+    local_track_mute->set_mute(false);
+
+    ffi::FfiClient::request(req);
+    this->track_info_.set_muted(false);
+}
+
 LocalVideoTrack::LocalVideoTrack(proto::OwnedTrack const & owned_track) : Track{ owned_track }
+{
+}
+
+RemoteAudioTrack::RemoteAudioTrack(proto::OwnedTrack const & owned_track) : Track{ owned_track }
+{
+}
+
+RemoteVideoTrack::RemoteVideoTrack(proto::OwnedTrack const & owned_track) : Track{ owned_track }
 {
 }
 

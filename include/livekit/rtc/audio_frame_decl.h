@@ -10,7 +10,6 @@
 
 #include "livekit/ffi/proto/audio_frame.pb.h"
 
-#include <abc/bytes.h>
 #include <abc/bytes_view.h>
 
 #include <cstdint>
