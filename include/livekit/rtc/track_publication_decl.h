@@ -14,6 +14,8 @@
 #include "livekit/ffi/proto/track.pb.h"
 #include "sid_decl.h"
 
+#include <cstdint>
+
 namespace livekit::rtc
 {
 
@@ -51,6 +53,6 @@ public:
     explicit RemoteTrackPublication(proto::OwnedTrackPublication const & owned_track_publication);
 };
 
-}
+} // namespace livekit::rtc
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_PUBLICATION_DECL

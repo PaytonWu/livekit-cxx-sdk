@@ -12,6 +12,7 @@
 
 #include <abc/bytes_view.h>
 
+#include <chrono>
 #include <cstdint>
 #include <vector>
 
@@ -43,7 +44,7 @@ public:
     auto num_of_channels() const -> int;
     auto samples_per_channel() const -> int;
     auto data() const -> std::vector<std::int16_t> const &;
-
+    auto duration() const -> std::chrono::milliseconds;
     auto proto_info() const -> proto::AudioFrameBufferInfo;
 };
 

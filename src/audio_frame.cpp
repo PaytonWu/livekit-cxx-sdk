@@ -66,6 +66,11 @@ auto AudioFrame::data() const -> std::vector<std::int16_t> const &
     return data_;
 }
 
+auto AudioFrame::duration() const -> std::chrono::milliseconds
+{
+    return std::chrono::milliseconds{ samples_per_channel_ * 1000 / sample_rate_ };
+}
+
 auto AudioFrame::proto_info() const -> proto::AudioFrameBufferInfo
 {
     proto::AudioFrameBufferInfo info;

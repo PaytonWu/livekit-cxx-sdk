@@ -8,6 +8,8 @@
 
 #include "room_fwd_decl.h"
 
+#include "event_emitter_decl.h"
+
 #include "livekit/e2ee_decl.h"
 #include "livekit/ffi/ffi_handle_decl.h"
 #include "livekit/ffi/proto/ffi.pb.h"
@@ -62,7 +64,7 @@ struct RoomOptions
     uint32_t join_retries{ 3 };
 };
 
-class Room
+class Room// : public EventEmitter<proto::FfiEvent>
 {
 private:
     exec::static_thread_pool::scheduler scheduler_;
