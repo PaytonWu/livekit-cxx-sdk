@@ -22,7 +22,7 @@
 #include <exec/task.hpp>
 
 #include <cstdint>
-#include <optional>
+#include <memory>
 #include <optional>
 #include <string>
 #include <unordered_map>
@@ -52,16 +52,18 @@ public:
     auto attributes() -> std::unordered_map<std::string, std::string>;
     auto kind() -> proto::ParticipantKind;
     auto disconnected_reason() -> std::optional<proto::DisconnectReason>;
+
+    virtual auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> = 0;
 };
 
 class LocalParticipant : public Participant
 {
 private:
     utils::BroadcastQueue<proto::FfiEvent> * room_event_queue_{ nullptr };
+    std::unordered_map<Sid, std::shared_ptr<TrackPublication>> track_publications_{};
 
 public:
-    explicit LocalParticipant(proto::OwnedParticipant const & owned_participant,
-                              utils::BroadcastQueue<proto::FfiEvent> * room_event_queue);
+    explicit LocalParticipant(proto::OwnedParticipant const & owned_participant, utils::BroadcastQueue<proto::FfiEvent> * room_event_queue);
 
     auto publish_data(std::vector<abc::byte> const & data, bool reliable, std::vector<std::string> const & destinations, std::optional<std::string> const & topic)
         -> exec::task<void>;
@@ -69,9 +71,23 @@ public:
     auto publish_dtmf(std::uint32_t code, std::string const & digit) -> exec::task<void>;
 
     auto publish_track(LocalTrack auto const & track, proto::TrackPublishOptions const & options = {}) -> exec::task<LocalTrackPublication>;
+
+    auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> override;
 };
 
+class RemoteParticipant : public Participant
+{
+private:
+    std::unordered_map<Sid, std::shared_ptr<TrackPublication>> track_publications_{};
 
-}
+public:
+    explicit RemoteParticipant(proto::OwnedParticipant const & owned_participant);
+
+    auto add_track_publication(std::shared_ptr<RemoteTrackPublication> track_publication) -> void;
+
+    auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> override;
+};
+
+} // namespace livekit::rtc
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_PARTICIPANT_DECL

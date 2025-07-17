@@ -40,6 +40,7 @@ enum class LivekitErrorCode
     InvalidMediaData = 4,
     CaptureAudioFrameFailed = 5,
     PublishTrackFailed = 6,
+    RemoteParticipantAlreadyExist = 7,
 };
 
 } // namespace livekit

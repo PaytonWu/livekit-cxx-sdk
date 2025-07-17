@@ -114,4 +114,19 @@ auto LocalParticipant::publish_dtmf(std::uint32_t const code, std::string const 
     co_return;
 }
 
+auto LocalParticipant::track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>>
+{
+    return track_publications_;
+}
+
+auto RemoteParticipant::add_track_publication(std::shared_ptr<RemoteTrackPublication> track_publication) -> void
+{
+    track_publications_.emplace(track_publication->sid(), std::static_pointer_cast<TrackPublication>(track_publication));
+}
+
+auto RemoteParticipant::track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>>
+{
+    return track_publications_;
+}
+
 } // namespace livekit::rtc

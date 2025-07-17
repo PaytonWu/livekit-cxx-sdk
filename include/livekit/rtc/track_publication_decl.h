@@ -27,6 +27,9 @@ protected:
 
 public:
     explicit TrackPublication(proto::OwnedTrackPublication const & owned_track_publication);
+    TrackPublication(TrackPublication &&) = default;
+    auto operator=(TrackPublication &&) -> TrackPublication & = default;
+    virtual ~TrackPublication() = default;
 
     auto sid() const -> Sid;
     auto name() const noexcept -> std::string const &;

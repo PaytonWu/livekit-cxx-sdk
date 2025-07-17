@@ -56,6 +56,8 @@ auto livekit_category() noexcept -> std::error_category const &
                     return "capture audio frame failed";
                 case LivekitErrorCode::PublishTrackFailed:
                     return "publish track failed";
+                case LivekitErrorCode::RemoteParticipantAlreadyExist:
+                    return "remote participant already exist";
                 default:
                     assert(false);
                     return "unknown error";

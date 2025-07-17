@@ -12,7 +12,7 @@ namespace livekit::rtc
 {
 
 template <typename EventT>
-auto EventEmitter<EventT>::on(EventT const event, std::unique_ptr<utils::Callable> callable) -> HandlerId
+auto EventEmitter<EventT>::on(EventT const event, std::shared_ptr<utils::Callable> callable) -> HandlerId
 {
     std::lock_guard lock{ handlers_mutex_ };
     auto id = next_handler_id_.fetch_add(1, std::memory_order_relaxed);
@@ -25,6 +25,24 @@ auto EventEmitter<EventT>::off(EventT const event, HandlerId id) -> void
 {
     std::lock_guard lock{ handlers_mutex_ };
     handlers_[event].erase(id);
+}
+
+template <typename EventT>
+auto EventEmitter<EventT>::emit(EventT const event, auto &&... args) -> void
+{
+    std::unordered_map<HandlerId, std::shared_ptr<utils::Callable>> handlers;
+    {
+        std::lock_guard lock{ handlers_mutex_ };
+        if (auto it = handlers_.find(event); it != handlers_.end())
+        {
+            handlers = it->second;
+        }
+    }
+    for (auto & [_, callable] : handlers)
+    {
+        // TODO: need try ... catch ...?
+        std::invoke(*callable, std::forward<decltype(args)>(args)...);
+    }
 }
 
 } // namespace livekit::rtc

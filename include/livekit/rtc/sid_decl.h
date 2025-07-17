@@ -10,6 +10,7 @@
 
 #include "livekit/utils/strong_typed_value_decl.h"
 
+#include <cstddef>
 #include <string>
 
 namespace livekit::rtc
@@ -19,6 +20,17 @@ class Sid : public utils::StrongTypedValue<std::string, Sid>
 {
 public:
     using utils::StrongTypedValue<std::string, Sid>::StrongTypedValue;
+};
+
+}
+
+namespace std
+{
+
+template <>
+struct hash<livekit::rtc::Sid>
+{
+    auto operator()(livekit::rtc::Sid const & sid) const -> std::size_t;
 };
 
 }

@@ -6,10 +6,20 @@
 
 #pragma once
 
+#include <functional>
+
 namespace livekit::rtc
 {
 
 class Sid;
+
+}
+
+namespace std
+{
+
+template <>
+struct hash<livekit::rtc::Sid>;
 
 }
 

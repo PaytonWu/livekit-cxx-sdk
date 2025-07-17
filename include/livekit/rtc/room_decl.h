@@ -9,6 +9,7 @@
 #include "room_fwd_decl.h"
 
 #include "event_emitter_decl.h"
+#include "participant_decl.h"
 
 #include "livekit/e2ee_decl.h"
 #include "livekit/ffi/ffi_handle_decl.h"
@@ -23,6 +24,7 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <unordered_map>
 #include <vector>
 
 namespace livekit::rtc
@@ -64,7 +66,7 @@ struct RoomOptions
     uint32_t join_retries{ 3 };
 };
 
-class Room// : public EventEmitter<proto::FfiEvent>
+class Room : public EventEmitter<proto::RoomEvent::MessageCase>
 {
 private:
     exec::static_thread_pool::scheduler scheduler_;
@@ -75,6 +77,8 @@ private:
     // E2EEManager e2ee_mgr_;
     proto::RoomInfo room_info_;
     proto::ConnectionState connection_state_{ proto::ConnectionState::CONN_DISCONNECTED };
+    std::unique_ptr<LocalParticipant> local_participant_{};
+    std::unordered_map<std::string, RemoteParticipant> remote_participants_{};
 
 public:
     explicit Room(exec::static_thread_pool::scheduler scheduler);
@@ -83,6 +87,9 @@ public:
     [[nodiscard]] auto sid() const -> exec::task<std::string>;
 
     auto connect(std::string_view url, std::string_view token, RoomOptions const & room_options = RoomOptions{}) -> exec::task<void>;
+
+private:
+    auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> std::unique_ptr<RemoteParticipant>;
 };
 
 } // namespace livekit::rtc

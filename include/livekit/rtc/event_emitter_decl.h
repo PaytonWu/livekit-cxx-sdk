@@ -29,12 +29,14 @@ public:
 
 private:
     std::atomic<HandlerId> next_handler_id_{ 0 };
-    std::unordered_map<EventT, std::unordered_map<HandlerId, std::unique_ptr<utils::Callable>>> handlers_;
+    std::unordered_map<EventT, std::unordered_map<HandlerId, std::shared_ptr<utils::Callable>>> handlers_;
     std::mutex handlers_mutex_;
 
 public:
-    auto on(EventT event, std::unique_ptr<utils::Callable> callable) -> HandlerId;
+    auto on(EventT event, std::shared_ptr<utils::Callable> callable) -> HandlerId;
     auto off(EventT event, HandlerId id) -> void;
+
+    auto emit(EventT event, auto &&... args) -> void;
 };
 
 } // namespace livekit::rtc

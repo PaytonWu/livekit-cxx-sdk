@@ -3,7 +3,10 @@
 
 #include <livekit/rtc/room.h>
 
+#include <livekit/error.h>
 #include <livekit/ffi/ffi_client.h>
+
+#include <fmt/format.h>
 
 namespace livekit::rtc
 {
@@ -86,8 +89,30 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
     room_info_ = event.connect().result().room().info();
     connection_state_ = proto::ConnectionState::CONN_CONNECTED;
 
+    local_participant_ = std::make_unique<LocalParticipant>(event.connect().result().local_participant(), std::addressof(room_event_queue_));
+
+    for (auto const & pt : event.connect().result().participants())
+    {
+        if (remote_participants_.contains(pt.participant().info().identity()))
+        {
+            throw_error(LivekitErrorCode::RemoteParticipantAlreadyExist, fmt::format("Remote particiaptn {} already exist", pt.participant().info().identity()));
+        }
+
+        remote_participants_.emplace(pt.participant().info().identity(), RemoteParticipant{ pt.participant() });
+
+        for (auto const & tp : pt.publications())
+        {
+            auto track_publication = std::make_shared<RemoteTrackPublication>(tp);
+            remote_participants_.at(pt.participant().info().identity()).add_track_publication(std::move(track_publication));
+        }
+    }
 
     co_return;
+}
+
+auto Room::create_remote_participant(proto::OwnedParticipant const & owned_participant) -> std::unique_ptr<RemoteParticipant>
+{
+    return std::make_unique<RemoteParticipant>(owned_participant);
 }
 
 } // namespace livekit::rtc
