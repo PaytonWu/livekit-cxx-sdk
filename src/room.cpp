@@ -115,4 +115,27 @@ auto Room::create_remote_participant(proto::OwnedParticipant const & owned_parti
     return std::make_unique<RemoteParticipant>(owned_participant);
 }
 
+auto Room::listen_room_events_task() -> exec::task<void>
+{
+    bool quit = false;
+    while (!quit)
+    {
+        auto event = co_await event_queue_->async_dequeue();
+        if (event.has_room_event() && event.room_event().room_handle() == ffi_handle_.id())
+        {
+            if (event.room_event().has_eos())
+            {
+                quit = true;
+            }
+        }
+    }
+}
+
+auto Room::on_room_event(proto::RoomEvent const & event) -> void
+{
+    switch (event.message_case())
+    {
+    }
+}
+
 } // namespace livekit::rtc

@@ -90,6 +90,8 @@ public:
 
 private:
     auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> std::unique_ptr<RemoteParticipant>;
+    auto listen_room_events_task() -> exec::task<void>;
+    auto on_room_event(proto::RoomEvent const & event) -> void;
 };
 
 } // namespace livekit::rtc
