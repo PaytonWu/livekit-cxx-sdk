@@ -8,18 +8,14 @@
 
 #include "async_queue_fwd_decl.h"
 
-#include <abc/async/queue.h>
-#include <exec/task.hpp>
+#include "async_queue_base_decl.h"
 
 namespace livekit::utils
 {
 
 template <typename T, stdexec::scheduler Scheduler>
-class AsyncQueue
+class AsyncQueue : public AsyncQueueBase<T, Scheduler>
 {
-private:
-    abc::async::Queue<T, 1024, Scheduler> queue_;
-
 public:
     AsyncQueue(AsyncQueue const &) = delete;
     AsyncQueue(AsyncQueue &&) = delete;

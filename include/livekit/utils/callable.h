@@ -8,9 +8,4 @@
 
 #include "callable_decl.h"
 
-namespace livekit::utils
-{
-
-} // namespace livekit::utils
-
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_CALLABLE

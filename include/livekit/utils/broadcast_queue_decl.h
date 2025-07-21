@@ -10,10 +10,7 @@
 
 #include "async_queue_decl.h"
 
-#include <condition_variable>
-#include <deque>
 #include <mutex>
-#include <optional>
 #include <vector>
 
 namespace livekit::utils

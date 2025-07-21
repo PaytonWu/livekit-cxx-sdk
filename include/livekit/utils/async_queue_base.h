@@ -12,14 +12,26 @@ namespace livekit::utils
 {
 
 template <typename T, stdexec::scheduler Scheduler>
-AsyncQueueBase<T, Scheduler>::AsyncQueueBase(Scheduler scheduler) : queue_{ scheduler }
+AsyncQueueBase<T, Scheduler>::AsyncQueueBase(Scheduler scheduler) : scheduler_{ scheduler }, queue_{ scheduler }
 {
 }
 
 template <typename T, stdexec::scheduler Scheduler>
 auto AsyncQueueBase<T, Scheduler>::wait_for(auto pred) -> exec::task<T>
 {
-    return queue_.wait_for(pred);
+    while (true)
+    {
+        auto result = queue_.dequeue();
+        if (result)
+        {
+            if (auto value = std::move(*result); static_cast<bool>(pred(value)))
+            {
+                co_return value;
+            }
+        }
+
+        co_await stdexec::schedule(scheduler_);
+    }
 }
 
 } // namespace livekit::utils

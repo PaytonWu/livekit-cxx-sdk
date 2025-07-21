@@ -8,8 +8,9 @@
 
 #include "async_queue_base_fwd_decl.h"
 
-#include <abc/async/queue.h>
 #include <exec/task.hpp>
+
+#include <abc/async/queue.h>
 
 namespace livekit::utils
 {
@@ -18,6 +19,7 @@ template <typename T, stdexec::scheduler Scheduler>
 class AsyncQueueBase
 {
 protected:
+    Scheduler scheduler_;
     abc::async::Queue<T, 1024, Scheduler> queue_;
 
 protected:
@@ -27,6 +29,7 @@ protected:
     auto operator=(AsyncQueueBase &&) -> AsyncQueueBase & = delete;
 
     explicit AsyncQueueBase(Scheduler scheduler);
+    virtual ~AsyncQueueBase() = default;
 
 public:
     auto wait_for(auto pred) -> exec::task<T>;
