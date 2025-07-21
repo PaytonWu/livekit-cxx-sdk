@@ -34,6 +34,8 @@ public:
 
     auto subscribe() -> std::shared_ptr<AsyncQueue<T, Scheduler>>;
     auto unsubscribe(std::shared_ptr<AsyncQueue<T, Scheduler>> subscriber) -> void;
+
+    auto join() -> exec::task<void>;
 };
 
 } // namespace livekit::utils

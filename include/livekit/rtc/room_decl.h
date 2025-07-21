@@ -18,6 +18,7 @@
 #include "livekit/utils/async_queue_decl.h"
 #include "livekit/utils/broadcast_queue_decl.h"
 
+#include <exec/async_scope.hpp>
 #include <exec/static_thread_pool.hpp>
 #include <exec/task.hpp>
 
@@ -70,6 +71,7 @@ class Room : public EventEmitter<proto::RoomEvent::MessageCase>
 {
 private:
     exec::static_thread_pool::scheduler scheduler_;
+    exec::async_scope async_scope_{};
 
     ffi::FfiHandle ffi_handle_{};
     std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> event_queue_{};
@@ -90,7 +92,7 @@ public:
 
 private:
     auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> std::unique_ptr<RemoteParticipant>;
-    auto listen_room_events_task() -> exec::task<void>;
+    auto listen_room_events() -> exec::task<void>;
     auto on_room_event(proto::RoomEvent const & event) -> void;
 };
 

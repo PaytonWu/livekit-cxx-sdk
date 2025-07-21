@@ -18,6 +18,7 @@ Room::Room(exec::static_thread_pool::scheduler scheduler) : scheduler_{ schedule
 Room::~Room() noexcept
 {
     // Destructor implementation
+    async_scope_.request_stop();
 }
 
 auto Room::sid() const -> exec::task<std::string>
@@ -107,6 +108,8 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
         }
     }
 
+    async_scope_.spawn(stdexec::starts_on(scheduler_, listen_room_events()));
+
     co_return;
 }
 
@@ -115,20 +118,38 @@ auto Room::create_remote_participant(proto::OwnedParticipant const & owned_parti
     return std::make_unique<RemoteParticipant>(owned_participant);
 }
 
-auto Room::listen_room_events_task() -> exec::task<void>
+auto Room::listen_room_events() -> exec::task<void>
 {
-    bool quit = false;
-    while (!quit)
+    while (true)
     {
         auto event = co_await event_queue_->async_dequeue();
-        if (event.has_room_event() && event.room_event().room_handle() == ffi_handle_.id())
+        if (event.has_rpc_method_invocation())
+        {
+            // auto const & rpc = event.rpc_method_invocation();
+        }
+        else if (event.has_room_event() && event.room_event().room_handle() == ffi_handle_.id())
         {
             if (event.room_event().has_eos())
             {
-                quit = true;
+                break;
+            }
+            try
+            {
+                on_room_event(event.room_event());
+            }
+            catch (std::exception const &)
+            {
             }
         }
+
+        // wait for the subscribers to process the event
+        // before processing the next one
+        room_event_queue_.enqueue(event);
+        co_await room_event_queue_.join();
     }
+
+    // Clean up any pending RPC invocation tasks
+    co_return;
 }
 
 auto Room::on_room_event(proto::RoomEvent const & event) -> void

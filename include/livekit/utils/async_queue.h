@@ -76,6 +76,12 @@ auto AsyncQueue<T, Scheduler>::wait_for(auto pred) -> exec::task<T>
     co_return co_await queue_.wait_for(pred);
 }
 
+template <typename T, stdexec::scheduler Scheduler>
+auto AsyncQueue<T, Scheduler>::join() -> exec::task<void>
+{
+    return queue_.join();
+}
+
 } // namespace abc
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_ASYNC_QUEUE

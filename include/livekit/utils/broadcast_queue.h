@@ -45,6 +45,21 @@ auto BroadcastQueue<T, Scheduler>::unsubscribe(std::shared_ptr<AsyncQueue<T, Sch
     subscribers_.erase(ranges::remove(subscribers_, subscriber), subscribers_.end());
 }
 
+template <typename T, stdexec::scheduler Scheduler>
+auto BroadcastQueue<T, Scheduler>::join() -> exec::task<void>
+{
+    std::vector<std::shared_ptr<AsyncQueue<T, Scheduler>>> subscribers;
+    {
+        std::lock_guard<std::mutex> lock(mutex_);
+        subscribers = subscribers_;
+    }
+
+    for (auto & subscriber : subscribers)
+    {
+        co_await subscriber->join();
+    }
+}
+
 } // namespace livekit::utils
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_BROADCAST_QUEUE
