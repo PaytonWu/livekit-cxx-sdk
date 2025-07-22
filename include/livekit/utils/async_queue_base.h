@@ -21,16 +21,14 @@ auto AsyncQueueBase<T, Scheduler>::wait_for(auto pred) -> exec::task<T>
 {
     while (true)
     {
-        auto result = queue_.dequeue();
-        if (result)
+        auto value = co_await queue_.async_dequeue();
+        if (static_cast<bool>(pred(value)))
         {
-            if (auto value = std::move(*result); static_cast<bool>(pred(value)))
-            {
-                co_return value;
-            }
+            // task_done must be manually called for the returned item
+            co_return value;
         }
 
-        co_await stdexec::schedule(scheduler_);
+        queue_.task_done();
     }
 }
 

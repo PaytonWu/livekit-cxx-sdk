@@ -91,7 +91,7 @@ public:
     auto connect(std::string_view url, std::string_view token, RoomOptions const & room_options = RoomOptions{}) -> exec::task<void>;
 
 private:
-    auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> std::unique_ptr<RemoteParticipant>;
+    auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant;
     auto listen_room_events() -> exec::task<void>;
     auto on_room_event(proto::RoomEvent const & event) -> void;
 };

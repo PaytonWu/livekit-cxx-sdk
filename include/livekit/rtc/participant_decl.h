@@ -37,14 +37,12 @@ protected:
     proto::ParticipantInfo info_{};
     ffi::FfiHandle ffi_handle_{};
 
-public:
+protected:
+    Participant() = default;
+
     explicit Participant(proto::OwnedParticipant const & owned_participant);
 
-    Participant(Participant const &) = delete;
-    auto operator=(Participant const &) -> Participant & = delete;
-    Participant(Participant &&) = default;
-    auto operator=(Participant &&) -> Participant & = default;
-
+public:
     auto sid() -> Sid;
     auto name() -> std::string const &;
     auto identity() -> std::string const &;
@@ -81,6 +79,8 @@ private:
     std::unordered_map<Sid, std::shared_ptr<TrackPublication>> track_publications_{};
 
 public:
+    RemoteParticipant() = default;
+
     explicit RemoteParticipant(proto::OwnedParticipant const & owned_participant);
 
     auto add_track_publication(std::shared_ptr<RemoteTrackPublication> track_publication) -> void;

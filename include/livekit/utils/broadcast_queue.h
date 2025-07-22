@@ -58,6 +58,8 @@ auto BroadcastQueue<T, Scheduler>::join() -> exec::task<void>
     {
         co_await subscriber->join();
     }
+
+    co_return;
 }
 
 } // namespace livekit::utils

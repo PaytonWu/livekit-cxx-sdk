@@ -113,9 +113,11 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
     co_return;
 }
 
-auto Room::create_remote_participant(proto::OwnedParticipant const & owned_participant) -> std::unique_ptr<RemoteParticipant>
+auto Room::create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant
 {
-    return std::make_unique<RemoteParticipant>(owned_participant);
+    auto remote_participant = RemoteParticipant{ owned_participant };
+    remote_participants_.emplace(owned_participant.info().identity(), remote_participant);
+    return remote_participant;
 }
 
 auto Room::listen_room_events() -> exec::task<void>
@@ -148,14 +150,36 @@ auto Room::listen_room_events() -> exec::task<void>
         co_await room_event_queue_.join();
     }
 
+    // TODO: drain rpc invocation tasks and data stream tasks
     // Clean up any pending RPC invocation tasks
+    // await self._drain_rpc_invocation_tasks()
+    // await self._drain_data_stream_tasks()
+
     co_return;
 }
 
-auto Room::on_room_event(proto::RoomEvent const & event) -> void
+auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
 {
-    switch (event.message_case())
+    switch (room_event.message_case())
     {
+        case proto::RoomEvent::MessageCase::kParticipantConnected:
+        {
+            auto remote_participant = create_remote_participant(room_event.participant_connected().info());
+            emit(proto::RoomEvent::MessageCase::kParticipantConnected, std::move(remote_participant));
+            break;
+        }
+        case proto::RoomEvent::MessageCase::kParticipantDisconnected:
+        {
+            auto remote_participant_id = room_event.participant_disconnected().participant_identity();
+            RemoteParticipant remote_participant;
+            if (auto it = remote_participants_.find(remote_participant_id); it != remote_participants_.end())
+            {
+                remote_participant = std::move(it->second);
+                remote_participants_.erase(it);
+            }
+            emit(proto::RoomEvent::MessageCase::kParticipantDisconnected, std::move(remote_participant), proto::DisconnectReason_Name(room_event.participant_disconnected().disconnect_reason()));
+            break;
+        }
     }
 }
 
