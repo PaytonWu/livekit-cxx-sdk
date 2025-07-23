@@ -73,7 +73,7 @@ private:
     exec::static_thread_pool::scheduler scheduler_;
     exec::async_scope async_scope_{};
 
-    ffi::FfiHandle ffi_handle_{};
+    std::optional<ffi::FfiHandle> ffi_handle_{};
     std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> event_queue_{};
     utils::BroadcastQueue<proto::FfiEvent> room_event_queue_{ scheduler_ };
     // E2EEManager e2ee_mgr_;
@@ -89,6 +89,8 @@ public:
     [[nodiscard]] auto sid() const -> exec::task<std::string>;
 
     auto connect(std::string_view url, std::string_view token, RoomOptions const & room_options = RoomOptions{}) -> exec::task<void>;
+    auto disconnect() -> exec::task<void>;
+    auto connected() const noexcept -> bool;
 
 private:
     auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant;

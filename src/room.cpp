@@ -86,7 +86,7 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
         throw std::runtime_error{ event.connect().error() };
     }
 
-    ffi_handle_ = ffi::FfiHandle{ event.connect().result().room().handle().id() };
+    ffi_handle_ = std::make_optional<ffi::FfiHandle>(event.connect().result().room().handle().id());
     room_info_ = event.connect().result().room().info();
     connection_state_ = proto::ConnectionState::CONN_CONNECTED;
 
@@ -113,6 +113,40 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
     co_return;
 }
 
+auto Room::disconnect() -> exec::task<void>
+{
+    if (!connected())
+    {
+        co_return;
+    }
+
+    // TODO: drain rpc invocation tasks and data stream tasks
+    // await self._drain_rpc_invocation_tasks()
+    // await self._drain_data_stream_tasks()
+
+    proto::FfiRequest req;
+    auto * disconnect = req.mutable_disconnect();
+    disconnect->set_room_handle(ffi_handle_->id());
+
+    auto queue = ffi::FfiClient::instance().subscribe();
+    auto resp = ffi::FfiClient::request(req);
+    co_await queue->wait_for([&resp](auto const & ev) { return ev.has_disconnect() && ev.disconnect().async_id() == resp.disconnect().async_id(); });
+    ffi::FfiClient::instance().unsubscribe(queue);
+
+    co_await async_scope_.on_empty();
+
+    connection_state_ = proto::ConnectionState::CONN_DISCONNECTED;
+    ffi_handle_.reset();
+    ffi::FfiClient::instance().unsubscribe(event_queue_);
+
+    co_return;
+}
+
+auto Room::connected() const noexcept -> bool
+{
+    return ffi_handle_.has_value() && connection_state_ != proto::ConnectionState::CONN_DISCONNECTED;
+}
+
 auto Room::create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant
 {
     auto remote_participant = RemoteParticipant{ owned_participant };
@@ -129,7 +163,7 @@ auto Room::listen_room_events() -> exec::task<void>
         {
             // auto const & rpc = event.rpc_method_invocation();
         }
-        else if (event.has_room_event() && event.room_event().room_handle() == ffi_handle_.id())
+        else if (event.has_room_event() && ffi_handle_.has_value() && event.room_event().room_handle() == ffi_handle_->id())
         {
             if (event.room_event().has_eos())
             {
