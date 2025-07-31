@@ -15,8 +15,8 @@
 
 #include <exec/task.hpp>
 
-#include <cstdint>
 #include <chrono>
+#include <cstdint>
 
 namespace livekit::rtc
 {
@@ -40,6 +40,6 @@ public:
     auto ffi_handle() const -> ffi::FfiHandle const &;
 };
 
-}
+} // namespace livekit::rtc
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_AUDIO_SOURCE_DECL

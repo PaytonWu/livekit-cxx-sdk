@@ -12,7 +12,9 @@ namespace livekit::rtc
 {
 
 AudioSource::AudioSource(int sample_rate, int num_of_channels, std::chrono::milliseconds queue_size)
-    : sample_rate_{ sample_rate }, num_of_channels_{ num_of_channels }, queue_size_{ queue_size }
+    : sample_rate_{ sample_rate }
+    , num_of_channels_{ num_of_channels }
+    , queue_size_{ queue_size }
 {
     proto::FfiRequest request;
     auto * new_audio_source = request.mutable_new_audio_source();
@@ -37,8 +39,8 @@ auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
     auto queue = ffi::FfiClient::instance().subscribe();
     auto response = ffi::FfiClient::request(request);
     proto::FfiEvent event = co_await queue->wait_for([&response](proto::FfiEvent const & event) {
-        return event.has_capture_audio_frame() && event.capture_audio_frame().has_async_id() && response.has_capture_audio_frame() && response.capture_audio_frame().has_async_id() &&
-               event.capture_audio_frame().async_id() == response.capture_audio_frame().async_id();
+        return event.has_capture_audio_frame() && event.capture_audio_frame().has_async_id() && response.has_capture_audio_frame() &&
+               response.capture_audio_frame().has_async_id() && event.capture_audio_frame().async_id() == response.capture_audio_frame().async_id();
     });
     ffi::FfiClient::instance().unsubscribe(queue);
 
@@ -65,4 +67,4 @@ auto AudioSource::ffi_handle() const -> ffi::FfiHandle const &
     return handle_;
 }
 
-}
+} // namespace livekit::rtc
