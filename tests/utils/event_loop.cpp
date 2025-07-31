@@ -3,8 +3,9 @@
 
 #include <livekit/utils/event_loop.h>
 
-#include <exec/static_thread_pool.hpp>
 #include <gtest/gtest.h>
+
+#include <exec/static_thread_pool.hpp>
 #include <stdexec/execution.hpp>
 
 #include <atomic>
@@ -38,10 +39,10 @@ protected:
 // Test TimerHandle basic functionality
 TEST_F(EventLoopTest, TimerHandleBasicFunctionality)
 {
-    EventLoop::TimerHandle handle;
+    TimerHandle handle;
 
-    // Initially not cancelled
-    EXPECT_FALSE(handle.is_cancelled());
+    // Initially in cancelled state
+    EXPECT_TRUE(handle.is_cancelled());
 
     // Cancel and check state
     handle.cancel();
@@ -55,7 +56,7 @@ TEST_F(EventLoopTest, TimerHandleBasicFunctionality)
 // Test TimerHandle thread safety
 TEST_F(EventLoopTest, TimerHandleThreadSafety)
 {
-    auto handle = std::make_shared<EventLoop::TimerHandle>();
+    TimerHandle handle{};
     std::atomic<int> cancel_count{ 0 };
     std::atomic<int> check_count{ 0 };
 
@@ -64,13 +65,13 @@ TEST_F(EventLoopTest, TimerHandleThreadSafety)
 
     for (int i = 0; i < 10; ++i)
     {
-        threads.emplace_back([handle, &cancel_count]() {
-            handle->cancel();
+        threads.emplace_back([handle, &cancel_count]() mutable {
+            handle.cancel();
             cancel_count.fetch_add(1);
         });
 
         threads.emplace_back([handle, &check_count]() {
-            if (handle->is_cancelled())
+            if (handle.is_cancelled())
             {
                 check_count.fetch_add(1);
             }
@@ -84,7 +85,7 @@ TEST_F(EventLoopTest, TimerHandleThreadSafety)
     }
 
     // Verify final state
-    EXPECT_TRUE(handle->is_cancelled());
+    EXPECT_TRUE(handle.is_cancelled());
     EXPECT_EQ(cancel_count.load(), 10);
     // check_count should be <= 10 (depends on timing)
     EXPECT_LE(check_count.load(), 10);
@@ -100,8 +101,7 @@ TEST_F(EventLoopTest, CallLaterBasicCallback)
     auto scheduler = thread_pool->get_scheduler();
     auto work = ex::schedule(scheduler) | ex::then([&]() {
                     auto handle = event_loop.call_later(0.01, [&callback_executed]() { callback_executed.store(true); });
-                    EXPECT_NE(handle, nullptr);
-                    EXPECT_FALSE(handle->is_cancelled());
+                    EXPECT_FALSE(handle.is_cancelled());
 
                     // Wait a bit for the callback to execute
                     std::this_thread::sleep_for(std::chrono::milliseconds(50));
@@ -121,8 +121,6 @@ TEST_F(EventLoopTest, CallLaterWithArguments)
     auto work = ex::schedule(scheduler) | ex::then([&]() {
                     auto handle = event_loop.call_later(0.01, [&result](int a, int b, int c) { result.store(a + b + c); }, 10, 20, 30);
 
-                    EXPECT_NE(handle, nullptr);
-
                     // Wait for callback execution
                     std::this_thread::sleep_for(std::chrono::milliseconds(50));
                 });
@@ -141,12 +139,11 @@ TEST_F(EventLoopTest, CallLaterCancellation)
     auto work = ex::schedule(scheduler) | ex::then([&]() {
                     auto handle = event_loop.call_later(0.05, [&callback_executed]() { callback_executed.store(true); });
 
-                    EXPECT_NE(handle, nullptr);
-                    EXPECT_FALSE(handle->is_cancelled());
+                    EXPECT_FALSE(handle.is_cancelled());
 
                     // Cancel immediately
-                    handle->cancel();
-                    EXPECT_TRUE(handle->is_cancelled());
+                    handle.cancel();
+                    EXPECT_TRUE(handle.is_cancelled());
 
                     // Wait longer than the delay to ensure callback would have fired
                     std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -192,7 +189,7 @@ TEST_F(EventLoopTest, MultipleConcurrentTimers)
 
     auto scheduler = thread_pool->get_scheduler();
     auto work = ex::schedule(scheduler) | ex::then([&]() {
-                    std::vector<std::shared_ptr<EventLoop::TimerHandle>> handles;
+                    std::vector<TimerHandle> handles;
 
                     // Create multiple timers with different delays
                     for (int i = 0; i < 5; ++i)
@@ -205,8 +202,7 @@ TEST_F(EventLoopTest, MultipleConcurrentTimers)
                     // All handles should be valid and not cancelled
                     for (auto const & handle : handles)
                     {
-                        EXPECT_NE(handle, nullptr);
-                        EXPECT_FALSE(handle->is_cancelled());
+                        EXPECT_FALSE(handle.is_cancelled());
                     }
 
                     // Wait for all timers to execute
@@ -226,8 +222,6 @@ TEST_F(EventLoopTest, ZeroDelayTimer)
     auto scheduler = thread_pool->get_scheduler();
     auto work = ex::schedule(scheduler) | ex::then([&]() {
                     auto handle = event_loop.call_later(0.0, [&callback_executed]() { callback_executed.store(true); });
-
-                    EXPECT_NE(handle, nullptr);
 
                     // Give it a moment to execute
                     std::this_thread::sleep_for(std::chrono::milliseconds(10));
@@ -291,7 +285,7 @@ TEST_F(EventLoopTest, CallbackWithCaptures)
 // Test handle lifetime after EventLoop destruction
 TEST_F(EventLoopTest, HandleLifetimeAfterEventLoopDestruction)
 {
-    std::shared_ptr<EventLoop::TimerHandle> handle;
+    TimerHandle handle;
 
     {
         EventLoop event_loop;
@@ -299,13 +293,12 @@ TEST_F(EventLoopTest, HandleLifetimeAfterEventLoopDestruction)
             // This should not execute since we'll cancel
         });
 
-        EXPECT_NE(handle, nullptr);
-        EXPECT_FALSE(handle->is_cancelled());
+        EXPECT_FALSE(handle.is_cancelled());
     } // EventLoop destroyed here
 
     // Handle should still be valid and we should be able to cancel it
-    EXPECT_NO_THROW(handle->cancel());
-    EXPECT_TRUE(handle->is_cancelled());
+    EXPECT_NO_THROW(handle.cancel());
+    EXPECT_TRUE(handle.is_cancelled());
 }
 
 } // namespace livekit::utils::test

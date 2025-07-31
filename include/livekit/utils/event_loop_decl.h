@@ -18,6 +18,26 @@
 namespace livekit::utils
 {
 
+class [[nodiscard]] TimerHandle
+{
+public:
+    friend class EventLoop;
+
+    TimerHandle(bool cancelled);
+
+public:
+    TimerHandle() = default;
+
+    // Cancel the scheduled callback
+    auto cancel() noexcept -> void;
+
+    // Check if the timer is cancelled
+    auto is_cancelled() const noexcept -> bool;
+
+private:
+    std::shared_ptr<std::atomic<bool>> cancelled_{ nullptr };
+};
+
 class EventLoop
 {
 private:
@@ -26,15 +46,8 @@ private:
 public:
     using CallbackType = std::function<void()>;
 
-    struct TimerHandle
-    {
-        std::atomic<bool> cancelled{ false };
-        auto cancel() noexcept -> void;
-        auto is_cancelled() const noexcept -> bool;
-    };
-
     template <typename Callable, typename... Args>
-    auto call_later(double delay_seconds, Callable && callback, Args &&... args) -> std::shared_ptr<TimerHandle>;
+    auto call_later(double delay_seconds, Callable && callback, Args &&... args) -> TimerHandle;
 };
 
 } // namespace livekit::utils

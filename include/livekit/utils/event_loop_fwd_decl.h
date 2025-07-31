@@ -9,8 +9,9 @@
 namespace livekit::utils
 {
 
+class TimerHandle;
 class EventLoop;
 
 } // namespace livekit::utils
 
-#endif
+#endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_EVENT_LOOP_FWD_DECL
