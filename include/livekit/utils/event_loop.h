@@ -19,7 +19,7 @@ namespace livekit::utils
 template <typename Callable, typename... Args>
 auto EventLoop::call_later(double delay_seconds, Callable && callback, Args &&... args) -> TimerHandle
 {
-    TimerHandle handle{ false };
+    TimerHandle handle{};
     auto delay = std::chrono::duration<double>(delay_seconds);
 
     // Create a sender that delays and then executes the callback

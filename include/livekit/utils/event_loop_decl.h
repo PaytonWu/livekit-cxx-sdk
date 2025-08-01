@@ -21,13 +21,6 @@ namespace livekit::utils
 class [[nodiscard]] TimerHandle
 {
 public:
-    friend class EventLoop;
-
-    TimerHandle(bool cancelled);
-
-public:
-    TimerHandle() = default;
-
     // Cancel the scheduled callback
     auto cancel() noexcept -> void;
 
@@ -35,7 +28,7 @@ public:
     auto is_cancelled() const noexcept -> bool;
 
 private:
-    std::shared_ptr<std::atomic<bool>> cancelled_{ nullptr };
+    std::shared_ptr<std::atomic<bool>> cancelled_{ std::make_shared<std::atomic<bool>>(false) };
 };
 
 class EventLoop

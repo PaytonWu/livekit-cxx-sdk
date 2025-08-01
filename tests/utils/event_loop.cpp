@@ -42,7 +42,7 @@ TEST_F(EventLoopTest, TimerHandleBasicFunctionality)
     TimerHandle handle;
 
     // Initially in cancelled state
-    EXPECT_TRUE(handle.is_cancelled());
+    EXPECT_FALSE(handle.is_cancelled());
 
     // Cancel and check state
     handle.cancel();
