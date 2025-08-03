@@ -10,13 +10,14 @@
 
 #include "audio_frame_decl.h"
 
-#include "livekit/ffi/ffi_handle_decl.h"
+#include "livekit/ffi/ffi_handle.h"
 #include "livekit/ffi/proto/ffi.pb.h"
+#include "livekit/utils/event_loop.h"
 
 #include <exec/task.hpp>
 
 #include <chrono>
-#include <cstdint>
+#include <optional>
 
 namespace livekit::rtc
 {
@@ -26,9 +27,13 @@ class AudioSource
 private:
     int sample_rate_{};
     int num_of_channels_{};
+    utils::EventLoop event_loop_{};
     std::chrono::milliseconds queue_size_{};
     proto::OwnedAudioSource owned_audio_source_{};
     ffi::FfiHandle handle_{};
+    std::chrono::milliseconds last_capture_time_{};
+    std::chrono::milliseconds q_size_{};
+    std::optional<utils::TimerHandle> join_handle_{ std::nullopt };
 
 public:
     AudioSource(int sample_rate, int num_of_channels, std::chrono::milliseconds queue_size);
@@ -38,6 +43,9 @@ public:
     auto sample_rate() const noexcept -> int;
     auto num_channels() const -> int;
     auto ffi_handle() const -> ffi::FfiHandle const &;
+
+private:
+    auto release_waiter() -> void;
 };
 
 } // namespace livekit::rtc

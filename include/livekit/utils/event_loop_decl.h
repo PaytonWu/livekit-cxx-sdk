@@ -11,6 +11,7 @@
 #include <exec/timed_thread_scheduler.hpp>
 
 #include <atomic>
+#include <chrono>
 #include <functional>
 #include <memory>
 
@@ -40,7 +41,7 @@ public:
     using CallbackType = std::function<void()>;
 
     template <typename Callable, typename... Args>
-    auto call_later(double delay_seconds, Callable && callback, Args &&... args) -> TimerHandle;
+    auto call_later(std::chrono::milliseconds delay, Callable && callback, Args &&... args) -> TimerHandle;
 };
 
 } // namespace livekit::utils

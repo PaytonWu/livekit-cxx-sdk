@@ -30,6 +30,27 @@ AudioSource::AudioSource(int sample_rate, int num_of_channels, std::chrono::mill
 
 auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
 {
+    if (frame.sample_rate() == 0 || ffi_handle().disposed())
+    {
+        co_return;
+    }
+
+    auto now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch());
+    auto elapsed =
+        last_capture_time_.count() > 0 ? now - last_capture_time_ : std::chrono::milliseconds::zero();
+    q_size_ += std::chrono::milliseconds{ frame.samples_per_channel() / sample_rate_ * 1000 } - elapsed;
+    last_capture_time_ = now;
+
+    if (join_handle_.has_value())
+    {
+        join_handle_->cancel();
+    }
+
+    join_handle_ = event_loop_.call_later(q_size_, [this]() {
+        release_waiter();
+    });
+
+    last_capture_time_ = now;
     proto::FfiRequest request;
     auto * capture_frame = request.mutable_capture_audio_frame();
     capture_frame->set_source_handle(handle_.id());
@@ -65,6 +86,13 @@ auto AudioSource::num_channels() const -> int
 auto AudioSource::ffi_handle() const -> ffi::FfiHandle const &
 {
     return handle_;
+}
+
+auto AudioSource::release_waiter() -> void
+{
+    last_capture_time_ = std::chrono::milliseconds::zero();
+    q_size_ = std::chrono::milliseconds::zero();
+    join_handle_ = std::nullopt;
 }
 
 } // namespace livekit::rtc

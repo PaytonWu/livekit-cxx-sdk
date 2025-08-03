@@ -100,7 +100,7 @@ TEST_F(EventLoopTest, CallLaterBasicCallback)
     // Set up execution context
     auto scheduler = thread_pool->get_scheduler();
     auto work = ex::schedule(scheduler) | ex::then([&]() {
-                    auto handle = event_loop.call_later(0.01, [&callback_executed]() { callback_executed.store(true); });
+                    auto handle = event_loop.call_later(std::chrono::milliseconds{10}, [&callback_executed]() { callback_executed.store(true); });
                     EXPECT_FALSE(handle.is_cancelled());
 
                     // Wait a bit for the callback to execute
@@ -119,7 +119,7 @@ TEST_F(EventLoopTest, CallLaterWithArguments)
 
     auto scheduler = thread_pool->get_scheduler();
     auto work = ex::schedule(scheduler) | ex::then([&]() {
-                    auto handle = event_loop.call_later(0.01, [&result](int a, int b, int c) { result.store(a + b + c); }, 10, 20, 30);
+                    auto handle = event_loop.call_later(std::chrono::milliseconds{10}, [&result](int a, int b, int c) { result.store(a + b + c); }, 10, 20, 30);
 
                     // Wait for callback execution
                     std::this_thread::sleep_for(std::chrono::milliseconds(50));
@@ -137,7 +137,7 @@ TEST_F(EventLoopTest, CallLaterCancellation)
 
     auto scheduler = thread_pool->get_scheduler();
     auto work = ex::schedule(scheduler) | ex::then([&]() {
-                    auto handle = event_loop.call_later(0.05, [&callback_executed]() { callback_executed.store(true); });
+                    auto handle = event_loop.call_later(std::chrono::milliseconds{50}, [&callback_executed]() { callback_executed.store(true); });
 
                     EXPECT_FALSE(handle.is_cancelled());
 
@@ -162,15 +162,15 @@ TEST_F(EventLoopTest, CallLaterTimingAccuracy)
     auto scheduler = thread_pool->get_scheduler();
     auto work = ex::schedule(scheduler) | ex::then([&]() {
                     auto start_time = std::chrono::steady_clock::now();
-                    double delay_seconds = 0.05; // 50ms
+                    std::chrono::milliseconds delay{50}; // 50ms
 
-                    auto handle = event_loop.call_later(delay_seconds, [&execution_time]() { execution_time.store(std::chrono::steady_clock::now()); });
+                    auto handle = event_loop.call_later(delay, [&execution_time]() { execution_time.store(std::chrono::steady_clock::now()); });
 
                     // Wait for execution
                     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
                     auto actual_delay = execution_time.load() - start_time;
-                    auto expected_delay = std::chrono::duration<double>(delay_seconds);
+                    auto expected_delay = delay;
                     auto tolerance = std::chrono::milliseconds(20); // 20ms tolerance
 
                     // Check that the actual delay is within reasonable bounds
@@ -194,7 +194,7 @@ TEST_F(EventLoopTest, MultipleConcurrentTimers)
                     // Create multiple timers with different delays
                     for (int i = 0; i < 5; ++i)
                     {
-                        double delay = 0.01 * (i + 1); // 10ms, 20ms, 30ms, 40ms, 50ms
+                        std::chrono::milliseconds delay{10 * (i + 1)}; // 10ms, 20ms, 30ms, 40ms, 50ms
                         auto handle = event_loop.call_later(delay, [&execution_count]() { execution_count.fetch_add(1); });
                         handles.push_back(handle);
                     }
@@ -221,7 +221,7 @@ TEST_F(EventLoopTest, ZeroDelayTimer)
 
     auto scheduler = thread_pool->get_scheduler();
     auto work = ex::schedule(scheduler) | ex::then([&]() {
-                    auto handle = event_loop.call_later(0.0, [&callback_executed]() { callback_executed.store(true); });
+                    auto handle = event_loop.call_later(std::chrono::milliseconds{0}, [&callback_executed]() { callback_executed.store(true); });
 
                     // Give it a moment to execute
                     std::this_thread::sleep_for(std::chrono::milliseconds(10));
@@ -242,7 +242,7 @@ TEST_F(EventLoopTest, CallbackWithCaptures)
     auto work = ex::schedule(scheduler) | ex::then([&]() {
                     std::string captured_value = "test_string";
 
-                    auto handle = event_loop.call_later(0.01, [captured_value, result, &callback_executed]() mutable {
+                    auto handle = event_loop.call_later(std::chrono::milliseconds{10}, [captured_value, result, &callback_executed]() mutable {
                         *result = captured_value + "_modified";
                         callback_executed.store(true);
                     });
@@ -289,7 +289,7 @@ TEST_F(EventLoopTest, HandleLifetimeAfterEventLoopDestruction)
 
     {
         EventLoop event_loop;
-        handle = event_loop.call_later(10.0, []() {
+        handle = event_loop.call_later(std::chrono::seconds{10}, []() {
             // This should not execute since we'll cancel
         });
 

@@ -10,20 +10,18 @@
 
 #include <stdexec/execution.hpp>
 
-#include <chrono>
 #include <tuple>
 
 namespace livekit::utils
 {
 
 template <typename Callable, typename... Args>
-auto EventLoop::call_later(double delay_seconds, Callable && callback, Args &&... args) -> TimerHandle
+auto EventLoop::call_later(std::chrono::milliseconds delay, Callable && callback, Args &&... args) -> TimerHandle
 {
     TimerHandle handle{};
-    auto delay = std::chrono::duration<double>(delay_seconds);
 
     // Create a sender that delays and then executes the callback
-    auto delayed_work = exec::schedule_after(this->context_.get_scheduler(), std::chrono::duration_cast<std::chrono::milliseconds>(delay)) |
+    auto delayed_work = exec::schedule_after(this->context_.get_scheduler(), delay) |
                         stdexec::then([handle, callback = std::forward<Callable>(callback), args = std::make_tuple(std::forward<Args>(args)...)]() mutable {
                             if (!handle.is_cancelled())
                             {
