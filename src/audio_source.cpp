@@ -8,6 +8,9 @@
 #include <livekit/ffi/proto/audio_frame.pb.h>
 #include <livekit/ffi/proto/ffi.pb.h>
 
+#include <exec/just_from.hpp>
+#include <stdexec/execution.hpp>
+
 namespace livekit::rtc
 {
 
@@ -36,8 +39,7 @@ auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
     }
 
     auto now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch());
-    auto elapsed =
-        last_capture_time_.count() > 0 ? now - last_capture_time_ : std::chrono::milliseconds::zero();
+    auto elapsed = last_capture_time_.count() > 0 ? now - last_capture_time_ : std::chrono::milliseconds::zero();
     q_size_ += std::chrono::milliseconds{ frame.samples_per_channel() / sample_rate_ * 1000 } - elapsed;
     last_capture_time_ = now;
 
@@ -46,9 +48,12 @@ auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
         join_handle_->cancel();
     }
 
-    join_handle_ = event_loop_.call_later(q_size_, [this]() {
-        release_waiter();
-    });
+    if (!capture_frame_future_.has_value())
+    {
+        capture_frame_future_ = std::make_optional(capture_frame_promise_.get_future());
+    }
+
+    join_handle_ = event_loop_.call_later(q_size_, [this]() { release_waiter(); });
 
     last_capture_time_ = now;
     proto::FfiRequest request;
@@ -73,6 +78,23 @@ auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
     co_return;
 }
 
+auto AudioSource::wait_for_playout() -> exec::task<void>
+{
+    if (!capture_frame_future_.has_value())
+    {
+        co_return;
+    }
+
+    // Execute the future.get() on the scheduler and ignore the result
+    co_await stdexec::starts_on(event_loop_.get_scheduler(), exec::just_from([future = std::move(*capture_frame_future_)](auto /*sink*/) mutable {
+                                    // sink();
+                                    future.get();
+                                    return stdexec::completion_signatures<stdexec::set_value_t()>{};
+                                }));
+
+    co_return;
+}
+
 auto AudioSource::sample_rate() const noexcept -> int
 {
     return sample_rate_;
@@ -90,9 +112,17 @@ auto AudioSource::ffi_handle() const -> ffi::FfiHandle const &
 
 auto AudioSource::release_waiter() -> void
 {
+    if (!capture_frame_future_.has_value())
+    {
+        return;
+    }
+
+    capture_frame_promise_.set_value();
+
     last_capture_time_ = std::chrono::milliseconds::zero();
     q_size_ = std::chrono::milliseconds::zero();
-    join_handle_ = std::nullopt;
+    // join_handle_ = std::nullopt;
+    capture_frame_future_ = std::nullopt;
 }
 
 } // namespace livekit::rtc

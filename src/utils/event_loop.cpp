@@ -20,4 +20,9 @@ auto TimerHandle::is_cancelled() const noexcept -> bool
     return cancelled_->load(std::memory_order_acquire);
 }
 
+auto EventLoop::get_scheduler() const noexcept -> exec::timed_thread_scheduler
+{
+    return const_cast<exec::timed_thread_context &>(context_).get_scheduler();
+}
+
 } // namespace livekit::utils

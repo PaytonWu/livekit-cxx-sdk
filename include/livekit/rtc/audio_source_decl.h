@@ -17,6 +17,7 @@
 #include <exec/task.hpp>
 
 #include <chrono>
+#include <future>
 #include <optional>
 
 namespace livekit::rtc
@@ -34,11 +35,14 @@ private:
     std::chrono::milliseconds last_capture_time_{};
     std::chrono::milliseconds q_size_{};
     std::optional<utils::TimerHandle> join_handle_{ std::nullopt };
+    std::promise<void> capture_frame_promise_{};
+    std::optional<std::future<void>> capture_frame_future_{ std::nullopt };
 
 public:
     AudioSource(int sample_rate, int num_of_channels, std::chrono::milliseconds queue_size);
 
     auto capture_frame(AudioFrame const & frame) -> exec::task<void>;
+    auto wait_for_playout() -> exec::task<void>;
 
     auto sample_rate() const noexcept -> int;
     auto num_channels() const -> int;

@@ -42,6 +42,8 @@ public:
 
     template <typename Callable, typename... Args>
     auto call_later(std::chrono::milliseconds delay, Callable && callback, Args &&... args) -> TimerHandle;
+
+    auto get_scheduler() const noexcept -> exec::timed_thread_scheduler;
 };
 
 } // namespace livekit::utils
