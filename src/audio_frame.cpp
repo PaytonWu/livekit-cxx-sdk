@@ -10,26 +10,26 @@
 namespace livekit::rtc
 {
 
-AudioFrame::AudioFrame(int sample_rate, int num_of_channels, int samples_per_channel) noexcept
-    : sample_rate_{ sample_rate }, num_of_channels_{ num_of_channels }, samples_per_channel_{ samples_per_channel }, data_(num_of_channels * samples_per_channel)
+AudioFrame::AudioFrame(std::uint32_t sample_rate, std::uint32_t num_channels, std::uint32_t samples_per_channel) noexcept
+    : sample_rate_{ sample_rate }, num_channels_{ num_channels }, samples_per_channel_{ samples_per_channel }, data_(num_channels * samples_per_channel)
 {
 }
 
-AudioFrame::AudioFrame(int sample_rate, int num_of_channels, int samples_per_channel, std::vector<std::int16_t> data) noexcept
-    : sample_rate_{ sample_rate }, num_of_channels_{ num_of_channels }, samples_per_channel_{ samples_per_channel }, data_{ std::move(data) }
+AudioFrame::AudioFrame(std::uint32_t sample_rate, std::uint32_t num_channels, std::uint32_t samples_per_channel, std::vector<std::int16_t> data) noexcept
+    : sample_rate_{ sample_rate }, num_channels_{ num_channels }, samples_per_channel_{ samples_per_channel }, data_{ std::move(data) }
 {
-    if (data.size() < num_of_channels * samples_per_channel)
+    if (data.size() < num_channels * samples_per_channel)
     {
-        throw_error(LivekitErrorCode::InvalidMediaData, "audio frame data length must be >= num_of_channels * samples_per_channel");
+        throw_error(LivekitErrorCode::InvalidMediaData, "audio frame data length must be >= num_channels * samples_per_channel");
     }
 }
 
-AudioFrame::AudioFrame(int sample_rate, int num_of_channels, int samples_per_channel, abc::bytes_view_t const & data)
-    : sample_rate_{ sample_rate }, num_of_channels_{ num_of_channels }, samples_per_channel_{ samples_per_channel }
+AudioFrame::AudioFrame(std::uint32_t sample_rate, std::uint32_t num_channels, std::uint32_t samples_per_channel, abc::bytes_view_t const & data)
+    : sample_rate_{ sample_rate }, num_channels_{ num_channels }, samples_per_channel_{ samples_per_channel }
 {
-    if (data.size() < num_of_channels * samples_per_channel * sizeof(int16_t))
+    if (data.size() < num_channels * samples_per_channel * sizeof(int16_t))
     {
-        throw_error(LivekitErrorCode::InvalidMediaData, "audio frame data length must be >= num_of_channels * samples_per_channel * sizeof(int16)");
+        throw_error(LivekitErrorCode::InvalidMediaData, "audio frame data length must be >= num_channels * samples_per_channel * sizeof(int16)");
     }
 
     if (data.size() % sizeof(int16_t) != 0)
@@ -41,22 +41,36 @@ AudioFrame::AudioFrame(int sample_rate, int num_of_channels, int samples_per_cha
     std::memcpy(data_.data(), data.data(), data.size());
 }
 
-auto AudioFrame::create(int sample_rate, int num_of_channels, int samples_per_channel) noexcept -> AudioFrame
+auto AudioFrame::create(std::uint32_t sample_rate, std::uint32_t num_channels, std::uint32_t samples_per_channel) noexcept -> AudioFrame
 {
-    return AudioFrame{ sample_rate, num_of_channels, samples_per_channel };
+    return AudioFrame{ sample_rate, num_channels, samples_per_channel };
 }
 
-auto AudioFrame::sample_rate() const -> int
+auto AudioFrame::from_proto(proto::OwnedAudioFrameBuffer const & proto_buffer) noexcept -> AudioFrame
+{
+    auto const & info = proto_buffer.info();
+    auto const sample_rate = info.sample_rate();
+    auto const num_channels = info.num_channels();
+    auto const samples_per_channel = info.samples_per_channel();
+
+    auto const sample_count = samples_per_channel * num_channels;
+    auto const frame_size_in_bytes = sample_count * AudioFrame::bytes_per_sample;
+    auto const data = abc::bytes_view_t::from(reinterpret_cast<abc::byte const *>(info.data_ptr()), frame_size_in_bytes, abc::byte_numbering_none_t{});
+
+    return AudioFrame{ sample_rate, num_channels, samples_per_channel, data };
+}
+
+auto AudioFrame::sample_rate() const -> std::uint32_t
 {
     return sample_rate_;
 }
 
-auto AudioFrame::num_of_channels() const -> int
+auto AudioFrame::num_channels() const -> std::uint32_t
 {
-    return num_of_channels_;
+    return num_channels_;
 }
 
-auto AudioFrame::samples_per_channel() const -> int
+auto AudioFrame::samples_per_channel() const -> std::uint32_t
 {
     return samples_per_channel_;
 }
@@ -75,7 +89,7 @@ auto AudioFrame::proto_info() const -> proto::AudioFrameBufferInfo
 {
     proto::AudioFrameBufferInfo info;
     info.set_sample_rate(sample_rate_);
-    info.set_num_channels(num_of_channels_);
+    info.set_num_channels(num_channels_);
     info.set_samples_per_channel(samples_per_channel_);
     info.set_data_ptr(reinterpret_cast<std::uint64_t>(data_.data()));
 
