@@ -33,6 +33,7 @@ protected:
 
 public:
     auto wait_for(auto pred) -> exec::task<T>;
+    auto task_done() -> void;
 };
 
 } // namespace livekit::utils

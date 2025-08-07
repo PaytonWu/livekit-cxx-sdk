@@ -45,7 +45,7 @@ class LocalAudioTrack : public Track
 public:
     explicit LocalAudioTrack(proto::OwnedTrack const & owned_track);
 
-    auto create_audio_track(std::string_view name, AudioSource const & source) -> LocalAudioTrack;
+    static auto create(std::string_view name, AudioSource const & source) -> LocalAudioTrack;
     auto mute() -> void;
     auto unmute() -> void;
 };

@@ -32,6 +32,12 @@ auto AsyncQueueBase<T, Scheduler>::wait_for(auto pred) -> exec::task<T>
     }
 }
 
+template <typename T, stdexec::scheduler Scheduler>
+auto AsyncQueueBase<T, Scheduler>::task_done() -> void
+{
+    queue_.task_done();
+}
+
 } // namespace livekit::utils
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_ASYNC_QUEUE_BASE

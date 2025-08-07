@@ -54,7 +54,7 @@ auto AudioFrame::from_proto(proto::OwnedAudioFrameBuffer const & proto_buffer) n
     auto const samples_per_channel = info.samples_per_channel();
 
     auto const sample_count = samples_per_channel * num_channels;
-    auto const frame_size_in_bytes = sample_count * AudioFrame::bytes_per_sample;
+    auto const frame_size_in_bytes = sample_count * AudioFrame::sample_width;
     auto const data = abc::bytes_view_t::from(reinterpret_cast<abc::byte const *>(info.data_ptr()), frame_size_in_bytes, abc::byte_numbering_none_t{});
 
     return AudioFrame{ sample_rate, num_channels, samples_per_channel, data };
@@ -85,7 +85,7 @@ auto AudioFrame::duration() const -> std::chrono::milliseconds
     return std::chrono::milliseconds{ samples_per_channel_ * 1000 / sample_rate_ };
 }
 
-auto AudioFrame::proto_info() const -> proto::AudioFrameBufferInfo
+auto AudioFrame::into_proto() const -> proto::AudioFrameBufferInfo
 {
     proto::AudioFrameBufferInfo info;
     info.set_sample_rate(sample_rate_);

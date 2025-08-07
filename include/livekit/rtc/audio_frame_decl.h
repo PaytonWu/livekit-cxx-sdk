@@ -22,7 +22,7 @@ namespace livekit::rtc
 class AudioFrame
 {
 public:
-    static constexpr std::size_t bytes_per_sample = sizeof(std::int16_t);
+    static constexpr std::size_t sample_width = sizeof(std::int16_t);
 
 private:
     std::uint32_t sample_rate_{};
@@ -49,7 +49,7 @@ public:
     auto samples_per_channel() const -> std::uint32_t;
     auto data() const -> std::vector<std::int16_t> const &;
     auto duration() const -> std::chrono::milliseconds;
-    auto proto_info() const -> proto::AudioFrameBufferInfo;
+    auto into_proto() const -> proto::AudioFrameBufferInfo;
 };
 
 }

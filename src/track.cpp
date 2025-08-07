@@ -68,7 +68,7 @@ LocalAudioTrack::LocalAudioTrack(proto::OwnedTrack const & owned_track) : Track{
 {
 }
 
-auto LocalAudioTrack::create_audio_track(std::string_view name, AudioSource const & source) -> LocalAudioTrack
+auto LocalAudioTrack::create(std::string_view name, AudioSource const & source) -> LocalAudioTrack
 {
     proto::FfiRequest req;
     auto * create_audio_track = req.mutable_create_audio_track();

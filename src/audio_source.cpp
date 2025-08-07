@@ -60,7 +60,7 @@ auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
     auto * capture_frame = request.mutable_capture_audio_frame();
     capture_frame->set_source_handle(handle_.id());
     auto * buffer = capture_frame->mutable_buffer();
-    buffer->CopyFrom(frame.proto_info());
+    buffer->CopyFrom(frame.into_proto());
 
     auto queue = ffi::FfiClient::instance().subscribe();
     auto response = ffi::FfiClient::request(request);
