@@ -30,7 +30,7 @@ auto LocalParticipant::publish_track(LocalTrack auto const & track, proto::Track
     op->CopyFrom(options);
 
     auto queue = ffi::FfiClient::instance().subscribe();
-    auto unsub = abc::make_scope_guard([&queue]() {
+    auto unsub = abc::make_scope_exit([&queue]() {
         ffi::FfiClient::instance().unsubscribe(queue);
     });
 
