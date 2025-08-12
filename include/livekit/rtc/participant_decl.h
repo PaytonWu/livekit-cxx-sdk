@@ -68,7 +68,7 @@ public:
 
     auto publish_dtmf(std::uint32_t code, std::string const & digit) -> exec::task<void>;
 
-    auto publish_track(LocalTrack auto const & track, proto::TrackPublishOptions const & options = {}) -> exec::task<LocalTrackPublication>;
+    auto publish_track(LocalTrack auto & track, proto::TrackPublishOptions const & options = {}) -> exec::task<LocalTrackPublication>;
 
     auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> override;
 };

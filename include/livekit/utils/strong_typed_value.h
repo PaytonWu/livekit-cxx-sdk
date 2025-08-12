@@ -14,12 +14,12 @@ namespace livekit::utils
 {
 
 template <typename T, typename Tag>
-StrongTypedValue<T, Tag>::StrongTypedValue(T const & value) : value_{value}
+StrongTypedValue<T, Tag>::StrongTypedValue(T const & value) : value_{ value }
 {
 }
 
 template <typename T, typename Tag>
-StrongTypedValue<T, Tag>::StrongTypedValue(T && value) : value_{std::move(value)}
+StrongTypedValue<T, Tag>::StrongTypedValue(T && value) : value_{ std::move(value) }
 {
 }
 
@@ -36,7 +36,19 @@ StrongTypedValue<T, Tag>::operator T const &() const &
 }
 
 template <typename T, typename Tag>
-auto StrongTypedValue<T, Tag>::value() const & -> const T &
+StrongTypedValue<T, Tag>::operator T &() &
+{
+    return value_;
+}
+
+template <typename T, typename Tag>
+auto StrongTypedValue<T, Tag>::value() const & -> T const &
+{
+    return value_;
+}
+
+template <typename T, typename Tag>
+auto StrongTypedValue<T, Tag>::value() & -> T &
 {
     return value_;
 }
@@ -47,6 +59,6 @@ auto StrongTypedValue<T, Tag>::value() && -> T &&
     return std::move(value_);
 }
 
-}
+} // namespace livekit::utils
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_STRONG_TYPED_VALUE

@@ -48,6 +48,7 @@ public:
     static auto create(std::string_view name, AudioSource const & source) -> LocalAudioTrack;
     auto mute() -> void;
     auto unmute() -> void;
+    auto sid(Sid sid) -> void;
 };
 
 class LocalVideoTrack : public Track
@@ -69,11 +70,11 @@ public:
 };
 
 template <typename T>
-concept LocalTrack = std::derived_from<T, Track> &&
-    requires(T & t) {
-        { t.mute() } -> std::same_as<void>;
-        { t.unmute() } -> std::same_as<void>;
-    };
+concept LocalTrack = std::derived_from<T, Track> && requires(T & t) {
+    { t.mute() } -> std::same_as<void>;
+    { t.unmute() } -> std::same_as<void>;
+    { t.sid(std::declval<Sid>()) } -> std::same_as<void>;
+};
 
-}
+} // namespace livekit::rtc
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_DECL

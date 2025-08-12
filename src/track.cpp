@@ -101,6 +101,11 @@ auto LocalAudioTrack::unmute() -> void
     this->track_info_.set_muted(false);
 }
 
+auto LocalAudioTrack::sid(Sid sid) -> void
+{
+    this->track_info_.set_sid(sid.value());
+}
+
 LocalVideoTrack::LocalVideoTrack(proto::OwnedTrack const & owned_track) : Track{ owned_track }
 {
 }

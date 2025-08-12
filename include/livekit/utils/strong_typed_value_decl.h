@@ -21,7 +21,9 @@ private:
     T value_{};
 
 public:
-    StrongTypedValue() noexcept(std::is_nothrow_constructible_v<T>) requires std::is_default_constructible_v<T> = default;
+    StrongTypedValue() noexcept(std::is_nothrow_constructible_v<T>)
+        requires std::is_default_constructible_v<T>
+    = default;
 
     explicit StrongTypedValue(T const & value);
     explicit StrongTypedValue(T && value);
@@ -42,9 +44,11 @@ public:
     = default;
 
     operator T const &() const &;
+    operator T &() &;
     operator T &&() &&;
 
     auto value() const & -> T const &;
+    auto value() & -> T &;
     auto value() && -> T &&;
 };
 
