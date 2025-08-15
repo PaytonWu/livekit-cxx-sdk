@@ -45,9 +45,12 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
         auto * e2ee = options->mutable_e2ee();
         e2ee->set_encryption_type(static_cast<proto::EncryptionType>(static_cast<int>(room_options.e2ee_options->encryption_type)));
         auto * key_provider = e2ee->mutable_key_provider_options();
-        key_provider->set_shared_key(room_options.e2ee_options->key_provider_options.shared_key);
+        if (room_options.e2ee_options->key_provider_options.shared_key)
+        {
+            key_provider->set_shared_key(room_options.e2ee_options->key_provider_options.shared_key.value().data(), room_options.e2ee_options->key_provider_options.shared_key.value().size());
+        }
         key_provider->set_ratchet_window_size(room_options.e2ee_options->key_provider_options.ratchet_window_size);
-        key_provider->set_ratchet_salt(room_options.e2ee_options->key_provider_options.ratchet_salt);
+        key_provider->set_ratchet_salt(room_options.e2ee_options->key_provider_options.ratchet_salt.data(), room_options.e2ee_options->key_provider_options.ratchet_salt.size());
         key_provider->set_failure_tolerance(room_options.e2ee_options->key_provider_options.failure_tolerance);
     }
 

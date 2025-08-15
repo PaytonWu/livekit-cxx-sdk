@@ -8,7 +8,10 @@
 
 #include "e2ee_fwd_decl.h"
 
+#include <abc/bytes.h>
+
 #include <cstdint>
+#include <optional>
 #include <string>
 
 namespace livekit
@@ -33,6 +36,10 @@ namespace livekit
 //    required KeyProviderOptions key_provider_options = 2;
 //}
 
+inline abc::Bytes const DEFAULT_RATCHET_SALT = abc::Bytes::from("LKFrameEncryptionKey");
+inline constexpr std::int32_t DEFAULT_RATCHET_WINDOW_SIZE = 16;
+inline constexpr std::int32_t DEFAULT_FAILURE_TOLERANCE = -1;
+
 enum class EncryptionType
 {
     None,
@@ -42,15 +49,15 @@ enum class EncryptionType
 
 struct KeyProviderOptions
 {
-    std::string shared_key;
-    int32_t ratchet_window_size{ 0 };
-    std::string ratchet_salt;
-    int32_t failure_tolerance{ -1 }; // -1 = no tolerance
+    std::optional<abc::Bytes> shared_key{ std::nullopt };
+    std::int32_t ratchet_window_size{ DEFAULT_RATCHET_WINDOW_SIZE };
+    abc::Bytes ratchet_salt{ DEFAULT_RATCHET_SALT };
+    std::int32_t failure_tolerance{ DEFAULT_FAILURE_TOLERANCE }; // -1 = no tolerance
 };
 
-struct E2eeOptions
+struct E2EEOptions
 {
-    EncryptionType encryption_type{ EncryptionType::None };
+    EncryptionType encryption_type{ EncryptionType::Gcm };
     KeyProviderOptions key_provider_options{};
 };
 

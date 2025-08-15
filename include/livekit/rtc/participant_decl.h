@@ -63,7 +63,7 @@ private:
 public:
     explicit LocalParticipant(proto::OwnedParticipant const & owned_participant, utils::BroadcastQueue<proto::FfiEvent> * room_event_queue);
 
-    auto publish_data(std::vector<abc::byte> const & data, bool reliable, std::vector<std::string> const & destinations, std::optional<std::string> const & topic)
+    auto publish_data(std::vector<abc::byte_t> const & data, bool reliable, std::vector<std::string> const & destinations, std::optional<std::string> const & topic)
         -> exec::task<void>;
 
     auto publish_dtmf(std::uint32_t code, std::string const & digit) -> exec::task<void>;

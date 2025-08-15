@@ -62,7 +62,7 @@ struct RoomOptions
     bool auto_subscribe{ true };
     bool adaptive_stream{ false };
     bool dynacast{ false };
-    std::optional<E2eeOptions> e2ee_options{};
+    std::optional<E2EEOptions> e2ee_options{};
     RtcConfiguration rtc_config{};
     uint32_t join_retries{ 3 };
 };

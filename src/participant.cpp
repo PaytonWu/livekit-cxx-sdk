@@ -56,7 +56,7 @@ LocalParticipant::LocalParticipant(proto::OwnedParticipant const & owned_partici
 {
 }
 
-auto LocalParticipant::publish_data(std::vector<abc::byte> const & data, bool reliable, std::vector<std::string> const & destinations, std::optional<std::string> const & topic)
+auto LocalParticipant::publish_data(std::vector<abc::byte_t> const & data, bool reliable, std::vector<std::string> const & destinations, std::optional<std::string> const & topic)
     -> exec::task<void>
 {
     proto::FfiRequest req;

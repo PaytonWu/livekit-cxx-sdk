@@ -11,7 +11,7 @@ namespace livekit
 
 enum class EncryptionType;
 struct KeyProviderOptions;
-struct E2eeOptions;
+struct E2EEOptions;
 
 }
 
