@@ -1,8 +1,11 @@
 // Copyright(c) 2025 - present, Payton Wu (payton.wu@outlook.com) & the contributors.
 // Distributed under the MIT License (http://opensource.org/licenses/MIT)
 
+
 #include <livekit/api/access_token.h>
 #include <livekit/ffi/proto/livekit_room.pb.h>
+
+#include <jwt-cpp/jwt.h>
 
 #include <cstdlib>
 #include <regex>
@@ -284,39 +287,144 @@ std::string AccessToken::to_jwt() const
         throw std::invalid_argument("identity and room must be set when joining a room");
     }
 
-    // For now, return a placeholder JWT implementation
-    // In a real implementation, you would use a JWT library like jwt-cpp or similar
-    std::stringstream jwt;
-    jwt << "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.";
+    // Get current time
+    auto now = std::chrono::system_clock::now();
+    auto now_seconds = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
+    auto exp_seconds = now_seconds + std::chrono::duration_cast<std::chrono::seconds>(ttl_).count();
 
-    // Create a simple payload (this is a simplified version)
-    std::map<std::string, std::string> payload;
-    payload["iss"] = api_key_;
-    payload["sub"] = identity_;
-    payload["exp"] = std::to_string(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch() + ttl_).count());
+    // Create JWT token using jwt-cpp
+    auto token = jwt::create().set_issuer(api_key_).set_subject(identity_).set_not_before(now).set_expires_at(std::chrono::system_clock::from_time_t(exp_seconds));
 
-    // Add claims
-    auto claims_dict = claims_.as_dict();
-    for (auto const & [key, value] : claims_dict)
+    // Add claims from the claims_ object
+    if (!claims_.name.empty())
     {
-        payload[key] = value;
+        token.set_payload_claim("name", jwt::claim(claims_.name));
+    }
+    if (!claims_.kind.empty())
+    {
+        token.set_payload_claim("kind", jwt::claim(claims_.kind));
+    }
+    if (!claims_.metadata.empty())
+    {
+        token.set_payload_claim("metadata", jwt::claim(claims_.metadata));
+    }
+    if (claims_.sha256.has_value() && !claims_.sha256->empty())
+    {
+        token.set_payload_claim("sha256", jwt::claim(claims_.sha256.value()));
+    }
+    if (claims_.room_preset.has_value() && !claims_.room_preset->empty())
+    {
+        token.set_payload_claim("roomPreset", jwt::claim(claims_.room_preset.value()));
     }
 
-    // Convert payload to a simple string representation
-    std::string payload_str;
-    for (auto const & [key, value] : payload)
+    // Add video grants if present
+    if (claims_.video.has_value())
     {
-        if (!payload_str.empty())
+        auto const & video = claims_.video.value();
+        picojson::object video_obj;
+
+        if (video.room_create.has_value())
         {
-            payload_str += ",";
+            bool val = video.room_create.value();
+            video_obj["roomCreate"] = picojson::value(val);
         }
-        payload_str += key + ":" + value;
+        if (video.room_list.has_value())
+        {
+            bool val = video.room_list.value();
+            video_obj["roomList"] = picojson::value(val);
+        }
+        if (video.room_record.has_value())
+        {
+            bool val = video.room_record.value();
+            video_obj["roomRecord"] = picojson::value(val);
+        }
+        if (video.room_admin.has_value())
+        {
+            bool val = video.room_admin.value();
+            video_obj["roomAdmin"] = picojson::value(val);
+        }
+        if (video.room_join.has_value())
+        {
+            bool val = video.room_join.value();
+            video_obj["roomJoin"] = picojson::value(val);
+        }
+        if (!video.room.empty())
+        {
+            video_obj["room"] = picojson::value(video.room);
+        }
+        video_obj["canPublish"] = picojson::value(video.can_publish);
+        video_obj["canSubscribe"] = picojson::value(video.can_subscribe);
+        video_obj["canPublishData"] = picojson::value(video.can_publish_data);
+        if (video.can_update_own_metadata.has_value())
+        {
+            bool val = video.can_update_own_metadata.value();
+            video_obj["canUpdateOwnMetadata"] = picojson::value(val);
+        }
+        if (video.ingress_admin.has_value())
+        {
+            bool val = video.ingress_admin.value();
+            video_obj["ingressAdmin"] = picojson::value(val);
+        }
+        if (video.hidden.has_value())
+        {
+            bool val = video.hidden.value();
+            video_obj["hidden"] = picojson::value(val);
+        }
+        if (video.recorder.has_value())
+        {
+            bool val = video.recorder.value();
+            video_obj["recorder"] = picojson::value(val);
+        }
+        if (video.agent.has_value())
+        {
+            bool val = video.agent.value();
+            video_obj["agent"] = picojson::value(val);
+        }
+
+        // Handle can_publish_sources array
+        if (video.can_publish_sources.has_value() && !video.can_publish_sources->empty())
+        {
+            picojson::array sources_array;
+            for (auto const & source : video.can_publish_sources.value())
+            {
+                sources_array.push_back(picojson::value(source));
+            }
+            video_obj["canPublishSources"] = picojson::value(sources_array);
+        }
+
+        token.set_payload_claim("video", jwt::claim(picojson::value(video_obj)));
     }
 
-    jwt << payload_str << ".";
-    jwt << "signature_placeholder"; // In real implementation, this would be the actual signature
+    // Add SIP grants if present
+    if (claims_.sip.has_value())
+    {
+        auto const & sip = claims_.sip.value();
+        picojson::object sip_obj;
+        sip_obj["admin"] = picojson::value(sip.admin);
+        sip_obj["call"] = picojson::value(sip.call);
+        token.set_payload_claim("sip", jwt::claim(picojson::value(sip_obj)));
+    }
 
-    return jwt.str();
+    // Add attributes if present
+    if (claims_.attributes.has_value() && !claims_.attributes->empty())
+    {
+        picojson::object attr_obj;
+        for (auto const & [key, value] : claims_.attributes.value())
+        {
+            attr_obj[key] = picojson::value(value);
+        }
+        token.set_payload_claim("attributes", jwt::claim(picojson::value(attr_obj)));
+    }
+
+    // Add room configuration if present
+    if (claims_.room_config.has_value())
+    {
+        // For now, we'll skip room_config as it requires protobuf serialization
+        // This can be implemented later if needed
+    }
+
+    // Sign the token with HS256 algorithm using the API secret
+    return token.sign(jwt::algorithm::hs256{ api_secret_ });
 }
 
 // TokenVerifier implementation
