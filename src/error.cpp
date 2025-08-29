@@ -24,6 +24,16 @@ LivekitError::LivekitError(int const ec, std::error_category const & category, s
 {
 }
 
+auto LivekitError::code() const noexcept -> std::error_code const &
+{
+    return ec_;
+}
+
+auto LivekitError::what() const noexcept -> char const *
+{
+    return std::runtime_error::what();
+}
+
 auto make_error_code(LivekitErrorCode const ec) noexcept -> std::error_code
 {
     return std::error_code{ static_cast<int>(ec), livekit_category() };

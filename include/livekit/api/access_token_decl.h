@@ -8,6 +8,7 @@
 
 #include "access_token_fwd_decl.h"
 
+#include <any>
 #include <chrono>
 #include <map>
 #include <optional>
@@ -91,7 +92,9 @@ public:
     std::optional<std::string> room_preset;
     std::optional<livekit::RoomConfiguration const *> room_config;
 
-    std::map<std::string, std::string> as_dict() const;
+    // Updated to match Python implementation - returns a map with camelCase keys
+    // and excludes None/empty values
+    std::map<std::string, std::any> as_dict() const;
 };
 
 class AccessToken
@@ -116,10 +119,10 @@ public:
     std::string to_jwt() const;
 
 private:
-    std::string api_key_; // iss
-    std::string api_secret_;
-    Claims claims_;
-    std::string identity_;                             // sub
+    std::string api_key_{}; // iss
+    std::string api_secret_{};
+    Claims claims_{};
+    std::string identity_{};                             // sub
     std::chrono::duration<int64_t> ttl_ = DEFAULT_TTL; // exp
 };
 
