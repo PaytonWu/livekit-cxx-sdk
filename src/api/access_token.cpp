@@ -8,6 +8,7 @@
 #include <livekit/ffi/proto/livekit_room.pb.h>
 
 #include <jwt-cpp/traits/nlohmann-json/traits.h>
+#include <google/protobuf/util/json_util.h>
 
 #include <any>
 #include <cstdlib>
@@ -40,9 +41,9 @@ std::string camel_to_snake(std::string const & input)
 }
 
 // Claims implementation
-std::map<std::string, std::any> Claims::as_dict() const
+auto Claims::as_dict() const -> std::map<std::string, value_type>
 {
-    std::map<std::string, std::any> claims;
+    std::map<std::string, value_type> claims;
 
     // Add claims only if they have values (matching Python behavior)
     if (!identity.empty())
@@ -73,7 +74,7 @@ std::map<std::string, std::any> Claims::as_dict() const
     // Handle video grants
     if (video.has_value())
     {
-        std::map<std::string, std::any> video_claims;
+        std::map<std::string, value_type> video_claims;
         auto const & v = video.value();
 
         if (v.room_create.has_value())
@@ -140,7 +141,7 @@ std::map<std::string, std::any> Claims::as_dict() const
     // Handle SIP grants
     if (sip.has_value())
     {
-        std::map<std::string, std::any> sip_claims;
+        std::map<std::string, value_type> sip_claims;
         auto const & s = sip.value();
 
         sip_claims["admin"] = s.admin;
@@ -158,8 +159,12 @@ std::map<std::string, std::any> Claims::as_dict() const
     // Handle room config
     if (room_config.has_value())
     {
-        // For now, just include a placeholder since RoomConfiguration is a protobuf
-        claims["roomConfig"] = "configured";
+        std::string json_string;
+        auto status = google::protobuf::util::MessageToJsonString(room_config.value(), &json_string);
+        if (status.ok())
+        {
+            claims["roomConfig"] = json_string;
+        }
     }
 
     return claims;
@@ -263,7 +268,7 @@ auto AccessToken::with_room_preset(std::string const & preset) -> AccessToken &
     return *this;
 }
 
-auto AccessToken::with_room_config(livekit::RoomConfiguration const * config) -> AccessToken &
+auto AccessToken::with_room_config(livekit::RoomConfiguration const & config) -> AccessToken &
 {
     claims_.room_config = config;
     return *this;
@@ -292,70 +297,75 @@ std::string AccessToken::to_jwt() const
     // Convert the claims map to JWT payload claims using nlohmann::json
     for (auto const & [key, value] : jwt_claims)
     {
-        try
+        if (std::holds_alternative<std::string>(value))
         {
-            // Handle different types using type_info comparison
-            if (value.type() == typeid(std::string))
-            {
-                nlohmann::json json_value = std::any_cast<std::string>(value);
-                token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-            }
-            else if (value.type() == typeid(bool))
-            {
-                nlohmann::json json_value = std::any_cast<bool>(value);
-                token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-            }
-            else if (value.type() == typeid(std::vector<std::string>))
-            {
-                auto const & vec = std::any_cast<std::vector<std::string> const &>(value);
-                nlohmann::json json_value = vec;
-                token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-            }
-            else if (value.type() == typeid(std::map<std::string, std::string>))
-            {
-                auto const & map = std::any_cast<std::map<std::string, std::string> const &>(value);
-                nlohmann::json json_value = map;
-                token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-            }
-            else if (value.type() == typeid(std::map<std::string, std::any>))
-            {
-                // Handle nested objects like video and sip grants
-                auto const & nested_map = std::any_cast<std::map<std::string, std::any> const &>(value);
-                nlohmann::json json_value = nlohmann::json::object();
-
-                for (auto const & [k, v] : nested_map)
-                {
-                    try
-                    {
-                        if (v.type() == typeid(std::string))
-                        {
-                            json_value[k] = std::any_cast<std::string>(v);
-                        }
-                        else if (v.type() == typeid(bool))
-                        {
-                            json_value[k] = std::any_cast<bool>(v);
-                        }
-                        else if (v.type() == typeid(std::vector<std::string>))
-                        {
-                            auto const & vec = std::any_cast<std::vector<std::string> const &>(v);
-                            json_value[k] = vec;
-                        }
-                    }
-                    catch (...)
-                    {
-                        // Skip invalid values
-                        continue;
-                    }
-                }
-
-                token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-            }
+            token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(std::get<std::string>(value)));
         }
-        catch (...)
-        {
-            // Skip invalid values
-            continue;
-        }
+
+    //     try
+    //     {
+    //         // Handle different types using type_info comparison
+    //         if (value.type() == typeid(std::string))
+    //         {
+    //             nlohmann::json json_value = std::any_cast<std::string>(value);
+    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
+    //         }
+    //         else if (value.type() == typeid(bool))
+    //         {
+    //             nlohmann::json json_value = std::any_cast<bool>(value);
+    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
+    //         }
+    //         else if (value.type() == typeid(std::vector<std::string>))
+    //         {
+    //             auto const & vec = std::any_cast<std::vector<std::string> const &>(value);
+    //             nlohmann::json json_value = vec;
+    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
+    //         }
+    //         else if (value.type() == typeid(std::map<std::string, std::string>))
+    //         {
+    //             auto const & map = std::any_cast<std::map<std::string, std::string> const &>(value);
+    //             nlohmann::json json_value = map;
+    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
+    //         }
+    //         else if (value.type() == typeid(std::map<std::string, std::any>))
+    //         {
+    //             // Handle nested objects like video and sip grants
+    //             auto const & nested_map = std::any_cast<std::map<std::string, std::any> const &>(value);
+    //             nlohmann::json json_value = nlohmann::json::object();
+
+    //             for (auto const & [k, v] : nested_map)
+    //             {
+    //                 try
+    //                 {
+    //                     if (v.type() == typeid(std::string))
+    //                     {
+    //                         json_value[k] = std::any_cast<std::string>(v);
+    //                     }
+    //                     else if (v.type() == typeid(bool))
+    //                     {
+    //                         json_value[k] = std::any_cast<bool>(v);
+    //                     }
+    //                     else if (v.type() == typeid(std::vector<std::string>))
+    //                     {
+    //                         auto const & vec = std::any_cast<std::vector<std::string> const &>(v);
+    //                         json_value[k] = vec;
+    //                     }
+    //                 }
+    //                 catch (...)
+    //                 {
+    //                     // Skip invalid values
+    //                     continue;
+    //                 }
+    //             }
+
+    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
+    //         }
+    //     }
+    //     catch (...)
+    //     {
+    //         // Skip invalid values
+    //         continue;
+    //     }
     }
 
     // Sign the token with HS256 algorithm using the API secret

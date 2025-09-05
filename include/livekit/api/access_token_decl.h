@@ -8,18 +8,17 @@
 
 #include "access_token_fwd_decl.h"
 
+#include <livekit/ffi/proto/livekit_room.pb.h>
+
+#include <abc/type_traits.h>
+
 #include <any>
 #include <chrono>
 #include <map>
 #include <optional>
 #include <string>
+#include <variant>
 #include <vector>
-
-// Forward declarations for protobuf
-namespace livekit
-{
-class RoomConfiguration;
-}
 
 namespace livekit::api
 {
@@ -80,7 +79,22 @@ public:
 
 class Claims
 {
+private:
+    using basic_types = abc::type_tuple<std::string,
+                                        std::int64_t,
+                                        double,
+                                        bool,
+                                        std::vector<std::string>,
+                                        std::vector<std::int64_t>,
+                                        std::vector<double>,
+                                        std::vector<bool>,
+                                        std::vector<std::any>, // objects
+                                        std::any,              // object
+                                        std::nullopt_t>;
+
 public:
+    using value_type = basic_types::to<std::variant>;
+
     std::string identity;
     std::string name;
     std::string kind;
@@ -90,11 +104,11 @@ public:
     std::optional<std::map<std::string, std::string>> attributes;
     std::optional<std::string> sha256;
     std::optional<std::string> room_preset;
-    std::optional<livekit::RoomConfiguration const *> room_config;
+    std::optional<livekit::RoomConfiguration> room_config;
 
     // Updated to match Python implementation - returns a map with camelCase keys
     // and excludes None/empty values
-    std::map<std::string, std::any> as_dict() const;
+    auto as_dict() const -> std::map<std::string, value_type>;
 };
 
 class AccessToken
@@ -114,7 +128,7 @@ public:
     auto with_attributes(std::map<std::string, std::string> const & attributes) -> AccessToken &;
     auto with_sha256(std::string const & sha256) -> AccessToken &;
     auto with_room_preset(std::string const & preset) -> AccessToken &;
-    auto with_room_config(livekit::RoomConfiguration const * config) -> AccessToken &;
+    auto with_room_config(livekit::RoomConfiguration const & config) -> AccessToken &;
 
     std::string to_jwt() const;
 
@@ -122,7 +136,7 @@ private:
     std::string api_key_{}; // iss
     std::string api_secret_{};
     Claims claims_{};
-    std::string identity_{};                             // sub
+    std::string identity_{};                           // sub
     std::chrono::duration<int64_t> ttl_ = DEFAULT_TTL; // exp
 };
 
