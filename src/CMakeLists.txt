@@ -1,6 +1,4 @@
 
-set(LIVEKIT_CXX_FFI_LIBRARY livekit_cxx_ffi)
-
 add_subdirectory(ffi)
 
 aux_source_directory(./ SRCS)

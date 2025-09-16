@@ -7,43 +7,96 @@
 #include <livekit/error.h>
 #include <livekit/ffi/proto/livekit_room.pb.h>
 
-#include <jwt-cpp/traits/nlohmann-json/traits.h>
 #include <google/protobuf/util/json_util.h>
+#include <jwt-cpp/traits/nlohmann-json/traits.h>
 
 #include <any>
 #include <cstdlib>
 #include <sstream>
 #include <stdexcept>
+#include <typeindex>
 #include <typeinfo>
 #include <variant>
 
 namespace livekit::api
 {
 
-// Utility functions
-std::string camel_to_snake(std::string const & input)
+template <>
+auto to_dict<VideoGrants>(VideoGrants const & value) -> std::map<std::string, std::any>
 {
-    std::string result = input;
-
-    // Simple conversion without regex to avoid std::regex issues
-    for (size_t i = 0; i < result.length(); ++i)
+    std::map<std::string, std::any> result;
+    if (value.room_create.has_value())
     {
-        if (i > 0 && std::isupper(result[i]))
-        {
-            result.insert(i, "_");
-            i++; // Skip the inserted underscore
-        }
+        result["roomCreate"] = value.room_create.value();
+    }
+    if (value.room_list.has_value())
+    {
+        result["roomList"] = value.room_list.value();
+    }
+    if (value.room_record.has_value())
+    {
+        result["roomRecord"] = value.room_record.value();
+    }
+    if (value.room_admin.has_value())
+    {
+        result["roomAdmin"] = value.room_admin.value();
+    }
+    if (value.room_join.has_value())
+    {
+        result["roomJoin"] = value.room_join.value();
+    }
+    if (!value.room.empty())
+    {
+        result["room"] = value.room;
+    }
+    if (value.destination_room.has_value() && !value.destination_room->empty())
+    {
+        result["destinationRoom"] = value.destination_room.value();
+    }
+    result["canPublish"] = value.can_publish;
+    result["canSubscribe"] = value.can_subscribe;
+    result["canPublishData"] = value.can_publish_data;
+    if (value.can_publish_sources.has_value() && !value.can_publish_sources->empty())
+    {
+        result["canPublishSources"] = value.can_publish_sources.value();
+    }
+    if (value.can_update_own_metadata.has_value())
+    {
+        result["canUpdateOwnMetadata"] = value.can_update_own_metadata.value();
+    }
+    if (value.ingress_admin.has_value())
+    {
+        result["ingressAdmin"] = value.ingress_admin.value();
+    }
+    if (value.hidden.has_value())
+    {
+        result["hidden"] = value.hidden.value();
+    }
+    if (value.recorder.has_value())
+    {
+        result["recorder"] = value.recorder.value();
+    }
+    if (value.agent.has_value())
+    {
+        result["agent"] = value.agent.value();
     }
 
-    // Convert to lowercase
-    std::transform(result.begin(), result.end(), result.begin(), ::tolower);
+    return result;
+}
+
+template <>
+auto to_dict<SIPGrants>(SIPGrants const & value) -> std::map<std::string, std::any>
+{
+    std::map<std::string, std::any> result;
+    result["admin"] = value.admin;
+    result["call"] = value.call;
     return result;
 }
 
 // Claims implementation
-auto Claims::as_dict() const -> std::map<std::string, value_type>
+auto Claims::as_dict() const -> std::map<std::string, std::any>
 {
-    std::map<std::string, value_type> claims;
+    std::map<std::string, std::any> claims;
 
     // Add claims only if they have values (matching Python behavior)
     if (!identity.empty())
@@ -74,80 +127,13 @@ auto Claims::as_dict() const -> std::map<std::string, value_type>
     // Handle video grants
     if (video.has_value())
     {
-        std::map<std::string, value_type> video_claims;
-        auto const & v = video.value();
-
-        if (v.room_create.has_value())
-        {
-            video_claims["roomCreate"] = v.room_create.value();
-        }
-        if (v.room_list.has_value())
-        {
-            video_claims["roomList"] = v.room_list.value();
-        }
-        if (v.room_record.has_value())
-        {
-            video_claims["roomRecord"] = v.room_record.value();
-        }
-        if (v.room_admin.has_value())
-        {
-            video_claims["roomAdmin"] = v.room_admin.value();
-        }
-        if (v.room_join.has_value())
-        {
-            video_claims["roomJoin"] = v.room_join.value();
-        }
-        if (!v.room.empty())
-        {
-            video_claims["room"] = v.room;
-        }
-        if (v.destination_room.has_value() && !v.destination_room->empty())
-        {
-            video_claims["destinationRoom"] = v.destination_room.value();
-        }
-        // Direct bools
-        video_claims["canPublish"] = v.can_publish;
-        video_claims["canSubscribe"] = v.can_subscribe;
-        video_claims["canPublishData"] = v.can_publish_data;
-
-        if (v.can_publish_sources.has_value() && !v.can_publish_sources->empty())
-        {
-            video_claims["canPublishSources"] = v.can_publish_sources.value();
-        }
-        if (v.can_update_own_metadata.has_value())
-        {
-            video_claims["canUpdateOwnMetadata"] = v.can_update_own_metadata.value();
-        }
-        if (v.ingress_admin.has_value())
-        {
-            video_claims["ingressAdmin"] = v.ingress_admin.value();
-        }
-        if (v.hidden.has_value())
-        {
-            video_claims["hidden"] = v.hidden.value();
-        }
-        if (v.recorder.has_value())
-        {
-            video_claims["recorder"] = v.recorder.value();
-        }
-        if (v.agent.has_value())
-        {
-            video_claims["agent"] = v.agent.value();
-        }
-
-        claims["video"] = video_claims;
+        claims["video"] = to_dict(video.value());
     }
 
     // Handle SIP grants
     if (sip.has_value())
     {
-        std::map<std::string, value_type> sip_claims;
-        auto const & s = sip.value();
-
-        sip_claims["admin"] = s.admin;
-        sip_claims["call"] = s.call;
-
-        claims["sip"] = sip_claims;
+        claims["sip"] = to_dict(sip.value());
     }
 
     // Handle attributes
@@ -294,78 +280,91 @@ std::string AccessToken::to_jwt() const
     // Get claims from the claims_ object using as_dict() (matching Python implementation)
     auto jwt_claims = claims_.as_dict();
 
-    // Convert the claims map to JWT payload claims using nlohmann::json
+    // Convert claims map to nlohmann::json for JWT encoding
+    nlohmann::json payload;
     for (auto const & [key, value] : jwt_claims)
     {
-        if (std::holds_alternative<std::string>(value))
+        try
         {
-            token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(std::get<std::string>(value)));
+            if (value.type() == typeid(std::string))
+            {
+                payload[key] = std::any_cast<std::string>(value);
+            }
+            else if (value.type() == typeid(bool))
+            {
+                payload[key] = std::any_cast<bool>(value);
+            }
+            else if (value.type() == typeid(std::int64_t))
+            {
+                payload[key] = std::any_cast<std::int64_t>(value);
+            }
+            else if (value.type() == typeid(double))
+            {
+                payload[key] = std::any_cast<double>(value);
+            }
+            else if (value.type() == typeid(std::vector<std::string>))
+            {
+                auto const & vec = std::any_cast<std::vector<std::string> const &>(value);
+                payload[key] = vec;
+            }
+            else if (value.type() == typeid(std::map<std::string, std::string>))
+            {
+                auto const & map = std::any_cast<std::map<std::string, std::string> const &>(value);
+                payload[key] = map;
+            }
+            else if (value.type() == typeid(std::map<std::string, std::any>))
+            {
+                // Handle nested objects like video and sip grants using to_dict templates
+                auto const & nested_map = std::any_cast<std::map<std::string, std::any> const &>(value);
+                nlohmann::json nested_json = nlohmann::json::object();
+
+                for (auto const & [k, v] : nested_map)
+                {
+                    try
+                    {
+                        if (v.type() == typeid(std::string))
+                        {
+                            nested_json[k] = std::any_cast<std::string>(v);
+                        }
+                        else if (v.type() == typeid(bool))
+                        {
+                            nested_json[k] = std::any_cast<bool>(v);
+                        }
+                        else if (v.type() == typeid(std::int64_t))
+                        {
+                            nested_json[k] = std::any_cast<std::int64_t>(v);
+                        }
+                        else if (v.type() == typeid(double))
+                        {
+                            nested_json[k] = std::any_cast<double>(v);
+                        }
+                        else if (v.type() == typeid(std::vector<std::string>))
+                        {
+                            auto const & vec = std::any_cast<std::vector<std::string> const &>(v);
+                            nested_json[k] = vec;
+                        }
+                    }
+                    catch (...)
+                    {
+                        // Skip invalid values
+                        continue;
+                    }
+                }
+
+                payload[key] = nested_json;
+            }
         }
+        catch (...)
+        {
+            // Skip invalid values
+            continue;
+        }
+    }
 
-    //     try
-    //     {
-    //         // Handle different types using type_info comparison
-    //         if (value.type() == typeid(std::string))
-    //         {
-    //             nlohmann::json json_value = std::any_cast<std::string>(value);
-    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-    //         }
-    //         else if (value.type() == typeid(bool))
-    //         {
-    //             nlohmann::json json_value = std::any_cast<bool>(value);
-    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-    //         }
-    //         else if (value.type() == typeid(std::vector<std::string>))
-    //         {
-    //             auto const & vec = std::any_cast<std::vector<std::string> const &>(value);
-    //             nlohmann::json json_value = vec;
-    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-    //         }
-    //         else if (value.type() == typeid(std::map<std::string, std::string>))
-    //         {
-    //             auto const & map = std::any_cast<std::map<std::string, std::string> const &>(value);
-    //             nlohmann::json json_value = map;
-    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-    //         }
-    //         else if (value.type() == typeid(std::map<std::string, std::any>))
-    //         {
-    //             // Handle nested objects like video and sip grants
-    //             auto const & nested_map = std::any_cast<std::map<std::string, std::any> const &>(value);
-    //             nlohmann::json json_value = nlohmann::json::object();
-
-    //             for (auto const & [k, v] : nested_map)
-    //             {
-    //                 try
-    //                 {
-    //                     if (v.type() == typeid(std::string))
-    //                     {
-    //                         json_value[k] = std::any_cast<std::string>(v);
-    //                     }
-    //                     else if (v.type() == typeid(bool))
-    //                     {
-    //                         json_value[k] = std::any_cast<bool>(v);
-    //                     }
-    //                     else if (v.type() == typeid(std::vector<std::string>))
-    //                     {
-    //                         auto const & vec = std::any_cast<std::vector<std::string> const &>(v);
-    //                         json_value[k] = vec;
-    //                     }
-    //                 }
-    //                 catch (...)
-    //                 {
-    //                     // Skip invalid values
-    //                     continue;
-    //                 }
-    //             }
-
-    //             token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(json_value));
-    //         }
-    //     }
-    //     catch (...)
-    //     {
-    //         // Skip invalid values
-    //         continue;
-    //     }
+    // Add each claim individually
+    for (auto const & [key, value] : payload.items())
+    {
+        token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(value));
     }
 
     // Sign the token with HS256 algorithm using the API secret

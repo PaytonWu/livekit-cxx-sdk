@@ -26,6 +26,9 @@ namespace livekit::api
 inline constexpr auto DEFAULT_TTL = std::chrono::hours(6);
 inline constexpr auto DEFAULT_LEEWAY = std::chrono::minutes(1);
 
+template <typename T>
+auto to_dict(T const & value) -> std::map<std::string, std::any>;
+
 class VideoGrants
 {
 public:
@@ -68,6 +71,9 @@ public:
     std::optional<bool> agent;
 };
 
+template <>
+auto to_dict<VideoGrants>(VideoGrants const & value) -> std::map<std::string, std::any>;
+
 class SIPGrants
 {
 public:
@@ -77,24 +83,12 @@ public:
     bool call = false;
 };
 
+template <>
+auto to_dict<SIPGrants>(SIPGrants const & value) -> std::map<std::string, std::any>;
+
 class Claims
 {
-private:
-    using basic_types = abc::type_tuple<std::string,
-                                        std::int64_t,
-                                        double,
-                                        bool,
-                                        std::vector<std::string>,
-                                        std::vector<std::int64_t>,
-                                        std::vector<double>,
-                                        std::vector<bool>,
-                                        std::vector<std::any>, // objects
-                                        std::any,              // object
-                                        std::nullopt_t>;
-
 public:
-    using value_type = basic_types::to<std::variant>;
-
     std::string identity;
     std::string name;
     std::string kind;
@@ -108,8 +102,11 @@ public:
 
     // Updated to match Python implementation - returns a map with camelCase keys
     // and excludes None/empty values
-    auto as_dict() const -> std::map<std::string, value_type>;
+    auto as_dict() const -> std::map<std::string, std::any>;
 };
+
+template <>
+auto to_dict<Claims>(Claims const & value) -> std::map<std::string, std::any>;
 
 class AccessToken
 {

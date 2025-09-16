@@ -18,6 +18,7 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(LIVEKIT_CXX_SDK_LIBRARY livekit_cxx_sdk)
+set(LIVEKIT_CXX_FFI_LIBRARY livekit_cxx_ffi)
 
 include(ExternalProject)
 
@@ -49,6 +50,7 @@ add_library(jwt-cpp INTERFACE IMPORTED)
 add_dependencies(jwt-cpp JWT-CPP)
 
 include_directories(include)
+include_directories(include/livekit/ffi/proto)
 include_directories(third-party/abc/include)
 include_directories(third-party/rust-sdks/livekit-ffi/include)
 include_directories(third-party/stdexec/include)
