@@ -12,14 +12,17 @@ TrackPublication::TrackPublication(proto::OwnedTrackPublication const & owned_tr
 {
 }
 
-LocalTrackPublication::LocalTrackPublication(proto::OwnedTrackPublication const & owned_track_publication)
-    : TrackPublication{ owned_track_publication }
+auto TrackPublication::sid() const -> Sid
+{
+    return Sid{ info_.sid() };
+}
+
+LocalTrackPublication::LocalTrackPublication(proto::OwnedTrackPublication const & owned_track_publication) : TrackPublication{ owned_track_publication }
 {
 }
 
-RemoteTrackPublication::RemoteTrackPublication(proto::OwnedTrackPublication const & owned_track_publication)
-    : TrackPublication{ owned_track_publication }
+RemoteTrackPublication::RemoteTrackPublication(proto::OwnedTrackPublication const & owned_track_publication) : TrackPublication{ owned_track_publication }
 {
 }
 
-}
+} // namespace livekit::rtc

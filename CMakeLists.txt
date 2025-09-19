@@ -19,6 +19,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(LIVEKIT_CXX_SDK_LIBRARY livekit_cxx_sdk)
 set(LIVEKIT_CXX_FFI_LIBRARY livekit_cxx_ffi)
+set(LIVEKIT_CXX_PROTO_LIBRARY livekit_cxx_proto)
 
 include(ExternalProject)
 
@@ -56,10 +57,14 @@ include_directories(third-party/rust-sdks/livekit-ffi/include)
 include_directories(third-party/stdexec/include)
 include_directories(third-party/jwt-cpp/include)
 
+find_library(PROTOBUF_LIBRARY protobuf REQUIRED)
+find_path(PROTOBUF_INCLUDE_DIR google/protobuf/message.h REQUIRED)
+find_package(fmt CONFIG REQUIRED)
+
 add_subdirectory(src)
 
 if (WITH_TESTS)
     enable_testing()
     add_subdirectory(tests)
-    # add_subdirectory(examples)
+    add_subdirectory(examples)
 endif()

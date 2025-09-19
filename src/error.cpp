@@ -80,13 +80,29 @@ auto livekit_category() noexcept -> std::error_category const &
 
 void throw_error(std::error_code const & ec)
 {
-    if (ec)
+    assert(ec);
     {
         throw LivekitError{ ec };
     }
 }
 
 void throw_error(std::error_code const & ec, std::string_view error_msg)
+{
+    assert(ec);
+    {
+        throw LivekitError{ ec, error_msg };
+    }
+}
+
+void throw_error_if_necessary(std::error_code const & ec)
+{
+    if (ec)
+    {
+        throw LivekitError{ ec };
+    }
+}
+
+void throw_error_if_necessary(std::error_code const & ec, std::string_view error_msg)
 {
     if (ec)
     {

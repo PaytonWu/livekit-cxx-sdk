@@ -144,17 +144,13 @@ public:
                            std::optional<std::string> api_secret = std::nullopt,
                            std::chrono::duration<int64_t> leeway = DEFAULT_LEEWAY);
 
-    Claims verify(std::string const & token) const;
+    auto verify(std::string const & token) const -> Claims;
 
 private:
     std::string api_key_;
     std::string api_secret_;
     std::chrono::duration<int64_t> leeway_;
 };
-
-// Utility functions
-std::string camel_to_snake(std::string const & input);
-std::string snake_to_lower_camel(std::string const & input);
 
 } // namespace livekit::api
 

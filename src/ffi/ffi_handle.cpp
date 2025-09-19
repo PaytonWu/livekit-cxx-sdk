@@ -19,6 +19,21 @@ FfiHandle::FfiHandle(FfiHandle && other) noexcept : ref_counter_{ std::move(othe
     other.ffi_handle_id_ = INVALID_HANDLE;
 }
 
+auto FfiHandle::operator=(FfiHandle && other) noexcept -> FfiHandle &
+{
+    if (this != &other)
+    {
+        if (ref_counter_.rel_ref())
+        {
+            dispose();
+        }
+        ref_counter_ = std::move(other.ref_counter_);
+        ffi_handle_id_ = other.ffi_handle_id_;
+        other.ffi_handle_id_ = INVALID_HANDLE;
+    }
+    return *this;
+}
+
 FfiHandle::~FfiHandle() noexcept
 {
     if (ref_counter_.rel_ref())

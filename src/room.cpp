@@ -47,7 +47,8 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
         auto * key_provider = e2ee->mutable_key_provider_options();
         if (room_options.e2ee_options->key_provider_options.shared_key)
         {
-            key_provider->set_shared_key(room_options.e2ee_options->key_provider_options.shared_key.value().data(), room_options.e2ee_options->key_provider_options.shared_key.value().size());
+            key_provider->set_shared_key(room_options.e2ee_options->key_provider_options.shared_key.value().data(),
+                                         room_options.e2ee_options->key_provider_options.shared_key.value().size());
         }
         key_provider->set_ratchet_window_size(room_options.e2ee_options->key_provider_options.ratchet_window_size);
         key_provider->set_ratchet_salt(room_options.e2ee_options->key_provider_options.ratchet_salt.data(), room_options.e2ee_options->key_provider_options.ratchet_salt.size());
@@ -145,6 +146,11 @@ auto Room::disconnect() -> exec::task<void>
     co_return;
 }
 
+auto Room::remote_participants() const noexcept -> std::unordered_map<std::string, RemoteParticipant> const &
+{
+    return remote_participants_;
+}
+
 auto Room::connected() const noexcept -> bool
 {
     return ffi_handle_.has_value() && connection_state_ != proto::ConnectionState::CONN_DISCONNECTED;
@@ -202,7 +208,7 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
         case proto::RoomEvent::MessageCase::kParticipantConnected:
         {
             auto remote_participant = create_remote_participant(room_event.participant_connected().info());
-            emit(proto::RoomEvent::MessageCase::kParticipantConnected, std::move(remote_participant));
+            // emit(proto::RoomEvent::MessageCase::kParticipantConnected, std::move(remote_participant));
             break;
         }
         case proto::RoomEvent::MessageCase::kParticipantDisconnected:
@@ -214,7 +220,9 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
                 remote_participant = std::move(it->second);
                 remote_participants_.erase(it);
             }
-            emit(proto::RoomEvent::MessageCase::kParticipantDisconnected, std::move(remote_participant), proto::DisconnectReason_Name(room_event.participant_disconnected().disconnect_reason()));
+            // emit(proto::RoomEvent::MessageCase::kParticipantDisconnected,
+            //      std::move(remote_participant),
+            //      proto::DisconnectReason_Name(room_event.participant_disconnected().disconnect_reason()));
             break;
         }
     }

@@ -92,6 +92,8 @@ public:
     auto disconnect() -> exec::task<void>;
     auto connected() const noexcept -> bool;
 
+    auto remote_participants() const noexcept -> std::unordered_map<std::string, RemoteParticipant> const &;
+
 private:
     auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant;
     auto listen_room_events() -> exec::task<void>;

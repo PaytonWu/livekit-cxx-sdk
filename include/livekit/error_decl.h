@@ -15,6 +15,15 @@
 namespace livekit
 {
 
+auto make_error_code(LivekitErrorCode ec) noexcept -> std::error_code;
+auto livekit_category() noexcept -> std::error_category const &;
+
+void throw_error(std::error_code const & ec);
+void throw_error(std::error_code const & ec, std::string_view error_msg);
+
+void throw_error_if_necessary(std::error_code const & ec);
+void throw_error_if_necessary(std::error_code const & ec, std::string_view error_msg);
+
 class LivekitError : public std::runtime_error
 {
 private:

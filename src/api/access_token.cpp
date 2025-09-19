@@ -400,11 +400,11 @@ TokenVerifier::TokenVerifier(std::optional<std::string> api_key, std::optional<s
 
     if (api_key_.empty() || api_secret_.empty())
     {
-        throw std::invalid_argument("api_key and api_secret must be set");
+        throw_error(ErrorCode::InvalidApiKeyOrSecret);
     }
 }
 
-Claims TokenVerifier::verify(std::string const & token) const
+auto TokenVerifier::verify(std::string const & token) const -> Claims
 {
     try
     {

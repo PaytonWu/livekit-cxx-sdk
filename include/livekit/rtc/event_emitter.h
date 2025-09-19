@@ -16,7 +16,7 @@ auto EventEmitter<EventT>::on(EventT const event, std::shared_ptr<utils::Callabl
 {
     std::lock_guard lock{ handlers_mutex_ };
     auto id = next_handler_id_.fetch_add(1, std::memory_order_relaxed);
-    handlers_[event][id] = std::move(callable);
+    x[event][id] = std::move(callable);
     return id;
 }
 

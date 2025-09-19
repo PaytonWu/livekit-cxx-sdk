@@ -14,6 +14,10 @@ Participant::Participant(proto::OwnedParticipant const & owned_participant) : in
 {
 }
 
+RemoteParticipant::RemoteParticipant(proto::OwnedParticipant const & owned_participant) : Participant{ owned_participant }
+{
+}
+
 auto Participant::sid() -> Sid
 {
     return Sid{ info_.sid() };
@@ -36,7 +40,7 @@ auto Participant::metadata() -> std::string const &
 
 auto Participant::attributes() -> std::unordered_map<std::string, std::string>
 {
-    return { info_.attributes().begin(), info_.attributes().end()};
+    return { info_.attributes().begin(), info_.attributes().end() };
 }
 
 auto Participant::kind() -> proto::ParticipantKind
@@ -49,8 +53,7 @@ auto Participant::disconnected_reason() -> std::optional<proto::DisconnectReason
     return info_.has_disconnect_reason() ? std::make_optional(info_.disconnect_reason()) : std::nullopt;
 }
 
-LocalParticipant::LocalParticipant(proto::OwnedParticipant const & owned_participant,
-                                   utils::BroadcastQueue<proto::FfiEvent> * room_event_queue)
+LocalParticipant::LocalParticipant(proto::OwnedParticipant const & owned_participant, utils::BroadcastQueue<proto::FfiEvent> * room_event_queue)
     : Participant{ owned_participant }
     , room_event_queue_{ room_event_queue }
 {
