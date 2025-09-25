@@ -8,6 +8,6 @@
 
 #include "ffi_handle_decl.h"
 
-#include "details/livekit_ffi.h"
+#include "ffi.h"
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_FFI_FFI_HANDLE

@@ -8,12 +8,15 @@
 
 #include "ffi_handle_fwd_decl.h"
 
-#include "details/livekit_ffi_decl.h"
+#include "ffi.h"
 
 #include <abc/reference_counter.h>
 
 namespace livekit::ffi
 {
+
+using FfiHandleId = ::FfiHandleId;
+inline constexpr FfiHandleId INVALID_HANDLE = ::INVALID_HANDLE;
 
 class [[nodiscard]] FfiHandle
 {

@@ -21,6 +21,32 @@ set(LIVEKIT_CXX_SDK_LIBRARY livekit_cxx_sdk)
 set(LIVEKIT_CXX_FFI_LIBRARY livekit_cxx_ffi)
 set(LIVEKIT_CXX_PROTO_LIBRARY livekit_cxx_proto)
 
+# Create necessary directories if they don't exist
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third-party/libs)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third-party/include)
+
+# Download livekit_ffi binaries and header files
+execute_process(
+    COMMAND python3 ./third-party/rust-sdks/download_ffi.py --output ./third-party/libs
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    RESULT_VARIABLE DOWNLOAD_RESULT
+)
+
+if(NOT DOWNLOAD_RESULT EQUAL 0)
+    message(FATAL_ERROR "Failed to download livekit_ffi binaries")
+endif()
+
+# Move the generated header file to the include directory
+execute_process(
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ./third-party/libs/livekit_ffi.h ./third-party/include/
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    RESULT_VARIABLE MOVE_RESULT
+)
+
+if(NOT MOVE_RESULT EQUAL 0)
+    message(FATAL_ERROR "Failed to move livekit_ffi.h to include directory")
+endif()
+
 include(ExternalProject)
 
 ExternalProject_Add(
@@ -53,9 +79,11 @@ add_dependencies(jwt-cpp JWT-CPP)
 include_directories(include)
 include_directories(include/livekit/ffi/proto)
 include_directories(third-party/abc/include)
-include_directories(third-party/rust-sdks/livekit-ffi/include)
+include_directories(third-party/include)
 include_directories(third-party/stdexec/include)
 include_directories(third-party/jwt-cpp/include)
+
+link_directories(third-party/libs)
 
 find_library(PROTOBUF_LIBRARY protobuf REQUIRED)
 find_path(PROTOBUF_INCLUDE_DIR google/protobuf/message.h REQUIRED)

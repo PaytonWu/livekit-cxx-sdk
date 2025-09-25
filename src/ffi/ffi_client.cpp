@@ -3,7 +3,7 @@
 
 #include <livekit/ffi/ffi_client.h>
 
-#include <livekit/ffi/details/livekit_ffi.h>
+#include <livekit/ffi/ffi.h>
 
 #include <cstdlib>
 

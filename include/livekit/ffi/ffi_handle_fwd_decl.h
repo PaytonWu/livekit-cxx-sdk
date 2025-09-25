@@ -6,14 +6,12 @@
 
 #pragma once
 
-#include "details/livekit_ffi_fwd_decl.h"
+// #include "details/livekit_ffi_fwd_decl.h"
 
 namespace livekit::ffi
 {
 
 class FfiHandle;
-using FfiHandleId = ::FfiHandleId;
-static inline constexpr FfiHandleId INVALID_HANDLE = ::INVALID_HANDLE;
 
 }
 
