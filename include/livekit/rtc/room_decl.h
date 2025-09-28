@@ -67,7 +67,7 @@ struct RoomOptions
     uint32_t join_retries{ 3 };
 };
 
-class Room : public EventEmitter<proto::RoomEvent::MessageCase>
+class Room : public EventEmitter<proto::RoomEvent::MessageCase, proto::RoomEvent>
 {
 private:
     exec::static_thread_pool::scheduler scheduler_;

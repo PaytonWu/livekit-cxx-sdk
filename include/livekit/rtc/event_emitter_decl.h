@@ -8,18 +8,16 @@
 
 #include "event_emitter_fwd_decl.h"
 
-#include "livekit/utils/callable.h"
-
 #include <atomic>
 #include <cstddef>
-#include <memory>
+#include <functional>
 #include <mutex>
 #include <unordered_map>
 
 namespace livekit::rtc
 {
 
-template <typename EventT>
+template <typename EventT, typename EventDataT>
 class EventEmitter
 {
 public:
@@ -27,14 +25,14 @@ public:
 
 private:
     std::atomic<HandlerId> next_handler_id_{ 0 };
-    std::unordered_map<EventT, std::unordered_map<HandlerId, std::shared_ptr<utils::Callable>>> handlers_;
+    std::unordered_map<EventT, std::unordered_map<HandlerId, std::function<void(EventDataT const &)>>> handlers_;
     std::mutex handlers_mutex_;
 
 public:
-    auto on(EventT event, std::shared_ptr<utils::Callable> callable) -> HandlerId;
+    auto on(EventT event, std::function<void(EventDataT const &)> callable) -> HandlerId;
     auto off(EventT event, HandlerId id) -> void;
 
-    auto emit(EventT event, auto &&... args) -> void;
+    auto emit(EventT event, EventDataT const & data) -> void;
 };
 
 } // namespace livekit::rtc

@@ -43,13 +43,13 @@ protected:
     explicit Participant(proto::OwnedParticipant const & owned_participant);
 
 public:
-    auto sid() -> Sid;
-    auto name() -> std::string const &;
-    auto identity() -> std::string const &;
-    auto metadata() -> std::string const &;
-    auto attributes() -> std::unordered_map<std::string, std::string>;
-    auto kind() -> proto::ParticipantKind;
-    auto disconnected_reason() -> std::optional<proto::DisconnectReason>;
+    auto sid() const -> Sid;
+    auto name() const noexcept -> std::string const &;
+    auto identity() const noexcept -> std::string const &;
+    auto metadata() const noexcept -> std::string const &;
+    auto attributes() const -> std::unordered_map<std::string, std::string>;
+    auto kind() const noexcept  -> proto::ParticipantKind;
+    auto disconnected_reason() const -> std::optional<proto::DisconnectReason>;
 
     virtual auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> = 0;
 };

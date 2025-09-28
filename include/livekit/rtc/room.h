@@ -8,6 +8,7 @@
 
 #include "room_decl.h"
 
+#include "event_emitter.h"
 #include "participant.h"
 
 #include "livekit/e2ee.h"

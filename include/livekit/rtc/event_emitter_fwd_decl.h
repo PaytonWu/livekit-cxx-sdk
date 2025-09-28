@@ -9,7 +9,7 @@
 namespace livekit::rtc
 {
 
-template <typename EventT>
+template <typename EventT, typename EventDataT>
 class EventEmitter;
 
 }

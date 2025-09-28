@@ -18,37 +18,37 @@ RemoteParticipant::RemoteParticipant(proto::OwnedParticipant const & owned_parti
 {
 }
 
-auto Participant::sid() -> Sid
+auto Participant::sid() const -> Sid
 {
     return Sid{ info_.sid() };
 }
 
-auto Participant::name() -> std::string const &
+auto Participant::name() const noexcept -> std::string const &
 {
     return info_.name();
 }
 
-auto Participant::identity() -> std::string const &
+auto Participant::identity() const noexcept -> std::string const &
 {
     return info_.identity();
 }
 
-auto Participant::metadata() -> std::string const &
+auto Participant::metadata() const noexcept -> std::string const &
 {
     return info_.metadata();
 }
 
-auto Participant::attributes() -> std::unordered_map<std::string, std::string>
+auto Participant::attributes() const -> std::unordered_map<std::string, std::string>
 {
     return { info_.attributes().begin(), info_.attributes().end() };
 }
 
-auto Participant::kind() -> proto::ParticipantKind
+auto Participant::kind() const noexcept -> proto::ParticipantKind
 {
     return info_.kind();
 }
 
-auto Participant::disconnected_reason() -> std::optional<proto::DisconnectReason>
+auto Participant::disconnected_reason() const -> std::optional<proto::DisconnectReason>
 {
     return info_.has_disconnect_reason() ? std::make_optional(info_.disconnect_reason()) : std::nullopt;
 }
