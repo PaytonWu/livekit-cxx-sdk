@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <nlohmann/json.hpp>
+
 namespace livekit::api
 {
 
@@ -16,5 +18,19 @@ class [[nodiscard]] SIPGrants;
 class [[nodiscard]] Claims;
 
 } // namespace livekit::api
+
+namespace nlohmann
+{
+
+template <>
+struct adl_serializer<::livekit::api::VideoGrants>;
+
+template <>
+struct adl_serializer<::livekit::api::SIPGrants>;
+
+template <>
+struct adl_serializer<::livekit::api::Claims>;
+
+} // namespace nlohmann
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_API_ACCESS_TOKEN_FWD_DECL_H

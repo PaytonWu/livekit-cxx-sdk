@@ -122,7 +122,7 @@ void test_video_grants()
     video_grants.ingress_admin = true;
     video_grants.hidden = true;
     video_grants.recorder = true;
-    video_grants.agent = true;
+    // video_grants.agent = true;
 
     token.with_identity("test_user").with_grants(video_grants);
 
@@ -138,26 +138,26 @@ void test_video_grants()
     if (claims.video.has_value())
     {
         auto & video = claims.video.value();
-        assert_equals(true, video.room_create.value(), "room_create should be true");
-        assert_equals(true, video.room_list.value(), "room_list should be true");
-        assert_equals(true, video.room_record.value(), "room_record should be true");
-        assert_equals(true, video.room_admin.value(), "room_admin should be true");
-        assert_equals(true, video.room_join.value(), "room_join should be true");
+        assert_equals(true, video.room_create, "room_create should be true");
+        assert_equals(true, video.room_list, "room_list should be true");
+        assert_equals(true, video.room_record, "room_record should be true");
+        assert_equals(true, video.room_admin, "room_admin should be true");
+        assert_equals(true, video.room_join, "room_join should be true");
         assert_equals("test_room", video.room, "room should match");
-        assert_equals("dest_room", video.destination_room.value(), "destination_room should match");
+        assert_equals("dest_room", video.destination_room, "destination_room should match");
         assert_equals(true, video.can_publish, "can_publish should be true");
         assert_equals(true, video.can_subscribe, "can_subscribe should be true");
         assert_equals(true, video.can_publish_data, "can_publish_data should be true");
-        assert_true(video.can_publish_sources.has_value(), "can_publish_sources should be present");
-        if (video.can_publish_sources.has_value())
+        assert_true(!video.can_publish_sources.empty(), "can_publish_sources should be present");
+        if (!video.can_publish_sources.empty())
         {
-            assert_equals(2, static_cast<int>(video.can_publish_sources->size()), "can_publish_sources should have 2 items");
+            assert_equals(2, static_cast<int>(video.can_publish_sources.size()), "can_publish_sources should have 2 items");
         }
-        assert_equals(true, video.can_update_own_metadata.value(), "can_update_own_metadata should be true");
-        assert_equals(true, video.ingress_admin.value(), "ingress_admin should be true");
-        assert_equals(true, video.hidden.value(), "hidden should be true");
-        assert_equals(true, video.recorder.value(), "recorder should be true");
-        assert_equals(true, video.agent.value(), "agent should be true");
+        assert_equals(true, video.can_update_own_metadata, "can_update_own_metadata should be true");
+        assert_equals(true, video.ingress_admin, "ingress_admin should be true");
+        assert_equals(true, video.hidden, "hidden should be true");
+        assert_equals(true, video.recorder, "recorder should be true");
+        // assert_equals(true, video.agent.value(), "agent should be true");
     }
 }
 

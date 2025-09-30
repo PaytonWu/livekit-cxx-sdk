@@ -29,21 +29,24 @@ inline constexpr auto DEFAULT_LEEWAY = std::chrono::minutes(1);
 template <typename T>
 auto to_dict(T const & value) -> std::map<std::string, std::any>;
 
+template <typename T>
+auto to_json_object(T const & value) -> nlohmann::json;
+
 class VideoGrants
 {
 public:
     // actions on rooms
-    std::optional<bool> room_create;
-    std::optional<bool> room_list;
-    std::optional<bool> room_record;
+    bool room_create{ false };
+    bool room_list{ false };
+    bool room_record{ false };
 
     // actions on a particular room
-    std::optional<bool> room_admin;
-    std::optional<bool> room_join;
-    std::string room;
+    bool room_admin{ false };
+    bool room_join{ false };
+    std::string room{};
 
     // allows forwarding participant to room
-    std::optional<std::string> destination_room;
+    std::string destination_room{};
 
     // permissions within a room
     bool can_publish = true;
@@ -53,26 +56,26 @@ public:
     // TrackSource types that a participant may publish.
     // When set, it supersedes CanPublish. Only sources explicitly set here can be
     // published
-    std::optional<std::vector<std::string>> can_publish_sources;
+    std::vector<std::string> can_publish_sources{};
 
     // by default, a participant is not allowed to update its own metadata
-    std::optional<bool> can_update_own_metadata;
+    bool can_update_own_metadata{ false };
 
     // actions on ingresses
-    std::optional<bool> ingress_admin; // applies to all ingress
+    bool ingress_admin{ false }; // applies to all ingress
 
     // participant is not visible to other participants (useful when making bots)
-    std::optional<bool> hidden;
+    bool hidden{ false };
 
     // [deprecated] indicates to the room that current participant is a recorder
-    std::optional<bool> recorder;
+    bool recorder{ false };
 
     // indicates that the holder can register as an Agent framework worker
-    std::optional<bool> agent;
+    // bool agent{false};
 };
 
 template <>
-auto to_dict<VideoGrants>(VideoGrants const & value) -> std::map<std::string, std::any>;
+auto to_json_object<VideoGrants>(VideoGrants const & value) -> nlohmann::json;
 
 class SIPGrants
 {
@@ -84,14 +87,18 @@ public:
 };
 
 template <>
-auto to_dict<SIPGrants>(SIPGrants const & value) -> std::map<std::string, std::any>;
+auto to_json_object<SIPGrants>(SIPGrants const & value) -> nlohmann::json;
 
 class Claims
 {
 public:
-    std::string identity;
+    std::size_t exp{ static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) +
+                     static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(DEFAULT_TTL).count()) };
+    std::string iss;
+    std::size_t nbf{ static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) };
+    std::string sub; // identity
+
     std::string name;
-    std::string kind;
     std::string metadata;
     std::optional<VideoGrants> video;
     std::optional<SIPGrants> sip;
@@ -99,14 +106,10 @@ public:
     std::optional<std::string> sha256;
     std::optional<std::string> room_preset;
     std::optional<livekit::RoomConfiguration> room_config;
-
-    // Updated to match Python implementation - returns a map with camelCase keys
-    // and excludes None/empty values
-    auto as_dict() const -> std::map<std::string, std::any>;
 };
 
 template <>
-auto to_dict<Claims>(Claims const & value) -> std::map<std::string, std::any>;
+auto to_json_object<Claims>(Claims const & value) -> nlohmann::json;
 
 class AccessToken
 {
@@ -119,7 +122,6 @@ public:
     auto with_grants(VideoGrants const & grants) -> AccessToken &;
     auto with_sip_grants(SIPGrants const & grants) -> AccessToken &;
     auto with_identity(std::string const & identity) -> AccessToken &;
-    auto with_kind(ParticipantKind const & kind) -> AccessToken &;
     auto with_name(std::string const & name) -> AccessToken &;
     auto with_metadata(std::string const & metadata) -> AccessToken &;
     auto with_attributes(std::map<std::string, std::string> const & attributes) -> AccessToken &;
@@ -133,8 +135,6 @@ private:
     std::string api_key_{}; // iss
     std::string api_secret_{};
     Claims claims_{};
-    std::string identity_{};                           // sub
-    std::chrono::duration<int64_t> ttl_ = DEFAULT_TTL; // exp
 };
 
 class TokenVerifier
@@ -153,5 +153,28 @@ private:
 };
 
 } // namespace livekit::api
+
+namespace nlohmann
+{
+
+template <>
+struct adl_serializer<::livekit::api::VideoGrants>
+{
+    static auto to_json(json & j, ::livekit::api::VideoGrants const & v) -> void;
+};
+
+template <>
+struct adl_serializer<::livekit::api::SIPGrants>
+{
+    static auto to_json(json & j, ::livekit::api::SIPGrants const & v) -> void;
+};
+
+template <>
+struct adl_serializer<::livekit::api::Claims>
+{
+    static auto to_json(json & j, ::livekit::api::Claims const & v) -> void;
+};
+
+} // namespace nlohmann
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_API_ACCESS_TOKEN_DECL

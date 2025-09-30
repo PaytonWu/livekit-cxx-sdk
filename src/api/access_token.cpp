@@ -22,138 +22,84 @@ namespace livekit::api
 {
 
 template <>
-auto to_dict<VideoGrants>(VideoGrants const & value) -> std::map<std::string, std::any>
+auto to_json_object<VideoGrants>(VideoGrants const & value) -> nlohmann::json
 {
-    std::map<std::string, std::any> result;
-    if (value.room_create.has_value())
-    {
-        result["roomCreate"] = value.room_create.value();
-    }
-    if (value.room_list.has_value())
-    {
-        result["roomList"] = value.room_list.value();
-    }
-    if (value.room_record.has_value())
-    {
-        result["roomRecord"] = value.room_record.value();
-    }
-    if (value.room_admin.has_value())
-    {
-        result["roomAdmin"] = value.room_admin.value();
-    }
-    if (value.room_join.has_value())
-    {
-        result["roomJoin"] = value.room_join.value();
-    }
-    if (!value.room.empty())
-    {
-        result["room"] = value.room;
-    }
-    if (value.destination_room.has_value() && !value.destination_room->empty())
-    {
-        result["destinationRoom"] = value.destination_room.value();
-    }
-    result["canPublish"] = value.can_publish;
-    result["canSubscribe"] = value.can_subscribe;
-    result["canPublishData"] = value.can_publish_data;
-    if (value.can_publish_sources.has_value() && !value.can_publish_sources->empty())
-    {
-        result["canPublishSources"] = value.can_publish_sources.value();
-    }
-    if (value.can_update_own_metadata.has_value())
-    {
-        result["canUpdateOwnMetadata"] = value.can_update_own_metadata.value();
-    }
-    if (value.ingress_admin.has_value())
-    {
-        result["ingressAdmin"] = value.ingress_admin.value();
-    }
-    if (value.hidden.has_value())
-    {
-        result["hidden"] = value.hidden.value();
-    }
-    if (value.recorder.has_value())
-    {
-        result["recorder"] = value.recorder.value();
-    }
-    if (value.agent.has_value())
-    {
-        result["agent"] = value.agent.value();
-    }
-
-    return result;
+    return value;
 }
 
 template <>
-auto to_dict<SIPGrants>(SIPGrants const & value) -> std::map<std::string, std::any>
+auto to_json_object<SIPGrants>(SIPGrants const & value) -> nlohmann::json
 {
-    std::map<std::string, std::any> result;
-    result["admin"] = value.admin;
-    result["call"] = value.call;
-    return result;
+    return value;
 }
 
 // Claims implementation
-auto Claims::as_dict() const -> std::map<std::string, std::any>
+// auto Claims::as_dict() const -> std::map<std::string, std::any>
+// {
+//     std::map<std::string, std::any> claims;
+
+//     // Add claims only if they have values (matching Python behavior)
+//     if (!identity.empty())
+//     {
+//         claims["identity"] = identity;
+//     }
+//     if (!name.empty())
+//     {
+//         claims["name"] = name;
+//     }
+//     if (!kind.empty())
+//     {
+//         claims["kind"] = kind;
+//     }
+//     if (!metadata.empty())
+//     {
+//         claims["metadata"] = metadata;
+//     }
+//     if (sha256.has_value() && !sha256->empty())
+//     {
+//         claims["sha256"] = sha256.value();
+//     }
+//     if (room_preset.has_value() && !room_preset->empty())
+//     {
+//         claims["roomPreset"] = room_preset.value();
+//     }
+
+//     // Handle video grants
+//     if (video.has_value())
+//     {
+//         claims["video"] = to_json_string(video.value());
+//     }
+
+//     // Handle SIP grants
+//     if (sip.has_value())
+//     {
+//         claims["sip"] = to_json_string(sip.value());
+//     }
+
+//     // Handle attributes
+//     if (attributes.has_value() && !attributes->empty())
+//     {
+//         claims["attributes"] = attributes.value();
+//     }
+
+//     // Handle room config
+//     if (room_config.has_value())
+//     {
+//         std::string json_string;
+//         auto status = google::protobuf::util::MessageToJsonString(room_config.value(), &json_string);
+//         if (status.ok())
+//         {
+//             claims["roomConfig"] = json_string;
+//         }
+//     }
+
+//     return claims;
+// }
+
+template <>
+auto to_json_object<Claims>(Claims const & value) -> nlohmann::json
 {
-    std::map<std::string, std::any> claims;
-
-    // Add claims only if they have values (matching Python behavior)
-    if (!identity.empty())
-    {
-        claims["identity"] = identity;
-    }
-    if (!name.empty())
-    {
-        claims["name"] = name;
-    }
-    if (!kind.empty())
-    {
-        claims["kind"] = kind;
-    }
-    if (!metadata.empty())
-    {
-        claims["metadata"] = metadata;
-    }
-    if (sha256.has_value() && !sha256->empty())
-    {
-        claims["sha256"] = sha256.value();
-    }
-    if (room_preset.has_value() && !room_preset->empty())
-    {
-        claims["roomPreset"] = room_preset.value();
-    }
-
-    // Handle video grants
-    if (video.has_value())
-    {
-        claims["video"] = to_dict(video.value());
-    }
-
-    // Handle SIP grants
-    if (sip.has_value())
-    {
-        claims["sip"] = to_dict(sip.value());
-    }
-
-    // Handle attributes
-    if (attributes.has_value() && !attributes->empty())
-    {
-        claims["attributes"] = attributes.value();
-    }
-
-    // Handle room config
-    if (room_config.has_value())
-    {
-        std::string json_string;
-        auto status = google::protobuf::util::MessageToJsonString(room_config.value(), &json_string);
-        if (status.ok())
-        {
-            claims["roomConfig"] = json_string;
-        }
-    }
-
-    return claims;
+    return value;
 }
 
 // AccessToken implementation
@@ -191,11 +137,17 @@ AccessToken::AccessToken(std::optional<std::string> api_key, std::optional<std::
     {
         throw_error(ErrorCode::InvalidApiKeyOrSecret);
     }
+
+    claims_.iss = api_key_;
 }
 
 auto AccessToken::with_ttl(std::chrono::duration<int64_t> ttl) -> AccessToken &
 {
-    ttl_ = ttl;
+    auto now = std::chrono::system_clock::now();
+    auto now_seconds = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
+    auto exp_seconds = now_seconds + std::chrono::duration_cast<std::chrono::seconds>(ttl).count();
+    claims_.exp = static_cast<std::size_t>(exp_seconds);
+
     return *this;
 }
 
@@ -214,13 +166,7 @@ auto AccessToken::with_sip_grants(SIPGrants const & grants) -> AccessToken &
 auto AccessToken::with_identity(std::string const & identity) -> AccessToken &
 {
     identity_ = identity;
-    claims_.identity = identity;
-    return *this;
-}
-
-auto AccessToken::with_kind(ParticipantKind const & kind) -> AccessToken &
-{
-    claims_.kind = kind;
+    claims_.sub = identity;
     return *this;
 }
 
@@ -423,10 +369,6 @@ auto TokenVerifier::verify(std::string const & token) const -> Claims
         {
             claims.name = decoded.get_payload_claim("name").to_json().get<std::string>();
         }
-        if (decoded.has_payload_claim("kind"))
-        {
-            claims.kind = decoded.get_payload_claim("kind").to_json().get<std::string>();
-        }
         if (decoded.has_payload_claim("metadata"))
         {
             claims.metadata = decoded.get_payload_claim("metadata").to_json().get<std::string>();
@@ -521,7 +463,7 @@ auto TokenVerifier::verify(std::string const & token) const -> Claims
                 }
                 if (video_obj.find("agent") != video_obj.end())
                 {
-                    video_grants.agent = video_obj["agent"].get<bool>();
+                    // video_grants.agent = video_obj["agent"].get<bool>();
                 }
 
                 claims.video = video_grants;
@@ -582,3 +524,133 @@ auto TokenVerifier::verify(std::string const & token) const -> Claims
 }
 
 } // namespace livekit::api
+
+namespace nlohmann
+{
+
+auto adl_serializer<::livekit::api::VideoGrants>::to_json(json & j, ::livekit::api::VideoGrants const & v) -> void
+{
+    j = json::object();
+
+    // camelCase to match existing JWT claims
+    if (v.room_create)
+    {
+        j["roomCreate"] = v.room_create;
+    }
+    if (v.room_list)
+    {
+        j["roomList"] = v.room_list;
+    }
+    if (v.room_record)
+    {
+        j["roomRecord"] = v.room_record;
+    }
+    if (v.room_admin)
+    {
+        j["roomAdmin"] = v.room_admin;
+    }
+    if (v.room_join)
+    {
+        j["roomJoin"] = v.room_join;
+    }
+    if (!v.room.empty())
+    {
+        j["room"] = v.room;
+    }
+    if (!v.destination_room.empty())
+    {
+        j["destinationRoom"] = v.destination_room;
+    }
+    if (!v.can_publish)
+    {
+        j["canPublish"] = v.can_publish;
+    }
+    if (!v.can_subscribe)
+    {
+        j["canSubscribe"] = v.can_subscribe;
+    }
+    if (!v.can_publish_data)
+    {
+        j["canPublishData"] = v.can_publish_data;
+    }
+    if (!v.can_publish_sources.empty())
+    {
+        j["canPublishSources"] = v.can_publish_sources;
+    }
+    if (v.can_update_own_metadata)
+    {
+        j["canUpdateOwnMetadata"] = v.can_update_own_metadata;
+    }
+    if (v.ingress_admin)
+    {
+        j["ingressAdmin"] = v.ingress_admin;
+    }
+    if (v.hidden)
+    {
+        j["hidden"] = v.hidden;
+    }
+    if (v.recorder)
+    {
+        j["recorder"] = v.recorder;
+    }
+}
+
+auto adl_serializer<::livekit::api::SIPGrants>::to_json(json & j, ::livekit::api::SIPGrants const & v) -> void
+{
+    j = json::object();
+    if (v.admin)
+    {
+        j["admin"] = v.admin;
+    }
+    if (v.call)
+    {
+        j["call"] = v.call;
+    }
+}
+
+auto adl_serializer<::livekit::api::Claims>::to_json(json & j, ::livekit::api::Claims const & v) -> void
+{
+    j = json::object({
+        { "exp", v.exp },
+        { "iss", v.iss },
+        { "nbf", v.nbf },
+        { "sub", v.sub },
+    });
+
+    if (!v.name.empty())
+    {
+        j["name"] = v.name;
+    }
+
+    if (!v.metadata.empty())
+    {
+        j["metadata"] = v.metadata;
+    }
+
+    if (v.video.has_value())
+    {
+        j["video"] = to_json_object(v.video.value());
+    }
+    if (v.sip.has_value())
+    {
+        j["sip"] = to_json_object(v.sip.value());
+    }
+    if (v.attributes.has_value())
+    {
+        j["attributes"] = v.attributes.value();
+    }
+    if (v.sha256.has_value())
+    {
+        j["sha256"] = v.sha256.value();
+    }
+    if (v.room_preset.has_value())
+    {
+        j["roomPreset"] = v.room_preset.value();
+    }
+    if (v.room_config.has_value())
+    {
+        j["roomConfig"] = v.room_config.value();
+    }
+}
+
+} // namespace nlohmann
