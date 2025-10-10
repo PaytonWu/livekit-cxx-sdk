@@ -83,19 +83,18 @@ void test_basic_token_creation()
     livekit::api::AccessToken token("test_api_key", "test_api_secret");
 
     // Test basic configuration
-    token.with_identity("test_user").with_name("Test User").with_kind("standard").with_metadata("test metadata").with_ttl(std::chrono::hours(1));
+    token.with_identity("test_user").with_name("Test User").with_metadata("test metadata").with_ttl(std::chrono::hours(1));
 
     // Generate JWT
-    std::string jwt = token.to_jwt();
+    std::string jwt = token.to_jwt().value();
     assert_true(!jwt.empty(), "JWT should not be empty");
 
     // Verify token
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
     livekit::api::Claims claims = verifier.verify(jwt);
 
-    assert_equals("test_user", claims.identity, "Identity should match");
+    assert_equals("test_user", claims.sub, "Identity should match");
     assert_equals("Test User", claims.name, "Name should match");
-    assert_equals("standard", claims.kind, "Kind should match");
     assert_equals("test metadata", claims.metadata, "Metadata should match");
 }
 
@@ -127,7 +126,7 @@ void test_video_grants()
     token.with_identity("test_user").with_grants(video_grants);
 
     // Generate JWT
-    std::string jwt = token.to_jwt();
+    std::string jwt = token.to_jwt().value();
     assert_true(!jwt.empty(), "JWT should not be empty");
 
     // Verify token
@@ -175,7 +174,7 @@ void test_sip_grants()
     token.with_identity("test_user").with_sip_grants(sip_grants);
 
     // Generate JWT
-    std::string jwt = token.to_jwt();
+    std::string jwt = token.to_jwt().value();
     assert_true(!jwt.empty(), "JWT should not be empty");
 
     // Verify token
@@ -205,7 +204,7 @@ void test_attributes()
     token.with_identity("test_user").with_attributes(attributes);
 
     // Generate JWT
-    std::string jwt = token.to_jwt();
+    std::string jwt = token.to_jwt().value();
     assert_true(!jwt.empty(), "JWT should not be empty");
 
     // Verify token
@@ -257,7 +256,7 @@ void test_room_join_validation()
 
         token.with_identity("test_user").with_grants(video_grants);
 
-        std::string jwt = token.to_jwt();
+        std::string jwt = token.to_jwt().value();
         assert_true(!jwt.empty(), "Valid room join should generate JWT");
     }
 }
@@ -272,7 +271,7 @@ void test_ttl_handling()
     token.with_identity("test_user").with_ttl(std::chrono::minutes(30));
 
     auto start_time = std::chrono::system_clock::now();
-    std::string jwt = token.to_jwt();
+    std::string jwt = token.to_jwt().value();
     auto end_time = std::chrono::system_clock::now();
 
     assert_true(!jwt.empty(), "JWT should not be empty");
@@ -325,7 +324,7 @@ void test_sha256()
     token.with_identity("test_user").with_sha256("test_sha256_hash");
 
     // Generate JWT
-    std::string jwt = token.to_jwt();
+    std::string jwt = token.to_jwt().value();
     assert_true(!jwt.empty(), "JWT should not be empty");
 
     // Verify token
@@ -348,7 +347,7 @@ void test_room_preset()
     token.with_identity("test_user").with_room_preset("test_preset");
 
     // Generate JWT
-    std::string jwt = token.to_jwt();
+    std::string jwt = token.to_jwt().value();
     assert_true(!jwt.empty(), "JWT should not be empty");
 
     // Verify token
@@ -369,7 +368,7 @@ void test_token_verification_failure()
     livekit::api::AccessToken token("test_api_key", "test_api_secret");
     token.with_identity("test_user");
 
-    std::string jwt = token.to_jwt();
+    std::string jwt = token.to_jwt().value();
 
     // Try to verify with wrong secret
     livekit::api::TokenVerifier verifier("test_api_key", "wrong_secret");

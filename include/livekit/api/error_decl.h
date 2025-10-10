@@ -14,7 +14,10 @@ namespace livekit::api
 enum class ErrorCode
 {
     Success = 0,
-    InvalidApiKeyOrSecret = 1,
+    AccessTokenInvalidKeys,
+    AccessTokenInvalidEnvironment,
+    AccessTokenInvalidClaims,
+    AccessTokenEncoding,
 };
 
 auto livekit_api_category() noexcept -> std::error_category const &;

@@ -29,8 +29,14 @@ auto livekit_api_category() noexcept -> std::error_category const &
                 case ErrorCode::Success:
                     return "success";
 
-                case ErrorCode::InvalidApiKeyOrSecret:
-                    return "invalid api key or secret";
+                case ErrorCode::AccessTokenInvalidKeys:
+                    return "Invalid API key or Secret key";
+                case ErrorCode::AccessTokenInvalidEnvironment:
+                    return "Invalid environment";
+                case ErrorCode::AccessTokenInvalidClaims:
+                    return "Invalid claims";
+                case ErrorCode::AccessTokenEncoding:
+                    return "Encoding";
 
                 default:
                     assert(false);

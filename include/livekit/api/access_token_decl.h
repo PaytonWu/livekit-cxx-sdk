@@ -14,9 +14,11 @@
 
 #include <any>
 #include <chrono>
+#include <expected>
 #include <map>
 #include <optional>
 #include <string>
+#include <system_error>
 #include <variant>
 #include <vector>
 
@@ -129,7 +131,7 @@ public:
     auto with_room_preset(std::string const & preset) -> AccessToken &;
     auto with_room_config(livekit::RoomConfiguration const & config) -> AccessToken &;
 
-    std::string to_jwt() const;
+    auto to_jwt() const -> std::expected<std::string, std::error_code>;
 
 private:
     std::string api_key_{}; // iss

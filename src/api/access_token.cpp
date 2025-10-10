@@ -135,7 +135,7 @@ AccessToken::AccessToken(std::optional<std::string> api_key, std::optional<std::
 
     if (api_key_.empty() || api_secret_.empty())
     {
-        throw_error(ErrorCode::InvalidApiKeyOrSecret);
+        throw_error(ErrorCode::AccessTokenInvalidKeys);
     }
 
     claims_.iss = api_key_;
@@ -165,7 +165,6 @@ auto AccessToken::with_sip_grants(SIPGrants const & grants) -> AccessToken &
 
 auto AccessToken::with_identity(std::string const & identity) -> AccessToken &
 {
-    identity_ = identity;
     claims_.sub = identity;
     return *this;
 }
@@ -206,111 +205,24 @@ auto AccessToken::with_room_config(livekit::RoomConfiguration const & config) ->
     return *this;
 }
 
-std::string AccessToken::to_jwt() const
+auto AccessToken::to_jwt() const -> std::expected<std::string, std::error_code>
 {
-    // Validate required fields (matching Python implementation)
-    if (claims_.video && claims_.video->room_join && (identity_.empty() || claims_.video->room.empty()))
+    if (api_key_.empty() || api_secret_.empty())
     {
-        throw std::invalid_argument("identity and room must be set when joining a room");
+        return std::unexpected(ErrorCode::AccessTokenInvalidKeys);
     }
 
-    // Get current time in UTC (matching Python's calendar.timegm)
-    auto now = std::chrono::system_clock::now();
-    auto now_seconds = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
-    auto exp_seconds = now_seconds + std::chrono::duration_cast<std::chrono::seconds>(ttl_).count();
-
-    // Create JWT token using jwt-cpp with nlohmann_json traits
-    auto token = jwt::create<jwt::traits::nlohmann_json>().set_issuer(api_key_).set_subject(identity_).set_not_before(now).set_expires_at(
-        std::chrono::system_clock::from_time_t(exp_seconds));
-
-    // Get claims from the claims_ object using as_dict() (matching Python implementation)
-    auto jwt_claims = claims_.as_dict();
-
-    // Convert claims map to nlohmann::json for JWT encoding
-    nlohmann::json payload;
-    for (auto const & [key, value] : jwt_claims)
+    if (claims_.video && claims_.video->room_join && (claims_.sub.empty() || claims_.video->room.empty()))
     {
-        try
-        {
-            if (value.type() == typeid(std::string))
-            {
-                payload[key] = std::any_cast<std::string>(value);
-            }
-            else if (value.type() == typeid(bool))
-            {
-                payload[key] = std::any_cast<bool>(value);
-            }
-            else if (value.type() == typeid(std::int64_t))
-            {
-                payload[key] = std::any_cast<std::int64_t>(value);
-            }
-            else if (value.type() == typeid(double))
-            {
-                payload[key] = std::any_cast<double>(value);
-            }
-            else if (value.type() == typeid(std::vector<std::string>))
-            {
-                auto const & vec = std::any_cast<std::vector<std::string> const &>(value);
-                payload[key] = vec;
-            }
-            else if (value.type() == typeid(std::map<std::string, std::string>))
-            {
-                auto const & map = std::any_cast<std::map<std::string, std::string> const &>(value);
-                payload[key] = map;
-            }
-            else if (value.type() == typeid(std::map<std::string, std::any>))
-            {
-                // Handle nested objects like video and sip grants using to_dict templates
-                auto const & nested_map = std::any_cast<std::map<std::string, std::any> const &>(value);
-                nlohmann::json nested_json = nlohmann::json::object();
-
-                for (auto const & [k, v] : nested_map)
-                {
-                    try
-                    {
-                        if (v.type() == typeid(std::string))
-                        {
-                            nested_json[k] = std::any_cast<std::string>(v);
-                        }
-                        else if (v.type() == typeid(bool))
-                        {
-                            nested_json[k] = std::any_cast<bool>(v);
-                        }
-                        else if (v.type() == typeid(std::int64_t))
-                        {
-                            nested_json[k] = std::any_cast<std::int64_t>(v);
-                        }
-                        else if (v.type() == typeid(double))
-                        {
-                            nested_json[k] = std::any_cast<double>(v);
-                        }
-                        else if (v.type() == typeid(std::vector<std::string>))
-                        {
-                            auto const & vec = std::any_cast<std::vector<std::string> const &>(v);
-                            nested_json[k] = vec;
-                        }
-                    }
-                    catch (...)
-                    {
-                        // Skip invalid values
-                        continue;
-                    }
-                }
-
-                payload[key] = nested_json;
-            }
-        }
-        catch (...)
-        {
-            // Skip invalid values
-            continue;
-        }
+        return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
     }
 
-    // Add each claim individually
-    for (auto const & [key, value] : payload.items())
+    auto j = to_json_object(claims_);
+    auto token = jwt::create<jwt::traits::nlohmann_json>();
+
+    for (auto const & [key, value] : j.items())
     {
-        token.set_payload_claim(key, jwt::basic_claim<jwt::traits::nlohmann_json>(value));
+        token.set_payload_claim(key, value);
     }
 
     // Sign the token with HS256 algorithm using the API secret
@@ -346,7 +258,7 @@ TokenVerifier::TokenVerifier(std::optional<std::string> api_key, std::optional<s
 
     if (api_key_.empty() || api_secret_.empty())
     {
-        throw_error(ErrorCode::InvalidApiKeyOrSecret);
+        throw_error(ErrorCode::AccessTokenInvalidKeys);
     }
 }
 
@@ -363,7 +275,7 @@ auto TokenVerifier::verify(std::string const & token) const -> Claims
         Claims claims;
 
         // Extract claims from the decoded token (matching Python implementation)
-        claims.identity = decoded.get_subject();
+        claims.sub = decoded.get_subject();
 
         if (decoded.has_payload_claim("name"))
         {
@@ -649,7 +561,12 @@ auto adl_serializer<::livekit::api::Claims>::to_json(json & j, ::livekit::api::C
     }
     if (v.room_config.has_value())
     {
-        j["roomConfig"] = v.room_config.value();
+        std::string room_config_json;
+        if (google::protobuf::util::MessageToJsonString(v.room_config.value(), &room_config_json).ok())
+        {
+            nlohmann::json room_config_json_obj = nlohmann::json::parse(room_config_json);
+            j["roomConfig"] = room_config_json_obj;
+        }
     }
 }
 

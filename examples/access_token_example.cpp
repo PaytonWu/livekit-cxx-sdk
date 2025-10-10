@@ -24,10 +24,10 @@ auto main() -> int
         video_grants.can_subscribe = true;
 
         // Configure the token
-        token.with_identity("test_user").with_name("Test User").with_kind("standard").with_grants(video_grants).with_ttl(std::chrono::hours(1));
+        token.with_identity("test_user").with_name("Test User").with_grants(video_grants).with_ttl(std::chrono::hours(1));
 
         // Generate JWT
-        std::string jwt = token.to_jwt();
+        std::string jwt = token.to_jwt().value();
         std::cout << "Generated JWT: " << jwt << std::endl;
 
         // Verify the token
@@ -35,9 +35,8 @@ auto main() -> int
         livekit::api::Claims claims = verifier.verify(jwt);
 
         std::cout << "Verified claims:" << std::endl;
-        std::cout << "  Identity: " << claims.identity << std::endl;
+        std::cout << "  Identity: " << claims.sub << std::endl;
         std::cout << "  Name: " << claims.name << std::endl;
-        std::cout << "  Kind: " << claims.kind << std::endl;
 
         std::cout << "Access token example completed successfully!" << std::endl;
     }
