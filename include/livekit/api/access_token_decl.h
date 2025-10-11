@@ -72,6 +72,7 @@ public:
 };
 
 auto to_json(nlohmann::json & j, VideoGrants const & v) -> void;
+auto from_json(nlohmann::json const & j, VideoGrants & v) -> void;
 
 class SIPGrants
 {
@@ -83,6 +84,7 @@ public:
 };
 
 auto to_json(nlohmann::json & j, SIPGrants const & v) -> void;
+auto from_json(nlohmann::json const & j, SIPGrants & v) -> void;
 
 class Claims
 {
@@ -104,6 +106,7 @@ public:
 };
 
 auto to_json(nlohmann::json & j, Claims const & v) -> void;
+auto from_json(nlohmann::json const & j, Claims & v) -> void;
 
 class AccessToken
 {

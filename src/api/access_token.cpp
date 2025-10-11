@@ -88,6 +88,204 @@ auto to_json(nlohmann::json & j, VideoGrants const & v) -> void
     }
 }
 
+auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
+{
+    auto it = j.find("roomCreate");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.room_create = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("roomList");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.room_list = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("roomRecord");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.room_record = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("roomAdmin");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.room_admin = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("roomJoin");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.room_join = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("room");
+    if (it != j.end())
+    {
+        if (it.value().is_string())
+        {
+            v.room = it.value().get<std::string>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("destinationRoom");
+    if (it != j.end())
+    {
+        if (it.value().is_string())
+        {
+            v.destination_room = it.value().get<std::string>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("canPublish");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.can_publish = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("canSubscribe");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.can_subscribe = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("canPublishData");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.can_publish_data = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("canPublishSources");
+    if (it != j.end())
+    {
+        if (it.value().is_array())
+        {
+            v.can_publish_sources = it.value().get<std::vector<std::string>>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("canUpdateOwnMetadata");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.can_update_own_metadata = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("ingressAdmin");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.ingress_admin = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("hidden");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.hidden = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+
+    it = j.find("recorder");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.recorder = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+}
+
 auto to_json(nlohmann::json & j, SIPGrants const & v) -> void
 {
     j = nlohmann::json::object();
@@ -98,6 +296,34 @@ auto to_json(nlohmann::json & j, SIPGrants const & v) -> void
     if (v.call)
     {
         j["call"] = v.call;
+    }
+}
+
+auto from_json(nlohmann::json const & j, SIPGrants & v) -> void
+{
+    auto it = j.find("admin");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.admin = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("call");
+    if (it != j.end())
+    {
+        if (it.value().is_boolean())
+        {
+            v.call = it.value().get<bool>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
     }
 }
 
@@ -122,7 +348,6 @@ auto to_json(nlohmann::json & j, Claims const & v) -> void
 
     if (v.video.has_value())
     {
-        // j["video"] = to_json<::livekit::api::VideoGrants>(v.video.value());
         j["video"] = v.video.value();
     }
     if (v.sip.has_value())
@@ -146,8 +371,157 @@ auto to_json(nlohmann::json & j, Claims const & v) -> void
         std::string room_config_json;
         if (google::protobuf::util::MessageToJsonString(v.room_config.value(), &room_config_json).ok())
         {
-            nlohmann::json room_config_json_obj = nlohmann::json::parse(room_config_json);
-            j["roomConfig"] = room_config_json_obj;
+            // nlohmann::json room_config_json_obj = nlohmann::json::parse(room_config_json);
+            j["roomConfig"] = room_config_json;
+        }
+    }
+}
+
+auto from_json(nlohmann::json const & j, Claims & v) -> void
+{
+    auto it = j.find("exp");
+    if (it != j.end())
+    {
+        if (it.value().is_number_unsigned())
+        {
+            v.expires_at = it.value().get<std::size_t>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("iss");
+    if (it != j.end())
+    {
+        if (it.value().is_string())
+        {
+            v.issuer = it.value().get<std::string>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("nbf");
+    if (it != j.end())
+    {
+        if (it.value().is_number_unsigned())
+        {
+            v.not_before = it.value().get<std::size_t>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("sub");
+    if (it != j.end())
+    {
+        if (it.value().is_string())
+        {
+            v.identity_subject = it.value().get<std::string>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("name");
+    if (it != j.end())
+    {
+        if (it.value().is_string())
+        {
+            v.name = it.value().get<std::string>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("metadata");
+    if (it != j.end())
+    {
+        if (it.value().is_string())
+        {
+            v.metadata = it.value().get<std::string>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("video");
+    if (it != j.end())
+    {
+        if (it.value().is_object())
+        {
+            v.video = it.value().get<VideoGrants>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("sip");
+    if (it != j.end())
+    {
+        if (it.value().is_object())
+        {
+            v.sip = it.value().get<SIPGrants>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("attributes");
+    if (it != j.end())
+    {
+        if (it.value().is_object())
+        {
+            v.attributes = it.value().get<std::map<std::string, std::string>>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("sha256");
+    if (it != j.end())
+    {
+        if (it.value().is_string())
+        {
+            v.sha256 = it.value().get<std::string>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("roomPreset");
+    if (it != j.end())
+    {
+        if (it.value().is_string())
+        {
+            v.room_preset = it.value().get<std::string>();
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
+        }
+    }
+    it = j.find("roomConfig");
+    if (it != j.end())
+    {
+        livekit::RoomConfiguration room_config;
+        if (google::protobuf::util::JsonStringToMessage(it.value().get<std::string>(), &room_config).ok())
+        {
+            v.room_config = room_config;
+        }
+        else
+        {
+            throw_error(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 }
@@ -325,161 +699,18 @@ auto TokenVerifier::verify(std::string const & token) const -> std::expected<Cla
         return std::unexpected(ec);
     }
 
-    Claims claims;
-
-    claims.identity_subject = decoded.get_subject();
-
-    if (decoded.has_payload_claim("name"))
+    try
     {
-        claims.name = decoded.get_payload_claim("name").to_json().get<std::string>();
+        return nlohmann::json::parse(decoded.get_payload()).template get<Claims>();
     }
-    if (decoded.has_payload_claim("metadata"))
+    catch (nlohmann::json::exception const & /* eh */)
     {
-        claims.metadata = decoded.get_payload_claim("metadata").to_json().get<std::string>();
+        return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
     }
-
-    if (decoded.has_payload_claim("sha256"))
+    catch (LivekitError const & /* eh */)
     {
-        claims.sha256 = decoded.get_payload_claim("sha256").to_json().get<std::string>();
+        return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
     }
-
-    if (decoded.has_payload_claim("roomPreset"))
-    {
-        claims.room_preset = decoded.get_payload_claim("roomPreset").to_json().get<std::string>();
-    }
-
-    // Extract video grants
-    if (decoded.has_payload_claim("video"))
-    {
-        auto video_claim = decoded.get_payload_claim("video");
-        auto video_json = video_claim.to_json();
-        if (video_json.is_object())
-        {
-            auto video_obj = video_json.get<nlohmann::json::object_t>();
-            VideoGrants video_grants;
-
-            // Convert camelCase keys to snake_case and extract values
-            if (video_obj.find("roomCreate") != video_obj.end())
-            {
-                video_grants.room_create = video_obj["roomCreate"].get<bool>();
-            }
-            if (video_obj.find("roomList") != video_obj.end())
-            {
-                video_grants.room_list = video_obj["roomList"].get<bool>();
-            }
-            if (video_obj.find("roomRecord") != video_obj.end())
-            {
-                video_grants.room_record = video_obj["roomRecord"].get<bool>();
-            }
-            if (video_obj.find("roomAdmin") != video_obj.end())
-            {
-                video_grants.room_admin = video_obj["roomAdmin"].get<bool>();
-            }
-            if (video_obj.find("roomJoin") != video_obj.end())
-            {
-                video_grants.room_join = video_obj["roomJoin"].get<bool>();
-            }
-            if (video_obj.find("room") != video_obj.end())
-            {
-                video_grants.room = video_obj["room"].get<std::string>();
-            }
-            if (video_obj.find("destinationRoom") != video_obj.end())
-            {
-                video_grants.destination_room = video_obj["destinationRoom"].get<std::string>();
-            }
-            if (video_obj.find("canPublish") != video_obj.end())
-            {
-                video_grants.can_publish = video_obj["canPublish"].get<bool>();
-            }
-            if (video_obj.find("canSubscribe") != video_obj.end())
-            {
-                video_grants.can_subscribe = video_obj["canSubscribe"].get<bool>();
-            }
-            if (video_obj.find("canPublishData") != video_obj.end())
-            {
-                video_grants.can_publish_data = video_obj["canPublishData"].get<bool>();
-            }
-            if (video_obj.find("canPublishSources") != video_obj.end())
-            {
-                auto sources_array = video_obj["canPublishSources"].get<nlohmann::json::array_t>();
-                std::vector<std::string> sources;
-                for (auto const & source : sources_array)
-                {
-                    sources.push_back(source.get<std::string>());
-                }
-                video_grants.can_publish_sources = sources;
-            }
-            if (video_obj.find("canUpdateOwnMetadata") != video_obj.end())
-            {
-                video_grants.can_update_own_metadata = video_obj["canUpdateOwnMetadata"].get<bool>();
-            }
-            if (video_obj.find("ingressAdmin") != video_obj.end())
-            {
-                video_grants.ingress_admin = video_obj["ingressAdmin"].get<bool>();
-            }
-            if (video_obj.find("hidden") != video_obj.end())
-            {
-                video_grants.hidden = video_obj["hidden"].get<bool>();
-            }
-            if (video_obj.find("recorder") != video_obj.end())
-            {
-                video_grants.recorder = video_obj["recorder"].get<bool>();
-            }
-            if (video_obj.find("agent") != video_obj.end())
-            {
-                // video_grants.agent = video_obj["agent"].get<bool>();
-            }
-
-            claims.video = video_grants;
-        }
-    }
-
-    // Extract SIP grants
-    if (decoded.has_payload_claim("sip"))
-    {
-        auto sip_claim = decoded.get_payload_claim("sip");
-        auto sip_json = sip_claim.to_json();
-        if (sip_json.is_object())
-        {
-            auto sip_obj = sip_json.get<nlohmann::json::object_t>();
-            SIPGrants sip_grants;
-
-            if (sip_obj.find("admin") != sip_obj.end())
-            {
-                sip_grants.admin = sip_obj["admin"].get<bool>();
-            }
-            if (sip_obj.find("call") != sip_obj.end())
-            {
-                sip_grants.call = sip_obj["call"].get<bool>();
-            }
-
-            claims.sip = sip_grants;
-        }
-    }
-
-    // Extract attributes
-    if (decoded.has_payload_claim("attributes"))
-    {
-        auto attr_claim = decoded.get_payload_claim("attributes");
-        auto attr_json = attr_claim.to_json();
-        if (attr_json.is_object())
-        {
-            auto attr_obj = attr_json.get<nlohmann::json::object_t>();
-            std::map<std::string, std::string> attributes;
-
-            for (auto const & [key, value] : attr_obj)
-            {
-                if (value.is_string())
-                {
-                    attributes[key] = value.get<std::string>();
-                }
-            }
-
-            claims.attributes = attributes;
-        }
-    }
-
-    return claims;
 }
 
 } // namespace livekit::api
