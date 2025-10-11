@@ -32,7 +32,7 @@ auto main() -> int
 
         // Verify the token
         livekit::api::TokenVerifier verifier;
-        livekit::api::Claims claims = verifier.verify(jwt);
+        livekit::api::Claims claims = verifier.verify(jwt).value();
 
         std::cout << "Verified claims:" << std::endl;
         std::cout << "  Identity: " << claims.identity_subject << std::endl;

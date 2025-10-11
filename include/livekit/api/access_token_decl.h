@@ -11,6 +11,7 @@
 #include <livekit/ffi/proto/livekit_room.pb.h>
 
 #include <abc/type_traits.h>
+#include <nlohmann/json.hpp>
 
 #include <any>
 #include <chrono>
@@ -27,9 +28,6 @@ namespace livekit::api
 
 inline constexpr auto DEFAULT_TTL = std::chrono::hours(6);
 inline constexpr auto DEFAULT_LEEWAY = std::chrono::minutes(1);
-
-template <typename T>
-auto to_json_object(T const & value) -> nlohmann::json;
 
 class VideoGrants
 {
@@ -73,8 +71,7 @@ public:
     // bool agent{false};
 };
 
-template <>
-auto to_json_object<VideoGrants>(VideoGrants const & value) -> nlohmann::json;
+auto to_json(nlohmann::json & j, VideoGrants const & v) -> void;
 
 class SIPGrants
 {
@@ -85,14 +82,13 @@ public:
     bool call = false;
 };
 
-template <>
-auto to_json_object<SIPGrants>(SIPGrants const & value) -> nlohmann::json;
+auto to_json(nlohmann::json & j, SIPGrants const & v) -> void;
 
 class Claims
 {
 public:
     std::size_t expires_at{ static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) +
-                     static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(DEFAULT_TTL).count()) };
+                            static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(DEFAULT_TTL).count()) };
     std::string issuer;
     std::size_t not_before{ static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) };
     std::string identity_subject; // identity
@@ -107,8 +103,7 @@ public:
     std::optional<livekit::RoomConfiguration> room_config;
 };
 
-template <>
-auto to_json_object<Claims>(Claims const & value) -> nlohmann::json;
+auto to_json(nlohmann::json & j, Claims const & v) -> void;
 
 class AccessToken
 {
@@ -143,7 +138,7 @@ public:
                            std::optional<std::string> api_secret = std::nullopt,
                            std::chrono::duration<int64_t> leeway = DEFAULT_LEEWAY);
 
-    auto verify(std::string const & token) const -> Claims;
+    auto verify(std::string const & token) const -> std::expected<Claims, std::error_code>;
 
 private:
     std::string api_key_;
@@ -152,28 +147,5 @@ private:
 };
 
 } // namespace livekit::api
-
-namespace nlohmann
-{
-
-template <>
-struct adl_serializer<::livekit::api::VideoGrants>
-{
-    static auto to_json(json & j, ::livekit::api::VideoGrants const & v) -> void;
-};
-
-template <>
-struct adl_serializer<::livekit::api::SIPGrants>
-{
-    static auto to_json(json & j, ::livekit::api::SIPGrants const & v) -> void;
-};
-
-template <>
-struct adl_serializer<::livekit::api::Claims>
-{
-    static auto to_json(json & j, ::livekit::api::Claims const & v) -> void;
-};
-
-} // namespace nlohmann
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_API_ACCESS_TOKEN_DECL

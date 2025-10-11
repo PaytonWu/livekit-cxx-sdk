@@ -91,7 +91,7 @@ void test_basic_token_creation()
 
     // Verify token
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
-    livekit::api::Claims claims = verifier.verify(jwt);
+    livekit::api::Claims claims = verifier.verify(jwt).value();
 
     assert_equals("test_user", claims.identity_subject, "Identity should match");
     assert_equals("Test User", claims.name, "Name should match");
@@ -131,7 +131,7 @@ void test_video_grants()
 
     // Verify token
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
-    livekit::api::Claims claims = verifier.verify(jwt);
+    livekit::api::Claims claims = verifier.verify(jwt).value();
 
     assert_true(claims.video.has_value(), "Video grants should be present");
     if (claims.video.has_value())
@@ -179,7 +179,7 @@ void test_sip_grants()
 
     // Verify token
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
-    livekit::api::Claims claims = verifier.verify(jwt);
+    livekit::api::Claims claims = verifier.verify(jwt).value();
 
     assert_true(claims.sip.has_value(), "SIP grants should be present");
     if (claims.sip.has_value())
@@ -209,7 +209,7 @@ void test_attributes()
 
     // Verify token
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
-    livekit::api::Claims claims = verifier.verify(jwt);
+    livekit::api::Claims claims = verifier.verify(jwt).value();
 
     assert_true(claims.attributes.has_value(), "Attributes should be present");
     if (claims.attributes.has_value())
@@ -233,7 +233,7 @@ void test_room_join_validation()
 
         token.with_grants(video_grants);
 
-        assert_throws([&token]() { token.to_jwt(); }, "Should throw when identity is missing for room_join");
+        assert_throws([&token]() { token.to_jwt().value(); }, "Should throw when identity is missing for room_join");
     }
 
     // Test case 2: Missing room should throw
@@ -244,7 +244,7 @@ void test_room_join_validation()
 
         token.with_identity("test_user").with_grants(video_grants);
 
-        assert_throws([&token]() { token.to_jwt(); }, "Should throw when room is missing for room_join");
+        assert_throws([&token]() { token.to_jwt().value(); }, "Should throw when room is missing for room_join");
     }
 
     // Test case 3: Valid room join should work
@@ -278,7 +278,7 @@ void test_ttl_handling()
 
     // Verify token
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
-    livekit::api::Claims claims = verifier.verify(jwt);
+    livekit::api::Claims claims = verifier.verify(jwt).value();
 
     // The token should be valid (not expired)
     assert_true(true, "Token should be valid within TTL");
@@ -329,7 +329,7 @@ void test_sha256()
 
     // Verify token
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
-    livekit::api::Claims claims = verifier.verify(jwt);
+    livekit::api::Claims claims = verifier.verify(jwt).value();
 
     assert_true(claims.sha256.has_value(), "SHA256 should be present");
     if (claims.sha256.has_value())
@@ -352,7 +352,7 @@ void test_room_preset()
 
     // Verify token
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
-    livekit::api::Claims claims = verifier.verify(jwt);
+    livekit::api::Claims claims = verifier.verify(jwt).value();
 
     assert_true(claims.room_preset.has_value(), "Room preset should be present");
     if (claims.room_preset.has_value())
@@ -373,7 +373,7 @@ void test_token_verification_failure()
     // Try to verify with wrong secret
     livekit::api::TokenVerifier verifier("test_api_key", "wrong_secret");
 
-    assert_throws([&verifier, &jwt]() { [[maybe_unused]] auto _ = verifier.verify(jwt); }, "Should throw when verifying with wrong secret");
+    assert_throws([&verifier, &jwt]() { [[maybe_unused]] auto _ = verifier.verify(jwt).value(); }, "Should throw when verifying with wrong secret");
 }
 
 int main()
