@@ -29,9 +29,6 @@ inline constexpr auto DEFAULT_TTL = std::chrono::hours(6);
 inline constexpr auto DEFAULT_LEEWAY = std::chrono::minutes(1);
 
 template <typename T>
-auto to_dict(T const & value) -> std::map<std::string, std::any>;
-
-template <typename T>
 auto to_json_object(T const & value) -> nlohmann::json;
 
 class VideoGrants
@@ -94,11 +91,11 @@ auto to_json_object<SIPGrants>(SIPGrants const & value) -> nlohmann::json;
 class Claims
 {
 public:
-    std::size_t exp{ static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) +
+    std::size_t expires_at{ static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) +
                      static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(DEFAULT_TTL).count()) };
-    std::string iss;
-    std::size_t nbf{ static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) };
-    std::string sub; // identity
+    std::string issuer;
+    std::size_t not_before{ static_cast<std::size_t>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) };
+    std::string identity_subject; // identity
 
     std::string name;
     std::string metadata;

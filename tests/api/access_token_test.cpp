@@ -93,7 +93,7 @@ void test_basic_token_creation()
     livekit::api::TokenVerifier verifier("test_api_key", "test_api_secret");
     livekit::api::Claims claims = verifier.verify(jwt);
 
-    assert_equals("test_user", claims.sub, "Identity should match");
+    assert_equals("test_user", claims.identity_subject, "Identity should match");
     assert_equals("Test User", claims.name, "Name should match");
     assert_equals("test metadata", claims.metadata, "Metadata should match");
 }

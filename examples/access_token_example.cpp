@@ -35,7 +35,7 @@ auto main() -> int
         livekit::api::Claims claims = verifier.verify(jwt);
 
         std::cout << "Verified claims:" << std::endl;
-        std::cout << "  Identity: " << claims.sub << std::endl;
+        std::cout << "  Identity: " << claims.identity_subject << std::endl;
         std::cout << "  Name: " << claims.name << std::endl;
 
         std::cout << "Access token example completed successfully!" << std::endl;

@@ -33,69 +33,6 @@ auto to_json_object<SIPGrants>(SIPGrants const & value) -> nlohmann::json
     return value;
 }
 
-// Claims implementation
-// auto Claims::as_dict() const -> std::map<std::string, std::any>
-// {
-//     std::map<std::string, std::any> claims;
-
-//     // Add claims only if they have values (matching Python behavior)
-//     if (!identity.empty())
-//     {
-//         claims["identity"] = identity;
-//     }
-//     if (!name.empty())
-//     {
-//         claims["name"] = name;
-//     }
-//     if (!kind.empty())
-//     {
-//         claims["kind"] = kind;
-//     }
-//     if (!metadata.empty())
-//     {
-//         claims["metadata"] = metadata;
-//     }
-//     if (sha256.has_value() && !sha256->empty())
-//     {
-//         claims["sha256"] = sha256.value();
-//     }
-//     if (room_preset.has_value() && !room_preset->empty())
-//     {
-//         claims["roomPreset"] = room_preset.value();
-//     }
-
-//     // Handle video grants
-//     if (video.has_value())
-//     {
-//         claims["video"] = to_json_string(video.value());
-//     }
-
-//     // Handle SIP grants
-//     if (sip.has_value())
-//     {
-//         claims["sip"] = to_json_string(sip.value());
-//     }
-
-//     // Handle attributes
-//     if (attributes.has_value() && !attributes->empty())
-//     {
-//         claims["attributes"] = attributes.value();
-//     }
-
-//     // Handle room config
-//     if (room_config.has_value())
-//     {
-//         std::string json_string;
-//         auto status = google::protobuf::util::MessageToJsonString(room_config.value(), &json_string);
-//         if (status.ok())
-//         {
-//             claims["roomConfig"] = json_string;
-//         }
-//     }
-
-//     return claims;
-// }
-
 template <>
 auto to_json_object<Claims>(Claims const & value) -> nlohmann::json
 {
@@ -138,7 +75,7 @@ AccessToken::AccessToken(std::optional<std::string> api_key, std::optional<std::
         throw_error(ErrorCode::AccessTokenInvalidKeys);
     }
 
-    claims_.iss = api_key_;
+    claims_.issuer = api_key_;
 }
 
 auto AccessToken::with_ttl(std::chrono::duration<int64_t> ttl) -> AccessToken &
@@ -146,7 +83,7 @@ auto AccessToken::with_ttl(std::chrono::duration<int64_t> ttl) -> AccessToken &
     auto now = std::chrono::system_clock::now();
     auto now_seconds = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
     auto exp_seconds = now_seconds + std::chrono::duration_cast<std::chrono::seconds>(ttl).count();
-    claims_.exp = static_cast<std::size_t>(exp_seconds);
+    claims_.expires_at = static_cast<std::size_t>(exp_seconds);
 
     return *this;
 }
@@ -165,7 +102,7 @@ auto AccessToken::with_sip_grants(SIPGrants const & grants) -> AccessToken &
 
 auto AccessToken::with_identity(std::string const & identity) -> AccessToken &
 {
-    claims_.sub = identity;
+    claims_.identity_subject = identity;
     return *this;
 }
 
@@ -212,7 +149,7 @@ auto AccessToken::to_jwt() const -> std::expected<std::string, std::error_code>
         return std::unexpected(ErrorCode::AccessTokenInvalidKeys);
     }
 
-    if (claims_.video && claims_.video->room_join && (claims_.sub.empty() || claims_.video->room.empty()))
+    if (claims_.video && claims_.video->room_join && (claims_.identity_subject.empty() || claims_.video->room.empty()))
     {
         return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
     }
@@ -275,7 +212,7 @@ auto TokenVerifier::verify(std::string const & token) const -> Claims
         Claims claims;
 
         // Extract claims from the decoded token (matching Python implementation)
-        claims.sub = decoded.get_subject();
+        claims.identity_subject = decoded.get_subject();
 
         if (decoded.has_payload_claim("name"))
         {
@@ -523,10 +460,10 @@ auto adl_serializer<::livekit::api::SIPGrants>::to_json(json & j, ::livekit::api
 auto adl_serializer<::livekit::api::Claims>::to_json(json & j, ::livekit::api::Claims const & v) -> void
 {
     j = json::object({
-        { "exp", v.exp },
-        { "iss", v.iss },
-        { "nbf", v.nbf },
-        { "sub", v.sub },
+        { "exp", v.expires_at },
+        { "iss", v.issuer },
+        { "nbf", v.not_before },
+        { "sub", v.identity_subject },
     });
 
     if (!v.name.empty())
