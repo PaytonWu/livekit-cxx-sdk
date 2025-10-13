@@ -151,14 +151,14 @@ class TokenVerifier
 public:
     explicit TokenVerifier(std::optional<std::string> api_key = std::nullopt,
                            std::optional<std::string> api_secret = std::nullopt,
-                           std::chrono::duration<int64_t> leeway = DEFAULT_LEEWAY);
+                           std::chrono::seconds leeway = DEFAULT_LEEWAY);
 
     auto verify(std::string const & token) const -> std::expected<Claims, std::error_code>;
 
 private:
-    std::string api_key_;
-    std::string api_secret_;
-    std::chrono::duration<int64_t> leeway_;
+    std::string api_key_{};
+    std::string api_secret_{};
+    std::chrono::seconds leeway_;
 };
 
 } // namespace livekit::api

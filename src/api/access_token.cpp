@@ -722,9 +722,8 @@ auto AccessToken::to_jwt() const -> std::expected<std::string, std::error_code>
 }
 
 // TokenVerifier implementation
-TokenVerifier::TokenVerifier(std::optional<std::string> api_key, std::optional<std::string> api_secret, std::chrono::duration<int64_t> leeway)
+TokenVerifier::TokenVerifier(std::optional<std::string> api_key, std::optional<std::string> api_secret, std::chrono::seconds leeway) : leeway_{ leeway }
 {
-    // Match Python implementation exactly: api_key = api_key or os.getenv("LIVEKIT_API_KEY")
     if (api_key.has_value() && !api_key->empty())
     {
         api_key_ = api_key.value();
@@ -732,10 +731,12 @@ TokenVerifier::TokenVerifier(std::optional<std::string> api_key, std::optional<s
     else
     {
         char const * env_key = std::getenv("LIVEKIT_API_KEY");
-        api_key_ = env_key ? env_key : "";
+        if (env_key != nullptr)
+        {
+            api_key_ = env_key;
+        }
     }
 
-    // Match Python implementation exactly: api_secret = api_secret or os.getenv("LIVEKIT_API_SECRET")
     if (api_secret.has_value() && !api_secret->empty())
     {
         api_secret_ = api_secret.value();
@@ -743,10 +744,11 @@ TokenVerifier::TokenVerifier(std::optional<std::string> api_key, std::optional<s
     else
     {
         char const * env_secret = std::getenv("LIVEKIT_API_SECRET");
-        api_secret_ = env_secret ? env_secret : "";
+        if (env_secret != nullptr)
+        {
+            api_secret_ = env_secret;
+        }
     }
-
-    leeway_ = leeway;
 
     if (api_key_.empty() || api_secret_.empty())
     {
@@ -761,7 +763,7 @@ auto TokenVerifier::verify(std::string const & token) const -> std::expected<Cla
     auto decoded = jwt::decode<jwt::traits::nlohmann_json>(token);
 
     // Verify the token signature and issuer
-    jwt::verify<jwt::traits::nlohmann_json>().allow_algorithm(jwt::algorithm::hs256{ api_secret_ }).with_issuer(api_key_).verify(decoded, ec);
+    jwt::verify<jwt::traits::nlohmann_json>().allow_algorithm(jwt::algorithm::hs256{ api_secret_ }).with_issuer(api_key_).leeway(leeway_.count()).verify(decoded, ec);
     if (ec)
     {
         return std::unexpected(ec);
