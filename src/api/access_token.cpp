@@ -88,8 +88,11 @@ auto to_json(nlohmann::json & j, VideoGrants const & v) -> void
     }
 }
 
-auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
+template <>
+auto from_json<VideoGrants>(nlohmann::json const & j) -> std::expected<VideoGrants, std::error_code>
 {
+    VideoGrants v;
+
     auto it = j.find("roomCreate");
     if (it != j.end())
     {
@@ -99,7 +102,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -112,7 +115,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -125,7 +128,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -138,7 +141,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -151,7 +154,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -164,7 +167,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -177,7 +180,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -190,7 +193,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -203,7 +206,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -216,7 +219,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -229,7 +232,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -242,7 +245,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -255,7 +258,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -268,7 +271,7 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
 
@@ -281,8 +284,23 @@ auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
+    }
+
+    return v;
+}
+
+auto from_json(nlohmann::json const & j, VideoGrants & v) -> void
+{
+    auto r = from_json<VideoGrants>(j);
+    if (r.has_value())
+    {
+        v = r.value();
+    }
+    else
+    {
+        throw_error(r.error());
     }
 }
 
@@ -299,8 +317,10 @@ auto to_json(nlohmann::json & j, SIPGrants const & v) -> void
     }
 }
 
-auto from_json(nlohmann::json const & j, SIPGrants & v) -> void
+template <>
+auto from_json<SIPGrants>(nlohmann::json const & j) -> std::expected<SIPGrants, std::error_code>
 {
+    SIPGrants v;
     auto it = j.find("admin");
     if (it != j.end())
     {
@@ -310,7 +330,7 @@ auto from_json(nlohmann::json const & j, SIPGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("call");
@@ -322,8 +342,23 @@ auto from_json(nlohmann::json const & j, SIPGrants & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
+    }
+
+    return v;
+}
+
+auto from_json(nlohmann::json const & j, SIPGrants & v) -> void
+{
+    auto r = from_json<SIPGrants>(j);
+    if (r.has_value())
+    {
+        v = r.value();
+    }
+    else
+    {
+        throw_error(r.error());
     }
 }
 
@@ -377,8 +412,10 @@ auto to_json(nlohmann::json & j, Claims const & v) -> void
     }
 }
 
-auto from_json(nlohmann::json const & j, Claims & v) -> void
+template <>
+auto from_json<Claims>(nlohmann::json const & j) -> std::expected<Claims, std::error_code>
 {
+    Claims v;
     auto it = j.find("exp");
     if (it != j.end())
     {
@@ -388,7 +425,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("iss");
@@ -400,7 +437,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("nbf");
@@ -412,7 +449,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("sub");
@@ -424,7 +461,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("name");
@@ -436,7 +473,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("metadata");
@@ -448,7 +485,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("video");
@@ -456,11 +493,19 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
     {
         if (it.value().is_object())
         {
-            v.video = it.value().get<VideoGrants>();
+            auto r = from_json<VideoGrants>(it.value());
+            if (r.has_value())
+            {
+                v.video = r.value();
+            }
+            else
+            {
+                return std::unexpected(r.error());
+            }
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("sip");
@@ -468,11 +513,19 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
     {
         if (it.value().is_object())
         {
-            v.sip = it.value().get<SIPGrants>();
+            auto r = from_json<SIPGrants>(it.value());
+            if (r.has_value())
+            {
+                v.sip = r.value();
+            }
+            else
+            {
+                return std::unexpected(r.error());
+            }
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("attributes");
@@ -484,7 +537,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("sha256");
@@ -496,7 +549,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("roomPreset");
@@ -508,7 +561,7 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
     }
     it = j.find("roomConfig");
@@ -521,8 +574,23 @@ auto from_json(nlohmann::json const & j, Claims & v) -> void
         }
         else
         {
-            throw_error(ErrorCode::AccessTokenInvalidClaims);
+            return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
         }
+    }
+
+    return v;
+}
+
+auto from_json(nlohmann::json const & j, Claims & v) -> void
+{
+    auto r = from_json<Claims>(j);
+    if (r.has_value())
+    {
+        v = r.value();
+    }
+    else
+    {
+        throw_error(r.error());
     }
 }
 
@@ -699,18 +767,7 @@ auto TokenVerifier::verify(std::string const & token) const -> std::expected<Cla
         return std::unexpected(ec);
     }
 
-    try
-    {
-        return nlohmann::json::parse(decoded.get_payload()).template get<Claims>();
-    }
-    catch (nlohmann::json::exception const & /* eh */)
-    {
-        return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
-    }
-    catch (LivekitError const & /* eh */)
-    {
-        return std::unexpected(ErrorCode::AccessTokenInvalidClaims);
-    }
+    return from_json<Claims>(nlohmann::json::parse(decoded.get_payload()));
 }
 
 } // namespace livekit::api

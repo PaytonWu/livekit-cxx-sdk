@@ -29,6 +29,9 @@ namespace livekit::api
 inline constexpr auto DEFAULT_TTL = std::chrono::hours(6);
 inline constexpr auto DEFAULT_LEEWAY = std::chrono::minutes(1);
 
+template <typename T>
+auto from_json(nlohmann::json const & j) -> std::expected<T, std::error_code>;
+
 class VideoGrants
 {
 public:
@@ -74,6 +77,9 @@ public:
 auto to_json(nlohmann::json & j, VideoGrants const & v) -> void;
 auto from_json(nlohmann::json const & j, VideoGrants & v) -> void;
 
+template <>
+auto from_json<VideoGrants>(nlohmann::json const & j) -> std::expected<VideoGrants, std::error_code>;
+
 class SIPGrants
 {
 public:
@@ -85,6 +91,9 @@ public:
 
 auto to_json(nlohmann::json & j, SIPGrants const & v) -> void;
 auto from_json(nlohmann::json const & j, SIPGrants & v) -> void;
+
+template <>
+auto from_json<SIPGrants>(nlohmann::json const & j) -> std::expected<SIPGrants, std::error_code>;
 
 class Claims
 {
@@ -107,6 +116,9 @@ public:
 
 auto to_json(nlohmann::json & j, Claims const & v) -> void;
 auto from_json(nlohmann::json const & j, Claims & v) -> void;
+
+template <>
+auto from_json<Claims>(nlohmann::json const & j) -> std::expected<Claims, std::error_code>;
 
 class AccessToken
 {
