@@ -19,12 +19,12 @@ extern "C"
     ///
     /// The foreign language must only provide valid pointers
     // #[no_mangle]
-    // pub unsafe extern "C" fn livekit_ffi_initialize(cb: FfiCallbackFn, capture_logs: bool)
-    // livekit_ffi_initialize(cb: FfiCallbackFn, capture_logs: bool)
+    // pub unsafe extern "C" fn livekit_ffi_initialize(cb: FfiCallbackFn, capture_logs: bool, sdk: *const c_char, sdk_version: *const c_char)
+    // livekit_ffi_initialize(cb: FfiCallbackFn, capture_logs: bool, sdk: *const c_char, sdk_version: *const c_char)
 
     using FfiCallback = auto (*)(std::uint8_t const *, std::size_t) -> void;
 
-    auto livekit_ffi_initialize(FfiCallback cb, bool capture_logs) -> void;
+    auto livekit_ffi_initialize(FfiCallback cb, bool capture_logs, char const * sdk, char const * sdk_version) -> void;
     auto livekit_ffi_dispose() -> void;
 };
 

@@ -12,7 +12,7 @@ namespace livekit::ffi
 
 FfiClient::FfiClient()
 {
-    livekit_ffi_initialize(ffi_event_callback, true);
+    livekit_ffi_initialize(ffi_event_callback, false, "livekit-cxx", "0.1.0");
 }
 
 auto FfiClient::next_thread_index() -> std::size_t
@@ -57,7 +57,7 @@ auto FfiClient::subscribe(exec::static_thread_pool::scheduler scheduler) -> std:
     return queue_.subscribe(scheduler);
 }
 
-auto FfiClient::unsubscribe(const std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> & queue) -> void
+auto FfiClient::unsubscribe(std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> const & queue) -> void
 {
     queue_.unsubscribe(queue);
 }
