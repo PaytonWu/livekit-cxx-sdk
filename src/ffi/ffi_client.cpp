@@ -4,6 +4,7 @@
 #include <livekit/ffi/ffi_client.h>
 
 #include <livekit/ffi/ffi.h>
+#include <livekit/version.h>
 
 #include <cstdlib>
 
@@ -12,7 +13,7 @@ namespace livekit::ffi
 
 FfiClient::FfiClient()
 {
-    livekit_ffi_initialize(ffi_event_callback, false, "livekit-cxx", "0.1.0");
+    livekit_ffi_initialize(ffi_event_callback, false, "livekit-cxx", LIVEKIT_CXX_SDK_VERSION);
 }
 
 auto FfiClient::next_thread_index() -> std::size_t

@@ -22,6 +22,7 @@
 #include <exec/static_thread_pool.hpp>
 #include <exec/task.hpp>
 
+#include <cstdint>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -64,7 +65,7 @@ struct RoomOptions
     bool dynacast{ false };
     std::optional<E2EEOptions> e2ee_options{};
     RtcConfiguration rtc_config{};
-    uint32_t join_retries{ 3 };
+    std::uint32_t join_retries{ 3 };
 };
 
 class Room : public EventEmitter<proto::RoomEvent::MessageCase, proto::RoomEvent>

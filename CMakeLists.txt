@@ -6,6 +6,13 @@ project(
     LANGUAGES C CXX
 )
 
+# Configure version header
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/livekit/version.h.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/livekit/version.h
+    @ONLY
+)
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
