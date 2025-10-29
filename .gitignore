@@ -40,4 +40,8 @@ cmake-build-debug/*
 .vscode/*
 .cursor/*
 .cache/*
+
+# Specific files
 include/livekit/version.h
+third-party/libs/livekit_ffi.h
+third-party/libs/LICENSE.md
