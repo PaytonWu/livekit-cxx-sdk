@@ -23,9 +23,12 @@
 #include <exec/task.hpp>
 
 #include <cstdint>
+#include <expected>
+#include <functional>
 #include <optional>
 #include <string>
 #include <string_view>
+#include <system_error>
 #include <unordered_map>
 #include <vector>
 
@@ -92,6 +95,8 @@ public:
     auto connect(std::string_view url, std::string_view token, RoomOptions const & room_options = RoomOptions{}) -> exec::task<void>;
     auto disconnect() -> exec::task<void>;
     auto connected() const noexcept -> bool;
+
+    auto local_participant() const noexcept -> std::expected<std::reference_wrapper<LocalParticipant const>, std::error_code>;
 
     auto remote_participants() const noexcept -> std::unordered_map<std::string, RemoteParticipant> const &;
 

@@ -40,3 +40,4 @@ cmake-build-debug/*
 .vscode/*
 .cursor/*
 .cache/*
+include/livekit/version.h

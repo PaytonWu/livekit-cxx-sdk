@@ -3,7 +3,7 @@
 
 #include <livekit/rtc/room.h>
 
-#include <livekit/error.h>
+#include <livekit/rtc/error.h>
 #include <livekit/ffi/ffi_client.h>
 
 #include <fmt/format.h>
@@ -144,6 +144,15 @@ auto Room::disconnect() -> exec::task<void>
     ffi::FfiClient::instance().unsubscribe(event_queue_);
 
     co_return;
+}
+
+auto Room::local_participant() const noexcept -> std::expected<std::reference_wrapper<LocalParticipant const>, std::error_code>
+{
+    if (!local_participant_)
+    {
+        return std::unexpected{ make_error_code(ErrorCode::RtcNotConnected) };
+    }
+    return std::ref(*local_participant_);
 }
 
 auto Room::remote_participants() const noexcept -> std::unordered_map<std::string, RemoteParticipant> const &

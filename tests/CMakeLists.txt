@@ -9,6 +9,6 @@ add_executable(tests ${ABC_TEST_SOURCES} ${UTILS_TEST_SOURCES} ${API_TEST_SOURCE
 
 target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 target_link_directories(tests PRIVATE ${PROJECT_BINARY_DIR})
-target_link_libraries(tests PRIVATE ${LIVEKIT_CXX_SDK_LIBRARY} ${LIVEKIT_CXX_FFI_LIBRARY}  GTest::GTest GTest::Main)
+target_link_libraries(tests PRIVATE ${LIVEKIT_CXX_SDK_LIBRARY} ${LIVEKIT_CXX_FFI_LIBRARY} GTest::GTest GTest::Main)
 
 gtest_discover_tests(tests)
