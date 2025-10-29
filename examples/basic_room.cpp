@@ -38,7 +38,7 @@ auto async_main() -> exec::task<void>
 
     for (auto const & [_, rparticipant] : room.remote_participants())
     {
-        fmt::print("remote participant: {}\n", rparticipant.sid().value());
+        fmt::print("remote participant sid: {}\n", rparticipant.sid());
         fmt::print("identity: {}\n", rparticipant.identity());
         fmt::print("name: {}\n", rparticipant.name());
         fmt::print("metadata: {}\n", rparticipant.metadata());

@@ -10,4 +10,21 @@
 
 #include "livekit/utils/strong_typed_value.h"
 
+namespace fmt
+{
+
+constexpr auto formatter<livekit::rtc::Sid>::parse(format_parse_context & ctx) -> fmt::format_parse_context::iterator
+{
+    return ctx.begin(); // simple parser for now
+}
+
+template <typename FormatContext>
+auto formatter<livekit::rtc::Sid>::format(livekit::rtc::Sid const & sid, FormatContext & ctx) const -> typename FormatContext::iterator
+{
+    return fmt::format_to(ctx.out(), "{}", sid.value());
+}
+
+} // namespace fmt
+
+
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_SID

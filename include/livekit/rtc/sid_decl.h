@@ -22,7 +22,7 @@ public:
     using utils::StrongTypedValue<std::string, Sid>::StrongTypedValue;
 };
 
-}
+} // namespace livekit::rtc
 
 namespace std
 {
@@ -33,6 +33,20 @@ struct hash<livekit::rtc::Sid>
     auto operator()(livekit::rtc::Sid const & sid) const -> std::size_t;
 };
 
-}
+} // namespace std
+
+namespace fmt
+{
+
+template <>
+struct formatter<livekit::rtc::Sid>
+{
+    constexpr auto parse(format_parse_context & ctx) -> fmt::format_parse_context::iterator;
+
+    template <typename FormatContext>
+    auto format(livekit::rtc::Sid const & sid, FormatContext & ctx) const -> typename FormatContext::iterator;
+};
+
+} // namespace fmt
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_SID_DECL

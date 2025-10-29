@@ -16,5 +16,4 @@ auto hash<livekit::rtc::Sid>::operator()(livekit::rtc::Sid const & sid) const ->
     return std::hash<std::string>{}(sid.value());
 }
 
-
 } // namespace std

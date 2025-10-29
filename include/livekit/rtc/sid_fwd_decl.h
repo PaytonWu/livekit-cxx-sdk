@@ -6,12 +6,22 @@
 
 #pragma once
 
+#include <fmt/format.h>
+
 #include <functional>
 
 namespace livekit::rtc
 {
 
 class Sid;
+
+}
+
+namespace fmt
+{
+
+template <>
+struct formatter<livekit::rtc::Sid>;
 
 }
 
