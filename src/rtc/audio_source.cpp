@@ -40,7 +40,7 @@ auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
 
     auto now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch());
     auto elapsed = last_capture_time_.count() > 0 ? now - last_capture_time_ : std::chrono::milliseconds::zero();
-    q_size_ += std::chrono::milliseconds{ frame.samples_per_channel() / sample_rate_ * 1000 } - elapsed;
+    q_size_ += std::chrono::milliseconds{ frame.samples_per_channel() * 1000 / sample_rate_ } - elapsed;
     last_capture_time_ = now;
 
     if (join_handle_.has_value())
