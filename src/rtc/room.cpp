@@ -160,6 +160,21 @@ auto Room::remote_participants() const noexcept -> std::unordered_map<std::strin
     return remote_participants_;
 }
 
+auto Room::connection_state() const noexcept -> proto::ConnectionState
+{
+    return connection_state_;
+}
+
+auto Room::name() const noexcept -> std::string const &
+{
+    return room_info_.name();
+}
+
+auto Room::metadata() const noexcept -> std::string const &
+{
+    return room_info_.metadata();
+}
+
 auto Room::connected() const noexcept -> bool
 {
     return ffi_handle_.has_value() && connection_state_ != proto::ConnectionState::CONN_DISCONNECTED;

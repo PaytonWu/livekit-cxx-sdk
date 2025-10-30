@@ -97,8 +97,10 @@ public:
     auto connected() const noexcept -> bool;
 
     auto local_participant() const noexcept -> std::expected<std::reference_wrapper<LocalParticipant const>, std::error_code>;
-
     auto remote_participants() const noexcept -> std::unordered_map<std::string, RemoteParticipant> const &;
+    auto connection_state() const noexcept -> proto::ConnectionState;
+    auto name() const noexcept -> std::string const &;
+    auto metadata() const noexcept -> std::string const &;
 
 private:
     auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant;
