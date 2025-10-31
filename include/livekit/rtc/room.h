@@ -10,6 +10,7 @@
 
 #include "event_emitter.h"
 #include "participant.h"
+#include "rtc_stats.h"
 
 #include "livekit/e2ee.h"
 #include "livekit/ffi/ffi_handle.h"

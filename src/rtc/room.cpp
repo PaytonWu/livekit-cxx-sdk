@@ -3,8 +3,8 @@
 
 #include <livekit/rtc/room.h>
 
-#include <livekit/rtc/error.h>
 #include <livekit/ffi/ffi_client.h>
+#include <livekit/rtc/error.h>
 
 #include <fmt/format.h>
 
@@ -180,9 +180,59 @@ auto Room::num_participants() const noexcept -> std::size_t
     return room_info_.num_participants();
 }
 
+auto Room::num_publishers() const noexcept -> std::size_t
+{
+    return room_info_.num_publishers();
+}
+
+auto Room::creation_time() const noexcept -> std::time_t
+{
+    return static_cast<std::time_t>(room_info_.creation_time());
+}
+
+auto Room::is_recording() const noexcept -> bool
+{
+    return room_info_.active_recording();
+}
+
+auto Room::departure_timeout() const noexcept -> std::chrono::seconds
+{
+    return std::chrono::seconds{ room_info_.departure_timeout() };
+}
+
+auto Room::empty_timeout() const noexcept -> std::chrono::seconds
+{
+    return std::chrono::seconds{ room_info_.empty_timeout() };
+}
+
 auto Room::connected() const noexcept -> bool
 {
     return ffi_handle_.has_value() && connection_state_ != proto::ConnectionState::CONN_DISCONNECTED;
+}
+
+auto Room::rtc_stats() const noexcept -> exec::task<std::expected<RtcStats, std::error_code>>
+{
+    if (!connected())
+    {
+        co_return std::unexpected{ make_error_code(ErrorCode::RtcNotConnected) };
+    }
+
+    proto::FfiRequest req;
+    auto * get_session_stats = req.mutable_get_session_stats();
+    get_session_stats->set_room_handle(ffi_handle_->id());
+
+    auto queue = ffi::FfiClient::instance().subscribe();
+    auto resp = ffi::FfiClient::request(req);
+
+    auto event = co_await queue->wait_for([&resp](auto const & ev) {
+        return ev.has_get_session_stats() && ev.get_session_stats().has_async_id() && resp.has_get_session_stats() && resp.get_session_stats().has_async_id() &&
+               ev.get_session_stats().async_id() == resp.get_session_stats().async_id();
+    });
+    ffi::FfiClient::instance().unsubscribe(queue);
+
+    auto const & publisher_stats = event.get_session_stats().result().publisher_stats();
+    auto const & subscriber_stats = event.get_session_stats().result().subscriber_stats();
+    co_return RtcStats{ std::vector<proto::RtcStats>(publisher_stats.begin(), publisher_stats.end()), std::vector<proto::RtcStats>(subscriber_stats.begin(), subscriber_stats.end()) };
 }
 
 auto Room::create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant

@@ -10,6 +10,7 @@
 
 #include "event_emitter_decl.h"
 #include "participant_decl.h"
+#include "rtc_stats_decl.h"
 
 #include "livekit/e2ee_decl.h"
 #include "livekit/ffi/ffi_handle_decl.h"
@@ -22,7 +23,9 @@
 #include <exec/static_thread_pool.hpp>
 #include <exec/task.hpp>
 
+#include <chrono>
 #include <cstdint>
+#include <ctime>
 #include <expected>
 #include <functional>
 #include <optional>
@@ -102,6 +105,12 @@ public:
     auto name() const noexcept -> std::string const &;
     auto metadata() const noexcept -> std::string const &;
     auto num_participants() const noexcept -> std::size_t;
+    auto num_publishers() const noexcept -> std::size_t;
+    auto creation_time() const noexcept -> std::time_t;
+    auto is_recording() const noexcept -> bool;
+    auto departure_timeout() const noexcept -> std::chrono::seconds;
+    auto empty_timeout() const noexcept -> std::chrono::seconds;
+    auto rtc_stats() const noexcept -> exec::task<std::expected<RtcStats, std::error_code>>;
 
 private:
     auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant;

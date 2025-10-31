@@ -25,6 +25,8 @@ auto livekit_rtc_category() noexcept -> std::error_category const &
                     return "success";
                 case ErrorCode::RtcNotConnected:
                     return "rtc not connected";
+                case ErrorCode::RtcGetStatsFailed:
+                    return "rtc get stats failed";
                 default:
                     assert(false);
                     return "unknown error";

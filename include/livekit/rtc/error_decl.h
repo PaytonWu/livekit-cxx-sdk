@@ -15,6 +15,7 @@ enum class ErrorCode
 {
     Success = 0,
     RtcNotConnected,
+    RtcGetStatsFailed,
 };
 
 auto livekit_rtc_category() noexcept -> std::error_category const &;
