@@ -143,6 +143,12 @@ extern SIPDispatchRuleInfoDefaultTypeInternal _SIPDispatchRuleInfo_default_insta
 class SIPDispatchRuleInfo_AttributesEntry_DoNotUse;
 struct SIPDispatchRuleInfo_AttributesEntry_DoNotUseDefaultTypeInternal;
 extern SIPDispatchRuleInfo_AttributesEntry_DoNotUseDefaultTypeInternal _SIPDispatchRuleInfo_AttributesEntry_DoNotUse_default_instance_;
+class SIPDispatchRuleUpdate;
+struct SIPDispatchRuleUpdateDefaultTypeInternal;
+extern SIPDispatchRuleUpdateDefaultTypeInternal _SIPDispatchRuleUpdate_default_instance_;
+class SIPDispatchRuleUpdate_AttributesEntry_DoNotUse;
+struct SIPDispatchRuleUpdate_AttributesEntry_DoNotUseDefaultTypeInternal;
+extern SIPDispatchRuleUpdate_AttributesEntry_DoNotUseDefaultTypeInternal _SIPDispatchRuleUpdate_AttributesEntry_DoNotUse_default_instance_;
 class SIPInboundTrunkInfo;
 struct SIPInboundTrunkInfoDefaultTypeInternal;
 extern SIPInboundTrunkInfoDefaultTypeInternal _SIPInboundTrunkInfo_default_instance_;
@@ -155,6 +161,9 @@ extern SIPInboundTrunkInfo_HeadersEntry_DoNotUseDefaultTypeInternal _SIPInboundT
 class SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse;
 struct SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUseDefaultTypeInternal;
 extern SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUseDefaultTypeInternal _SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse_default_instance_;
+class SIPInboundTrunkUpdate;
+struct SIPInboundTrunkUpdateDefaultTypeInternal;
+extern SIPInboundTrunkUpdateDefaultTypeInternal _SIPInboundTrunkUpdate_default_instance_;
 class SIPOutboundConfig;
 struct SIPOutboundConfigDefaultTypeInternal;
 extern SIPOutboundConfigDefaultTypeInternal _SIPOutboundConfig_default_instance_;
@@ -176,12 +185,18 @@ extern SIPOutboundTrunkInfo_HeadersEntry_DoNotUseDefaultTypeInternal _SIPOutboun
 class SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse;
 struct SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUseDefaultTypeInternal;
 extern SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUseDefaultTypeInternal _SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse_default_instance_;
+class SIPOutboundTrunkUpdate;
+struct SIPOutboundTrunkUpdateDefaultTypeInternal;
+extern SIPOutboundTrunkUpdateDefaultTypeInternal _SIPOutboundTrunkUpdate_default_instance_;
 class SIPParticipantInfo;
 struct SIPParticipantInfoDefaultTypeInternal;
 extern SIPParticipantInfoDefaultTypeInternal _SIPParticipantInfo_default_instance_;
 class SIPStatus;
 struct SIPStatusDefaultTypeInternal;
 extern SIPStatusDefaultTypeInternal _SIPStatus_default_instance_;
+class SIPTransferInfo;
+struct SIPTransferInfoDefaultTypeInternal;
+extern SIPTransferInfoDefaultTypeInternal _SIPTransferInfo_default_instance_;
 class SIPTrunkInfo;
 struct SIPTrunkInfoDefaultTypeInternal;
 extern SIPTrunkInfoDefaultTypeInternal _SIPTrunkInfo_default_instance_;
@@ -194,6 +209,15 @@ extern TransferSIPParticipantRequestDefaultTypeInternal _TransferSIPParticipantR
 class TransferSIPParticipantRequest_HeadersEntry_DoNotUse;
 struct TransferSIPParticipantRequest_HeadersEntry_DoNotUseDefaultTypeInternal;
 extern TransferSIPParticipantRequest_HeadersEntry_DoNotUseDefaultTypeInternal _TransferSIPParticipantRequest_HeadersEntry_DoNotUse_default_instance_;
+class UpdateSIPDispatchRuleRequest;
+struct UpdateSIPDispatchRuleRequestDefaultTypeInternal;
+extern UpdateSIPDispatchRuleRequestDefaultTypeInternal _UpdateSIPDispatchRuleRequest_default_instance_;
+class UpdateSIPInboundTrunkRequest;
+struct UpdateSIPInboundTrunkRequestDefaultTypeInternal;
+extern UpdateSIPInboundTrunkRequestDefaultTypeInternal _UpdateSIPInboundTrunkRequest_default_instance_;
+class UpdateSIPOutboundTrunkRequest;
+struct UpdateSIPOutboundTrunkRequestDefaultTypeInternal;
+extern UpdateSIPOutboundTrunkRequestDefaultTypeInternal _UpdateSIPOutboundTrunkRequest_default_instance_;
 }  // namespace livekit
 PROTOBUF_NAMESPACE_OPEN
 template<> ::livekit::CreateSIPDispatchRuleRequest* Arena::CreateMaybeMessage<::livekit::CreateSIPDispatchRuleRequest>(Arena*);
@@ -226,10 +250,13 @@ template<> ::livekit::SIPDispatchRuleDirect* Arena::CreateMaybeMessage<::livekit
 template<> ::livekit::SIPDispatchRuleIndividual* Arena::CreateMaybeMessage<::livekit::SIPDispatchRuleIndividual>(Arena*);
 template<> ::livekit::SIPDispatchRuleInfo* Arena::CreateMaybeMessage<::livekit::SIPDispatchRuleInfo>(Arena*);
 template<> ::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse>(Arena*);
+template<> ::livekit::SIPDispatchRuleUpdate* Arena::CreateMaybeMessage<::livekit::SIPDispatchRuleUpdate>(Arena*);
+template<> ::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse>(Arena*);
 template<> ::livekit::SIPInboundTrunkInfo* Arena::CreateMaybeMessage<::livekit::SIPInboundTrunkInfo>(Arena*);
 template<> ::livekit::SIPInboundTrunkInfo_AttributesToHeadersEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPInboundTrunkInfo_AttributesToHeadersEntry_DoNotUse>(Arena*);
 template<> ::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse>(Arena*);
 template<> ::livekit::SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse>(Arena*);
+template<> ::livekit::SIPInboundTrunkUpdate* Arena::CreateMaybeMessage<::livekit::SIPInboundTrunkUpdate>(Arena*);
 template<> ::livekit::SIPOutboundConfig* Arena::CreateMaybeMessage<::livekit::SIPOutboundConfig>(Arena*);
 template<> ::livekit::SIPOutboundConfig_AttributesToHeadersEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPOutboundConfig_AttributesToHeadersEntry_DoNotUse>(Arena*);
 template<> ::livekit::SIPOutboundConfig_HeadersToAttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPOutboundConfig_HeadersToAttributesEntry_DoNotUse>(Arena*);
@@ -237,12 +264,17 @@ template<> ::livekit::SIPOutboundTrunkInfo* Arena::CreateMaybeMessage<::livekit:
 template<> ::livekit::SIPOutboundTrunkInfo_AttributesToHeadersEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPOutboundTrunkInfo_AttributesToHeadersEntry_DoNotUse>(Arena*);
 template<> ::livekit::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse>(Arena*);
 template<> ::livekit::SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse>(Arena*);
+template<> ::livekit::SIPOutboundTrunkUpdate* Arena::CreateMaybeMessage<::livekit::SIPOutboundTrunkUpdate>(Arena*);
 template<> ::livekit::SIPParticipantInfo* Arena::CreateMaybeMessage<::livekit::SIPParticipantInfo>(Arena*);
 template<> ::livekit::SIPStatus* Arena::CreateMaybeMessage<::livekit::SIPStatus>(Arena*);
+template<> ::livekit::SIPTransferInfo* Arena::CreateMaybeMessage<::livekit::SIPTransferInfo>(Arena*);
 template<> ::livekit::SIPTrunkInfo* Arena::CreateMaybeMessage<::livekit::SIPTrunkInfo>(Arena*);
 template<> ::livekit::SIPUri* Arena::CreateMaybeMessage<::livekit::SIPUri>(Arena*);
 template<> ::livekit::TransferSIPParticipantRequest* Arena::CreateMaybeMessage<::livekit::TransferSIPParticipantRequest>(Arena*);
 template<> ::livekit::TransferSIPParticipantRequest_HeadersEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::TransferSIPParticipantRequest_HeadersEntry_DoNotUse>(Arena*);
+template<> ::livekit::UpdateSIPDispatchRuleRequest* Arena::CreateMaybeMessage<::livekit::UpdateSIPDispatchRuleRequest>(Arena*);
+template<> ::livekit::UpdateSIPInboundTrunkRequest* Arena::CreateMaybeMessage<::livekit::UpdateSIPInboundTrunkRequest>(Arena*);
+template<> ::livekit::UpdateSIPOutboundTrunkRequest* Arena::CreateMaybeMessage<::livekit::UpdateSIPOutboundTrunkRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace livekit {
 
@@ -450,6 +482,32 @@ inline bool SIPCallStatus_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SIPCallStatus* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SIPCallStatus>(
     SIPCallStatus_descriptor(), name, value);
+}
+enum SIPTransferStatus : int {
+  STS_TRANSFER_ONGOING = 0,
+  STS_TRANSFER_FAILED = 1,
+  STS_TRANSFER_SUCCESSFUL = 2,
+  SIPTransferStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  SIPTransferStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool SIPTransferStatus_IsValid(int value);
+constexpr SIPTransferStatus SIPTransferStatus_MIN = STS_TRANSFER_ONGOING;
+constexpr SIPTransferStatus SIPTransferStatus_MAX = STS_TRANSFER_SUCCESSFUL;
+constexpr int SIPTransferStatus_ARRAYSIZE = SIPTransferStatus_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SIPTransferStatus_descriptor();
+template<typename T>
+inline const std::string& SIPTransferStatus_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, SIPTransferStatus>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function SIPTransferStatus_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    SIPTransferStatus_descriptor(), enum_t_value);
+}
+inline bool SIPTransferStatus_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SIPTransferStatus* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SIPTransferStatus>(
+    SIPTransferStatus_descriptor(), name, value);
 }
 enum SIPFeature : int {
   NONE = 0,
@@ -1581,6 +1639,218 @@ class CreateSIPInboundTrunkRequest final :
 };
 // -------------------------------------------------------------------
 
+class UpdateSIPInboundTrunkRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.UpdateSIPInboundTrunkRequest) */ {
+ public:
+  inline UpdateSIPInboundTrunkRequest() : UpdateSIPInboundTrunkRequest(nullptr) {}
+  ~UpdateSIPInboundTrunkRequest() override;
+  explicit PROTOBUF_CONSTEXPR UpdateSIPInboundTrunkRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpdateSIPInboundTrunkRequest(const UpdateSIPInboundTrunkRequest& from);
+  UpdateSIPInboundTrunkRequest(UpdateSIPInboundTrunkRequest&& from) noexcept
+    : UpdateSIPInboundTrunkRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateSIPInboundTrunkRequest& operator=(const UpdateSIPInboundTrunkRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpdateSIPInboundTrunkRequest& operator=(UpdateSIPInboundTrunkRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpdateSIPInboundTrunkRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  enum ActionCase {
+    kReplace = 2,
+    kUpdate = 3,
+    ACTION_NOT_SET = 0,
+  };
+
+  static inline const UpdateSIPInboundTrunkRequest* internal_default_instance() {
+    return reinterpret_cast<const UpdateSIPInboundTrunkRequest*>(
+               &_UpdateSIPInboundTrunkRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(UpdateSIPInboundTrunkRequest& a, UpdateSIPInboundTrunkRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpdateSIPInboundTrunkRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpdateSIPInboundTrunkRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpdateSIPInboundTrunkRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpdateSIPInboundTrunkRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UpdateSIPInboundTrunkRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UpdateSIPInboundTrunkRequest& from) {
+    UpdateSIPInboundTrunkRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateSIPInboundTrunkRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.UpdateSIPInboundTrunkRequest";
+  }
+  protected:
+  explicit UpdateSIPInboundTrunkRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSipTrunkIdFieldNumber = 1,
+    kReplaceFieldNumber = 2,
+    kUpdateFieldNumber = 3,
+  };
+  // string sip_trunk_id = 1;
+  void clear_sip_trunk_id();
+  const std::string& sip_trunk_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sip_trunk_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sip_trunk_id();
+  PROTOBUF_NODISCARD std::string* release_sip_trunk_id();
+  void set_allocated_sip_trunk_id(std::string* sip_trunk_id);
+  private:
+  const std::string& _internal_sip_trunk_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sip_trunk_id(const std::string& value);
+  std::string* _internal_mutable_sip_trunk_id();
+  public:
+
+  // .livekit.SIPInboundTrunkInfo replace = 2;
+  bool has_replace() const;
+  private:
+  bool _internal_has_replace() const;
+  public:
+  void clear_replace();
+  const ::livekit::SIPInboundTrunkInfo& replace() const;
+  PROTOBUF_NODISCARD ::livekit::SIPInboundTrunkInfo* release_replace();
+  ::livekit::SIPInboundTrunkInfo* mutable_replace();
+  void set_allocated_replace(::livekit::SIPInboundTrunkInfo* replace);
+  private:
+  const ::livekit::SIPInboundTrunkInfo& _internal_replace() const;
+  ::livekit::SIPInboundTrunkInfo* _internal_mutable_replace();
+  public:
+  void unsafe_arena_set_allocated_replace(
+      ::livekit::SIPInboundTrunkInfo* replace);
+  ::livekit::SIPInboundTrunkInfo* unsafe_arena_release_replace();
+
+  // .livekit.SIPInboundTrunkUpdate update = 3;
+  bool has_update() const;
+  private:
+  bool _internal_has_update() const;
+  public:
+  void clear_update();
+  const ::livekit::SIPInboundTrunkUpdate& update() const;
+  PROTOBUF_NODISCARD ::livekit::SIPInboundTrunkUpdate* release_update();
+  ::livekit::SIPInboundTrunkUpdate* mutable_update();
+  void set_allocated_update(::livekit::SIPInboundTrunkUpdate* update);
+  private:
+  const ::livekit::SIPInboundTrunkUpdate& _internal_update() const;
+  ::livekit::SIPInboundTrunkUpdate* _internal_mutable_update();
+  public:
+  void unsafe_arena_set_allocated_update(
+      ::livekit::SIPInboundTrunkUpdate* update);
+  ::livekit::SIPInboundTrunkUpdate* unsafe_arena_release_update();
+
+  void clear_action();
+  ActionCase action_case() const;
+  // @@protoc_insertion_point(class_scope:livekit.UpdateSIPInboundTrunkRequest)
+ private:
+  class _Internal;
+  void set_has_replace();
+  void set_has_update();
+
+  inline bool has_action() const;
+  inline void clear_has_action();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sip_trunk_id_;
+    union ActionUnion {
+      constexpr ActionUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::livekit::SIPInboundTrunkInfo* replace_;
+      ::livekit::SIPInboundTrunkUpdate* update_;
+    } action_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t _oneof_case_[1];
+
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fsip_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SIPInboundTrunkInfo_HeadersEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<SIPInboundTrunkInfo_HeadersEntry_DoNotUse, 
     std::string, std::string,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
@@ -1713,7 +1983,7 @@ class SIPInboundTrunkInfo final :
                &_SIPInboundTrunkInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(SIPInboundTrunkInfo& a, SIPInboundTrunkInfo& b) {
     a.Swap(&b);
@@ -2105,6 +2375,299 @@ class SIPInboundTrunkInfo final :
 };
 // -------------------------------------------------------------------
 
+class SIPInboundTrunkUpdate final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.SIPInboundTrunkUpdate) */ {
+ public:
+  inline SIPInboundTrunkUpdate() : SIPInboundTrunkUpdate(nullptr) {}
+  ~SIPInboundTrunkUpdate() override;
+  explicit PROTOBUF_CONSTEXPR SIPInboundTrunkUpdate(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SIPInboundTrunkUpdate(const SIPInboundTrunkUpdate& from);
+  SIPInboundTrunkUpdate(SIPInboundTrunkUpdate&& from) noexcept
+    : SIPInboundTrunkUpdate() {
+    *this = ::std::move(from);
+  }
+
+  inline SIPInboundTrunkUpdate& operator=(const SIPInboundTrunkUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SIPInboundTrunkUpdate& operator=(SIPInboundTrunkUpdate&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SIPInboundTrunkUpdate& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SIPInboundTrunkUpdate* internal_default_instance() {
+    return reinterpret_cast<const SIPInboundTrunkUpdate*>(
+               &_SIPInboundTrunkUpdate_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(SIPInboundTrunkUpdate& a, SIPInboundTrunkUpdate& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SIPInboundTrunkUpdate* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SIPInboundTrunkUpdate* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SIPInboundTrunkUpdate* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SIPInboundTrunkUpdate>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SIPInboundTrunkUpdate& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SIPInboundTrunkUpdate& from) {
+    SIPInboundTrunkUpdate::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SIPInboundTrunkUpdate* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.SIPInboundTrunkUpdate";
+  }
+  protected:
+  explicit SIPInboundTrunkUpdate(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAuthUsernameFieldNumber = 4,
+    kAuthPasswordFieldNumber = 5,
+    kNameFieldNumber = 6,
+    kMetadataFieldNumber = 7,
+    kNumbersFieldNumber = 1,
+    kAllowedAddressesFieldNumber = 2,
+    kAllowedNumbersFieldNumber = 3,
+    kMediaEncryptionFieldNumber = 8,
+  };
+  // optional string auth_username = 4;
+  bool has_auth_username() const;
+  private:
+  bool _internal_has_auth_username() const;
+  public:
+  void clear_auth_username();
+  const std::string& auth_username() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_auth_username(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_auth_username();
+  PROTOBUF_NODISCARD std::string* release_auth_username();
+  void set_allocated_auth_username(std::string* auth_username);
+  private:
+  const std::string& _internal_auth_username() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_auth_username(const std::string& value);
+  std::string* _internal_mutable_auth_username();
+  public:
+
+  // optional string auth_password = 5;
+  bool has_auth_password() const;
+  private:
+  bool _internal_has_auth_password() const;
+  public:
+  void clear_auth_password();
+  const std::string& auth_password() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_auth_password(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_auth_password();
+  PROTOBUF_NODISCARD std::string* release_auth_password();
+  void set_allocated_auth_password(std::string* auth_password);
+  private:
+  const std::string& _internal_auth_password() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_auth_password(const std::string& value);
+  std::string* _internal_mutable_auth_password();
+  public:
+
+  // optional string name = 6;
+  bool has_name() const;
+  private:
+  bool _internal_has_name() const;
+  public:
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // optional string metadata = 7;
+  bool has_metadata() const;
+  private:
+  bool _internal_has_metadata() const;
+  public:
+  void clear_metadata();
+  const std::string& metadata() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_metadata(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_metadata();
+  PROTOBUF_NODISCARD std::string* release_metadata();
+  void set_allocated_metadata(std::string* metadata);
+  private:
+  const std::string& _internal_metadata() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_metadata(const std::string& value);
+  std::string* _internal_mutable_metadata();
+  public:
+
+  // .livekit.ListUpdate numbers = 1;
+  bool has_numbers() const;
+  private:
+  bool _internal_has_numbers() const;
+  public:
+  void clear_numbers();
+  const ::livekit::ListUpdate& numbers() const;
+  PROTOBUF_NODISCARD ::livekit::ListUpdate* release_numbers();
+  ::livekit::ListUpdate* mutable_numbers();
+  void set_allocated_numbers(::livekit::ListUpdate* numbers);
+  private:
+  const ::livekit::ListUpdate& _internal_numbers() const;
+  ::livekit::ListUpdate* _internal_mutable_numbers();
+  public:
+  void unsafe_arena_set_allocated_numbers(
+      ::livekit::ListUpdate* numbers);
+  ::livekit::ListUpdate* unsafe_arena_release_numbers();
+
+  // .livekit.ListUpdate allowed_addresses = 2;
+  bool has_allowed_addresses() const;
+  private:
+  bool _internal_has_allowed_addresses() const;
+  public:
+  void clear_allowed_addresses();
+  const ::livekit::ListUpdate& allowed_addresses() const;
+  PROTOBUF_NODISCARD ::livekit::ListUpdate* release_allowed_addresses();
+  ::livekit::ListUpdate* mutable_allowed_addresses();
+  void set_allocated_allowed_addresses(::livekit::ListUpdate* allowed_addresses);
+  private:
+  const ::livekit::ListUpdate& _internal_allowed_addresses() const;
+  ::livekit::ListUpdate* _internal_mutable_allowed_addresses();
+  public:
+  void unsafe_arena_set_allocated_allowed_addresses(
+      ::livekit::ListUpdate* allowed_addresses);
+  ::livekit::ListUpdate* unsafe_arena_release_allowed_addresses();
+
+  // .livekit.ListUpdate allowed_numbers = 3;
+  bool has_allowed_numbers() const;
+  private:
+  bool _internal_has_allowed_numbers() const;
+  public:
+  void clear_allowed_numbers();
+  const ::livekit::ListUpdate& allowed_numbers() const;
+  PROTOBUF_NODISCARD ::livekit::ListUpdate* release_allowed_numbers();
+  ::livekit::ListUpdate* mutable_allowed_numbers();
+  void set_allocated_allowed_numbers(::livekit::ListUpdate* allowed_numbers);
+  private:
+  const ::livekit::ListUpdate& _internal_allowed_numbers() const;
+  ::livekit::ListUpdate* _internal_mutable_allowed_numbers();
+  public:
+  void unsafe_arena_set_allocated_allowed_numbers(
+      ::livekit::ListUpdate* allowed_numbers);
+  ::livekit::ListUpdate* unsafe_arena_release_allowed_numbers();
+
+  // optional .livekit.SIPMediaEncryption media_encryption = 8;
+  bool has_media_encryption() const;
+  private:
+  bool _internal_has_media_encryption() const;
+  public:
+  void clear_media_encryption();
+  ::livekit::SIPMediaEncryption media_encryption() const;
+  void set_media_encryption(::livekit::SIPMediaEncryption value);
+  private:
+  ::livekit::SIPMediaEncryption _internal_media_encryption() const;
+  void _internal_set_media_encryption(::livekit::SIPMediaEncryption value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.SIPInboundTrunkUpdate)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr auth_username_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr auth_password_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr metadata_;
+    ::livekit::ListUpdate* numbers_;
+    ::livekit::ListUpdate* allowed_addresses_;
+    ::livekit::ListUpdate* allowed_numbers_;
+    int media_encryption_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fsip_2eproto;
+};
+// -------------------------------------------------------------------
+
 class CreateSIPOutboundTrunkRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.CreateSIPOutboundTrunkRequest) */ {
  public:
@@ -2153,7 +2716,7 @@ class CreateSIPOutboundTrunkRequest final :
                &_CreateSIPOutboundTrunkRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(CreateSIPOutboundTrunkRequest& a, CreateSIPOutboundTrunkRequest& b) {
     a.Swap(&b);
@@ -2256,6 +2819,218 @@ class CreateSIPOutboundTrunkRequest final :
   struct Impl_ {
     ::livekit::SIPOutboundTrunkInfo* trunk_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fsip_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UpdateSIPOutboundTrunkRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.UpdateSIPOutboundTrunkRequest) */ {
+ public:
+  inline UpdateSIPOutboundTrunkRequest() : UpdateSIPOutboundTrunkRequest(nullptr) {}
+  ~UpdateSIPOutboundTrunkRequest() override;
+  explicit PROTOBUF_CONSTEXPR UpdateSIPOutboundTrunkRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpdateSIPOutboundTrunkRequest(const UpdateSIPOutboundTrunkRequest& from);
+  UpdateSIPOutboundTrunkRequest(UpdateSIPOutboundTrunkRequest&& from) noexcept
+    : UpdateSIPOutboundTrunkRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateSIPOutboundTrunkRequest& operator=(const UpdateSIPOutboundTrunkRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpdateSIPOutboundTrunkRequest& operator=(UpdateSIPOutboundTrunkRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpdateSIPOutboundTrunkRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  enum ActionCase {
+    kReplace = 2,
+    kUpdate = 3,
+    ACTION_NOT_SET = 0,
+  };
+
+  static inline const UpdateSIPOutboundTrunkRequest* internal_default_instance() {
+    return reinterpret_cast<const UpdateSIPOutboundTrunkRequest*>(
+               &_UpdateSIPOutboundTrunkRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(UpdateSIPOutboundTrunkRequest& a, UpdateSIPOutboundTrunkRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpdateSIPOutboundTrunkRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpdateSIPOutboundTrunkRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpdateSIPOutboundTrunkRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpdateSIPOutboundTrunkRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UpdateSIPOutboundTrunkRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UpdateSIPOutboundTrunkRequest& from) {
+    UpdateSIPOutboundTrunkRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateSIPOutboundTrunkRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.UpdateSIPOutboundTrunkRequest";
+  }
+  protected:
+  explicit UpdateSIPOutboundTrunkRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSipTrunkIdFieldNumber = 1,
+    kReplaceFieldNumber = 2,
+    kUpdateFieldNumber = 3,
+  };
+  // string sip_trunk_id = 1;
+  void clear_sip_trunk_id();
+  const std::string& sip_trunk_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sip_trunk_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sip_trunk_id();
+  PROTOBUF_NODISCARD std::string* release_sip_trunk_id();
+  void set_allocated_sip_trunk_id(std::string* sip_trunk_id);
+  private:
+  const std::string& _internal_sip_trunk_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sip_trunk_id(const std::string& value);
+  std::string* _internal_mutable_sip_trunk_id();
+  public:
+
+  // .livekit.SIPOutboundTrunkInfo replace = 2;
+  bool has_replace() const;
+  private:
+  bool _internal_has_replace() const;
+  public:
+  void clear_replace();
+  const ::livekit::SIPOutboundTrunkInfo& replace() const;
+  PROTOBUF_NODISCARD ::livekit::SIPOutboundTrunkInfo* release_replace();
+  ::livekit::SIPOutboundTrunkInfo* mutable_replace();
+  void set_allocated_replace(::livekit::SIPOutboundTrunkInfo* replace);
+  private:
+  const ::livekit::SIPOutboundTrunkInfo& _internal_replace() const;
+  ::livekit::SIPOutboundTrunkInfo* _internal_mutable_replace();
+  public:
+  void unsafe_arena_set_allocated_replace(
+      ::livekit::SIPOutboundTrunkInfo* replace);
+  ::livekit::SIPOutboundTrunkInfo* unsafe_arena_release_replace();
+
+  // .livekit.SIPOutboundTrunkUpdate update = 3;
+  bool has_update() const;
+  private:
+  bool _internal_has_update() const;
+  public:
+  void clear_update();
+  const ::livekit::SIPOutboundTrunkUpdate& update() const;
+  PROTOBUF_NODISCARD ::livekit::SIPOutboundTrunkUpdate* release_update();
+  ::livekit::SIPOutboundTrunkUpdate* mutable_update();
+  void set_allocated_update(::livekit::SIPOutboundTrunkUpdate* update);
+  private:
+  const ::livekit::SIPOutboundTrunkUpdate& _internal_update() const;
+  ::livekit::SIPOutboundTrunkUpdate* _internal_mutable_update();
+  public:
+  void unsafe_arena_set_allocated_update(
+      ::livekit::SIPOutboundTrunkUpdate* update);
+  ::livekit::SIPOutboundTrunkUpdate* unsafe_arena_release_update();
+
+  void clear_action();
+  ActionCase action_case() const;
+  // @@protoc_insertion_point(class_scope:livekit.UpdateSIPOutboundTrunkRequest)
+ private:
+  class _Internal;
+  void set_has_replace();
+  void set_has_update();
+
+  inline bool has_action() const;
+  inline void clear_has_action();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sip_trunk_id_;
+    union ActionUnion {
+      constexpr ActionUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::livekit::SIPOutboundTrunkInfo* replace_;
+      ::livekit::SIPOutboundTrunkUpdate* update_;
+    } action_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t _oneof_case_[1];
+
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_livekit_5fsip_2eproto;
@@ -2394,7 +3169,7 @@ class SIPOutboundTrunkInfo final :
                &_SIPOutboundTrunkInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    15;
 
   friend void swap(SIPOutboundTrunkInfo& a, SIPOutboundTrunkInfo& b) {
     a.Swap(&b);
@@ -2480,6 +3255,7 @@ class SIPOutboundTrunkInfo final :
     kAddressFieldNumber = 4,
     kAuthUsernameFieldNumber = 7,
     kAuthPasswordFieldNumber = 8,
+    kDestinationCountryFieldNumber = 14,
     kTransportFieldNumber = 5,
     kIncludeHeadersFieldNumber = 12,
     kMediaEncryptionFieldNumber = 13,
@@ -2643,6 +3419,20 @@ class SIPOutboundTrunkInfo final :
   std::string* _internal_mutable_auth_password();
   public:
 
+  // string destination_country = 14;
+  void clear_destination_country();
+  const std::string& destination_country() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_destination_country(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_destination_country();
+  PROTOBUF_NODISCARD std::string* release_destination_country();
+  void set_allocated_destination_country(std::string* destination_country);
+  private:
+  const std::string& _internal_destination_country() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_destination_country(const std::string& value);
+  std::string* _internal_mutable_destination_country();
+  public:
+
   // .livekit.SIPTransport transport = 5;
   void clear_transport();
   ::livekit::SIPTransport transport() const;
@@ -2700,10 +3490,319 @@ class SIPOutboundTrunkInfo final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr address_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr auth_username_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr auth_password_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_country_;
     int transport_;
     int include_headers_;
     int media_encryption_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fsip_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SIPOutboundTrunkUpdate final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.SIPOutboundTrunkUpdate) */ {
+ public:
+  inline SIPOutboundTrunkUpdate() : SIPOutboundTrunkUpdate(nullptr) {}
+  ~SIPOutboundTrunkUpdate() override;
+  explicit PROTOBUF_CONSTEXPR SIPOutboundTrunkUpdate(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SIPOutboundTrunkUpdate(const SIPOutboundTrunkUpdate& from);
+  SIPOutboundTrunkUpdate(SIPOutboundTrunkUpdate&& from) noexcept
+    : SIPOutboundTrunkUpdate() {
+    *this = ::std::move(from);
+  }
+
+  inline SIPOutboundTrunkUpdate& operator=(const SIPOutboundTrunkUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SIPOutboundTrunkUpdate& operator=(SIPOutboundTrunkUpdate&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SIPOutboundTrunkUpdate& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SIPOutboundTrunkUpdate* internal_default_instance() {
+    return reinterpret_cast<const SIPOutboundTrunkUpdate*>(
+               &_SIPOutboundTrunkUpdate_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    16;
+
+  friend void swap(SIPOutboundTrunkUpdate& a, SIPOutboundTrunkUpdate& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SIPOutboundTrunkUpdate* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SIPOutboundTrunkUpdate* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SIPOutboundTrunkUpdate* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SIPOutboundTrunkUpdate>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SIPOutboundTrunkUpdate& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SIPOutboundTrunkUpdate& from) {
+    SIPOutboundTrunkUpdate::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SIPOutboundTrunkUpdate* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.SIPOutboundTrunkUpdate";
+  }
+  protected:
+  explicit SIPOutboundTrunkUpdate(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAddressFieldNumber = 1,
+    kAuthUsernameFieldNumber = 4,
+    kAuthPasswordFieldNumber = 5,
+    kNameFieldNumber = 6,
+    kMetadataFieldNumber = 7,
+    kDestinationCountryFieldNumber = 9,
+    kNumbersFieldNumber = 3,
+    kTransportFieldNumber = 2,
+    kMediaEncryptionFieldNumber = 8,
+  };
+  // optional string address = 1;
+  bool has_address() const;
+  private:
+  bool _internal_has_address() const;
+  public:
+  void clear_address();
+  const std::string& address() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_address(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* address);
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(const std::string& value);
+  std::string* _internal_mutable_address();
+  public:
+
+  // optional string auth_username = 4;
+  bool has_auth_username() const;
+  private:
+  bool _internal_has_auth_username() const;
+  public:
+  void clear_auth_username();
+  const std::string& auth_username() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_auth_username(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_auth_username();
+  PROTOBUF_NODISCARD std::string* release_auth_username();
+  void set_allocated_auth_username(std::string* auth_username);
+  private:
+  const std::string& _internal_auth_username() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_auth_username(const std::string& value);
+  std::string* _internal_mutable_auth_username();
+  public:
+
+  // optional string auth_password = 5;
+  bool has_auth_password() const;
+  private:
+  bool _internal_has_auth_password() const;
+  public:
+  void clear_auth_password();
+  const std::string& auth_password() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_auth_password(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_auth_password();
+  PROTOBUF_NODISCARD std::string* release_auth_password();
+  void set_allocated_auth_password(std::string* auth_password);
+  private:
+  const std::string& _internal_auth_password() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_auth_password(const std::string& value);
+  std::string* _internal_mutable_auth_password();
+  public:
+
+  // optional string name = 6;
+  bool has_name() const;
+  private:
+  bool _internal_has_name() const;
+  public:
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // optional string metadata = 7;
+  bool has_metadata() const;
+  private:
+  bool _internal_has_metadata() const;
+  public:
+  void clear_metadata();
+  const std::string& metadata() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_metadata(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_metadata();
+  PROTOBUF_NODISCARD std::string* release_metadata();
+  void set_allocated_metadata(std::string* metadata);
+  private:
+  const std::string& _internal_metadata() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_metadata(const std::string& value);
+  std::string* _internal_mutable_metadata();
+  public:
+
+  // optional string destination_country = 9;
+  bool has_destination_country() const;
+  private:
+  bool _internal_has_destination_country() const;
+  public:
+  void clear_destination_country();
+  const std::string& destination_country() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_destination_country(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_destination_country();
+  PROTOBUF_NODISCARD std::string* release_destination_country();
+  void set_allocated_destination_country(std::string* destination_country);
+  private:
+  const std::string& _internal_destination_country() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_destination_country(const std::string& value);
+  std::string* _internal_mutable_destination_country();
+  public:
+
+  // .livekit.ListUpdate numbers = 3;
+  bool has_numbers() const;
+  private:
+  bool _internal_has_numbers() const;
+  public:
+  void clear_numbers();
+  const ::livekit::ListUpdate& numbers() const;
+  PROTOBUF_NODISCARD ::livekit::ListUpdate* release_numbers();
+  ::livekit::ListUpdate* mutable_numbers();
+  void set_allocated_numbers(::livekit::ListUpdate* numbers);
+  private:
+  const ::livekit::ListUpdate& _internal_numbers() const;
+  ::livekit::ListUpdate* _internal_mutable_numbers();
+  public:
+  void unsafe_arena_set_allocated_numbers(
+      ::livekit::ListUpdate* numbers);
+  ::livekit::ListUpdate* unsafe_arena_release_numbers();
+
+  // optional .livekit.SIPTransport transport = 2;
+  bool has_transport() const;
+  private:
+  bool _internal_has_transport() const;
+  public:
+  void clear_transport();
+  ::livekit::SIPTransport transport() const;
+  void set_transport(::livekit::SIPTransport value);
+  private:
+  ::livekit::SIPTransport _internal_transport() const;
+  void _internal_set_transport(::livekit::SIPTransport value);
+  public:
+
+  // optional .livekit.SIPMediaEncryption media_encryption = 8;
+  bool has_media_encryption() const;
+  private:
+  bool _internal_has_media_encryption() const;
+  public:
+  void clear_media_encryption();
+  ::livekit::SIPMediaEncryption media_encryption() const;
+  void set_media_encryption(::livekit::SIPMediaEncryption value);
+  private:
+  ::livekit::SIPMediaEncryption _internal_media_encryption() const;
+  void _internal_set_media_encryption(::livekit::SIPMediaEncryption value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.SIPOutboundTrunkUpdate)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr address_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr auth_username_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr auth_password_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr metadata_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_country_;
+    ::livekit::ListUpdate* numbers_;
+    int transport_;
+    int media_encryption_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_livekit_5fsip_2eproto;
@@ -2758,7 +3857,7 @@ class GetSIPInboundTrunkRequest final :
                &_GetSIPInboundTrunkRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    17;
 
   friend void swap(GetSIPInboundTrunkRequest& a, GetSIPInboundTrunkRequest& b) {
     a.Swap(&b);
@@ -2911,7 +4010,7 @@ class GetSIPInboundTrunkResponse final :
                &_GetSIPInboundTrunkResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    18;
 
   friend void swap(GetSIPInboundTrunkResponse& a, GetSIPInboundTrunkResponse& b) {
     a.Swap(&b);
@@ -3068,7 +4167,7 @@ class GetSIPOutboundTrunkRequest final :
                &_GetSIPOutboundTrunkRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    19;
 
   friend void swap(GetSIPOutboundTrunkRequest& a, GetSIPOutboundTrunkRequest& b) {
     a.Swap(&b);
@@ -3221,7 +4320,7 @@ class GetSIPOutboundTrunkResponse final :
                &_GetSIPOutboundTrunkResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    20;
 
   friend void swap(GetSIPOutboundTrunkResponse& a, GetSIPOutboundTrunkResponse& b) {
     a.Swap(&b);
@@ -3378,7 +4477,7 @@ class ListSIPTrunkRequest final :
                &_ListSIPTrunkRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    21;
 
   friend void swap(ListSIPTrunkRequest& a, ListSIPTrunkRequest& b) {
     a.Swap(&b);
@@ -3535,7 +4634,7 @@ class ListSIPTrunkResponse final :
                &_ListSIPTrunkResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    22;
 
   friend void swap(ListSIPTrunkResponse& a, ListSIPTrunkResponse& b) {
     a.Swap(&b);
@@ -3692,7 +4791,7 @@ class ListSIPInboundTrunkRequest final :
                &_ListSIPInboundTrunkRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    23;
 
   friend void swap(ListSIPInboundTrunkRequest& a, ListSIPInboundTrunkRequest& b) {
     a.Swap(&b);
@@ -3901,7 +5000,7 @@ class ListSIPInboundTrunkResponse final :
                &_ListSIPInboundTrunkResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    24;
 
   friend void swap(ListSIPInboundTrunkResponse& a, ListSIPInboundTrunkResponse& b) {
     a.Swap(&b);
@@ -4058,7 +5157,7 @@ class ListSIPOutboundTrunkRequest final :
                &_ListSIPOutboundTrunkRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    25;
 
   friend void swap(ListSIPOutboundTrunkRequest& a, ListSIPOutboundTrunkRequest& b) {
     a.Swap(&b);
@@ -4267,7 +5366,7 @@ class ListSIPOutboundTrunkResponse final :
                &_ListSIPOutboundTrunkResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    26;
 
   friend void swap(ListSIPOutboundTrunkResponse& a, ListSIPOutboundTrunkResponse& b) {
     a.Swap(&b);
@@ -4424,7 +5523,7 @@ class DeleteSIPTrunkRequest final :
                &_DeleteSIPTrunkRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    27;
 
   friend void swap(DeleteSIPTrunkRequest& a, DeleteSIPTrunkRequest& b) {
     a.Swap(&b);
@@ -4577,7 +5676,7 @@ class SIPDispatchRuleDirect final :
                &_SIPDispatchRuleDirect_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    28;
 
   friend void swap(SIPDispatchRuleDirect& a, SIPDispatchRuleDirect& b) {
     a.Swap(&b);
@@ -4746,7 +5845,7 @@ class SIPDispatchRuleIndividual final :
                &_SIPDispatchRuleIndividual_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    29;
 
   friend void swap(SIPDispatchRuleIndividual& a, SIPDispatchRuleIndividual& b) {
     a.Swap(&b);
@@ -4915,7 +6014,7 @@ class SIPDispatchRuleCallee final :
                &_SIPDispatchRuleCallee_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    30;
 
   friend void swap(SIPDispatchRuleCallee& a, SIPDispatchRuleCallee& b) {
     a.Swap(&b);
@@ -5102,7 +6201,7 @@ class SIPDispatchRule final :
                &_SIPDispatchRule_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    31;
 
   friend void swap(SIPDispatchRule& a, SIPDispatchRule& b) {
     a.Swap(&b);
@@ -5341,7 +6440,7 @@ class CreateSIPDispatchRuleRequest final :
                &_CreateSIPDispatchRuleRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    33;
 
   friend void swap(CreateSIPDispatchRuleRequest& a, CreateSIPDispatchRuleRequest& b) {
     a.Swap(&b);
@@ -5425,155 +6524,174 @@ class CreateSIPDispatchRuleRequest final :
     kRoomPresetFieldNumber = 8,
     kRuleFieldNumber = 1,
     kRoomConfigFieldNumber = 9,
+    kDispatchRuleFieldNumber = 10,
     kHidePhoneNumberFieldNumber = 3,
   };
-  // repeated string trunk_ids = 2;
-  int trunk_ids_size() const;
+  // repeated string trunk_ids = 2 [deprecated = true];
+  PROTOBUF_DEPRECATED int trunk_ids_size() const;
   private:
   int _internal_trunk_ids_size() const;
   public:
-  void clear_trunk_ids();
-  const std::string& trunk_ids(int index) const;
-  std::string* mutable_trunk_ids(int index);
-  void set_trunk_ids(int index, const std::string& value);
-  void set_trunk_ids(int index, std::string&& value);
-  void set_trunk_ids(int index, const char* value);
-  void set_trunk_ids(int index, const char* value, size_t size);
-  std::string* add_trunk_ids();
-  void add_trunk_ids(const std::string& value);
-  void add_trunk_ids(std::string&& value);
-  void add_trunk_ids(const char* value);
-  void add_trunk_ids(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& trunk_ids() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_trunk_ids();
+  PROTOBUF_DEPRECATED void clear_trunk_ids();
+  PROTOBUF_DEPRECATED const std::string& trunk_ids(int index) const;
+  PROTOBUF_DEPRECATED std::string* mutable_trunk_ids(int index);
+  PROTOBUF_DEPRECATED void set_trunk_ids(int index, const std::string& value);
+  PROTOBUF_DEPRECATED void set_trunk_ids(int index, std::string&& value);
+  PROTOBUF_DEPRECATED void set_trunk_ids(int index, const char* value);
+  PROTOBUF_DEPRECATED void set_trunk_ids(int index, const char* value, size_t size);
+  PROTOBUF_DEPRECATED std::string* add_trunk_ids();
+  PROTOBUF_DEPRECATED void add_trunk_ids(const std::string& value);
+  PROTOBUF_DEPRECATED void add_trunk_ids(std::string&& value);
+  PROTOBUF_DEPRECATED void add_trunk_ids(const char* value);
+  PROTOBUF_DEPRECATED void add_trunk_ids(const char* value, size_t size);
+  PROTOBUF_DEPRECATED const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& trunk_ids() const;
+  PROTOBUF_DEPRECATED ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_trunk_ids();
   private:
   const std::string& _internal_trunk_ids(int index) const;
   std::string* _internal_add_trunk_ids();
   public:
 
-  // repeated string inbound_numbers = 6;
-  int inbound_numbers_size() const;
+  // repeated string inbound_numbers = 6 [deprecated = true];
+  PROTOBUF_DEPRECATED int inbound_numbers_size() const;
   private:
   int _internal_inbound_numbers_size() const;
   public:
-  void clear_inbound_numbers();
-  const std::string& inbound_numbers(int index) const;
-  std::string* mutable_inbound_numbers(int index);
-  void set_inbound_numbers(int index, const std::string& value);
-  void set_inbound_numbers(int index, std::string&& value);
-  void set_inbound_numbers(int index, const char* value);
-  void set_inbound_numbers(int index, const char* value, size_t size);
-  std::string* add_inbound_numbers();
-  void add_inbound_numbers(const std::string& value);
-  void add_inbound_numbers(std::string&& value);
-  void add_inbound_numbers(const char* value);
-  void add_inbound_numbers(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& inbound_numbers() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_inbound_numbers();
+  PROTOBUF_DEPRECATED void clear_inbound_numbers();
+  PROTOBUF_DEPRECATED const std::string& inbound_numbers(int index) const;
+  PROTOBUF_DEPRECATED std::string* mutable_inbound_numbers(int index);
+  PROTOBUF_DEPRECATED void set_inbound_numbers(int index, const std::string& value);
+  PROTOBUF_DEPRECATED void set_inbound_numbers(int index, std::string&& value);
+  PROTOBUF_DEPRECATED void set_inbound_numbers(int index, const char* value);
+  PROTOBUF_DEPRECATED void set_inbound_numbers(int index, const char* value, size_t size);
+  PROTOBUF_DEPRECATED std::string* add_inbound_numbers();
+  PROTOBUF_DEPRECATED void add_inbound_numbers(const std::string& value);
+  PROTOBUF_DEPRECATED void add_inbound_numbers(std::string&& value);
+  PROTOBUF_DEPRECATED void add_inbound_numbers(const char* value);
+  PROTOBUF_DEPRECATED void add_inbound_numbers(const char* value, size_t size);
+  PROTOBUF_DEPRECATED const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& inbound_numbers() const;
+  PROTOBUF_DEPRECATED ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_inbound_numbers();
   private:
   const std::string& _internal_inbound_numbers(int index) const;
   std::string* _internal_add_inbound_numbers();
   public:
 
-  // map<string, string> attributes = 7;
-  int attributes_size() const;
+  // map<string, string> attributes = 7 [deprecated = true];
+  PROTOBUF_DEPRECATED int attributes_size() const;
   private:
   int _internal_attributes_size() const;
   public:
-  void clear_attributes();
+  PROTOBUF_DEPRECATED void clear_attributes();
   private:
   const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
       _internal_attributes() const;
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
       _internal_mutable_attributes();
   public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+  PROTOBUF_DEPRECATED const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
       attributes() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+  PROTOBUF_DEPRECATED ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
       mutable_attributes();
 
-  // string name = 4;
-  void clear_name();
-  const std::string& name() const;
+  // string name = 4 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_name();
+  PROTOBUF_DEPRECATED const std::string& name() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_name(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* name);
+  PROTOBUF_DEPRECATED void set_name(ArgT0&& arg0, ArgT... args);
+  PROTOBUF_DEPRECATED std::string* mutable_name();
+  PROTOBUF_NODISCARD PROTOBUF_DEPRECATED std::string* release_name();
+  PROTOBUF_DEPRECATED void set_allocated_name(std::string* name);
   private:
   const std::string& _internal_name() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
   std::string* _internal_mutable_name();
   public:
 
-  // string metadata = 5;
-  void clear_metadata();
-  const std::string& metadata() const;
+  // string metadata = 5 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_metadata();
+  PROTOBUF_DEPRECATED const std::string& metadata() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_metadata(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_metadata();
-  PROTOBUF_NODISCARD std::string* release_metadata();
-  void set_allocated_metadata(std::string* metadata);
+  PROTOBUF_DEPRECATED void set_metadata(ArgT0&& arg0, ArgT... args);
+  PROTOBUF_DEPRECATED std::string* mutable_metadata();
+  PROTOBUF_NODISCARD PROTOBUF_DEPRECATED std::string* release_metadata();
+  PROTOBUF_DEPRECATED void set_allocated_metadata(std::string* metadata);
   private:
   const std::string& _internal_metadata() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_metadata(const std::string& value);
   std::string* _internal_mutable_metadata();
   public:
 
-  // string room_preset = 8;
-  void clear_room_preset();
-  const std::string& room_preset() const;
+  // string room_preset = 8 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_room_preset();
+  PROTOBUF_DEPRECATED const std::string& room_preset() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_room_preset(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_room_preset();
-  PROTOBUF_NODISCARD std::string* release_room_preset();
-  void set_allocated_room_preset(std::string* room_preset);
+  PROTOBUF_DEPRECATED void set_room_preset(ArgT0&& arg0, ArgT... args);
+  PROTOBUF_DEPRECATED std::string* mutable_room_preset();
+  PROTOBUF_NODISCARD PROTOBUF_DEPRECATED std::string* release_room_preset();
+  PROTOBUF_DEPRECATED void set_allocated_room_preset(std::string* room_preset);
   private:
   const std::string& _internal_room_preset() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_room_preset(const std::string& value);
   std::string* _internal_mutable_room_preset();
   public:
 
-  // .livekit.SIPDispatchRule rule = 1;
-  bool has_rule() const;
+  // .livekit.SIPDispatchRule rule = 1 [deprecated = true];
+  PROTOBUF_DEPRECATED bool has_rule() const;
   private:
   bool _internal_has_rule() const;
   public:
-  void clear_rule();
-  const ::livekit::SIPDispatchRule& rule() const;
-  PROTOBUF_NODISCARD ::livekit::SIPDispatchRule* release_rule();
-  ::livekit::SIPDispatchRule* mutable_rule();
-  void set_allocated_rule(::livekit::SIPDispatchRule* rule);
+  PROTOBUF_DEPRECATED void clear_rule();
+  PROTOBUF_DEPRECATED const ::livekit::SIPDispatchRule& rule() const;
+  PROTOBUF_NODISCARD PROTOBUF_DEPRECATED ::livekit::SIPDispatchRule* release_rule();
+  PROTOBUF_DEPRECATED ::livekit::SIPDispatchRule* mutable_rule();
+  PROTOBUF_DEPRECATED void set_allocated_rule(::livekit::SIPDispatchRule* rule);
   private:
   const ::livekit::SIPDispatchRule& _internal_rule() const;
   ::livekit::SIPDispatchRule* _internal_mutable_rule();
   public:
-  void unsafe_arena_set_allocated_rule(
+  PROTOBUF_DEPRECATED void unsafe_arena_set_allocated_rule(
       ::livekit::SIPDispatchRule* rule);
-  ::livekit::SIPDispatchRule* unsafe_arena_release_rule();
+  PROTOBUF_DEPRECATED ::livekit::SIPDispatchRule* unsafe_arena_release_rule();
 
-  // .livekit.RoomConfiguration room_config = 9;
-  bool has_room_config() const;
+  // .livekit.RoomConfiguration room_config = 9 [deprecated = true];
+  PROTOBUF_DEPRECATED bool has_room_config() const;
   private:
   bool _internal_has_room_config() const;
   public:
-  void clear_room_config();
-  const ::livekit::RoomConfiguration& room_config() const;
-  PROTOBUF_NODISCARD ::livekit::RoomConfiguration* release_room_config();
-  ::livekit::RoomConfiguration* mutable_room_config();
-  void set_allocated_room_config(::livekit::RoomConfiguration* room_config);
+  PROTOBUF_DEPRECATED void clear_room_config();
+  PROTOBUF_DEPRECATED const ::livekit::RoomConfiguration& room_config() const;
+  PROTOBUF_NODISCARD PROTOBUF_DEPRECATED ::livekit::RoomConfiguration* release_room_config();
+  PROTOBUF_DEPRECATED ::livekit::RoomConfiguration* mutable_room_config();
+  PROTOBUF_DEPRECATED void set_allocated_room_config(::livekit::RoomConfiguration* room_config);
   private:
   const ::livekit::RoomConfiguration& _internal_room_config() const;
   ::livekit::RoomConfiguration* _internal_mutable_room_config();
   public:
-  void unsafe_arena_set_allocated_room_config(
+  PROTOBUF_DEPRECATED void unsafe_arena_set_allocated_room_config(
       ::livekit::RoomConfiguration* room_config);
-  ::livekit::RoomConfiguration* unsafe_arena_release_room_config();
+  PROTOBUF_DEPRECATED ::livekit::RoomConfiguration* unsafe_arena_release_room_config();
 
-  // bool hide_phone_number = 3;
-  void clear_hide_phone_number();
-  bool hide_phone_number() const;
-  void set_hide_phone_number(bool value);
+  // .livekit.SIPDispatchRuleInfo dispatch_rule = 10;
+  bool has_dispatch_rule() const;
+  private:
+  bool _internal_has_dispatch_rule() const;
+  public:
+  void clear_dispatch_rule();
+  const ::livekit::SIPDispatchRuleInfo& dispatch_rule() const;
+  PROTOBUF_NODISCARD ::livekit::SIPDispatchRuleInfo* release_dispatch_rule();
+  ::livekit::SIPDispatchRuleInfo* mutable_dispatch_rule();
+  void set_allocated_dispatch_rule(::livekit::SIPDispatchRuleInfo* dispatch_rule);
+  private:
+  const ::livekit::SIPDispatchRuleInfo& _internal_dispatch_rule() const;
+  ::livekit::SIPDispatchRuleInfo* _internal_mutable_dispatch_rule();
+  public:
+  void unsafe_arena_set_allocated_dispatch_rule(
+      ::livekit::SIPDispatchRuleInfo* dispatch_rule);
+  ::livekit::SIPDispatchRuleInfo* unsafe_arena_release_dispatch_rule();
+
+  // bool hide_phone_number = 3 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_hide_phone_number();
+  PROTOBUF_DEPRECATED bool hide_phone_number() const;
+  PROTOBUF_DEPRECATED void set_hide_phone_number(bool value);
   private:
   bool _internal_hide_phone_number() const;
   void _internal_set_hide_phone_number(bool value);
@@ -5599,8 +6717,221 @@ class CreateSIPDispatchRuleRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_preset_;
     ::livekit::SIPDispatchRule* rule_;
     ::livekit::RoomConfiguration* room_config_;
+    ::livekit::SIPDispatchRuleInfo* dispatch_rule_;
     bool hide_phone_number_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fsip_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UpdateSIPDispatchRuleRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.UpdateSIPDispatchRuleRequest) */ {
+ public:
+  inline UpdateSIPDispatchRuleRequest() : UpdateSIPDispatchRuleRequest(nullptr) {}
+  ~UpdateSIPDispatchRuleRequest() override;
+  explicit PROTOBUF_CONSTEXPR UpdateSIPDispatchRuleRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpdateSIPDispatchRuleRequest(const UpdateSIPDispatchRuleRequest& from);
+  UpdateSIPDispatchRuleRequest(UpdateSIPDispatchRuleRequest&& from) noexcept
+    : UpdateSIPDispatchRuleRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateSIPDispatchRuleRequest& operator=(const UpdateSIPDispatchRuleRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpdateSIPDispatchRuleRequest& operator=(UpdateSIPDispatchRuleRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpdateSIPDispatchRuleRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  enum ActionCase {
+    kReplace = 2,
+    kUpdate = 3,
+    ACTION_NOT_SET = 0,
+  };
+
+  static inline const UpdateSIPDispatchRuleRequest* internal_default_instance() {
+    return reinterpret_cast<const UpdateSIPDispatchRuleRequest*>(
+               &_UpdateSIPDispatchRuleRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    34;
+
+  friend void swap(UpdateSIPDispatchRuleRequest& a, UpdateSIPDispatchRuleRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpdateSIPDispatchRuleRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpdateSIPDispatchRuleRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpdateSIPDispatchRuleRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpdateSIPDispatchRuleRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UpdateSIPDispatchRuleRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UpdateSIPDispatchRuleRequest& from) {
+    UpdateSIPDispatchRuleRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateSIPDispatchRuleRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.UpdateSIPDispatchRuleRequest";
+  }
+  protected:
+  explicit UpdateSIPDispatchRuleRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSipDispatchRuleIdFieldNumber = 1,
+    kReplaceFieldNumber = 2,
+    kUpdateFieldNumber = 3,
+  };
+  // string sip_dispatch_rule_id = 1;
+  void clear_sip_dispatch_rule_id();
+  const std::string& sip_dispatch_rule_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sip_dispatch_rule_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sip_dispatch_rule_id();
+  PROTOBUF_NODISCARD std::string* release_sip_dispatch_rule_id();
+  void set_allocated_sip_dispatch_rule_id(std::string* sip_dispatch_rule_id);
+  private:
+  const std::string& _internal_sip_dispatch_rule_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sip_dispatch_rule_id(const std::string& value);
+  std::string* _internal_mutable_sip_dispatch_rule_id();
+  public:
+
+  // .livekit.SIPDispatchRuleInfo replace = 2;
+  bool has_replace() const;
+  private:
+  bool _internal_has_replace() const;
+  public:
+  void clear_replace();
+  const ::livekit::SIPDispatchRuleInfo& replace() const;
+  PROTOBUF_NODISCARD ::livekit::SIPDispatchRuleInfo* release_replace();
+  ::livekit::SIPDispatchRuleInfo* mutable_replace();
+  void set_allocated_replace(::livekit::SIPDispatchRuleInfo* replace);
+  private:
+  const ::livekit::SIPDispatchRuleInfo& _internal_replace() const;
+  ::livekit::SIPDispatchRuleInfo* _internal_mutable_replace();
+  public:
+  void unsafe_arena_set_allocated_replace(
+      ::livekit::SIPDispatchRuleInfo* replace);
+  ::livekit::SIPDispatchRuleInfo* unsafe_arena_release_replace();
+
+  // .livekit.SIPDispatchRuleUpdate update = 3;
+  bool has_update() const;
+  private:
+  bool _internal_has_update() const;
+  public:
+  void clear_update();
+  const ::livekit::SIPDispatchRuleUpdate& update() const;
+  PROTOBUF_NODISCARD ::livekit::SIPDispatchRuleUpdate* release_update();
+  ::livekit::SIPDispatchRuleUpdate* mutable_update();
+  void set_allocated_update(::livekit::SIPDispatchRuleUpdate* update);
+  private:
+  const ::livekit::SIPDispatchRuleUpdate& _internal_update() const;
+  ::livekit::SIPDispatchRuleUpdate* _internal_mutable_update();
+  public:
+  void unsafe_arena_set_allocated_update(
+      ::livekit::SIPDispatchRuleUpdate* update);
+  ::livekit::SIPDispatchRuleUpdate* unsafe_arena_release_update();
+
+  void clear_action();
+  ActionCase action_case() const;
+  // @@protoc_insertion_point(class_scope:livekit.UpdateSIPDispatchRuleRequest)
+ private:
+  class _Internal;
+  void set_has_replace();
+  void set_has_update();
+
+  inline bool has_action() const;
+  inline void clear_has_action();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sip_dispatch_rule_id_;
+    union ActionUnion {
+      constexpr ActionUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::livekit::SIPDispatchRuleInfo* replace_;
+      ::livekit::SIPDispatchRuleUpdate* update_;
+    } action_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t _oneof_case_[1];
+
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_livekit_5fsip_2eproto;
@@ -5683,7 +7014,7 @@ class SIPDispatchRuleInfo final :
                &_SIPDispatchRuleInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    36;
 
   friend void swap(SIPDispatchRuleInfo& a, SIPDispatchRuleInfo& b) {
     a.Swap(&b);
@@ -5987,6 +7318,293 @@ class SIPDispatchRuleInfo final :
 };
 // -------------------------------------------------------------------
 
+class SIPDispatchRuleUpdate_AttributesEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<SIPDispatchRuleUpdate_AttributesEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<SIPDispatchRuleUpdate_AttributesEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  SIPDispatchRuleUpdate_AttributesEntry_DoNotUse();
+  explicit PROTOBUF_CONSTEXPR SIPDispatchRuleUpdate_AttributesEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit SIPDispatchRuleUpdate_AttributesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const SIPDispatchRuleUpdate_AttributesEntry_DoNotUse& other);
+  static const SIPDispatchRuleUpdate_AttributesEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const SIPDispatchRuleUpdate_AttributesEntry_DoNotUse*>(&_SIPDispatchRuleUpdate_AttributesEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "livekit.SIPDispatchRuleUpdate.AttributesEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "livekit.SIPDispatchRuleUpdate.AttributesEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  friend struct ::TableStruct_livekit_5fsip_2eproto;
+};
+
+// -------------------------------------------------------------------
+
+class SIPDispatchRuleUpdate final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.SIPDispatchRuleUpdate) */ {
+ public:
+  inline SIPDispatchRuleUpdate() : SIPDispatchRuleUpdate(nullptr) {}
+  ~SIPDispatchRuleUpdate() override;
+  explicit PROTOBUF_CONSTEXPR SIPDispatchRuleUpdate(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SIPDispatchRuleUpdate(const SIPDispatchRuleUpdate& from);
+  SIPDispatchRuleUpdate(SIPDispatchRuleUpdate&& from) noexcept
+    : SIPDispatchRuleUpdate() {
+    *this = ::std::move(from);
+  }
+
+  inline SIPDispatchRuleUpdate& operator=(const SIPDispatchRuleUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SIPDispatchRuleUpdate& operator=(SIPDispatchRuleUpdate&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SIPDispatchRuleUpdate& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SIPDispatchRuleUpdate* internal_default_instance() {
+    return reinterpret_cast<const SIPDispatchRuleUpdate*>(
+               &_SIPDispatchRuleUpdate_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    38;
+
+  friend void swap(SIPDispatchRuleUpdate& a, SIPDispatchRuleUpdate& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SIPDispatchRuleUpdate* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SIPDispatchRuleUpdate* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SIPDispatchRuleUpdate* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SIPDispatchRuleUpdate>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SIPDispatchRuleUpdate& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SIPDispatchRuleUpdate& from) {
+    SIPDispatchRuleUpdate::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SIPDispatchRuleUpdate* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.SIPDispatchRuleUpdate";
+  }
+  protected:
+  explicit SIPDispatchRuleUpdate(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAttributesFieldNumber = 5,
+    kNameFieldNumber = 3,
+    kMetadataFieldNumber = 4,
+    kTrunkIdsFieldNumber = 1,
+    kRuleFieldNumber = 2,
+    kMediaEncryptionFieldNumber = 6,
+  };
+  // map<string, string> attributes = 5;
+  int attributes_size() const;
+  private:
+  int _internal_attributes_size() const;
+  public:
+  void clear_attributes();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_attributes() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_attributes();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      attributes() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_attributes();
+
+  // optional string name = 3;
+  bool has_name() const;
+  private:
+  bool _internal_has_name() const;
+  public:
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // optional string metadata = 4;
+  bool has_metadata() const;
+  private:
+  bool _internal_has_metadata() const;
+  public:
+  void clear_metadata();
+  const std::string& metadata() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_metadata(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_metadata();
+  PROTOBUF_NODISCARD std::string* release_metadata();
+  void set_allocated_metadata(std::string* metadata);
+  private:
+  const std::string& _internal_metadata() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_metadata(const std::string& value);
+  std::string* _internal_mutable_metadata();
+  public:
+
+  // .livekit.ListUpdate trunk_ids = 1;
+  bool has_trunk_ids() const;
+  private:
+  bool _internal_has_trunk_ids() const;
+  public:
+  void clear_trunk_ids();
+  const ::livekit::ListUpdate& trunk_ids() const;
+  PROTOBUF_NODISCARD ::livekit::ListUpdate* release_trunk_ids();
+  ::livekit::ListUpdate* mutable_trunk_ids();
+  void set_allocated_trunk_ids(::livekit::ListUpdate* trunk_ids);
+  private:
+  const ::livekit::ListUpdate& _internal_trunk_ids() const;
+  ::livekit::ListUpdate* _internal_mutable_trunk_ids();
+  public:
+  void unsafe_arena_set_allocated_trunk_ids(
+      ::livekit::ListUpdate* trunk_ids);
+  ::livekit::ListUpdate* unsafe_arena_release_trunk_ids();
+
+  // .livekit.SIPDispatchRule rule = 2;
+  bool has_rule() const;
+  private:
+  bool _internal_has_rule() const;
+  public:
+  void clear_rule();
+  const ::livekit::SIPDispatchRule& rule() const;
+  PROTOBUF_NODISCARD ::livekit::SIPDispatchRule* release_rule();
+  ::livekit::SIPDispatchRule* mutable_rule();
+  void set_allocated_rule(::livekit::SIPDispatchRule* rule);
+  private:
+  const ::livekit::SIPDispatchRule& _internal_rule() const;
+  ::livekit::SIPDispatchRule* _internal_mutable_rule();
+  public:
+  void unsafe_arena_set_allocated_rule(
+      ::livekit::SIPDispatchRule* rule);
+  ::livekit::SIPDispatchRule* unsafe_arena_release_rule();
+
+  // optional .livekit.SIPMediaEncryption media_encryption = 6;
+  bool has_media_encryption() const;
+  private:
+  bool _internal_has_media_encryption() const;
+  public:
+  void clear_media_encryption();
+  ::livekit::SIPMediaEncryption media_encryption() const;
+  void set_media_encryption(::livekit::SIPMediaEncryption value);
+  private:
+  ::livekit::SIPMediaEncryption _internal_media_encryption() const;
+  void _internal_set_media_encryption(::livekit::SIPMediaEncryption value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.SIPDispatchRuleUpdate)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+        SIPDispatchRuleUpdate_AttributesEntry_DoNotUse,
+        std::string, std::string,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> attributes_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr metadata_;
+    ::livekit::ListUpdate* trunk_ids_;
+    ::livekit::SIPDispatchRule* rule_;
+    int media_encryption_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fsip_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ListSIPDispatchRuleRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.ListSIPDispatchRuleRequest) */ {
  public:
@@ -6035,7 +7653,7 @@ class ListSIPDispatchRuleRequest final :
                &_ListSIPDispatchRuleRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    39;
 
   friend void swap(ListSIPDispatchRuleRequest& a, ListSIPDispatchRuleRequest& b) {
     a.Swap(&b);
@@ -6244,7 +7862,7 @@ class ListSIPDispatchRuleResponse final :
                &_ListSIPDispatchRuleResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    40;
 
   friend void swap(ListSIPDispatchRuleResponse& a, ListSIPDispatchRuleResponse& b) {
     a.Swap(&b);
@@ -6401,7 +8019,7 @@ class DeleteSIPDispatchRuleRequest final :
                &_DeleteSIPDispatchRuleRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    41;
 
   friend void swap(DeleteSIPDispatchRuleRequest& a, DeleteSIPDispatchRuleRequest& b) {
     a.Swap(&b);
@@ -6610,7 +8228,7 @@ class SIPOutboundConfig final :
                &_SIPOutboundConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    44;
 
   friend void swap(SIPOutboundConfig& a, SIPOutboundConfig& b) {
     a.Swap(&b);
@@ -6691,6 +8309,7 @@ class SIPOutboundConfig final :
     kHostnameFieldNumber = 1,
     kAuthUsernameFieldNumber = 3,
     kAuthPasswordFieldNumber = 4,
+    kDestinationCountryFieldNumber = 7,
     kTransportFieldNumber = 2,
   };
   // map<string, string> headers_to_attributes = 5;
@@ -6769,6 +8388,20 @@ class SIPOutboundConfig final :
   std::string* _internal_mutable_auth_password();
   public:
 
+  // string destination_country = 7;
+  void clear_destination_country();
+  const std::string& destination_country() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_destination_country(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_destination_country();
+  PROTOBUF_NODISCARD std::string* release_destination_country();
+  void set_allocated_destination_country(std::string* destination_country);
+  private:
+  const std::string& _internal_destination_country() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_destination_country(const std::string& value);
+  std::string* _internal_mutable_destination_country();
+  public:
+
   // .livekit.SIPTransport transport = 2;
   void clear_transport();
   ::livekit::SIPTransport transport() const;
@@ -6799,6 +8432,7 @@ class SIPOutboundConfig final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr hostname_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr auth_username_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr auth_password_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_country_;
     int transport_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -6911,7 +8545,7 @@ class CreateSIPParticipantRequest final :
                &_CreateSIPParticipantRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    47;
 
   friend void swap(CreateSIPParticipantRequest& a, CreateSIPParticipantRequest& b) {
     a.Swap(&b);
@@ -7362,7 +8996,7 @@ class SIPParticipantInfo final :
                &_SIPParticipantInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    48;
 
   friend void swap(SIPParticipantInfo& a, SIPParticipantInfo& b) {
     a.Swap(&b);
@@ -7591,7 +9225,7 @@ class TransferSIPParticipantRequest final :
                &_TransferSIPParticipantRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    50;
 
   friend void swap(TransferSIPParticipantRequest& a, TransferSIPParticipantRequest& b) {
     a.Swap(&b);
@@ -7671,6 +9305,7 @@ class TransferSIPParticipantRequest final :
     kParticipantIdentityFieldNumber = 1,
     kRoomNameFieldNumber = 2,
     kTransferToFieldNumber = 3,
+    kRingingTimeoutFieldNumber = 6,
     kPlayDialtoneFieldNumber = 4,
   };
   // map<string, string> headers = 5;
@@ -7732,6 +9367,24 @@ class TransferSIPParticipantRequest final :
   std::string* _internal_mutable_transfer_to();
   public:
 
+  // .google.protobuf.Duration ringing_timeout = 6;
+  bool has_ringing_timeout() const;
+  private:
+  bool _internal_has_ringing_timeout() const;
+  public:
+  void clear_ringing_timeout();
+  const ::PROTOBUF_NAMESPACE_ID::Duration& ringing_timeout() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Duration* release_ringing_timeout();
+  ::PROTOBUF_NAMESPACE_ID::Duration* mutable_ringing_timeout();
+  void set_allocated_ringing_timeout(::PROTOBUF_NAMESPACE_ID::Duration* ringing_timeout);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Duration& _internal_ringing_timeout() const;
+  ::PROTOBUF_NAMESPACE_ID::Duration* _internal_mutable_ringing_timeout();
+  public:
+  void unsafe_arena_set_allocated_ringing_timeout(
+      ::PROTOBUF_NAMESPACE_ID::Duration* ringing_timeout);
+  ::PROTOBUF_NAMESPACE_ID::Duration* unsafe_arena_release_ringing_timeout();
+
   // bool play_dialtone = 4;
   void clear_play_dialtone();
   bool play_dialtone() const;
@@ -7757,6 +9410,7 @@ class TransferSIPParticipantRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr participant_identity_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr transfer_to_;
+    ::PROTOBUF_NAMESPACE_ID::Duration* ringing_timeout_;
     bool play_dialtone_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -7841,7 +9495,7 @@ class SIPCallInfo final :
                &_SIPCallInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    45;
+    52;
 
   friend void swap(SIPCallInfo& a, SIPCallInfo& b) {
     a.Swap(&b);
@@ -8295,6 +9949,260 @@ class SIPCallInfo final :
 };
 // -------------------------------------------------------------------
 
+class SIPTransferInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.SIPTransferInfo) */ {
+ public:
+  inline SIPTransferInfo() : SIPTransferInfo(nullptr) {}
+  ~SIPTransferInfo() override;
+  explicit PROTOBUF_CONSTEXPR SIPTransferInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SIPTransferInfo(const SIPTransferInfo& from);
+  SIPTransferInfo(SIPTransferInfo&& from) noexcept
+    : SIPTransferInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline SIPTransferInfo& operator=(const SIPTransferInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SIPTransferInfo& operator=(SIPTransferInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SIPTransferInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SIPTransferInfo* internal_default_instance() {
+    return reinterpret_cast<const SIPTransferInfo*>(
+               &_SIPTransferInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    53;
+
+  friend void swap(SIPTransferInfo& a, SIPTransferInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SIPTransferInfo* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SIPTransferInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SIPTransferInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SIPTransferInfo>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SIPTransferInfo& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SIPTransferInfo& from) {
+    SIPTransferInfo::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SIPTransferInfo* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.SIPTransferInfo";
+  }
+  protected:
+  explicit SIPTransferInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTransferIdFieldNumber = 1,
+    kCallIdFieldNumber = 2,
+    kTransferToFieldNumber = 3,
+    kErrorFieldNumber = 7,
+    kTransferStatusCodeFieldNumber = 8,
+    kTransferInitiatedAtNsFieldNumber = 4,
+    kTransferCompletedAtNsFieldNumber = 5,
+    kTransferStatusFieldNumber = 6,
+  };
+  // string transfer_id = 1;
+  void clear_transfer_id();
+  const std::string& transfer_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_transfer_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_transfer_id();
+  PROTOBUF_NODISCARD std::string* release_transfer_id();
+  void set_allocated_transfer_id(std::string* transfer_id);
+  private:
+  const std::string& _internal_transfer_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_transfer_id(const std::string& value);
+  std::string* _internal_mutable_transfer_id();
+  public:
+
+  // string call_id = 2;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // string transfer_to = 3;
+  void clear_transfer_to();
+  const std::string& transfer_to() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_transfer_to(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_transfer_to();
+  PROTOBUF_NODISCARD std::string* release_transfer_to();
+  void set_allocated_transfer_to(std::string* transfer_to);
+  private:
+  const std::string& _internal_transfer_to() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_transfer_to(const std::string& value);
+  std::string* _internal_mutable_transfer_to();
+  public:
+
+  // string error = 7;
+  void clear_error();
+  const std::string& error() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_error(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_error();
+  PROTOBUF_NODISCARD std::string* release_error();
+  void set_allocated_error(std::string* error);
+  private:
+  const std::string& _internal_error() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_error(const std::string& value);
+  std::string* _internal_mutable_error();
+  public:
+
+  // .livekit.SIPStatus transfer_status_code = 8;
+  bool has_transfer_status_code() const;
+  private:
+  bool _internal_has_transfer_status_code() const;
+  public:
+  void clear_transfer_status_code();
+  const ::livekit::SIPStatus& transfer_status_code() const;
+  PROTOBUF_NODISCARD ::livekit::SIPStatus* release_transfer_status_code();
+  ::livekit::SIPStatus* mutable_transfer_status_code();
+  void set_allocated_transfer_status_code(::livekit::SIPStatus* transfer_status_code);
+  private:
+  const ::livekit::SIPStatus& _internal_transfer_status_code() const;
+  ::livekit::SIPStatus* _internal_mutable_transfer_status_code();
+  public:
+  void unsafe_arena_set_allocated_transfer_status_code(
+      ::livekit::SIPStatus* transfer_status_code);
+  ::livekit::SIPStatus* unsafe_arena_release_transfer_status_code();
+
+  // int64 transfer_initiated_at_ns = 4;
+  void clear_transfer_initiated_at_ns();
+  int64_t transfer_initiated_at_ns() const;
+  void set_transfer_initiated_at_ns(int64_t value);
+  private:
+  int64_t _internal_transfer_initiated_at_ns() const;
+  void _internal_set_transfer_initiated_at_ns(int64_t value);
+  public:
+
+  // int64 transfer_completed_at_ns = 5;
+  void clear_transfer_completed_at_ns();
+  int64_t transfer_completed_at_ns() const;
+  void set_transfer_completed_at_ns(int64_t value);
+  private:
+  int64_t _internal_transfer_completed_at_ns() const;
+  void _internal_set_transfer_completed_at_ns(int64_t value);
+  public:
+
+  // .livekit.SIPTransferStatus transfer_status = 6;
+  void clear_transfer_status();
+  ::livekit::SIPTransferStatus transfer_status() const;
+  void set_transfer_status(::livekit::SIPTransferStatus value);
+  private:
+  ::livekit::SIPTransferStatus _internal_transfer_status() const;
+  void _internal_set_transfer_status(::livekit::SIPTransferStatus value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.SIPTransferInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr transfer_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr transfer_to_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_;
+    ::livekit::SIPStatus* transfer_status_code_;
+    int64_t transfer_initiated_at_ns_;
+    int64_t transfer_completed_at_ns_;
+    int transfer_status_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fsip_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SIPUri final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.SIPUri) */ {
  public:
@@ -8343,7 +10251,7 @@ class SIPUri final :
                &_SIPUri_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    46;
+    54;
 
   friend void swap(SIPUri& a, SIPUri& b) {
     a.Swap(&b);
@@ -10025,6 +11933,217 @@ inline void CreateSIPInboundTrunkRequest::set_allocated_trunk(::livekit::SIPInbo
 
 // -------------------------------------------------------------------
 
+// UpdateSIPInboundTrunkRequest
+
+// string sip_trunk_id = 1;
+inline void UpdateSIPInboundTrunkRequest::clear_sip_trunk_id() {
+  _impl_.sip_trunk_id_.ClearToEmpty();
+}
+inline const std::string& UpdateSIPInboundTrunkRequest::sip_trunk_id() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPInboundTrunkRequest.sip_trunk_id)
+  return _internal_sip_trunk_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UpdateSIPInboundTrunkRequest::set_sip_trunk_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.sip_trunk_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.UpdateSIPInboundTrunkRequest.sip_trunk_id)
+}
+inline std::string* UpdateSIPInboundTrunkRequest::mutable_sip_trunk_id() {
+  std::string* _s = _internal_mutable_sip_trunk_id();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPInboundTrunkRequest.sip_trunk_id)
+  return _s;
+}
+inline const std::string& UpdateSIPInboundTrunkRequest::_internal_sip_trunk_id() const {
+  return _impl_.sip_trunk_id_.Get();
+}
+inline void UpdateSIPInboundTrunkRequest::_internal_set_sip_trunk_id(const std::string& value) {
+  
+  _impl_.sip_trunk_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateSIPInboundTrunkRequest::_internal_mutable_sip_trunk_id() {
+  
+  return _impl_.sip_trunk_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UpdateSIPInboundTrunkRequest::release_sip_trunk_id() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPInboundTrunkRequest.sip_trunk_id)
+  return _impl_.sip_trunk_id_.Release();
+}
+inline void UpdateSIPInboundTrunkRequest::set_allocated_sip_trunk_id(std::string* sip_trunk_id) {
+  if (sip_trunk_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.sip_trunk_id_.SetAllocated(sip_trunk_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.sip_trunk_id_.IsDefault()) {
+    _impl_.sip_trunk_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPInboundTrunkRequest.sip_trunk_id)
+}
+
+// .livekit.SIPInboundTrunkInfo replace = 2;
+inline bool UpdateSIPInboundTrunkRequest::_internal_has_replace() const {
+  return action_case() == kReplace;
+}
+inline bool UpdateSIPInboundTrunkRequest::has_replace() const {
+  return _internal_has_replace();
+}
+inline void UpdateSIPInboundTrunkRequest::set_has_replace() {
+  _impl_._oneof_case_[0] = kReplace;
+}
+inline void UpdateSIPInboundTrunkRequest::clear_replace() {
+  if (_internal_has_replace()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.action_.replace_;
+    }
+    clear_has_action();
+  }
+}
+inline ::livekit::SIPInboundTrunkInfo* UpdateSIPInboundTrunkRequest::release_replace() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPInboundTrunkRequest.replace)
+  if (_internal_has_replace()) {
+    clear_has_action();
+    ::livekit::SIPInboundTrunkInfo* temp = _impl_.action_.replace_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.action_.replace_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::SIPInboundTrunkInfo& UpdateSIPInboundTrunkRequest::_internal_replace() const {
+  return _internal_has_replace()
+      ? *_impl_.action_.replace_
+      : reinterpret_cast< ::livekit::SIPInboundTrunkInfo&>(::livekit::_SIPInboundTrunkInfo_default_instance_);
+}
+inline const ::livekit::SIPInboundTrunkInfo& UpdateSIPInboundTrunkRequest::replace() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPInboundTrunkRequest.replace)
+  return _internal_replace();
+}
+inline ::livekit::SIPInboundTrunkInfo* UpdateSIPInboundTrunkRequest::unsafe_arena_release_replace() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.UpdateSIPInboundTrunkRequest.replace)
+  if (_internal_has_replace()) {
+    clear_has_action();
+    ::livekit::SIPInboundTrunkInfo* temp = _impl_.action_.replace_;
+    _impl_.action_.replace_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void UpdateSIPInboundTrunkRequest::unsafe_arena_set_allocated_replace(::livekit::SIPInboundTrunkInfo* replace) {
+  clear_action();
+  if (replace) {
+    set_has_replace();
+    _impl_.action_.replace_ = replace;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.UpdateSIPInboundTrunkRequest.replace)
+}
+inline ::livekit::SIPInboundTrunkInfo* UpdateSIPInboundTrunkRequest::_internal_mutable_replace() {
+  if (!_internal_has_replace()) {
+    clear_action();
+    set_has_replace();
+    _impl_.action_.replace_ = CreateMaybeMessage< ::livekit::SIPInboundTrunkInfo >(GetArenaForAllocation());
+  }
+  return _impl_.action_.replace_;
+}
+inline ::livekit::SIPInboundTrunkInfo* UpdateSIPInboundTrunkRequest::mutable_replace() {
+  ::livekit::SIPInboundTrunkInfo* _msg = _internal_mutable_replace();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPInboundTrunkRequest.replace)
+  return _msg;
+}
+
+// .livekit.SIPInboundTrunkUpdate update = 3;
+inline bool UpdateSIPInboundTrunkRequest::_internal_has_update() const {
+  return action_case() == kUpdate;
+}
+inline bool UpdateSIPInboundTrunkRequest::has_update() const {
+  return _internal_has_update();
+}
+inline void UpdateSIPInboundTrunkRequest::set_has_update() {
+  _impl_._oneof_case_[0] = kUpdate;
+}
+inline void UpdateSIPInboundTrunkRequest::clear_update() {
+  if (_internal_has_update()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.action_.update_;
+    }
+    clear_has_action();
+  }
+}
+inline ::livekit::SIPInboundTrunkUpdate* UpdateSIPInboundTrunkRequest::release_update() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPInboundTrunkRequest.update)
+  if (_internal_has_update()) {
+    clear_has_action();
+    ::livekit::SIPInboundTrunkUpdate* temp = _impl_.action_.update_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.action_.update_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::SIPInboundTrunkUpdate& UpdateSIPInboundTrunkRequest::_internal_update() const {
+  return _internal_has_update()
+      ? *_impl_.action_.update_
+      : reinterpret_cast< ::livekit::SIPInboundTrunkUpdate&>(::livekit::_SIPInboundTrunkUpdate_default_instance_);
+}
+inline const ::livekit::SIPInboundTrunkUpdate& UpdateSIPInboundTrunkRequest::update() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPInboundTrunkRequest.update)
+  return _internal_update();
+}
+inline ::livekit::SIPInboundTrunkUpdate* UpdateSIPInboundTrunkRequest::unsafe_arena_release_update() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.UpdateSIPInboundTrunkRequest.update)
+  if (_internal_has_update()) {
+    clear_has_action();
+    ::livekit::SIPInboundTrunkUpdate* temp = _impl_.action_.update_;
+    _impl_.action_.update_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void UpdateSIPInboundTrunkRequest::unsafe_arena_set_allocated_update(::livekit::SIPInboundTrunkUpdate* update) {
+  clear_action();
+  if (update) {
+    set_has_update();
+    _impl_.action_.update_ = update;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.UpdateSIPInboundTrunkRequest.update)
+}
+inline ::livekit::SIPInboundTrunkUpdate* UpdateSIPInboundTrunkRequest::_internal_mutable_update() {
+  if (!_internal_has_update()) {
+    clear_action();
+    set_has_update();
+    _impl_.action_.update_ = CreateMaybeMessage< ::livekit::SIPInboundTrunkUpdate >(GetArenaForAllocation());
+  }
+  return _impl_.action_.update_;
+}
+inline ::livekit::SIPInboundTrunkUpdate* UpdateSIPInboundTrunkRequest::mutable_update() {
+  ::livekit::SIPInboundTrunkUpdate* _msg = _internal_mutable_update();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPInboundTrunkRequest.update)
+  return _msg;
+}
+
+inline bool UpdateSIPInboundTrunkRequest::has_action() const {
+  return action_case() != ACTION_NOT_SET;
+}
+inline void UpdateSIPInboundTrunkRequest::clear_has_action() {
+  _impl_._oneof_case_[0] = ACTION_NOT_SET;
+}
+inline UpdateSIPInboundTrunkRequest::ActionCase UpdateSIPInboundTrunkRequest::action_case() const {
+  return UpdateSIPInboundTrunkRequest::ActionCase(_impl_._oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -10827,6 +12946,565 @@ inline void SIPInboundTrunkInfo::set_media_encryption(::livekit::SIPMediaEncrypt
 
 // -------------------------------------------------------------------
 
+// SIPInboundTrunkUpdate
+
+// .livekit.ListUpdate numbers = 1;
+inline bool SIPInboundTrunkUpdate::_internal_has_numbers() const {
+  return this != internal_default_instance() && _impl_.numbers_ != nullptr;
+}
+inline bool SIPInboundTrunkUpdate::has_numbers() const {
+  return _internal_has_numbers();
+}
+inline const ::livekit::ListUpdate& SIPInboundTrunkUpdate::_internal_numbers() const {
+  const ::livekit::ListUpdate* p = _impl_.numbers_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ListUpdate&>(
+      ::livekit::_ListUpdate_default_instance_);
+}
+inline const ::livekit::ListUpdate& SIPInboundTrunkUpdate::numbers() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPInboundTrunkUpdate.numbers)
+  return _internal_numbers();
+}
+inline void SIPInboundTrunkUpdate::unsafe_arena_set_allocated_numbers(
+    ::livekit::ListUpdate* numbers) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.numbers_);
+  }
+  _impl_.numbers_ = numbers;
+  if (numbers) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SIPInboundTrunkUpdate.numbers)
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::release_numbers() {
+  
+  ::livekit::ListUpdate* temp = _impl_.numbers_;
+  _impl_.numbers_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::unsafe_arena_release_numbers() {
+  // @@protoc_insertion_point(field_release:livekit.SIPInboundTrunkUpdate.numbers)
+  
+  ::livekit::ListUpdate* temp = _impl_.numbers_;
+  _impl_.numbers_ = nullptr;
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::_internal_mutable_numbers() {
+  
+  if (_impl_.numbers_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ListUpdate>(GetArenaForAllocation());
+    _impl_.numbers_ = p;
+  }
+  return _impl_.numbers_;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::mutable_numbers() {
+  ::livekit::ListUpdate* _msg = _internal_mutable_numbers();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPInboundTrunkUpdate.numbers)
+  return _msg;
+}
+inline void SIPInboundTrunkUpdate::set_allocated_numbers(::livekit::ListUpdate* numbers) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.numbers_);
+  }
+  if (numbers) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(numbers));
+    if (message_arena != submessage_arena) {
+      numbers = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, numbers, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.numbers_ = numbers;
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPInboundTrunkUpdate.numbers)
+}
+
+// .livekit.ListUpdate allowed_addresses = 2;
+inline bool SIPInboundTrunkUpdate::_internal_has_allowed_addresses() const {
+  return this != internal_default_instance() && _impl_.allowed_addresses_ != nullptr;
+}
+inline bool SIPInboundTrunkUpdate::has_allowed_addresses() const {
+  return _internal_has_allowed_addresses();
+}
+inline const ::livekit::ListUpdate& SIPInboundTrunkUpdate::_internal_allowed_addresses() const {
+  const ::livekit::ListUpdate* p = _impl_.allowed_addresses_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ListUpdate&>(
+      ::livekit::_ListUpdate_default_instance_);
+}
+inline const ::livekit::ListUpdate& SIPInboundTrunkUpdate::allowed_addresses() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPInboundTrunkUpdate.allowed_addresses)
+  return _internal_allowed_addresses();
+}
+inline void SIPInboundTrunkUpdate::unsafe_arena_set_allocated_allowed_addresses(
+    ::livekit::ListUpdate* allowed_addresses) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.allowed_addresses_);
+  }
+  _impl_.allowed_addresses_ = allowed_addresses;
+  if (allowed_addresses) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SIPInboundTrunkUpdate.allowed_addresses)
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::release_allowed_addresses() {
+  
+  ::livekit::ListUpdate* temp = _impl_.allowed_addresses_;
+  _impl_.allowed_addresses_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::unsafe_arena_release_allowed_addresses() {
+  // @@protoc_insertion_point(field_release:livekit.SIPInboundTrunkUpdate.allowed_addresses)
+  
+  ::livekit::ListUpdate* temp = _impl_.allowed_addresses_;
+  _impl_.allowed_addresses_ = nullptr;
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::_internal_mutable_allowed_addresses() {
+  
+  if (_impl_.allowed_addresses_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ListUpdate>(GetArenaForAllocation());
+    _impl_.allowed_addresses_ = p;
+  }
+  return _impl_.allowed_addresses_;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::mutable_allowed_addresses() {
+  ::livekit::ListUpdate* _msg = _internal_mutable_allowed_addresses();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPInboundTrunkUpdate.allowed_addresses)
+  return _msg;
+}
+inline void SIPInboundTrunkUpdate::set_allocated_allowed_addresses(::livekit::ListUpdate* allowed_addresses) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.allowed_addresses_);
+  }
+  if (allowed_addresses) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(allowed_addresses));
+    if (message_arena != submessage_arena) {
+      allowed_addresses = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, allowed_addresses, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.allowed_addresses_ = allowed_addresses;
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPInboundTrunkUpdate.allowed_addresses)
+}
+
+// .livekit.ListUpdate allowed_numbers = 3;
+inline bool SIPInboundTrunkUpdate::_internal_has_allowed_numbers() const {
+  return this != internal_default_instance() && _impl_.allowed_numbers_ != nullptr;
+}
+inline bool SIPInboundTrunkUpdate::has_allowed_numbers() const {
+  return _internal_has_allowed_numbers();
+}
+inline const ::livekit::ListUpdate& SIPInboundTrunkUpdate::_internal_allowed_numbers() const {
+  const ::livekit::ListUpdate* p = _impl_.allowed_numbers_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ListUpdate&>(
+      ::livekit::_ListUpdate_default_instance_);
+}
+inline const ::livekit::ListUpdate& SIPInboundTrunkUpdate::allowed_numbers() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPInboundTrunkUpdate.allowed_numbers)
+  return _internal_allowed_numbers();
+}
+inline void SIPInboundTrunkUpdate::unsafe_arena_set_allocated_allowed_numbers(
+    ::livekit::ListUpdate* allowed_numbers) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.allowed_numbers_);
+  }
+  _impl_.allowed_numbers_ = allowed_numbers;
+  if (allowed_numbers) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SIPInboundTrunkUpdate.allowed_numbers)
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::release_allowed_numbers() {
+  
+  ::livekit::ListUpdate* temp = _impl_.allowed_numbers_;
+  _impl_.allowed_numbers_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::unsafe_arena_release_allowed_numbers() {
+  // @@protoc_insertion_point(field_release:livekit.SIPInboundTrunkUpdate.allowed_numbers)
+  
+  ::livekit::ListUpdate* temp = _impl_.allowed_numbers_;
+  _impl_.allowed_numbers_ = nullptr;
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::_internal_mutable_allowed_numbers() {
+  
+  if (_impl_.allowed_numbers_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ListUpdate>(GetArenaForAllocation());
+    _impl_.allowed_numbers_ = p;
+  }
+  return _impl_.allowed_numbers_;
+}
+inline ::livekit::ListUpdate* SIPInboundTrunkUpdate::mutable_allowed_numbers() {
+  ::livekit::ListUpdate* _msg = _internal_mutable_allowed_numbers();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPInboundTrunkUpdate.allowed_numbers)
+  return _msg;
+}
+inline void SIPInboundTrunkUpdate::set_allocated_allowed_numbers(::livekit::ListUpdate* allowed_numbers) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.allowed_numbers_);
+  }
+  if (allowed_numbers) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(allowed_numbers));
+    if (message_arena != submessage_arena) {
+      allowed_numbers = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, allowed_numbers, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.allowed_numbers_ = allowed_numbers;
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPInboundTrunkUpdate.allowed_numbers)
+}
+
+// optional string auth_username = 4;
+inline bool SIPInboundTrunkUpdate::_internal_has_auth_username() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool SIPInboundTrunkUpdate::has_auth_username() const {
+  return _internal_has_auth_username();
+}
+inline void SIPInboundTrunkUpdate::clear_auth_username() {
+  _impl_.auth_username_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& SIPInboundTrunkUpdate::auth_username() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPInboundTrunkUpdate.auth_username)
+  return _internal_auth_username();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPInboundTrunkUpdate::set_auth_username(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.auth_username_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPInboundTrunkUpdate.auth_username)
+}
+inline std::string* SIPInboundTrunkUpdate::mutable_auth_username() {
+  std::string* _s = _internal_mutable_auth_username();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPInboundTrunkUpdate.auth_username)
+  return _s;
+}
+inline const std::string& SIPInboundTrunkUpdate::_internal_auth_username() const {
+  return _impl_.auth_username_.Get();
+}
+inline void SIPInboundTrunkUpdate::_internal_set_auth_username(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.auth_username_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPInboundTrunkUpdate::_internal_mutable_auth_username() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.auth_username_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPInboundTrunkUpdate::release_auth_username() {
+  // @@protoc_insertion_point(field_release:livekit.SIPInboundTrunkUpdate.auth_username)
+  if (!_internal_has_auth_username()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.auth_username_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.auth_username_.IsDefault()) {
+    _impl_.auth_username_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPInboundTrunkUpdate::set_allocated_auth_username(std::string* auth_username) {
+  if (auth_username != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.auth_username_.SetAllocated(auth_username, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.auth_username_.IsDefault()) {
+    _impl_.auth_username_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPInboundTrunkUpdate.auth_username)
+}
+
+// optional string auth_password = 5;
+inline bool SIPInboundTrunkUpdate::_internal_has_auth_password() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool SIPInboundTrunkUpdate::has_auth_password() const {
+  return _internal_has_auth_password();
+}
+inline void SIPInboundTrunkUpdate::clear_auth_password() {
+  _impl_.auth_password_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& SIPInboundTrunkUpdate::auth_password() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPInboundTrunkUpdate.auth_password)
+  return _internal_auth_password();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPInboundTrunkUpdate::set_auth_password(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.auth_password_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPInboundTrunkUpdate.auth_password)
+}
+inline std::string* SIPInboundTrunkUpdate::mutable_auth_password() {
+  std::string* _s = _internal_mutable_auth_password();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPInboundTrunkUpdate.auth_password)
+  return _s;
+}
+inline const std::string& SIPInboundTrunkUpdate::_internal_auth_password() const {
+  return _impl_.auth_password_.Get();
+}
+inline void SIPInboundTrunkUpdate::_internal_set_auth_password(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.auth_password_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPInboundTrunkUpdate::_internal_mutable_auth_password() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.auth_password_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPInboundTrunkUpdate::release_auth_password() {
+  // @@protoc_insertion_point(field_release:livekit.SIPInboundTrunkUpdate.auth_password)
+  if (!_internal_has_auth_password()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.auth_password_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.auth_password_.IsDefault()) {
+    _impl_.auth_password_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPInboundTrunkUpdate::set_allocated_auth_password(std::string* auth_password) {
+  if (auth_password != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.auth_password_.SetAllocated(auth_password, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.auth_password_.IsDefault()) {
+    _impl_.auth_password_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPInboundTrunkUpdate.auth_password)
+}
+
+// optional string name = 6;
+inline bool SIPInboundTrunkUpdate::_internal_has_name() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool SIPInboundTrunkUpdate::has_name() const {
+  return _internal_has_name();
+}
+inline void SIPInboundTrunkUpdate::clear_name() {
+  _impl_.name_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& SIPInboundTrunkUpdate::name() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPInboundTrunkUpdate.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPInboundTrunkUpdate::set_name(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000004u;
+ _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPInboundTrunkUpdate.name)
+}
+inline std::string* SIPInboundTrunkUpdate::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPInboundTrunkUpdate.name)
+  return _s;
+}
+inline const std::string& SIPInboundTrunkUpdate::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void SIPInboundTrunkUpdate::_internal_set_name(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPInboundTrunkUpdate::_internal_mutable_name() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  return _impl_.name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPInboundTrunkUpdate::release_name() {
+  // @@protoc_insertion_point(field_release:livekit.SIPInboundTrunkUpdate.name)
+  if (!_internal_has_name()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  auto* p = _impl_.name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPInboundTrunkUpdate::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPInboundTrunkUpdate.name)
+}
+
+// optional string metadata = 7;
+inline bool SIPInboundTrunkUpdate::_internal_has_metadata() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool SIPInboundTrunkUpdate::has_metadata() const {
+  return _internal_has_metadata();
+}
+inline void SIPInboundTrunkUpdate::clear_metadata() {
+  _impl_.metadata_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline const std::string& SIPInboundTrunkUpdate::metadata() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPInboundTrunkUpdate.metadata)
+  return _internal_metadata();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPInboundTrunkUpdate::set_metadata(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000008u;
+ _impl_.metadata_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPInboundTrunkUpdate.metadata)
+}
+inline std::string* SIPInboundTrunkUpdate::mutable_metadata() {
+  std::string* _s = _internal_mutable_metadata();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPInboundTrunkUpdate.metadata)
+  return _s;
+}
+inline const std::string& SIPInboundTrunkUpdate::_internal_metadata() const {
+  return _impl_.metadata_.Get();
+}
+inline void SIPInboundTrunkUpdate::_internal_set_metadata(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.metadata_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPInboundTrunkUpdate::_internal_mutable_metadata() {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  return _impl_.metadata_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPInboundTrunkUpdate::release_metadata() {
+  // @@protoc_insertion_point(field_release:livekit.SIPInboundTrunkUpdate.metadata)
+  if (!_internal_has_metadata()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  auto* p = _impl_.metadata_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.metadata_.IsDefault()) {
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPInboundTrunkUpdate::set_allocated_metadata(std::string* metadata) {
+  if (metadata != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  _impl_.metadata_.SetAllocated(metadata, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.metadata_.IsDefault()) {
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPInboundTrunkUpdate.metadata)
+}
+
+// optional .livekit.SIPMediaEncryption media_encryption = 8;
+inline bool SIPInboundTrunkUpdate::_internal_has_media_encryption() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool SIPInboundTrunkUpdate::has_media_encryption() const {
+  return _internal_has_media_encryption();
+}
+inline void SIPInboundTrunkUpdate::clear_media_encryption() {
+  _impl_.media_encryption_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::livekit::SIPMediaEncryption SIPInboundTrunkUpdate::_internal_media_encryption() const {
+  return static_cast< ::livekit::SIPMediaEncryption >(_impl_.media_encryption_);
+}
+inline ::livekit::SIPMediaEncryption SIPInboundTrunkUpdate::media_encryption() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPInboundTrunkUpdate.media_encryption)
+  return _internal_media_encryption();
+}
+inline void SIPInboundTrunkUpdate::_internal_set_media_encryption(::livekit::SIPMediaEncryption value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.media_encryption_ = value;
+}
+inline void SIPInboundTrunkUpdate::set_media_encryption(::livekit::SIPMediaEncryption value) {
+  _internal_set_media_encryption(value);
+  // @@protoc_insertion_point(field_set:livekit.SIPInboundTrunkUpdate.media_encryption)
+}
+
+// -------------------------------------------------------------------
+
 // CreateSIPOutboundTrunkRequest
 
 // .livekit.SIPOutboundTrunkInfo trunk = 1;
@@ -10919,6 +13597,217 @@ inline void CreateSIPOutboundTrunkRequest::set_allocated_trunk(::livekit::SIPOut
   // @@protoc_insertion_point(field_set_allocated:livekit.CreateSIPOutboundTrunkRequest.trunk)
 }
 
+// -------------------------------------------------------------------
+
+// UpdateSIPOutboundTrunkRequest
+
+// string sip_trunk_id = 1;
+inline void UpdateSIPOutboundTrunkRequest::clear_sip_trunk_id() {
+  _impl_.sip_trunk_id_.ClearToEmpty();
+}
+inline const std::string& UpdateSIPOutboundTrunkRequest::sip_trunk_id() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPOutboundTrunkRequest.sip_trunk_id)
+  return _internal_sip_trunk_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UpdateSIPOutboundTrunkRequest::set_sip_trunk_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.sip_trunk_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.UpdateSIPOutboundTrunkRequest.sip_trunk_id)
+}
+inline std::string* UpdateSIPOutboundTrunkRequest::mutable_sip_trunk_id() {
+  std::string* _s = _internal_mutable_sip_trunk_id();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPOutboundTrunkRequest.sip_trunk_id)
+  return _s;
+}
+inline const std::string& UpdateSIPOutboundTrunkRequest::_internal_sip_trunk_id() const {
+  return _impl_.sip_trunk_id_.Get();
+}
+inline void UpdateSIPOutboundTrunkRequest::_internal_set_sip_trunk_id(const std::string& value) {
+  
+  _impl_.sip_trunk_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateSIPOutboundTrunkRequest::_internal_mutable_sip_trunk_id() {
+  
+  return _impl_.sip_trunk_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UpdateSIPOutboundTrunkRequest::release_sip_trunk_id() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPOutboundTrunkRequest.sip_trunk_id)
+  return _impl_.sip_trunk_id_.Release();
+}
+inline void UpdateSIPOutboundTrunkRequest::set_allocated_sip_trunk_id(std::string* sip_trunk_id) {
+  if (sip_trunk_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.sip_trunk_id_.SetAllocated(sip_trunk_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.sip_trunk_id_.IsDefault()) {
+    _impl_.sip_trunk_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPOutboundTrunkRequest.sip_trunk_id)
+}
+
+// .livekit.SIPOutboundTrunkInfo replace = 2;
+inline bool UpdateSIPOutboundTrunkRequest::_internal_has_replace() const {
+  return action_case() == kReplace;
+}
+inline bool UpdateSIPOutboundTrunkRequest::has_replace() const {
+  return _internal_has_replace();
+}
+inline void UpdateSIPOutboundTrunkRequest::set_has_replace() {
+  _impl_._oneof_case_[0] = kReplace;
+}
+inline void UpdateSIPOutboundTrunkRequest::clear_replace() {
+  if (_internal_has_replace()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.action_.replace_;
+    }
+    clear_has_action();
+  }
+}
+inline ::livekit::SIPOutboundTrunkInfo* UpdateSIPOutboundTrunkRequest::release_replace() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPOutboundTrunkRequest.replace)
+  if (_internal_has_replace()) {
+    clear_has_action();
+    ::livekit::SIPOutboundTrunkInfo* temp = _impl_.action_.replace_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.action_.replace_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::SIPOutboundTrunkInfo& UpdateSIPOutboundTrunkRequest::_internal_replace() const {
+  return _internal_has_replace()
+      ? *_impl_.action_.replace_
+      : reinterpret_cast< ::livekit::SIPOutboundTrunkInfo&>(::livekit::_SIPOutboundTrunkInfo_default_instance_);
+}
+inline const ::livekit::SIPOutboundTrunkInfo& UpdateSIPOutboundTrunkRequest::replace() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPOutboundTrunkRequest.replace)
+  return _internal_replace();
+}
+inline ::livekit::SIPOutboundTrunkInfo* UpdateSIPOutboundTrunkRequest::unsafe_arena_release_replace() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.UpdateSIPOutboundTrunkRequest.replace)
+  if (_internal_has_replace()) {
+    clear_has_action();
+    ::livekit::SIPOutboundTrunkInfo* temp = _impl_.action_.replace_;
+    _impl_.action_.replace_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void UpdateSIPOutboundTrunkRequest::unsafe_arena_set_allocated_replace(::livekit::SIPOutboundTrunkInfo* replace) {
+  clear_action();
+  if (replace) {
+    set_has_replace();
+    _impl_.action_.replace_ = replace;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.UpdateSIPOutboundTrunkRequest.replace)
+}
+inline ::livekit::SIPOutboundTrunkInfo* UpdateSIPOutboundTrunkRequest::_internal_mutable_replace() {
+  if (!_internal_has_replace()) {
+    clear_action();
+    set_has_replace();
+    _impl_.action_.replace_ = CreateMaybeMessage< ::livekit::SIPOutboundTrunkInfo >(GetArenaForAllocation());
+  }
+  return _impl_.action_.replace_;
+}
+inline ::livekit::SIPOutboundTrunkInfo* UpdateSIPOutboundTrunkRequest::mutable_replace() {
+  ::livekit::SIPOutboundTrunkInfo* _msg = _internal_mutable_replace();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPOutboundTrunkRequest.replace)
+  return _msg;
+}
+
+// .livekit.SIPOutboundTrunkUpdate update = 3;
+inline bool UpdateSIPOutboundTrunkRequest::_internal_has_update() const {
+  return action_case() == kUpdate;
+}
+inline bool UpdateSIPOutboundTrunkRequest::has_update() const {
+  return _internal_has_update();
+}
+inline void UpdateSIPOutboundTrunkRequest::set_has_update() {
+  _impl_._oneof_case_[0] = kUpdate;
+}
+inline void UpdateSIPOutboundTrunkRequest::clear_update() {
+  if (_internal_has_update()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.action_.update_;
+    }
+    clear_has_action();
+  }
+}
+inline ::livekit::SIPOutboundTrunkUpdate* UpdateSIPOutboundTrunkRequest::release_update() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPOutboundTrunkRequest.update)
+  if (_internal_has_update()) {
+    clear_has_action();
+    ::livekit::SIPOutboundTrunkUpdate* temp = _impl_.action_.update_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.action_.update_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::SIPOutboundTrunkUpdate& UpdateSIPOutboundTrunkRequest::_internal_update() const {
+  return _internal_has_update()
+      ? *_impl_.action_.update_
+      : reinterpret_cast< ::livekit::SIPOutboundTrunkUpdate&>(::livekit::_SIPOutboundTrunkUpdate_default_instance_);
+}
+inline const ::livekit::SIPOutboundTrunkUpdate& UpdateSIPOutboundTrunkRequest::update() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPOutboundTrunkRequest.update)
+  return _internal_update();
+}
+inline ::livekit::SIPOutboundTrunkUpdate* UpdateSIPOutboundTrunkRequest::unsafe_arena_release_update() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.UpdateSIPOutboundTrunkRequest.update)
+  if (_internal_has_update()) {
+    clear_has_action();
+    ::livekit::SIPOutboundTrunkUpdate* temp = _impl_.action_.update_;
+    _impl_.action_.update_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void UpdateSIPOutboundTrunkRequest::unsafe_arena_set_allocated_update(::livekit::SIPOutboundTrunkUpdate* update) {
+  clear_action();
+  if (update) {
+    set_has_update();
+    _impl_.action_.update_ = update;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.UpdateSIPOutboundTrunkRequest.update)
+}
+inline ::livekit::SIPOutboundTrunkUpdate* UpdateSIPOutboundTrunkRequest::_internal_mutable_update() {
+  if (!_internal_has_update()) {
+    clear_action();
+    set_has_update();
+    _impl_.action_.update_ = CreateMaybeMessage< ::livekit::SIPOutboundTrunkUpdate >(GetArenaForAllocation());
+  }
+  return _impl_.action_.update_;
+}
+inline ::livekit::SIPOutboundTrunkUpdate* UpdateSIPOutboundTrunkRequest::mutable_update() {
+  ::livekit::SIPOutboundTrunkUpdate* _msg = _internal_mutable_update();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPOutboundTrunkRequest.update)
+  return _msg;
+}
+
+inline bool UpdateSIPOutboundTrunkRequest::has_action() const {
+  return action_case() != ACTION_NOT_SET;
+}
+inline void UpdateSIPOutboundTrunkRequest::clear_has_action() {
+  _impl_._oneof_case_[0] = ACTION_NOT_SET;
+}
+inline UpdateSIPOutboundTrunkRequest::ActionCase UpdateSIPOutboundTrunkRequest::action_case() const {
+  return UpdateSIPOutboundTrunkRequest::ActionCase(_impl_._oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -11127,6 +14016,56 @@ inline void SIPOutboundTrunkInfo::set_allocated_address(std::string* address) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkInfo.address)
+}
+
+// string destination_country = 14;
+inline void SIPOutboundTrunkInfo::clear_destination_country() {
+  _impl_.destination_country_.ClearToEmpty();
+}
+inline const std::string& SIPOutboundTrunkInfo::destination_country() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkInfo.destination_country)
+  return _internal_destination_country();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPOutboundTrunkInfo::set_destination_country(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.destination_country_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkInfo.destination_country)
+}
+inline std::string* SIPOutboundTrunkInfo::mutable_destination_country() {
+  std::string* _s = _internal_mutable_destination_country();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundTrunkInfo.destination_country)
+  return _s;
+}
+inline const std::string& SIPOutboundTrunkInfo::_internal_destination_country() const {
+  return _impl_.destination_country_.Get();
+}
+inline void SIPOutboundTrunkInfo::_internal_set_destination_country(const std::string& value) {
+  
+  _impl_.destination_country_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkInfo::_internal_mutable_destination_country() {
+  
+  return _impl_.destination_country_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkInfo::release_destination_country() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundTrunkInfo.destination_country)
+  return _impl_.destination_country_.Release();
+}
+inline void SIPOutboundTrunkInfo::set_allocated_destination_country(std::string* destination_country) {
+  if (destination_country != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.destination_country_.SetAllocated(destination_country, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.destination_country_.IsDefault()) {
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkInfo.destination_country)
 }
 
 // .livekit.SIPTransport transport = 5;
@@ -11449,6 +14388,559 @@ inline void SIPOutboundTrunkInfo::_internal_set_media_encryption(::livekit::SIPM
 inline void SIPOutboundTrunkInfo::set_media_encryption(::livekit::SIPMediaEncryption value) {
   _internal_set_media_encryption(value);
   // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkInfo.media_encryption)
+}
+
+// -------------------------------------------------------------------
+
+// SIPOutboundTrunkUpdate
+
+// optional string address = 1;
+inline bool SIPOutboundTrunkUpdate::_internal_has_address() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool SIPOutboundTrunkUpdate::has_address() const {
+  return _internal_has_address();
+}
+inline void SIPOutboundTrunkUpdate::clear_address() {
+  _impl_.address_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& SIPOutboundTrunkUpdate::address() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.address)
+  return _internal_address();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPOutboundTrunkUpdate::set_address(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.address_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkUpdate.address)
+}
+inline std::string* SIPOutboundTrunkUpdate::mutable_address() {
+  std::string* _s = _internal_mutable_address();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundTrunkUpdate.address)
+  return _s;
+}
+inline const std::string& SIPOutboundTrunkUpdate::_internal_address() const {
+  return _impl_.address_.Get();
+}
+inline void SIPOutboundTrunkUpdate::_internal_set_address(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::_internal_mutable_address() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.address_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::release_address() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundTrunkUpdate.address)
+  if (!_internal_has_address()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.address_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.address_.IsDefault()) {
+    _impl_.address_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPOutboundTrunkUpdate::set_allocated_address(std::string* address) {
+  if (address != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.address_.SetAllocated(address, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.address_.IsDefault()) {
+    _impl_.address_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkUpdate.address)
+}
+
+// optional .livekit.SIPTransport transport = 2;
+inline bool SIPOutboundTrunkUpdate::_internal_has_transport() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool SIPOutboundTrunkUpdate::has_transport() const {
+  return _internal_has_transport();
+}
+inline void SIPOutboundTrunkUpdate::clear_transport() {
+  _impl_.transport_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline ::livekit::SIPTransport SIPOutboundTrunkUpdate::_internal_transport() const {
+  return static_cast< ::livekit::SIPTransport >(_impl_.transport_);
+}
+inline ::livekit::SIPTransport SIPOutboundTrunkUpdate::transport() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.transport)
+  return _internal_transport();
+}
+inline void SIPOutboundTrunkUpdate::_internal_set_transport(::livekit::SIPTransport value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.transport_ = value;
+}
+inline void SIPOutboundTrunkUpdate::set_transport(::livekit::SIPTransport value) {
+  _internal_set_transport(value);
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkUpdate.transport)
+}
+
+// optional string destination_country = 9;
+inline bool SIPOutboundTrunkUpdate::_internal_has_destination_country() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool SIPOutboundTrunkUpdate::has_destination_country() const {
+  return _internal_has_destination_country();
+}
+inline void SIPOutboundTrunkUpdate::clear_destination_country() {
+  _impl_.destination_country_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline const std::string& SIPOutboundTrunkUpdate::destination_country() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.destination_country)
+  return _internal_destination_country();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPOutboundTrunkUpdate::set_destination_country(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000020u;
+ _impl_.destination_country_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkUpdate.destination_country)
+}
+inline std::string* SIPOutboundTrunkUpdate::mutable_destination_country() {
+  std::string* _s = _internal_mutable_destination_country();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundTrunkUpdate.destination_country)
+  return _s;
+}
+inline const std::string& SIPOutboundTrunkUpdate::_internal_destination_country() const {
+  return _impl_.destination_country_.Get();
+}
+inline void SIPOutboundTrunkUpdate::_internal_set_destination_country(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.destination_country_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::_internal_mutable_destination_country() {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  return _impl_.destination_country_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::release_destination_country() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundTrunkUpdate.destination_country)
+  if (!_internal_has_destination_country()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000020u;
+  auto* p = _impl_.destination_country_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.destination_country_.IsDefault()) {
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPOutboundTrunkUpdate::set_allocated_destination_country(std::string* destination_country) {
+  if (destination_country != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000020u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000020u;
+  }
+  _impl_.destination_country_.SetAllocated(destination_country, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.destination_country_.IsDefault()) {
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkUpdate.destination_country)
+}
+
+// .livekit.ListUpdate numbers = 3;
+inline bool SIPOutboundTrunkUpdate::_internal_has_numbers() const {
+  return this != internal_default_instance() && _impl_.numbers_ != nullptr;
+}
+inline bool SIPOutboundTrunkUpdate::has_numbers() const {
+  return _internal_has_numbers();
+}
+inline const ::livekit::ListUpdate& SIPOutboundTrunkUpdate::_internal_numbers() const {
+  const ::livekit::ListUpdate* p = _impl_.numbers_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ListUpdate&>(
+      ::livekit::_ListUpdate_default_instance_);
+}
+inline const ::livekit::ListUpdate& SIPOutboundTrunkUpdate::numbers() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.numbers)
+  return _internal_numbers();
+}
+inline void SIPOutboundTrunkUpdate::unsafe_arena_set_allocated_numbers(
+    ::livekit::ListUpdate* numbers) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.numbers_);
+  }
+  _impl_.numbers_ = numbers;
+  if (numbers) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SIPOutboundTrunkUpdate.numbers)
+}
+inline ::livekit::ListUpdate* SIPOutboundTrunkUpdate::release_numbers() {
+  
+  ::livekit::ListUpdate* temp = _impl_.numbers_;
+  _impl_.numbers_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPOutboundTrunkUpdate::unsafe_arena_release_numbers() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundTrunkUpdate.numbers)
+  
+  ::livekit::ListUpdate* temp = _impl_.numbers_;
+  _impl_.numbers_ = nullptr;
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPOutboundTrunkUpdate::_internal_mutable_numbers() {
+  
+  if (_impl_.numbers_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ListUpdate>(GetArenaForAllocation());
+    _impl_.numbers_ = p;
+  }
+  return _impl_.numbers_;
+}
+inline ::livekit::ListUpdate* SIPOutboundTrunkUpdate::mutable_numbers() {
+  ::livekit::ListUpdate* _msg = _internal_mutable_numbers();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundTrunkUpdate.numbers)
+  return _msg;
+}
+inline void SIPOutboundTrunkUpdate::set_allocated_numbers(::livekit::ListUpdate* numbers) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.numbers_);
+  }
+  if (numbers) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(numbers));
+    if (message_arena != submessage_arena) {
+      numbers = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, numbers, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.numbers_ = numbers;
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkUpdate.numbers)
+}
+
+// optional string auth_username = 4;
+inline bool SIPOutboundTrunkUpdate::_internal_has_auth_username() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool SIPOutboundTrunkUpdate::has_auth_username() const {
+  return _internal_has_auth_username();
+}
+inline void SIPOutboundTrunkUpdate::clear_auth_username() {
+  _impl_.auth_username_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& SIPOutboundTrunkUpdate::auth_username() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.auth_username)
+  return _internal_auth_username();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPOutboundTrunkUpdate::set_auth_username(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.auth_username_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkUpdate.auth_username)
+}
+inline std::string* SIPOutboundTrunkUpdate::mutable_auth_username() {
+  std::string* _s = _internal_mutable_auth_username();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundTrunkUpdate.auth_username)
+  return _s;
+}
+inline const std::string& SIPOutboundTrunkUpdate::_internal_auth_username() const {
+  return _impl_.auth_username_.Get();
+}
+inline void SIPOutboundTrunkUpdate::_internal_set_auth_username(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.auth_username_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::_internal_mutable_auth_username() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.auth_username_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::release_auth_username() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundTrunkUpdate.auth_username)
+  if (!_internal_has_auth_username()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.auth_username_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.auth_username_.IsDefault()) {
+    _impl_.auth_username_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPOutboundTrunkUpdate::set_allocated_auth_username(std::string* auth_username) {
+  if (auth_username != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.auth_username_.SetAllocated(auth_username, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.auth_username_.IsDefault()) {
+    _impl_.auth_username_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkUpdate.auth_username)
+}
+
+// optional string auth_password = 5;
+inline bool SIPOutboundTrunkUpdate::_internal_has_auth_password() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool SIPOutboundTrunkUpdate::has_auth_password() const {
+  return _internal_has_auth_password();
+}
+inline void SIPOutboundTrunkUpdate::clear_auth_password() {
+  _impl_.auth_password_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& SIPOutboundTrunkUpdate::auth_password() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.auth_password)
+  return _internal_auth_password();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPOutboundTrunkUpdate::set_auth_password(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000004u;
+ _impl_.auth_password_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkUpdate.auth_password)
+}
+inline std::string* SIPOutboundTrunkUpdate::mutable_auth_password() {
+  std::string* _s = _internal_mutable_auth_password();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundTrunkUpdate.auth_password)
+  return _s;
+}
+inline const std::string& SIPOutboundTrunkUpdate::_internal_auth_password() const {
+  return _impl_.auth_password_.Get();
+}
+inline void SIPOutboundTrunkUpdate::_internal_set_auth_password(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.auth_password_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::_internal_mutable_auth_password() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  return _impl_.auth_password_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::release_auth_password() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundTrunkUpdate.auth_password)
+  if (!_internal_has_auth_password()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  auto* p = _impl_.auth_password_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.auth_password_.IsDefault()) {
+    _impl_.auth_password_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPOutboundTrunkUpdate::set_allocated_auth_password(std::string* auth_password) {
+  if (auth_password != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.auth_password_.SetAllocated(auth_password, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.auth_password_.IsDefault()) {
+    _impl_.auth_password_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkUpdate.auth_password)
+}
+
+// optional string name = 6;
+inline bool SIPOutboundTrunkUpdate::_internal_has_name() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool SIPOutboundTrunkUpdate::has_name() const {
+  return _internal_has_name();
+}
+inline void SIPOutboundTrunkUpdate::clear_name() {
+  _impl_.name_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline const std::string& SIPOutboundTrunkUpdate::name() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPOutboundTrunkUpdate::set_name(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000008u;
+ _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkUpdate.name)
+}
+inline std::string* SIPOutboundTrunkUpdate::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundTrunkUpdate.name)
+  return _s;
+}
+inline const std::string& SIPOutboundTrunkUpdate::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void SIPOutboundTrunkUpdate::_internal_set_name(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::_internal_mutable_name() {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  return _impl_.name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::release_name() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundTrunkUpdate.name)
+  if (!_internal_has_name()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  auto* p = _impl_.name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPOutboundTrunkUpdate::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkUpdate.name)
+}
+
+// optional string metadata = 7;
+inline bool SIPOutboundTrunkUpdate::_internal_has_metadata() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool SIPOutboundTrunkUpdate::has_metadata() const {
+  return _internal_has_metadata();
+}
+inline void SIPOutboundTrunkUpdate::clear_metadata() {
+  _impl_.metadata_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline const std::string& SIPOutboundTrunkUpdate::metadata() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.metadata)
+  return _internal_metadata();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPOutboundTrunkUpdate::set_metadata(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000010u;
+ _impl_.metadata_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkUpdate.metadata)
+}
+inline std::string* SIPOutboundTrunkUpdate::mutable_metadata() {
+  std::string* _s = _internal_mutable_metadata();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundTrunkUpdate.metadata)
+  return _s;
+}
+inline const std::string& SIPOutboundTrunkUpdate::_internal_metadata() const {
+  return _impl_.metadata_.Get();
+}
+inline void SIPOutboundTrunkUpdate::_internal_set_metadata(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.metadata_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::_internal_mutable_metadata() {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  return _impl_.metadata_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPOutboundTrunkUpdate::release_metadata() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundTrunkUpdate.metadata)
+  if (!_internal_has_metadata()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  auto* p = _impl_.metadata_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.metadata_.IsDefault()) {
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPOutboundTrunkUpdate::set_allocated_metadata(std::string* metadata) {
+  if (metadata != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+  _impl_.metadata_.SetAllocated(metadata, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.metadata_.IsDefault()) {
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundTrunkUpdate.metadata)
+}
+
+// optional .livekit.SIPMediaEncryption media_encryption = 8;
+inline bool SIPOutboundTrunkUpdate::_internal_has_media_encryption() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool SIPOutboundTrunkUpdate::has_media_encryption() const {
+  return _internal_has_media_encryption();
+}
+inline void SIPOutboundTrunkUpdate::clear_media_encryption() {
+  _impl_.media_encryption_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline ::livekit::SIPMediaEncryption SIPOutboundTrunkUpdate::_internal_media_encryption() const {
+  return static_cast< ::livekit::SIPMediaEncryption >(_impl_.media_encryption_);
+}
+inline ::livekit::SIPMediaEncryption SIPOutboundTrunkUpdate::media_encryption() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundTrunkUpdate.media_encryption)
+  return _internal_media_encryption();
+}
+inline void SIPOutboundTrunkUpdate::_internal_set_media_encryption(::livekit::SIPMediaEncryption value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.media_encryption_ = value;
+}
+inline void SIPOutboundTrunkUpdate::set_media_encryption(::livekit::SIPMediaEncryption value) {
+  _internal_set_media_encryption(value);
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundTrunkUpdate.media_encryption)
 }
 
 // -------------------------------------------------------------------
@@ -13073,7 +16565,97 @@ inline SIPDispatchRule::RuleCase SIPDispatchRule::rule_case() const {
 
 // CreateSIPDispatchRuleRequest
 
-// .livekit.SIPDispatchRule rule = 1;
+// .livekit.SIPDispatchRuleInfo dispatch_rule = 10;
+inline bool CreateSIPDispatchRuleRequest::_internal_has_dispatch_rule() const {
+  return this != internal_default_instance() && _impl_.dispatch_rule_ != nullptr;
+}
+inline bool CreateSIPDispatchRuleRequest::has_dispatch_rule() const {
+  return _internal_has_dispatch_rule();
+}
+inline void CreateSIPDispatchRuleRequest::clear_dispatch_rule() {
+  if (GetArenaForAllocation() == nullptr && _impl_.dispatch_rule_ != nullptr) {
+    delete _impl_.dispatch_rule_;
+  }
+  _impl_.dispatch_rule_ = nullptr;
+}
+inline const ::livekit::SIPDispatchRuleInfo& CreateSIPDispatchRuleRequest::_internal_dispatch_rule() const {
+  const ::livekit::SIPDispatchRuleInfo* p = _impl_.dispatch_rule_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::SIPDispatchRuleInfo&>(
+      ::livekit::_SIPDispatchRuleInfo_default_instance_);
+}
+inline const ::livekit::SIPDispatchRuleInfo& CreateSIPDispatchRuleRequest::dispatch_rule() const {
+  // @@protoc_insertion_point(field_get:livekit.CreateSIPDispatchRuleRequest.dispatch_rule)
+  return _internal_dispatch_rule();
+}
+inline void CreateSIPDispatchRuleRequest::unsafe_arena_set_allocated_dispatch_rule(
+    ::livekit::SIPDispatchRuleInfo* dispatch_rule) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.dispatch_rule_);
+  }
+  _impl_.dispatch_rule_ = dispatch_rule;
+  if (dispatch_rule) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.CreateSIPDispatchRuleRequest.dispatch_rule)
+}
+inline ::livekit::SIPDispatchRuleInfo* CreateSIPDispatchRuleRequest::release_dispatch_rule() {
+  
+  ::livekit::SIPDispatchRuleInfo* temp = _impl_.dispatch_rule_;
+  _impl_.dispatch_rule_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::SIPDispatchRuleInfo* CreateSIPDispatchRuleRequest::unsafe_arena_release_dispatch_rule() {
+  // @@protoc_insertion_point(field_release:livekit.CreateSIPDispatchRuleRequest.dispatch_rule)
+  
+  ::livekit::SIPDispatchRuleInfo* temp = _impl_.dispatch_rule_;
+  _impl_.dispatch_rule_ = nullptr;
+  return temp;
+}
+inline ::livekit::SIPDispatchRuleInfo* CreateSIPDispatchRuleRequest::_internal_mutable_dispatch_rule() {
+  
+  if (_impl_.dispatch_rule_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::SIPDispatchRuleInfo>(GetArenaForAllocation());
+    _impl_.dispatch_rule_ = p;
+  }
+  return _impl_.dispatch_rule_;
+}
+inline ::livekit::SIPDispatchRuleInfo* CreateSIPDispatchRuleRequest::mutable_dispatch_rule() {
+  ::livekit::SIPDispatchRuleInfo* _msg = _internal_mutable_dispatch_rule();
+  // @@protoc_insertion_point(field_mutable:livekit.CreateSIPDispatchRuleRequest.dispatch_rule)
+  return _msg;
+}
+inline void CreateSIPDispatchRuleRequest::set_allocated_dispatch_rule(::livekit::SIPDispatchRuleInfo* dispatch_rule) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.dispatch_rule_;
+  }
+  if (dispatch_rule) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(dispatch_rule);
+    if (message_arena != submessage_arena) {
+      dispatch_rule = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, dispatch_rule, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.dispatch_rule_ = dispatch_rule;
+  // @@protoc_insertion_point(field_set_allocated:livekit.CreateSIPDispatchRuleRequest.dispatch_rule)
+}
+
+// .livekit.SIPDispatchRule rule = 1 [deprecated = true];
 inline bool CreateSIPDispatchRuleRequest::_internal_has_rule() const {
   return this != internal_default_instance() && _impl_.rule_ != nullptr;
 }
@@ -13163,7 +16745,7 @@ inline void CreateSIPDispatchRuleRequest::set_allocated_rule(::livekit::SIPDispa
   // @@protoc_insertion_point(field_set_allocated:livekit.CreateSIPDispatchRuleRequest.rule)
 }
 
-// repeated string trunk_ids = 2;
+// repeated string trunk_ids = 2 [deprecated = true];
 inline int CreateSIPDispatchRuleRequest::_internal_trunk_ids_size() const {
   return _impl_.trunk_ids_.size();
 }
@@ -13238,7 +16820,7 @@ CreateSIPDispatchRuleRequest::mutable_trunk_ids() {
   return &_impl_.trunk_ids_;
 }
 
-// bool hide_phone_number = 3;
+// bool hide_phone_number = 3 [deprecated = true];
 inline void CreateSIPDispatchRuleRequest::clear_hide_phone_number() {
   _impl_.hide_phone_number_ = false;
 }
@@ -13258,7 +16840,7 @@ inline void CreateSIPDispatchRuleRequest::set_hide_phone_number(bool value) {
   // @@protoc_insertion_point(field_set:livekit.CreateSIPDispatchRuleRequest.hide_phone_number)
 }
 
-// repeated string inbound_numbers = 6;
+// repeated string inbound_numbers = 6 [deprecated = true];
 inline int CreateSIPDispatchRuleRequest::_internal_inbound_numbers_size() const {
   return _impl_.inbound_numbers_.size();
 }
@@ -13333,7 +16915,7 @@ CreateSIPDispatchRuleRequest::mutable_inbound_numbers() {
   return &_impl_.inbound_numbers_;
 }
 
-// string name = 4;
+// string name = 4 [deprecated = true];
 inline void CreateSIPDispatchRuleRequest::clear_name() {
   _impl_.name_.ClearToEmpty();
 }
@@ -13383,7 +16965,7 @@ inline void CreateSIPDispatchRuleRequest::set_allocated_name(std::string* name) 
   // @@protoc_insertion_point(field_set_allocated:livekit.CreateSIPDispatchRuleRequest.name)
 }
 
-// string metadata = 5;
+// string metadata = 5 [deprecated = true];
 inline void CreateSIPDispatchRuleRequest::clear_metadata() {
   _impl_.metadata_.ClearToEmpty();
 }
@@ -13433,7 +17015,7 @@ inline void CreateSIPDispatchRuleRequest::set_allocated_metadata(std::string* me
   // @@protoc_insertion_point(field_set_allocated:livekit.CreateSIPDispatchRuleRequest.metadata)
 }
 
-// map<string, string> attributes = 7;
+// map<string, string> attributes = 7 [deprecated = true];
 inline int CreateSIPDispatchRuleRequest::_internal_attributes_size() const {
   return _impl_.attributes_.size();
 }
@@ -13462,7 +17044,7 @@ CreateSIPDispatchRuleRequest::mutable_attributes() {
   return _internal_mutable_attributes();
 }
 
-// string room_preset = 8;
+// string room_preset = 8 [deprecated = true];
 inline void CreateSIPDispatchRuleRequest::clear_room_preset() {
   _impl_.room_preset_.ClearToEmpty();
 }
@@ -13512,7 +17094,7 @@ inline void CreateSIPDispatchRuleRequest::set_allocated_room_preset(std::string*
   // @@protoc_insertion_point(field_set_allocated:livekit.CreateSIPDispatchRuleRequest.room_preset)
 }
 
-// .livekit.RoomConfiguration room_config = 9;
+// .livekit.RoomConfiguration room_config = 9 [deprecated = true];
 inline bool CreateSIPDispatchRuleRequest::_internal_has_room_config() const {
   return this != internal_default_instance() && _impl_.room_config_ != nullptr;
 }
@@ -13597,6 +17179,217 @@ inline void CreateSIPDispatchRuleRequest::set_allocated_room_config(::livekit::R
   // @@protoc_insertion_point(field_set_allocated:livekit.CreateSIPDispatchRuleRequest.room_config)
 }
 
+// -------------------------------------------------------------------
+
+// UpdateSIPDispatchRuleRequest
+
+// string sip_dispatch_rule_id = 1;
+inline void UpdateSIPDispatchRuleRequest::clear_sip_dispatch_rule_id() {
+  _impl_.sip_dispatch_rule_id_.ClearToEmpty();
+}
+inline const std::string& UpdateSIPDispatchRuleRequest::sip_dispatch_rule_id() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPDispatchRuleRequest.sip_dispatch_rule_id)
+  return _internal_sip_dispatch_rule_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UpdateSIPDispatchRuleRequest::set_sip_dispatch_rule_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.sip_dispatch_rule_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.UpdateSIPDispatchRuleRequest.sip_dispatch_rule_id)
+}
+inline std::string* UpdateSIPDispatchRuleRequest::mutable_sip_dispatch_rule_id() {
+  std::string* _s = _internal_mutable_sip_dispatch_rule_id();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPDispatchRuleRequest.sip_dispatch_rule_id)
+  return _s;
+}
+inline const std::string& UpdateSIPDispatchRuleRequest::_internal_sip_dispatch_rule_id() const {
+  return _impl_.sip_dispatch_rule_id_.Get();
+}
+inline void UpdateSIPDispatchRuleRequest::_internal_set_sip_dispatch_rule_id(const std::string& value) {
+  
+  _impl_.sip_dispatch_rule_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateSIPDispatchRuleRequest::_internal_mutable_sip_dispatch_rule_id() {
+  
+  return _impl_.sip_dispatch_rule_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UpdateSIPDispatchRuleRequest::release_sip_dispatch_rule_id() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPDispatchRuleRequest.sip_dispatch_rule_id)
+  return _impl_.sip_dispatch_rule_id_.Release();
+}
+inline void UpdateSIPDispatchRuleRequest::set_allocated_sip_dispatch_rule_id(std::string* sip_dispatch_rule_id) {
+  if (sip_dispatch_rule_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.sip_dispatch_rule_id_.SetAllocated(sip_dispatch_rule_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.sip_dispatch_rule_id_.IsDefault()) {
+    _impl_.sip_dispatch_rule_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPDispatchRuleRequest.sip_dispatch_rule_id)
+}
+
+// .livekit.SIPDispatchRuleInfo replace = 2;
+inline bool UpdateSIPDispatchRuleRequest::_internal_has_replace() const {
+  return action_case() == kReplace;
+}
+inline bool UpdateSIPDispatchRuleRequest::has_replace() const {
+  return _internal_has_replace();
+}
+inline void UpdateSIPDispatchRuleRequest::set_has_replace() {
+  _impl_._oneof_case_[0] = kReplace;
+}
+inline void UpdateSIPDispatchRuleRequest::clear_replace() {
+  if (_internal_has_replace()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.action_.replace_;
+    }
+    clear_has_action();
+  }
+}
+inline ::livekit::SIPDispatchRuleInfo* UpdateSIPDispatchRuleRequest::release_replace() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPDispatchRuleRequest.replace)
+  if (_internal_has_replace()) {
+    clear_has_action();
+    ::livekit::SIPDispatchRuleInfo* temp = _impl_.action_.replace_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.action_.replace_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::SIPDispatchRuleInfo& UpdateSIPDispatchRuleRequest::_internal_replace() const {
+  return _internal_has_replace()
+      ? *_impl_.action_.replace_
+      : reinterpret_cast< ::livekit::SIPDispatchRuleInfo&>(::livekit::_SIPDispatchRuleInfo_default_instance_);
+}
+inline const ::livekit::SIPDispatchRuleInfo& UpdateSIPDispatchRuleRequest::replace() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPDispatchRuleRequest.replace)
+  return _internal_replace();
+}
+inline ::livekit::SIPDispatchRuleInfo* UpdateSIPDispatchRuleRequest::unsafe_arena_release_replace() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.UpdateSIPDispatchRuleRequest.replace)
+  if (_internal_has_replace()) {
+    clear_has_action();
+    ::livekit::SIPDispatchRuleInfo* temp = _impl_.action_.replace_;
+    _impl_.action_.replace_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void UpdateSIPDispatchRuleRequest::unsafe_arena_set_allocated_replace(::livekit::SIPDispatchRuleInfo* replace) {
+  clear_action();
+  if (replace) {
+    set_has_replace();
+    _impl_.action_.replace_ = replace;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.UpdateSIPDispatchRuleRequest.replace)
+}
+inline ::livekit::SIPDispatchRuleInfo* UpdateSIPDispatchRuleRequest::_internal_mutable_replace() {
+  if (!_internal_has_replace()) {
+    clear_action();
+    set_has_replace();
+    _impl_.action_.replace_ = CreateMaybeMessage< ::livekit::SIPDispatchRuleInfo >(GetArenaForAllocation());
+  }
+  return _impl_.action_.replace_;
+}
+inline ::livekit::SIPDispatchRuleInfo* UpdateSIPDispatchRuleRequest::mutable_replace() {
+  ::livekit::SIPDispatchRuleInfo* _msg = _internal_mutable_replace();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPDispatchRuleRequest.replace)
+  return _msg;
+}
+
+// .livekit.SIPDispatchRuleUpdate update = 3;
+inline bool UpdateSIPDispatchRuleRequest::_internal_has_update() const {
+  return action_case() == kUpdate;
+}
+inline bool UpdateSIPDispatchRuleRequest::has_update() const {
+  return _internal_has_update();
+}
+inline void UpdateSIPDispatchRuleRequest::set_has_update() {
+  _impl_._oneof_case_[0] = kUpdate;
+}
+inline void UpdateSIPDispatchRuleRequest::clear_update() {
+  if (_internal_has_update()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.action_.update_;
+    }
+    clear_has_action();
+  }
+}
+inline ::livekit::SIPDispatchRuleUpdate* UpdateSIPDispatchRuleRequest::release_update() {
+  // @@protoc_insertion_point(field_release:livekit.UpdateSIPDispatchRuleRequest.update)
+  if (_internal_has_update()) {
+    clear_has_action();
+    ::livekit::SIPDispatchRuleUpdate* temp = _impl_.action_.update_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.action_.update_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::SIPDispatchRuleUpdate& UpdateSIPDispatchRuleRequest::_internal_update() const {
+  return _internal_has_update()
+      ? *_impl_.action_.update_
+      : reinterpret_cast< ::livekit::SIPDispatchRuleUpdate&>(::livekit::_SIPDispatchRuleUpdate_default_instance_);
+}
+inline const ::livekit::SIPDispatchRuleUpdate& UpdateSIPDispatchRuleRequest::update() const {
+  // @@protoc_insertion_point(field_get:livekit.UpdateSIPDispatchRuleRequest.update)
+  return _internal_update();
+}
+inline ::livekit::SIPDispatchRuleUpdate* UpdateSIPDispatchRuleRequest::unsafe_arena_release_update() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.UpdateSIPDispatchRuleRequest.update)
+  if (_internal_has_update()) {
+    clear_has_action();
+    ::livekit::SIPDispatchRuleUpdate* temp = _impl_.action_.update_;
+    _impl_.action_.update_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void UpdateSIPDispatchRuleRequest::unsafe_arena_set_allocated_update(::livekit::SIPDispatchRuleUpdate* update) {
+  clear_action();
+  if (update) {
+    set_has_update();
+    _impl_.action_.update_ = update;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.UpdateSIPDispatchRuleRequest.update)
+}
+inline ::livekit::SIPDispatchRuleUpdate* UpdateSIPDispatchRuleRequest::_internal_mutable_update() {
+  if (!_internal_has_update()) {
+    clear_action();
+    set_has_update();
+    _impl_.action_.update_ = CreateMaybeMessage< ::livekit::SIPDispatchRuleUpdate >(GetArenaForAllocation());
+  }
+  return _impl_.action_.update_;
+}
+inline ::livekit::SIPDispatchRuleUpdate* UpdateSIPDispatchRuleRequest::mutable_update() {
+  ::livekit::SIPDispatchRuleUpdate* _msg = _internal_mutable_update();
+  // @@protoc_insertion_point(field_mutable:livekit.UpdateSIPDispatchRuleRequest.update)
+  return _msg;
+}
+
+inline bool UpdateSIPDispatchRuleRequest::has_action() const {
+  return action_case() != ACTION_NOT_SET;
+}
+inline void UpdateSIPDispatchRuleRequest::clear_has_action() {
+  _impl_._oneof_case_[0] = ACTION_NOT_SET;
+}
+inline UpdateSIPDispatchRuleRequest::ActionCase UpdateSIPDispatchRuleRequest::action_case() const {
+  return UpdateSIPDispatchRuleRequest::ActionCase(_impl_._oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -14219,6 +18012,380 @@ inline void SIPDispatchRuleInfo::set_media_encryption(::livekit::SIPMediaEncrypt
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// SIPDispatchRuleUpdate
+
+// .livekit.ListUpdate trunk_ids = 1;
+inline bool SIPDispatchRuleUpdate::_internal_has_trunk_ids() const {
+  return this != internal_default_instance() && _impl_.trunk_ids_ != nullptr;
+}
+inline bool SIPDispatchRuleUpdate::has_trunk_ids() const {
+  return _internal_has_trunk_ids();
+}
+inline const ::livekit::ListUpdate& SIPDispatchRuleUpdate::_internal_trunk_ids() const {
+  const ::livekit::ListUpdate* p = _impl_.trunk_ids_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ListUpdate&>(
+      ::livekit::_ListUpdate_default_instance_);
+}
+inline const ::livekit::ListUpdate& SIPDispatchRuleUpdate::trunk_ids() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPDispatchRuleUpdate.trunk_ids)
+  return _internal_trunk_ids();
+}
+inline void SIPDispatchRuleUpdate::unsafe_arena_set_allocated_trunk_ids(
+    ::livekit::ListUpdate* trunk_ids) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.trunk_ids_);
+  }
+  _impl_.trunk_ids_ = trunk_ids;
+  if (trunk_ids) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SIPDispatchRuleUpdate.trunk_ids)
+}
+inline ::livekit::ListUpdate* SIPDispatchRuleUpdate::release_trunk_ids() {
+  
+  ::livekit::ListUpdate* temp = _impl_.trunk_ids_;
+  _impl_.trunk_ids_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPDispatchRuleUpdate::unsafe_arena_release_trunk_ids() {
+  // @@protoc_insertion_point(field_release:livekit.SIPDispatchRuleUpdate.trunk_ids)
+  
+  ::livekit::ListUpdate* temp = _impl_.trunk_ids_;
+  _impl_.trunk_ids_ = nullptr;
+  return temp;
+}
+inline ::livekit::ListUpdate* SIPDispatchRuleUpdate::_internal_mutable_trunk_ids() {
+  
+  if (_impl_.trunk_ids_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ListUpdate>(GetArenaForAllocation());
+    _impl_.trunk_ids_ = p;
+  }
+  return _impl_.trunk_ids_;
+}
+inline ::livekit::ListUpdate* SIPDispatchRuleUpdate::mutable_trunk_ids() {
+  ::livekit::ListUpdate* _msg = _internal_mutable_trunk_ids();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPDispatchRuleUpdate.trunk_ids)
+  return _msg;
+}
+inline void SIPDispatchRuleUpdate::set_allocated_trunk_ids(::livekit::ListUpdate* trunk_ids) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.trunk_ids_);
+  }
+  if (trunk_ids) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(trunk_ids));
+    if (message_arena != submessage_arena) {
+      trunk_ids = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, trunk_ids, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.trunk_ids_ = trunk_ids;
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPDispatchRuleUpdate.trunk_ids)
+}
+
+// .livekit.SIPDispatchRule rule = 2;
+inline bool SIPDispatchRuleUpdate::_internal_has_rule() const {
+  return this != internal_default_instance() && _impl_.rule_ != nullptr;
+}
+inline bool SIPDispatchRuleUpdate::has_rule() const {
+  return _internal_has_rule();
+}
+inline void SIPDispatchRuleUpdate::clear_rule() {
+  if (GetArenaForAllocation() == nullptr && _impl_.rule_ != nullptr) {
+    delete _impl_.rule_;
+  }
+  _impl_.rule_ = nullptr;
+}
+inline const ::livekit::SIPDispatchRule& SIPDispatchRuleUpdate::_internal_rule() const {
+  const ::livekit::SIPDispatchRule* p = _impl_.rule_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::SIPDispatchRule&>(
+      ::livekit::_SIPDispatchRule_default_instance_);
+}
+inline const ::livekit::SIPDispatchRule& SIPDispatchRuleUpdate::rule() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPDispatchRuleUpdate.rule)
+  return _internal_rule();
+}
+inline void SIPDispatchRuleUpdate::unsafe_arena_set_allocated_rule(
+    ::livekit::SIPDispatchRule* rule) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.rule_);
+  }
+  _impl_.rule_ = rule;
+  if (rule) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SIPDispatchRuleUpdate.rule)
+}
+inline ::livekit::SIPDispatchRule* SIPDispatchRuleUpdate::release_rule() {
+  
+  ::livekit::SIPDispatchRule* temp = _impl_.rule_;
+  _impl_.rule_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::SIPDispatchRule* SIPDispatchRuleUpdate::unsafe_arena_release_rule() {
+  // @@protoc_insertion_point(field_release:livekit.SIPDispatchRuleUpdate.rule)
+  
+  ::livekit::SIPDispatchRule* temp = _impl_.rule_;
+  _impl_.rule_ = nullptr;
+  return temp;
+}
+inline ::livekit::SIPDispatchRule* SIPDispatchRuleUpdate::_internal_mutable_rule() {
+  
+  if (_impl_.rule_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::SIPDispatchRule>(GetArenaForAllocation());
+    _impl_.rule_ = p;
+  }
+  return _impl_.rule_;
+}
+inline ::livekit::SIPDispatchRule* SIPDispatchRuleUpdate::mutable_rule() {
+  ::livekit::SIPDispatchRule* _msg = _internal_mutable_rule();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPDispatchRuleUpdate.rule)
+  return _msg;
+}
+inline void SIPDispatchRuleUpdate::set_allocated_rule(::livekit::SIPDispatchRule* rule) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.rule_;
+  }
+  if (rule) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(rule);
+    if (message_arena != submessage_arena) {
+      rule = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, rule, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.rule_ = rule;
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPDispatchRuleUpdate.rule)
+}
+
+// optional string name = 3;
+inline bool SIPDispatchRuleUpdate::_internal_has_name() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool SIPDispatchRuleUpdate::has_name() const {
+  return _internal_has_name();
+}
+inline void SIPDispatchRuleUpdate::clear_name() {
+  _impl_.name_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& SIPDispatchRuleUpdate::name() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPDispatchRuleUpdate.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPDispatchRuleUpdate::set_name(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPDispatchRuleUpdate.name)
+}
+inline std::string* SIPDispatchRuleUpdate::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPDispatchRuleUpdate.name)
+  return _s;
+}
+inline const std::string& SIPDispatchRuleUpdate::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void SIPDispatchRuleUpdate::_internal_set_name(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPDispatchRuleUpdate::_internal_mutable_name() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPDispatchRuleUpdate::release_name() {
+  // @@protoc_insertion_point(field_release:livekit.SIPDispatchRuleUpdate.name)
+  if (!_internal_has_name()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPDispatchRuleUpdate::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPDispatchRuleUpdate.name)
+}
+
+// optional string metadata = 4;
+inline bool SIPDispatchRuleUpdate::_internal_has_metadata() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool SIPDispatchRuleUpdate::has_metadata() const {
+  return _internal_has_metadata();
+}
+inline void SIPDispatchRuleUpdate::clear_metadata() {
+  _impl_.metadata_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& SIPDispatchRuleUpdate::metadata() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPDispatchRuleUpdate.metadata)
+  return _internal_metadata();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPDispatchRuleUpdate::set_metadata(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.metadata_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPDispatchRuleUpdate.metadata)
+}
+inline std::string* SIPDispatchRuleUpdate::mutable_metadata() {
+  std::string* _s = _internal_mutable_metadata();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPDispatchRuleUpdate.metadata)
+  return _s;
+}
+inline const std::string& SIPDispatchRuleUpdate::_internal_metadata() const {
+  return _impl_.metadata_.Get();
+}
+inline void SIPDispatchRuleUpdate::_internal_set_metadata(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.metadata_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPDispatchRuleUpdate::_internal_mutable_metadata() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.metadata_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPDispatchRuleUpdate::release_metadata() {
+  // @@protoc_insertion_point(field_release:livekit.SIPDispatchRuleUpdate.metadata)
+  if (!_internal_has_metadata()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.metadata_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.metadata_.IsDefault()) {
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SIPDispatchRuleUpdate::set_allocated_metadata(std::string* metadata) {
+  if (metadata != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.metadata_.SetAllocated(metadata, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.metadata_.IsDefault()) {
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPDispatchRuleUpdate.metadata)
+}
+
+// map<string, string> attributes = 5;
+inline int SIPDispatchRuleUpdate::_internal_attributes_size() const {
+  return _impl_.attributes_.size();
+}
+inline int SIPDispatchRuleUpdate::attributes_size() const {
+  return _internal_attributes_size();
+}
+inline void SIPDispatchRuleUpdate::clear_attributes() {
+  _impl_.attributes_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+SIPDispatchRuleUpdate::_internal_attributes() const {
+  return _impl_.attributes_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+SIPDispatchRuleUpdate::attributes() const {
+  // @@protoc_insertion_point(field_map:livekit.SIPDispatchRuleUpdate.attributes)
+  return _internal_attributes();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+SIPDispatchRuleUpdate::_internal_mutable_attributes() {
+  return _impl_.attributes_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+SIPDispatchRuleUpdate::mutable_attributes() {
+  // @@protoc_insertion_point(field_mutable_map:livekit.SIPDispatchRuleUpdate.attributes)
+  return _internal_mutable_attributes();
+}
+
+// optional .livekit.SIPMediaEncryption media_encryption = 6;
+inline bool SIPDispatchRuleUpdate::_internal_has_media_encryption() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool SIPDispatchRuleUpdate::has_media_encryption() const {
+  return _internal_has_media_encryption();
+}
+inline void SIPDispatchRuleUpdate::clear_media_encryption() {
+  _impl_.media_encryption_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::livekit::SIPMediaEncryption SIPDispatchRuleUpdate::_internal_media_encryption() const {
+  return static_cast< ::livekit::SIPMediaEncryption >(_impl_.media_encryption_);
+}
+inline ::livekit::SIPMediaEncryption SIPDispatchRuleUpdate::media_encryption() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPDispatchRuleUpdate.media_encryption)
+  return _internal_media_encryption();
+}
+inline void SIPDispatchRuleUpdate::_internal_set_media_encryption(::livekit::SIPMediaEncryption value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.media_encryption_ = value;
+}
+inline void SIPDispatchRuleUpdate::set_media_encryption(::livekit::SIPMediaEncryption value) {
+  _internal_set_media_encryption(value);
+  // @@protoc_insertion_point(field_set:livekit.SIPDispatchRuleUpdate.media_encryption)
+}
+
+// -------------------------------------------------------------------
+
 // ListSIPDispatchRuleRequest
 
 // .livekit.Pagination page = 3;
@@ -14610,6 +18777,56 @@ inline void SIPOutboundConfig::set_allocated_hostname(std::string* hostname) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundConfig.hostname)
+}
+
+// string destination_country = 7;
+inline void SIPOutboundConfig::clear_destination_country() {
+  _impl_.destination_country_.ClearToEmpty();
+}
+inline const std::string& SIPOutboundConfig::destination_country() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPOutboundConfig.destination_country)
+  return _internal_destination_country();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPOutboundConfig::set_destination_country(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.destination_country_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPOutboundConfig.destination_country)
+}
+inline std::string* SIPOutboundConfig::mutable_destination_country() {
+  std::string* _s = _internal_mutable_destination_country();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPOutboundConfig.destination_country)
+  return _s;
+}
+inline const std::string& SIPOutboundConfig::_internal_destination_country() const {
+  return _impl_.destination_country_.Get();
+}
+inline void SIPOutboundConfig::_internal_set_destination_country(const std::string& value) {
+  
+  _impl_.destination_country_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPOutboundConfig::_internal_mutable_destination_country() {
+  
+  return _impl_.destination_country_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPOutboundConfig::release_destination_country() {
+  // @@protoc_insertion_point(field_release:livekit.SIPOutboundConfig.destination_country)
+  return _impl_.destination_country_.Release();
+}
+inline void SIPOutboundConfig::set_allocated_destination_country(std::string* destination_country) {
+  if (destination_country != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.destination_country_.SetAllocated(destination_country, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.destination_country_.IsDefault()) {
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPOutboundConfig.destination_country)
 }
 
 // .livekit.SIPTransport transport = 2;
@@ -16065,6 +20282,91 @@ TransferSIPParticipantRequest::mutable_headers() {
   return _internal_mutable_headers();
 }
 
+// .google.protobuf.Duration ringing_timeout = 6;
+inline bool TransferSIPParticipantRequest::_internal_has_ringing_timeout() const {
+  return this != internal_default_instance() && _impl_.ringing_timeout_ != nullptr;
+}
+inline bool TransferSIPParticipantRequest::has_ringing_timeout() const {
+  return _internal_has_ringing_timeout();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Duration& TransferSIPParticipantRequest::_internal_ringing_timeout() const {
+  const ::PROTOBUF_NAMESPACE_ID::Duration* p = _impl_.ringing_timeout_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Duration&>(
+      ::PROTOBUF_NAMESPACE_ID::_Duration_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Duration& TransferSIPParticipantRequest::ringing_timeout() const {
+  // @@protoc_insertion_point(field_get:livekit.TransferSIPParticipantRequest.ringing_timeout)
+  return _internal_ringing_timeout();
+}
+inline void TransferSIPParticipantRequest::unsafe_arena_set_allocated_ringing_timeout(
+    ::PROTOBUF_NAMESPACE_ID::Duration* ringing_timeout) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.ringing_timeout_);
+  }
+  _impl_.ringing_timeout_ = ringing_timeout;
+  if (ringing_timeout) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.TransferSIPParticipantRequest.ringing_timeout)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Duration* TransferSIPParticipantRequest::release_ringing_timeout() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Duration* temp = _impl_.ringing_timeout_;
+  _impl_.ringing_timeout_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Duration* TransferSIPParticipantRequest::unsafe_arena_release_ringing_timeout() {
+  // @@protoc_insertion_point(field_release:livekit.TransferSIPParticipantRequest.ringing_timeout)
+  
+  ::PROTOBUF_NAMESPACE_ID::Duration* temp = _impl_.ringing_timeout_;
+  _impl_.ringing_timeout_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Duration* TransferSIPParticipantRequest::_internal_mutable_ringing_timeout() {
+  
+  if (_impl_.ringing_timeout_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Duration>(GetArenaForAllocation());
+    _impl_.ringing_timeout_ = p;
+  }
+  return _impl_.ringing_timeout_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Duration* TransferSIPParticipantRequest::mutable_ringing_timeout() {
+  ::PROTOBUF_NAMESPACE_ID::Duration* _msg = _internal_mutable_ringing_timeout();
+  // @@protoc_insertion_point(field_mutable:livekit.TransferSIPParticipantRequest.ringing_timeout)
+  return _msg;
+}
+inline void TransferSIPParticipantRequest::set_allocated_ringing_timeout(::PROTOBUF_NAMESPACE_ID::Duration* ringing_timeout) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.ringing_timeout_);
+  }
+  if (ringing_timeout) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(ringing_timeout));
+    if (message_arena != submessage_arena) {
+      ringing_timeout = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, ringing_timeout, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.ringing_timeout_ = ringing_timeout;
+  // @@protoc_insertion_point(field_set_allocated:livekit.TransferSIPParticipantRequest.ringing_timeout)
+}
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -17095,6 +21397,360 @@ inline void SIPCallInfo::set_allocated_media_encryption(std::string* media_encry
 
 // -------------------------------------------------------------------
 
+// SIPTransferInfo
+
+// string transfer_id = 1;
+inline void SIPTransferInfo::clear_transfer_id() {
+  _impl_.transfer_id_.ClearToEmpty();
+}
+inline const std::string& SIPTransferInfo::transfer_id() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPTransferInfo.transfer_id)
+  return _internal_transfer_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPTransferInfo::set_transfer_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.transfer_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPTransferInfo.transfer_id)
+}
+inline std::string* SIPTransferInfo::mutable_transfer_id() {
+  std::string* _s = _internal_mutable_transfer_id();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPTransferInfo.transfer_id)
+  return _s;
+}
+inline const std::string& SIPTransferInfo::_internal_transfer_id() const {
+  return _impl_.transfer_id_.Get();
+}
+inline void SIPTransferInfo::_internal_set_transfer_id(const std::string& value) {
+  
+  _impl_.transfer_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPTransferInfo::_internal_mutable_transfer_id() {
+  
+  return _impl_.transfer_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPTransferInfo::release_transfer_id() {
+  // @@protoc_insertion_point(field_release:livekit.SIPTransferInfo.transfer_id)
+  return _impl_.transfer_id_.Release();
+}
+inline void SIPTransferInfo::set_allocated_transfer_id(std::string* transfer_id) {
+  if (transfer_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.transfer_id_.SetAllocated(transfer_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.transfer_id_.IsDefault()) {
+    _impl_.transfer_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPTransferInfo.transfer_id)
+}
+
+// string call_id = 2;
+inline void SIPTransferInfo::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& SIPTransferInfo::call_id() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPTransferInfo.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPTransferInfo::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPTransferInfo.call_id)
+}
+inline std::string* SIPTransferInfo::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPTransferInfo.call_id)
+  return _s;
+}
+inline const std::string& SIPTransferInfo::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void SIPTransferInfo::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPTransferInfo::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPTransferInfo::release_call_id() {
+  // @@protoc_insertion_point(field_release:livekit.SIPTransferInfo.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void SIPTransferInfo::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPTransferInfo.call_id)
+}
+
+// string transfer_to = 3;
+inline void SIPTransferInfo::clear_transfer_to() {
+  _impl_.transfer_to_.ClearToEmpty();
+}
+inline const std::string& SIPTransferInfo::transfer_to() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPTransferInfo.transfer_to)
+  return _internal_transfer_to();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPTransferInfo::set_transfer_to(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.transfer_to_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPTransferInfo.transfer_to)
+}
+inline std::string* SIPTransferInfo::mutable_transfer_to() {
+  std::string* _s = _internal_mutable_transfer_to();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPTransferInfo.transfer_to)
+  return _s;
+}
+inline const std::string& SIPTransferInfo::_internal_transfer_to() const {
+  return _impl_.transfer_to_.Get();
+}
+inline void SIPTransferInfo::_internal_set_transfer_to(const std::string& value) {
+  
+  _impl_.transfer_to_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPTransferInfo::_internal_mutable_transfer_to() {
+  
+  return _impl_.transfer_to_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPTransferInfo::release_transfer_to() {
+  // @@protoc_insertion_point(field_release:livekit.SIPTransferInfo.transfer_to)
+  return _impl_.transfer_to_.Release();
+}
+inline void SIPTransferInfo::set_allocated_transfer_to(std::string* transfer_to) {
+  if (transfer_to != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.transfer_to_.SetAllocated(transfer_to, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.transfer_to_.IsDefault()) {
+    _impl_.transfer_to_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPTransferInfo.transfer_to)
+}
+
+// int64 transfer_initiated_at_ns = 4;
+inline void SIPTransferInfo::clear_transfer_initiated_at_ns() {
+  _impl_.transfer_initiated_at_ns_ = int64_t{0};
+}
+inline int64_t SIPTransferInfo::_internal_transfer_initiated_at_ns() const {
+  return _impl_.transfer_initiated_at_ns_;
+}
+inline int64_t SIPTransferInfo::transfer_initiated_at_ns() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPTransferInfo.transfer_initiated_at_ns)
+  return _internal_transfer_initiated_at_ns();
+}
+inline void SIPTransferInfo::_internal_set_transfer_initiated_at_ns(int64_t value) {
+  
+  _impl_.transfer_initiated_at_ns_ = value;
+}
+inline void SIPTransferInfo::set_transfer_initiated_at_ns(int64_t value) {
+  _internal_set_transfer_initiated_at_ns(value);
+  // @@protoc_insertion_point(field_set:livekit.SIPTransferInfo.transfer_initiated_at_ns)
+}
+
+// int64 transfer_completed_at_ns = 5;
+inline void SIPTransferInfo::clear_transfer_completed_at_ns() {
+  _impl_.transfer_completed_at_ns_ = int64_t{0};
+}
+inline int64_t SIPTransferInfo::_internal_transfer_completed_at_ns() const {
+  return _impl_.transfer_completed_at_ns_;
+}
+inline int64_t SIPTransferInfo::transfer_completed_at_ns() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPTransferInfo.transfer_completed_at_ns)
+  return _internal_transfer_completed_at_ns();
+}
+inline void SIPTransferInfo::_internal_set_transfer_completed_at_ns(int64_t value) {
+  
+  _impl_.transfer_completed_at_ns_ = value;
+}
+inline void SIPTransferInfo::set_transfer_completed_at_ns(int64_t value) {
+  _internal_set_transfer_completed_at_ns(value);
+  // @@protoc_insertion_point(field_set:livekit.SIPTransferInfo.transfer_completed_at_ns)
+}
+
+// .livekit.SIPTransferStatus transfer_status = 6;
+inline void SIPTransferInfo::clear_transfer_status() {
+  _impl_.transfer_status_ = 0;
+}
+inline ::livekit::SIPTransferStatus SIPTransferInfo::_internal_transfer_status() const {
+  return static_cast< ::livekit::SIPTransferStatus >(_impl_.transfer_status_);
+}
+inline ::livekit::SIPTransferStatus SIPTransferInfo::transfer_status() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPTransferInfo.transfer_status)
+  return _internal_transfer_status();
+}
+inline void SIPTransferInfo::_internal_set_transfer_status(::livekit::SIPTransferStatus value) {
+  
+  _impl_.transfer_status_ = value;
+}
+inline void SIPTransferInfo::set_transfer_status(::livekit::SIPTransferStatus value) {
+  _internal_set_transfer_status(value);
+  // @@protoc_insertion_point(field_set:livekit.SIPTransferInfo.transfer_status)
+}
+
+// string error = 7;
+inline void SIPTransferInfo::clear_error() {
+  _impl_.error_.ClearToEmpty();
+}
+inline const std::string& SIPTransferInfo::error() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPTransferInfo.error)
+  return _internal_error();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SIPTransferInfo::set_error(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.error_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SIPTransferInfo.error)
+}
+inline std::string* SIPTransferInfo::mutable_error() {
+  std::string* _s = _internal_mutable_error();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPTransferInfo.error)
+  return _s;
+}
+inline const std::string& SIPTransferInfo::_internal_error() const {
+  return _impl_.error_.Get();
+}
+inline void SIPTransferInfo::_internal_set_error(const std::string& value) {
+  
+  _impl_.error_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SIPTransferInfo::_internal_mutable_error() {
+  
+  return _impl_.error_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SIPTransferInfo::release_error() {
+  // @@protoc_insertion_point(field_release:livekit.SIPTransferInfo.error)
+  return _impl_.error_.Release();
+}
+inline void SIPTransferInfo::set_allocated_error(std::string* error) {
+  if (error != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.error_.SetAllocated(error, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.error_.IsDefault()) {
+    _impl_.error_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPTransferInfo.error)
+}
+
+// .livekit.SIPStatus transfer_status_code = 8;
+inline bool SIPTransferInfo::_internal_has_transfer_status_code() const {
+  return this != internal_default_instance() && _impl_.transfer_status_code_ != nullptr;
+}
+inline bool SIPTransferInfo::has_transfer_status_code() const {
+  return _internal_has_transfer_status_code();
+}
+inline void SIPTransferInfo::clear_transfer_status_code() {
+  if (GetArenaForAllocation() == nullptr && _impl_.transfer_status_code_ != nullptr) {
+    delete _impl_.transfer_status_code_;
+  }
+  _impl_.transfer_status_code_ = nullptr;
+}
+inline const ::livekit::SIPStatus& SIPTransferInfo::_internal_transfer_status_code() const {
+  const ::livekit::SIPStatus* p = _impl_.transfer_status_code_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::SIPStatus&>(
+      ::livekit::_SIPStatus_default_instance_);
+}
+inline const ::livekit::SIPStatus& SIPTransferInfo::transfer_status_code() const {
+  // @@protoc_insertion_point(field_get:livekit.SIPTransferInfo.transfer_status_code)
+  return _internal_transfer_status_code();
+}
+inline void SIPTransferInfo::unsafe_arena_set_allocated_transfer_status_code(
+    ::livekit::SIPStatus* transfer_status_code) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.transfer_status_code_);
+  }
+  _impl_.transfer_status_code_ = transfer_status_code;
+  if (transfer_status_code) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SIPTransferInfo.transfer_status_code)
+}
+inline ::livekit::SIPStatus* SIPTransferInfo::release_transfer_status_code() {
+  
+  ::livekit::SIPStatus* temp = _impl_.transfer_status_code_;
+  _impl_.transfer_status_code_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::SIPStatus* SIPTransferInfo::unsafe_arena_release_transfer_status_code() {
+  // @@protoc_insertion_point(field_release:livekit.SIPTransferInfo.transfer_status_code)
+  
+  ::livekit::SIPStatus* temp = _impl_.transfer_status_code_;
+  _impl_.transfer_status_code_ = nullptr;
+  return temp;
+}
+inline ::livekit::SIPStatus* SIPTransferInfo::_internal_mutable_transfer_status_code() {
+  
+  if (_impl_.transfer_status_code_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::SIPStatus>(GetArenaForAllocation());
+    _impl_.transfer_status_code_ = p;
+  }
+  return _impl_.transfer_status_code_;
+}
+inline ::livekit::SIPStatus* SIPTransferInfo::mutable_transfer_status_code() {
+  ::livekit::SIPStatus* _msg = _internal_mutable_transfer_status_code();
+  // @@protoc_insertion_point(field_mutable:livekit.SIPTransferInfo.transfer_status_code)
+  return _msg;
+}
+inline void SIPTransferInfo::set_allocated_transfer_status_code(::livekit::SIPStatus* transfer_status_code) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.transfer_status_code_;
+  }
+  if (transfer_status_code) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(transfer_status_code);
+    if (message_arena != submessage_arena) {
+      transfer_status_code = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, transfer_status_code, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.transfer_status_code_ = transfer_status_code;
+  // @@protoc_insertion_point(field_set_allocated:livekit.SIPTransferInfo.transfer_status_code)
+}
+
+// -------------------------------------------------------------------
+
 // SIPUri
 
 // string user = 1;
@@ -17382,6 +22038,22 @@ inline void SIPUri::set_transport(::livekit::SIPTransport value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -17418,6 +22090,11 @@ template <> struct is_proto_enum< ::livekit::SIPCallStatus> : ::std::true_type {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::livekit::SIPCallStatus>() {
   return ::livekit::SIPCallStatus_descriptor();
+}
+template <> struct is_proto_enum< ::livekit::SIPTransferStatus> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::livekit::SIPTransferStatus>() {
+  return ::livekit::SIPTransferStatus_descriptor();
 }
 template <> struct is_proto_enum< ::livekit::SIPFeature> : ::std::true_type {};
 template <>

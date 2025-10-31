@@ -27,6 +27,7 @@ PROTOBUF_CONSTEXPR RoomCompositeEgressRequest::RoomCompositeEgressRequest(
   , /*decltype(_impl_.stream_outputs_)*/{}
   , /*decltype(_impl_.segment_outputs_)*/{}
   , /*decltype(_impl_.image_outputs_)*/{}
+  , /*decltype(_impl_.webhooks_)*/{}
   , /*decltype(_impl_.room_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.layout_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.custom_base_url_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -52,6 +53,7 @@ PROTOBUF_CONSTEXPR WebEgressRequest::WebEgressRequest(
   , /*decltype(_impl_.stream_outputs_)*/{}
   , /*decltype(_impl_.segment_outputs_)*/{}
   , /*decltype(_impl_.image_outputs_)*/{}
+  , /*decltype(_impl_.webhooks_)*/{}
   , /*decltype(_impl_.url_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.audio_only_)*/false
   , /*decltype(_impl_.video_only_)*/false
@@ -75,6 +77,7 @@ PROTOBUF_CONSTEXPR ParticipantEgressRequest::ParticipantEgressRequest(
   , /*decltype(_impl_.stream_outputs_)*/{}
   , /*decltype(_impl_.segment_outputs_)*/{}
   , /*decltype(_impl_.image_outputs_)*/{}
+  , /*decltype(_impl_.webhooks_)*/{}
   , /*decltype(_impl_.room_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.identity_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.screen_share_)*/false
@@ -96,6 +99,7 @@ PROTOBUF_CONSTEXPR TrackCompositeEgressRequest::TrackCompositeEgressRequest(
   , /*decltype(_impl_.stream_outputs_)*/{}
   , /*decltype(_impl_.segment_outputs_)*/{}
   , /*decltype(_impl_.image_outputs_)*/{}
+  , /*decltype(_impl_.webhooks_)*/{}
   , /*decltype(_impl_.room_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.audio_track_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.video_track_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -114,7 +118,8 @@ struct TrackCompositeEgressRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TrackCompositeEgressRequestDefaultTypeInternal _TrackCompositeEgressRequest_default_instance_;
 PROTOBUF_CONSTEXPR TrackEgressRequest::TrackEgressRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.room_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.webhooks_)*/{}
+  , /*decltype(_impl_.room_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.track_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.output_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}
@@ -225,6 +230,8 @@ PROTOBUF_CONSTEXPR S3Upload::S3Upload(
   , /*decltype(_impl_.tagging_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.content_disposition_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.session_token_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.assume_role_arn_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.assume_role_external_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.proxy_)*/nullptr
   , /*decltype(_impl_.force_path_style_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
@@ -584,6 +591,7 @@ const uint32_t TableStruct_livekit_5fegress_2eproto::offsets[] PROTOBUF_SECTION_
   PROTOBUF_FIELD_OFFSET(::livekit::RoomCompositeEgressRequest, _impl_.stream_outputs_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomCompositeEgressRequest, _impl_.segment_outputs_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomCompositeEgressRequest, _impl_.image_outputs_),
+  PROTOBUF_FIELD_OFFSET(::livekit::RoomCompositeEgressRequest, _impl_.webhooks_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomCompositeEgressRequest, _impl_.output_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomCompositeEgressRequest, _impl_.options_),
   ~0u,  // no _has_bits_
@@ -605,6 +613,7 @@ const uint32_t TableStruct_livekit_5fegress_2eproto::offsets[] PROTOBUF_SECTION_
   PROTOBUF_FIELD_OFFSET(::livekit::WebEgressRequest, _impl_.stream_outputs_),
   PROTOBUF_FIELD_OFFSET(::livekit::WebEgressRequest, _impl_.segment_outputs_),
   PROTOBUF_FIELD_OFFSET(::livekit::WebEgressRequest, _impl_.image_outputs_),
+  PROTOBUF_FIELD_OFFSET(::livekit::WebEgressRequest, _impl_.webhooks_),
   PROTOBUF_FIELD_OFFSET(::livekit::WebEgressRequest, _impl_.output_),
   PROTOBUF_FIELD_OFFSET(::livekit::WebEgressRequest, _impl_.options_),
   ~0u,  // no _has_bits_
@@ -622,6 +631,7 @@ const uint32_t TableStruct_livekit_5fegress_2eproto::offsets[] PROTOBUF_SECTION_
   PROTOBUF_FIELD_OFFSET(::livekit::ParticipantEgressRequest, _impl_.stream_outputs_),
   PROTOBUF_FIELD_OFFSET(::livekit::ParticipantEgressRequest, _impl_.segment_outputs_),
   PROTOBUF_FIELD_OFFSET(::livekit::ParticipantEgressRequest, _impl_.image_outputs_),
+  PROTOBUF_FIELD_OFFSET(::livekit::ParticipantEgressRequest, _impl_.webhooks_),
   PROTOBUF_FIELD_OFFSET(::livekit::ParticipantEgressRequest, _impl_.options_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::livekit::TrackCompositeEgressRequest, _internal_metadata_),
@@ -641,6 +651,7 @@ const uint32_t TableStruct_livekit_5fegress_2eproto::offsets[] PROTOBUF_SECTION_
   PROTOBUF_FIELD_OFFSET(::livekit::TrackCompositeEgressRequest, _impl_.stream_outputs_),
   PROTOBUF_FIELD_OFFSET(::livekit::TrackCompositeEgressRequest, _impl_.segment_outputs_),
   PROTOBUF_FIELD_OFFSET(::livekit::TrackCompositeEgressRequest, _impl_.image_outputs_),
+  PROTOBUF_FIELD_OFFSET(::livekit::TrackCompositeEgressRequest, _impl_.webhooks_),
   PROTOBUF_FIELD_OFFSET(::livekit::TrackCompositeEgressRequest, _impl_.output_),
   PROTOBUF_FIELD_OFFSET(::livekit::TrackCompositeEgressRequest, _impl_.options_),
   ~0u,  // no _has_bits_
@@ -653,6 +664,7 @@ const uint32_t TableStruct_livekit_5fegress_2eproto::offsets[] PROTOBUF_SECTION_
   PROTOBUF_FIELD_OFFSET(::livekit::TrackEgressRequest, _impl_.track_id_),
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::livekit::TrackEgressRequest, _impl_.webhooks_),
   PROTOBUF_FIELD_OFFSET(::livekit::TrackEgressRequest, _impl_.output_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::livekit::EncodedFileOutput, _internal_metadata_),
@@ -736,6 +748,8 @@ const uint32_t TableStruct_livekit_5fegress_2eproto::offsets[] PROTOBUF_SECTION_
   PROTOBUF_FIELD_OFFSET(::livekit::S3Upload, _impl_.access_key_),
   PROTOBUF_FIELD_OFFSET(::livekit::S3Upload, _impl_.secret_),
   PROTOBUF_FIELD_OFFSET(::livekit::S3Upload, _impl_.session_token_),
+  PROTOBUF_FIELD_OFFSET(::livekit::S3Upload, _impl_.assume_role_arn_),
+  PROTOBUF_FIELD_OFFSET(::livekit::S3Upload, _impl_.assume_role_external_id_),
   PROTOBUF_FIELD_OFFSET(::livekit::S3Upload, _impl_.region_),
   PROTOBUF_FIELD_OFFSET(::livekit::S3Upload, _impl_.endpoint_),
   PROTOBUF_FIELD_OFFSET(::livekit::S3Upload, _impl_.bucket_),
@@ -964,35 +978,35 @@ const uint32_t TableStruct_livekit_5fegress_2eproto::offsets[] PROTOBUF_SECTION_
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::livekit::RoomCompositeEgressRequest)},
-  { 23, -1, -1, sizeof(::livekit::WebEgressRequest)},
-  { 44, -1, -1, sizeof(::livekit::ParticipantEgressRequest)},
-  { 60, -1, -1, sizeof(::livekit::TrackCompositeEgressRequest)},
-  { 80, -1, -1, sizeof(::livekit::TrackEgressRequest)},
-  { 91, -1, -1, sizeof(::livekit::EncodedFileOutput)},
-  { 105, -1, -1, sizeof(::livekit::SegmentedFileOutput)},
-  { 123, -1, -1, sizeof(::livekit::DirectFileOutput)},
-  { 136, -1, -1, sizeof(::livekit::ImageOutput)},
-  { 154, 162, -1, sizeof(::livekit::S3Upload_MetadataEntry_DoNotUse)},
-  { 164, -1, -1, sizeof(::livekit::S3Upload)},
-  { 181, -1, -1, sizeof(::livekit::GCPUpload)},
-  { 190, -1, -1, sizeof(::livekit::AzureBlobUpload)},
-  { 199, -1, -1, sizeof(::livekit::AliOSSUpload)},
-  { 210, -1, -1, sizeof(::livekit::ProxyConfig)},
-  { 219, -1, -1, sizeof(::livekit::StreamOutput)},
-  { 227, -1, -1, sizeof(::livekit::EncodingOptions)},
-  { 245, -1, -1, sizeof(::livekit::UpdateLayoutRequest)},
-  { 253, -1, -1, sizeof(::livekit::UpdateStreamRequest)},
-  { 262, -1, -1, sizeof(::livekit::ListEgressRequest)},
-  { 271, -1, -1, sizeof(::livekit::ListEgressResponse)},
-  { 278, -1, -1, sizeof(::livekit::StopEgressRequest)},
-  { 285, -1, -1, sizeof(::livekit::EgressInfo)},
-  { 318, -1, -1, sizeof(::livekit::StreamInfoList)},
-  { 325, -1, -1, sizeof(::livekit::StreamInfo)},
-  { 337, -1, -1, sizeof(::livekit::FileInfo)},
-  { 349, -1, -1, sizeof(::livekit::SegmentsInfo)},
-  { 364, -1, -1, sizeof(::livekit::ImagesInfo)},
-  { 374, -1, -1, sizeof(::livekit::AutoParticipantEgress)},
-  { 385, -1, -1, sizeof(::livekit::AutoTrackEgress)},
+  { 24, -1, -1, sizeof(::livekit::WebEgressRequest)},
+  { 46, -1, -1, sizeof(::livekit::ParticipantEgressRequest)},
+  { 63, -1, -1, sizeof(::livekit::TrackCompositeEgressRequest)},
+  { 84, -1, -1, sizeof(::livekit::TrackEgressRequest)},
+  { 96, -1, -1, sizeof(::livekit::EncodedFileOutput)},
+  { 110, -1, -1, sizeof(::livekit::SegmentedFileOutput)},
+  { 128, -1, -1, sizeof(::livekit::DirectFileOutput)},
+  { 141, -1, -1, sizeof(::livekit::ImageOutput)},
+  { 159, 167, -1, sizeof(::livekit::S3Upload_MetadataEntry_DoNotUse)},
+  { 169, -1, -1, sizeof(::livekit::S3Upload)},
+  { 188, -1, -1, sizeof(::livekit::GCPUpload)},
+  { 197, -1, -1, sizeof(::livekit::AzureBlobUpload)},
+  { 206, -1, -1, sizeof(::livekit::AliOSSUpload)},
+  { 217, -1, -1, sizeof(::livekit::ProxyConfig)},
+  { 226, -1, -1, sizeof(::livekit::StreamOutput)},
+  { 234, -1, -1, sizeof(::livekit::EncodingOptions)},
+  { 252, -1, -1, sizeof(::livekit::UpdateLayoutRequest)},
+  { 260, -1, -1, sizeof(::livekit::UpdateStreamRequest)},
+  { 269, -1, -1, sizeof(::livekit::ListEgressRequest)},
+  { 278, -1, -1, sizeof(::livekit::ListEgressResponse)},
+  { 285, -1, -1, sizeof(::livekit::StopEgressRequest)},
+  { 292, -1, -1, sizeof(::livekit::EgressInfo)},
+  { 325, -1, -1, sizeof(::livekit::StreamInfoList)},
+  { 332, -1, -1, sizeof(::livekit::StreamInfo)},
+  { 344, -1, -1, sizeof(::livekit::FileInfo)},
+  { 356, -1, -1, sizeof(::livekit::SegmentsInfo)},
+  { 371, -1, -1, sizeof(::livekit::ImagesInfo)},
+  { 381, -1, -1, sizeof(::livekit::AutoParticipantEgress)},
+  { 392, -1, -1, sizeof(::livekit::AutoTrackEgress)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -1030,7 +1044,7 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_livekit_5fegress_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\024livekit_egress.proto\022\007livekit\032\024livekit"
-  "_models.proto\"\371\004\n\032RoomCompositeEgressReq"
+  "_models.proto\"\243\005\n\032RoomCompositeEgressReq"
   "uest\022\021\n\troom_name\030\001 \001(\t\022\016\n\006layout\030\002 \001(\t\022"
   "\022\n\naudio_only\030\003 \001(\010\022*\n\014audio_mixing\030\017 \001("
   "\0162\024.livekit.AudioMixing\022\022\n\nvideo_only\030\004 "
@@ -1045,215 +1059,223 @@ const char descriptor_table_protodef_livekit_5fegress_2eproto[] PROTOBUF_SECTION
   "t\022-\n\016stream_outputs\030\014 \003(\0132\025.livekit.Stre"
   "amOutput\0225\n\017segment_outputs\030\r \003(\0132\034.live"
   "kit.SegmentedFileOutput\022+\n\rimage_outputs"
-  "\030\016 \003(\0132\024.livekit.ImageOutputB\010\n\006outputB\t"
-  "\n\007options\"\260\004\n\020WebEgressRequest\022\013\n\003url\030\001 "
-  "\001(\t\022\022\n\naudio_only\030\002 \001(\010\022\022\n\nvideo_only\030\003 "
-  "\001(\010\022\032\n\022await_start_signal\030\014 \001(\010\022.\n\004file\030"
-  "\004 \001(\0132\032.livekit.EncodedFileOutputB\002\030\001H\000\022"
-  "+\n\006stream\030\005 \001(\0132\025.livekit.StreamOutputB\002"
-  "\030\001H\000\0224\n\010segments\030\006 \001(\0132\034.livekit.Segment"
-  "edFileOutputB\002\030\001H\000\0220\n\006preset\030\007 \001(\0162\036.liv"
-  "ekit.EncodingOptionsPresetH\001\022,\n\010advanced"
-  "\030\010 \001(\0132\030.livekit.EncodingOptionsH\001\0220\n\014fi"
-  "le_outputs\030\t \003(\0132\032.livekit.EncodedFileOu"
-  "tput\022-\n\016stream_outputs\030\n \003(\0132\025.livekit.S"
-  "treamOutput\0225\n\017segment_outputs\030\013 \003(\0132\034.l"
-  "ivekit.SegmentedFileOutput\022+\n\rimage_outp"
-  "uts\030\r \003(\0132\024.livekit.ImageOutputB\010\n\006outpu"
-  "tB\t\n\007options\"\205\003\n\030ParticipantEgressReques"
-  "t\022\021\n\troom_name\030\001 \001(\t\022\020\n\010identity\030\002 \001(\t\022\024"
-  "\n\014screen_share\030\003 \001(\010\0220\n\006preset\030\004 \001(\0162\036.l"
-  "ivekit.EncodingOptionsPresetH\000\022,\n\010advanc"
-  "ed\030\005 \001(\0132\030.livekit.EncodingOptionsH\000\0220\n\014"
-  "file_outputs\030\006 \003(\0132\032.livekit.EncodedFile"
-  "Output\022-\n\016stream_outputs\030\007 \003(\0132\025.livekit"
-  ".StreamOutput\0225\n\017segment_outputs\030\010 \003(\0132\034"
+  "\030\016 \003(\0132\024.livekit.ImageOutput\022(\n\010webhooks"
+  "\030\020 \003(\0132\026.livekit.WebhookConfigB\010\n\006output"
+  "B\t\n\007options\"\332\004\n\020WebEgressRequest\022\013\n\003url\030"
+  "\001 \001(\t\022\022\n\naudio_only\030\002 \001(\010\022\022\n\nvideo_only\030"
+  "\003 \001(\010\022\032\n\022await_start_signal\030\014 \001(\010\022.\n\004fil"
+  "e\030\004 \001(\0132\032.livekit.EncodedFileOutputB\002\030\001H"
+  "\000\022+\n\006stream\030\005 \001(\0132\025.livekit.StreamOutput"
+  "B\002\030\001H\000\0224\n\010segments\030\006 \001(\0132\034.livekit.Segme"
+  "ntedFileOutputB\002\030\001H\000\0220\n\006preset\030\007 \001(\0162\036.l"
+  "ivekit.EncodingOptionsPresetH\001\022,\n\010advanc"
+  "ed\030\010 \001(\0132\030.livekit.EncodingOptionsH\001\0220\n\014"
+  "file_outputs\030\t \003(\0132\032.livekit.EncodedFile"
+  "Output\022-\n\016stream_outputs\030\n \003(\0132\025.livekit"
+  ".StreamOutput\0225\n\017segment_outputs\030\013 \003(\0132\034"
   ".livekit.SegmentedFileOutput\022+\n\rimage_ou"
-  "tputs\030\t \003(\0132\024.livekit.ImageOutputB\t\n\007opt"
-  "ions\"\255\004\n\033TrackCompositeEgressRequest\022\021\n\t"
-  "room_name\030\001 \001(\t\022\026\n\016audio_track_id\030\002 \001(\t\022"
-  "\026\n\016video_track_id\030\003 \001(\t\022.\n\004file\030\004 \001(\0132\032."
-  "livekit.EncodedFileOutputB\002\030\001H\000\022+\n\006strea"
-  "m\030\005 \001(\0132\025.livekit.StreamOutputB\002\030\001H\000\0224\n\010"
-  "segments\030\010 \001(\0132\034.livekit.SegmentedFileOu"
-  "tputB\002\030\001H\000\0220\n\006preset\030\006 \001(\0162\036.livekit.Enc"
-  "odingOptionsPresetH\001\022,\n\010advanced\030\007 \001(\0132\030"
-  ".livekit.EncodingOptionsH\001\0220\n\014file_outpu"
-  "ts\030\013 \003(\0132\032.livekit.EncodedFileOutput\022-\n\016"
-  "stream_outputs\030\014 \003(\0132\025.livekit.StreamOut"
-  "put\0225\n\017segment_outputs\030\r \003(\0132\034.livekit.S"
-  "egmentedFileOutput\022+\n\rimage_outputs\030\016 \003("
-  "\0132\024.livekit.ImageOutputB\010\n\006outputB\t\n\007opt"
-  "ions\"\207\001\n\022TrackEgressRequest\022\021\n\troom_name"
-  "\030\001 \001(\t\022\020\n\010track_id\030\002 \001(\t\022)\n\004file\030\003 \001(\0132\031"
-  ".livekit.DirectFileOutputH\000\022\027\n\rwebsocket"
-  "_url\030\004 \001(\tH\000B\010\n\006output\"\216\002\n\021EncodedFileOu"
-  "tput\022+\n\tfile_type\030\001 \001(\0162\030.livekit.Encode"
-  "dFileType\022\020\n\010filepath\030\002 \001(\t\022\030\n\020disable_m"
-  "anifest\030\006 \001(\010\022\037\n\002s3\030\003 \001(\0132\021.livekit.S3Up"
-  "loadH\000\022!\n\003gcp\030\004 \001(\0132\022.livekit.GCPUploadH"
-  "\000\022)\n\005azure\030\005 \001(\0132\030.livekit.AzureBlobUplo"
-  "adH\000\022\'\n\006aliOSS\030\007 \001(\0132\025.livekit.AliOSSUpl"
-  "oadH\000B\010\n\006output\"\240\003\n\023SegmentedFileOutput\022"
-  "0\n\010protocol\030\001 \001(\0162\036.livekit.SegmentedFil"
-  "eProtocol\022\027\n\017filename_prefix\030\002 \001(\t\022\025\n\rpl"
-  "aylist_name\030\003 \001(\t\022\032\n\022live_playlist_name\030"
-  "\013 \001(\t\022\030\n\020segment_duration\030\004 \001(\r\0225\n\017filen"
-  "ame_suffix\030\n \001(\0162\034.livekit.SegmentedFile"
-  "Suffix\022\030\n\020disable_manifest\030\010 \001(\010\022\037\n\002s3\030\005"
-  " \001(\0132\021.livekit.S3UploadH\000\022!\n\003gcp\030\006 \001(\0132\022"
-  ".livekit.GCPUploadH\000\022)\n\005azure\030\007 \001(\0132\030.li"
-  "vekit.AzureBlobUploadH\000\022\'\n\006aliOSS\030\t \001(\0132"
-  "\025.livekit.AliOSSUploadH\000B\010\n\006output\"\340\001\n\020D"
-  "irectFileOutput\022\020\n\010filepath\030\001 \001(\t\022\030\n\020dis"
-  "able_manifest\030\005 \001(\010\022\037\n\002s3\030\002 \001(\0132\021.liveki"
-  "t.S3UploadH\000\022!\n\003gcp\030\003 \001(\0132\022.livekit.GCPU"
-  "ploadH\000\022)\n\005azure\030\004 \001(\0132\030.livekit.AzureBl"
-  "obUploadH\000\022\'\n\006aliOSS\030\006 \001(\0132\025.livekit.Ali"
-  "OSSUploadH\000B\010\n\006output\"\370\002\n\013ImageOutput\022\030\n"
-  "\020capture_interval\030\001 \001(\r\022\r\n\005width\030\002 \001(\005\022\016"
-  "\n\006height\030\003 \001(\005\022\027\n\017filename_prefix\030\004 \001(\t\022"
-  "1\n\017filename_suffix\030\005 \001(\0162\030.livekit.Image"
-  "FileSuffix\022(\n\013image_codec\030\006 \001(\0162\023.liveki"
-  "t.ImageCodec\022\030\n\020disable_manifest\030\007 \001(\010\022\037"
-  "\n\002s3\030\010 \001(\0132\021.livekit.S3UploadH\000\022!\n\003gcp\030\t"
-  " \001(\0132\022.livekit.GCPUploadH\000\022)\n\005azure\030\n \001("
-  "\0132\030.livekit.AzureBlobUploadH\000\022\'\n\006aliOSS\030"
-  "\013 \001(\0132\025.livekit.AliOSSUploadH\000B\010\n\006output"
-  "\"\310\002\n\010S3Upload\022\022\n\naccess_key\030\001 \001(\t\022\016\n\006sec"
-  "ret\030\002 \001(\t\022\025\n\rsession_token\030\013 \001(\t\022\016\n\006regi"
-  "on\030\003 \001(\t\022\020\n\010endpoint\030\004 \001(\t\022\016\n\006bucket\030\005 \001"
-  "(\t\022\030\n\020force_path_style\030\006 \001(\010\0221\n\010metadata"
-  "\030\007 \003(\0132\037.livekit.S3Upload.MetadataEntry\022"
-  "\017\n\007tagging\030\010 \001(\t\022\033\n\023content_disposition\030"
-  "\t \001(\t\022#\n\005proxy\030\n \001(\0132\024.livekit.ProxyConf"
-  "ig\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005valu"
-  "e\030\002 \001(\t:\0028\001\"U\n\tGCPUpload\022\023\n\013credentials\030"
-  "\001 \001(\t\022\016\n\006bucket\030\002 \001(\t\022#\n\005proxy\030\003 \001(\0132\024.l"
-  "ivekit.ProxyConfig\"T\n\017AzureBlobUpload\022\024\n"
-  "\014account_name\030\001 \001(\t\022\023\n\013account_key\030\002 \001(\t"
-  "\022\026\n\016container_name\030\003 \001(\t\"d\n\014AliOSSUpload"
-  "\022\022\n\naccess_key\030\001 \001(\t\022\016\n\006secret\030\002 \001(\t\022\016\n\006"
-  "region\030\003 \001(\t\022\020\n\010endpoint\030\004 \001(\t\022\016\n\006bucket"
-  "\030\005 \001(\t\">\n\013ProxyConfig\022\013\n\003url\030\001 \001(\t\022\020\n\010us"
-  "ername\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\"G\n\014Stream"
-  "Output\022)\n\010protocol\030\001 \001(\0162\027.livekit.Strea"
-  "mProtocol\022\014\n\004urls\030\002 \003(\t\"\267\002\n\017EncodingOpti"
-  "ons\022\r\n\005width\030\001 \001(\005\022\016\n\006height\030\002 \001(\005\022\r\n\005de"
-  "pth\030\003 \001(\005\022\021\n\tframerate\030\004 \001(\005\022(\n\013audio_co"
-  "dec\030\005 \001(\0162\023.livekit.AudioCodec\022\025\n\raudio_"
-  "bitrate\030\006 \001(\005\022\025\n\raudio_quality\030\013 \001(\005\022\027\n\017"
-  "audio_frequency\030\007 \001(\005\022(\n\013video_codec\030\010 \001"
-  "(\0162\023.livekit.VideoCodec\022\025\n\rvideo_bitrate"
-  "\030\t \001(\005\022\025\n\rvideo_quality\030\014 \001(\005\022\032\n\022key_fra"
-  "me_interval\030\n \001(\001\"8\n\023UpdateLayoutRequest"
-  "\022\021\n\tegress_id\030\001 \001(\t\022\016\n\006layout\030\002 \001(\t\"]\n\023U"
-  "pdateStreamRequest\022\021\n\tegress_id\030\001 \001(\t\022\027\n"
-  "\017add_output_urls\030\002 \003(\t\022\032\n\022remove_output_"
-  "urls\030\003 \003(\t\"I\n\021ListEgressRequest\022\021\n\troom_"
-  "name\030\001 \001(\t\022\021\n\tegress_id\030\002 \001(\t\022\016\n\006active\030"
-  "\003 \001(\010\"8\n\022ListEgressResponse\022\"\n\005items\030\001 \003"
-  "(\0132\023.livekit.EgressInfo\"&\n\021StopEgressReq"
-  "uest\022\021\n\tegress_id\030\001 \001(\t\"\236\007\n\nEgressInfo\022\021"
-  "\n\tegress_id\030\001 \001(\t\022\017\n\007room_id\030\002 \001(\t\022\021\n\tro"
-  "om_name\030\r \001(\t\022.\n\013source_type\030\032 \001(\0162\031.liv"
-  "ekit.EgressSourceType\022%\n\006status\030\003 \001(\0162\025."
-  "livekit.EgressStatus\022\022\n\nstarted_at\030\n \001(\003"
-  "\022\020\n\010ended_at\030\013 \001(\003\022\022\n\nupdated_at\030\022 \001(\003\022\017"
-  "\n\007details\030\025 \001(\t\022\r\n\005error\030\t \001(\t\022\022\n\nerror_"
-  "code\030\026 \001(\005\022=\n\016room_composite\030\004 \001(\0132#.liv"
-  "ekit.RoomCompositeEgressRequestH\000\022(\n\003web"
-  "\030\016 \001(\0132\031.livekit.WebEgressRequestH\000\0228\n\013p"
-  "articipant\030\023 \001(\0132!.livekit.ParticipantEg"
-  "ressRequestH\000\022\?\n\017track_composite\030\005 \001(\0132$"
-  ".livekit.TrackCompositeEgressRequestH\000\022,"
-  "\n\005track\030\006 \001(\0132\033.livekit.TrackEgressReque"
-  "stH\000\022-\n\006stream\030\007 \001(\0132\027.livekit.StreamInf"
-  "oListB\002\030\001H\001\022%\n\004file\030\010 \001(\0132\021.livekit.File"
-  "InfoB\002\030\001H\001\022-\n\010segments\030\014 \001(\0132\025.livekit.S"
-  "egmentsInfoB\002\030\001H\001\022+\n\016stream_results\030\017 \003("
-  "\0132\023.livekit.StreamInfo\022\'\n\014file_results\030\020"
-  " \003(\0132\021.livekit.FileInfo\022.\n\017segment_resul"
-  "ts\030\021 \003(\0132\025.livekit.SegmentsInfo\022*\n\rimage"
-  "_results\030\024 \003(\0132\023.livekit.ImagesInfo\022\031\n\021m"
-  "anifest_location\030\027 \001(\t\022\033\n\023backup_storage"
-  "_used\030\031 \001(\010B\t\n\007requestB\010\n\006result\"7\n\016Stre"
-  "amInfoList\022!\n\004info\030\001 \003(\0132\023.livekit.Strea"
-  "mInfo:\002\030\001\"\274\001\n\nStreamInfo\022\013\n\003url\030\001 \001(\t\022\022\n"
-  "\nstarted_at\030\002 \001(\003\022\020\n\010ended_at\030\003 \001(\003\022\020\n\010d"
-  "uration\030\004 \001(\003\022*\n\006status\030\005 \001(\0162\032.livekit."
-  "StreamInfo.Status\022\r\n\005error\030\006 \001(\t\".\n\006Stat"
-  "us\022\n\n\006ACTIVE\020\000\022\014\n\010FINISHED\020\001\022\n\n\006FAILED\020\002"
-  "\"t\n\010FileInfo\022\020\n\010filename\030\001 \001(\t\022\022\n\nstarte"
-  "d_at\030\002 \001(\003\022\020\n\010ended_at\030\003 \001(\003\022\020\n\010duration"
-  "\030\006 \001(\003\022\014\n\004size\030\004 \001(\003\022\020\n\010location\030\005 \001(\t\"\331"
-  "\001\n\014SegmentsInfo\022\025\n\rplaylist_name\030\001 \001(\t\022\032"
-  "\n\022live_playlist_name\030\010 \001(\t\022\020\n\010duration\030\002"
-  " \001(\003\022\014\n\004size\030\003 \001(\003\022\031\n\021playlist_location\030"
-  "\004 \001(\t\022\036\n\026live_playlist_location\030\t \001(\t\022\025\n"
-  "\rsegment_count\030\005 \001(\003\022\022\n\nstarted_at\030\006 \001(\003"
-  "\022\020\n\010ended_at\030\007 \001(\003\"`\n\nImagesInfo\022\027\n\017file"
-  "name_prefix\030\004 \001(\t\022\023\n\013image_count\030\001 \001(\003\022\022"
-  "\n\nstarted_at\030\002 \001(\003\022\020\n\010ended_at\030\003 \001(\003\"\353\001\n"
-  "\025AutoParticipantEgress\0220\n\006preset\030\001 \001(\0162\036"
-  ".livekit.EncodingOptionsPresetH\000\022,\n\010adva"
-  "nced\030\002 \001(\0132\030.livekit.EncodingOptionsH\000\0220"
-  "\n\014file_outputs\030\003 \003(\0132\032.livekit.EncodedFi"
-  "leOutput\0225\n\017segment_outputs\030\004 \003(\0132\034.live"
-  "kit.SegmentedFileOutputB\t\n\007options\"\337\001\n\017A"
-  "utoTrackEgress\022\020\n\010filepath\030\001 \001(\t\022\030\n\020disa"
-  "ble_manifest\030\005 \001(\010\022\037\n\002s3\030\002 \001(\0132\021.livekit"
-  ".S3UploadH\000\022!\n\003gcp\030\003 \001(\0132\022.livekit.GCPUp"
-  "loadH\000\022)\n\005azure\030\004 \001(\0132\030.livekit.AzureBlo"
-  "bUploadH\000\022\'\n\006aliOSS\030\006 \001(\0132\025.livekit.AliO"
-  "SSUploadH\000B\010\n\006output*9\n\017EncodedFileType\022"
-  "\024\n\020DEFAULT_FILETYPE\020\000\022\007\n\003MP4\020\001\022\007\n\003OGG\020\002*"
-  "N\n\025SegmentedFileProtocol\022#\n\037DEFAULT_SEGM"
-  "ENTED_FILE_PROTOCOL\020\000\022\020\n\014HLS_PROTOCOL\020\001*"
-  "/\n\023SegmentedFileSuffix\022\t\n\005INDEX\020\000\022\r\n\tTIM"
-  "ESTAMP\020\001*E\n\017ImageFileSuffix\022\026\n\022IMAGE_SUF"
-  "FIX_INDEX\020\000\022\032\n\026IMAGE_SUFFIX_TIMESTAMP\020\001*"
-  "9\n\016StreamProtocol\022\024\n\020DEFAULT_PROTOCOL\020\000\022"
-  "\010\n\004RTMP\020\001\022\007\n\003SRT\020\002*U\n\013AudioMixing\022\022\n\016DEF"
-  "AULT_MIXING\020\000\022\026\n\022DUAL_CHANNEL_AGENT\020\001\022\032\n"
-  "\026DUAL_CHANNEL_ALTERNATE\020\002*\317\001\n\025EncodingOp"
-  "tionsPreset\022\020\n\014H264_720P_30\020\000\022\020\n\014H264_72"
-  "0P_60\020\001\022\021\n\rH264_1080P_30\020\002\022\021\n\rH264_1080P"
-  "_60\020\003\022\031\n\025PORTRAIT_H264_720P_30\020\004\022\031\n\025PORT"
-  "RAIT_H264_720P_60\020\005\022\032\n\026PORTRAIT_H264_108"
-  "0P_30\020\006\022\032\n\026PORTRAIT_H264_1080P_60\020\007*\237\001\n\014"
-  "EgressStatus\022\023\n\017EGRESS_STARTING\020\000\022\021\n\rEGR"
-  "ESS_ACTIVE\020\001\022\021\n\rEGRESS_ENDING\020\002\022\023\n\017EGRES"
-  "S_COMPLETE\020\003\022\021\n\rEGRESS_FAILED\020\004\022\022\n\016EGRES"
-  "S_ABORTED\020\005\022\030\n\024EGRESS_LIMIT_REACHED\020\006*J\n"
-  "\020EgressSourceType\022\032\n\026EGRESS_SOURCE_TYPE_"
-  "WEB\020\000\022\032\n\026EGRESS_SOURCE_TYPE_SDK\020\0012\234\005\n\006Eg"
-  "ress\022T\n\030StartRoomCompositeEgress\022#.livek"
-  "it.RoomCompositeEgressRequest\032\023.livekit."
-  "EgressInfo\022@\n\016StartWebEgress\022\031.livekit.W"
-  "ebEgressRequest\032\023.livekit.EgressInfo\022P\n\026"
-  "StartParticipantEgress\022!.livekit.Partici"
-  "pantEgressRequest\032\023.livekit.EgressInfo\022V"
-  "\n\031StartTrackCompositeEgress\022$.livekit.Tr"
-  "ackCompositeEgressRequest\032\023.livekit.Egre"
-  "ssInfo\022D\n\020StartTrackEgress\022\033.livekit.Tra"
-  "ckEgressRequest\032\023.livekit.EgressInfo\022A\n\014"
-  "UpdateLayout\022\034.livekit.UpdateLayoutReque"
-  "st\032\023.livekit.EgressInfo\022A\n\014UpdateStream\022"
-  "\034.livekit.UpdateStreamRequest\032\023.livekit."
-  "EgressInfo\022E\n\nListEgress\022\032.livekit.ListE"
-  "gressRequest\032\033.livekit.ListEgressRespons"
-  "e\022=\n\nStopEgress\022\032.livekit.StopEgressRequ"
-  "est\032\023.livekit.EgressInfoBFZ#github.com/l"
-  "ivekit/protocol/livekit\252\002\rLiveKit.Proto\352"
-  "\002\016LiveKit::Protob\006proto3"
+  "tputs\030\r \003(\0132\024.livekit.ImageOutput\022(\n\010web"
+  "hooks\030\016 \003(\0132\026.livekit.WebhookConfigB\010\n\006o"
+  "utputB\t\n\007options\"\257\003\n\030ParticipantEgressRe"
+  "quest\022\021\n\troom_name\030\001 \001(\t\022\020\n\010identity\030\002 \001"
+  "(\t\022\024\n\014screen_share\030\003 \001(\010\0220\n\006preset\030\004 \001(\016"
+  "2\036.livekit.EncodingOptionsPresetH\000\022,\n\010ad"
+  "vanced\030\005 \001(\0132\030.livekit.EncodingOptionsH\000"
+  "\0220\n\014file_outputs\030\006 \003(\0132\032.livekit.Encoded"
+  "FileOutput\022-\n\016stream_outputs\030\007 \003(\0132\025.liv"
+  "ekit.StreamOutput\0225\n\017segment_outputs\030\010 \003"
+  "(\0132\034.livekit.SegmentedFileOutput\022+\n\rimag"
+  "e_outputs\030\t \003(\0132\024.livekit.ImageOutput\022(\n"
+  "\010webhooks\030\n \003(\0132\026.livekit.WebhookConfigB"
+  "\t\n\007options\"\327\004\n\033TrackCompositeEgressReque"
+  "st\022\021\n\troom_name\030\001 \001(\t\022\026\n\016audio_track_id\030"
+  "\002 \001(\t\022\026\n\016video_track_id\030\003 \001(\t\022.\n\004file\030\004 "
+  "\001(\0132\032.livekit.EncodedFileOutputB\002\030\001H\000\022+\n"
+  "\006stream\030\005 \001(\0132\025.livekit.StreamOutputB\002\030\001"
+  "H\000\0224\n\010segments\030\010 \001(\0132\034.livekit.Segmented"
+  "FileOutputB\002\030\001H\000\0220\n\006preset\030\006 \001(\0162\036.livek"
+  "it.EncodingOptionsPresetH\001\022,\n\010advanced\030\007"
+  " \001(\0132\030.livekit.EncodingOptionsH\001\0220\n\014file"
+  "_outputs\030\013 \003(\0132\032.livekit.EncodedFileOutp"
+  "ut\022-\n\016stream_outputs\030\014 \003(\0132\025.livekit.Str"
+  "eamOutput\0225\n\017segment_outputs\030\r \003(\0132\034.liv"
+  "ekit.SegmentedFileOutput\022+\n\rimage_output"
+  "s\030\016 \003(\0132\024.livekit.ImageOutput\022(\n\010webhook"
+  "s\030\017 \003(\0132\026.livekit.WebhookConfigB\010\n\006outpu"
+  "tB\t\n\007options\"\261\001\n\022TrackEgressRequest\022\021\n\tr"
+  "oom_name\030\001 \001(\t\022\020\n\010track_id\030\002 \001(\t\022)\n\004file"
+  "\030\003 \001(\0132\031.livekit.DirectFileOutputH\000\022\027\n\rw"
+  "ebsocket_url\030\004 \001(\tH\000\022(\n\010webhooks\030\005 \003(\0132\026"
+  ".livekit.WebhookConfigB\010\n\006output\"\216\002\n\021Enc"
+  "odedFileOutput\022+\n\tfile_type\030\001 \001(\0162\030.live"
+  "kit.EncodedFileType\022\020\n\010filepath\030\002 \001(\t\022\030\n"
+  "\020disable_manifest\030\006 \001(\010\022\037\n\002s3\030\003 \001(\0132\021.li"
+  "vekit.S3UploadH\000\022!\n\003gcp\030\004 \001(\0132\022.livekit."
+  "GCPUploadH\000\022)\n\005azure\030\005 \001(\0132\030.livekit.Azu"
+  "reBlobUploadH\000\022\'\n\006aliOSS\030\007 \001(\0132\025.livekit"
+  ".AliOSSUploadH\000B\010\n\006output\"\240\003\n\023SegmentedF"
+  "ileOutput\0220\n\010protocol\030\001 \001(\0162\036.livekit.Se"
+  "gmentedFileProtocol\022\027\n\017filename_prefix\030\002"
+  " \001(\t\022\025\n\rplaylist_name\030\003 \001(\t\022\032\n\022live_play"
+  "list_name\030\013 \001(\t\022\030\n\020segment_duration\030\004 \001("
+  "\r\0225\n\017filename_suffix\030\n \001(\0162\034.livekit.Seg"
+  "mentedFileSuffix\022\030\n\020disable_manifest\030\010 \001"
+  "(\010\022\037\n\002s3\030\005 \001(\0132\021.livekit.S3UploadH\000\022!\n\003g"
+  "cp\030\006 \001(\0132\022.livekit.GCPUploadH\000\022)\n\005azure\030"
+  "\007 \001(\0132\030.livekit.AzureBlobUploadH\000\022\'\n\006ali"
+  "OSS\030\t \001(\0132\025.livekit.AliOSSUploadH\000B\010\n\006ou"
+  "tput\"\340\001\n\020DirectFileOutput\022\020\n\010filepath\030\001 "
+  "\001(\t\022\030\n\020disable_manifest\030\005 \001(\010\022\037\n\002s3\030\002 \001("
+  "\0132\021.livekit.S3UploadH\000\022!\n\003gcp\030\003 \001(\0132\022.li"
+  "vekit.GCPUploadH\000\022)\n\005azure\030\004 \001(\0132\030.livek"
+  "it.AzureBlobUploadH\000\022\'\n\006aliOSS\030\006 \001(\0132\025.l"
+  "ivekit.AliOSSUploadH\000B\010\n\006output\"\370\002\n\013Imag"
+  "eOutput\022\030\n\020capture_interval\030\001 \001(\r\022\r\n\005wid"
+  "th\030\002 \001(\005\022\016\n\006height\030\003 \001(\005\022\027\n\017filename_pre"
+  "fix\030\004 \001(\t\0221\n\017filename_suffix\030\005 \001(\0162\030.liv"
+  "ekit.ImageFileSuffix\022(\n\013image_codec\030\006 \001("
+  "\0162\023.livekit.ImageCodec\022\030\n\020disable_manife"
+  "st\030\007 \001(\010\022\037\n\002s3\030\010 \001(\0132\021.livekit.S3UploadH"
+  "\000\022!\n\003gcp\030\t \001(\0132\022.livekit.GCPUploadH\000\022)\n\005"
+  "azure\030\n \001(\0132\030.livekit.AzureBlobUploadH\000\022"
+  "\'\n\006aliOSS\030\013 \001(\0132\025.livekit.AliOSSUploadH\000"
+  "B\010\n\006output\"\202\003\n\010S3Upload\022\022\n\naccess_key\030\001 "
+  "\001(\t\022\016\n\006secret\030\002 \001(\t\022\025\n\rsession_token\030\013 \001"
+  "(\t\022\027\n\017assume_role_arn\030\014 \001(\t\022\037\n\027assume_ro"
+  "le_external_id\030\r \001(\t\022\016\n\006region\030\003 \001(\t\022\020\n\010"
+  "endpoint\030\004 \001(\t\022\016\n\006bucket\030\005 \001(\t\022\030\n\020force_"
+  "path_style\030\006 \001(\010\0221\n\010metadata\030\007 \003(\0132\037.liv"
+  "ekit.S3Upload.MetadataEntry\022\017\n\007tagging\030\010"
+  " \001(\t\022\033\n\023content_disposition\030\t \001(\t\022#\n\005pro"
+  "xy\030\n \001(\0132\024.livekit.ProxyConfig\032/\n\rMetada"
+  "taEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\""
+  "U\n\tGCPUpload\022\023\n\013credentials\030\001 \001(\t\022\016\n\006buc"
+  "ket\030\002 \001(\t\022#\n\005proxy\030\003 \001(\0132\024.livekit.Proxy"
+  "Config\"T\n\017AzureBlobUpload\022\024\n\014account_nam"
+  "e\030\001 \001(\t\022\023\n\013account_key\030\002 \001(\t\022\026\n\016containe"
+  "r_name\030\003 \001(\t\"d\n\014AliOSSUpload\022\022\n\naccess_k"
+  "ey\030\001 \001(\t\022\016\n\006secret\030\002 \001(\t\022\016\n\006region\030\003 \001(\t"
+  "\022\020\n\010endpoint\030\004 \001(\t\022\016\n\006bucket\030\005 \001(\t\">\n\013Pr"
+  "oxyConfig\022\013\n\003url\030\001 \001(\t\022\020\n\010username\030\002 \001(\t"
+  "\022\020\n\010password\030\003 \001(\t\"G\n\014StreamOutput\022)\n\010pr"
+  "otocol\030\001 \001(\0162\027.livekit.StreamProtocol\022\014\n"
+  "\004urls\030\002 \003(\t\"\267\002\n\017EncodingOptions\022\r\n\005width"
+  "\030\001 \001(\005\022\016\n\006height\030\002 \001(\005\022\r\n\005depth\030\003 \001(\005\022\021\n"
+  "\tframerate\030\004 \001(\005\022(\n\013audio_codec\030\005 \001(\0162\023."
+  "livekit.AudioCodec\022\025\n\raudio_bitrate\030\006 \001("
+  "\005\022\025\n\raudio_quality\030\013 \001(\005\022\027\n\017audio_freque"
+  "ncy\030\007 \001(\005\022(\n\013video_codec\030\010 \001(\0162\023.livekit"
+  ".VideoCodec\022\025\n\rvideo_bitrate\030\t \001(\005\022\025\n\rvi"
+  "deo_quality\030\014 \001(\005\022\032\n\022key_frame_interval\030"
+  "\n \001(\001\"8\n\023UpdateLayoutRequest\022\021\n\tegress_i"
+  "d\030\001 \001(\t\022\016\n\006layout\030\002 \001(\t\"]\n\023UpdateStreamR"
+  "equest\022\021\n\tegress_id\030\001 \001(\t\022\027\n\017add_output_"
+  "urls\030\002 \003(\t\022\032\n\022remove_output_urls\030\003 \003(\t\"I"
+  "\n\021ListEgressRequest\022\021\n\troom_name\030\001 \001(\t\022\021"
+  "\n\tegress_id\030\002 \001(\t\022\016\n\006active\030\003 \001(\010\"8\n\022Lis"
+  "tEgressResponse\022\"\n\005items\030\001 \003(\0132\023.livekit"
+  ".EgressInfo\"&\n\021StopEgressRequest\022\021\n\tegre"
+  "ss_id\030\001 \001(\t\"\236\007\n\nEgressInfo\022\021\n\tegress_id\030"
+  "\001 \001(\t\022\017\n\007room_id\030\002 \001(\t\022\021\n\troom_name\030\r \001("
+  "\t\022.\n\013source_type\030\032 \001(\0162\031.livekit.EgressS"
+  "ourceType\022%\n\006status\030\003 \001(\0162\025.livekit.Egre"
+  "ssStatus\022\022\n\nstarted_at\030\n \001(\003\022\020\n\010ended_at"
+  "\030\013 \001(\003\022\022\n\nupdated_at\030\022 \001(\003\022\017\n\007details\030\025 "
+  "\001(\t\022\r\n\005error\030\t \001(\t\022\022\n\nerror_code\030\026 \001(\005\022="
+  "\n\016room_composite\030\004 \001(\0132#.livekit.RoomCom"
+  "positeEgressRequestH\000\022(\n\003web\030\016 \001(\0132\031.liv"
+  "ekit.WebEgressRequestH\000\0228\n\013participant\030\023"
+  " \001(\0132!.livekit.ParticipantEgressRequestH"
+  "\000\022\?\n\017track_composite\030\005 \001(\0132$.livekit.Tra"
+  "ckCompositeEgressRequestH\000\022,\n\005track\030\006 \001("
+  "\0132\033.livekit.TrackEgressRequestH\000\022-\n\006stre"
+  "am\030\007 \001(\0132\027.livekit.StreamInfoListB\002\030\001H\001\022"
+  "%\n\004file\030\010 \001(\0132\021.livekit.FileInfoB\002\030\001H\001\022-"
+  "\n\010segments\030\014 \001(\0132\025.livekit.SegmentsInfoB"
+  "\002\030\001H\001\022+\n\016stream_results\030\017 \003(\0132\023.livekit."
+  "StreamInfo\022\'\n\014file_results\030\020 \003(\0132\021.livek"
+  "it.FileInfo\022.\n\017segment_results\030\021 \003(\0132\025.l"
+  "ivekit.SegmentsInfo\022*\n\rimage_results\030\024 \003"
+  "(\0132\023.livekit.ImagesInfo\022\031\n\021manifest_loca"
+  "tion\030\027 \001(\t\022\033\n\023backup_storage_used\030\031 \001(\010B"
+  "\t\n\007requestB\010\n\006result\"7\n\016StreamInfoList\022!"
+  "\n\004info\030\001 \003(\0132\023.livekit.StreamInfo:\002\030\001\"\274\001"
+  "\n\nStreamInfo\022\013\n\003url\030\001 \001(\t\022\022\n\nstarted_at\030"
+  "\002 \001(\003\022\020\n\010ended_at\030\003 \001(\003\022\020\n\010duration\030\004 \001("
+  "\003\022*\n\006status\030\005 \001(\0162\032.livekit.StreamInfo.S"
+  "tatus\022\r\n\005error\030\006 \001(\t\".\n\006Status\022\n\n\006ACTIVE"
+  "\020\000\022\014\n\010FINISHED\020\001\022\n\n\006FAILED\020\002\"t\n\010FileInfo"
+  "\022\020\n\010filename\030\001 \001(\t\022\022\n\nstarted_at\030\002 \001(\003\022\020"
+  "\n\010ended_at\030\003 \001(\003\022\020\n\010duration\030\006 \001(\003\022\014\n\004si"
+  "ze\030\004 \001(\003\022\020\n\010location\030\005 \001(\t\"\331\001\n\014SegmentsI"
+  "nfo\022\025\n\rplaylist_name\030\001 \001(\t\022\032\n\022live_playl"
+  "ist_name\030\010 \001(\t\022\020\n\010duration\030\002 \001(\003\022\014\n\004size"
+  "\030\003 \001(\003\022\031\n\021playlist_location\030\004 \001(\t\022\036\n\026liv"
+  "e_playlist_location\030\t \001(\t\022\025\n\rsegment_cou"
+  "nt\030\005 \001(\003\022\022\n\nstarted_at\030\006 \001(\003\022\020\n\010ended_at"
+  "\030\007 \001(\003\"`\n\nImagesInfo\022\027\n\017filename_prefix\030"
+  "\004 \001(\t\022\023\n\013image_count\030\001 \001(\003\022\022\n\nstarted_at"
+  "\030\002 \001(\003\022\020\n\010ended_at\030\003 \001(\003\"\353\001\n\025AutoPartici"
+  "pantEgress\0220\n\006preset\030\001 \001(\0162\036.livekit.Enc"
+  "odingOptionsPresetH\000\022,\n\010advanced\030\002 \001(\0132\030"
+  ".livekit.EncodingOptionsH\000\0220\n\014file_outpu"
+  "ts\030\003 \003(\0132\032.livekit.EncodedFileOutput\0225\n\017"
+  "segment_outputs\030\004 \003(\0132\034.livekit.Segmente"
+  "dFileOutputB\t\n\007options\"\337\001\n\017AutoTrackEgre"
+  "ss\022\020\n\010filepath\030\001 \001(\t\022\030\n\020disable_manifest"
+  "\030\005 \001(\010\022\037\n\002s3\030\002 \001(\0132\021.livekit.S3UploadH\000\022"
+  "!\n\003gcp\030\003 \001(\0132\022.livekit.GCPUploadH\000\022)\n\005az"
+  "ure\030\004 \001(\0132\030.livekit.AzureBlobUploadH\000\022\'\n"
+  "\006aliOSS\030\006 \001(\0132\025.livekit.AliOSSUploadH\000B\010"
+  "\n\006output*9\n\017EncodedFileType\022\024\n\020DEFAULT_F"
+  "ILETYPE\020\000\022\007\n\003MP4\020\001\022\007\n\003OGG\020\002*N\n\025Segmented"
+  "FileProtocol\022#\n\037DEFAULT_SEGMENTED_FILE_P"
+  "ROTOCOL\020\000\022\020\n\014HLS_PROTOCOL\020\001*/\n\023Segmented"
+  "FileSuffix\022\t\n\005INDEX\020\000\022\r\n\tTIMESTAMP\020\001*f\n\017"
+  "ImageFileSuffix\022\026\n\022IMAGE_SUFFIX_INDEX\020\000\022"
+  "\032\n\026IMAGE_SUFFIX_TIMESTAMP\020\001\022\037\n\033IMAGE_SUF"
+  "FIX_NONE_OVERWRITE\020\002*9\n\016StreamProtocol\022\024"
+  "\n\020DEFAULT_PROTOCOL\020\000\022\010\n\004RTMP\020\001\022\007\n\003SRT\020\002*"
+  "U\n\013AudioMixing\022\022\n\016DEFAULT_MIXING\020\000\022\026\n\022DU"
+  "AL_CHANNEL_AGENT\020\001\022\032\n\026DUAL_CHANNEL_ALTER"
+  "NATE\020\002*\317\001\n\025EncodingOptionsPreset\022\020\n\014H264"
+  "_720P_30\020\000\022\020\n\014H264_720P_60\020\001\022\021\n\rH264_108"
+  "0P_30\020\002\022\021\n\rH264_1080P_60\020\003\022\031\n\025PORTRAIT_H"
+  "264_720P_30\020\004\022\031\n\025PORTRAIT_H264_720P_60\020\005"
+  "\022\032\n\026PORTRAIT_H264_1080P_30\020\006\022\032\n\026PORTRAIT"
+  "_H264_1080P_60\020\007*\237\001\n\014EgressStatus\022\023\n\017EGR"
+  "ESS_STARTING\020\000\022\021\n\rEGRESS_ACTIVE\020\001\022\021\n\rEGR"
+  "ESS_ENDING\020\002\022\023\n\017EGRESS_COMPLETE\020\003\022\021\n\rEGR"
+  "ESS_FAILED\020\004\022\022\n\016EGRESS_ABORTED\020\005\022\030\n\024EGRE"
+  "SS_LIMIT_REACHED\020\006*J\n\020EgressSourceType\022\032"
+  "\n\026EGRESS_SOURCE_TYPE_WEB\020\000\022\032\n\026EGRESS_SOU"
+  "RCE_TYPE_SDK\020\0012\234\005\n\006Egress\022T\n\030StartRoomCo"
+  "mpositeEgress\022#.livekit.RoomCompositeEgr"
+  "essRequest\032\023.livekit.EgressInfo\022@\n\016Start"
+  "WebEgress\022\031.livekit.WebEgressRequest\032\023.l"
+  "ivekit.EgressInfo\022P\n\026StartParticipantEgr"
+  "ess\022!.livekit.ParticipantEgressRequest\032\023"
+  ".livekit.EgressInfo\022V\n\031StartTrackComposi"
+  "teEgress\022$.livekit.TrackCompositeEgressR"
+  "equest\032\023.livekit.EgressInfo\022D\n\020StartTrac"
+  "kEgress\022\033.livekit.TrackEgressRequest\032\023.l"
+  "ivekit.EgressInfo\022A\n\014UpdateLayout\022\034.live"
+  "kit.UpdateLayoutRequest\032\023.livekit.Egress"
+  "Info\022A\n\014UpdateStream\022\034.livekit.UpdateStr"
+  "eamRequest\032\023.livekit.EgressInfo\022E\n\nListE"
+  "gress\022\032.livekit.ListEgressRequest\032\033.live"
+  "kit.ListEgressResponse\022=\n\nStopEgress\022\032.l"
+  "ivekit.StopEgressRequest\032\023.livekit.Egres"
+  "sInfoBFZ#github.com/livekit/protocol/liv"
+  "ekit\252\002\rLiveKit.Proto\352\002\016LiveKit::Protob\006p"
+  "roto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_livekit_5fegress_2eproto_deps[1] = {
   &::descriptor_table_livekit_5fmodels_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_livekit_5fegress_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_livekit_5fegress_2eproto = {
-    false, false, 8704, descriptor_table_protodef_livekit_5fegress_2eproto,
+    false, false, 9005, descriptor_table_protodef_livekit_5fegress_2eproto,
     "livekit_egress.proto",
     &descriptor_table_livekit_5fegress_2eproto_once, descriptor_table_livekit_5fegress_2eproto_deps, 1, 30,
     schemas, file_default_instances, TableStruct_livekit_5fegress_2eproto::offsets,
@@ -1341,6 +1363,7 @@ bool ImageFileSuffix_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
+    case 2:
       return true;
     default:
       return false;
@@ -1517,6 +1540,9 @@ void RoomCompositeEgressRequest::set_allocated_advanced(::livekit::EncodingOptio
   }
   // @@protoc_insertion_point(field_set_allocated:livekit.RoomCompositeEgressRequest.advanced)
 }
+void RoomCompositeEgressRequest::clear_webhooks() {
+  _impl_.webhooks_.Clear();
+}
 RoomCompositeEgressRequest::RoomCompositeEgressRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -1531,6 +1557,7 @@ RoomCompositeEgressRequest::RoomCompositeEgressRequest(const RoomCompositeEgress
     , decltype(_impl_.stream_outputs_){from._impl_.stream_outputs_}
     , decltype(_impl_.segment_outputs_){from._impl_.segment_outputs_}
     , decltype(_impl_.image_outputs_){from._impl_.image_outputs_}
+    , decltype(_impl_.webhooks_){from._impl_.webhooks_}
     , decltype(_impl_.room_name_){}
     , decltype(_impl_.layout_){}
     , decltype(_impl_.custom_base_url_){}
@@ -1618,6 +1645,7 @@ inline void RoomCompositeEgressRequest::SharedCtor(
     , decltype(_impl_.stream_outputs_){arena}
     , decltype(_impl_.segment_outputs_){arena}
     , decltype(_impl_.image_outputs_){arena}
+    , decltype(_impl_.webhooks_){arena}
     , decltype(_impl_.room_name_){}
     , decltype(_impl_.layout_){}
     , decltype(_impl_.custom_base_url_){}
@@ -1660,6 +1688,7 @@ inline void RoomCompositeEgressRequest::SharedDtor() {
   _impl_.stream_outputs_.~RepeatedPtrField();
   _impl_.segment_outputs_.~RepeatedPtrField();
   _impl_.image_outputs_.~RepeatedPtrField();
+  _impl_.webhooks_.~RepeatedPtrField();
   _impl_.room_name_.Destroy();
   _impl_.layout_.Destroy();
   _impl_.custom_base_url_.Destroy();
@@ -1734,6 +1763,7 @@ void RoomCompositeEgressRequest::Clear() {
   _impl_.stream_outputs_.Clear();
   _impl_.segment_outputs_.Clear();
   _impl_.image_outputs_.Clear();
+  _impl_.webhooks_.Clear();
   _impl_.room_name_.ClearToEmpty();
   _impl_.layout_.ClearToEmpty();
   _impl_.custom_base_url_.ClearToEmpty();
@@ -1899,6 +1929,19 @@ const char* RoomCompositeEgressRequest::_InternalParse(const char* ptr, ::_pbi::
         } else
           goto handle_unusual;
         continue;
+      // repeated .livekit.WebhookConfig webhooks = 16;
+      case 16:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 130)) {
+          ptr -= 2;
+          do {
+            ptr += 2;
+            ptr = ctx->ParseMessage(_internal_add_webhooks(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<130>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -2044,6 +2087,14 @@ uint8_t* RoomCompositeEgressRequest::_InternalSerialize(
       15, this->_internal_audio_mixing(), target);
   }
 
+  // repeated .livekit.WebhookConfig webhooks = 16;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_webhooks_size()); i < n; i++) {
+    const auto& repfield = this->_internal_webhooks(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(16, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2084,6 +2135,13 @@ size_t RoomCompositeEgressRequest::ByteSizeLong() const {
   // repeated .livekit.ImageOutput image_outputs = 14;
   total_size += 1UL * this->_internal_image_outputs_size();
   for (const auto& msg : this->_impl_.image_outputs_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .livekit.WebhookConfig webhooks = 16;
+  total_size += 2UL * this->_internal_webhooks_size();
+  for (const auto& msg : this->_impl_.webhooks_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
@@ -2191,6 +2249,7 @@ void RoomCompositeEgressRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_
   _this->_impl_.stream_outputs_.MergeFrom(from._impl_.stream_outputs_);
   _this->_impl_.segment_outputs_.MergeFrom(from._impl_.segment_outputs_);
   _this->_impl_.image_outputs_.MergeFrom(from._impl_.image_outputs_);
+  _this->_impl_.webhooks_.MergeFrom(from._impl_.webhooks_);
   if (!from._internal_room_name().empty()) {
     _this->_internal_set_room_name(from._internal_room_name());
   }
@@ -2266,6 +2325,7 @@ void RoomCompositeEgressRequest::InternalSwap(RoomCompositeEgressRequest* other)
   _impl_.stream_outputs_.InternalSwap(&other->_impl_.stream_outputs_);
   _impl_.segment_outputs_.InternalSwap(&other->_impl_.segment_outputs_);
   _impl_.image_outputs_.InternalSwap(&other->_impl_.image_outputs_);
+  _impl_.webhooks_.InternalSwap(&other->_impl_.webhooks_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.room_name_, lhs_arena,
       &other->_impl_.room_name_, rhs_arena
@@ -2382,6 +2442,9 @@ void WebEgressRequest::set_allocated_advanced(::livekit::EncodingOptions* advanc
   }
   // @@protoc_insertion_point(field_set_allocated:livekit.WebEgressRequest.advanced)
 }
+void WebEgressRequest::clear_webhooks() {
+  _impl_.webhooks_.Clear();
+}
 WebEgressRequest::WebEgressRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2396,6 +2459,7 @@ WebEgressRequest::WebEgressRequest(const WebEgressRequest& from)
     , decltype(_impl_.stream_outputs_){from._impl_.stream_outputs_}
     , decltype(_impl_.segment_outputs_){from._impl_.segment_outputs_}
     , decltype(_impl_.image_outputs_){from._impl_.image_outputs_}
+    , decltype(_impl_.webhooks_){from._impl_.webhooks_}
     , decltype(_impl_.url_){}
     , decltype(_impl_.audio_only_){}
     , decltype(_impl_.video_only_){}
@@ -2465,6 +2529,7 @@ inline void WebEgressRequest::SharedCtor(
     , decltype(_impl_.stream_outputs_){arena}
     , decltype(_impl_.segment_outputs_){arena}
     , decltype(_impl_.image_outputs_){arena}
+    , decltype(_impl_.webhooks_){arena}
     , decltype(_impl_.url_){}
     , decltype(_impl_.audio_only_){false}
     , decltype(_impl_.video_only_){false}
@@ -2497,6 +2562,7 @@ inline void WebEgressRequest::SharedDtor() {
   _impl_.stream_outputs_.~RepeatedPtrField();
   _impl_.segment_outputs_.~RepeatedPtrField();
   _impl_.image_outputs_.~RepeatedPtrField();
+  _impl_.webhooks_.~RepeatedPtrField();
   _impl_.url_.Destroy();
   if (has_output()) {
     clear_output();
@@ -2569,6 +2635,7 @@ void WebEgressRequest::Clear() {
   _impl_.stream_outputs_.Clear();
   _impl_.segment_outputs_.Clear();
   _impl_.image_outputs_.Clear();
+  _impl_.webhooks_.Clear();
   _impl_.url_.ClearToEmpty();
   ::memset(&_impl_.audio_only_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.await_start_signal_) -
@@ -2711,6 +2778,19 @@ const char* WebEgressRequest::_InternalParse(const char* ptr, ::_pbi::ParseConte
         } else
           goto handle_unusual;
         continue;
+      // repeated .livekit.WebhookConfig webhooks = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 114)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_webhooks(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<114>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -2835,6 +2915,14 @@ uint8_t* WebEgressRequest::_InternalSerialize(
         InternalWriteMessage(13, repfield, repfield.GetCachedSize(), target, stream);
   }
 
+  // repeated .livekit.WebhookConfig webhooks = 14;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_webhooks_size()); i < n; i++) {
+    const auto& repfield = this->_internal_webhooks(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(14, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2875,6 +2963,13 @@ size_t WebEgressRequest::ByteSizeLong() const {
   // repeated .livekit.ImageOutput image_outputs = 13;
   total_size += 1UL * this->_internal_image_outputs_size();
   for (const auto& msg : this->_impl_.image_outputs_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .livekit.WebhookConfig webhooks = 14;
+  total_size += 1UL * this->_internal_webhooks_size();
+  for (const auto& msg : this->_impl_.webhooks_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
@@ -2967,6 +3062,7 @@ void WebEgressRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const
   _this->_impl_.stream_outputs_.MergeFrom(from._impl_.stream_outputs_);
   _this->_impl_.segment_outputs_.MergeFrom(from._impl_.segment_outputs_);
   _this->_impl_.image_outputs_.MergeFrom(from._impl_.image_outputs_);
+  _this->_impl_.webhooks_.MergeFrom(from._impl_.webhooks_);
   if (!from._internal_url().empty()) {
     _this->_internal_set_url(from._internal_url());
   }
@@ -3036,6 +3132,7 @@ void WebEgressRequest::InternalSwap(WebEgressRequest* other) {
   _impl_.stream_outputs_.InternalSwap(&other->_impl_.stream_outputs_);
   _impl_.segment_outputs_.InternalSwap(&other->_impl_.segment_outputs_);
   _impl_.image_outputs_.InternalSwap(&other->_impl_.image_outputs_);
+  _impl_.webhooks_.InternalSwap(&other->_impl_.webhooks_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.url_, lhs_arena,
       &other->_impl_.url_, rhs_arena
@@ -3084,6 +3181,9 @@ void ParticipantEgressRequest::set_allocated_advanced(::livekit::EncodingOptions
   }
   // @@protoc_insertion_point(field_set_allocated:livekit.ParticipantEgressRequest.advanced)
 }
+void ParticipantEgressRequest::clear_webhooks() {
+  _impl_.webhooks_.Clear();
+}
 ParticipantEgressRequest::ParticipantEgressRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -3098,6 +3198,7 @@ ParticipantEgressRequest::ParticipantEgressRequest(const ParticipantEgressReques
     , decltype(_impl_.stream_outputs_){from._impl_.stream_outputs_}
     , decltype(_impl_.segment_outputs_){from._impl_.segment_outputs_}
     , decltype(_impl_.image_outputs_){from._impl_.image_outputs_}
+    , decltype(_impl_.webhooks_){from._impl_.webhooks_}
     , decltype(_impl_.room_name_){}
     , decltype(_impl_.identity_){}
     , decltype(_impl_.screen_share_){}
@@ -3150,6 +3251,7 @@ inline void ParticipantEgressRequest::SharedCtor(
     , decltype(_impl_.stream_outputs_){arena}
     , decltype(_impl_.segment_outputs_){arena}
     , decltype(_impl_.image_outputs_){arena}
+    , decltype(_impl_.webhooks_){arena}
     , decltype(_impl_.room_name_){}
     , decltype(_impl_.identity_){}
     , decltype(_impl_.screen_share_){false}
@@ -3183,6 +3285,7 @@ inline void ParticipantEgressRequest::SharedDtor() {
   _impl_.stream_outputs_.~RepeatedPtrField();
   _impl_.segment_outputs_.~RepeatedPtrField();
   _impl_.image_outputs_.~RepeatedPtrField();
+  _impl_.webhooks_.~RepeatedPtrField();
   _impl_.room_name_.Destroy();
   _impl_.identity_.Destroy();
   if (has_options()) {
@@ -3225,6 +3328,7 @@ void ParticipantEgressRequest::Clear() {
   _impl_.stream_outputs_.Clear();
   _impl_.segment_outputs_.Clear();
   _impl_.image_outputs_.Clear();
+  _impl_.webhooks_.Clear();
   _impl_.room_name_.ClearToEmpty();
   _impl_.identity_.ClearToEmpty();
   _impl_.screen_share_ = false;
@@ -3335,6 +3439,19 @@ const char* ParticipantEgressRequest::_InternalParse(const char* ptr, ::_pbi::Pa
         } else
           goto handle_unusual;
         continue;
+      // repeated .livekit.WebhookConfig webhooks = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_webhooks(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<82>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -3436,6 +3553,14 @@ uint8_t* ParticipantEgressRequest::_InternalSerialize(
         InternalWriteMessage(9, repfield, repfield.GetCachedSize(), target, stream);
   }
 
+  // repeated .livekit.WebhookConfig webhooks = 10;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_webhooks_size()); i < n; i++) {
+    const auto& repfield = this->_internal_webhooks(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(10, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -3476,6 +3601,13 @@ size_t ParticipantEgressRequest::ByteSizeLong() const {
   // repeated .livekit.ImageOutput image_outputs = 9;
   total_size += 1UL * this->_internal_image_outputs_size();
   for (const auto& msg : this->_impl_.image_outputs_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .livekit.WebhookConfig webhooks = 10;
+  total_size += 1UL * this->_internal_webhooks_size();
+  for (const auto& msg : this->_impl_.webhooks_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
@@ -3539,6 +3671,7 @@ void ParticipantEgressRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
   _this->_impl_.stream_outputs_.MergeFrom(from._impl_.stream_outputs_);
   _this->_impl_.segment_outputs_.MergeFrom(from._impl_.segment_outputs_);
   _this->_impl_.image_outputs_.MergeFrom(from._impl_.image_outputs_);
+  _this->_impl_.webhooks_.MergeFrom(from._impl_.webhooks_);
   if (!from._internal_room_name().empty()) {
     _this->_internal_set_room_name(from._internal_room_name());
   }
@@ -3585,6 +3718,7 @@ void ParticipantEgressRequest::InternalSwap(ParticipantEgressRequest* other) {
   _impl_.stream_outputs_.InternalSwap(&other->_impl_.stream_outputs_);
   _impl_.segment_outputs_.InternalSwap(&other->_impl_.segment_outputs_);
   _impl_.image_outputs_.InternalSwap(&other->_impl_.image_outputs_);
+  _impl_.webhooks_.InternalSwap(&other->_impl_.webhooks_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.room_name_, lhs_arena,
       &other->_impl_.room_name_, rhs_arena
@@ -3690,6 +3824,9 @@ void TrackCompositeEgressRequest::set_allocated_advanced(::livekit::EncodingOpti
   }
   // @@protoc_insertion_point(field_set_allocated:livekit.TrackCompositeEgressRequest.advanced)
 }
+void TrackCompositeEgressRequest::clear_webhooks() {
+  _impl_.webhooks_.Clear();
+}
 TrackCompositeEgressRequest::TrackCompositeEgressRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -3704,6 +3841,7 @@ TrackCompositeEgressRequest::TrackCompositeEgressRequest(const TrackCompositeEgr
     , decltype(_impl_.stream_outputs_){from._impl_.stream_outputs_}
     , decltype(_impl_.segment_outputs_){from._impl_.segment_outputs_}
     , decltype(_impl_.image_outputs_){from._impl_.image_outputs_}
+    , decltype(_impl_.webhooks_){from._impl_.webhooks_}
     , decltype(_impl_.room_name_){}
     , decltype(_impl_.audio_track_id_){}
     , decltype(_impl_.video_track_id_){}
@@ -3785,6 +3923,7 @@ inline void TrackCompositeEgressRequest::SharedCtor(
     , decltype(_impl_.stream_outputs_){arena}
     , decltype(_impl_.segment_outputs_){arena}
     , decltype(_impl_.image_outputs_){arena}
+    , decltype(_impl_.webhooks_){arena}
     , decltype(_impl_.room_name_){}
     , decltype(_impl_.audio_track_id_){}
     , decltype(_impl_.video_track_id_){}
@@ -3824,6 +3963,7 @@ inline void TrackCompositeEgressRequest::SharedDtor() {
   _impl_.stream_outputs_.~RepeatedPtrField();
   _impl_.segment_outputs_.~RepeatedPtrField();
   _impl_.image_outputs_.~RepeatedPtrField();
+  _impl_.webhooks_.~RepeatedPtrField();
   _impl_.room_name_.Destroy();
   _impl_.audio_track_id_.Destroy();
   _impl_.video_track_id_.Destroy();
@@ -3898,6 +4038,7 @@ void TrackCompositeEgressRequest::Clear() {
   _impl_.stream_outputs_.Clear();
   _impl_.segment_outputs_.Clear();
   _impl_.image_outputs_.Clear();
+  _impl_.webhooks_.Clear();
   _impl_.room_name_.ClearToEmpty();
   _impl_.audio_track_id_.ClearToEmpty();
   _impl_.video_track_id_.ClearToEmpty();
@@ -4035,6 +4176,19 @@ const char* TrackCompositeEgressRequest::_InternalParse(const char* ptr, ::_pbi:
         } else
           goto handle_unusual;
         continue;
+      // repeated .livekit.WebhookConfig webhooks = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 122)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_webhooks(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<122>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -4161,6 +4315,14 @@ uint8_t* TrackCompositeEgressRequest::_InternalSerialize(
         InternalWriteMessage(14, repfield, repfield.GetCachedSize(), target, stream);
   }
 
+  // repeated .livekit.WebhookConfig webhooks = 15;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_webhooks_size()); i < n; i++) {
+    const auto& repfield = this->_internal_webhooks(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(15, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -4201,6 +4363,13 @@ size_t TrackCompositeEgressRequest::ByteSizeLong() const {
   // repeated .livekit.ImageOutput image_outputs = 14;
   total_size += 1UL * this->_internal_image_outputs_size();
   for (const auto& msg : this->_impl_.image_outputs_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .livekit.WebhookConfig webhooks = 15;
+  total_size += 1UL * this->_internal_webhooks_size();
+  for (const auto& msg : this->_impl_.webhooks_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
@@ -4292,6 +4461,7 @@ void TrackCompositeEgressRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to
   _this->_impl_.stream_outputs_.MergeFrom(from._impl_.stream_outputs_);
   _this->_impl_.segment_outputs_.MergeFrom(from._impl_.segment_outputs_);
   _this->_impl_.image_outputs_.MergeFrom(from._impl_.image_outputs_);
+  _this->_impl_.webhooks_.MergeFrom(from._impl_.webhooks_);
   if (!from._internal_room_name().empty()) {
     _this->_internal_set_room_name(from._internal_room_name());
   }
@@ -4358,6 +4528,7 @@ void TrackCompositeEgressRequest::InternalSwap(TrackCompositeEgressRequest* othe
   _impl_.stream_outputs_.InternalSwap(&other->_impl_.stream_outputs_);
   _impl_.segment_outputs_.InternalSwap(&other->_impl_.segment_outputs_);
   _impl_.image_outputs_.InternalSwap(&other->_impl_.image_outputs_);
+  _impl_.webhooks_.InternalSwap(&other->_impl_.webhooks_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.room_name_, lhs_arena,
       &other->_impl_.room_name_, rhs_arena
@@ -4408,6 +4579,9 @@ void TrackEgressRequest::set_allocated_file(::livekit::DirectFileOutput* file) {
   }
   // @@protoc_insertion_point(field_set_allocated:livekit.TrackEgressRequest.file)
 }
+void TrackEgressRequest::clear_webhooks() {
+  _impl_.webhooks_.Clear();
+}
 TrackEgressRequest::TrackEgressRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -4418,7 +4592,8 @@ TrackEgressRequest::TrackEgressRequest(const TrackEgressRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   TrackEgressRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.room_name_){}
+      decltype(_impl_.webhooks_){from._impl_.webhooks_}
+    , decltype(_impl_.room_name_){}
     , decltype(_impl_.track_id_){}
     , decltype(_impl_.output_){}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -4464,7 +4639,8 @@ inline void TrackEgressRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.room_name_){}
+      decltype(_impl_.webhooks_){arena}
+    , decltype(_impl_.room_name_){}
     , decltype(_impl_.track_id_){}
     , decltype(_impl_.output_){}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -4492,6 +4668,7 @@ TrackEgressRequest::~TrackEgressRequest() {
 
 inline void TrackEgressRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.webhooks_.~RepeatedPtrField();
   _impl_.room_name_.Destroy();
   _impl_.track_id_.Destroy();
   if (has_output()) {
@@ -4530,6 +4707,7 @@ void TrackEgressRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.webhooks_.Clear();
   _impl_.room_name_.ClearToEmpty();
   _impl_.track_id_.ClearToEmpty();
   clear_output();
@@ -4577,6 +4755,19 @@ const char* TrackEgressRequest::_InternalParse(const char* ptr, ::_pbi::ParseCon
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "livekit.TrackEgressRequest.websocket_url"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .livekit.WebhookConfig webhooks = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_webhooks(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -4646,6 +4837,14 @@ uint8_t* TrackEgressRequest::_InternalSerialize(
         4, this->_internal_websocket_url(), target);
   }
 
+  // repeated .livekit.WebhookConfig webhooks = 5;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_webhooks_size()); i < n; i++) {
+    const auto& repfield = this->_internal_webhooks(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(5, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -4661,6 +4860,13 @@ size_t TrackEgressRequest::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated .livekit.WebhookConfig webhooks = 5;
+  total_size += 1UL * this->_internal_webhooks_size();
+  for (const auto& msg : this->_impl_.webhooks_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
 
   // string room_name = 1;
   if (!this->_internal_room_name().empty()) {
@@ -4713,6 +4919,7 @@ void TrackEgressRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, con
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.webhooks_.MergeFrom(from._impl_.webhooks_);
   if (!from._internal_room_name().empty()) {
     _this->_internal_set_room_name(from._internal_room_name());
   }
@@ -4752,6 +4959,7 @@ void TrackEgressRequest::InternalSwap(TrackEgressRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.webhooks_.InternalSwap(&other->_impl_.webhooks_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.room_name_, lhs_arena,
       &other->_impl_.room_name_, rhs_arena
@@ -7175,6 +7383,8 @@ S3Upload::S3Upload(const S3Upload& from)
     , decltype(_impl_.tagging_){}
     , decltype(_impl_.content_disposition_){}
     , decltype(_impl_.session_token_){}
+    , decltype(_impl_.assume_role_arn_){}
+    , decltype(_impl_.assume_role_external_id_){}
     , decltype(_impl_.proxy_){nullptr}
     , decltype(_impl_.force_path_style_){}
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -7245,6 +7455,22 @@ S3Upload::S3Upload(const S3Upload& from)
     _this->_impl_.session_token_.Set(from._internal_session_token(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.assume_role_arn_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.assume_role_arn_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_assume_role_arn().empty()) {
+    _this->_impl_.assume_role_arn_.Set(from._internal_assume_role_arn(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.assume_role_external_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.assume_role_external_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_assume_role_external_id().empty()) {
+    _this->_impl_.assume_role_external_id_.Set(from._internal_assume_role_external_id(), 
+      _this->GetArenaForAllocation());
+  }
   if (from._internal_has_proxy()) {
     _this->_impl_.proxy_ = new ::livekit::ProxyConfig(*from._impl_.proxy_);
   }
@@ -7266,6 +7492,8 @@ inline void S3Upload::SharedCtor(
     , decltype(_impl_.tagging_){}
     , decltype(_impl_.content_disposition_){}
     , decltype(_impl_.session_token_){}
+    , decltype(_impl_.assume_role_arn_){}
+    , decltype(_impl_.assume_role_external_id_){}
     , decltype(_impl_.proxy_){nullptr}
     , decltype(_impl_.force_path_style_){false}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -7302,6 +7530,14 @@ inline void S3Upload::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.session_token_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.assume_role_arn_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.assume_role_arn_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.assume_role_external_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.assume_role_external_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 S3Upload::~S3Upload() {
@@ -7326,6 +7562,8 @@ inline void S3Upload::SharedDtor() {
   _impl_.tagging_.Destroy();
   _impl_.content_disposition_.Destroy();
   _impl_.session_token_.Destroy();
+  _impl_.assume_role_arn_.Destroy();
+  _impl_.assume_role_external_id_.Destroy();
   if (this != internal_default_instance()) delete _impl_.proxy_;
 }
 
@@ -7352,6 +7590,8 @@ void S3Upload::Clear() {
   _impl_.tagging_.ClearToEmpty();
   _impl_.content_disposition_.ClearToEmpty();
   _impl_.session_token_.ClearToEmpty();
+  _impl_.assume_role_arn_.ClearToEmpty();
+  _impl_.assume_role_external_id_.ClearToEmpty();
   if (GetArenaForAllocation() == nullptr && _impl_.proxy_ != nullptr) {
     delete _impl_.proxy_;
   }
@@ -7472,6 +7712,26 @@ const char* S3Upload::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "livekit.S3Upload.session_token"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string assume_role_arn = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+          auto str = _internal_mutable_assume_role_arn();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.S3Upload.assume_role_arn"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string assume_role_external_id = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 106)) {
+          auto str = _internal_mutable_assume_role_external_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.S3Upload.assume_role_external_id"));
         } else
           goto handle_unusual;
         continue;
@@ -7627,6 +7887,26 @@ uint8_t* S3Upload::_InternalSerialize(
         11, this->_internal_session_token(), target);
   }
 
+  // string assume_role_arn = 12;
+  if (!this->_internal_assume_role_arn().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_assume_role_arn().data(), static_cast<int>(this->_internal_assume_role_arn().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.S3Upload.assume_role_arn");
+    target = stream->WriteStringMaybeAliased(
+        12, this->_internal_assume_role_arn(), target);
+  }
+
+  // string assume_role_external_id = 13;
+  if (!this->_internal_assume_role_external_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_assume_role_external_id().data(), static_cast<int>(this->_internal_assume_role_external_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.S3Upload.assume_role_external_id");
+    target = stream->WriteStringMaybeAliased(
+        13, this->_internal_assume_role_external_id(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -7708,6 +7988,20 @@ size_t S3Upload::ByteSizeLong() const {
         this->_internal_session_token());
   }
 
+  // string assume_role_arn = 12;
+  if (!this->_internal_assume_role_arn().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_assume_role_arn());
+  }
+
+  // string assume_role_external_id = 13;
+  if (!this->_internal_assume_role_external_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_assume_role_external_id());
+  }
+
   // .livekit.ProxyConfig proxy = 10;
   if (this->_internal_has_proxy()) {
     total_size += 1 +
@@ -7762,6 +8056,12 @@ void S3Upload::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
   }
   if (!from._internal_session_token().empty()) {
     _this->_internal_set_session_token(from._internal_session_token());
+  }
+  if (!from._internal_assume_role_arn().empty()) {
+    _this->_internal_set_assume_role_arn(from._internal_assume_role_arn());
+  }
+  if (!from._internal_assume_role_external_id().empty()) {
+    _this->_internal_set_assume_role_external_id(from._internal_assume_role_external_id());
   }
   if (from._internal_has_proxy()) {
     _this->_internal_mutable_proxy()->::livekit::ProxyConfig::MergeFrom(
@@ -7821,6 +8121,14 @@ void S3Upload::InternalSwap(S3Upload* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.session_token_, lhs_arena,
       &other->_impl_.session_token_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.assume_role_arn_, lhs_arena,
+      &other->_impl_.assume_role_arn_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.assume_role_external_id_, lhs_arena,
+      &other->_impl_.assume_role_external_id_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(S3Upload, _impl_.force_path_style_)

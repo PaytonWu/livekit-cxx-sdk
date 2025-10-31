@@ -27,6 +27,7 @@ protoc \
     --cpp_out=$OUT_CPP \
     --experimental_allow_proto3_optional \
     $FFI_PROTOCOL/audio_frame.proto \
+    $FFI_PROTOCOL/data_stream.proto \
     $FFI_PROTOCOL/e2ee.proto \
     $FFI_PROTOCOL/ffi.proto \
     $FFI_PROTOCOL/handle.proto \
@@ -47,3 +48,5 @@ protoc \
     $LIVEKIT_PROTOCOL/livekit_ingress.proto \
     $LIVEKIT_PROTOCOL/livekit_agent.proto \
     $LIVEKIT_PROTOCOL/livekit_metrics.proto
+
+mv ${OUT_CPP}*.cc src/ffi/proto/

@@ -175,6 +175,11 @@ auto Room::metadata() const noexcept -> std::string const &
     return room_info_.metadata();
 }
 
+auto Room::num_participants() const noexcept -> std::size_t
+{
+    return room_info_.num_participants();
+}
+
 auto Room::connected() const noexcept -> bool
 {
     return ffi_handle_.has_value() && connection_state_ != proto::ConnectionState::CONN_DISCONNECTED;

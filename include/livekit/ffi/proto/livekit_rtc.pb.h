@@ -59,18 +59,33 @@ extern ConnectionQualityInfoDefaultTypeInternal _ConnectionQualityInfo_default_i
 class ConnectionQualityUpdate;
 struct ConnectionQualityUpdateDefaultTypeInternal;
 extern ConnectionQualityUpdateDefaultTypeInternal _ConnectionQualityUpdate_default_instance_;
+class ConnectionSettings;
+struct ConnectionSettingsDefaultTypeInternal;
+extern ConnectionSettingsDefaultTypeInternal _ConnectionSettings_default_instance_;
 class DataChannelInfo;
 struct DataChannelInfoDefaultTypeInternal;
 extern DataChannelInfoDefaultTypeInternal _DataChannelInfo_default_instance_;
+class DataChannelReceiveState;
+struct DataChannelReceiveStateDefaultTypeInternal;
+extern DataChannelReceiveStateDefaultTypeInternal _DataChannelReceiveState_default_instance_;
 class ICEServer;
 struct ICEServerDefaultTypeInternal;
 extern ICEServerDefaultTypeInternal _ICEServer_default_instance_;
+class JoinRequest;
+struct JoinRequestDefaultTypeInternal;
+extern JoinRequestDefaultTypeInternal _JoinRequest_default_instance_;
+class JoinRequest_ParticipantAttributesEntry_DoNotUse;
+struct JoinRequest_ParticipantAttributesEntry_DoNotUseDefaultTypeInternal;
+extern JoinRequest_ParticipantAttributesEntry_DoNotUseDefaultTypeInternal _JoinRequest_ParticipantAttributesEntry_DoNotUse_default_instance_;
 class JoinResponse;
 struct JoinResponseDefaultTypeInternal;
 extern JoinResponseDefaultTypeInternal _JoinResponse_default_instance_;
 class LeaveRequest;
 struct LeaveRequestDefaultTypeInternal;
 extern LeaveRequestDefaultTypeInternal _LeaveRequest_default_instance_;
+class MediaSectionsRequirement;
+struct MediaSectionsRequirementDefaultTypeInternal;
+extern MediaSectionsRequirementDefaultTypeInternal _MediaSectionsRequirement_default_instance_;
 class MuteTrackRequest;
 struct MuteTrackRequestDefaultTypeInternal;
 extern MuteTrackRequestDefaultTypeInternal _MuteTrackRequest_default_instance_;
@@ -95,6 +110,9 @@ extern RegionSettingsDefaultTypeInternal _RegionSettings_default_instance_;
 class RequestResponse;
 struct RequestResponseDefaultTypeInternal;
 extern RequestResponseDefaultTypeInternal _RequestResponse_default_instance_;
+class RoomMovedResponse;
+struct RoomMovedResponseDefaultTypeInternal;
+extern RoomMovedResponseDefaultTypeInternal _RoomMovedResponse_default_instance_;
 class RoomUpdate;
 struct RoomUpdateDefaultTypeInternal;
 extern RoomUpdateDefaultTypeInternal _RoomUpdate_default_instance_;
@@ -179,15 +197,23 @@ extern UpdateTrackSettingsDefaultTypeInternal _UpdateTrackSettings_default_insta
 class UpdateVideoLayers;
 struct UpdateVideoLayersDefaultTypeInternal;
 extern UpdateVideoLayersDefaultTypeInternal _UpdateVideoLayers_default_instance_;
+class WrappedJoinRequest;
+struct WrappedJoinRequestDefaultTypeInternal;
+extern WrappedJoinRequestDefaultTypeInternal _WrappedJoinRequest_default_instance_;
 }  // namespace livekit
 PROTOBUF_NAMESPACE_OPEN
 template<> ::livekit::AddTrackRequest* Arena::CreateMaybeMessage<::livekit::AddTrackRequest>(Arena*);
 template<> ::livekit::ConnectionQualityInfo* Arena::CreateMaybeMessage<::livekit::ConnectionQualityInfo>(Arena*);
 template<> ::livekit::ConnectionQualityUpdate* Arena::CreateMaybeMessage<::livekit::ConnectionQualityUpdate>(Arena*);
+template<> ::livekit::ConnectionSettings* Arena::CreateMaybeMessage<::livekit::ConnectionSettings>(Arena*);
 template<> ::livekit::DataChannelInfo* Arena::CreateMaybeMessage<::livekit::DataChannelInfo>(Arena*);
+template<> ::livekit::DataChannelReceiveState* Arena::CreateMaybeMessage<::livekit::DataChannelReceiveState>(Arena*);
 template<> ::livekit::ICEServer* Arena::CreateMaybeMessage<::livekit::ICEServer>(Arena*);
+template<> ::livekit::JoinRequest* Arena::CreateMaybeMessage<::livekit::JoinRequest>(Arena*);
+template<> ::livekit::JoinRequest_ParticipantAttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::JoinRequest_ParticipantAttributesEntry_DoNotUse>(Arena*);
 template<> ::livekit::JoinResponse* Arena::CreateMaybeMessage<::livekit::JoinResponse>(Arena*);
 template<> ::livekit::LeaveRequest* Arena::CreateMaybeMessage<::livekit::LeaveRequest>(Arena*);
+template<> ::livekit::MediaSectionsRequirement* Arena::CreateMaybeMessage<::livekit::MediaSectionsRequirement>(Arena*);
 template<> ::livekit::MuteTrackRequest* Arena::CreateMaybeMessage<::livekit::MuteTrackRequest>(Arena*);
 template<> ::livekit::ParticipantUpdate* Arena::CreateMaybeMessage<::livekit::ParticipantUpdate>(Arena*);
 template<> ::livekit::Ping* Arena::CreateMaybeMessage<::livekit::Ping>(Arena*);
@@ -196,6 +222,7 @@ template<> ::livekit::ReconnectResponse* Arena::CreateMaybeMessage<::livekit::Re
 template<> ::livekit::RegionInfo* Arena::CreateMaybeMessage<::livekit::RegionInfo>(Arena*);
 template<> ::livekit::RegionSettings* Arena::CreateMaybeMessage<::livekit::RegionSettings>(Arena*);
 template<> ::livekit::RequestResponse* Arena::CreateMaybeMessage<::livekit::RequestResponse>(Arena*);
+template<> ::livekit::RoomMovedResponse* Arena::CreateMaybeMessage<::livekit::RoomMovedResponse>(Arena*);
 template<> ::livekit::RoomUpdate* Arena::CreateMaybeMessage<::livekit::RoomUpdate>(Arena*);
 template<> ::livekit::SessionDescription* Arena::CreateMaybeMessage<::livekit::SessionDescription>(Arena*);
 template<> ::livekit::SignalRequest* Arena::CreateMaybeMessage<::livekit::SignalRequest>(Arena*);
@@ -224,6 +251,7 @@ template<> ::livekit::UpdateParticipantMetadata_AttributesEntry_DoNotUse* Arena:
 template<> ::livekit::UpdateSubscription* Arena::CreateMaybeMessage<::livekit::UpdateSubscription>(Arena*);
 template<> ::livekit::UpdateTrackSettings* Arena::CreateMaybeMessage<::livekit::UpdateTrackSettings>(Arena*);
 template<> ::livekit::UpdateVideoLayers* Arena::CreateMaybeMessage<::livekit::UpdateVideoLayers>(Arena*);
+template<> ::livekit::WrappedJoinRequest* Arena::CreateMaybeMessage<::livekit::WrappedJoinRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace livekit {
 
@@ -279,6 +307,31 @@ inline bool RequestResponse_Reason_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, RequestResponse_Reason* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<RequestResponse_Reason>(
     RequestResponse_Reason_descriptor(), name, value);
+}
+enum WrappedJoinRequest_Compression : int {
+  WrappedJoinRequest_Compression_NONE = 0,
+  WrappedJoinRequest_Compression_GZIP = 1,
+  WrappedJoinRequest_Compression_WrappedJoinRequest_Compression_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  WrappedJoinRequest_Compression_WrappedJoinRequest_Compression_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool WrappedJoinRequest_Compression_IsValid(int value);
+constexpr WrappedJoinRequest_Compression WrappedJoinRequest_Compression_Compression_MIN = WrappedJoinRequest_Compression_NONE;
+constexpr WrappedJoinRequest_Compression WrappedJoinRequest_Compression_Compression_MAX = WrappedJoinRequest_Compression_GZIP;
+constexpr int WrappedJoinRequest_Compression_Compression_ARRAYSIZE = WrappedJoinRequest_Compression_Compression_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* WrappedJoinRequest_Compression_descriptor();
+template<typename T>
+inline const std::string& WrappedJoinRequest_Compression_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, WrappedJoinRequest_Compression>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function WrappedJoinRequest_Compression_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    WrappedJoinRequest_Compression_descriptor(), enum_t_value);
+}
+inline bool WrappedJoinRequest_Compression_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, WrappedJoinRequest_Compression* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<WrappedJoinRequest_Compression>(
+    WrappedJoinRequest_Compression_descriptor(), name, value);
 }
 enum SignalTarget : int {
   PUBLISHER = 0,
@@ -945,6 +998,8 @@ class SignalResponse final :
     kSubscriptionResponse = 21,
     kRequestResponse = 22,
     kTrackSubscribed = 23,
+    kRoomMoved = 24,
+    kMediaSectionsRequirement = 25,
     MESSAGE_NOT_SET = 0,
   };
 
@@ -1048,6 +1103,8 @@ class SignalResponse final :
     kSubscriptionResponseFieldNumber = 21,
     kRequestResponseFieldNumber = 22,
     kTrackSubscribedFieldNumber = 23,
+    kRoomMovedFieldNumber = 24,
+    kMediaSectionsRequirementFieldNumber = 25,
   };
   // .livekit.JoinResponse join = 1;
   bool has_join() const;
@@ -1440,6 +1497,42 @@ class SignalResponse final :
       ::livekit::TrackSubscribed* track_subscribed);
   ::livekit::TrackSubscribed* unsafe_arena_release_track_subscribed();
 
+  // .livekit.RoomMovedResponse room_moved = 24;
+  bool has_room_moved() const;
+  private:
+  bool _internal_has_room_moved() const;
+  public:
+  void clear_room_moved();
+  const ::livekit::RoomMovedResponse& room_moved() const;
+  PROTOBUF_NODISCARD ::livekit::RoomMovedResponse* release_room_moved();
+  ::livekit::RoomMovedResponse* mutable_room_moved();
+  void set_allocated_room_moved(::livekit::RoomMovedResponse* room_moved);
+  private:
+  const ::livekit::RoomMovedResponse& _internal_room_moved() const;
+  ::livekit::RoomMovedResponse* _internal_mutable_room_moved();
+  public:
+  void unsafe_arena_set_allocated_room_moved(
+      ::livekit::RoomMovedResponse* room_moved);
+  ::livekit::RoomMovedResponse* unsafe_arena_release_room_moved();
+
+  // .livekit.MediaSectionsRequirement media_sections_requirement = 25;
+  bool has_media_sections_requirement() const;
+  private:
+  bool _internal_has_media_sections_requirement() const;
+  public:
+  void clear_media_sections_requirement();
+  const ::livekit::MediaSectionsRequirement& media_sections_requirement() const;
+  PROTOBUF_NODISCARD ::livekit::MediaSectionsRequirement* release_media_sections_requirement();
+  ::livekit::MediaSectionsRequirement* mutable_media_sections_requirement();
+  void set_allocated_media_sections_requirement(::livekit::MediaSectionsRequirement* media_sections_requirement);
+  private:
+  const ::livekit::MediaSectionsRequirement& _internal_media_sections_requirement() const;
+  ::livekit::MediaSectionsRequirement* _internal_mutable_media_sections_requirement();
+  public:
+  void unsafe_arena_set_allocated_media_sections_requirement(
+      ::livekit::MediaSectionsRequirement* media_sections_requirement);
+  ::livekit::MediaSectionsRequirement* unsafe_arena_release_media_sections_requirement();
+
   void clear_message();
   MessageCase message_case() const;
   // @@protoc_insertion_point(class_scope:livekit.SignalResponse)
@@ -1467,6 +1560,8 @@ class SignalResponse final :
   void set_has_subscription_response();
   void set_has_request_response();
   void set_has_track_subscribed();
+  void set_has_room_moved();
+  void set_has_media_sections_requirement();
 
   inline bool has_message() const;
   inline void clear_has_message();
@@ -1500,6 +1595,8 @@ class SignalResponse final :
       ::livekit::SubscriptionResponse* subscription_response_;
       ::livekit::RequestResponse* request_response_;
       ::livekit::TrackSubscribed* track_subscribed_;
+      ::livekit::RoomMovedResponse* room_moved_;
+      ::livekit::MediaSectionsRequirement* media_sections_requirement_;
     } message_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -1631,9 +1728,29 @@ class SimulcastCodec final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kLayersFieldNumber = 4,
     kCodecFieldNumber = 1,
     kCidFieldNumber = 2,
+    kVideoLayerModeFieldNumber = 5,
   };
+  // repeated .livekit.VideoLayer layers = 4;
+  int layers_size() const;
+  private:
+  int _internal_layers_size() const;
+  public:
+  void clear_layers();
+  ::livekit::VideoLayer* mutable_layers(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer >*
+      mutable_layers();
+  private:
+  const ::livekit::VideoLayer& _internal_layers(int index) const;
+  ::livekit::VideoLayer* _internal_add_layers();
+  public:
+  const ::livekit::VideoLayer& layers(int index) const;
+  ::livekit::VideoLayer* add_layers();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer >&
+      layers() const;
+
   // string codec = 1;
   void clear_codec();
   const std::string& codec() const;
@@ -1662,6 +1779,15 @@ class SimulcastCodec final :
   std::string* _internal_mutable_cid();
   public:
 
+  // .livekit.VideoLayer.Mode video_layer_mode = 5;
+  void clear_video_layer_mode();
+  ::livekit::VideoLayer_Mode video_layer_mode() const;
+  void set_video_layer_mode(::livekit::VideoLayer_Mode value);
+  private:
+  ::livekit::VideoLayer_Mode _internal_video_layer_mode() const;
+  void _internal_set_video_layer_mode(::livekit::VideoLayer_Mode value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.SimulcastCodec)
  private:
   class _Internal;
@@ -1670,8 +1796,10 @@ class SimulcastCodec final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer > layers_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr codec_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr cid_;
+    int video_layer_mode_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1802,6 +1930,7 @@ class AddTrackRequest final :
   enum : int {
     kLayersFieldNumber = 9,
     kSimulcastCodecsFieldNumber = 10,
+    kAudioFeaturesFieldNumber = 17,
     kCidFieldNumber = 1,
     kNameFieldNumber = 2,
     kSidFieldNumber = 11,
@@ -1852,6 +1981,23 @@ class AddTrackRequest final :
   ::livekit::SimulcastCodec* add_simulcast_codecs();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SimulcastCodec >&
       simulcast_codecs() const;
+
+  // repeated .livekit.AudioTrackFeature audio_features = 17;
+  int audio_features_size() const;
+  private:
+  int _internal_audio_features_size() const;
+  public:
+  void clear_audio_features();
+  private:
+  ::livekit::AudioTrackFeature _internal_audio_features(int index) const;
+  void _internal_add_audio_features(::livekit::AudioTrackFeature value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* _internal_mutable_audio_features();
+  public:
+  ::livekit::AudioTrackFeature audio_features(int index) const;
+  void set_audio_features(int index, ::livekit::AudioTrackFeature value);
+  void add_audio_features(::livekit::AudioTrackFeature value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>& audio_features() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* mutable_audio_features();
 
   // string cid = 1;
   void clear_cid();
@@ -1954,19 +2100,19 @@ class AddTrackRequest final :
   void _internal_set_muted(bool value);
   public:
 
-  // bool disable_dtx = 7;
-  void clear_disable_dtx();
-  bool disable_dtx() const;
-  void set_disable_dtx(bool value);
+  // bool disable_dtx = 7 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_disable_dtx();
+  PROTOBUF_DEPRECATED bool disable_dtx() const;
+  PROTOBUF_DEPRECATED void set_disable_dtx(bool value);
   private:
   bool _internal_disable_dtx() const;
   void _internal_set_disable_dtx(bool value);
   public:
 
-  // bool stereo = 12;
-  void clear_stereo();
-  bool stereo() const;
-  void set_stereo(bool value);
+  // bool stereo = 12 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_stereo();
+  PROTOBUF_DEPRECATED bool stereo() const;
+  PROTOBUF_DEPRECATED void set_stereo(bool value);
   private:
   bool _internal_stereo() const;
   void _internal_set_stereo(bool value);
@@ -2009,6 +2155,8 @@ class AddTrackRequest final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer > layers_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SimulcastCodec > simulcast_codecs_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField<int> audio_features_;
+    mutable std::atomic<int> _audio_features_cached_byte_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr cid_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sid_;
@@ -2877,6 +3025,8 @@ class ReconnectResponse final :
   enum : int {
     kIceServersFieldNumber = 1,
     kClientConfigurationFieldNumber = 2,
+    kServerInfoFieldNumber = 3,
+    kLastMessageSeqFieldNumber = 4,
   };
   // repeated .livekit.ICEServer ice_servers = 1;
   int ice_servers_size() const;
@@ -2914,6 +3064,33 @@ class ReconnectResponse final :
       ::livekit::ClientConfiguration* client_configuration);
   ::livekit::ClientConfiguration* unsafe_arena_release_client_configuration();
 
+  // .livekit.ServerInfo server_info = 3;
+  bool has_server_info() const;
+  private:
+  bool _internal_has_server_info() const;
+  public:
+  void clear_server_info();
+  const ::livekit::ServerInfo& server_info() const;
+  PROTOBUF_NODISCARD ::livekit::ServerInfo* release_server_info();
+  ::livekit::ServerInfo* mutable_server_info();
+  void set_allocated_server_info(::livekit::ServerInfo* server_info);
+  private:
+  const ::livekit::ServerInfo& _internal_server_info() const;
+  ::livekit::ServerInfo* _internal_mutable_server_info();
+  public:
+  void unsafe_arena_set_allocated_server_info(
+      ::livekit::ServerInfo* server_info);
+  ::livekit::ServerInfo* unsafe_arena_release_server_info();
+
+  // uint32 last_message_seq = 4;
+  void clear_last_message_seq();
+  uint32_t last_message_seq() const;
+  void set_last_message_seq(uint32_t value);
+  private:
+  uint32_t _internal_last_message_seq() const;
+  void _internal_set_last_message_seq(uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.ReconnectResponse)
  private:
   class _Internal;
@@ -2924,6 +3101,8 @@ class ReconnectResponse final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ICEServer > ice_servers_;
     ::livekit::ClientConfiguration* client_configuration_;
+    ::livekit::ServerInfo* server_info_;
+    uint32_t last_message_seq_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -3380,6 +3559,7 @@ class SessionDescription final :
   enum : int {
     kTypeFieldNumber = 1,
     kSdpFieldNumber = 2,
+    kIdFieldNumber = 3,
   };
   // string type = 1;
   void clear_type();
@@ -3409,6 +3589,15 @@ class SessionDescription final :
   std::string* _internal_mutable_sdp();
   public:
 
+  // uint32 id = 3;
+  void clear_id();
+  uint32_t id() const;
+  void set_id(uint32_t value);
+  private:
+  uint32_t _internal_id() const;
+  void _internal_set_id(uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.SessionDescription)
  private:
   class _Internal;
@@ -3419,6 +3608,7 @@ class SessionDescription final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sdp_;
+    uint32_t id_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -6618,22 +6808,22 @@ class SubscribedQualityUpdate final :
     kSubscribedCodecsFieldNumber = 3,
     kTrackSidFieldNumber = 1,
   };
-  // repeated .livekit.SubscribedQuality subscribed_qualities = 2;
-  int subscribed_qualities_size() const;
+  // repeated .livekit.SubscribedQuality subscribed_qualities = 2 [deprecated = true];
+  PROTOBUF_DEPRECATED int subscribed_qualities_size() const;
   private:
   int _internal_subscribed_qualities_size() const;
   public:
-  void clear_subscribed_qualities();
-  ::livekit::SubscribedQuality* mutable_subscribed_qualities(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SubscribedQuality >*
+  PROTOBUF_DEPRECATED void clear_subscribed_qualities();
+  PROTOBUF_DEPRECATED ::livekit::SubscribedQuality* mutable_subscribed_qualities(int index);
+  PROTOBUF_DEPRECATED ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SubscribedQuality >*
       mutable_subscribed_qualities();
   private:
   const ::livekit::SubscribedQuality& _internal_subscribed_qualities(int index) const;
   ::livekit::SubscribedQuality* _internal_add_subscribed_qualities();
   public:
-  const ::livekit::SubscribedQuality& subscribed_qualities(int index) const;
-  ::livekit::SubscribedQuality* add_subscribed_qualities();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SubscribedQuality >&
+  PROTOBUF_DEPRECATED const ::livekit::SubscribedQuality& subscribed_qualities(int index) const;
+  PROTOBUF_DEPRECATED ::livekit::SubscribedQuality* add_subscribed_qualities();
+  PROTOBUF_DEPRECATED const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SubscribedQuality >&
       subscribed_qualities() const;
 
   // repeated .livekit.SubscribedCodec subscribed_codecs = 3;
@@ -7240,6 +7430,219 @@ class SubscriptionPermissionUpdate final :
 };
 // -------------------------------------------------------------------
 
+class RoomMovedResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.RoomMovedResponse) */ {
+ public:
+  inline RoomMovedResponse() : RoomMovedResponse(nullptr) {}
+  ~RoomMovedResponse() override;
+  explicit PROTOBUF_CONSTEXPR RoomMovedResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RoomMovedResponse(const RoomMovedResponse& from);
+  RoomMovedResponse(RoomMovedResponse&& from) noexcept
+    : RoomMovedResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline RoomMovedResponse& operator=(const RoomMovedResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RoomMovedResponse& operator=(RoomMovedResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RoomMovedResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RoomMovedResponse* internal_default_instance() {
+    return reinterpret_cast<const RoomMovedResponse*>(
+               &_RoomMovedResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    33;
+
+  friend void swap(RoomMovedResponse& a, RoomMovedResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RoomMovedResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RoomMovedResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RoomMovedResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RoomMovedResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RoomMovedResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RoomMovedResponse& from) {
+    RoomMovedResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RoomMovedResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.RoomMovedResponse";
+  }
+  protected:
+  explicit RoomMovedResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kOtherParticipantsFieldNumber = 4,
+    kTokenFieldNumber = 2,
+    kRoomFieldNumber = 1,
+    kParticipantFieldNumber = 3,
+  };
+  // repeated .livekit.ParticipantInfo other_participants = 4;
+  int other_participants_size() const;
+  private:
+  int _internal_other_participants_size() const;
+  public:
+  void clear_other_participants();
+  ::livekit::ParticipantInfo* mutable_other_participants(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ParticipantInfo >*
+      mutable_other_participants();
+  private:
+  const ::livekit::ParticipantInfo& _internal_other_participants(int index) const;
+  ::livekit::ParticipantInfo* _internal_add_other_participants();
+  public:
+  const ::livekit::ParticipantInfo& other_participants(int index) const;
+  ::livekit::ParticipantInfo* add_other_participants();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ParticipantInfo >&
+      other_participants() const;
+
+  // string token = 2;
+  void clear_token();
+  const std::string& token() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_token(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_token();
+  PROTOBUF_NODISCARD std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
+  public:
+
+  // .livekit.Room room = 1;
+  bool has_room() const;
+  private:
+  bool _internal_has_room() const;
+  public:
+  void clear_room();
+  const ::livekit::Room& room() const;
+  PROTOBUF_NODISCARD ::livekit::Room* release_room();
+  ::livekit::Room* mutable_room();
+  void set_allocated_room(::livekit::Room* room);
+  private:
+  const ::livekit::Room& _internal_room() const;
+  ::livekit::Room* _internal_mutable_room();
+  public:
+  void unsafe_arena_set_allocated_room(
+      ::livekit::Room* room);
+  ::livekit::Room* unsafe_arena_release_room();
+
+  // .livekit.ParticipantInfo participant = 3;
+  bool has_participant() const;
+  private:
+  bool _internal_has_participant() const;
+  public:
+  void clear_participant();
+  const ::livekit::ParticipantInfo& participant() const;
+  PROTOBUF_NODISCARD ::livekit::ParticipantInfo* release_participant();
+  ::livekit::ParticipantInfo* mutable_participant();
+  void set_allocated_participant(::livekit::ParticipantInfo* participant);
+  private:
+  const ::livekit::ParticipantInfo& _internal_participant() const;
+  ::livekit::ParticipantInfo* _internal_mutable_participant();
+  public:
+  void unsafe_arena_set_allocated_participant(
+      ::livekit::ParticipantInfo* participant);
+  ::livekit::ParticipantInfo* unsafe_arena_release_participant();
+
+  // @@protoc_insertion_point(class_scope:livekit.RoomMovedResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ParticipantInfo > other_participants_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
+    ::livekit::Room* room_;
+    ::livekit::ParticipantInfo* participant_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5frtc_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SyncState final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.SyncState) */ {
  public:
@@ -7288,7 +7691,7 @@ class SyncState final :
                &_SyncState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    34;
 
   friend void swap(SyncState& a, SyncState& b) {
     a.Swap(&b);
@@ -7364,6 +7767,7 @@ class SyncState final :
     kPublishTracksFieldNumber = 3,
     kDataChannelsFieldNumber = 4,
     kTrackSidsDisabledFieldNumber = 6,
+    kDatachannelReceiveStatesFieldNumber = 7,
     kAnswerFieldNumber = 1,
     kSubscriptionFieldNumber = 2,
     kOfferFieldNumber = 5,
@@ -7427,6 +7831,24 @@ class SyncState final :
   const std::string& _internal_track_sids_disabled(int index) const;
   std::string* _internal_add_track_sids_disabled();
   public:
+
+  // repeated .livekit.DataChannelReceiveState datachannel_receive_states = 7;
+  int datachannel_receive_states_size() const;
+  private:
+  int _internal_datachannel_receive_states_size() const;
+  public:
+  void clear_datachannel_receive_states();
+  ::livekit::DataChannelReceiveState* mutable_datachannel_receive_states(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::DataChannelReceiveState >*
+      mutable_datachannel_receive_states();
+  private:
+  const ::livekit::DataChannelReceiveState& _internal_datachannel_receive_states(int index) const;
+  ::livekit::DataChannelReceiveState* _internal_add_datachannel_receive_states();
+  public:
+  const ::livekit::DataChannelReceiveState& datachannel_receive_states(int index) const;
+  ::livekit::DataChannelReceiveState* add_datachannel_receive_states();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::DataChannelReceiveState >&
+      datachannel_receive_states() const;
 
   // .livekit.SessionDescription answer = 1;
   bool has_answer() const;
@@ -7493,9 +7915,174 @@ class SyncState final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::TrackPublishedResponse > publish_tracks_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::DataChannelInfo > data_channels_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> track_sids_disabled_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::DataChannelReceiveState > datachannel_receive_states_;
     ::livekit::SessionDescription* answer_;
     ::livekit::UpdateSubscription* subscription_;
     ::livekit::SessionDescription* offer_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5frtc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DataChannelReceiveState final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.DataChannelReceiveState) */ {
+ public:
+  inline DataChannelReceiveState() : DataChannelReceiveState(nullptr) {}
+  ~DataChannelReceiveState() override;
+  explicit PROTOBUF_CONSTEXPR DataChannelReceiveState(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DataChannelReceiveState(const DataChannelReceiveState& from);
+  DataChannelReceiveState(DataChannelReceiveState&& from) noexcept
+    : DataChannelReceiveState() {
+    *this = ::std::move(from);
+  }
+
+  inline DataChannelReceiveState& operator=(const DataChannelReceiveState& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DataChannelReceiveState& operator=(DataChannelReceiveState&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DataChannelReceiveState& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DataChannelReceiveState* internal_default_instance() {
+    return reinterpret_cast<const DataChannelReceiveState*>(
+               &_DataChannelReceiveState_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    35;
+
+  friend void swap(DataChannelReceiveState& a, DataChannelReceiveState& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DataChannelReceiveState* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DataChannelReceiveState* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DataChannelReceiveState* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DataChannelReceiveState>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DataChannelReceiveState& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const DataChannelReceiveState& from) {
+    DataChannelReceiveState::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DataChannelReceiveState* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.DataChannelReceiveState";
+  }
+  protected:
+  explicit DataChannelReceiveState(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPublisherSidFieldNumber = 1,
+    kLastSeqFieldNumber = 2,
+  };
+  // string publisher_sid = 1;
+  void clear_publisher_sid();
+  const std::string& publisher_sid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_publisher_sid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_publisher_sid();
+  PROTOBUF_NODISCARD std::string* release_publisher_sid();
+  void set_allocated_publisher_sid(std::string* publisher_sid);
+  private:
+  const std::string& _internal_publisher_sid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_publisher_sid(const std::string& value);
+  std::string* _internal_mutable_publisher_sid();
+  public:
+
+  // uint32 last_seq = 2;
+  void clear_last_seq();
+  uint32_t last_seq() const;
+  void set_last_seq(uint32_t value);
+  private:
+  uint32_t _internal_last_seq() const;
+  void _internal_set_last_seq(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.DataChannelReceiveState)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr publisher_sid_;
+    uint32_t last_seq_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -7551,7 +8138,7 @@ class DataChannelInfo final :
                &_DataChannelInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    36;
 
   friend void swap(DataChannelInfo& a, DataChannelInfo& b) {
     a.Swap(&b);
@@ -7739,7 +8326,7 @@ class SimulateScenario final :
                &_SimulateScenario_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    37;
 
   friend void swap(SimulateScenario& a, SimulateScenario& b) {
     a.Swap(&b);
@@ -8031,7 +8618,7 @@ class Ping final :
                &_Ping_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    38;
 
   friend void swap(Ping& a, Ping& b) {
     a.Swap(&b);
@@ -8190,7 +8777,7 @@ class Pong final :
                &_Pong_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    39;
 
   friend void swap(Pong& a, Pong& b) {
     a.Swap(&b);
@@ -8349,7 +8936,7 @@ class RegionSettings final :
                &_RegionSettings_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    40;
 
   friend void swap(RegionSettings& a, RegionSettings& b) {
     a.Swap(&b);
@@ -8506,7 +9093,7 @@ class RegionInfo final :
                &_RegionInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    41;
 
   friend void swap(RegionInfo& a, RegionInfo& b) {
     a.Swap(&b);
@@ -8686,7 +9273,7 @@ class SubscriptionResponse final :
                &_SubscriptionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    42;
 
   friend void swap(SubscriptionResponse& a, SubscriptionResponse& b) {
     a.Swap(&b);
@@ -8850,7 +9437,7 @@ class RequestResponse final :
                &_RequestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    43;
 
   friend void swap(RequestResponse& a, RequestResponse& b) {
     a.Swap(&b);
@@ -9059,7 +9646,7 @@ class TrackSubscribed final :
                &_TrackSubscribed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    44;
 
   friend void swap(TrackSubscribed& a, TrackSubscribed& b) {
     a.Swap(&b);
@@ -9157,6 +9744,890 @@ class TrackSubscribed final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr track_sid_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5frtc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ConnectionSettings final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.ConnectionSettings) */ {
+ public:
+  inline ConnectionSettings() : ConnectionSettings(nullptr) {}
+  ~ConnectionSettings() override;
+  explicit PROTOBUF_CONSTEXPR ConnectionSettings(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ConnectionSettings(const ConnectionSettings& from);
+  ConnectionSettings(ConnectionSettings&& from) noexcept
+    : ConnectionSettings() {
+    *this = ::std::move(from);
+  }
+
+  inline ConnectionSettings& operator=(const ConnectionSettings& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConnectionSettings& operator=(ConnectionSettings&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ConnectionSettings& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ConnectionSettings* internal_default_instance() {
+    return reinterpret_cast<const ConnectionSettings*>(
+               &_ConnectionSettings_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    45;
+
+  friend void swap(ConnectionSettings& a, ConnectionSettings& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ConnectionSettings* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ConnectionSettings* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ConnectionSettings* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ConnectionSettings>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ConnectionSettings& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ConnectionSettings& from) {
+    ConnectionSettings::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConnectionSettings* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.ConnectionSettings";
+  }
+  protected:
+  explicit ConnectionSettings(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAutoSubscribeFieldNumber = 1,
+    kAdaptiveStreamFieldNumber = 2,
+    kSubscriberAllowPauseFieldNumber = 3,
+    kDisableIceLiteFieldNumber = 4,
+  };
+  // bool auto_subscribe = 1;
+  void clear_auto_subscribe();
+  bool auto_subscribe() const;
+  void set_auto_subscribe(bool value);
+  private:
+  bool _internal_auto_subscribe() const;
+  void _internal_set_auto_subscribe(bool value);
+  public:
+
+  // bool adaptive_stream = 2;
+  void clear_adaptive_stream();
+  bool adaptive_stream() const;
+  void set_adaptive_stream(bool value);
+  private:
+  bool _internal_adaptive_stream() const;
+  void _internal_set_adaptive_stream(bool value);
+  public:
+
+  // optional bool subscriber_allow_pause = 3;
+  bool has_subscriber_allow_pause() const;
+  private:
+  bool _internal_has_subscriber_allow_pause() const;
+  public:
+  void clear_subscriber_allow_pause();
+  bool subscriber_allow_pause() const;
+  void set_subscriber_allow_pause(bool value);
+  private:
+  bool _internal_subscriber_allow_pause() const;
+  void _internal_set_subscriber_allow_pause(bool value);
+  public:
+
+  // bool disable_ice_lite = 4;
+  void clear_disable_ice_lite();
+  bool disable_ice_lite() const;
+  void set_disable_ice_lite(bool value);
+  private:
+  bool _internal_disable_ice_lite() const;
+  void _internal_set_disable_ice_lite(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.ConnectionSettings)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    bool auto_subscribe_;
+    bool adaptive_stream_;
+    bool subscriber_allow_pause_;
+    bool disable_ice_lite_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5frtc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class JoinRequest_ParticipantAttributesEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<JoinRequest_ParticipantAttributesEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<JoinRequest_ParticipantAttributesEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  JoinRequest_ParticipantAttributesEntry_DoNotUse();
+  explicit PROTOBUF_CONSTEXPR JoinRequest_ParticipantAttributesEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit JoinRequest_ParticipantAttributesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const JoinRequest_ParticipantAttributesEntry_DoNotUse& other);
+  static const JoinRequest_ParticipantAttributesEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const JoinRequest_ParticipantAttributesEntry_DoNotUse*>(&_JoinRequest_ParticipantAttributesEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "livekit.JoinRequest.ParticipantAttributesEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "livekit.JoinRequest.ParticipantAttributesEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  friend struct ::TableStruct_livekit_5frtc_2eproto;
+};
+
+// -------------------------------------------------------------------
+
+class JoinRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.JoinRequest) */ {
+ public:
+  inline JoinRequest() : JoinRequest(nullptr) {}
+  ~JoinRequest() override;
+  explicit PROTOBUF_CONSTEXPR JoinRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  JoinRequest(const JoinRequest& from);
+  JoinRequest(JoinRequest&& from) noexcept
+    : JoinRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline JoinRequest& operator=(const JoinRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline JoinRequest& operator=(JoinRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const JoinRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const JoinRequest* internal_default_instance() {
+    return reinterpret_cast<const JoinRequest*>(
+               &_JoinRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    47;
+
+  friend void swap(JoinRequest& a, JoinRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(JoinRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(JoinRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  JoinRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<JoinRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const JoinRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const JoinRequest& from) {
+    JoinRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(JoinRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.JoinRequest";
+  }
+  protected:
+  explicit JoinRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kParticipantAttributesFieldNumber = 4,
+    kAddTrackRequestsFieldNumber = 5,
+    kMetadataFieldNumber = 3,
+    kParticipantSidFieldNumber = 9,
+    kClientInfoFieldNumber = 1,
+    kConnectionSettingsFieldNumber = 2,
+    kPublisherOfferFieldNumber = 6,
+    kSyncStateFieldNumber = 10,
+    kReconnectFieldNumber = 7,
+    kReconnectReasonFieldNumber = 8,
+  };
+  // map<string, string> participant_attributes = 4;
+  int participant_attributes_size() const;
+  private:
+  int _internal_participant_attributes_size() const;
+  public:
+  void clear_participant_attributes();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_participant_attributes() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_participant_attributes();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      participant_attributes() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_participant_attributes();
+
+  // repeated .livekit.AddTrackRequest add_track_requests = 5;
+  int add_track_requests_size() const;
+  private:
+  int _internal_add_track_requests_size() const;
+  public:
+  void clear_add_track_requests();
+  ::livekit::AddTrackRequest* mutable_add_track_requests(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::AddTrackRequest >*
+      mutable_add_track_requests();
+  private:
+  const ::livekit::AddTrackRequest& _internal_add_track_requests(int index) const;
+  ::livekit::AddTrackRequest* _internal_add_add_track_requests();
+  public:
+  const ::livekit::AddTrackRequest& add_track_requests(int index) const;
+  ::livekit::AddTrackRequest* add_add_track_requests();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::AddTrackRequest >&
+      add_track_requests() const;
+
+  // string metadata = 3;
+  void clear_metadata();
+  const std::string& metadata() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_metadata(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_metadata();
+  PROTOBUF_NODISCARD std::string* release_metadata();
+  void set_allocated_metadata(std::string* metadata);
+  private:
+  const std::string& _internal_metadata() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_metadata(const std::string& value);
+  std::string* _internal_mutable_metadata();
+  public:
+
+  // string participant_sid = 9;
+  void clear_participant_sid();
+  const std::string& participant_sid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_participant_sid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_participant_sid();
+  PROTOBUF_NODISCARD std::string* release_participant_sid();
+  void set_allocated_participant_sid(std::string* participant_sid);
+  private:
+  const std::string& _internal_participant_sid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_participant_sid(const std::string& value);
+  std::string* _internal_mutable_participant_sid();
+  public:
+
+  // .livekit.ClientInfo client_info = 1;
+  bool has_client_info() const;
+  private:
+  bool _internal_has_client_info() const;
+  public:
+  void clear_client_info();
+  const ::livekit::ClientInfo& client_info() const;
+  PROTOBUF_NODISCARD ::livekit::ClientInfo* release_client_info();
+  ::livekit::ClientInfo* mutable_client_info();
+  void set_allocated_client_info(::livekit::ClientInfo* client_info);
+  private:
+  const ::livekit::ClientInfo& _internal_client_info() const;
+  ::livekit::ClientInfo* _internal_mutable_client_info();
+  public:
+  void unsafe_arena_set_allocated_client_info(
+      ::livekit::ClientInfo* client_info);
+  ::livekit::ClientInfo* unsafe_arena_release_client_info();
+
+  // .livekit.ConnectionSettings connection_settings = 2;
+  bool has_connection_settings() const;
+  private:
+  bool _internal_has_connection_settings() const;
+  public:
+  void clear_connection_settings();
+  const ::livekit::ConnectionSettings& connection_settings() const;
+  PROTOBUF_NODISCARD ::livekit::ConnectionSettings* release_connection_settings();
+  ::livekit::ConnectionSettings* mutable_connection_settings();
+  void set_allocated_connection_settings(::livekit::ConnectionSettings* connection_settings);
+  private:
+  const ::livekit::ConnectionSettings& _internal_connection_settings() const;
+  ::livekit::ConnectionSettings* _internal_mutable_connection_settings();
+  public:
+  void unsafe_arena_set_allocated_connection_settings(
+      ::livekit::ConnectionSettings* connection_settings);
+  ::livekit::ConnectionSettings* unsafe_arena_release_connection_settings();
+
+  // .livekit.SessionDescription publisher_offer = 6;
+  bool has_publisher_offer() const;
+  private:
+  bool _internal_has_publisher_offer() const;
+  public:
+  void clear_publisher_offer();
+  const ::livekit::SessionDescription& publisher_offer() const;
+  PROTOBUF_NODISCARD ::livekit::SessionDescription* release_publisher_offer();
+  ::livekit::SessionDescription* mutable_publisher_offer();
+  void set_allocated_publisher_offer(::livekit::SessionDescription* publisher_offer);
+  private:
+  const ::livekit::SessionDescription& _internal_publisher_offer() const;
+  ::livekit::SessionDescription* _internal_mutable_publisher_offer();
+  public:
+  void unsafe_arena_set_allocated_publisher_offer(
+      ::livekit::SessionDescription* publisher_offer);
+  ::livekit::SessionDescription* unsafe_arena_release_publisher_offer();
+
+  // .livekit.SyncState sync_state = 10;
+  bool has_sync_state() const;
+  private:
+  bool _internal_has_sync_state() const;
+  public:
+  void clear_sync_state();
+  const ::livekit::SyncState& sync_state() const;
+  PROTOBUF_NODISCARD ::livekit::SyncState* release_sync_state();
+  ::livekit::SyncState* mutable_sync_state();
+  void set_allocated_sync_state(::livekit::SyncState* sync_state);
+  private:
+  const ::livekit::SyncState& _internal_sync_state() const;
+  ::livekit::SyncState* _internal_mutable_sync_state();
+  public:
+  void unsafe_arena_set_allocated_sync_state(
+      ::livekit::SyncState* sync_state);
+  ::livekit::SyncState* unsafe_arena_release_sync_state();
+
+  // bool reconnect = 7;
+  void clear_reconnect();
+  bool reconnect() const;
+  void set_reconnect(bool value);
+  private:
+  bool _internal_reconnect() const;
+  void _internal_set_reconnect(bool value);
+  public:
+
+  // .livekit.ReconnectReason reconnect_reason = 8;
+  void clear_reconnect_reason();
+  ::livekit::ReconnectReason reconnect_reason() const;
+  void set_reconnect_reason(::livekit::ReconnectReason value);
+  private:
+  ::livekit::ReconnectReason _internal_reconnect_reason() const;
+  void _internal_set_reconnect_reason(::livekit::ReconnectReason value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.JoinRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+        JoinRequest_ParticipantAttributesEntry_DoNotUse,
+        std::string, std::string,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> participant_attributes_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::AddTrackRequest > add_track_requests_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr metadata_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr participant_sid_;
+    ::livekit::ClientInfo* client_info_;
+    ::livekit::ConnectionSettings* connection_settings_;
+    ::livekit::SessionDescription* publisher_offer_;
+    ::livekit::SyncState* sync_state_;
+    bool reconnect_;
+    int reconnect_reason_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5frtc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class WrappedJoinRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.WrappedJoinRequest) */ {
+ public:
+  inline WrappedJoinRequest() : WrappedJoinRequest(nullptr) {}
+  ~WrappedJoinRequest() override;
+  explicit PROTOBUF_CONSTEXPR WrappedJoinRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  WrappedJoinRequest(const WrappedJoinRequest& from);
+  WrappedJoinRequest(WrappedJoinRequest&& from) noexcept
+    : WrappedJoinRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline WrappedJoinRequest& operator=(const WrappedJoinRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline WrappedJoinRequest& operator=(WrappedJoinRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const WrappedJoinRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const WrappedJoinRequest* internal_default_instance() {
+    return reinterpret_cast<const WrappedJoinRequest*>(
+               &_WrappedJoinRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    48;
+
+  friend void swap(WrappedJoinRequest& a, WrappedJoinRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(WrappedJoinRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(WrappedJoinRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  WrappedJoinRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<WrappedJoinRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const WrappedJoinRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const WrappedJoinRequest& from) {
+    WrappedJoinRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(WrappedJoinRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.WrappedJoinRequest";
+  }
+  protected:
+  explicit WrappedJoinRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef WrappedJoinRequest_Compression Compression;
+  static constexpr Compression NONE =
+    WrappedJoinRequest_Compression_NONE;
+  static constexpr Compression GZIP =
+    WrappedJoinRequest_Compression_GZIP;
+  static inline bool Compression_IsValid(int value) {
+    return WrappedJoinRequest_Compression_IsValid(value);
+  }
+  static constexpr Compression Compression_MIN =
+    WrappedJoinRequest_Compression_Compression_MIN;
+  static constexpr Compression Compression_MAX =
+    WrappedJoinRequest_Compression_Compression_MAX;
+  static constexpr int Compression_ARRAYSIZE =
+    WrappedJoinRequest_Compression_Compression_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  Compression_descriptor() {
+    return WrappedJoinRequest_Compression_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& Compression_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, Compression>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function Compression_Name.");
+    return WrappedJoinRequest_Compression_Name(enum_t_value);
+  }
+  static inline bool Compression_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      Compression* value) {
+    return WrappedJoinRequest_Compression_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kJoinRequestFieldNumber = 2,
+    kCompressionFieldNumber = 1,
+  };
+  // bytes join_request = 2;
+  void clear_join_request();
+  const std::string& join_request() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_join_request(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_join_request();
+  PROTOBUF_NODISCARD std::string* release_join_request();
+  void set_allocated_join_request(std::string* join_request);
+  private:
+  const std::string& _internal_join_request() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_join_request(const std::string& value);
+  std::string* _internal_mutable_join_request();
+  public:
+
+  // .livekit.WrappedJoinRequest.Compression compression = 1;
+  void clear_compression();
+  ::livekit::WrappedJoinRequest_Compression compression() const;
+  void set_compression(::livekit::WrappedJoinRequest_Compression value);
+  private:
+  ::livekit::WrappedJoinRequest_Compression _internal_compression() const;
+  void _internal_set_compression(::livekit::WrappedJoinRequest_Compression value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.WrappedJoinRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr join_request_;
+    int compression_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5frtc_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MediaSectionsRequirement final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.MediaSectionsRequirement) */ {
+ public:
+  inline MediaSectionsRequirement() : MediaSectionsRequirement(nullptr) {}
+  ~MediaSectionsRequirement() override;
+  explicit PROTOBUF_CONSTEXPR MediaSectionsRequirement(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MediaSectionsRequirement(const MediaSectionsRequirement& from);
+  MediaSectionsRequirement(MediaSectionsRequirement&& from) noexcept
+    : MediaSectionsRequirement() {
+    *this = ::std::move(from);
+  }
+
+  inline MediaSectionsRequirement& operator=(const MediaSectionsRequirement& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MediaSectionsRequirement& operator=(MediaSectionsRequirement&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MediaSectionsRequirement& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MediaSectionsRequirement* internal_default_instance() {
+    return reinterpret_cast<const MediaSectionsRequirement*>(
+               &_MediaSectionsRequirement_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    49;
+
+  friend void swap(MediaSectionsRequirement& a, MediaSectionsRequirement& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MediaSectionsRequirement* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MediaSectionsRequirement* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MediaSectionsRequirement* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MediaSectionsRequirement>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MediaSectionsRequirement& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const MediaSectionsRequirement& from) {
+    MediaSectionsRequirement::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MediaSectionsRequirement* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.MediaSectionsRequirement";
+  }
+  protected:
+  explicit MediaSectionsRequirement(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNumAudiosFieldNumber = 1,
+    kNumVideosFieldNumber = 2,
+  };
+  // uint32 num_audios = 1;
+  void clear_num_audios();
+  uint32_t num_audios() const;
+  void set_num_audios(uint32_t value);
+  private:
+  uint32_t _internal_num_audios() const;
+  void _internal_set_num_audios(uint32_t value);
+  public:
+
+  // uint32 num_videos = 2;
+  void clear_num_videos();
+  uint32_t num_videos() const;
+  void set_num_videos(uint32_t value);
+  private:
+  uint32_t _internal_num_videos() const;
+  void _internal_set_num_videos(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.MediaSectionsRequirement)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    uint32_t num_audios_;
+    uint32_t num_videos_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -12003,6 +13474,154 @@ inline ::livekit::TrackSubscribed* SignalResponse::mutable_track_subscribed() {
   return _msg;
 }
 
+// .livekit.RoomMovedResponse room_moved = 24;
+inline bool SignalResponse::_internal_has_room_moved() const {
+  return message_case() == kRoomMoved;
+}
+inline bool SignalResponse::has_room_moved() const {
+  return _internal_has_room_moved();
+}
+inline void SignalResponse::set_has_room_moved() {
+  _impl_._oneof_case_[0] = kRoomMoved;
+}
+inline void SignalResponse::clear_room_moved() {
+  if (_internal_has_room_moved()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.message_.room_moved_;
+    }
+    clear_has_message();
+  }
+}
+inline ::livekit::RoomMovedResponse* SignalResponse::release_room_moved() {
+  // @@protoc_insertion_point(field_release:livekit.SignalResponse.room_moved)
+  if (_internal_has_room_moved()) {
+    clear_has_message();
+    ::livekit::RoomMovedResponse* temp = _impl_.message_.room_moved_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.room_moved_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::RoomMovedResponse& SignalResponse::_internal_room_moved() const {
+  return _internal_has_room_moved()
+      ? *_impl_.message_.room_moved_
+      : reinterpret_cast< ::livekit::RoomMovedResponse&>(::livekit::_RoomMovedResponse_default_instance_);
+}
+inline const ::livekit::RoomMovedResponse& SignalResponse::room_moved() const {
+  // @@protoc_insertion_point(field_get:livekit.SignalResponse.room_moved)
+  return _internal_room_moved();
+}
+inline ::livekit::RoomMovedResponse* SignalResponse::unsafe_arena_release_room_moved() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.SignalResponse.room_moved)
+  if (_internal_has_room_moved()) {
+    clear_has_message();
+    ::livekit::RoomMovedResponse* temp = _impl_.message_.room_moved_;
+    _impl_.message_.room_moved_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void SignalResponse::unsafe_arena_set_allocated_room_moved(::livekit::RoomMovedResponse* room_moved) {
+  clear_message();
+  if (room_moved) {
+    set_has_room_moved();
+    _impl_.message_.room_moved_ = room_moved;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SignalResponse.room_moved)
+}
+inline ::livekit::RoomMovedResponse* SignalResponse::_internal_mutable_room_moved() {
+  if (!_internal_has_room_moved()) {
+    clear_message();
+    set_has_room_moved();
+    _impl_.message_.room_moved_ = CreateMaybeMessage< ::livekit::RoomMovedResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.room_moved_;
+}
+inline ::livekit::RoomMovedResponse* SignalResponse::mutable_room_moved() {
+  ::livekit::RoomMovedResponse* _msg = _internal_mutable_room_moved();
+  // @@protoc_insertion_point(field_mutable:livekit.SignalResponse.room_moved)
+  return _msg;
+}
+
+// .livekit.MediaSectionsRequirement media_sections_requirement = 25;
+inline bool SignalResponse::_internal_has_media_sections_requirement() const {
+  return message_case() == kMediaSectionsRequirement;
+}
+inline bool SignalResponse::has_media_sections_requirement() const {
+  return _internal_has_media_sections_requirement();
+}
+inline void SignalResponse::set_has_media_sections_requirement() {
+  _impl_._oneof_case_[0] = kMediaSectionsRequirement;
+}
+inline void SignalResponse::clear_media_sections_requirement() {
+  if (_internal_has_media_sections_requirement()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.message_.media_sections_requirement_;
+    }
+    clear_has_message();
+  }
+}
+inline ::livekit::MediaSectionsRequirement* SignalResponse::release_media_sections_requirement() {
+  // @@protoc_insertion_point(field_release:livekit.SignalResponse.media_sections_requirement)
+  if (_internal_has_media_sections_requirement()) {
+    clear_has_message();
+    ::livekit::MediaSectionsRequirement* temp = _impl_.message_.media_sections_requirement_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.media_sections_requirement_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::MediaSectionsRequirement& SignalResponse::_internal_media_sections_requirement() const {
+  return _internal_has_media_sections_requirement()
+      ? *_impl_.message_.media_sections_requirement_
+      : reinterpret_cast< ::livekit::MediaSectionsRequirement&>(::livekit::_MediaSectionsRequirement_default_instance_);
+}
+inline const ::livekit::MediaSectionsRequirement& SignalResponse::media_sections_requirement() const {
+  // @@protoc_insertion_point(field_get:livekit.SignalResponse.media_sections_requirement)
+  return _internal_media_sections_requirement();
+}
+inline ::livekit::MediaSectionsRequirement* SignalResponse::unsafe_arena_release_media_sections_requirement() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.SignalResponse.media_sections_requirement)
+  if (_internal_has_media_sections_requirement()) {
+    clear_has_message();
+    ::livekit::MediaSectionsRequirement* temp = _impl_.message_.media_sections_requirement_;
+    _impl_.message_.media_sections_requirement_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void SignalResponse::unsafe_arena_set_allocated_media_sections_requirement(::livekit::MediaSectionsRequirement* media_sections_requirement) {
+  clear_message();
+  if (media_sections_requirement) {
+    set_has_media_sections_requirement();
+    _impl_.message_.media_sections_requirement_ = media_sections_requirement;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.SignalResponse.media_sections_requirement)
+}
+inline ::livekit::MediaSectionsRequirement* SignalResponse::_internal_mutable_media_sections_requirement() {
+  if (!_internal_has_media_sections_requirement()) {
+    clear_message();
+    set_has_media_sections_requirement();
+    _impl_.message_.media_sections_requirement_ = CreateMaybeMessage< ::livekit::MediaSectionsRequirement >(GetArenaForAllocation());
+  }
+  return _impl_.message_.media_sections_requirement_;
+}
+inline ::livekit::MediaSectionsRequirement* SignalResponse::mutable_media_sections_requirement() {
+  ::livekit::MediaSectionsRequirement* _msg = _internal_mutable_media_sections_requirement();
+  // @@protoc_insertion_point(field_mutable:livekit.SignalResponse.media_sections_requirement)
+  return _msg;
+}
+
 inline bool SignalResponse::has_message() const {
   return message_case() != MESSAGE_NOT_SET;
 }
@@ -12114,6 +13733,63 @@ inline void SimulcastCodec::set_allocated_cid(std::string* cid) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.SimulcastCodec.cid)
+}
+
+// repeated .livekit.VideoLayer layers = 4;
+inline int SimulcastCodec::_internal_layers_size() const {
+  return _impl_.layers_.size();
+}
+inline int SimulcastCodec::layers_size() const {
+  return _internal_layers_size();
+}
+inline ::livekit::VideoLayer* SimulcastCodec::mutable_layers(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.SimulcastCodec.layers)
+  return _impl_.layers_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer >*
+SimulcastCodec::mutable_layers() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.SimulcastCodec.layers)
+  return &_impl_.layers_;
+}
+inline const ::livekit::VideoLayer& SimulcastCodec::_internal_layers(int index) const {
+  return _impl_.layers_.Get(index);
+}
+inline const ::livekit::VideoLayer& SimulcastCodec::layers(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.SimulcastCodec.layers)
+  return _internal_layers(index);
+}
+inline ::livekit::VideoLayer* SimulcastCodec::_internal_add_layers() {
+  return _impl_.layers_.Add();
+}
+inline ::livekit::VideoLayer* SimulcastCodec::add_layers() {
+  ::livekit::VideoLayer* _add = _internal_add_layers();
+  // @@protoc_insertion_point(field_add:livekit.SimulcastCodec.layers)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer >&
+SimulcastCodec::layers() const {
+  // @@protoc_insertion_point(field_list:livekit.SimulcastCodec.layers)
+  return _impl_.layers_;
+}
+
+// .livekit.VideoLayer.Mode video_layer_mode = 5;
+inline void SimulcastCodec::clear_video_layer_mode() {
+  _impl_.video_layer_mode_ = 0;
+}
+inline ::livekit::VideoLayer_Mode SimulcastCodec::_internal_video_layer_mode() const {
+  return static_cast< ::livekit::VideoLayer_Mode >(_impl_.video_layer_mode_);
+}
+inline ::livekit::VideoLayer_Mode SimulcastCodec::video_layer_mode() const {
+  // @@protoc_insertion_point(field_get:livekit.SimulcastCodec.video_layer_mode)
+  return _internal_video_layer_mode();
+}
+inline void SimulcastCodec::_internal_set_video_layer_mode(::livekit::VideoLayer_Mode value) {
+  
+  _impl_.video_layer_mode_ = value;
+}
+inline void SimulcastCodec::set_video_layer_mode(::livekit::VideoLayer_Mode value) {
+  _internal_set_video_layer_mode(value);
+  // @@protoc_insertion_point(field_set:livekit.SimulcastCodec.video_layer_mode)
 }
 
 // -------------------------------------------------------------------
@@ -12300,7 +13976,7 @@ inline void AddTrackRequest::set_muted(bool value) {
   // @@protoc_insertion_point(field_set:livekit.AddTrackRequest.muted)
 }
 
-// bool disable_dtx = 7;
+// bool disable_dtx = 7 [deprecated = true];
 inline void AddTrackRequest::clear_disable_dtx() {
   _impl_.disable_dtx_ = false;
 }
@@ -12467,7 +14143,7 @@ inline void AddTrackRequest::set_allocated_sid(std::string* sid) {
   // @@protoc_insertion_point(field_set_allocated:livekit.AddTrackRequest.sid)
 }
 
-// bool stereo = 12;
+// bool stereo = 12 [deprecated = true];
 inline void AddTrackRequest::clear_stereo() {
   _impl_.stereo_ = false;
 }
@@ -12595,6 +14271,49 @@ inline void AddTrackRequest::_internal_set_backup_codec_policy(::livekit::Backup
 inline void AddTrackRequest::set_backup_codec_policy(::livekit::BackupCodecPolicy value) {
   _internal_set_backup_codec_policy(value);
   // @@protoc_insertion_point(field_set:livekit.AddTrackRequest.backup_codec_policy)
+}
+
+// repeated .livekit.AudioTrackFeature audio_features = 17;
+inline int AddTrackRequest::_internal_audio_features_size() const {
+  return _impl_.audio_features_.size();
+}
+inline int AddTrackRequest::audio_features_size() const {
+  return _internal_audio_features_size();
+}
+inline void AddTrackRequest::clear_audio_features() {
+  _impl_.audio_features_.Clear();
+}
+inline ::livekit::AudioTrackFeature AddTrackRequest::_internal_audio_features(int index) const {
+  return static_cast< ::livekit::AudioTrackFeature >(_impl_.audio_features_.Get(index));
+}
+inline ::livekit::AudioTrackFeature AddTrackRequest::audio_features(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.AddTrackRequest.audio_features)
+  return _internal_audio_features(index);
+}
+inline void AddTrackRequest::set_audio_features(int index, ::livekit::AudioTrackFeature value) {
+  _impl_.audio_features_.Set(index, value);
+  // @@protoc_insertion_point(field_set:livekit.AddTrackRequest.audio_features)
+}
+inline void AddTrackRequest::_internal_add_audio_features(::livekit::AudioTrackFeature value) {
+  _impl_.audio_features_.Add(value);
+}
+inline void AddTrackRequest::add_audio_features(::livekit::AudioTrackFeature value) {
+  _internal_add_audio_features(value);
+  // @@protoc_insertion_point(field_add:livekit.AddTrackRequest.audio_features)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>&
+AddTrackRequest::audio_features() const {
+  // @@protoc_insertion_point(field_list:livekit.AddTrackRequest.audio_features)
+  return _impl_.audio_features_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+AddTrackRequest::_internal_mutable_audio_features() {
+  return &_impl_.audio_features_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+AddTrackRequest::mutable_audio_features() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.AddTrackRequest.audio_features)
+  return _internal_mutable_audio_features();
 }
 
 // -------------------------------------------------------------------
@@ -13632,6 +15351,111 @@ inline void ReconnectResponse::set_allocated_client_configuration(::livekit::Cli
   // @@protoc_insertion_point(field_set_allocated:livekit.ReconnectResponse.client_configuration)
 }
 
+// .livekit.ServerInfo server_info = 3;
+inline bool ReconnectResponse::_internal_has_server_info() const {
+  return this != internal_default_instance() && _impl_.server_info_ != nullptr;
+}
+inline bool ReconnectResponse::has_server_info() const {
+  return _internal_has_server_info();
+}
+inline const ::livekit::ServerInfo& ReconnectResponse::_internal_server_info() const {
+  const ::livekit::ServerInfo* p = _impl_.server_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ServerInfo&>(
+      ::livekit::_ServerInfo_default_instance_);
+}
+inline const ::livekit::ServerInfo& ReconnectResponse::server_info() const {
+  // @@protoc_insertion_point(field_get:livekit.ReconnectResponse.server_info)
+  return _internal_server_info();
+}
+inline void ReconnectResponse::unsafe_arena_set_allocated_server_info(
+    ::livekit::ServerInfo* server_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.server_info_);
+  }
+  _impl_.server_info_ = server_info;
+  if (server_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.ReconnectResponse.server_info)
+}
+inline ::livekit::ServerInfo* ReconnectResponse::release_server_info() {
+  
+  ::livekit::ServerInfo* temp = _impl_.server_info_;
+  _impl_.server_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ServerInfo* ReconnectResponse::unsafe_arena_release_server_info() {
+  // @@protoc_insertion_point(field_release:livekit.ReconnectResponse.server_info)
+  
+  ::livekit::ServerInfo* temp = _impl_.server_info_;
+  _impl_.server_info_ = nullptr;
+  return temp;
+}
+inline ::livekit::ServerInfo* ReconnectResponse::_internal_mutable_server_info() {
+  
+  if (_impl_.server_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ServerInfo>(GetArenaForAllocation());
+    _impl_.server_info_ = p;
+  }
+  return _impl_.server_info_;
+}
+inline ::livekit::ServerInfo* ReconnectResponse::mutable_server_info() {
+  ::livekit::ServerInfo* _msg = _internal_mutable_server_info();
+  // @@protoc_insertion_point(field_mutable:livekit.ReconnectResponse.server_info)
+  return _msg;
+}
+inline void ReconnectResponse::set_allocated_server_info(::livekit::ServerInfo* server_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.server_info_);
+  }
+  if (server_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(server_info));
+    if (message_arena != submessage_arena) {
+      server_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, server_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.server_info_ = server_info;
+  // @@protoc_insertion_point(field_set_allocated:livekit.ReconnectResponse.server_info)
+}
+
+// uint32 last_message_seq = 4;
+inline void ReconnectResponse::clear_last_message_seq() {
+  _impl_.last_message_seq_ = 0u;
+}
+inline uint32_t ReconnectResponse::_internal_last_message_seq() const {
+  return _impl_.last_message_seq_;
+}
+inline uint32_t ReconnectResponse::last_message_seq() const {
+  // @@protoc_insertion_point(field_get:livekit.ReconnectResponse.last_message_seq)
+  return _internal_last_message_seq();
+}
+inline void ReconnectResponse::_internal_set_last_message_seq(uint32_t value) {
+  
+  _impl_.last_message_seq_ = value;
+}
+inline void ReconnectResponse::set_last_message_seq(uint32_t value) {
+  _internal_set_last_message_seq(value);
+  // @@protoc_insertion_point(field_set:livekit.ReconnectResponse.last_message_seq)
+}
+
 // -------------------------------------------------------------------
 
 // TrackPublishedResponse
@@ -13927,6 +15751,26 @@ inline void SessionDescription::set_allocated_sdp(std::string* sdp) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.SessionDescription.sdp)
+}
+
+// uint32 id = 3;
+inline void SessionDescription::clear_id() {
+  _impl_.id_ = 0u;
+}
+inline uint32_t SessionDescription::_internal_id() const {
+  return _impl_.id_;
+}
+inline uint32_t SessionDescription::id() const {
+  // @@protoc_insertion_point(field_get:livekit.SessionDescription.id)
+  return _internal_id();
+}
+inline void SessionDescription::_internal_set_id(uint32_t value) {
+  
+  _impl_.id_ = value;
+}
+inline void SessionDescription::set_id(uint32_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:livekit.SessionDescription.id)
 }
 
 // -------------------------------------------------------------------
@@ -15703,7 +17547,7 @@ inline void SubscribedQualityUpdate::set_allocated_track_sid(std::string* track_
   // @@protoc_insertion_point(field_set_allocated:livekit.SubscribedQualityUpdate.track_sid)
 }
 
-// repeated .livekit.SubscribedQuality subscribed_qualities = 2;
+// repeated .livekit.SubscribedQuality subscribed_qualities = 2 [deprecated = true];
 inline int SubscribedQualityUpdate::_internal_subscribed_qualities_size() const {
   return _impl_.subscribed_qualities_.size();
 }
@@ -16172,6 +18016,267 @@ inline void SubscriptionPermissionUpdate::set_allowed(bool value) {
 
 // -------------------------------------------------------------------
 
+// RoomMovedResponse
+
+// .livekit.Room room = 1;
+inline bool RoomMovedResponse::_internal_has_room() const {
+  return this != internal_default_instance() && _impl_.room_ != nullptr;
+}
+inline bool RoomMovedResponse::has_room() const {
+  return _internal_has_room();
+}
+inline const ::livekit::Room& RoomMovedResponse::_internal_room() const {
+  const ::livekit::Room* p = _impl_.room_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::Room&>(
+      ::livekit::_Room_default_instance_);
+}
+inline const ::livekit::Room& RoomMovedResponse::room() const {
+  // @@protoc_insertion_point(field_get:livekit.RoomMovedResponse.room)
+  return _internal_room();
+}
+inline void RoomMovedResponse::unsafe_arena_set_allocated_room(
+    ::livekit::Room* room) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.room_);
+  }
+  _impl_.room_ = room;
+  if (room) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.RoomMovedResponse.room)
+}
+inline ::livekit::Room* RoomMovedResponse::release_room() {
+  
+  ::livekit::Room* temp = _impl_.room_;
+  _impl_.room_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::Room* RoomMovedResponse::unsafe_arena_release_room() {
+  // @@protoc_insertion_point(field_release:livekit.RoomMovedResponse.room)
+  
+  ::livekit::Room* temp = _impl_.room_;
+  _impl_.room_ = nullptr;
+  return temp;
+}
+inline ::livekit::Room* RoomMovedResponse::_internal_mutable_room() {
+  
+  if (_impl_.room_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::Room>(GetArenaForAllocation());
+    _impl_.room_ = p;
+  }
+  return _impl_.room_;
+}
+inline ::livekit::Room* RoomMovedResponse::mutable_room() {
+  ::livekit::Room* _msg = _internal_mutable_room();
+  // @@protoc_insertion_point(field_mutable:livekit.RoomMovedResponse.room)
+  return _msg;
+}
+inline void RoomMovedResponse::set_allocated_room(::livekit::Room* room) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.room_);
+  }
+  if (room) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(room));
+    if (message_arena != submessage_arena) {
+      room = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, room, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.room_ = room;
+  // @@protoc_insertion_point(field_set_allocated:livekit.RoomMovedResponse.room)
+}
+
+// string token = 2;
+inline void RoomMovedResponse::clear_token() {
+  _impl_.token_.ClearToEmpty();
+}
+inline const std::string& RoomMovedResponse::token() const {
+  // @@protoc_insertion_point(field_get:livekit.RoomMovedResponse.token)
+  return _internal_token();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RoomMovedResponse::set_token(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.token_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.RoomMovedResponse.token)
+}
+inline std::string* RoomMovedResponse::mutable_token() {
+  std::string* _s = _internal_mutable_token();
+  // @@protoc_insertion_point(field_mutable:livekit.RoomMovedResponse.token)
+  return _s;
+}
+inline const std::string& RoomMovedResponse::_internal_token() const {
+  return _impl_.token_.Get();
+}
+inline void RoomMovedResponse::_internal_set_token(const std::string& value) {
+  
+  _impl_.token_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RoomMovedResponse::_internal_mutable_token() {
+  
+  return _impl_.token_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RoomMovedResponse::release_token() {
+  // @@protoc_insertion_point(field_release:livekit.RoomMovedResponse.token)
+  return _impl_.token_.Release();
+}
+inline void RoomMovedResponse::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.token_.SetAllocated(token, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.token_.IsDefault()) {
+    _impl_.token_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.RoomMovedResponse.token)
+}
+
+// .livekit.ParticipantInfo participant = 3;
+inline bool RoomMovedResponse::_internal_has_participant() const {
+  return this != internal_default_instance() && _impl_.participant_ != nullptr;
+}
+inline bool RoomMovedResponse::has_participant() const {
+  return _internal_has_participant();
+}
+inline const ::livekit::ParticipantInfo& RoomMovedResponse::_internal_participant() const {
+  const ::livekit::ParticipantInfo* p = _impl_.participant_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ParticipantInfo&>(
+      ::livekit::_ParticipantInfo_default_instance_);
+}
+inline const ::livekit::ParticipantInfo& RoomMovedResponse::participant() const {
+  // @@protoc_insertion_point(field_get:livekit.RoomMovedResponse.participant)
+  return _internal_participant();
+}
+inline void RoomMovedResponse::unsafe_arena_set_allocated_participant(
+    ::livekit::ParticipantInfo* participant) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.participant_);
+  }
+  _impl_.participant_ = participant;
+  if (participant) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.RoomMovedResponse.participant)
+}
+inline ::livekit::ParticipantInfo* RoomMovedResponse::release_participant() {
+  
+  ::livekit::ParticipantInfo* temp = _impl_.participant_;
+  _impl_.participant_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ParticipantInfo* RoomMovedResponse::unsafe_arena_release_participant() {
+  // @@protoc_insertion_point(field_release:livekit.RoomMovedResponse.participant)
+  
+  ::livekit::ParticipantInfo* temp = _impl_.participant_;
+  _impl_.participant_ = nullptr;
+  return temp;
+}
+inline ::livekit::ParticipantInfo* RoomMovedResponse::_internal_mutable_participant() {
+  
+  if (_impl_.participant_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ParticipantInfo>(GetArenaForAllocation());
+    _impl_.participant_ = p;
+  }
+  return _impl_.participant_;
+}
+inline ::livekit::ParticipantInfo* RoomMovedResponse::mutable_participant() {
+  ::livekit::ParticipantInfo* _msg = _internal_mutable_participant();
+  // @@protoc_insertion_point(field_mutable:livekit.RoomMovedResponse.participant)
+  return _msg;
+}
+inline void RoomMovedResponse::set_allocated_participant(::livekit::ParticipantInfo* participant) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.participant_);
+  }
+  if (participant) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(participant));
+    if (message_arena != submessage_arena) {
+      participant = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, participant, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.participant_ = participant;
+  // @@protoc_insertion_point(field_set_allocated:livekit.RoomMovedResponse.participant)
+}
+
+// repeated .livekit.ParticipantInfo other_participants = 4;
+inline int RoomMovedResponse::_internal_other_participants_size() const {
+  return _impl_.other_participants_.size();
+}
+inline int RoomMovedResponse::other_participants_size() const {
+  return _internal_other_participants_size();
+}
+inline ::livekit::ParticipantInfo* RoomMovedResponse::mutable_other_participants(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.RoomMovedResponse.other_participants)
+  return _impl_.other_participants_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ParticipantInfo >*
+RoomMovedResponse::mutable_other_participants() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.RoomMovedResponse.other_participants)
+  return &_impl_.other_participants_;
+}
+inline const ::livekit::ParticipantInfo& RoomMovedResponse::_internal_other_participants(int index) const {
+  return _impl_.other_participants_.Get(index);
+}
+inline const ::livekit::ParticipantInfo& RoomMovedResponse::other_participants(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.RoomMovedResponse.other_participants)
+  return _internal_other_participants(index);
+}
+inline ::livekit::ParticipantInfo* RoomMovedResponse::_internal_add_other_participants() {
+  return _impl_.other_participants_.Add();
+}
+inline ::livekit::ParticipantInfo* RoomMovedResponse::add_other_participants() {
+  ::livekit::ParticipantInfo* _add = _internal_add_other_participants();
+  // @@protoc_insertion_point(field_add:livekit.RoomMovedResponse.other_participants)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ParticipantInfo >&
+RoomMovedResponse::other_participants() const {
+  // @@protoc_insertion_point(field_list:livekit.RoomMovedResponse.other_participants)
+  return _impl_.other_participants_;
+}
+
+// -------------------------------------------------------------------
+
 // SyncState
 
 // .livekit.SessionDescription answer = 1;
@@ -16597,6 +18702,120 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 SyncState::mutable_track_sids_disabled() {
   // @@protoc_insertion_point(field_mutable_list:livekit.SyncState.track_sids_disabled)
   return &_impl_.track_sids_disabled_;
+}
+
+// repeated .livekit.DataChannelReceiveState datachannel_receive_states = 7;
+inline int SyncState::_internal_datachannel_receive_states_size() const {
+  return _impl_.datachannel_receive_states_.size();
+}
+inline int SyncState::datachannel_receive_states_size() const {
+  return _internal_datachannel_receive_states_size();
+}
+inline void SyncState::clear_datachannel_receive_states() {
+  _impl_.datachannel_receive_states_.Clear();
+}
+inline ::livekit::DataChannelReceiveState* SyncState::mutable_datachannel_receive_states(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.SyncState.datachannel_receive_states)
+  return _impl_.datachannel_receive_states_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::DataChannelReceiveState >*
+SyncState::mutable_datachannel_receive_states() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.SyncState.datachannel_receive_states)
+  return &_impl_.datachannel_receive_states_;
+}
+inline const ::livekit::DataChannelReceiveState& SyncState::_internal_datachannel_receive_states(int index) const {
+  return _impl_.datachannel_receive_states_.Get(index);
+}
+inline const ::livekit::DataChannelReceiveState& SyncState::datachannel_receive_states(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.SyncState.datachannel_receive_states)
+  return _internal_datachannel_receive_states(index);
+}
+inline ::livekit::DataChannelReceiveState* SyncState::_internal_add_datachannel_receive_states() {
+  return _impl_.datachannel_receive_states_.Add();
+}
+inline ::livekit::DataChannelReceiveState* SyncState::add_datachannel_receive_states() {
+  ::livekit::DataChannelReceiveState* _add = _internal_add_datachannel_receive_states();
+  // @@protoc_insertion_point(field_add:livekit.SyncState.datachannel_receive_states)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::DataChannelReceiveState >&
+SyncState::datachannel_receive_states() const {
+  // @@protoc_insertion_point(field_list:livekit.SyncState.datachannel_receive_states)
+  return _impl_.datachannel_receive_states_;
+}
+
+// -------------------------------------------------------------------
+
+// DataChannelReceiveState
+
+// string publisher_sid = 1;
+inline void DataChannelReceiveState::clear_publisher_sid() {
+  _impl_.publisher_sid_.ClearToEmpty();
+}
+inline const std::string& DataChannelReceiveState::publisher_sid() const {
+  // @@protoc_insertion_point(field_get:livekit.DataChannelReceiveState.publisher_sid)
+  return _internal_publisher_sid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DataChannelReceiveState::set_publisher_sid(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.publisher_sid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.DataChannelReceiveState.publisher_sid)
+}
+inline std::string* DataChannelReceiveState::mutable_publisher_sid() {
+  std::string* _s = _internal_mutable_publisher_sid();
+  // @@protoc_insertion_point(field_mutable:livekit.DataChannelReceiveState.publisher_sid)
+  return _s;
+}
+inline const std::string& DataChannelReceiveState::_internal_publisher_sid() const {
+  return _impl_.publisher_sid_.Get();
+}
+inline void DataChannelReceiveState::_internal_set_publisher_sid(const std::string& value) {
+  
+  _impl_.publisher_sid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DataChannelReceiveState::_internal_mutable_publisher_sid() {
+  
+  return _impl_.publisher_sid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DataChannelReceiveState::release_publisher_sid() {
+  // @@protoc_insertion_point(field_release:livekit.DataChannelReceiveState.publisher_sid)
+  return _impl_.publisher_sid_.Release();
+}
+inline void DataChannelReceiveState::set_allocated_publisher_sid(std::string* publisher_sid) {
+  if (publisher_sid != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.publisher_sid_.SetAllocated(publisher_sid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.publisher_sid_.IsDefault()) {
+    _impl_.publisher_sid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.DataChannelReceiveState.publisher_sid)
+}
+
+// uint32 last_seq = 2;
+inline void DataChannelReceiveState::clear_last_seq() {
+  _impl_.last_seq_ = 0u;
+}
+inline uint32_t DataChannelReceiveState::_internal_last_seq() const {
+  return _impl_.last_seq_;
+}
+inline uint32_t DataChannelReceiveState::last_seq() const {
+  // @@protoc_insertion_point(field_get:livekit.DataChannelReceiveState.last_seq)
+  return _internal_last_seq();
+}
+inline void DataChannelReceiveState::_internal_set_last_seq(uint32_t value) {
+  
+  _impl_.last_seq_ = value;
+}
+inline void DataChannelReceiveState::set_last_seq(uint32_t value) {
+  _internal_set_last_seq(value);
+  // @@protoc_insertion_point(field_set:livekit.DataChannelReceiveState.last_seq)
 }
 
 // -------------------------------------------------------------------
@@ -17526,9 +19745,803 @@ inline void TrackSubscribed::set_allocated_track_sid(std::string* track_sid) {
   // @@protoc_insertion_point(field_set_allocated:livekit.TrackSubscribed.track_sid)
 }
 
+// -------------------------------------------------------------------
+
+// ConnectionSettings
+
+// bool auto_subscribe = 1;
+inline void ConnectionSettings::clear_auto_subscribe() {
+  _impl_.auto_subscribe_ = false;
+}
+inline bool ConnectionSettings::_internal_auto_subscribe() const {
+  return _impl_.auto_subscribe_;
+}
+inline bool ConnectionSettings::auto_subscribe() const {
+  // @@protoc_insertion_point(field_get:livekit.ConnectionSettings.auto_subscribe)
+  return _internal_auto_subscribe();
+}
+inline void ConnectionSettings::_internal_set_auto_subscribe(bool value) {
+  
+  _impl_.auto_subscribe_ = value;
+}
+inline void ConnectionSettings::set_auto_subscribe(bool value) {
+  _internal_set_auto_subscribe(value);
+  // @@protoc_insertion_point(field_set:livekit.ConnectionSettings.auto_subscribe)
+}
+
+// bool adaptive_stream = 2;
+inline void ConnectionSettings::clear_adaptive_stream() {
+  _impl_.adaptive_stream_ = false;
+}
+inline bool ConnectionSettings::_internal_adaptive_stream() const {
+  return _impl_.adaptive_stream_;
+}
+inline bool ConnectionSettings::adaptive_stream() const {
+  // @@protoc_insertion_point(field_get:livekit.ConnectionSettings.adaptive_stream)
+  return _internal_adaptive_stream();
+}
+inline void ConnectionSettings::_internal_set_adaptive_stream(bool value) {
+  
+  _impl_.adaptive_stream_ = value;
+}
+inline void ConnectionSettings::set_adaptive_stream(bool value) {
+  _internal_set_adaptive_stream(value);
+  // @@protoc_insertion_point(field_set:livekit.ConnectionSettings.adaptive_stream)
+}
+
+// optional bool subscriber_allow_pause = 3;
+inline bool ConnectionSettings::_internal_has_subscriber_allow_pause() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool ConnectionSettings::has_subscriber_allow_pause() const {
+  return _internal_has_subscriber_allow_pause();
+}
+inline void ConnectionSettings::clear_subscriber_allow_pause() {
+  _impl_.subscriber_allow_pause_ = false;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline bool ConnectionSettings::_internal_subscriber_allow_pause() const {
+  return _impl_.subscriber_allow_pause_;
+}
+inline bool ConnectionSettings::subscriber_allow_pause() const {
+  // @@protoc_insertion_point(field_get:livekit.ConnectionSettings.subscriber_allow_pause)
+  return _internal_subscriber_allow_pause();
+}
+inline void ConnectionSettings::_internal_set_subscriber_allow_pause(bool value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.subscriber_allow_pause_ = value;
+}
+inline void ConnectionSettings::set_subscriber_allow_pause(bool value) {
+  _internal_set_subscriber_allow_pause(value);
+  // @@protoc_insertion_point(field_set:livekit.ConnectionSettings.subscriber_allow_pause)
+}
+
+// bool disable_ice_lite = 4;
+inline void ConnectionSettings::clear_disable_ice_lite() {
+  _impl_.disable_ice_lite_ = false;
+}
+inline bool ConnectionSettings::_internal_disable_ice_lite() const {
+  return _impl_.disable_ice_lite_;
+}
+inline bool ConnectionSettings::disable_ice_lite() const {
+  // @@protoc_insertion_point(field_get:livekit.ConnectionSettings.disable_ice_lite)
+  return _internal_disable_ice_lite();
+}
+inline void ConnectionSettings::_internal_set_disable_ice_lite(bool value) {
+  
+  _impl_.disable_ice_lite_ = value;
+}
+inline void ConnectionSettings::set_disable_ice_lite(bool value) {
+  _internal_set_disable_ice_lite(value);
+  // @@protoc_insertion_point(field_set:livekit.ConnectionSettings.disable_ice_lite)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// JoinRequest
+
+// .livekit.ClientInfo client_info = 1;
+inline bool JoinRequest::_internal_has_client_info() const {
+  return this != internal_default_instance() && _impl_.client_info_ != nullptr;
+}
+inline bool JoinRequest::has_client_info() const {
+  return _internal_has_client_info();
+}
+inline const ::livekit::ClientInfo& JoinRequest::_internal_client_info() const {
+  const ::livekit::ClientInfo* p = _impl_.client_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ClientInfo&>(
+      ::livekit::_ClientInfo_default_instance_);
+}
+inline const ::livekit::ClientInfo& JoinRequest::client_info() const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.client_info)
+  return _internal_client_info();
+}
+inline void JoinRequest::unsafe_arena_set_allocated_client_info(
+    ::livekit::ClientInfo* client_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.client_info_);
+  }
+  _impl_.client_info_ = client_info;
+  if (client_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.JoinRequest.client_info)
+}
+inline ::livekit::ClientInfo* JoinRequest::release_client_info() {
+  
+  ::livekit::ClientInfo* temp = _impl_.client_info_;
+  _impl_.client_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ClientInfo* JoinRequest::unsafe_arena_release_client_info() {
+  // @@protoc_insertion_point(field_release:livekit.JoinRequest.client_info)
+  
+  ::livekit::ClientInfo* temp = _impl_.client_info_;
+  _impl_.client_info_ = nullptr;
+  return temp;
+}
+inline ::livekit::ClientInfo* JoinRequest::_internal_mutable_client_info() {
+  
+  if (_impl_.client_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ClientInfo>(GetArenaForAllocation());
+    _impl_.client_info_ = p;
+  }
+  return _impl_.client_info_;
+}
+inline ::livekit::ClientInfo* JoinRequest::mutable_client_info() {
+  ::livekit::ClientInfo* _msg = _internal_mutable_client_info();
+  // @@protoc_insertion_point(field_mutable:livekit.JoinRequest.client_info)
+  return _msg;
+}
+inline void JoinRequest::set_allocated_client_info(::livekit::ClientInfo* client_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.client_info_);
+  }
+  if (client_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(client_info));
+    if (message_arena != submessage_arena) {
+      client_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, client_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.client_info_ = client_info;
+  // @@protoc_insertion_point(field_set_allocated:livekit.JoinRequest.client_info)
+}
+
+// .livekit.ConnectionSettings connection_settings = 2;
+inline bool JoinRequest::_internal_has_connection_settings() const {
+  return this != internal_default_instance() && _impl_.connection_settings_ != nullptr;
+}
+inline bool JoinRequest::has_connection_settings() const {
+  return _internal_has_connection_settings();
+}
+inline void JoinRequest::clear_connection_settings() {
+  if (GetArenaForAllocation() == nullptr && _impl_.connection_settings_ != nullptr) {
+    delete _impl_.connection_settings_;
+  }
+  _impl_.connection_settings_ = nullptr;
+}
+inline const ::livekit::ConnectionSettings& JoinRequest::_internal_connection_settings() const {
+  const ::livekit::ConnectionSettings* p = _impl_.connection_settings_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::ConnectionSettings&>(
+      ::livekit::_ConnectionSettings_default_instance_);
+}
+inline const ::livekit::ConnectionSettings& JoinRequest::connection_settings() const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.connection_settings)
+  return _internal_connection_settings();
+}
+inline void JoinRequest::unsafe_arena_set_allocated_connection_settings(
+    ::livekit::ConnectionSettings* connection_settings) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.connection_settings_);
+  }
+  _impl_.connection_settings_ = connection_settings;
+  if (connection_settings) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.JoinRequest.connection_settings)
+}
+inline ::livekit::ConnectionSettings* JoinRequest::release_connection_settings() {
+  
+  ::livekit::ConnectionSettings* temp = _impl_.connection_settings_;
+  _impl_.connection_settings_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::ConnectionSettings* JoinRequest::unsafe_arena_release_connection_settings() {
+  // @@protoc_insertion_point(field_release:livekit.JoinRequest.connection_settings)
+  
+  ::livekit::ConnectionSettings* temp = _impl_.connection_settings_;
+  _impl_.connection_settings_ = nullptr;
+  return temp;
+}
+inline ::livekit::ConnectionSettings* JoinRequest::_internal_mutable_connection_settings() {
+  
+  if (_impl_.connection_settings_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::ConnectionSettings>(GetArenaForAllocation());
+    _impl_.connection_settings_ = p;
+  }
+  return _impl_.connection_settings_;
+}
+inline ::livekit::ConnectionSettings* JoinRequest::mutable_connection_settings() {
+  ::livekit::ConnectionSettings* _msg = _internal_mutable_connection_settings();
+  // @@protoc_insertion_point(field_mutable:livekit.JoinRequest.connection_settings)
+  return _msg;
+}
+inline void JoinRequest::set_allocated_connection_settings(::livekit::ConnectionSettings* connection_settings) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.connection_settings_;
+  }
+  if (connection_settings) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(connection_settings);
+    if (message_arena != submessage_arena) {
+      connection_settings = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, connection_settings, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.connection_settings_ = connection_settings;
+  // @@protoc_insertion_point(field_set_allocated:livekit.JoinRequest.connection_settings)
+}
+
+// string metadata = 3;
+inline void JoinRequest::clear_metadata() {
+  _impl_.metadata_.ClearToEmpty();
+}
+inline const std::string& JoinRequest::metadata() const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.metadata)
+  return _internal_metadata();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void JoinRequest::set_metadata(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.metadata_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.JoinRequest.metadata)
+}
+inline std::string* JoinRequest::mutable_metadata() {
+  std::string* _s = _internal_mutable_metadata();
+  // @@protoc_insertion_point(field_mutable:livekit.JoinRequest.metadata)
+  return _s;
+}
+inline const std::string& JoinRequest::_internal_metadata() const {
+  return _impl_.metadata_.Get();
+}
+inline void JoinRequest::_internal_set_metadata(const std::string& value) {
+  
+  _impl_.metadata_.Set(value, GetArenaForAllocation());
+}
+inline std::string* JoinRequest::_internal_mutable_metadata() {
+  
+  return _impl_.metadata_.Mutable(GetArenaForAllocation());
+}
+inline std::string* JoinRequest::release_metadata() {
+  // @@protoc_insertion_point(field_release:livekit.JoinRequest.metadata)
+  return _impl_.metadata_.Release();
+}
+inline void JoinRequest::set_allocated_metadata(std::string* metadata) {
+  if (metadata != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.metadata_.SetAllocated(metadata, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.metadata_.IsDefault()) {
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.JoinRequest.metadata)
+}
+
+// map<string, string> participant_attributes = 4;
+inline int JoinRequest::_internal_participant_attributes_size() const {
+  return _impl_.participant_attributes_.size();
+}
+inline int JoinRequest::participant_attributes_size() const {
+  return _internal_participant_attributes_size();
+}
+inline void JoinRequest::clear_participant_attributes() {
+  _impl_.participant_attributes_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+JoinRequest::_internal_participant_attributes() const {
+  return _impl_.participant_attributes_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+JoinRequest::participant_attributes() const {
+  // @@protoc_insertion_point(field_map:livekit.JoinRequest.participant_attributes)
+  return _internal_participant_attributes();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+JoinRequest::_internal_mutable_participant_attributes() {
+  return _impl_.participant_attributes_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+JoinRequest::mutable_participant_attributes() {
+  // @@protoc_insertion_point(field_mutable_map:livekit.JoinRequest.participant_attributes)
+  return _internal_mutable_participant_attributes();
+}
+
+// repeated .livekit.AddTrackRequest add_track_requests = 5;
+inline int JoinRequest::_internal_add_track_requests_size() const {
+  return _impl_.add_track_requests_.size();
+}
+inline int JoinRequest::add_track_requests_size() const {
+  return _internal_add_track_requests_size();
+}
+inline void JoinRequest::clear_add_track_requests() {
+  _impl_.add_track_requests_.Clear();
+}
+inline ::livekit::AddTrackRequest* JoinRequest::mutable_add_track_requests(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.JoinRequest.add_track_requests)
+  return _impl_.add_track_requests_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::AddTrackRequest >*
+JoinRequest::mutable_add_track_requests() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.JoinRequest.add_track_requests)
+  return &_impl_.add_track_requests_;
+}
+inline const ::livekit::AddTrackRequest& JoinRequest::_internal_add_track_requests(int index) const {
+  return _impl_.add_track_requests_.Get(index);
+}
+inline const ::livekit::AddTrackRequest& JoinRequest::add_track_requests(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.add_track_requests)
+  return _internal_add_track_requests(index);
+}
+inline ::livekit::AddTrackRequest* JoinRequest::_internal_add_add_track_requests() {
+  return _impl_.add_track_requests_.Add();
+}
+inline ::livekit::AddTrackRequest* JoinRequest::add_add_track_requests() {
+  ::livekit::AddTrackRequest* _add = _internal_add_add_track_requests();
+  // @@protoc_insertion_point(field_add:livekit.JoinRequest.add_track_requests)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::AddTrackRequest >&
+JoinRequest::add_track_requests() const {
+  // @@protoc_insertion_point(field_list:livekit.JoinRequest.add_track_requests)
+  return _impl_.add_track_requests_;
+}
+
+// .livekit.SessionDescription publisher_offer = 6;
+inline bool JoinRequest::_internal_has_publisher_offer() const {
+  return this != internal_default_instance() && _impl_.publisher_offer_ != nullptr;
+}
+inline bool JoinRequest::has_publisher_offer() const {
+  return _internal_has_publisher_offer();
+}
+inline void JoinRequest::clear_publisher_offer() {
+  if (GetArenaForAllocation() == nullptr && _impl_.publisher_offer_ != nullptr) {
+    delete _impl_.publisher_offer_;
+  }
+  _impl_.publisher_offer_ = nullptr;
+}
+inline const ::livekit::SessionDescription& JoinRequest::_internal_publisher_offer() const {
+  const ::livekit::SessionDescription* p = _impl_.publisher_offer_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::SessionDescription&>(
+      ::livekit::_SessionDescription_default_instance_);
+}
+inline const ::livekit::SessionDescription& JoinRequest::publisher_offer() const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.publisher_offer)
+  return _internal_publisher_offer();
+}
+inline void JoinRequest::unsafe_arena_set_allocated_publisher_offer(
+    ::livekit::SessionDescription* publisher_offer) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.publisher_offer_);
+  }
+  _impl_.publisher_offer_ = publisher_offer;
+  if (publisher_offer) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.JoinRequest.publisher_offer)
+}
+inline ::livekit::SessionDescription* JoinRequest::release_publisher_offer() {
+  
+  ::livekit::SessionDescription* temp = _impl_.publisher_offer_;
+  _impl_.publisher_offer_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::SessionDescription* JoinRequest::unsafe_arena_release_publisher_offer() {
+  // @@protoc_insertion_point(field_release:livekit.JoinRequest.publisher_offer)
+  
+  ::livekit::SessionDescription* temp = _impl_.publisher_offer_;
+  _impl_.publisher_offer_ = nullptr;
+  return temp;
+}
+inline ::livekit::SessionDescription* JoinRequest::_internal_mutable_publisher_offer() {
+  
+  if (_impl_.publisher_offer_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::SessionDescription>(GetArenaForAllocation());
+    _impl_.publisher_offer_ = p;
+  }
+  return _impl_.publisher_offer_;
+}
+inline ::livekit::SessionDescription* JoinRequest::mutable_publisher_offer() {
+  ::livekit::SessionDescription* _msg = _internal_mutable_publisher_offer();
+  // @@protoc_insertion_point(field_mutable:livekit.JoinRequest.publisher_offer)
+  return _msg;
+}
+inline void JoinRequest::set_allocated_publisher_offer(::livekit::SessionDescription* publisher_offer) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.publisher_offer_;
+  }
+  if (publisher_offer) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(publisher_offer);
+    if (message_arena != submessage_arena) {
+      publisher_offer = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, publisher_offer, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.publisher_offer_ = publisher_offer;
+  // @@protoc_insertion_point(field_set_allocated:livekit.JoinRequest.publisher_offer)
+}
+
+// bool reconnect = 7;
+inline void JoinRequest::clear_reconnect() {
+  _impl_.reconnect_ = false;
+}
+inline bool JoinRequest::_internal_reconnect() const {
+  return _impl_.reconnect_;
+}
+inline bool JoinRequest::reconnect() const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.reconnect)
+  return _internal_reconnect();
+}
+inline void JoinRequest::_internal_set_reconnect(bool value) {
+  
+  _impl_.reconnect_ = value;
+}
+inline void JoinRequest::set_reconnect(bool value) {
+  _internal_set_reconnect(value);
+  // @@protoc_insertion_point(field_set:livekit.JoinRequest.reconnect)
+}
+
+// .livekit.ReconnectReason reconnect_reason = 8;
+inline void JoinRequest::clear_reconnect_reason() {
+  _impl_.reconnect_reason_ = 0;
+}
+inline ::livekit::ReconnectReason JoinRequest::_internal_reconnect_reason() const {
+  return static_cast< ::livekit::ReconnectReason >(_impl_.reconnect_reason_);
+}
+inline ::livekit::ReconnectReason JoinRequest::reconnect_reason() const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.reconnect_reason)
+  return _internal_reconnect_reason();
+}
+inline void JoinRequest::_internal_set_reconnect_reason(::livekit::ReconnectReason value) {
+  
+  _impl_.reconnect_reason_ = value;
+}
+inline void JoinRequest::set_reconnect_reason(::livekit::ReconnectReason value) {
+  _internal_set_reconnect_reason(value);
+  // @@protoc_insertion_point(field_set:livekit.JoinRequest.reconnect_reason)
+}
+
+// string participant_sid = 9;
+inline void JoinRequest::clear_participant_sid() {
+  _impl_.participant_sid_.ClearToEmpty();
+}
+inline const std::string& JoinRequest::participant_sid() const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.participant_sid)
+  return _internal_participant_sid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void JoinRequest::set_participant_sid(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.participant_sid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.JoinRequest.participant_sid)
+}
+inline std::string* JoinRequest::mutable_participant_sid() {
+  std::string* _s = _internal_mutable_participant_sid();
+  // @@protoc_insertion_point(field_mutable:livekit.JoinRequest.participant_sid)
+  return _s;
+}
+inline const std::string& JoinRequest::_internal_participant_sid() const {
+  return _impl_.participant_sid_.Get();
+}
+inline void JoinRequest::_internal_set_participant_sid(const std::string& value) {
+  
+  _impl_.participant_sid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* JoinRequest::_internal_mutable_participant_sid() {
+  
+  return _impl_.participant_sid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* JoinRequest::release_participant_sid() {
+  // @@protoc_insertion_point(field_release:livekit.JoinRequest.participant_sid)
+  return _impl_.participant_sid_.Release();
+}
+inline void JoinRequest::set_allocated_participant_sid(std::string* participant_sid) {
+  if (participant_sid != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.participant_sid_.SetAllocated(participant_sid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.participant_sid_.IsDefault()) {
+    _impl_.participant_sid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.JoinRequest.participant_sid)
+}
+
+// .livekit.SyncState sync_state = 10;
+inline bool JoinRequest::_internal_has_sync_state() const {
+  return this != internal_default_instance() && _impl_.sync_state_ != nullptr;
+}
+inline bool JoinRequest::has_sync_state() const {
+  return _internal_has_sync_state();
+}
+inline void JoinRequest::clear_sync_state() {
+  if (GetArenaForAllocation() == nullptr && _impl_.sync_state_ != nullptr) {
+    delete _impl_.sync_state_;
+  }
+  _impl_.sync_state_ = nullptr;
+}
+inline const ::livekit::SyncState& JoinRequest::_internal_sync_state() const {
+  const ::livekit::SyncState* p = _impl_.sync_state_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::SyncState&>(
+      ::livekit::_SyncState_default_instance_);
+}
+inline const ::livekit::SyncState& JoinRequest::sync_state() const {
+  // @@protoc_insertion_point(field_get:livekit.JoinRequest.sync_state)
+  return _internal_sync_state();
+}
+inline void JoinRequest::unsafe_arena_set_allocated_sync_state(
+    ::livekit::SyncState* sync_state) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.sync_state_);
+  }
+  _impl_.sync_state_ = sync_state;
+  if (sync_state) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.JoinRequest.sync_state)
+}
+inline ::livekit::SyncState* JoinRequest::release_sync_state() {
+  
+  ::livekit::SyncState* temp = _impl_.sync_state_;
+  _impl_.sync_state_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::SyncState* JoinRequest::unsafe_arena_release_sync_state() {
+  // @@protoc_insertion_point(field_release:livekit.JoinRequest.sync_state)
+  
+  ::livekit::SyncState* temp = _impl_.sync_state_;
+  _impl_.sync_state_ = nullptr;
+  return temp;
+}
+inline ::livekit::SyncState* JoinRequest::_internal_mutable_sync_state() {
+  
+  if (_impl_.sync_state_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::SyncState>(GetArenaForAllocation());
+    _impl_.sync_state_ = p;
+  }
+  return _impl_.sync_state_;
+}
+inline ::livekit::SyncState* JoinRequest::mutable_sync_state() {
+  ::livekit::SyncState* _msg = _internal_mutable_sync_state();
+  // @@protoc_insertion_point(field_mutable:livekit.JoinRequest.sync_state)
+  return _msg;
+}
+inline void JoinRequest::set_allocated_sync_state(::livekit::SyncState* sync_state) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.sync_state_;
+  }
+  if (sync_state) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(sync_state);
+    if (message_arena != submessage_arena) {
+      sync_state = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, sync_state, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.sync_state_ = sync_state;
+  // @@protoc_insertion_point(field_set_allocated:livekit.JoinRequest.sync_state)
+}
+
+// -------------------------------------------------------------------
+
+// WrappedJoinRequest
+
+// .livekit.WrappedJoinRequest.Compression compression = 1;
+inline void WrappedJoinRequest::clear_compression() {
+  _impl_.compression_ = 0;
+}
+inline ::livekit::WrappedJoinRequest_Compression WrappedJoinRequest::_internal_compression() const {
+  return static_cast< ::livekit::WrappedJoinRequest_Compression >(_impl_.compression_);
+}
+inline ::livekit::WrappedJoinRequest_Compression WrappedJoinRequest::compression() const {
+  // @@protoc_insertion_point(field_get:livekit.WrappedJoinRequest.compression)
+  return _internal_compression();
+}
+inline void WrappedJoinRequest::_internal_set_compression(::livekit::WrappedJoinRequest_Compression value) {
+  
+  _impl_.compression_ = value;
+}
+inline void WrappedJoinRequest::set_compression(::livekit::WrappedJoinRequest_Compression value) {
+  _internal_set_compression(value);
+  // @@protoc_insertion_point(field_set:livekit.WrappedJoinRequest.compression)
+}
+
+// bytes join_request = 2;
+inline void WrappedJoinRequest::clear_join_request() {
+  _impl_.join_request_.ClearToEmpty();
+}
+inline const std::string& WrappedJoinRequest::join_request() const {
+  // @@protoc_insertion_point(field_get:livekit.WrappedJoinRequest.join_request)
+  return _internal_join_request();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WrappedJoinRequest::set_join_request(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.join_request_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.WrappedJoinRequest.join_request)
+}
+inline std::string* WrappedJoinRequest::mutable_join_request() {
+  std::string* _s = _internal_mutable_join_request();
+  // @@protoc_insertion_point(field_mutable:livekit.WrappedJoinRequest.join_request)
+  return _s;
+}
+inline const std::string& WrappedJoinRequest::_internal_join_request() const {
+  return _impl_.join_request_.Get();
+}
+inline void WrappedJoinRequest::_internal_set_join_request(const std::string& value) {
+  
+  _impl_.join_request_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WrappedJoinRequest::_internal_mutable_join_request() {
+  
+  return _impl_.join_request_.Mutable(GetArenaForAllocation());
+}
+inline std::string* WrappedJoinRequest::release_join_request() {
+  // @@protoc_insertion_point(field_release:livekit.WrappedJoinRequest.join_request)
+  return _impl_.join_request_.Release();
+}
+inline void WrappedJoinRequest::set_allocated_join_request(std::string* join_request) {
+  if (join_request != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.join_request_.SetAllocated(join_request, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.join_request_.IsDefault()) {
+    _impl_.join_request_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.WrappedJoinRequest.join_request)
+}
+
+// -------------------------------------------------------------------
+
+// MediaSectionsRequirement
+
+// uint32 num_audios = 1;
+inline void MediaSectionsRequirement::clear_num_audios() {
+  _impl_.num_audios_ = 0u;
+}
+inline uint32_t MediaSectionsRequirement::_internal_num_audios() const {
+  return _impl_.num_audios_;
+}
+inline uint32_t MediaSectionsRequirement::num_audios() const {
+  // @@protoc_insertion_point(field_get:livekit.MediaSectionsRequirement.num_audios)
+  return _internal_num_audios();
+}
+inline void MediaSectionsRequirement::_internal_set_num_audios(uint32_t value) {
+  
+  _impl_.num_audios_ = value;
+}
+inline void MediaSectionsRequirement::set_num_audios(uint32_t value) {
+  _internal_set_num_audios(value);
+  // @@protoc_insertion_point(field_set:livekit.MediaSectionsRequirement.num_audios)
+}
+
+// uint32 num_videos = 2;
+inline void MediaSectionsRequirement::clear_num_videos() {
+  _impl_.num_videos_ = 0u;
+}
+inline uint32_t MediaSectionsRequirement::_internal_num_videos() const {
+  return _impl_.num_videos_;
+}
+inline uint32_t MediaSectionsRequirement::num_videos() const {
+  // @@protoc_insertion_point(field_get:livekit.MediaSectionsRequirement.num_videos)
+  return _internal_num_videos();
+}
+inline void MediaSectionsRequirement::_internal_set_num_videos(uint32_t value) {
+  
+  _impl_.num_videos_ = value;
+}
+inline void MediaSectionsRequirement::set_num_videos(uint32_t value) {
+  _internal_set_num_videos(value);
+  // @@protoc_insertion_point(field_set:livekit.MediaSectionsRequirement.num_videos)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -17629,6 +20642,11 @@ template <> struct is_proto_enum< ::livekit::RequestResponse_Reason> : ::std::tr
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::livekit::RequestResponse_Reason>() {
   return ::livekit::RequestResponse_Reason_descriptor();
+}
+template <> struct is_proto_enum< ::livekit::WrappedJoinRequest_Compression> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::livekit::WrappedJoinRequest_Compression>() {
+  return ::livekit::WrappedJoinRequest_Compression_descriptor();
 }
 template <> struct is_proto_enum< ::livekit::SignalTarget> : ::std::true_type {};
 template <>

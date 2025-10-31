@@ -208,6 +208,34 @@ inline bool StreamState_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<StreamState>(
     StreamState_descriptor(), name, value);
 }
+enum AudioTrackFeature : int {
+  TF_STEREO = 0,
+  TF_NO_DTX = 1,
+  TF_AUTO_GAIN_CONTROL = 2,
+  TF_ECHO_CANCELLATION = 3,
+  TF_NOISE_SUPPRESSION = 4,
+  TF_ENHANCED_NOISE_CANCELLATION = 5,
+  TF_PRECONNECT_BUFFER = 6
+};
+bool AudioTrackFeature_IsValid(int value);
+constexpr AudioTrackFeature AudioTrackFeature_MIN = TF_STEREO;
+constexpr AudioTrackFeature AudioTrackFeature_MAX = TF_PRECONNECT_BUFFER;
+constexpr int AudioTrackFeature_ARRAYSIZE = AudioTrackFeature_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* AudioTrackFeature_descriptor();
+template<typename T>
+inline const std::string& AudioTrackFeature_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, AudioTrackFeature>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function AudioTrackFeature_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    AudioTrackFeature_descriptor(), enum_t_value);
+}
+inline bool AudioTrackFeature_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, AudioTrackFeature* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<AudioTrackFeature>(
+    AudioTrackFeature_descriptor(), name, value);
+}
 // ===================================================================
 
 class CreateVideoTrackRequest final :
@@ -1679,6 +1707,7 @@ class TrackPublicationInfo final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kAudioFeaturesFieldNumber = 12,
     kSidFieldNumber = 1,
     kNameFieldNumber = 2,
     kMimeTypeFieldNumber = 8,
@@ -1691,6 +1720,23 @@ class TrackPublicationInfo final :
     kRemoteFieldNumber = 10,
     kEncryptionTypeFieldNumber = 11,
   };
+  // repeated .livekit.proto.AudioTrackFeature audio_features = 12;
+  int audio_features_size() const;
+  private:
+  int _internal_audio_features_size() const;
+  public:
+  void clear_audio_features();
+  private:
+  ::livekit::proto::AudioTrackFeature _internal_audio_features(int index) const;
+  void _internal_add_audio_features(::livekit::proto::AudioTrackFeature value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* _internal_mutable_audio_features();
+  public:
+  ::livekit::proto::AudioTrackFeature audio_features(int index) const;
+  void set_audio_features(int index, ::livekit::proto::AudioTrackFeature value);
+  void add_audio_features(::livekit::proto::AudioTrackFeature value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>& audio_features() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* mutable_audio_features();
+
   // required string sid = 1;
   bool has_sid() const;
   private:
@@ -1862,6 +1908,7 @@ class TrackPublicationInfo final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField<int> audio_features_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sid_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr mime_type_;
@@ -4741,6 +4788,51 @@ inline void TrackPublicationInfo::set_encryption_type(::livekit::proto::Encrypti
   // @@protoc_insertion_point(field_set:livekit.proto.TrackPublicationInfo.encryption_type)
 }
 
+// repeated .livekit.proto.AudioTrackFeature audio_features = 12;
+inline int TrackPublicationInfo::_internal_audio_features_size() const {
+  return _impl_.audio_features_.size();
+}
+inline int TrackPublicationInfo::audio_features_size() const {
+  return _internal_audio_features_size();
+}
+inline void TrackPublicationInfo::clear_audio_features() {
+  _impl_.audio_features_.Clear();
+}
+inline ::livekit::proto::AudioTrackFeature TrackPublicationInfo::_internal_audio_features(int index) const {
+  return static_cast< ::livekit::proto::AudioTrackFeature >(_impl_.audio_features_.Get(index));
+}
+inline ::livekit::proto::AudioTrackFeature TrackPublicationInfo::audio_features(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.proto.TrackPublicationInfo.audio_features)
+  return _internal_audio_features(index);
+}
+inline void TrackPublicationInfo::set_audio_features(int index, ::livekit::proto::AudioTrackFeature value) {
+  assert(::livekit::proto::AudioTrackFeature_IsValid(value));
+  _impl_.audio_features_.Set(index, value);
+  // @@protoc_insertion_point(field_set:livekit.proto.TrackPublicationInfo.audio_features)
+}
+inline void TrackPublicationInfo::_internal_add_audio_features(::livekit::proto::AudioTrackFeature value) {
+  assert(::livekit::proto::AudioTrackFeature_IsValid(value));
+  _impl_.audio_features_.Add(value);
+}
+inline void TrackPublicationInfo::add_audio_features(::livekit::proto::AudioTrackFeature value) {
+  _internal_add_audio_features(value);
+  // @@protoc_insertion_point(field_add:livekit.proto.TrackPublicationInfo.audio_features)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>&
+TrackPublicationInfo::audio_features() const {
+  // @@protoc_insertion_point(field_list:livekit.proto.TrackPublicationInfo.audio_features)
+  return _impl_.audio_features_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+TrackPublicationInfo::_internal_mutable_audio_features() {
+  return &_impl_.audio_features_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+TrackPublicationInfo::mutable_audio_features() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.proto.TrackPublicationInfo.audio_features)
+  return _internal_mutable_audio_features();
+}
+
 // -------------------------------------------------------------------
 
 // OwnedTrackPublication
@@ -5881,6 +5973,11 @@ template <> struct is_proto_enum< ::livekit::proto::StreamState> : ::std::true_t
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::livekit::proto::StreamState>() {
   return ::livekit::proto::StreamState_descriptor();
+}
+template <> struct is_proto_enum< ::livekit::proto::AudioTrackFeature> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::livekit::proto::AudioTrackFeature>() {
+  return ::livekit::proto::AudioTrackFeature_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

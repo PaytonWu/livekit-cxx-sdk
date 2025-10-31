@@ -97,9 +97,18 @@ extern DataStream_Trailer_AttributesEntry_DoNotUseDefaultTypeInternal _DataStrea
 class DisabledCodecs;
 struct DisabledCodecsDefaultTypeInternal;
 extern DisabledCodecsDefaultTypeInternal _DisabledCodecs_default_instance_;
+class EncryptedPacket;
+struct EncryptedPacketDefaultTypeInternal;
+extern EncryptedPacketDefaultTypeInternal _EncryptedPacket_default_instance_;
+class EncryptedPacketPayload;
+struct EncryptedPacketPayloadDefaultTypeInternal;
+extern EncryptedPacketPayloadDefaultTypeInternal _EncryptedPacketPayload_default_instance_;
 class Encryption;
 struct EncryptionDefaultTypeInternal;
 extern EncryptionDefaultTypeInternal _Encryption_default_instance_;
+class ListUpdate;
+struct ListUpdateDefaultTypeInternal;
+extern ListUpdateDefaultTypeInternal _ListUpdate_default_instance_;
 class Pagination;
 struct PaginationDefaultTypeInternal;
 extern PaginationDefaultTypeInternal _Pagination_default_instance_;
@@ -166,6 +175,9 @@ extern SpeakerInfoDefaultTypeInternal _SpeakerInfo_default_instance_;
 class TimedVersion;
 struct TimedVersionDefaultTypeInternal;
 extern TimedVersionDefaultTypeInternal _TimedVersion_default_instance_;
+class TokenPagination;
+struct TokenPaginationDefaultTypeInternal;
+extern TokenPaginationDefaultTypeInternal _TokenPagination_default_instance_;
 class TrackInfo;
 struct TrackInfoDefaultTypeInternal;
 extern TrackInfoDefaultTypeInternal _TrackInfo_default_instance_;
@@ -187,6 +199,9 @@ extern VideoConfigurationDefaultTypeInternal _VideoConfiguration_default_instanc
 class VideoLayer;
 struct VideoLayerDefaultTypeInternal;
 extern VideoLayerDefaultTypeInternal _VideoLayer_default_instance_;
+class WebhookConfig;
+struct WebhookConfigDefaultTypeInternal;
+extern WebhookConfigDefaultTypeInternal _WebhookConfig_default_instance_;
 }  // namespace livekit
 PROTOBUF_NAMESPACE_OPEN
 template<> ::livekit::ActiveSpeakerUpdate* Arena::CreateMaybeMessage<::livekit::ActiveSpeakerUpdate>(Arena*);
@@ -204,7 +219,10 @@ template<> ::livekit::DataStream_TextHeader* Arena::CreateMaybeMessage<::livekit
 template<> ::livekit::DataStream_Trailer* Arena::CreateMaybeMessage<::livekit::DataStream_Trailer>(Arena*);
 template<> ::livekit::DataStream_Trailer_AttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::DataStream_Trailer_AttributesEntry_DoNotUse>(Arena*);
 template<> ::livekit::DisabledCodecs* Arena::CreateMaybeMessage<::livekit::DisabledCodecs>(Arena*);
+template<> ::livekit::EncryptedPacket* Arena::CreateMaybeMessage<::livekit::EncryptedPacket>(Arena*);
+template<> ::livekit::EncryptedPacketPayload* Arena::CreateMaybeMessage<::livekit::EncryptedPacketPayload>(Arena*);
 template<> ::livekit::Encryption* Arena::CreateMaybeMessage<::livekit::Encryption>(Arena*);
+template<> ::livekit::ListUpdate* Arena::CreateMaybeMessage<::livekit::ListUpdate>(Arena*);
 template<> ::livekit::Pagination* Arena::CreateMaybeMessage<::livekit::Pagination>(Arena*);
 template<> ::livekit::ParticipantInfo* Arena::CreateMaybeMessage<::livekit::ParticipantInfo>(Arena*);
 template<> ::livekit::ParticipantInfo_AttributesEntry_DoNotUse* Arena::CreateMaybeMessage<::livekit::ParticipantInfo_AttributesEntry_DoNotUse>(Arena*);
@@ -227,6 +245,7 @@ template<> ::livekit::SimulcastCodecInfo* Arena::CreateMaybeMessage<::livekit::S
 template<> ::livekit::SipDTMF* Arena::CreateMaybeMessage<::livekit::SipDTMF>(Arena*);
 template<> ::livekit::SpeakerInfo* Arena::CreateMaybeMessage<::livekit::SpeakerInfo>(Arena*);
 template<> ::livekit::TimedVersion* Arena::CreateMaybeMessage<::livekit::TimedVersion>(Arena*);
+template<> ::livekit::TokenPagination* Arena::CreateMaybeMessage<::livekit::TokenPagination>(Arena*);
 template<> ::livekit::TrackInfo* Arena::CreateMaybeMessage<::livekit::TrackInfo>(Arena*);
 template<> ::livekit::Transcription* Arena::CreateMaybeMessage<::livekit::Transcription>(Arena*);
 template<> ::livekit::TranscriptionSegment* Arena::CreateMaybeMessage<::livekit::TranscriptionSegment>(Arena*);
@@ -234,6 +253,7 @@ template<> ::livekit::UserPacket* Arena::CreateMaybeMessage<::livekit::UserPacke
 template<> ::livekit::VP8MungerState* Arena::CreateMaybeMessage<::livekit::VP8MungerState>(Arena*);
 template<> ::livekit::VideoConfiguration* Arena::CreateMaybeMessage<::livekit::VideoConfiguration>(Arena*);
 template<> ::livekit::VideoLayer* Arena::CreateMaybeMessage<::livekit::VideoLayer>(Arena*);
+template<> ::livekit::WebhookConfig* Arena::CreateMaybeMessage<::livekit::WebhookConfig>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace livekit {
 
@@ -292,6 +312,31 @@ inline bool ParticipantInfo_Kind_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ParticipantInfo_Kind>(
     ParticipantInfo_Kind_descriptor(), name, value);
 }
+enum ParticipantInfo_KindDetail : int {
+  ParticipantInfo_KindDetail_CLOUD_AGENT = 0,
+  ParticipantInfo_KindDetail_FORWARDED = 1,
+  ParticipantInfo_KindDetail_ParticipantInfo_KindDetail_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  ParticipantInfo_KindDetail_ParticipantInfo_KindDetail_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool ParticipantInfo_KindDetail_IsValid(int value);
+constexpr ParticipantInfo_KindDetail ParticipantInfo_KindDetail_KindDetail_MIN = ParticipantInfo_KindDetail_CLOUD_AGENT;
+constexpr ParticipantInfo_KindDetail ParticipantInfo_KindDetail_KindDetail_MAX = ParticipantInfo_KindDetail_FORWARDED;
+constexpr int ParticipantInfo_KindDetail_KindDetail_ARRAYSIZE = ParticipantInfo_KindDetail_KindDetail_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ParticipantInfo_KindDetail_descriptor();
+template<typename T>
+inline const std::string& ParticipantInfo_KindDetail_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ParticipantInfo_KindDetail>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ParticipantInfo_KindDetail_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ParticipantInfo_KindDetail_descriptor(), enum_t_value);
+}
+inline bool ParticipantInfo_KindDetail_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ParticipantInfo_KindDetail* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ParticipantInfo_KindDetail>(
+    ParticipantInfo_KindDetail_descriptor(), name, value);
+}
 enum Encryption_Type : int {
   Encryption_Type_NONE = 0,
   Encryption_Type_GCM = 1,
@@ -317,6 +362,32 @@ inline bool Encryption_Type_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Encryption_Type* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Encryption_Type>(
     Encryption_Type_descriptor(), name, value);
+}
+enum VideoLayer_Mode : int {
+  VideoLayer_Mode_MODE_UNUSED = 0,
+  VideoLayer_Mode_ONE_SPATIAL_LAYER_PER_STREAM = 1,
+  VideoLayer_Mode_MULTIPLE_SPATIAL_LAYERS_PER_STREAM = 2,
+  VideoLayer_Mode_VideoLayer_Mode_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  VideoLayer_Mode_VideoLayer_Mode_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool VideoLayer_Mode_IsValid(int value);
+constexpr VideoLayer_Mode VideoLayer_Mode_Mode_MIN = VideoLayer_Mode_MODE_UNUSED;
+constexpr VideoLayer_Mode VideoLayer_Mode_Mode_MAX = VideoLayer_Mode_MULTIPLE_SPATIAL_LAYERS_PER_STREAM;
+constexpr int VideoLayer_Mode_Mode_ARRAYSIZE = VideoLayer_Mode_Mode_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* VideoLayer_Mode_descriptor();
+template<typename T>
+inline const std::string& VideoLayer_Mode_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, VideoLayer_Mode>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function VideoLayer_Mode_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    VideoLayer_Mode_descriptor(), enum_t_value);
+}
+inline bool VideoLayer_Mode_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, VideoLayer_Mode* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<VideoLayer_Mode>(
+    VideoLayer_Mode_descriptor(), name, value);
 }
 enum DataPacket_Kind : int {
   DataPacket_Kind_RELIABLE = 0,
@@ -382,12 +453,14 @@ enum ClientInfo_SDK : int {
   ClientInfo_SDK_CPP = 10,
   ClientInfo_SDK_UNITY_WEB = 11,
   ClientInfo_SDK_NODE = 12,
+  ClientInfo_SDK_UNREAL = 13,
+  ClientInfo_SDK_ESP32 = 14,
   ClientInfo_SDK_ClientInfo_SDK_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   ClientInfo_SDK_ClientInfo_SDK_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool ClientInfo_SDK_IsValid(int value);
 constexpr ClientInfo_SDK ClientInfo_SDK_SDK_MIN = ClientInfo_SDK_UNKNOWN;
-constexpr ClientInfo_SDK ClientInfo_SDK_SDK_MAX = ClientInfo_SDK_NODE;
+constexpr ClientInfo_SDK ClientInfo_SDK_SDK_MAX = ClientInfo_SDK_ESP32;
 constexpr int ClientInfo_SDK_SDK_ARRAYSIZE = ClientInfo_SDK_SDK_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ClientInfo_SDK_descriptor();
@@ -511,14 +584,15 @@ inline bool ImageCodec_Parse(
     ImageCodec_descriptor(), name, value);
 }
 enum BackupCodecPolicy : int {
-  REGRESSION = 0,
+  PREFER_REGRESSION = 0,
   SIMULCAST = 1,
+  REGRESSION = 2,
   BackupCodecPolicy_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   BackupCodecPolicy_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool BackupCodecPolicy_IsValid(int value);
-constexpr BackupCodecPolicy BackupCodecPolicy_MIN = REGRESSION;
-constexpr BackupCodecPolicy BackupCodecPolicy_MAX = SIMULCAST;
+constexpr BackupCodecPolicy BackupCodecPolicy_MIN = PREFER_REGRESSION;
+constexpr BackupCodecPolicy BackupCodecPolicy_MAX = REGRESSION;
 constexpr int BackupCodecPolicy_ARRAYSIZE = BackupCodecPolicy_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* BackupCodecPolicy_descriptor();
@@ -684,12 +758,14 @@ enum DisconnectReason : int {
   USER_UNAVAILABLE = 11,
   USER_REJECTED = 12,
   SIP_TRUNK_FAILURE = 13,
+  CONNECTION_TIMEOUT = 14,
+  MEDIA_FAILURE = 15,
   DisconnectReason_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   DisconnectReason_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool DisconnectReason_IsValid(int value);
 constexpr DisconnectReason DisconnectReason_MIN = UNKNOWN_REASON;
-constexpr DisconnectReason DisconnectReason_MAX = SIP_TRUNK_FAILURE;
+constexpr DisconnectReason DisconnectReason_MAX = MEDIA_FAILURE;
 constexpr int DisconnectReason_ARRAYSIZE = DisconnectReason_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* DisconnectReason_descriptor();
@@ -767,12 +843,13 @@ enum AudioTrackFeature : int {
   TF_ECHO_CANCELLATION = 3,
   TF_NOISE_SUPPRESSION = 4,
   TF_ENHANCED_NOISE_CANCELLATION = 5,
+  TF_PRECONNECT_BUFFER = 6,
   AudioTrackFeature_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   AudioTrackFeature_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool AudioTrackFeature_IsValid(int value);
 constexpr AudioTrackFeature AudioTrackFeature_MIN = TF_STEREO;
-constexpr AudioTrackFeature AudioTrackFeature_MAX = TF_ENHANCED_NOISE_CANCELLATION;
+constexpr AudioTrackFeature AudioTrackFeature_MAX = TF_PRECONNECT_BUFFER;
 constexpr int AudioTrackFeature_ARRAYSIZE = AudioTrackFeature_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* AudioTrackFeature_descriptor();
@@ -955,6 +1032,385 @@ class Pagination final :
 };
 // -------------------------------------------------------------------
 
+class TokenPagination final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.TokenPagination) */ {
+ public:
+  inline TokenPagination() : TokenPagination(nullptr) {}
+  ~TokenPagination() override;
+  explicit PROTOBUF_CONSTEXPR TokenPagination(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TokenPagination(const TokenPagination& from);
+  TokenPagination(TokenPagination&& from) noexcept
+    : TokenPagination() {
+    *this = ::std::move(from);
+  }
+
+  inline TokenPagination& operator=(const TokenPagination& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TokenPagination& operator=(TokenPagination&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TokenPagination& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TokenPagination* internal_default_instance() {
+    return reinterpret_cast<const TokenPagination*>(
+               &_TokenPagination_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(TokenPagination& a, TokenPagination& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TokenPagination* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TokenPagination* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TokenPagination* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TokenPagination>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TokenPagination& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TokenPagination& from) {
+    TokenPagination::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TokenPagination* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.TokenPagination";
+  }
+  protected:
+  explicit TokenPagination(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTokenFieldNumber = 1,
+  };
+  // string token = 1;
+  void clear_token();
+  const std::string& token() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_token(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_token();
+  PROTOBUF_NODISCARD std::string* release_token();
+  void set_allocated_token(std::string* token);
+  private:
+  const std::string& _internal_token() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_token(const std::string& value);
+  std::string* _internal_mutable_token();
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.TokenPagination)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fmodels_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ListUpdate final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.ListUpdate) */ {
+ public:
+  inline ListUpdate() : ListUpdate(nullptr) {}
+  ~ListUpdate() override;
+  explicit PROTOBUF_CONSTEXPR ListUpdate(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ListUpdate(const ListUpdate& from);
+  ListUpdate(ListUpdate&& from) noexcept
+    : ListUpdate() {
+    *this = ::std::move(from);
+  }
+
+  inline ListUpdate& operator=(const ListUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListUpdate& operator=(ListUpdate&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListUpdate& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListUpdate* internal_default_instance() {
+    return reinterpret_cast<const ListUpdate*>(
+               &_ListUpdate_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(ListUpdate& a, ListUpdate& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ListUpdate* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListUpdate* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ListUpdate* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ListUpdate>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ListUpdate& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ListUpdate& from) {
+    ListUpdate::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ListUpdate* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.ListUpdate";
+  }
+  protected:
+  explicit ListUpdate(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSetFieldNumber = 1,
+    kAddFieldNumber = 2,
+    kDelFieldNumber = 3,
+    kClearFieldNumber = 4,
+  };
+  // repeated string set = 1;
+  int set_size() const;
+  private:
+  int _internal_set_size() const;
+  public:
+  void clear_set();
+  const std::string& set(int index) const;
+  std::string* mutable_set(int index);
+  void set_set(int index, const std::string& value);
+  void set_set(int index, std::string&& value);
+  void set_set(int index, const char* value);
+  void set_set(int index, const char* value, size_t size);
+  std::string* add_set();
+  void add_set(const std::string& value);
+  void add_set(std::string&& value);
+  void add_set(const char* value);
+  void add_set(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& set() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_set();
+  private:
+  const std::string& _internal_set(int index) const;
+  std::string* _internal_add_set();
+  public:
+
+  // repeated string add = 2;
+  int add_size() const;
+  private:
+  int _internal_add_size() const;
+  public:
+  void clear_add();
+  const std::string& add(int index) const;
+  std::string* mutable_add(int index);
+  void set_add(int index, const std::string& value);
+  void set_add(int index, std::string&& value);
+  void set_add(int index, const char* value);
+  void set_add(int index, const char* value, size_t size);
+  std::string* add_add();
+  void add_add(const std::string& value);
+  void add_add(std::string&& value);
+  void add_add(const char* value);
+  void add_add(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& add() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_add();
+  private:
+  const std::string& _internal_add(int index) const;
+  std::string* _internal_add_add();
+  public:
+
+  // repeated string del = 3;
+  int del_size() const;
+  private:
+  int _internal_del_size() const;
+  public:
+  void clear_del();
+  const std::string& del(int index) const;
+  std::string* mutable_del(int index);
+  void set_del(int index, const std::string& value);
+  void set_del(int index, std::string&& value);
+  void set_del(int index, const char* value);
+  void set_del(int index, const char* value, size_t size);
+  std::string* add_del();
+  void add_del(const std::string& value);
+  void add_del(std::string&& value);
+  void add_del(const char* value);
+  void add_del(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& del() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_del();
+  private:
+  const std::string& _internal_del(int index) const;
+  std::string* _internal_add_del();
+  public:
+
+  // bool clear = 4;
+  void clear_clear();
+  bool clear() const;
+  void set_clear(bool value);
+  private:
+  bool _internal_clear() const;
+  void _internal_set_clear(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.ListUpdate)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> set_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> add_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> del_;
+    bool clear_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fmodels_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Room final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.Room) */ {
  public:
@@ -1003,7 +1459,7 @@ class Room final :
                &_Room_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(Room& a, Room& b) {
     a.Swap(&b);
@@ -1332,7 +1788,7 @@ class Codec final :
                &_Codec_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(Codec& a, Codec& b) {
     a.Swap(&b);
@@ -1501,7 +1957,7 @@ class PlayoutDelay final :
                &_PlayoutDelay_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(PlayoutDelay& a, PlayoutDelay& b) {
     a.Swap(&b);
@@ -1671,7 +2127,7 @@ class ParticipantPermission final :
                &_ParticipantPermission_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(ParticipantPermission& a, ParticipantPermission& b) {
     a.Swap(&b);
@@ -1944,7 +2400,7 @@ class ParticipantInfo final :
                &_ParticipantInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(ParticipantInfo& a, ParticipantInfo& b) {
     a.Swap(&b);
@@ -2087,11 +2543,42 @@ class ParticipantInfo final :
     return ParticipantInfo_Kind_Parse(name, value);
   }
 
+  typedef ParticipantInfo_KindDetail KindDetail;
+  static constexpr KindDetail CLOUD_AGENT =
+    ParticipantInfo_KindDetail_CLOUD_AGENT;
+  static constexpr KindDetail FORWARDED =
+    ParticipantInfo_KindDetail_FORWARDED;
+  static inline bool KindDetail_IsValid(int value) {
+    return ParticipantInfo_KindDetail_IsValid(value);
+  }
+  static constexpr KindDetail KindDetail_MIN =
+    ParticipantInfo_KindDetail_KindDetail_MIN;
+  static constexpr KindDetail KindDetail_MAX =
+    ParticipantInfo_KindDetail_KindDetail_MAX;
+  static constexpr int KindDetail_ARRAYSIZE =
+    ParticipantInfo_KindDetail_KindDetail_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  KindDetail_descriptor() {
+    return ParticipantInfo_KindDetail_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& KindDetail_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, KindDetail>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function KindDetail_Name.");
+    return ParticipantInfo_KindDetail_Name(enum_t_value);
+  }
+  static inline bool KindDetail_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      KindDetail* value) {
+    return ParticipantInfo_KindDetail_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
     kTracksFieldNumber = 4,
     kAttributesFieldNumber = 15,
+    kKindDetailsFieldNumber = 18,
     kSidFieldNumber = 1,
     kIdentityFieldNumber = 2,
     kMetadataFieldNumber = 5,
@@ -2140,6 +2627,23 @@ class ParticipantInfo final :
       attributes() const;
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
       mutable_attributes();
+
+  // repeated .livekit.ParticipantInfo.KindDetail kind_details = 18;
+  int kind_details_size() const;
+  private:
+  int _internal_kind_details_size() const;
+  public:
+  void clear_kind_details();
+  private:
+  ::livekit::ParticipantInfo_KindDetail _internal_kind_details(int index) const;
+  void _internal_add_kind_details(::livekit::ParticipantInfo_KindDetail value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* _internal_mutable_kind_details();
+  public:
+  ::livekit::ParticipantInfo_KindDetail kind_details(int index) const;
+  void set_kind_details(int index, ::livekit::ParticipantInfo_KindDetail value);
+  void add_kind_details(::livekit::ParticipantInfo_KindDetail value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>& kind_details() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* mutable_kind_details();
 
   // string sid = 1;
   void clear_sid();
@@ -2306,6 +2810,8 @@ class ParticipantInfo final :
         std::string, std::string,
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> attributes_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField<int> kind_details_;
+    mutable std::atomic<int> _kind_details_cached_byte_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sid_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr identity_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr metadata_;
@@ -2373,7 +2879,7 @@ class Encryption final :
                &_Encryption_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(Encryption& a, Encryption& b) {
     a.Swap(&b);
@@ -2524,7 +3030,7 @@ class SimulcastCodecInfo final :
                &_SimulcastCodecInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(SimulcastCodecInfo& a, SimulcastCodecInfo& b) {
     a.Swap(&b);
@@ -2601,6 +3107,8 @@ class SimulcastCodecInfo final :
     kMimeTypeFieldNumber = 1,
     kMidFieldNumber = 2,
     kCidFieldNumber = 3,
+    kSdpCidFieldNumber = 6,
+    kVideoLayerModeFieldNumber = 5,
   };
   // repeated .livekit.VideoLayer layers = 4;
   int layers_size() const;
@@ -2662,6 +3170,29 @@ class SimulcastCodecInfo final :
   std::string* _internal_mutable_cid();
   public:
 
+  // string sdp_cid = 6;
+  void clear_sdp_cid();
+  const std::string& sdp_cid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sdp_cid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sdp_cid();
+  PROTOBUF_NODISCARD std::string* release_sdp_cid();
+  void set_allocated_sdp_cid(std::string* sdp_cid);
+  private:
+  const std::string& _internal_sdp_cid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sdp_cid(const std::string& value);
+  std::string* _internal_mutable_sdp_cid();
+  public:
+
+  // .livekit.VideoLayer.Mode video_layer_mode = 5;
+  void clear_video_layer_mode();
+  ::livekit::VideoLayer_Mode video_layer_mode() const;
+  void set_video_layer_mode(::livekit::VideoLayer_Mode value);
+  private:
+  ::livekit::VideoLayer_Mode _internal_video_layer_mode() const;
+  void _internal_set_video_layer_mode(::livekit::VideoLayer_Mode value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.SimulcastCodecInfo)
  private:
   class _Internal;
@@ -2674,6 +3205,8 @@ class SimulcastCodecInfo final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr mime_type_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr mid_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr cid_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sdp_cid_;
+    int video_layer_mode_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -2729,7 +3262,7 @@ class TrackInfo final :
                &_TrackInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(TrackInfo& a, TrackInfo& b) {
     a.Swap(&b);
@@ -2823,22 +3356,22 @@ class TrackInfo final :
     kEncryptionFieldNumber = 16,
     kBackupCodecPolicyFieldNumber = 20,
   };
-  // repeated .livekit.VideoLayer layers = 10;
-  int layers_size() const;
+  // repeated .livekit.VideoLayer layers = 10 [deprecated = true];
+  PROTOBUF_DEPRECATED int layers_size() const;
   private:
   int _internal_layers_size() const;
   public:
-  void clear_layers();
-  ::livekit::VideoLayer* mutable_layers(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer >*
+  PROTOBUF_DEPRECATED void clear_layers();
+  PROTOBUF_DEPRECATED ::livekit::VideoLayer* mutable_layers(int index);
+  PROTOBUF_DEPRECATED ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer >*
       mutable_layers();
   private:
   const ::livekit::VideoLayer& _internal_layers(int index) const;
   ::livekit::VideoLayer* _internal_add_layers();
   public:
-  const ::livekit::VideoLayer& layers(int index) const;
-  ::livekit::VideoLayer* add_layers();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer >&
+  PROTOBUF_DEPRECATED const ::livekit::VideoLayer& layers(int index) const;
+  PROTOBUF_DEPRECATED ::livekit::VideoLayer* add_layers();
+  PROTOBUF_DEPRECATED const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::VideoLayer >&
       layers() const;
 
   // repeated .livekit.SimulcastCodecInfo codecs = 13;
@@ -2973,19 +3506,19 @@ class TrackInfo final :
   void _internal_set_type(::livekit::TrackType value);
   public:
 
-  // uint32 width = 5;
-  void clear_width();
-  uint32_t width() const;
-  void set_width(uint32_t value);
+  // uint32 width = 5 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_width();
+  PROTOBUF_DEPRECATED uint32_t width() const;
+  PROTOBUF_DEPRECATED void set_width(uint32_t value);
   private:
   uint32_t _internal_width() const;
   void _internal_set_width(uint32_t value);
   public:
 
-  // uint32 height = 6;
-  void clear_height();
-  uint32_t height() const;
-  void set_height(uint32_t value);
+  // uint32 height = 6 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_height();
+  PROTOBUF_DEPRECATED uint32_t height() const;
+  PROTOBUF_DEPRECATED void set_height(uint32_t value);
   private:
   uint32_t _internal_height() const;
   void _internal_set_height(uint32_t value);
@@ -3000,28 +3533,28 @@ class TrackInfo final :
   void _internal_set_muted(bool value);
   public:
 
-  // bool simulcast = 7;
-  void clear_simulcast();
-  bool simulcast() const;
-  void set_simulcast(bool value);
+  // bool simulcast = 7 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_simulcast();
+  PROTOBUF_DEPRECATED bool simulcast() const;
+  PROTOBUF_DEPRECATED void set_simulcast(bool value);
   private:
   bool _internal_simulcast() const;
   void _internal_set_simulcast(bool value);
   public:
 
-  // bool disable_dtx = 8;
-  void clear_disable_dtx();
-  bool disable_dtx() const;
-  void set_disable_dtx(bool value);
+  // bool disable_dtx = 8 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_disable_dtx();
+  PROTOBUF_DEPRECATED bool disable_dtx() const;
+  PROTOBUF_DEPRECATED void set_disable_dtx(bool value);
   private:
   bool _internal_disable_dtx() const;
   void _internal_set_disable_dtx(bool value);
   public:
 
-  // bool stereo = 14;
-  void clear_stereo();
-  bool stereo() const;
-  void set_stereo(bool value);
+  // bool stereo = 14 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_stereo();
+  PROTOBUF_DEPRECATED bool stereo() const;
+  PROTOBUF_DEPRECATED void set_stereo(bool value);
   private:
   bool _internal_stereo() const;
   void _internal_set_stereo(bool value);
@@ -3147,7 +3680,7 @@ class VideoLayer final :
                &_VideoLayer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(VideoLayer& a, VideoLayer& b) {
     a.Swap(&b);
@@ -3217,15 +3750,63 @@ class VideoLayer final :
 
   // nested types ----------------------------------------------------
 
+  typedef VideoLayer_Mode Mode;
+  static constexpr Mode MODE_UNUSED =
+    VideoLayer_Mode_MODE_UNUSED;
+  static constexpr Mode ONE_SPATIAL_LAYER_PER_STREAM =
+    VideoLayer_Mode_ONE_SPATIAL_LAYER_PER_STREAM;
+  static constexpr Mode MULTIPLE_SPATIAL_LAYERS_PER_STREAM =
+    VideoLayer_Mode_MULTIPLE_SPATIAL_LAYERS_PER_STREAM;
+  static inline bool Mode_IsValid(int value) {
+    return VideoLayer_Mode_IsValid(value);
+  }
+  static constexpr Mode Mode_MIN =
+    VideoLayer_Mode_Mode_MIN;
+  static constexpr Mode Mode_MAX =
+    VideoLayer_Mode_Mode_MAX;
+  static constexpr int Mode_ARRAYSIZE =
+    VideoLayer_Mode_Mode_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  Mode_descriptor() {
+    return VideoLayer_Mode_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& Mode_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, Mode>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function Mode_Name.");
+    return VideoLayer_Mode_Name(enum_t_value);
+  }
+  static inline bool Mode_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      Mode* value) {
+    return VideoLayer_Mode_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
+    kRidFieldNumber = 7,
     kQualityFieldNumber = 1,
     kWidthFieldNumber = 2,
     kHeightFieldNumber = 3,
     kBitrateFieldNumber = 4,
     kSsrcFieldNumber = 5,
+    kSpatialLayerFieldNumber = 6,
   };
+  // string rid = 7;
+  void clear_rid();
+  const std::string& rid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_rid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_rid();
+  PROTOBUF_NODISCARD std::string* release_rid();
+  void set_allocated_rid(std::string* rid);
+  private:
+  const std::string& _internal_rid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_rid(const std::string& value);
+  std::string* _internal_mutable_rid();
+  public:
+
   // .livekit.VideoQuality quality = 1;
   void clear_quality();
   ::livekit::VideoQuality quality() const;
@@ -3271,6 +3852,15 @@ class VideoLayer final :
   void _internal_set_ssrc(uint32_t value);
   public:
 
+  // int32 spatial_layer = 6;
+  void clear_spatial_layer();
+  int32_t spatial_layer() const;
+  void set_spatial_layer(int32_t value);
+  private:
+  int32_t _internal_spatial_layer() const;
+  void _internal_set_spatial_layer(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.VideoLayer)
  private:
   class _Internal;
@@ -3279,11 +3869,13 @@ class VideoLayer final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr rid_;
     int quality_;
     uint32_t width_;
     uint32_t height_;
     uint32_t bitrate_;
     uint32_t ssrc_;
+    int32_t spatial_layer_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -3347,6 +3939,7 @@ class DataPacket final :
     kStreamHeader = 13,
     kStreamChunk = 14,
     kStreamTrailer = 15,
+    kEncryptedPacket = 18,
     VALUE_NOT_SET = 0,
   };
 
@@ -3355,7 +3948,7 @@ class DataPacket final :
                &_DataPacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(DataPacket& a, DataPacket& b) {
     a.Swap(&b);
@@ -3460,7 +4053,9 @@ class DataPacket final :
   enum : int {
     kDestinationIdentitiesFieldNumber = 5,
     kParticipantIdentityFieldNumber = 4,
+    kParticipantSidFieldNumber = 17,
     kKindFieldNumber = 1,
+    kSequenceFieldNumber = 16,
     kUserFieldNumber = 2,
     kSpeakerFieldNumber = 3,
     kSipDtmfFieldNumber = 6,
@@ -3473,6 +4068,7 @@ class DataPacket final :
     kStreamHeaderFieldNumber = 13,
     kStreamChunkFieldNumber = 14,
     kStreamTrailerFieldNumber = 15,
+    kEncryptedPacketFieldNumber = 18,
   };
   // repeated string destination_identities = 5;
   int destination_identities_size() const;
@@ -3512,6 +4108,20 @@ class DataPacket final :
   std::string* _internal_mutable_participant_identity();
   public:
 
+  // string participant_sid = 17;
+  void clear_participant_sid();
+  const std::string& participant_sid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_participant_sid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_participant_sid();
+  PROTOBUF_NODISCARD std::string* release_participant_sid();
+  void set_allocated_participant_sid(std::string* participant_sid);
+  private:
+  const std::string& _internal_participant_sid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_participant_sid(const std::string& value);
+  std::string* _internal_mutable_participant_sid();
+  public:
+
   // .livekit.DataPacket.Kind kind = 1 [deprecated = true];
   PROTOBUF_DEPRECATED void clear_kind();
   PROTOBUF_DEPRECATED ::livekit::DataPacket_Kind kind() const;
@@ -3519,6 +4129,15 @@ class DataPacket final :
   private:
   ::livekit::DataPacket_Kind _internal_kind() const;
   void _internal_set_kind(::livekit::DataPacket_Kind value);
+  public:
+
+  // uint32 sequence = 16;
+  void clear_sequence();
+  uint32_t sequence() const;
+  void set_sequence(uint32_t value);
+  private:
+  uint32_t _internal_sequence() const;
+  void _internal_set_sequence(uint32_t value);
   public:
 
   // .livekit.UserPacket user = 2;
@@ -3737,6 +4356,24 @@ class DataPacket final :
       ::livekit::DataStream_Trailer* stream_trailer);
   ::livekit::DataStream_Trailer* unsafe_arena_release_stream_trailer();
 
+  // .livekit.EncryptedPacket encrypted_packet = 18;
+  bool has_encrypted_packet() const;
+  private:
+  bool _internal_has_encrypted_packet() const;
+  public:
+  void clear_encrypted_packet();
+  const ::livekit::EncryptedPacket& encrypted_packet() const;
+  PROTOBUF_NODISCARD ::livekit::EncryptedPacket* release_encrypted_packet();
+  ::livekit::EncryptedPacket* mutable_encrypted_packet();
+  void set_allocated_encrypted_packet(::livekit::EncryptedPacket* encrypted_packet);
+  private:
+  const ::livekit::EncryptedPacket& _internal_encrypted_packet() const;
+  ::livekit::EncryptedPacket* _internal_mutable_encrypted_packet();
+  public:
+  void unsafe_arena_set_allocated_encrypted_packet(
+      ::livekit::EncryptedPacket* encrypted_packet);
+  ::livekit::EncryptedPacket* unsafe_arena_release_encrypted_packet();
+
   void clear_value();
   ValueCase value_case() const;
   // @@protoc_insertion_point(class_scope:livekit.DataPacket)
@@ -3754,6 +4391,7 @@ class DataPacket final :
   void set_has_stream_header();
   void set_has_stream_chunk();
   void set_has_stream_trailer();
+  void set_has_encrypted_packet();
 
   inline bool has_value() const;
   inline void clear_has_value();
@@ -3764,7 +4402,9 @@ class DataPacket final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> destination_identities_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr participant_identity_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr participant_sid_;
     int kind_;
+    uint32_t sequence_;
     union ValueUnion {
       constexpr ValueUnion() : _constinit_{} {}
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
@@ -3773,6 +4413,526 @@ class DataPacket final :
       ::livekit::SipDTMF* sip_dtmf_;
       ::livekit::Transcription* transcription_;
       ::livekit::MetricsBatch* metrics_;
+      ::livekit::ChatMessage* chat_message_;
+      ::livekit::RpcRequest* rpc_request_;
+      ::livekit::RpcAck* rpc_ack_;
+      ::livekit::RpcResponse* rpc_response_;
+      ::livekit::DataStream_Header* stream_header_;
+      ::livekit::DataStream_Chunk* stream_chunk_;
+      ::livekit::DataStream_Trailer* stream_trailer_;
+      ::livekit::EncryptedPacket* encrypted_packet_;
+    } value_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t _oneof_case_[1];
+
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fmodels_2eproto;
+};
+// -------------------------------------------------------------------
+
+class EncryptedPacket final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.EncryptedPacket) */ {
+ public:
+  inline EncryptedPacket() : EncryptedPacket(nullptr) {}
+  ~EncryptedPacket() override;
+  explicit PROTOBUF_CONSTEXPR EncryptedPacket(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  EncryptedPacket(const EncryptedPacket& from);
+  EncryptedPacket(EncryptedPacket&& from) noexcept
+    : EncryptedPacket() {
+    *this = ::std::move(from);
+  }
+
+  inline EncryptedPacket& operator=(const EncryptedPacket& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline EncryptedPacket& operator=(EncryptedPacket&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const EncryptedPacket& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const EncryptedPacket* internal_default_instance() {
+    return reinterpret_cast<const EncryptedPacket*>(
+               &_EncryptedPacket_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(EncryptedPacket& a, EncryptedPacket& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(EncryptedPacket* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(EncryptedPacket* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  EncryptedPacket* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<EncryptedPacket>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const EncryptedPacket& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const EncryptedPacket& from) {
+    EncryptedPacket::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(EncryptedPacket* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.EncryptedPacket";
+  }
+  protected:
+  explicit EncryptedPacket(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIvFieldNumber = 2,
+    kEncryptedValueFieldNumber = 4,
+    kEncryptionTypeFieldNumber = 1,
+    kKeyIndexFieldNumber = 3,
+  };
+  // bytes iv = 2;
+  void clear_iv();
+  const std::string& iv() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_iv(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_iv();
+  PROTOBUF_NODISCARD std::string* release_iv();
+  void set_allocated_iv(std::string* iv);
+  private:
+  const std::string& _internal_iv() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_iv(const std::string& value);
+  std::string* _internal_mutable_iv();
+  public:
+
+  // bytes encrypted_value = 4;
+  void clear_encrypted_value();
+  const std::string& encrypted_value() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_encrypted_value(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_encrypted_value();
+  PROTOBUF_NODISCARD std::string* release_encrypted_value();
+  void set_allocated_encrypted_value(std::string* encrypted_value);
+  private:
+  const std::string& _internal_encrypted_value() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_encrypted_value(const std::string& value);
+  std::string* _internal_mutable_encrypted_value();
+  public:
+
+  // .livekit.Encryption.Type encryption_type = 1;
+  void clear_encryption_type();
+  ::livekit::Encryption_Type encryption_type() const;
+  void set_encryption_type(::livekit::Encryption_Type value);
+  private:
+  ::livekit::Encryption_Type _internal_encryption_type() const;
+  void _internal_set_encryption_type(::livekit::Encryption_Type value);
+  public:
+
+  // uint32 key_index = 3;
+  void clear_key_index();
+  uint32_t key_index() const;
+  void set_key_index(uint32_t value);
+  private:
+  uint32_t _internal_key_index() const;
+  void _internal_set_key_index(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.EncryptedPacket)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr iv_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr encrypted_value_;
+    int encryption_type_;
+    uint32_t key_index_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fmodels_2eproto;
+};
+// -------------------------------------------------------------------
+
+class EncryptedPacketPayload final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.EncryptedPacketPayload) */ {
+ public:
+  inline EncryptedPacketPayload() : EncryptedPacketPayload(nullptr) {}
+  ~EncryptedPacketPayload() override;
+  explicit PROTOBUF_CONSTEXPR EncryptedPacketPayload(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  EncryptedPacketPayload(const EncryptedPacketPayload& from);
+  EncryptedPacketPayload(EncryptedPacketPayload&& from) noexcept
+    : EncryptedPacketPayload() {
+    *this = ::std::move(from);
+  }
+
+  inline EncryptedPacketPayload& operator=(const EncryptedPacketPayload& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline EncryptedPacketPayload& operator=(EncryptedPacketPayload&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const EncryptedPacketPayload& default_instance() {
+    return *internal_default_instance();
+  }
+  enum ValueCase {
+    kUser = 1,
+    kChatMessage = 3,
+    kRpcRequest = 4,
+    kRpcAck = 5,
+    kRpcResponse = 6,
+    kStreamHeader = 7,
+    kStreamChunk = 8,
+    kStreamTrailer = 9,
+    VALUE_NOT_SET = 0,
+  };
+
+  static inline const EncryptedPacketPayload* internal_default_instance() {
+    return reinterpret_cast<const EncryptedPacketPayload*>(
+               &_EncryptedPacketPayload_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(EncryptedPacketPayload& a, EncryptedPacketPayload& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(EncryptedPacketPayload* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(EncryptedPacketPayload* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  EncryptedPacketPayload* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<EncryptedPacketPayload>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const EncryptedPacketPayload& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const EncryptedPacketPayload& from) {
+    EncryptedPacketPayload::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(EncryptedPacketPayload* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.EncryptedPacketPayload";
+  }
+  protected:
+  explicit EncryptedPacketPayload(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUserFieldNumber = 1,
+    kChatMessageFieldNumber = 3,
+    kRpcRequestFieldNumber = 4,
+    kRpcAckFieldNumber = 5,
+    kRpcResponseFieldNumber = 6,
+    kStreamHeaderFieldNumber = 7,
+    kStreamChunkFieldNumber = 8,
+    kStreamTrailerFieldNumber = 9,
+  };
+  // .livekit.UserPacket user = 1;
+  bool has_user() const;
+  private:
+  bool _internal_has_user() const;
+  public:
+  void clear_user();
+  const ::livekit::UserPacket& user() const;
+  PROTOBUF_NODISCARD ::livekit::UserPacket* release_user();
+  ::livekit::UserPacket* mutable_user();
+  void set_allocated_user(::livekit::UserPacket* user);
+  private:
+  const ::livekit::UserPacket& _internal_user() const;
+  ::livekit::UserPacket* _internal_mutable_user();
+  public:
+  void unsafe_arena_set_allocated_user(
+      ::livekit::UserPacket* user);
+  ::livekit::UserPacket* unsafe_arena_release_user();
+
+  // .livekit.ChatMessage chat_message = 3;
+  bool has_chat_message() const;
+  private:
+  bool _internal_has_chat_message() const;
+  public:
+  void clear_chat_message();
+  const ::livekit::ChatMessage& chat_message() const;
+  PROTOBUF_NODISCARD ::livekit::ChatMessage* release_chat_message();
+  ::livekit::ChatMessage* mutable_chat_message();
+  void set_allocated_chat_message(::livekit::ChatMessage* chat_message);
+  private:
+  const ::livekit::ChatMessage& _internal_chat_message() const;
+  ::livekit::ChatMessage* _internal_mutable_chat_message();
+  public:
+  void unsafe_arena_set_allocated_chat_message(
+      ::livekit::ChatMessage* chat_message);
+  ::livekit::ChatMessage* unsafe_arena_release_chat_message();
+
+  // .livekit.RpcRequest rpc_request = 4;
+  bool has_rpc_request() const;
+  private:
+  bool _internal_has_rpc_request() const;
+  public:
+  void clear_rpc_request();
+  const ::livekit::RpcRequest& rpc_request() const;
+  PROTOBUF_NODISCARD ::livekit::RpcRequest* release_rpc_request();
+  ::livekit::RpcRequest* mutable_rpc_request();
+  void set_allocated_rpc_request(::livekit::RpcRequest* rpc_request);
+  private:
+  const ::livekit::RpcRequest& _internal_rpc_request() const;
+  ::livekit::RpcRequest* _internal_mutable_rpc_request();
+  public:
+  void unsafe_arena_set_allocated_rpc_request(
+      ::livekit::RpcRequest* rpc_request);
+  ::livekit::RpcRequest* unsafe_arena_release_rpc_request();
+
+  // .livekit.RpcAck rpc_ack = 5;
+  bool has_rpc_ack() const;
+  private:
+  bool _internal_has_rpc_ack() const;
+  public:
+  void clear_rpc_ack();
+  const ::livekit::RpcAck& rpc_ack() const;
+  PROTOBUF_NODISCARD ::livekit::RpcAck* release_rpc_ack();
+  ::livekit::RpcAck* mutable_rpc_ack();
+  void set_allocated_rpc_ack(::livekit::RpcAck* rpc_ack);
+  private:
+  const ::livekit::RpcAck& _internal_rpc_ack() const;
+  ::livekit::RpcAck* _internal_mutable_rpc_ack();
+  public:
+  void unsafe_arena_set_allocated_rpc_ack(
+      ::livekit::RpcAck* rpc_ack);
+  ::livekit::RpcAck* unsafe_arena_release_rpc_ack();
+
+  // .livekit.RpcResponse rpc_response = 6;
+  bool has_rpc_response() const;
+  private:
+  bool _internal_has_rpc_response() const;
+  public:
+  void clear_rpc_response();
+  const ::livekit::RpcResponse& rpc_response() const;
+  PROTOBUF_NODISCARD ::livekit::RpcResponse* release_rpc_response();
+  ::livekit::RpcResponse* mutable_rpc_response();
+  void set_allocated_rpc_response(::livekit::RpcResponse* rpc_response);
+  private:
+  const ::livekit::RpcResponse& _internal_rpc_response() const;
+  ::livekit::RpcResponse* _internal_mutable_rpc_response();
+  public:
+  void unsafe_arena_set_allocated_rpc_response(
+      ::livekit::RpcResponse* rpc_response);
+  ::livekit::RpcResponse* unsafe_arena_release_rpc_response();
+
+  // .livekit.DataStream.Header stream_header = 7;
+  bool has_stream_header() const;
+  private:
+  bool _internal_has_stream_header() const;
+  public:
+  void clear_stream_header();
+  const ::livekit::DataStream_Header& stream_header() const;
+  PROTOBUF_NODISCARD ::livekit::DataStream_Header* release_stream_header();
+  ::livekit::DataStream_Header* mutable_stream_header();
+  void set_allocated_stream_header(::livekit::DataStream_Header* stream_header);
+  private:
+  const ::livekit::DataStream_Header& _internal_stream_header() const;
+  ::livekit::DataStream_Header* _internal_mutable_stream_header();
+  public:
+  void unsafe_arena_set_allocated_stream_header(
+      ::livekit::DataStream_Header* stream_header);
+  ::livekit::DataStream_Header* unsafe_arena_release_stream_header();
+
+  // .livekit.DataStream.Chunk stream_chunk = 8;
+  bool has_stream_chunk() const;
+  private:
+  bool _internal_has_stream_chunk() const;
+  public:
+  void clear_stream_chunk();
+  const ::livekit::DataStream_Chunk& stream_chunk() const;
+  PROTOBUF_NODISCARD ::livekit::DataStream_Chunk* release_stream_chunk();
+  ::livekit::DataStream_Chunk* mutable_stream_chunk();
+  void set_allocated_stream_chunk(::livekit::DataStream_Chunk* stream_chunk);
+  private:
+  const ::livekit::DataStream_Chunk& _internal_stream_chunk() const;
+  ::livekit::DataStream_Chunk* _internal_mutable_stream_chunk();
+  public:
+  void unsafe_arena_set_allocated_stream_chunk(
+      ::livekit::DataStream_Chunk* stream_chunk);
+  ::livekit::DataStream_Chunk* unsafe_arena_release_stream_chunk();
+
+  // .livekit.DataStream.Trailer stream_trailer = 9;
+  bool has_stream_trailer() const;
+  private:
+  bool _internal_has_stream_trailer() const;
+  public:
+  void clear_stream_trailer();
+  const ::livekit::DataStream_Trailer& stream_trailer() const;
+  PROTOBUF_NODISCARD ::livekit::DataStream_Trailer* release_stream_trailer();
+  ::livekit::DataStream_Trailer* mutable_stream_trailer();
+  void set_allocated_stream_trailer(::livekit::DataStream_Trailer* stream_trailer);
+  private:
+  const ::livekit::DataStream_Trailer& _internal_stream_trailer() const;
+  ::livekit::DataStream_Trailer* _internal_mutable_stream_trailer();
+  public:
+  void unsafe_arena_set_allocated_stream_trailer(
+      ::livekit::DataStream_Trailer* stream_trailer);
+  ::livekit::DataStream_Trailer* unsafe_arena_release_stream_trailer();
+
+  void clear_value();
+  ValueCase value_case() const;
+  // @@protoc_insertion_point(class_scope:livekit.EncryptedPacketPayload)
+ private:
+  class _Internal;
+  void set_has_user();
+  void set_has_chat_message();
+  void set_has_rpc_request();
+  void set_has_rpc_ack();
+  void set_has_rpc_response();
+  void set_has_stream_header();
+  void set_has_stream_chunk();
+  void set_has_stream_trailer();
+
+  inline bool has_value() const;
+  inline void clear_has_value();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    union ValueUnion {
+      constexpr ValueUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::livekit::UserPacket* user_;
       ::livekit::ChatMessage* chat_message_;
       ::livekit::RpcRequest* rpc_request_;
       ::livekit::RpcAck* rpc_ack_;
@@ -3838,7 +4998,7 @@ class ActiveSpeakerUpdate final :
                &_ActiveSpeakerUpdate_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    16;
 
   friend void swap(ActiveSpeakerUpdate& a, ActiveSpeakerUpdate& b) {
     a.Swap(&b);
@@ -3995,7 +5155,7 @@ class SpeakerInfo final :
                &_SpeakerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    17;
 
   friend void swap(SpeakerInfo& a, SpeakerInfo& b) {
     a.Swap(&b);
@@ -4170,7 +5330,7 @@ class UserPacket final :
                &_UserPacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    18;
 
   friend void swap(UserPacket& a, UserPacket& b) {
     a.Swap(&b);
@@ -4494,7 +5654,7 @@ class SipDTMF final :
                &_SipDTMF_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    19;
 
   friend void swap(SipDTMF& a, SipDTMF& b) {
     a.Swap(&b);
@@ -4658,7 +5818,7 @@ class Transcription final :
                &_Transcription_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    20;
 
   friend void swap(Transcription& a, Transcription& b) {
     a.Swap(&b);
@@ -4847,7 +6007,7 @@ class TranscriptionSegment final :
                &_TranscriptionSegment_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    21;
 
   friend void swap(TranscriptionSegment& a, TranscriptionSegment& b) {
     a.Swap(&b);
@@ -5065,7 +6225,7 @@ class ChatMessage final :
                &_ChatMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    22;
 
   friend void swap(ChatMessage& a, ChatMessage& b) {
     a.Swap(&b);
@@ -5283,7 +6443,7 @@ class RpcRequest final :
                &_RpcRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    23;
 
   friend void swap(RpcRequest& a, RpcRequest& b) {
     a.Swap(&b);
@@ -5490,7 +6650,7 @@ class RpcAck final :
                &_RpcAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    24;
 
   friend void swap(RpcAck& a, RpcAck& b) {
     a.Swap(&b);
@@ -5649,7 +6809,7 @@ class RpcResponse final :
                &_RpcResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    25;
 
   friend void swap(RpcResponse& a, RpcResponse& b) {
     a.Swap(&b);
@@ -5855,7 +7015,7 @@ class RpcError final :
                &_RpcError_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    26;
 
   friend void swap(RpcError& a, RpcError& b) {
     a.Swap(&b);
@@ -6035,7 +7195,7 @@ class ParticipantTracks final :
                &_ParticipantTracks_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    27;
 
   friend void swap(ParticipantTracks& a, ParticipantTracks& b) {
     a.Swap(&b);
@@ -6214,7 +7374,7 @@ class ServerInfo final :
                &_ServerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    28;
 
   friend void swap(ServerInfo& a, ServerInfo& b) {
     a.Swap(&b);
@@ -6478,7 +7638,7 @@ class ClientInfo final :
                &_ClientInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    29;
 
   friend void swap(ClientInfo& a, ClientInfo& b) {
     a.Swap(&b);
@@ -6575,6 +7735,10 @@ class ClientInfo final :
     ClientInfo_SDK_UNITY_WEB;
   static constexpr SDK NODE =
     ClientInfo_SDK_NODE;
+  static constexpr SDK UNREAL =
+    ClientInfo_SDK_UNREAL;
+  static constexpr SDK ESP32 =
+    ClientInfo_SDK_ESP32;
   static inline bool SDK_IsValid(int value) {
     return ClientInfo_SDK_IsValid(value);
   }
@@ -6833,7 +7997,7 @@ class ClientConfiguration final :
                &_ClientConfiguration_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    30;
 
   friend void swap(ClientConfiguration& a, ClientConfiguration& b) {
     a.Swap(&b);
@@ -7052,7 +8216,7 @@ class VideoConfiguration final :
                &_VideoConfiguration_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    31;
 
   friend void swap(VideoConfiguration& a, VideoConfiguration& b) {
     a.Swap(&b);
@@ -7200,7 +8364,7 @@ class DisabledCodecs final :
                &_DisabledCodecs_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    32;
 
   friend void swap(DisabledCodecs& a, DisabledCodecs& b) {
     a.Swap(&b);
@@ -7377,7 +8541,7 @@ class RTPDrift final :
                &_RTPDrift_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    33;
 
   friend void swap(RTPDrift& a, RTPDrift& b) {
     a.Swap(&b);
@@ -7655,7 +8819,7 @@ class RTPStats final :
                &_RTPStats_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    35;
 
   friend void swap(RTPStats& a, RTPStats& b) {
     a.Swap(&b);
@@ -8392,7 +9556,7 @@ class RTCPSenderReportState final :
                &_RTCPSenderReportState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    36;
 
   friend void swap(RTCPSenderReportState& a, RTCPSenderReportState& b) {
     a.Swap(&b);
@@ -8611,7 +9775,7 @@ class RTPForwarderState final :
                &_RTPForwarderState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    37;
 
   friend void swap(RTPForwarderState& a, RTPForwarderState& b) {
     a.Swap(&b);
@@ -8875,7 +10039,7 @@ class RTPMungerState final :
                &_RTPMungerState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    38;
 
   friend void swap(RTPMungerState& a, RTPMungerState& b) {
     a.Swap(&b);
@@ -9078,7 +10242,7 @@ class VP8MungerState final :
                &_VP8MungerState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    39;
 
   friend void swap(VP8MungerState& a, VP8MungerState& b) {
     a.Swap(&b);
@@ -9292,7 +10456,7 @@ class TimedVersion final :
                &_TimedVersion_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    40;
 
   friend void swap(TimedVersion& a, TimedVersion& b) {
     a.Swap(&b);
@@ -9451,7 +10615,7 @@ class DataStream_TextHeader final :
                &_DataStream_TextHeader_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    41;
 
   friend void swap(DataStream_TextHeader& a, DataStream_TextHeader& b) {
     a.Swap(&b);
@@ -9663,7 +10827,7 @@ class DataStream_ByteHeader final :
                &_DataStream_ByteHeader_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    42;
 
   friend void swap(DataStream_ByteHeader& a, DataStream_ByteHeader& b) {
     a.Swap(&b);
@@ -9850,7 +11014,7 @@ class DataStream_Header final :
                &_DataStream_Header_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    44;
 
   friend void swap(DataStream_Header& a, DataStream_Header& b) {
     a.Swap(&b);
@@ -10017,10 +11181,10 @@ class DataStream_Header final :
   void _internal_set_total_length(uint64_t value);
   public:
 
-  // .livekit.Encryption.Type encryption_type = 7;
-  void clear_encryption_type();
-  ::livekit::Encryption_Type encryption_type() const;
-  void set_encryption_type(::livekit::Encryption_Type value);
+  // .livekit.Encryption.Type encryption_type = 7 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_encryption_type();
+  PROTOBUF_DEPRECATED ::livekit::Encryption_Type encryption_type() const;
+  PROTOBUF_DEPRECATED void set_encryption_type(::livekit::Encryption_Type value);
   private:
   ::livekit::Encryption_Type _internal_encryption_type() const;
   void _internal_set_encryption_type(::livekit::Encryption_Type value);
@@ -10152,7 +11316,7 @@ class DataStream_Chunk final :
                &_DataStream_Chunk_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    45;
 
   friend void swap(DataStream_Chunk& a, DataStream_Chunk& b) {
     a.Swap(&b);
@@ -10259,18 +11423,18 @@ class DataStream_Chunk final :
   std::string* _internal_mutable_content();
   public:
 
-  // optional bytes iv = 5;
-  bool has_iv() const;
+  // optional bytes iv = 5 [deprecated = true];
+  PROTOBUF_DEPRECATED bool has_iv() const;
   private:
   bool _internal_has_iv() const;
   public:
-  void clear_iv();
-  const std::string& iv() const;
+  PROTOBUF_DEPRECATED void clear_iv();
+  PROTOBUF_DEPRECATED const std::string& iv() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_iv(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_iv();
-  PROTOBUF_NODISCARD std::string* release_iv();
-  void set_allocated_iv(std::string* iv);
+  PROTOBUF_DEPRECATED void set_iv(ArgT0&& arg0, ArgT... args);
+  PROTOBUF_DEPRECATED std::string* mutable_iv();
+  PROTOBUF_NODISCARD PROTOBUF_DEPRECATED std::string* release_iv();
+  PROTOBUF_DEPRECATED void set_allocated_iv(std::string* iv);
   private:
   const std::string& _internal_iv() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_iv(const std::string& value);
@@ -10392,7 +11556,7 @@ class DataStream_Trailer final :
                &_DataStream_Trailer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    47;
 
   friend void swap(DataStream_Trailer& a, DataStream_Trailer& b) {
     a.Swap(&b);
@@ -10586,7 +11750,7 @@ class DataStream final :
                &_DataStream_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    48;
 
   friend void swap(DataStream& a, DataStream& b) {
     a.Swap(&b);
@@ -10695,6 +11859,175 @@ class DataStream final :
   };
   friend struct ::TableStruct_livekit_5fmodels_2eproto;
 };
+// -------------------------------------------------------------------
+
+class WebhookConfig final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.WebhookConfig) */ {
+ public:
+  inline WebhookConfig() : WebhookConfig(nullptr) {}
+  ~WebhookConfig() override;
+  explicit PROTOBUF_CONSTEXPR WebhookConfig(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  WebhookConfig(const WebhookConfig& from);
+  WebhookConfig(WebhookConfig&& from) noexcept
+    : WebhookConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline WebhookConfig& operator=(const WebhookConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline WebhookConfig& operator=(WebhookConfig&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const WebhookConfig& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const WebhookConfig* internal_default_instance() {
+    return reinterpret_cast<const WebhookConfig*>(
+               &_WebhookConfig_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    49;
+
+  friend void swap(WebhookConfig& a, WebhookConfig& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(WebhookConfig* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(WebhookConfig* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  WebhookConfig* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<WebhookConfig>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const WebhookConfig& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const WebhookConfig& from) {
+    WebhookConfig::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(WebhookConfig* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.WebhookConfig";
+  }
+  protected:
+  explicit WebhookConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUrlFieldNumber = 1,
+    kSigningKeyFieldNumber = 2,
+  };
+  // string url = 1;
+  void clear_url();
+  const std::string& url() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_url(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_url();
+  PROTOBUF_NODISCARD std::string* release_url();
+  void set_allocated_url(std::string* url);
+  private:
+  const std::string& _internal_url() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_url(const std::string& value);
+  std::string* _internal_mutable_url();
+  public:
+
+  // string signing_key = 2;
+  void clear_signing_key();
+  const std::string& signing_key() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_signing_key(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_signing_key();
+  PROTOBUF_NODISCARD std::string* release_signing_key();
+  void set_allocated_signing_key(std::string* signing_key);
+  private:
+  const std::string& _internal_signing_key() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_signing_key(const std::string& value);
+  std::string* _internal_mutable_signing_key();
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.WebhookConfig)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr url_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr signing_key_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5fmodels_2eproto;
+};
 // ===================================================================
 
 
@@ -10774,6 +12107,309 @@ inline void Pagination::_internal_set_limit(int32_t value) {
 inline void Pagination::set_limit(int32_t value) {
   _internal_set_limit(value);
   // @@protoc_insertion_point(field_set:livekit.Pagination.limit)
+}
+
+// -------------------------------------------------------------------
+
+// TokenPagination
+
+// string token = 1;
+inline void TokenPagination::clear_token() {
+  _impl_.token_.ClearToEmpty();
+}
+inline const std::string& TokenPagination::token() const {
+  // @@protoc_insertion_point(field_get:livekit.TokenPagination.token)
+  return _internal_token();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TokenPagination::set_token(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.token_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.TokenPagination.token)
+}
+inline std::string* TokenPagination::mutable_token() {
+  std::string* _s = _internal_mutable_token();
+  // @@protoc_insertion_point(field_mutable:livekit.TokenPagination.token)
+  return _s;
+}
+inline const std::string& TokenPagination::_internal_token() const {
+  return _impl_.token_.Get();
+}
+inline void TokenPagination::_internal_set_token(const std::string& value) {
+  
+  _impl_.token_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TokenPagination::_internal_mutable_token() {
+  
+  return _impl_.token_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TokenPagination::release_token() {
+  // @@protoc_insertion_point(field_release:livekit.TokenPagination.token)
+  return _impl_.token_.Release();
+}
+inline void TokenPagination::set_allocated_token(std::string* token) {
+  if (token != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.token_.SetAllocated(token, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.token_.IsDefault()) {
+    _impl_.token_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.TokenPagination.token)
+}
+
+// -------------------------------------------------------------------
+
+// ListUpdate
+
+// repeated string set = 1;
+inline int ListUpdate::_internal_set_size() const {
+  return _impl_.set_.size();
+}
+inline int ListUpdate::set_size() const {
+  return _internal_set_size();
+}
+inline void ListUpdate::clear_set() {
+  _impl_.set_.Clear();
+}
+inline std::string* ListUpdate::add_set() {
+  std::string* _s = _internal_add_set();
+  // @@protoc_insertion_point(field_add_mutable:livekit.ListUpdate.set)
+  return _s;
+}
+inline const std::string& ListUpdate::_internal_set(int index) const {
+  return _impl_.set_.Get(index);
+}
+inline const std::string& ListUpdate::set(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.ListUpdate.set)
+  return _internal_set(index);
+}
+inline std::string* ListUpdate::mutable_set(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.ListUpdate.set)
+  return _impl_.set_.Mutable(index);
+}
+inline void ListUpdate::set_set(int index, const std::string& value) {
+  _impl_.set_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:livekit.ListUpdate.set)
+}
+inline void ListUpdate::set_set(int index, std::string&& value) {
+  _impl_.set_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:livekit.ListUpdate.set)
+}
+inline void ListUpdate::set_set(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.set_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:livekit.ListUpdate.set)
+}
+inline void ListUpdate::set_set(int index, const char* value, size_t size) {
+  _impl_.set_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:livekit.ListUpdate.set)
+}
+inline std::string* ListUpdate::_internal_add_set() {
+  return _impl_.set_.Add();
+}
+inline void ListUpdate::add_set(const std::string& value) {
+  _impl_.set_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:livekit.ListUpdate.set)
+}
+inline void ListUpdate::add_set(std::string&& value) {
+  _impl_.set_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:livekit.ListUpdate.set)
+}
+inline void ListUpdate::add_set(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.set_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:livekit.ListUpdate.set)
+}
+inline void ListUpdate::add_set(const char* value, size_t size) {
+  _impl_.set_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:livekit.ListUpdate.set)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+ListUpdate::set() const {
+  // @@protoc_insertion_point(field_list:livekit.ListUpdate.set)
+  return _impl_.set_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+ListUpdate::mutable_set() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.ListUpdate.set)
+  return &_impl_.set_;
+}
+
+// repeated string add = 2;
+inline int ListUpdate::_internal_add_size() const {
+  return _impl_.add_.size();
+}
+inline int ListUpdate::add_size() const {
+  return _internal_add_size();
+}
+inline void ListUpdate::clear_add() {
+  _impl_.add_.Clear();
+}
+inline std::string* ListUpdate::add_add() {
+  std::string* _s = _internal_add_add();
+  // @@protoc_insertion_point(field_add_mutable:livekit.ListUpdate.add)
+  return _s;
+}
+inline const std::string& ListUpdate::_internal_add(int index) const {
+  return _impl_.add_.Get(index);
+}
+inline const std::string& ListUpdate::add(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.ListUpdate.add)
+  return _internal_add(index);
+}
+inline std::string* ListUpdate::mutable_add(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.ListUpdate.add)
+  return _impl_.add_.Mutable(index);
+}
+inline void ListUpdate::set_add(int index, const std::string& value) {
+  _impl_.add_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:livekit.ListUpdate.add)
+}
+inline void ListUpdate::set_add(int index, std::string&& value) {
+  _impl_.add_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:livekit.ListUpdate.add)
+}
+inline void ListUpdate::set_add(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.add_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:livekit.ListUpdate.add)
+}
+inline void ListUpdate::set_add(int index, const char* value, size_t size) {
+  _impl_.add_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:livekit.ListUpdate.add)
+}
+inline std::string* ListUpdate::_internal_add_add() {
+  return _impl_.add_.Add();
+}
+inline void ListUpdate::add_add(const std::string& value) {
+  _impl_.add_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:livekit.ListUpdate.add)
+}
+inline void ListUpdate::add_add(std::string&& value) {
+  _impl_.add_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:livekit.ListUpdate.add)
+}
+inline void ListUpdate::add_add(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.add_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:livekit.ListUpdate.add)
+}
+inline void ListUpdate::add_add(const char* value, size_t size) {
+  _impl_.add_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:livekit.ListUpdate.add)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+ListUpdate::add() const {
+  // @@protoc_insertion_point(field_list:livekit.ListUpdate.add)
+  return _impl_.add_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+ListUpdate::mutable_add() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.ListUpdate.add)
+  return &_impl_.add_;
+}
+
+// repeated string del = 3;
+inline int ListUpdate::_internal_del_size() const {
+  return _impl_.del_.size();
+}
+inline int ListUpdate::del_size() const {
+  return _internal_del_size();
+}
+inline void ListUpdate::clear_del() {
+  _impl_.del_.Clear();
+}
+inline std::string* ListUpdate::add_del() {
+  std::string* _s = _internal_add_del();
+  // @@protoc_insertion_point(field_add_mutable:livekit.ListUpdate.del)
+  return _s;
+}
+inline const std::string& ListUpdate::_internal_del(int index) const {
+  return _impl_.del_.Get(index);
+}
+inline const std::string& ListUpdate::del(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.ListUpdate.del)
+  return _internal_del(index);
+}
+inline std::string* ListUpdate::mutable_del(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.ListUpdate.del)
+  return _impl_.del_.Mutable(index);
+}
+inline void ListUpdate::set_del(int index, const std::string& value) {
+  _impl_.del_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:livekit.ListUpdate.del)
+}
+inline void ListUpdate::set_del(int index, std::string&& value) {
+  _impl_.del_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:livekit.ListUpdate.del)
+}
+inline void ListUpdate::set_del(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.del_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:livekit.ListUpdate.del)
+}
+inline void ListUpdate::set_del(int index, const char* value, size_t size) {
+  _impl_.del_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:livekit.ListUpdate.del)
+}
+inline std::string* ListUpdate::_internal_add_del() {
+  return _impl_.del_.Add();
+}
+inline void ListUpdate::add_del(const std::string& value) {
+  _impl_.del_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:livekit.ListUpdate.del)
+}
+inline void ListUpdate::add_del(std::string&& value) {
+  _impl_.del_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:livekit.ListUpdate.del)
+}
+inline void ListUpdate::add_del(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.del_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:livekit.ListUpdate.del)
+}
+inline void ListUpdate::add_del(const char* value, size_t size) {
+  _impl_.del_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:livekit.ListUpdate.del)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+ListUpdate::del() const {
+  // @@protoc_insertion_point(field_list:livekit.ListUpdate.del)
+  return _impl_.del_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+ListUpdate::mutable_del() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.ListUpdate.del)
+  return &_impl_.del_;
+}
+
+// bool clear = 4;
+inline void ListUpdate::clear_clear() {
+  _impl_.clear_ = false;
+}
+inline bool ListUpdate::_internal_clear() const {
+  return _impl_.clear_;
+}
+inline bool ListUpdate::clear() const {
+  // @@protoc_insertion_point(field_get:livekit.ListUpdate.clear)
+  return _internal_clear();
+}
+inline void ListUpdate::_internal_set_clear(bool value) {
+  
+  _impl_.clear_ = value;
+}
+inline void ListUpdate::set_clear(bool value) {
+  _internal_set_clear(value);
+  // @@protoc_insertion_point(field_set:livekit.ListUpdate.clear)
 }
 
 // -------------------------------------------------------------------
@@ -12200,6 +13836,49 @@ inline void ParticipantInfo::set_disconnect_reason(::livekit::DisconnectReason v
   // @@protoc_insertion_point(field_set:livekit.ParticipantInfo.disconnect_reason)
 }
 
+// repeated .livekit.ParticipantInfo.KindDetail kind_details = 18;
+inline int ParticipantInfo::_internal_kind_details_size() const {
+  return _impl_.kind_details_.size();
+}
+inline int ParticipantInfo::kind_details_size() const {
+  return _internal_kind_details_size();
+}
+inline void ParticipantInfo::clear_kind_details() {
+  _impl_.kind_details_.Clear();
+}
+inline ::livekit::ParticipantInfo_KindDetail ParticipantInfo::_internal_kind_details(int index) const {
+  return static_cast< ::livekit::ParticipantInfo_KindDetail >(_impl_.kind_details_.Get(index));
+}
+inline ::livekit::ParticipantInfo_KindDetail ParticipantInfo::kind_details(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.ParticipantInfo.kind_details)
+  return _internal_kind_details(index);
+}
+inline void ParticipantInfo::set_kind_details(int index, ::livekit::ParticipantInfo_KindDetail value) {
+  _impl_.kind_details_.Set(index, value);
+  // @@protoc_insertion_point(field_set:livekit.ParticipantInfo.kind_details)
+}
+inline void ParticipantInfo::_internal_add_kind_details(::livekit::ParticipantInfo_KindDetail value) {
+  _impl_.kind_details_.Add(value);
+}
+inline void ParticipantInfo::add_kind_details(::livekit::ParticipantInfo_KindDetail value) {
+  _internal_add_kind_details(value);
+  // @@protoc_insertion_point(field_add:livekit.ParticipantInfo.kind_details)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>&
+ParticipantInfo::kind_details() const {
+  // @@protoc_insertion_point(field_list:livekit.ParticipantInfo.kind_details)
+  return _impl_.kind_details_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+ParticipantInfo::_internal_mutable_kind_details() {
+  return &_impl_.kind_details_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+ParticipantInfo::mutable_kind_details() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.ParticipantInfo.kind_details)
+  return _internal_mutable_kind_details();
+}
+
 // -------------------------------------------------------------------
 
 // Encryption
@@ -12398,6 +14077,76 @@ SimulcastCodecInfo::layers() const {
   return _impl_.layers_;
 }
 
+// .livekit.VideoLayer.Mode video_layer_mode = 5;
+inline void SimulcastCodecInfo::clear_video_layer_mode() {
+  _impl_.video_layer_mode_ = 0;
+}
+inline ::livekit::VideoLayer_Mode SimulcastCodecInfo::_internal_video_layer_mode() const {
+  return static_cast< ::livekit::VideoLayer_Mode >(_impl_.video_layer_mode_);
+}
+inline ::livekit::VideoLayer_Mode SimulcastCodecInfo::video_layer_mode() const {
+  // @@protoc_insertion_point(field_get:livekit.SimulcastCodecInfo.video_layer_mode)
+  return _internal_video_layer_mode();
+}
+inline void SimulcastCodecInfo::_internal_set_video_layer_mode(::livekit::VideoLayer_Mode value) {
+  
+  _impl_.video_layer_mode_ = value;
+}
+inline void SimulcastCodecInfo::set_video_layer_mode(::livekit::VideoLayer_Mode value) {
+  _internal_set_video_layer_mode(value);
+  // @@protoc_insertion_point(field_set:livekit.SimulcastCodecInfo.video_layer_mode)
+}
+
+// string sdp_cid = 6;
+inline void SimulcastCodecInfo::clear_sdp_cid() {
+  _impl_.sdp_cid_.ClearToEmpty();
+}
+inline const std::string& SimulcastCodecInfo::sdp_cid() const {
+  // @@protoc_insertion_point(field_get:livekit.SimulcastCodecInfo.sdp_cid)
+  return _internal_sdp_cid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SimulcastCodecInfo::set_sdp_cid(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.sdp_cid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.SimulcastCodecInfo.sdp_cid)
+}
+inline std::string* SimulcastCodecInfo::mutable_sdp_cid() {
+  std::string* _s = _internal_mutable_sdp_cid();
+  // @@protoc_insertion_point(field_mutable:livekit.SimulcastCodecInfo.sdp_cid)
+  return _s;
+}
+inline const std::string& SimulcastCodecInfo::_internal_sdp_cid() const {
+  return _impl_.sdp_cid_.Get();
+}
+inline void SimulcastCodecInfo::_internal_set_sdp_cid(const std::string& value) {
+  
+  _impl_.sdp_cid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SimulcastCodecInfo::_internal_mutable_sdp_cid() {
+  
+  return _impl_.sdp_cid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SimulcastCodecInfo::release_sdp_cid() {
+  // @@protoc_insertion_point(field_release:livekit.SimulcastCodecInfo.sdp_cid)
+  return _impl_.sdp_cid_.Release();
+}
+inline void SimulcastCodecInfo::set_allocated_sdp_cid(std::string* sdp_cid) {
+  if (sdp_cid != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.sdp_cid_.SetAllocated(sdp_cid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.sdp_cid_.IsDefault()) {
+    _impl_.sdp_cid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.SimulcastCodecInfo.sdp_cid)
+}
+
 // -------------------------------------------------------------------
 
 // TrackInfo
@@ -12542,7 +14291,7 @@ inline void TrackInfo::set_muted(bool value) {
   // @@protoc_insertion_point(field_set:livekit.TrackInfo.muted)
 }
 
-// uint32 width = 5;
+// uint32 width = 5 [deprecated = true];
 inline void TrackInfo::clear_width() {
   _impl_.width_ = 0u;
 }
@@ -12562,7 +14311,7 @@ inline void TrackInfo::set_width(uint32_t value) {
   // @@protoc_insertion_point(field_set:livekit.TrackInfo.width)
 }
 
-// uint32 height = 6;
+// uint32 height = 6 [deprecated = true];
 inline void TrackInfo::clear_height() {
   _impl_.height_ = 0u;
 }
@@ -12582,7 +14331,7 @@ inline void TrackInfo::set_height(uint32_t value) {
   // @@protoc_insertion_point(field_set:livekit.TrackInfo.height)
 }
 
-// bool simulcast = 7;
+// bool simulcast = 7 [deprecated = true];
 inline void TrackInfo::clear_simulcast() {
   _impl_.simulcast_ = false;
 }
@@ -12602,7 +14351,7 @@ inline void TrackInfo::set_simulcast(bool value) {
   // @@protoc_insertion_point(field_set:livekit.TrackInfo.simulcast)
 }
 
-// bool disable_dtx = 8;
+// bool disable_dtx = 8 [deprecated = true];
 inline void TrackInfo::clear_disable_dtx() {
   _impl_.disable_dtx_ = false;
 }
@@ -12642,7 +14391,7 @@ inline void TrackInfo::set_source(::livekit::TrackSource value) {
   // @@protoc_insertion_point(field_set:livekit.TrackInfo.source)
 }
 
-// repeated .livekit.VideoLayer layers = 10;
+// repeated .livekit.VideoLayer layers = 10 [deprecated = true];
 inline int TrackInfo::_internal_layers_size() const {
   return _impl_.layers_.size();
 }
@@ -12822,7 +14571,7 @@ TrackInfo::codecs() const {
   return _impl_.codecs_;
 }
 
-// bool stereo = 14;
+// bool stereo = 14 [deprecated = true];
 inline void TrackInfo::clear_stereo() {
   _impl_.stereo_ = false;
 }
@@ -13187,6 +14936,76 @@ inline void VideoLayer::_internal_set_ssrc(uint32_t value) {
 inline void VideoLayer::set_ssrc(uint32_t value) {
   _internal_set_ssrc(value);
   // @@protoc_insertion_point(field_set:livekit.VideoLayer.ssrc)
+}
+
+// int32 spatial_layer = 6;
+inline void VideoLayer::clear_spatial_layer() {
+  _impl_.spatial_layer_ = 0;
+}
+inline int32_t VideoLayer::_internal_spatial_layer() const {
+  return _impl_.spatial_layer_;
+}
+inline int32_t VideoLayer::spatial_layer() const {
+  // @@protoc_insertion_point(field_get:livekit.VideoLayer.spatial_layer)
+  return _internal_spatial_layer();
+}
+inline void VideoLayer::_internal_set_spatial_layer(int32_t value) {
+  
+  _impl_.spatial_layer_ = value;
+}
+inline void VideoLayer::set_spatial_layer(int32_t value) {
+  _internal_set_spatial_layer(value);
+  // @@protoc_insertion_point(field_set:livekit.VideoLayer.spatial_layer)
+}
+
+// string rid = 7;
+inline void VideoLayer::clear_rid() {
+  _impl_.rid_.ClearToEmpty();
+}
+inline const std::string& VideoLayer::rid() const {
+  // @@protoc_insertion_point(field_get:livekit.VideoLayer.rid)
+  return _internal_rid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void VideoLayer::set_rid(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.rid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.VideoLayer.rid)
+}
+inline std::string* VideoLayer::mutable_rid() {
+  std::string* _s = _internal_mutable_rid();
+  // @@protoc_insertion_point(field_mutable:livekit.VideoLayer.rid)
+  return _s;
+}
+inline const std::string& VideoLayer::_internal_rid() const {
+  return _impl_.rid_.Get();
+}
+inline void VideoLayer::_internal_set_rid(const std::string& value) {
+  
+  _impl_.rid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* VideoLayer::_internal_mutable_rid() {
+  
+  return _impl_.rid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* VideoLayer::release_rid() {
+  // @@protoc_insertion_point(field_release:livekit.VideoLayer.rid)
+  return _impl_.rid_.Release();
+}
+inline void VideoLayer::set_allocated_rid(std::string* rid) {
+  if (rid != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.rid_.SetAllocated(rid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.rid_.IsDefault()) {
+    _impl_.rid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.VideoLayer.rid)
 }
 
 // -------------------------------------------------------------------
@@ -14218,6 +16037,150 @@ inline ::livekit::DataStream_Trailer* DataPacket::mutable_stream_trailer() {
   return _msg;
 }
 
+// .livekit.EncryptedPacket encrypted_packet = 18;
+inline bool DataPacket::_internal_has_encrypted_packet() const {
+  return value_case() == kEncryptedPacket;
+}
+inline bool DataPacket::has_encrypted_packet() const {
+  return _internal_has_encrypted_packet();
+}
+inline void DataPacket::set_has_encrypted_packet() {
+  _impl_._oneof_case_[0] = kEncryptedPacket;
+}
+inline void DataPacket::clear_encrypted_packet() {
+  if (_internal_has_encrypted_packet()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.encrypted_packet_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::EncryptedPacket* DataPacket::release_encrypted_packet() {
+  // @@protoc_insertion_point(field_release:livekit.DataPacket.encrypted_packet)
+  if (_internal_has_encrypted_packet()) {
+    clear_has_value();
+    ::livekit::EncryptedPacket* temp = _impl_.value_.encrypted_packet_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.encrypted_packet_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::EncryptedPacket& DataPacket::_internal_encrypted_packet() const {
+  return _internal_has_encrypted_packet()
+      ? *_impl_.value_.encrypted_packet_
+      : reinterpret_cast< ::livekit::EncryptedPacket&>(::livekit::_EncryptedPacket_default_instance_);
+}
+inline const ::livekit::EncryptedPacket& DataPacket::encrypted_packet() const {
+  // @@protoc_insertion_point(field_get:livekit.DataPacket.encrypted_packet)
+  return _internal_encrypted_packet();
+}
+inline ::livekit::EncryptedPacket* DataPacket::unsafe_arena_release_encrypted_packet() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.DataPacket.encrypted_packet)
+  if (_internal_has_encrypted_packet()) {
+    clear_has_value();
+    ::livekit::EncryptedPacket* temp = _impl_.value_.encrypted_packet_;
+    _impl_.value_.encrypted_packet_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void DataPacket::unsafe_arena_set_allocated_encrypted_packet(::livekit::EncryptedPacket* encrypted_packet) {
+  clear_value();
+  if (encrypted_packet) {
+    set_has_encrypted_packet();
+    _impl_.value_.encrypted_packet_ = encrypted_packet;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.DataPacket.encrypted_packet)
+}
+inline ::livekit::EncryptedPacket* DataPacket::_internal_mutable_encrypted_packet() {
+  if (!_internal_has_encrypted_packet()) {
+    clear_value();
+    set_has_encrypted_packet();
+    _impl_.value_.encrypted_packet_ = CreateMaybeMessage< ::livekit::EncryptedPacket >(GetArenaForAllocation());
+  }
+  return _impl_.value_.encrypted_packet_;
+}
+inline ::livekit::EncryptedPacket* DataPacket::mutable_encrypted_packet() {
+  ::livekit::EncryptedPacket* _msg = _internal_mutable_encrypted_packet();
+  // @@protoc_insertion_point(field_mutable:livekit.DataPacket.encrypted_packet)
+  return _msg;
+}
+
+// uint32 sequence = 16;
+inline void DataPacket::clear_sequence() {
+  _impl_.sequence_ = 0u;
+}
+inline uint32_t DataPacket::_internal_sequence() const {
+  return _impl_.sequence_;
+}
+inline uint32_t DataPacket::sequence() const {
+  // @@protoc_insertion_point(field_get:livekit.DataPacket.sequence)
+  return _internal_sequence();
+}
+inline void DataPacket::_internal_set_sequence(uint32_t value) {
+  
+  _impl_.sequence_ = value;
+}
+inline void DataPacket::set_sequence(uint32_t value) {
+  _internal_set_sequence(value);
+  // @@protoc_insertion_point(field_set:livekit.DataPacket.sequence)
+}
+
+// string participant_sid = 17;
+inline void DataPacket::clear_participant_sid() {
+  _impl_.participant_sid_.ClearToEmpty();
+}
+inline const std::string& DataPacket::participant_sid() const {
+  // @@protoc_insertion_point(field_get:livekit.DataPacket.participant_sid)
+  return _internal_participant_sid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DataPacket::set_participant_sid(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.participant_sid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.DataPacket.participant_sid)
+}
+inline std::string* DataPacket::mutable_participant_sid() {
+  std::string* _s = _internal_mutable_participant_sid();
+  // @@protoc_insertion_point(field_mutable:livekit.DataPacket.participant_sid)
+  return _s;
+}
+inline const std::string& DataPacket::_internal_participant_sid() const {
+  return _impl_.participant_sid_.Get();
+}
+inline void DataPacket::_internal_set_participant_sid(const std::string& value) {
+  
+  _impl_.participant_sid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DataPacket::_internal_mutable_participant_sid() {
+  
+  return _impl_.participant_sid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DataPacket::release_participant_sid() {
+  // @@protoc_insertion_point(field_release:livekit.DataPacket.participant_sid)
+  return _impl_.participant_sid_.Release();
+}
+inline void DataPacket::set_allocated_participant_sid(std::string* participant_sid) {
+  if (participant_sid != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.participant_sid_.SetAllocated(participant_sid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.participant_sid_.IsDefault()) {
+    _impl_.participant_sid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.DataPacket.participant_sid)
+}
+
 inline bool DataPacket::has_value() const {
   return value_case() != VALUE_NOT_SET;
 }
@@ -14226,6 +16189,755 @@ inline void DataPacket::clear_has_value() {
 }
 inline DataPacket::ValueCase DataPacket::value_case() const {
   return DataPacket::ValueCase(_impl_._oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// EncryptedPacket
+
+// .livekit.Encryption.Type encryption_type = 1;
+inline void EncryptedPacket::clear_encryption_type() {
+  _impl_.encryption_type_ = 0;
+}
+inline ::livekit::Encryption_Type EncryptedPacket::_internal_encryption_type() const {
+  return static_cast< ::livekit::Encryption_Type >(_impl_.encryption_type_);
+}
+inline ::livekit::Encryption_Type EncryptedPacket::encryption_type() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacket.encryption_type)
+  return _internal_encryption_type();
+}
+inline void EncryptedPacket::_internal_set_encryption_type(::livekit::Encryption_Type value) {
+  
+  _impl_.encryption_type_ = value;
+}
+inline void EncryptedPacket::set_encryption_type(::livekit::Encryption_Type value) {
+  _internal_set_encryption_type(value);
+  // @@protoc_insertion_point(field_set:livekit.EncryptedPacket.encryption_type)
+}
+
+// bytes iv = 2;
+inline void EncryptedPacket::clear_iv() {
+  _impl_.iv_.ClearToEmpty();
+}
+inline const std::string& EncryptedPacket::iv() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacket.iv)
+  return _internal_iv();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void EncryptedPacket::set_iv(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.iv_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.EncryptedPacket.iv)
+}
+inline std::string* EncryptedPacket::mutable_iv() {
+  std::string* _s = _internal_mutable_iv();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacket.iv)
+  return _s;
+}
+inline const std::string& EncryptedPacket::_internal_iv() const {
+  return _impl_.iv_.Get();
+}
+inline void EncryptedPacket::_internal_set_iv(const std::string& value) {
+  
+  _impl_.iv_.Set(value, GetArenaForAllocation());
+}
+inline std::string* EncryptedPacket::_internal_mutable_iv() {
+  
+  return _impl_.iv_.Mutable(GetArenaForAllocation());
+}
+inline std::string* EncryptedPacket::release_iv() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacket.iv)
+  return _impl_.iv_.Release();
+}
+inline void EncryptedPacket::set_allocated_iv(std::string* iv) {
+  if (iv != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.iv_.SetAllocated(iv, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.iv_.IsDefault()) {
+    _impl_.iv_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.EncryptedPacket.iv)
+}
+
+// uint32 key_index = 3;
+inline void EncryptedPacket::clear_key_index() {
+  _impl_.key_index_ = 0u;
+}
+inline uint32_t EncryptedPacket::_internal_key_index() const {
+  return _impl_.key_index_;
+}
+inline uint32_t EncryptedPacket::key_index() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacket.key_index)
+  return _internal_key_index();
+}
+inline void EncryptedPacket::_internal_set_key_index(uint32_t value) {
+  
+  _impl_.key_index_ = value;
+}
+inline void EncryptedPacket::set_key_index(uint32_t value) {
+  _internal_set_key_index(value);
+  // @@protoc_insertion_point(field_set:livekit.EncryptedPacket.key_index)
+}
+
+// bytes encrypted_value = 4;
+inline void EncryptedPacket::clear_encrypted_value() {
+  _impl_.encrypted_value_.ClearToEmpty();
+}
+inline const std::string& EncryptedPacket::encrypted_value() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacket.encrypted_value)
+  return _internal_encrypted_value();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void EncryptedPacket::set_encrypted_value(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.encrypted_value_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.EncryptedPacket.encrypted_value)
+}
+inline std::string* EncryptedPacket::mutable_encrypted_value() {
+  std::string* _s = _internal_mutable_encrypted_value();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacket.encrypted_value)
+  return _s;
+}
+inline const std::string& EncryptedPacket::_internal_encrypted_value() const {
+  return _impl_.encrypted_value_.Get();
+}
+inline void EncryptedPacket::_internal_set_encrypted_value(const std::string& value) {
+  
+  _impl_.encrypted_value_.Set(value, GetArenaForAllocation());
+}
+inline std::string* EncryptedPacket::_internal_mutable_encrypted_value() {
+  
+  return _impl_.encrypted_value_.Mutable(GetArenaForAllocation());
+}
+inline std::string* EncryptedPacket::release_encrypted_value() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacket.encrypted_value)
+  return _impl_.encrypted_value_.Release();
+}
+inline void EncryptedPacket::set_allocated_encrypted_value(std::string* encrypted_value) {
+  if (encrypted_value != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.encrypted_value_.SetAllocated(encrypted_value, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.encrypted_value_.IsDefault()) {
+    _impl_.encrypted_value_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.EncryptedPacket.encrypted_value)
+}
+
+// -------------------------------------------------------------------
+
+// EncryptedPacketPayload
+
+// .livekit.UserPacket user = 1;
+inline bool EncryptedPacketPayload::_internal_has_user() const {
+  return value_case() == kUser;
+}
+inline bool EncryptedPacketPayload::has_user() const {
+  return _internal_has_user();
+}
+inline void EncryptedPacketPayload::set_has_user() {
+  _impl_._oneof_case_[0] = kUser;
+}
+inline void EncryptedPacketPayload::clear_user() {
+  if (_internal_has_user()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.user_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::UserPacket* EncryptedPacketPayload::release_user() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacketPayload.user)
+  if (_internal_has_user()) {
+    clear_has_value();
+    ::livekit::UserPacket* temp = _impl_.value_.user_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.user_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::UserPacket& EncryptedPacketPayload::_internal_user() const {
+  return _internal_has_user()
+      ? *_impl_.value_.user_
+      : reinterpret_cast< ::livekit::UserPacket&>(::livekit::_UserPacket_default_instance_);
+}
+inline const ::livekit::UserPacket& EncryptedPacketPayload::user() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacketPayload.user)
+  return _internal_user();
+}
+inline ::livekit::UserPacket* EncryptedPacketPayload::unsafe_arena_release_user() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.EncryptedPacketPayload.user)
+  if (_internal_has_user()) {
+    clear_has_value();
+    ::livekit::UserPacket* temp = _impl_.value_.user_;
+    _impl_.value_.user_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EncryptedPacketPayload::unsafe_arena_set_allocated_user(::livekit::UserPacket* user) {
+  clear_value();
+  if (user) {
+    set_has_user();
+    _impl_.value_.user_ = user;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.EncryptedPacketPayload.user)
+}
+inline ::livekit::UserPacket* EncryptedPacketPayload::_internal_mutable_user() {
+  if (!_internal_has_user()) {
+    clear_value();
+    set_has_user();
+    _impl_.value_.user_ = CreateMaybeMessage< ::livekit::UserPacket >(GetArenaForAllocation());
+  }
+  return _impl_.value_.user_;
+}
+inline ::livekit::UserPacket* EncryptedPacketPayload::mutable_user() {
+  ::livekit::UserPacket* _msg = _internal_mutable_user();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacketPayload.user)
+  return _msg;
+}
+
+// .livekit.ChatMessage chat_message = 3;
+inline bool EncryptedPacketPayload::_internal_has_chat_message() const {
+  return value_case() == kChatMessage;
+}
+inline bool EncryptedPacketPayload::has_chat_message() const {
+  return _internal_has_chat_message();
+}
+inline void EncryptedPacketPayload::set_has_chat_message() {
+  _impl_._oneof_case_[0] = kChatMessage;
+}
+inline void EncryptedPacketPayload::clear_chat_message() {
+  if (_internal_has_chat_message()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.chat_message_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::ChatMessage* EncryptedPacketPayload::release_chat_message() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacketPayload.chat_message)
+  if (_internal_has_chat_message()) {
+    clear_has_value();
+    ::livekit::ChatMessage* temp = _impl_.value_.chat_message_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.chat_message_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::ChatMessage& EncryptedPacketPayload::_internal_chat_message() const {
+  return _internal_has_chat_message()
+      ? *_impl_.value_.chat_message_
+      : reinterpret_cast< ::livekit::ChatMessage&>(::livekit::_ChatMessage_default_instance_);
+}
+inline const ::livekit::ChatMessage& EncryptedPacketPayload::chat_message() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacketPayload.chat_message)
+  return _internal_chat_message();
+}
+inline ::livekit::ChatMessage* EncryptedPacketPayload::unsafe_arena_release_chat_message() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.EncryptedPacketPayload.chat_message)
+  if (_internal_has_chat_message()) {
+    clear_has_value();
+    ::livekit::ChatMessage* temp = _impl_.value_.chat_message_;
+    _impl_.value_.chat_message_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EncryptedPacketPayload::unsafe_arena_set_allocated_chat_message(::livekit::ChatMessage* chat_message) {
+  clear_value();
+  if (chat_message) {
+    set_has_chat_message();
+    _impl_.value_.chat_message_ = chat_message;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.EncryptedPacketPayload.chat_message)
+}
+inline ::livekit::ChatMessage* EncryptedPacketPayload::_internal_mutable_chat_message() {
+  if (!_internal_has_chat_message()) {
+    clear_value();
+    set_has_chat_message();
+    _impl_.value_.chat_message_ = CreateMaybeMessage< ::livekit::ChatMessage >(GetArenaForAllocation());
+  }
+  return _impl_.value_.chat_message_;
+}
+inline ::livekit::ChatMessage* EncryptedPacketPayload::mutable_chat_message() {
+  ::livekit::ChatMessage* _msg = _internal_mutable_chat_message();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacketPayload.chat_message)
+  return _msg;
+}
+
+// .livekit.RpcRequest rpc_request = 4;
+inline bool EncryptedPacketPayload::_internal_has_rpc_request() const {
+  return value_case() == kRpcRequest;
+}
+inline bool EncryptedPacketPayload::has_rpc_request() const {
+  return _internal_has_rpc_request();
+}
+inline void EncryptedPacketPayload::set_has_rpc_request() {
+  _impl_._oneof_case_[0] = kRpcRequest;
+}
+inline void EncryptedPacketPayload::clear_rpc_request() {
+  if (_internal_has_rpc_request()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.rpc_request_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::RpcRequest* EncryptedPacketPayload::release_rpc_request() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacketPayload.rpc_request)
+  if (_internal_has_rpc_request()) {
+    clear_has_value();
+    ::livekit::RpcRequest* temp = _impl_.value_.rpc_request_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.rpc_request_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::RpcRequest& EncryptedPacketPayload::_internal_rpc_request() const {
+  return _internal_has_rpc_request()
+      ? *_impl_.value_.rpc_request_
+      : reinterpret_cast< ::livekit::RpcRequest&>(::livekit::_RpcRequest_default_instance_);
+}
+inline const ::livekit::RpcRequest& EncryptedPacketPayload::rpc_request() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacketPayload.rpc_request)
+  return _internal_rpc_request();
+}
+inline ::livekit::RpcRequest* EncryptedPacketPayload::unsafe_arena_release_rpc_request() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.EncryptedPacketPayload.rpc_request)
+  if (_internal_has_rpc_request()) {
+    clear_has_value();
+    ::livekit::RpcRequest* temp = _impl_.value_.rpc_request_;
+    _impl_.value_.rpc_request_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EncryptedPacketPayload::unsafe_arena_set_allocated_rpc_request(::livekit::RpcRequest* rpc_request) {
+  clear_value();
+  if (rpc_request) {
+    set_has_rpc_request();
+    _impl_.value_.rpc_request_ = rpc_request;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.EncryptedPacketPayload.rpc_request)
+}
+inline ::livekit::RpcRequest* EncryptedPacketPayload::_internal_mutable_rpc_request() {
+  if (!_internal_has_rpc_request()) {
+    clear_value();
+    set_has_rpc_request();
+    _impl_.value_.rpc_request_ = CreateMaybeMessage< ::livekit::RpcRequest >(GetArenaForAllocation());
+  }
+  return _impl_.value_.rpc_request_;
+}
+inline ::livekit::RpcRequest* EncryptedPacketPayload::mutable_rpc_request() {
+  ::livekit::RpcRequest* _msg = _internal_mutable_rpc_request();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacketPayload.rpc_request)
+  return _msg;
+}
+
+// .livekit.RpcAck rpc_ack = 5;
+inline bool EncryptedPacketPayload::_internal_has_rpc_ack() const {
+  return value_case() == kRpcAck;
+}
+inline bool EncryptedPacketPayload::has_rpc_ack() const {
+  return _internal_has_rpc_ack();
+}
+inline void EncryptedPacketPayload::set_has_rpc_ack() {
+  _impl_._oneof_case_[0] = kRpcAck;
+}
+inline void EncryptedPacketPayload::clear_rpc_ack() {
+  if (_internal_has_rpc_ack()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.rpc_ack_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::RpcAck* EncryptedPacketPayload::release_rpc_ack() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacketPayload.rpc_ack)
+  if (_internal_has_rpc_ack()) {
+    clear_has_value();
+    ::livekit::RpcAck* temp = _impl_.value_.rpc_ack_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.rpc_ack_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::RpcAck& EncryptedPacketPayload::_internal_rpc_ack() const {
+  return _internal_has_rpc_ack()
+      ? *_impl_.value_.rpc_ack_
+      : reinterpret_cast< ::livekit::RpcAck&>(::livekit::_RpcAck_default_instance_);
+}
+inline const ::livekit::RpcAck& EncryptedPacketPayload::rpc_ack() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacketPayload.rpc_ack)
+  return _internal_rpc_ack();
+}
+inline ::livekit::RpcAck* EncryptedPacketPayload::unsafe_arena_release_rpc_ack() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.EncryptedPacketPayload.rpc_ack)
+  if (_internal_has_rpc_ack()) {
+    clear_has_value();
+    ::livekit::RpcAck* temp = _impl_.value_.rpc_ack_;
+    _impl_.value_.rpc_ack_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EncryptedPacketPayload::unsafe_arena_set_allocated_rpc_ack(::livekit::RpcAck* rpc_ack) {
+  clear_value();
+  if (rpc_ack) {
+    set_has_rpc_ack();
+    _impl_.value_.rpc_ack_ = rpc_ack;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.EncryptedPacketPayload.rpc_ack)
+}
+inline ::livekit::RpcAck* EncryptedPacketPayload::_internal_mutable_rpc_ack() {
+  if (!_internal_has_rpc_ack()) {
+    clear_value();
+    set_has_rpc_ack();
+    _impl_.value_.rpc_ack_ = CreateMaybeMessage< ::livekit::RpcAck >(GetArenaForAllocation());
+  }
+  return _impl_.value_.rpc_ack_;
+}
+inline ::livekit::RpcAck* EncryptedPacketPayload::mutable_rpc_ack() {
+  ::livekit::RpcAck* _msg = _internal_mutable_rpc_ack();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacketPayload.rpc_ack)
+  return _msg;
+}
+
+// .livekit.RpcResponse rpc_response = 6;
+inline bool EncryptedPacketPayload::_internal_has_rpc_response() const {
+  return value_case() == kRpcResponse;
+}
+inline bool EncryptedPacketPayload::has_rpc_response() const {
+  return _internal_has_rpc_response();
+}
+inline void EncryptedPacketPayload::set_has_rpc_response() {
+  _impl_._oneof_case_[0] = kRpcResponse;
+}
+inline void EncryptedPacketPayload::clear_rpc_response() {
+  if (_internal_has_rpc_response()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.rpc_response_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::RpcResponse* EncryptedPacketPayload::release_rpc_response() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacketPayload.rpc_response)
+  if (_internal_has_rpc_response()) {
+    clear_has_value();
+    ::livekit::RpcResponse* temp = _impl_.value_.rpc_response_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.rpc_response_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::RpcResponse& EncryptedPacketPayload::_internal_rpc_response() const {
+  return _internal_has_rpc_response()
+      ? *_impl_.value_.rpc_response_
+      : reinterpret_cast< ::livekit::RpcResponse&>(::livekit::_RpcResponse_default_instance_);
+}
+inline const ::livekit::RpcResponse& EncryptedPacketPayload::rpc_response() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacketPayload.rpc_response)
+  return _internal_rpc_response();
+}
+inline ::livekit::RpcResponse* EncryptedPacketPayload::unsafe_arena_release_rpc_response() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.EncryptedPacketPayload.rpc_response)
+  if (_internal_has_rpc_response()) {
+    clear_has_value();
+    ::livekit::RpcResponse* temp = _impl_.value_.rpc_response_;
+    _impl_.value_.rpc_response_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EncryptedPacketPayload::unsafe_arena_set_allocated_rpc_response(::livekit::RpcResponse* rpc_response) {
+  clear_value();
+  if (rpc_response) {
+    set_has_rpc_response();
+    _impl_.value_.rpc_response_ = rpc_response;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.EncryptedPacketPayload.rpc_response)
+}
+inline ::livekit::RpcResponse* EncryptedPacketPayload::_internal_mutable_rpc_response() {
+  if (!_internal_has_rpc_response()) {
+    clear_value();
+    set_has_rpc_response();
+    _impl_.value_.rpc_response_ = CreateMaybeMessage< ::livekit::RpcResponse >(GetArenaForAllocation());
+  }
+  return _impl_.value_.rpc_response_;
+}
+inline ::livekit::RpcResponse* EncryptedPacketPayload::mutable_rpc_response() {
+  ::livekit::RpcResponse* _msg = _internal_mutable_rpc_response();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacketPayload.rpc_response)
+  return _msg;
+}
+
+// .livekit.DataStream.Header stream_header = 7;
+inline bool EncryptedPacketPayload::_internal_has_stream_header() const {
+  return value_case() == kStreamHeader;
+}
+inline bool EncryptedPacketPayload::has_stream_header() const {
+  return _internal_has_stream_header();
+}
+inline void EncryptedPacketPayload::set_has_stream_header() {
+  _impl_._oneof_case_[0] = kStreamHeader;
+}
+inline void EncryptedPacketPayload::clear_stream_header() {
+  if (_internal_has_stream_header()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.stream_header_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::DataStream_Header* EncryptedPacketPayload::release_stream_header() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacketPayload.stream_header)
+  if (_internal_has_stream_header()) {
+    clear_has_value();
+    ::livekit::DataStream_Header* temp = _impl_.value_.stream_header_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.stream_header_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::DataStream_Header& EncryptedPacketPayload::_internal_stream_header() const {
+  return _internal_has_stream_header()
+      ? *_impl_.value_.stream_header_
+      : reinterpret_cast< ::livekit::DataStream_Header&>(::livekit::_DataStream_Header_default_instance_);
+}
+inline const ::livekit::DataStream_Header& EncryptedPacketPayload::stream_header() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacketPayload.stream_header)
+  return _internal_stream_header();
+}
+inline ::livekit::DataStream_Header* EncryptedPacketPayload::unsafe_arena_release_stream_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.EncryptedPacketPayload.stream_header)
+  if (_internal_has_stream_header()) {
+    clear_has_value();
+    ::livekit::DataStream_Header* temp = _impl_.value_.stream_header_;
+    _impl_.value_.stream_header_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EncryptedPacketPayload::unsafe_arena_set_allocated_stream_header(::livekit::DataStream_Header* stream_header) {
+  clear_value();
+  if (stream_header) {
+    set_has_stream_header();
+    _impl_.value_.stream_header_ = stream_header;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.EncryptedPacketPayload.stream_header)
+}
+inline ::livekit::DataStream_Header* EncryptedPacketPayload::_internal_mutable_stream_header() {
+  if (!_internal_has_stream_header()) {
+    clear_value();
+    set_has_stream_header();
+    _impl_.value_.stream_header_ = CreateMaybeMessage< ::livekit::DataStream_Header >(GetArenaForAllocation());
+  }
+  return _impl_.value_.stream_header_;
+}
+inline ::livekit::DataStream_Header* EncryptedPacketPayload::mutable_stream_header() {
+  ::livekit::DataStream_Header* _msg = _internal_mutable_stream_header();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacketPayload.stream_header)
+  return _msg;
+}
+
+// .livekit.DataStream.Chunk stream_chunk = 8;
+inline bool EncryptedPacketPayload::_internal_has_stream_chunk() const {
+  return value_case() == kStreamChunk;
+}
+inline bool EncryptedPacketPayload::has_stream_chunk() const {
+  return _internal_has_stream_chunk();
+}
+inline void EncryptedPacketPayload::set_has_stream_chunk() {
+  _impl_._oneof_case_[0] = kStreamChunk;
+}
+inline void EncryptedPacketPayload::clear_stream_chunk() {
+  if (_internal_has_stream_chunk()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.stream_chunk_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::DataStream_Chunk* EncryptedPacketPayload::release_stream_chunk() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacketPayload.stream_chunk)
+  if (_internal_has_stream_chunk()) {
+    clear_has_value();
+    ::livekit::DataStream_Chunk* temp = _impl_.value_.stream_chunk_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.stream_chunk_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::DataStream_Chunk& EncryptedPacketPayload::_internal_stream_chunk() const {
+  return _internal_has_stream_chunk()
+      ? *_impl_.value_.stream_chunk_
+      : reinterpret_cast< ::livekit::DataStream_Chunk&>(::livekit::_DataStream_Chunk_default_instance_);
+}
+inline const ::livekit::DataStream_Chunk& EncryptedPacketPayload::stream_chunk() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacketPayload.stream_chunk)
+  return _internal_stream_chunk();
+}
+inline ::livekit::DataStream_Chunk* EncryptedPacketPayload::unsafe_arena_release_stream_chunk() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.EncryptedPacketPayload.stream_chunk)
+  if (_internal_has_stream_chunk()) {
+    clear_has_value();
+    ::livekit::DataStream_Chunk* temp = _impl_.value_.stream_chunk_;
+    _impl_.value_.stream_chunk_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EncryptedPacketPayload::unsafe_arena_set_allocated_stream_chunk(::livekit::DataStream_Chunk* stream_chunk) {
+  clear_value();
+  if (stream_chunk) {
+    set_has_stream_chunk();
+    _impl_.value_.stream_chunk_ = stream_chunk;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.EncryptedPacketPayload.stream_chunk)
+}
+inline ::livekit::DataStream_Chunk* EncryptedPacketPayload::_internal_mutable_stream_chunk() {
+  if (!_internal_has_stream_chunk()) {
+    clear_value();
+    set_has_stream_chunk();
+    _impl_.value_.stream_chunk_ = CreateMaybeMessage< ::livekit::DataStream_Chunk >(GetArenaForAllocation());
+  }
+  return _impl_.value_.stream_chunk_;
+}
+inline ::livekit::DataStream_Chunk* EncryptedPacketPayload::mutable_stream_chunk() {
+  ::livekit::DataStream_Chunk* _msg = _internal_mutable_stream_chunk();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacketPayload.stream_chunk)
+  return _msg;
+}
+
+// .livekit.DataStream.Trailer stream_trailer = 9;
+inline bool EncryptedPacketPayload::_internal_has_stream_trailer() const {
+  return value_case() == kStreamTrailer;
+}
+inline bool EncryptedPacketPayload::has_stream_trailer() const {
+  return _internal_has_stream_trailer();
+}
+inline void EncryptedPacketPayload::set_has_stream_trailer() {
+  _impl_._oneof_case_[0] = kStreamTrailer;
+}
+inline void EncryptedPacketPayload::clear_stream_trailer() {
+  if (_internal_has_stream_trailer()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.value_.stream_trailer_;
+    }
+    clear_has_value();
+  }
+}
+inline ::livekit::DataStream_Trailer* EncryptedPacketPayload::release_stream_trailer() {
+  // @@protoc_insertion_point(field_release:livekit.EncryptedPacketPayload.stream_trailer)
+  if (_internal_has_stream_trailer()) {
+    clear_has_value();
+    ::livekit::DataStream_Trailer* temp = _impl_.value_.stream_trailer_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.value_.stream_trailer_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::DataStream_Trailer& EncryptedPacketPayload::_internal_stream_trailer() const {
+  return _internal_has_stream_trailer()
+      ? *_impl_.value_.stream_trailer_
+      : reinterpret_cast< ::livekit::DataStream_Trailer&>(::livekit::_DataStream_Trailer_default_instance_);
+}
+inline const ::livekit::DataStream_Trailer& EncryptedPacketPayload::stream_trailer() const {
+  // @@protoc_insertion_point(field_get:livekit.EncryptedPacketPayload.stream_trailer)
+  return _internal_stream_trailer();
+}
+inline ::livekit::DataStream_Trailer* EncryptedPacketPayload::unsafe_arena_release_stream_trailer() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.EncryptedPacketPayload.stream_trailer)
+  if (_internal_has_stream_trailer()) {
+    clear_has_value();
+    ::livekit::DataStream_Trailer* temp = _impl_.value_.stream_trailer_;
+    _impl_.value_.stream_trailer_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EncryptedPacketPayload::unsafe_arena_set_allocated_stream_trailer(::livekit::DataStream_Trailer* stream_trailer) {
+  clear_value();
+  if (stream_trailer) {
+    set_has_stream_trailer();
+    _impl_.value_.stream_trailer_ = stream_trailer;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.EncryptedPacketPayload.stream_trailer)
+}
+inline ::livekit::DataStream_Trailer* EncryptedPacketPayload::_internal_mutable_stream_trailer() {
+  if (!_internal_has_stream_trailer()) {
+    clear_value();
+    set_has_stream_trailer();
+    _impl_.value_.stream_trailer_ = CreateMaybeMessage< ::livekit::DataStream_Trailer >(GetArenaForAllocation());
+  }
+  return _impl_.value_.stream_trailer_;
+}
+inline ::livekit::DataStream_Trailer* EncryptedPacketPayload::mutable_stream_trailer() {
+  ::livekit::DataStream_Trailer* _msg = _internal_mutable_stream_trailer();
+  // @@protoc_insertion_point(field_mutable:livekit.EncryptedPacketPayload.stream_trailer)
+  return _msg;
+}
+
+inline bool EncryptedPacketPayload::has_value() const {
+  return value_case() != VALUE_NOT_SET;
+}
+inline void EncryptedPacketPayload::clear_has_value() {
+  _impl_._oneof_case_[0] = VALUE_NOT_SET;
+}
+inline EncryptedPacketPayload::ValueCase EncryptedPacketPayload::value_case() const {
+  return EncryptedPacketPayload::ValueCase(_impl_._oneof_case_[0]);
 }
 // -------------------------------------------------------------------
 
@@ -20549,7 +23261,7 @@ inline void DataStream_Header::set_total_length(uint64_t value) {
   // @@protoc_insertion_point(field_set:livekit.DataStream.Header.total_length)
 }
 
-// .livekit.Encryption.Type encryption_type = 7;
+// .livekit.Encryption.Type encryption_type = 7 [deprecated = true];
 inline void DataStream_Header::clear_encryption_type() {
   _impl_.encryption_type_ = 0;
 }
@@ -20899,7 +23611,7 @@ inline void DataStream_Chunk::set_version(int32_t value) {
   // @@protoc_insertion_point(field_set:livekit.DataStream.Chunk.version)
 }
 
-// optional bytes iv = 5;
+// optional bytes iv = 5 [deprecated = true];
 inline bool DataStream_Chunk::_internal_has_iv() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   return value;
@@ -21106,9 +23818,123 @@ DataStream_Trailer::mutable_attributes() {
 
 // DataStream
 
+// -------------------------------------------------------------------
+
+// WebhookConfig
+
+// string url = 1;
+inline void WebhookConfig::clear_url() {
+  _impl_.url_.ClearToEmpty();
+}
+inline const std::string& WebhookConfig::url() const {
+  // @@protoc_insertion_point(field_get:livekit.WebhookConfig.url)
+  return _internal_url();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WebhookConfig::set_url(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.url_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.WebhookConfig.url)
+}
+inline std::string* WebhookConfig::mutable_url() {
+  std::string* _s = _internal_mutable_url();
+  // @@protoc_insertion_point(field_mutable:livekit.WebhookConfig.url)
+  return _s;
+}
+inline const std::string& WebhookConfig::_internal_url() const {
+  return _impl_.url_.Get();
+}
+inline void WebhookConfig::_internal_set_url(const std::string& value) {
+  
+  _impl_.url_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WebhookConfig::_internal_mutable_url() {
+  
+  return _impl_.url_.Mutable(GetArenaForAllocation());
+}
+inline std::string* WebhookConfig::release_url() {
+  // @@protoc_insertion_point(field_release:livekit.WebhookConfig.url)
+  return _impl_.url_.Release();
+}
+inline void WebhookConfig::set_allocated_url(std::string* url) {
+  if (url != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.url_.SetAllocated(url, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.url_.IsDefault()) {
+    _impl_.url_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.WebhookConfig.url)
+}
+
+// string signing_key = 2;
+inline void WebhookConfig::clear_signing_key() {
+  _impl_.signing_key_.ClearToEmpty();
+}
+inline const std::string& WebhookConfig::signing_key() const {
+  // @@protoc_insertion_point(field_get:livekit.WebhookConfig.signing_key)
+  return _internal_signing_key();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WebhookConfig::set_signing_key(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.signing_key_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.WebhookConfig.signing_key)
+}
+inline std::string* WebhookConfig::mutable_signing_key() {
+  std::string* _s = _internal_mutable_signing_key();
+  // @@protoc_insertion_point(field_mutable:livekit.WebhookConfig.signing_key)
+  return _s;
+}
+inline const std::string& WebhookConfig::_internal_signing_key() const {
+  return _impl_.signing_key_.Get();
+}
+inline void WebhookConfig::_internal_set_signing_key(const std::string& value) {
+  
+  _impl_.signing_key_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WebhookConfig::_internal_mutable_signing_key() {
+  
+  return _impl_.signing_key_.Mutable(GetArenaForAllocation());
+}
+inline std::string* WebhookConfig::release_signing_key() {
+  // @@protoc_insertion_point(field_release:livekit.WebhookConfig.signing_key)
+  return _impl_.signing_key_.Release();
+}
+inline void WebhookConfig::set_allocated_signing_key(std::string* signing_key) {
+  if (signing_key != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.signing_key_.SetAllocated(signing_key, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.signing_key_.IsDefault()) {
+    _impl_.signing_key_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.WebhookConfig.signing_key)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -21214,10 +24040,20 @@ template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::livekit::ParticipantInfo_Kind>() {
   return ::livekit::ParticipantInfo_Kind_descriptor();
 }
+template <> struct is_proto_enum< ::livekit::ParticipantInfo_KindDetail> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::livekit::ParticipantInfo_KindDetail>() {
+  return ::livekit::ParticipantInfo_KindDetail_descriptor();
+}
 template <> struct is_proto_enum< ::livekit::Encryption_Type> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::livekit::Encryption_Type>() {
   return ::livekit::Encryption_Type_descriptor();
+}
+template <> struct is_proto_enum< ::livekit::VideoLayer_Mode> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::livekit::VideoLayer_Mode>() {
+  return ::livekit::VideoLayer_Mode_descriptor();
 }
 template <> struct is_proto_enum< ::livekit::DataPacket_Kind> : ::std::true_type {};
 template <>

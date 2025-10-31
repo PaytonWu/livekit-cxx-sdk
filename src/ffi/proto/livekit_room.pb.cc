@@ -310,6 +310,7 @@ PROTOBUF_CONSTEXPR RoomConfiguration::RoomConfiguration(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.agents_)*/{}
   , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.metadata_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.egress_)*/nullptr
   , /*decltype(_impl_.empty_timeout_)*/0u
   , /*decltype(_impl_.departure_timeout_)*/0u
@@ -327,8 +328,60 @@ struct RoomConfigurationDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RoomConfigurationDefaultTypeInternal _RoomConfiguration_default_instance_;
+PROTOBUF_CONSTEXPR ForwardParticipantRequest::ForwardParticipantRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.room_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.identity_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.destination_room_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ForwardParticipantRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ForwardParticipantRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ForwardParticipantRequestDefaultTypeInternal() {}
+  union {
+    ForwardParticipantRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ForwardParticipantRequestDefaultTypeInternal _ForwardParticipantRequest_default_instance_;
+PROTOBUF_CONSTEXPR ForwardParticipantResponse::ForwardParticipantResponse(
+    ::_pbi::ConstantInitialized) {}
+struct ForwardParticipantResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ForwardParticipantResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ForwardParticipantResponseDefaultTypeInternal() {}
+  union {
+    ForwardParticipantResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ForwardParticipantResponseDefaultTypeInternal _ForwardParticipantResponse_default_instance_;
+PROTOBUF_CONSTEXPR MoveParticipantRequest::MoveParticipantRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.room_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.identity_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.destination_room_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct MoveParticipantRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MoveParticipantRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MoveParticipantRequestDefaultTypeInternal() {}
+  union {
+    MoveParticipantRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveParticipantRequestDefaultTypeInternal _MoveParticipantRequest_default_instance_;
+PROTOBUF_CONSTEXPR MoveParticipantResponse::MoveParticipantResponse(
+    ::_pbi::ConstantInitialized) {}
+struct MoveParticipantResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MoveParticipantResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MoveParticipantResponseDefaultTypeInternal() {}
+  union {
+    MoveParticipantResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveParticipantResponseDefaultTypeInternal _MoveParticipantResponse_default_instance_;
 }  // namespace livekit
-static ::_pb::Metadata file_level_metadata_livekit_5froom_2eproto[21];
+static ::_pb::Metadata file_level_metadata_livekit_5froom_2eproto[25];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_livekit_5froom_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_livekit_5froom_2eproto = nullptr;
 
@@ -523,11 +576,42 @@ const uint32_t TableStruct_livekit_5froom_2eproto::offsets[] PROTOBUF_SECTION_VA
   PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.empty_timeout_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.departure_timeout_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.max_participants_),
+  PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.metadata_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.egress_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.min_playout_delay_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.max_playout_delay_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.sync_streams_),
   PROTOBUF_FIELD_OFFSET(::livekit::RoomConfiguration, _impl_.agents_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::ForwardParticipantRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::ForwardParticipantRequest, _impl_.room_),
+  PROTOBUF_FIELD_OFFSET(::livekit::ForwardParticipantRequest, _impl_.identity_),
+  PROTOBUF_FIELD_OFFSET(::livekit::ForwardParticipantRequest, _impl_.destination_room_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::ForwardParticipantResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::MoveParticipantRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::MoveParticipantRequest, _impl_.room_),
+  PROTOBUF_FIELD_OFFSET(::livekit::MoveParticipantRequest, _impl_.identity_),
+  PROTOBUF_FIELD_OFFSET(::livekit::MoveParticipantRequest, _impl_.destination_room_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::MoveParticipantResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::livekit::CreateRoomRequest)},
@@ -551,6 +635,10 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 166, -1, -1, sizeof(::livekit::SendDataResponse)},
   { 172, -1, -1, sizeof(::livekit::UpdateRoomMetadataRequest)},
   { 180, -1, -1, sizeof(::livekit::RoomConfiguration)},
+  { 196, -1, -1, sizeof(::livekit::ForwardParticipantRequest)},
+  { 205, -1, -1, sizeof(::livekit::ForwardParticipantResponse)},
+  { 211, -1, -1, sizeof(::livekit::MoveParticipantRequest)},
+  { 220, -1, -1, sizeof(::livekit::MoveParticipantResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -575,6 +663,10 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::livekit::_SendDataResponse_default_instance_._instance,
   &::livekit::_UpdateRoomMetadataRequest_default_instance_._instance,
   &::livekit::_RoomConfiguration_default_instance_._instance,
+  &::livekit::_ForwardParticipantRequest_default_instance_._instance,
+  &::livekit::_ForwardParticipantResponse_default_instance_._instance,
+  &::livekit::_MoveParticipantRequest_default_instance_._instance,
+  &::livekit::_MoveParticipantResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_livekit_5froom_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -625,38 +717,48 @@ const char descriptor_table_protodef_livekit_5froom_2eproto[] PROTOBUF_SECTION_V
   "n_identities\030\006 \003(\t\022\022\n\005topic\030\005 \001(\tH\000\210\001\001\022\r"
   "\n\005nonce\030\007 \001(\014B\010\n\006_topic\"\022\n\020SendDataRespo"
   "nse\";\n\031UpdateRoomMetadataRequest\022\014\n\004room"
-  "\030\001 \001(\t\022\020\n\010metadata\030\002 \001(\t\"\212\002\n\021RoomConfigu"
+  "\030\001 \001(\t\022\020\n\010metadata\030\002 \001(\t\"\234\002\n\021RoomConfigu"
   "ration\022\014\n\004name\030\001 \001(\t\022\025\n\rempty_timeout\030\002 "
   "\001(\r\022\031\n\021departure_timeout\030\003 \001(\r\022\030\n\020max_pa"
-  "rticipants\030\004 \001(\r\022#\n\006egress\030\005 \001(\0132\023.livek"
-  "it.RoomEgress\022\031\n\021min_playout_delay\030\007 \001(\r"
-  "\022\031\n\021max_playout_delay\030\010 \001(\r\022\024\n\014sync_stre"
-  "ams\030\t \001(\010\022*\n\006agents\030\n \003(\0132\032.livekit.Room"
-  "AgentDispatch2\346\006\n\013RoomService\0227\n\nCreateR"
-  "oom\022\032.livekit.CreateRoomRequest\032\r.liveki"
-  "t.Room\022B\n\tListRooms\022\031.livekit.ListRoomsR"
-  "equest\032\032.livekit.ListRoomsResponse\022E\n\nDe"
-  "leteRoom\022\032.livekit.DeleteRoomRequest\032\033.l"
-  "ivekit.DeleteRoomResponse\022W\n\020ListPartici"
-  "pants\022 .livekit.ListParticipantsRequest\032"
-  "!.livekit.ListParticipantsResponse\022L\n\016Ge"
-  "tParticipant\022 .livekit.RoomParticipantId"
-  "entity\032\030.livekit.ParticipantInfo\022Y\n\021Remo"
-  "veParticipant\022 .livekit.RoomParticipantI"
-  "dentity\032\".livekit.RemoveParticipantRespo"
-  "nse\022S\n\022MutePublishedTrack\022\035.livekit.Mute"
-  "RoomTrackRequest\032\036.livekit.MuteRoomTrack"
-  "Response\022P\n\021UpdateParticipant\022!.livekit."
-  "UpdateParticipantRequest\032\030.livekit.Parti"
-  "cipantInfo\022`\n\023UpdateSubscriptions\022#.live"
-  "kit.UpdateSubscriptionsRequest\032$.livekit"
-  ".UpdateSubscriptionsResponse\022\?\n\010SendData"
-  "\022\030.livekit.SendDataRequest\032\031.livekit.Sen"
-  "dDataResponse\022G\n\022UpdateRoomMetadata\022\".li"
-  "vekit.UpdateRoomMetadataRequest\032\r.liveki"
-  "t.RoomBFZ#github.com/livekit/protocol/li"
-  "vekit\252\002\rLiveKit.Proto\352\002\016LiveKit::Protob\006"
-  "proto3"
+  "rticipants\030\004 \001(\r\022\020\n\010metadata\030\013 \001(\t\022#\n\006eg"
+  "ress\030\005 \001(\0132\023.livekit.RoomEgress\022\031\n\021min_p"
+  "layout_delay\030\007 \001(\r\022\031\n\021max_playout_delay\030"
+  "\010 \001(\r\022\024\n\014sync_streams\030\t \001(\010\022*\n\006agents\030\n "
+  "\003(\0132\032.livekit.RoomAgentDispatch\"U\n\031Forwa"
+  "rdParticipantRequest\022\014\n\004room\030\001 \001(\t\022\020\n\010id"
+  "entity\030\002 \001(\t\022\030\n\020destination_room\030\003 \001(\t\"\034"
+  "\n\032ForwardParticipantResponse\"R\n\026MovePart"
+  "icipantRequest\022\014\n\004room\030\001 \001(\t\022\020\n\010identity"
+  "\030\002 \001(\t\022\030\n\020destination_room\030\003 \001(\t\"\031\n\027Move"
+  "ParticipantResponse2\233\010\n\013RoomService\0227\n\nC"
+  "reateRoom\022\032.livekit.CreateRoomRequest\032\r."
+  "livekit.Room\022B\n\tListRooms\022\031.livekit.List"
+  "RoomsRequest\032\032.livekit.ListRoomsResponse"
+  "\022E\n\nDeleteRoom\022\032.livekit.DeleteRoomReque"
+  "st\032\033.livekit.DeleteRoomResponse\022W\n\020ListP"
+  "articipants\022 .livekit.ListParticipantsRe"
+  "quest\032!.livekit.ListParticipantsResponse"
+  "\022L\n\016GetParticipant\022 .livekit.RoomPartici"
+  "pantIdentity\032\030.livekit.ParticipantInfo\022Y"
+  "\n\021RemoveParticipant\022 .livekit.RoomPartic"
+  "ipantIdentity\032\".livekit.RemoveParticipan"
+  "tResponse\022S\n\022MutePublishedTrack\022\035.liveki"
+  "t.MuteRoomTrackRequest\032\036.livekit.MuteRoo"
+  "mTrackResponse\022P\n\021UpdateParticipant\022!.li"
+  "vekit.UpdateParticipantRequest\032\030.livekit"
+  ".ParticipantInfo\022`\n\023UpdateSubscriptions\022"
+  "#.livekit.UpdateSubscriptionsRequest\032$.l"
+  "ivekit.UpdateSubscriptionsResponse\022\?\n\010Se"
+  "ndData\022\030.livekit.SendDataRequest\032\031.livek"
+  "it.SendDataResponse\022G\n\022UpdateRoomMetadat"
+  "a\022\".livekit.UpdateRoomMetadataRequest\032\r."
+  "livekit.Room\022]\n\022ForwardParticipant\022\".liv"
+  "ekit.ForwardParticipantRequest\032#.livekit"
+  ".ForwardParticipantResponse\022T\n\017MoveParti"
+  "cipant\022\037.livekit.MoveParticipantRequest\032"
+  " .livekit.MoveParticipantResponseBFZ#git"
+  "hub.com/livekit/protocol/livekit\252\002\rLiveK"
+  "it.Proto\352\002\016LiveKit::Protob\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_livekit_5froom_2eproto_deps[3] = {
   &::descriptor_table_livekit_5fagent_5fdispatch_2eproto,
@@ -665,9 +767,9 @@ static const ::_pbi::DescriptorTable* const descriptor_table_livekit_5froom_2epr
 };
 static ::_pbi::once_flag descriptor_table_livekit_5froom_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_livekit_5froom_2eproto = {
-    false, false, 3126, descriptor_table_protodef_livekit_5froom_2eproto,
+    false, false, 3553, descriptor_table_protodef_livekit_5froom_2eproto,
     "livekit_room.proto",
-    &descriptor_table_livekit_5froom_2eproto_once, descriptor_table_livekit_5froom_2eproto_deps, 3, 21,
+    &descriptor_table_livekit_5froom_2eproto_once, descriptor_table_livekit_5froom_2eproto_deps, 3, 25,
     schemas, file_default_instances, TableStruct_livekit_5froom_2eproto::offsets,
     file_level_metadata_livekit_5froom_2eproto, file_level_enum_descriptors_livekit_5froom_2eproto,
     file_level_service_descriptors_livekit_5froom_2eproto,
@@ -5274,6 +5376,7 @@ RoomConfiguration::RoomConfiguration(const RoomConfiguration& from)
   new (&_impl_) Impl_{
       decltype(_impl_.agents_){from._impl_.agents_}
     , decltype(_impl_.name_){}
+    , decltype(_impl_.metadata_){}
     , decltype(_impl_.egress_){nullptr}
     , decltype(_impl_.empty_timeout_){}
     , decltype(_impl_.departure_timeout_){}
@@ -5292,6 +5395,14 @@ RoomConfiguration::RoomConfiguration(const RoomConfiguration& from)
     _this->_impl_.name_.Set(from._internal_name(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.metadata_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_metadata().empty()) {
+    _this->_impl_.metadata_.Set(from._internal_metadata(), 
+      _this->GetArenaForAllocation());
+  }
   if (from._internal_has_egress()) {
     _this->_impl_.egress_ = new ::livekit::RoomEgress(*from._impl_.egress_);
   }
@@ -5308,6 +5419,7 @@ inline void RoomConfiguration::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_.agents_){arena}
     , decltype(_impl_.name_){}
+    , decltype(_impl_.metadata_){}
     , decltype(_impl_.egress_){nullptr}
     , decltype(_impl_.empty_timeout_){0u}
     , decltype(_impl_.departure_timeout_){0u}
@@ -5320,6 +5432,10 @@ inline void RoomConfiguration::SharedCtor(
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.metadata_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.metadata_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -5336,6 +5452,7 @@ inline void RoomConfiguration::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.agents_.~RepeatedPtrField();
   _impl_.name_.Destroy();
+  _impl_.metadata_.Destroy();
   if (this != internal_default_instance()) delete _impl_.egress_;
 }
 
@@ -5351,6 +5468,7 @@ void RoomConfiguration::Clear() {
 
   _impl_.agents_.Clear();
   _impl_.name_.ClearToEmpty();
+  _impl_.metadata_.ClearToEmpty();
   if (GetArenaForAllocation() == nullptr && _impl_.egress_ != nullptr) {
     delete _impl_.egress_;
   }
@@ -5446,6 +5564,16 @@ const char* RoomConfiguration::_InternalParse(const char* ptr, ::_pbi::ParseCont
         } else
           goto handle_unusual;
         continue;
+      // string metadata = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          auto str = _internal_mutable_metadata();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.RoomConfiguration.metadata"));
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -5536,6 +5664,16 @@ uint8_t* RoomConfiguration::_InternalSerialize(
         InternalWriteMessage(10, repfield, repfield.GetCachedSize(), target, stream);
   }
 
+  // string metadata = 11;
+  if (!this->_internal_metadata().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_metadata().data(), static_cast<int>(this->_internal_metadata().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.RoomConfiguration.metadata");
+    target = stream->WriteStringMaybeAliased(
+        11, this->_internal_metadata(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -5564,6 +5702,13 @@ size_t RoomConfiguration::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_name());
+  }
+
+  // string metadata = 11;
+  if (!this->_internal_metadata().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_metadata());
   }
 
   // .livekit.RoomEgress egress = 5;
@@ -5625,6 +5770,9 @@ void RoomConfiguration::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
+  if (!from._internal_metadata().empty()) {
+    _this->_internal_set_metadata(from._internal_metadata());
+  }
   if (from._internal_has_egress()) {
     _this->_internal_mutable_egress()->::livekit::RoomEgress::MergeFrom(
         from._internal_egress());
@@ -5671,6 +5819,10 @@ void RoomConfiguration::InternalSwap(RoomConfiguration* other) {
       &_impl_.name_, lhs_arena,
       &other->_impl_.name_, rhs_arena
   );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.metadata_, lhs_arena,
+      &other->_impl_.metadata_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RoomConfiguration, _impl_.sync_streams_)
       + sizeof(RoomConfiguration::_impl_.sync_streams_)
@@ -5683,6 +5835,692 @@ void RoomConfiguration::InternalSwap(RoomConfiguration* other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5froom_2eproto_getter, &descriptor_table_livekit_5froom_2eproto_once,
       file_level_metadata_livekit_5froom_2eproto[20]);
+}
+
+// ===================================================================
+
+class ForwardParticipantRequest::_Internal {
+ public:
+};
+
+ForwardParticipantRequest::ForwardParticipantRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.ForwardParticipantRequest)
+}
+ForwardParticipantRequest::ForwardParticipantRequest(const ForwardParticipantRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ForwardParticipantRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.room_){}
+    , decltype(_impl_.identity_){}
+    , decltype(_impl_.destination_room_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.room_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.room_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_room().empty()) {
+    _this->_impl_.room_.Set(from._internal_room(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.identity_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_identity().empty()) {
+    _this->_impl_.identity_.Set(from._internal_identity(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.destination_room_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_room_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_destination_room().empty()) {
+    _this->_impl_.destination_room_.Set(from._internal_destination_room(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:livekit.ForwardParticipantRequest)
+}
+
+inline void ForwardParticipantRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.room_){}
+    , decltype(_impl_.identity_){}
+    , decltype(_impl_.destination_room_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.room_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.room_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.identity_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.destination_room_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_room_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+ForwardParticipantRequest::~ForwardParticipantRequest() {
+  // @@protoc_insertion_point(destructor:livekit.ForwardParticipantRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ForwardParticipantRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.room_.Destroy();
+  _impl_.identity_.Destroy();
+  _impl_.destination_room_.Destroy();
+}
+
+void ForwardParticipantRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ForwardParticipantRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.ForwardParticipantRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.room_.ClearToEmpty();
+  _impl_.identity_.ClearToEmpty();
+  _impl_.destination_room_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ForwardParticipantRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string room = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_room();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.ForwardParticipantRequest.room"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string identity = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_identity();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.ForwardParticipantRequest.identity"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string destination_room = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_destination_room();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.ForwardParticipantRequest.destination_room"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ForwardParticipantRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.ForwardParticipantRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string room = 1;
+  if (!this->_internal_room().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_room().data(), static_cast<int>(this->_internal_room().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.ForwardParticipantRequest.room");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_room(), target);
+  }
+
+  // string identity = 2;
+  if (!this->_internal_identity().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_identity().data(), static_cast<int>(this->_internal_identity().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.ForwardParticipantRequest.identity");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_identity(), target);
+  }
+
+  // string destination_room = 3;
+  if (!this->_internal_destination_room().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_destination_room().data(), static_cast<int>(this->_internal_destination_room().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.ForwardParticipantRequest.destination_room");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_destination_room(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.ForwardParticipantRequest)
+  return target;
+}
+
+size_t ForwardParticipantRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.ForwardParticipantRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string room = 1;
+  if (!this->_internal_room().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_room());
+  }
+
+  // string identity = 2;
+  if (!this->_internal_identity().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_identity());
+  }
+
+  // string destination_room = 3;
+  if (!this->_internal_destination_room().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_destination_room());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ForwardParticipantRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ForwardParticipantRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ForwardParticipantRequest::GetClassData() const { return &_class_data_; }
+
+
+void ForwardParticipantRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ForwardParticipantRequest*>(&to_msg);
+  auto& from = static_cast<const ForwardParticipantRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.ForwardParticipantRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_room().empty()) {
+    _this->_internal_set_room(from._internal_room());
+  }
+  if (!from._internal_identity().empty()) {
+    _this->_internal_set_identity(from._internal_identity());
+  }
+  if (!from._internal_destination_room().empty()) {
+    _this->_internal_set_destination_room(from._internal_destination_room());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ForwardParticipantRequest::CopyFrom(const ForwardParticipantRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.ForwardParticipantRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ForwardParticipantRequest::IsInitialized() const {
+  return true;
+}
+
+void ForwardParticipantRequest::InternalSwap(ForwardParticipantRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.room_, lhs_arena,
+      &other->_impl_.room_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.identity_, lhs_arena,
+      &other->_impl_.identity_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.destination_room_, lhs_arena,
+      &other->_impl_.destination_room_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ForwardParticipantRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5froom_2eproto_getter, &descriptor_table_livekit_5froom_2eproto_once,
+      file_level_metadata_livekit_5froom_2eproto[21]);
+}
+
+// ===================================================================
+
+class ForwardParticipantResponse::_Internal {
+ public:
+};
+
+ForwardParticipantResponse::ForwardParticipantResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:livekit.ForwardParticipantResponse)
+}
+ForwardParticipantResponse::ForwardParticipantResponse(const ForwardParticipantResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  ForwardParticipantResponse* const _this = this; (void)_this;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:livekit.ForwardParticipantResponse)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ForwardParticipantResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ForwardParticipantResponse::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata ForwardParticipantResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5froom_2eproto_getter, &descriptor_table_livekit_5froom_2eproto_once,
+      file_level_metadata_livekit_5froom_2eproto[22]);
+}
+
+// ===================================================================
+
+class MoveParticipantRequest::_Internal {
+ public:
+};
+
+MoveParticipantRequest::MoveParticipantRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.MoveParticipantRequest)
+}
+MoveParticipantRequest::MoveParticipantRequest(const MoveParticipantRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  MoveParticipantRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.room_){}
+    , decltype(_impl_.identity_){}
+    , decltype(_impl_.destination_room_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.room_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.room_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_room().empty()) {
+    _this->_impl_.room_.Set(from._internal_room(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.identity_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_identity().empty()) {
+    _this->_impl_.identity_.Set(from._internal_identity(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.destination_room_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_room_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_destination_room().empty()) {
+    _this->_impl_.destination_room_.Set(from._internal_destination_room(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:livekit.MoveParticipantRequest)
+}
+
+inline void MoveParticipantRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.room_){}
+    , decltype(_impl_.identity_){}
+    , decltype(_impl_.destination_room_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.room_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.room_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.identity_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.destination_room_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_room_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+MoveParticipantRequest::~MoveParticipantRequest() {
+  // @@protoc_insertion_point(destructor:livekit.MoveParticipantRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void MoveParticipantRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.room_.Destroy();
+  _impl_.identity_.Destroy();
+  _impl_.destination_room_.Destroy();
+}
+
+void MoveParticipantRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void MoveParticipantRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.MoveParticipantRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.room_.ClearToEmpty();
+  _impl_.identity_.ClearToEmpty();
+  _impl_.destination_room_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* MoveParticipantRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string room = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_room();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.MoveParticipantRequest.room"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string identity = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_identity();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.MoveParticipantRequest.identity"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string destination_room = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_destination_room();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.MoveParticipantRequest.destination_room"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* MoveParticipantRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.MoveParticipantRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string room = 1;
+  if (!this->_internal_room().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_room().data(), static_cast<int>(this->_internal_room().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.MoveParticipantRequest.room");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_room(), target);
+  }
+
+  // string identity = 2;
+  if (!this->_internal_identity().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_identity().data(), static_cast<int>(this->_internal_identity().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.MoveParticipantRequest.identity");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_identity(), target);
+  }
+
+  // string destination_room = 3;
+  if (!this->_internal_destination_room().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_destination_room().data(), static_cast<int>(this->_internal_destination_room().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.MoveParticipantRequest.destination_room");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_destination_room(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.MoveParticipantRequest)
+  return target;
+}
+
+size_t MoveParticipantRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.MoveParticipantRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string room = 1;
+  if (!this->_internal_room().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_room());
+  }
+
+  // string identity = 2;
+  if (!this->_internal_identity().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_identity());
+  }
+
+  // string destination_room = 3;
+  if (!this->_internal_destination_room().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_destination_room());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MoveParticipantRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    MoveParticipantRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MoveParticipantRequest::GetClassData() const { return &_class_data_; }
+
+
+void MoveParticipantRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<MoveParticipantRequest*>(&to_msg);
+  auto& from = static_cast<const MoveParticipantRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.MoveParticipantRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_room().empty()) {
+    _this->_internal_set_room(from._internal_room());
+  }
+  if (!from._internal_identity().empty()) {
+    _this->_internal_set_identity(from._internal_identity());
+  }
+  if (!from._internal_destination_room().empty()) {
+    _this->_internal_set_destination_room(from._internal_destination_room());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MoveParticipantRequest::CopyFrom(const MoveParticipantRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.MoveParticipantRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MoveParticipantRequest::IsInitialized() const {
+  return true;
+}
+
+void MoveParticipantRequest::InternalSwap(MoveParticipantRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.room_, lhs_arena,
+      &other->_impl_.room_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.identity_, lhs_arena,
+      &other->_impl_.identity_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.destination_room_, lhs_arena,
+      &other->_impl_.destination_room_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata MoveParticipantRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5froom_2eproto_getter, &descriptor_table_livekit_5froom_2eproto_once,
+      file_level_metadata_livekit_5froom_2eproto[23]);
+}
+
+// ===================================================================
+
+class MoveParticipantResponse::_Internal {
+ public:
+};
+
+MoveParticipantResponse::MoveParticipantResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:livekit.MoveParticipantResponse)
+}
+MoveParticipantResponse::MoveParticipantResponse(const MoveParticipantResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  MoveParticipantResponse* const _this = this; (void)_this;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:livekit.MoveParticipantResponse)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MoveParticipantResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MoveParticipantResponse::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata MoveParticipantResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5froom_2eproto_getter, &descriptor_table_livekit_5froom_2eproto_once,
+      file_level_metadata_livekit_5froom_2eproto[24]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -5771,6 +6609,22 @@ Arena::CreateMaybeMessage< ::livekit::UpdateRoomMetadataRequest >(Arena* arena) 
 template<> PROTOBUF_NOINLINE ::livekit::RoomConfiguration*
 Arena::CreateMaybeMessage< ::livekit::RoomConfiguration >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::RoomConfiguration >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::ForwardParticipantRequest*
+Arena::CreateMaybeMessage< ::livekit::ForwardParticipantRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::ForwardParticipantRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::ForwardParticipantResponse*
+Arena::CreateMaybeMessage< ::livekit::ForwardParticipantResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::ForwardParticipantResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::MoveParticipantRequest*
+Arena::CreateMaybeMessage< ::livekit::MoveParticipantRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::MoveParticipantRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::MoveParticipantResponse*
+Arena::CreateMaybeMessage< ::livekit::MoveParticipantResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::MoveParticipantResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

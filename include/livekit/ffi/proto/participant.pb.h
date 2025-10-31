@@ -110,11 +110,13 @@ enum DisconnectReason : int {
   ROOM_CLOSED = 10,
   USER_UNAVAILABLE = 11,
   USER_REJECTED = 12,
-  SIP_TRUNK_FAILURE = 13
+  SIP_TRUNK_FAILURE = 13,
+  CONNECTION_TIMEOUT = 14,
+  MEDIA_FAILURE = 15
 };
 bool DisconnectReason_IsValid(int value);
 constexpr DisconnectReason DisconnectReason_MIN = UNKNOWN_REASON;
-constexpr DisconnectReason DisconnectReason_MAX = SIP_TRUNK_FAILURE;
+constexpr DisconnectReason DisconnectReason_MAX = MEDIA_FAILURE;
 constexpr int DisconnectReason_ARRAYSIZE = DisconnectReason_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* DisconnectReason_descriptor();

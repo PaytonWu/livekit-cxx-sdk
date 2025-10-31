@@ -97,6 +97,21 @@ struct CreateSIPInboundTrunkRequestDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateSIPInboundTrunkRequestDefaultTypeInternal _CreateSIPInboundTrunkRequest_default_instance_;
+PROTOBUF_CONSTEXPR UpdateSIPInboundTrunkRequest::UpdateSIPInboundTrunkRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.sip_trunk_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.action_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
+struct UpdateSIPInboundTrunkRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateSIPInboundTrunkRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateSIPInboundTrunkRequestDefaultTypeInternal() {}
+  union {
+    UpdateSIPInboundTrunkRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateSIPInboundTrunkRequestDefaultTypeInternal _UpdateSIPInboundTrunkRequest_default_instance_;
 PROTOBUF_CONSTEXPR SIPInboundTrunkInfo_HeadersEntry_DoNotUse::SIPInboundTrunkInfo_HeadersEntry_DoNotUse(
     ::_pbi::ConstantInitialized) {}
 struct SIPInboundTrunkInfo_HeadersEntry_DoNotUseDefaultTypeInternal {
@@ -158,6 +173,27 @@ struct SIPInboundTrunkInfoDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPInboundTrunkInfoDefaultTypeInternal _SIPInboundTrunkInfo_default_instance_;
+PROTOBUF_CONSTEXPR SIPInboundTrunkUpdate::SIPInboundTrunkUpdate(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.auth_username_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.auth_password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.metadata_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.numbers_)*/nullptr
+  , /*decltype(_impl_.allowed_addresses_)*/nullptr
+  , /*decltype(_impl_.allowed_numbers_)*/nullptr
+  , /*decltype(_impl_.media_encryption_)*/0} {}
+struct SIPInboundTrunkUpdateDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SIPInboundTrunkUpdateDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SIPInboundTrunkUpdateDefaultTypeInternal() {}
+  union {
+    SIPInboundTrunkUpdate _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPInboundTrunkUpdateDefaultTypeInternal _SIPInboundTrunkUpdate_default_instance_;
 PROTOBUF_CONSTEXPR CreateSIPOutboundTrunkRequest::CreateSIPOutboundTrunkRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.trunk_)*/nullptr
@@ -171,6 +207,21 @@ struct CreateSIPOutboundTrunkRequestDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateSIPOutboundTrunkRequestDefaultTypeInternal _CreateSIPOutboundTrunkRequest_default_instance_;
+PROTOBUF_CONSTEXPR UpdateSIPOutboundTrunkRequest::UpdateSIPOutboundTrunkRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.sip_trunk_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.action_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
+struct UpdateSIPOutboundTrunkRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateSIPOutboundTrunkRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateSIPOutboundTrunkRequestDefaultTypeInternal() {}
+  union {
+    UpdateSIPOutboundTrunkRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateSIPOutboundTrunkRequestDefaultTypeInternal _UpdateSIPOutboundTrunkRequest_default_instance_;
 PROTOBUF_CONSTEXPR SIPOutboundTrunkInfo_HeadersEntry_DoNotUse::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse(
     ::_pbi::ConstantInitialized) {}
 struct SIPOutboundTrunkInfo_HeadersEntry_DoNotUseDefaultTypeInternal {
@@ -216,6 +267,7 @@ PROTOBUF_CONSTEXPR SIPOutboundTrunkInfo::SIPOutboundTrunkInfo(
   , /*decltype(_impl_.address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.auth_username_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.auth_password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.destination_country_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.transport_)*/0
   , /*decltype(_impl_.include_headers_)*/0
   , /*decltype(_impl_.media_encryption_)*/0
@@ -229,6 +281,28 @@ struct SIPOutboundTrunkInfoDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPOutboundTrunkInfoDefaultTypeInternal _SIPOutboundTrunkInfo_default_instance_;
+PROTOBUF_CONSTEXPR SIPOutboundTrunkUpdate::SIPOutboundTrunkUpdate(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.auth_username_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.auth_password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.metadata_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.destination_country_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.numbers_)*/nullptr
+  , /*decltype(_impl_.transport_)*/0
+  , /*decltype(_impl_.media_encryption_)*/0} {}
+struct SIPOutboundTrunkUpdateDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SIPOutboundTrunkUpdateDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SIPOutboundTrunkUpdateDefaultTypeInternal() {}
+  union {
+    SIPOutboundTrunkUpdate _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPOutboundTrunkUpdateDefaultTypeInternal _SIPOutboundTrunkUpdate_default_instance_;
 PROTOBUF_CONSTEXPR GetSIPInboundTrunkRequest::GetSIPInboundTrunkRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.sip_trunk_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -454,6 +528,7 @@ PROTOBUF_CONSTEXPR CreateSIPDispatchRuleRequest::CreateSIPDispatchRuleRequest(
   , /*decltype(_impl_.room_preset_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.rule_)*/nullptr
   , /*decltype(_impl_.room_config_)*/nullptr
+  , /*decltype(_impl_.dispatch_rule_)*/nullptr
   , /*decltype(_impl_.hide_phone_number_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CreateSIPDispatchRuleRequestDefaultTypeInternal {
@@ -465,6 +540,21 @@ struct CreateSIPDispatchRuleRequestDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateSIPDispatchRuleRequestDefaultTypeInternal _CreateSIPDispatchRuleRequest_default_instance_;
+PROTOBUF_CONSTEXPR UpdateSIPDispatchRuleRequest::UpdateSIPDispatchRuleRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.sip_dispatch_rule_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.action_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
+struct UpdateSIPDispatchRuleRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateSIPDispatchRuleRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateSIPDispatchRuleRequestDefaultTypeInternal() {}
+  union {
+    UpdateSIPDispatchRuleRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateSIPDispatchRuleRequestDefaultTypeInternal _UpdateSIPDispatchRuleRequest_default_instance_;
 PROTOBUF_CONSTEXPR SIPDispatchRuleInfo_AttributesEntry_DoNotUse::SIPDispatchRuleInfo_AttributesEntry_DoNotUse(
     ::_pbi::ConstantInitialized) {}
 struct SIPDispatchRuleInfo_AttributesEntry_DoNotUseDefaultTypeInternal {
@@ -500,6 +590,36 @@ struct SIPDispatchRuleInfoDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPDispatchRuleInfoDefaultTypeInternal _SIPDispatchRuleInfo_default_instance_;
+PROTOBUF_CONSTEXPR SIPDispatchRuleUpdate_AttributesEntry_DoNotUse::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse(
+    ::_pbi::ConstantInitialized) {}
+struct SIPDispatchRuleUpdate_AttributesEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SIPDispatchRuleUpdate_AttributesEntry_DoNotUseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SIPDispatchRuleUpdate_AttributesEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    SIPDispatchRuleUpdate_AttributesEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPDispatchRuleUpdate_AttributesEntry_DoNotUseDefaultTypeInternal _SIPDispatchRuleUpdate_AttributesEntry_DoNotUse_default_instance_;
+PROTOBUF_CONSTEXPR SIPDispatchRuleUpdate::SIPDispatchRuleUpdate(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.attributes_)*/{::_pbi::ConstantInitialized()}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.metadata_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.trunk_ids_)*/nullptr
+  , /*decltype(_impl_.rule_)*/nullptr
+  , /*decltype(_impl_.media_encryption_)*/0} {}
+struct SIPDispatchRuleUpdateDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SIPDispatchRuleUpdateDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SIPDispatchRuleUpdateDefaultTypeInternal() {}
+  union {
+    SIPDispatchRuleUpdate _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPDispatchRuleUpdateDefaultTypeInternal _SIPDispatchRuleUpdate_default_instance_;
 PROTOBUF_CONSTEXPR ListSIPDispatchRuleRequest::ListSIPDispatchRuleRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.dispatch_rule_ids_)*/{}
@@ -570,6 +690,7 @@ PROTOBUF_CONSTEXPR SIPOutboundConfig::SIPOutboundConfig(
   , /*decltype(_impl_.hostname_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.auth_username_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.auth_password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.destination_country_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.transport_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SIPOutboundConfigDefaultTypeInternal {
@@ -668,6 +789,7 @@ PROTOBUF_CONSTEXPR TransferSIPParticipantRequest::TransferSIPParticipantRequest(
   , /*decltype(_impl_.participant_identity_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.room_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.transfer_to_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.ringing_timeout_)*/nullptr
   , /*decltype(_impl_.play_dialtone_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct TransferSIPParticipantRequestDefaultTypeInternal {
@@ -727,6 +849,26 @@ struct SIPCallInfoDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPCallInfoDefaultTypeInternal _SIPCallInfo_default_instance_;
+PROTOBUF_CONSTEXPR SIPTransferInfo::SIPTransferInfo(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.transfer_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.transfer_to_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.error_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.transfer_status_code_)*/nullptr
+  , /*decltype(_impl_.transfer_initiated_at_ns_)*/int64_t{0}
+  , /*decltype(_impl_.transfer_completed_at_ns_)*/int64_t{0}
+  , /*decltype(_impl_.transfer_status_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SIPTransferInfoDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SIPTransferInfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SIPTransferInfoDefaultTypeInternal() {}
+  union {
+    SIPTransferInfo _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPTransferInfoDefaultTypeInternal _SIPTransferInfo_default_instance_;
 PROTOBUF_CONSTEXPR SIPUri::SIPUri(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.user_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -745,8 +887,8 @@ struct SIPUriDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SIPUriDefaultTypeInternal _SIPUri_default_instance_;
 }  // namespace livekit
-static ::_pb::Metadata file_level_metadata_livekit_5fsip_2eproto[47];
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_livekit_5fsip_2eproto[8];
+static ::_pb::Metadata file_level_metadata_livekit_5fsip_2eproto[55];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_livekit_5fsip_2eproto[9];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_livekit_5fsip_2eproto = nullptr;
 
 const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -802,6 +944,16 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPInboundTrunkRequest, _impl_.trunk_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPInboundTrunkRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPInboundTrunkRequest, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPInboundTrunkRequest, _impl_.sip_trunk_id_),
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPInboundTrunkRequest, _impl_.action_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -854,6 +1006,28 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkInfo, _impl_.max_call_duration_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkInfo, _impl_.krisp_enabled_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkInfo, _impl_.media_encryption_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_.numbers_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_.allowed_addresses_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_.allowed_numbers_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_.auth_username_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_.auth_password_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_.metadata_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPInboundTrunkUpdate, _impl_.media_encryption_),
+  ~0u,
+  ~0u,
+  ~0u,
+  0,
+  1,
+  2,
+  3,
+  4,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPOutboundTrunkRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -861,6 +1035,16 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPOutboundTrunkRequest, _impl_.trunk_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPOutboundTrunkRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPOutboundTrunkRequest, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPOutboundTrunkRequest, _impl_.sip_trunk_id_),
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPOutboundTrunkRequest, _impl_.action_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -901,6 +1085,7 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.name_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.metadata_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.address_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.destination_country_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.transport_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.numbers_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.auth_username_),
@@ -910,6 +1095,30 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.attributes_to_headers_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.include_headers_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkInfo, _impl_.media_encryption_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.address_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.transport_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.destination_country_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.numbers_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.auth_username_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.auth_password_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.metadata_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundTrunkUpdate, _impl_.media_encryption_),
+  0,
+  6,
+  5,
+  ~0u,
+  1,
+  2,
+  3,
+  4,
+  7,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::livekit::GetSIPInboundTrunkRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1042,6 +1251,7 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPDispatchRuleRequest, _impl_.dispatch_rule_),
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPDispatchRuleRequest, _impl_.rule_),
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPDispatchRuleRequest, _impl_.trunk_ids_),
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPDispatchRuleRequest, _impl_.hide_phone_number_),
@@ -1051,6 +1261,16 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPDispatchRuleRequest, _impl_.attributes_),
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPDispatchRuleRequest, _impl_.room_preset_),
   PROTOBUF_FIELD_OFFSET(::livekit::CreateSIPDispatchRuleRequest, _impl_.room_config_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPDispatchRuleRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPDispatchRuleRequest, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPDispatchRuleRequest, _impl_.sip_dispatch_rule_id_),
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::livekit::UpdateSIPDispatchRuleRequest, _impl_.action_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1079,6 +1299,34 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleInfo, _impl_.room_config_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleInfo, _impl_.krisp_enabled_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleInfo, _impl_.media_encryption_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse, value_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate, _impl_.trunk_ids_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate, _impl_.rule_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate, _impl_.metadata_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate, _impl_.attributes_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPDispatchRuleUpdate, _impl_.media_encryption_),
+  ~0u,
+  ~0u,
+  0,
+  1,
+  ~0u,
+  2,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::livekit::ListSIPDispatchRuleRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1129,6 +1377,7 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundConfig, _impl_.hostname_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundConfig, _impl_.destination_country_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundConfig, _impl_.transport_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundConfig, _impl_.auth_username_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPOutboundConfig, _impl_.auth_password_),
@@ -1211,6 +1460,7 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::TransferSIPParticipantRequest, _impl_.transfer_to_),
   PROTOBUF_FIELD_OFFSET(::livekit::TransferSIPParticipantRequest, _impl_.play_dialtone_),
   PROTOBUF_FIELD_OFFSET(::livekit::TransferSIPParticipantRequest, _impl_.headers_),
+  PROTOBUF_FIELD_OFFSET(::livekit::TransferSIPParticipantRequest, _impl_.ringing_timeout_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPCallInfo_ParticipantAttributesEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPCallInfo_ParticipantAttributesEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1252,6 +1502,20 @@ const uint32_t TableStruct_livekit_5fsip_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::SIPCallInfo, _impl_.audio_codec_),
   PROTOBUF_FIELD_OFFSET(::livekit::SIPCallInfo, _impl_.media_encryption_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _impl_.transfer_id_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _impl_.call_id_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _impl_.transfer_to_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _impl_.transfer_initiated_at_ns_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _impl_.transfer_completed_at_ns_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _impl_.transfer_status_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _impl_.error_),
+  PROTOBUF_FIELD_OFFSET(::livekit::SIPTransferInfo, _impl_.transfer_status_code_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::livekit::SIPUri, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -1268,49 +1532,57 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 8, -1, -1, sizeof(::livekit::CreateSIPTrunkRequest)},
   { 25, -1, -1, sizeof(::livekit::SIPTrunkInfo)},
   { 45, -1, -1, sizeof(::livekit::CreateSIPInboundTrunkRequest)},
-  { 52, 60, -1, sizeof(::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse)},
-  { 62, 70, -1, sizeof(::livekit::SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse)},
-  { 72, 80, -1, sizeof(::livekit::SIPInboundTrunkInfo_AttributesToHeadersEntry_DoNotUse)},
-  { 82, -1, -1, sizeof(::livekit::SIPInboundTrunkInfo)},
-  { 104, -1, -1, sizeof(::livekit::CreateSIPOutboundTrunkRequest)},
-  { 111, 119, -1, sizeof(::livekit::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse)},
-  { 121, 129, -1, sizeof(::livekit::SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse)},
-  { 131, 139, -1, sizeof(::livekit::SIPOutboundTrunkInfo_AttributesToHeadersEntry_DoNotUse)},
-  { 141, -1, -1, sizeof(::livekit::SIPOutboundTrunkInfo)},
-  { 160, -1, -1, sizeof(::livekit::GetSIPInboundTrunkRequest)},
-  { 167, -1, -1, sizeof(::livekit::GetSIPInboundTrunkResponse)},
-  { 174, -1, -1, sizeof(::livekit::GetSIPOutboundTrunkRequest)},
-  { 181, -1, -1, sizeof(::livekit::GetSIPOutboundTrunkResponse)},
-  { 188, -1, -1, sizeof(::livekit::ListSIPTrunkRequest)},
-  { 195, -1, -1, sizeof(::livekit::ListSIPTrunkResponse)},
-  { 202, -1, -1, sizeof(::livekit::ListSIPInboundTrunkRequest)},
-  { 211, -1, -1, sizeof(::livekit::ListSIPInboundTrunkResponse)},
-  { 218, -1, -1, sizeof(::livekit::ListSIPOutboundTrunkRequest)},
-  { 227, -1, -1, sizeof(::livekit::ListSIPOutboundTrunkResponse)},
-  { 234, -1, -1, sizeof(::livekit::DeleteSIPTrunkRequest)},
-  { 241, -1, -1, sizeof(::livekit::SIPDispatchRuleDirect)},
-  { 249, -1, -1, sizeof(::livekit::SIPDispatchRuleIndividual)},
-  { 257, -1, -1, sizeof(::livekit::SIPDispatchRuleCallee)},
-  { 266, -1, -1, sizeof(::livekit::SIPDispatchRule)},
-  { 276, 284, -1, sizeof(::livekit::CreateSIPDispatchRuleRequest_AttributesEntry_DoNotUse)},
-  { 286, -1, -1, sizeof(::livekit::CreateSIPDispatchRuleRequest)},
-  { 301, 309, -1, sizeof(::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse)},
-  { 311, -1, -1, sizeof(::livekit::SIPDispatchRuleInfo)},
-  { 329, -1, -1, sizeof(::livekit::ListSIPDispatchRuleRequest)},
-  { 338, -1, -1, sizeof(::livekit::ListSIPDispatchRuleResponse)},
-  { 345, -1, -1, sizeof(::livekit::DeleteSIPDispatchRuleRequest)},
-  { 352, 360, -1, sizeof(::livekit::SIPOutboundConfig_HeadersToAttributesEntry_DoNotUse)},
-  { 362, 370, -1, sizeof(::livekit::SIPOutboundConfig_AttributesToHeadersEntry_DoNotUse)},
-  { 372, -1, -1, sizeof(::livekit::SIPOutboundConfig)},
-  { 384, 392, -1, sizeof(::livekit::CreateSIPParticipantRequest_ParticipantAttributesEntry_DoNotUse)},
-  { 394, 402, -1, sizeof(::livekit::CreateSIPParticipantRequest_HeadersEntry_DoNotUse)},
-  { 404, -1, -1, sizeof(::livekit::CreateSIPParticipantRequest)},
-  { 430, -1, -1, sizeof(::livekit::SIPParticipantInfo)},
-  { 440, 448, -1, sizeof(::livekit::TransferSIPParticipantRequest_HeadersEntry_DoNotUse)},
-  { 450, -1, -1, sizeof(::livekit::TransferSIPParticipantRequest)},
-  { 461, 469, -1, sizeof(::livekit::SIPCallInfo_ParticipantAttributesEntry_DoNotUse)},
-  { 471, -1, -1, sizeof(::livekit::SIPCallInfo)},
-  { 501, -1, -1, sizeof(::livekit::SIPUri)},
+  { 52, -1, -1, sizeof(::livekit::UpdateSIPInboundTrunkRequest)},
+  { 62, 70, -1, sizeof(::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse)},
+  { 72, 80, -1, sizeof(::livekit::SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse)},
+  { 82, 90, -1, sizeof(::livekit::SIPInboundTrunkInfo_AttributesToHeadersEntry_DoNotUse)},
+  { 92, -1, -1, sizeof(::livekit::SIPInboundTrunkInfo)},
+  { 114, 128, -1, sizeof(::livekit::SIPInboundTrunkUpdate)},
+  { 136, -1, -1, sizeof(::livekit::CreateSIPOutboundTrunkRequest)},
+  { 143, -1, -1, sizeof(::livekit::UpdateSIPOutboundTrunkRequest)},
+  { 153, 161, -1, sizeof(::livekit::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse)},
+  { 163, 171, -1, sizeof(::livekit::SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse)},
+  { 173, 181, -1, sizeof(::livekit::SIPOutboundTrunkInfo_AttributesToHeadersEntry_DoNotUse)},
+  { 183, -1, -1, sizeof(::livekit::SIPOutboundTrunkInfo)},
+  { 203, 218, -1, sizeof(::livekit::SIPOutboundTrunkUpdate)},
+  { 227, -1, -1, sizeof(::livekit::GetSIPInboundTrunkRequest)},
+  { 234, -1, -1, sizeof(::livekit::GetSIPInboundTrunkResponse)},
+  { 241, -1, -1, sizeof(::livekit::GetSIPOutboundTrunkRequest)},
+  { 248, -1, -1, sizeof(::livekit::GetSIPOutboundTrunkResponse)},
+  { 255, -1, -1, sizeof(::livekit::ListSIPTrunkRequest)},
+  { 262, -1, -1, sizeof(::livekit::ListSIPTrunkResponse)},
+  { 269, -1, -1, sizeof(::livekit::ListSIPInboundTrunkRequest)},
+  { 278, -1, -1, sizeof(::livekit::ListSIPInboundTrunkResponse)},
+  { 285, -1, -1, sizeof(::livekit::ListSIPOutboundTrunkRequest)},
+  { 294, -1, -1, sizeof(::livekit::ListSIPOutboundTrunkResponse)},
+  { 301, -1, -1, sizeof(::livekit::DeleteSIPTrunkRequest)},
+  { 308, -1, -1, sizeof(::livekit::SIPDispatchRuleDirect)},
+  { 316, -1, -1, sizeof(::livekit::SIPDispatchRuleIndividual)},
+  { 324, -1, -1, sizeof(::livekit::SIPDispatchRuleCallee)},
+  { 333, -1, -1, sizeof(::livekit::SIPDispatchRule)},
+  { 343, 351, -1, sizeof(::livekit::CreateSIPDispatchRuleRequest_AttributesEntry_DoNotUse)},
+  { 353, -1, -1, sizeof(::livekit::CreateSIPDispatchRuleRequest)},
+  { 369, -1, -1, sizeof(::livekit::UpdateSIPDispatchRuleRequest)},
+  { 379, 387, -1, sizeof(::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse)},
+  { 389, -1, -1, sizeof(::livekit::SIPDispatchRuleInfo)},
+  { 407, 415, -1, sizeof(::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse)},
+  { 417, 429, -1, sizeof(::livekit::SIPDispatchRuleUpdate)},
+  { 435, -1, -1, sizeof(::livekit::ListSIPDispatchRuleRequest)},
+  { 444, -1, -1, sizeof(::livekit::ListSIPDispatchRuleResponse)},
+  { 451, -1, -1, sizeof(::livekit::DeleteSIPDispatchRuleRequest)},
+  { 458, 466, -1, sizeof(::livekit::SIPOutboundConfig_HeadersToAttributesEntry_DoNotUse)},
+  { 468, 476, -1, sizeof(::livekit::SIPOutboundConfig_AttributesToHeadersEntry_DoNotUse)},
+  { 478, -1, -1, sizeof(::livekit::SIPOutboundConfig)},
+  { 491, 499, -1, sizeof(::livekit::CreateSIPParticipantRequest_ParticipantAttributesEntry_DoNotUse)},
+  { 501, 509, -1, sizeof(::livekit::CreateSIPParticipantRequest_HeadersEntry_DoNotUse)},
+  { 511, -1, -1, sizeof(::livekit::CreateSIPParticipantRequest)},
+  { 537, -1, -1, sizeof(::livekit::SIPParticipantInfo)},
+  { 547, 555, -1, sizeof(::livekit::TransferSIPParticipantRequest_HeadersEntry_DoNotUse)},
+  { 557, -1, -1, sizeof(::livekit::TransferSIPParticipantRequest)},
+  { 569, 577, -1, sizeof(::livekit::SIPCallInfo_ParticipantAttributesEntry_DoNotUse)},
+  { 579, -1, -1, sizeof(::livekit::SIPCallInfo)},
+  { 609, -1, -1, sizeof(::livekit::SIPTransferInfo)},
+  { 623, -1, -1, sizeof(::livekit::SIPUri)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -1318,15 +1590,19 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::livekit::_CreateSIPTrunkRequest_default_instance_._instance,
   &::livekit::_SIPTrunkInfo_default_instance_._instance,
   &::livekit::_CreateSIPInboundTrunkRequest_default_instance_._instance,
+  &::livekit::_UpdateSIPInboundTrunkRequest_default_instance_._instance,
   &::livekit::_SIPInboundTrunkInfo_HeadersEntry_DoNotUse_default_instance_._instance,
   &::livekit::_SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse_default_instance_._instance,
   &::livekit::_SIPInboundTrunkInfo_AttributesToHeadersEntry_DoNotUse_default_instance_._instance,
   &::livekit::_SIPInboundTrunkInfo_default_instance_._instance,
+  &::livekit::_SIPInboundTrunkUpdate_default_instance_._instance,
   &::livekit::_CreateSIPOutboundTrunkRequest_default_instance_._instance,
+  &::livekit::_UpdateSIPOutboundTrunkRequest_default_instance_._instance,
   &::livekit::_SIPOutboundTrunkInfo_HeadersEntry_DoNotUse_default_instance_._instance,
   &::livekit::_SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse_default_instance_._instance,
   &::livekit::_SIPOutboundTrunkInfo_AttributesToHeadersEntry_DoNotUse_default_instance_._instance,
   &::livekit::_SIPOutboundTrunkInfo_default_instance_._instance,
+  &::livekit::_SIPOutboundTrunkUpdate_default_instance_._instance,
   &::livekit::_GetSIPInboundTrunkRequest_default_instance_._instance,
   &::livekit::_GetSIPInboundTrunkResponse_default_instance_._instance,
   &::livekit::_GetSIPOutboundTrunkRequest_default_instance_._instance,
@@ -1344,8 +1620,11 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::livekit::_SIPDispatchRule_default_instance_._instance,
   &::livekit::_CreateSIPDispatchRuleRequest_AttributesEntry_DoNotUse_default_instance_._instance,
   &::livekit::_CreateSIPDispatchRuleRequest_default_instance_._instance,
+  &::livekit::_UpdateSIPDispatchRuleRequest_default_instance_._instance,
   &::livekit::_SIPDispatchRuleInfo_AttributesEntry_DoNotUse_default_instance_._instance,
   &::livekit::_SIPDispatchRuleInfo_default_instance_._instance,
+  &::livekit::_SIPDispatchRuleUpdate_AttributesEntry_DoNotUse_default_instance_._instance,
+  &::livekit::_SIPDispatchRuleUpdate_default_instance_._instance,
   &::livekit::_ListSIPDispatchRuleRequest_default_instance_._instance,
   &::livekit::_ListSIPDispatchRuleResponse_default_instance_._instance,
   &::livekit::_DeleteSIPDispatchRuleRequest_default_instance_._instance,
@@ -1360,6 +1639,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::livekit::_TransferSIPParticipantRequest_default_instance_._instance,
   &::livekit::_SIPCallInfo_ParticipantAttributesEntry_DoNotUse_default_instance_._instance,
   &::livekit::_SIPCallInfo_default_instance_._instance,
+  &::livekit::_SIPTransferInfo_default_instance_._instance,
   &::livekit::_SIPUri_default_instance_._instance,
 };
 
@@ -1390,256 +1670,320 @@ const char descriptor_table_protodef_livekit_5fsip_2eproto[] PROTOBUF_SECTION_VA
   "d\022\020\n\014TRUNK_LEGACY\020\000\022\021\n\rTRUNK_INBOUND\020\001\022\022"
   "\n\016TRUNK_OUTBOUND\020\002:\002\030\001\"K\n\034CreateSIPInbou"
   "ndTrunkRequest\022+\n\005trunk\030\001 \001(\0132\034.livekit."
-  "SIPInboundTrunkInfo\"\272\006\n\023SIPInboundTrunkI"
-  "nfo\022\024\n\014sip_trunk_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022"
-  "\020\n\010metadata\030\003 \001(\t\022\017\n\007numbers\030\004 \003(\t\022\031\n\021al"
-  "lowed_addresses\030\005 \003(\t\022\027\n\017allowed_numbers"
-  "\030\006 \003(\t\022\025\n\rauth_username\030\007 \001(\t\022\025\n\rauth_pa"
-  "ssword\030\010 \001(\t\022:\n\007headers\030\t \003(\0132).livekit."
-  "SIPInboundTrunkInfo.HeadersEntry\022T\n\025head"
-  "ers_to_attributes\030\n \003(\01325.livekit.SIPInb"
-  "oundTrunkInfo.HeadersToAttributesEntry\022T"
-  "\n\025attributes_to_headers\030\016 \003(\01325.livekit."
-  "SIPInboundTrunkInfo.AttributesToHeadersE"
-  "ntry\0222\n\017include_headers\030\017 \001(\0162\031.livekit."
-  "SIPHeaderOptions\0222\n\017ringing_timeout\030\013 \001("
-  "\0132\031.google.protobuf.Duration\0224\n\021max_call"
-  "_duration\030\014 \001(\0132\031.google.protobuf.Durati"
-  "on\022\025\n\rkrisp_enabled\030\r \001(\010\0225\n\020media_encry"
-  "ption\030\020 \001(\0162\033.livekit.SIPMediaEncryption"
-  "\032.\n\014HeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002"
-  " \001(\t:\0028\001\032:\n\030HeadersToAttributesEntry\022\013\n\003"
-  "key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032:\n\030Attribut"
-  "esToHeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002"
-  " \001(\t:\0028\001\"M\n\035CreateSIPOutboundTrunkReques"
-  "t\022,\n\005trunk\030\001 \001(\0132\035.livekit.SIPOutboundTr"
-  "unkInfo\"\304\005\n\024SIPOutboundTrunkInfo\022\024\n\014sip_"
-  "trunk_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\020\n\010metadata"
-  "\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\022(\n\ttransport\030\005 \001"
-  "(\0162\025.livekit.SIPTransport\022\017\n\007numbers\030\006 \003"
-  "(\t\022\025\n\rauth_username\030\007 \001(\t\022\025\n\rauth_passwo"
-  "rd\030\010 \001(\t\022;\n\007headers\030\t \003(\0132*.livekit.SIPO"
-  "utboundTrunkInfo.HeadersEntry\022U\n\025headers"
-  "_to_attributes\030\n \003(\01326.livekit.SIPOutbou"
-  "ndTrunkInfo.HeadersToAttributesEntry\022U\n\025"
-  "attributes_to_headers\030\013 \003(\01326.livekit.SI"
-  "POutboundTrunkInfo.AttributesToHeadersEn"
-  "try\0222\n\017include_headers\030\014 \001(\0162\031.livekit.S"
-  "IPHeaderOptions\0225\n\020media_encryption\030\r \001("
-  "\0162\033.livekit.SIPMediaEncryption\032.\n\014Header"
-  "sEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032:"
-  "\n\030HeadersToAttributesEntry\022\013\n\003key\030\001 \001(\t\022"
-  "\r\n\005value\030\002 \001(\t:\0028\001\032:\n\030AttributesToHeader"
-  "sEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"1"
-  "\n\031GetSIPInboundTrunkRequest\022\024\n\014sip_trunk"
-  "_id\030\001 \001(\t\"I\n\032GetSIPInboundTrunkResponse\022"
-  "+\n\005trunk\030\001 \001(\0132\034.livekit.SIPInboundTrunk"
-  "Info\"2\n\032GetSIPOutboundTrunkRequest\022\024\n\014si"
-  "p_trunk_id\030\001 \001(\t\"K\n\033GetSIPOutboundTrunkR"
-  "esponse\022,\n\005trunk\030\001 \001(\0132\035.livekit.SIPOutb"
-  "oundTrunkInfo\"<\n\023ListSIPTrunkRequest\022!\n\004"
-  "page\030\001 \001(\0132\023.livekit.Pagination:\002\030\001\"@\n\024L"
-  "istSIPTrunkResponse\022$\n\005items\030\001 \003(\0132\025.liv"
-  "ekit.SIPTrunkInfo:\002\030\001\"c\n\032ListSIPInboundT"
-  "runkRequest\022!\n\004page\030\003 \001(\0132\023.livekit.Pagi"
-  "nation\022\021\n\ttrunk_ids\030\001 \003(\t\022\017\n\007numbers\030\002 \003"
-  "(\t\"J\n\033ListSIPInboundTrunkResponse\022+\n\005ite"
-  "ms\030\001 \003(\0132\034.livekit.SIPInboundTrunkInfo\"d"
-  "\n\033ListSIPOutboundTrunkRequest\022!\n\004page\030\003 "
-  "\001(\0132\023.livekit.Pagination\022\021\n\ttrunk_ids\030\001 "
-  "\003(\t\022\017\n\007numbers\030\002 \003(\t\"L\n\034ListSIPOutboundT"
-  "runkResponse\022,\n\005items\030\001 \003(\0132\035.livekit.SI"
-  "POutboundTrunkInfo\"-\n\025DeleteSIPTrunkRequ"
-  "est\022\024\n\014sip_trunk_id\030\001 \001(\t\"7\n\025SIPDispatch"
-  "RuleDirect\022\021\n\troom_name\030\001 \001(\t\022\013\n\003pin\030\002 \001"
-  "(\t\"=\n\031SIPDispatchRuleIndividual\022\023\n\013room_"
-  "prefix\030\001 \001(\t\022\013\n\003pin\030\002 \001(\t\"L\n\025SIPDispatch"
-  "RuleCallee\022\023\n\013room_prefix\030\001 \001(\t\022\013\n\003pin\030\002"
-  " \001(\t\022\021\n\trandomize\030\003 \001(\010\"\341\001\n\017SIPDispatchR"
-  "ule\022>\n\024dispatch_rule_direct\030\001 \001(\0132\036.live"
-  "kit.SIPDispatchRuleDirectH\000\022F\n\030dispatch_"
-  "rule_individual\030\002 \001(\0132\".livekit.SIPDispa"
-  "tchRuleIndividualH\000\022>\n\024dispatch_rule_cal"
-  "lee\030\003 \001(\0132\036.livekit.SIPDispatchRuleCalle"
-  "eH\000B\006\n\004rule\"\361\002\n\034CreateSIPDispatchRuleReq"
-  "uest\022&\n\004rule\030\001 \001(\0132\030.livekit.SIPDispatch"
-  "Rule\022\021\n\ttrunk_ids\030\002 \003(\t\022\031\n\021hide_phone_nu"
-  "mber\030\003 \001(\010\022\027\n\017inbound_numbers\030\006 \003(\t\022\014\n\004n"
-  "ame\030\004 \001(\t\022\020\n\010metadata\030\005 \001(\t\022I\n\nattribute"
-  "s\030\007 \003(\01325.livekit.CreateSIPDispatchRuleR"
-  "equest.AttributesEntry\022\023\n\013room_preset\030\010 "
-  "\001(\t\022/\n\013room_config\030\t \001(\0132\032.livekit.RoomC"
-  "onfiguration\0321\n\017AttributesEntry\022\013\n\003key\030\001"
-  " \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\313\003\n\023SIPDispatchR"
-  "uleInfo\022\034\n\024sip_dispatch_rule_id\030\001 \001(\t\022&\n"
-  "\004rule\030\002 \001(\0132\030.livekit.SIPDispatchRule\022\021\n"
-  "\ttrunk_ids\030\003 \003(\t\022\031\n\021hide_phone_number\030\004 "
-  "\001(\010\022\027\n\017inbound_numbers\030\007 \003(\t\022\014\n\004name\030\005 \001"
-  "(\t\022\020\n\010metadata\030\006 \001(\t\022@\n\nattributes\030\010 \003(\013"
-  "2,.livekit.SIPDispatchRuleInfo.Attribute"
-  "sEntry\022\023\n\013room_preset\030\t \001(\t\022/\n\013room_conf"
-  "ig\030\n \001(\0132\032.livekit.RoomConfiguration\022\025\n\r"
-  "krisp_enabled\030\013 \001(\010\0225\n\020media_encryption\030"
-  "\014 \001(\0162\033.livekit.SIPMediaEncryption\0321\n\017At"
-  "tributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001("
-  "\t:\0028\001\"m\n\032ListSIPDispatchRuleRequest\022!\n\004p"
-  "age\030\003 \001(\0132\023.livekit.Pagination\022\031\n\021dispat"
-  "ch_rule_ids\030\001 \003(\t\022\021\n\ttrunk_ids\030\002 \003(\t\"J\n\033"
-  "ListSIPDispatchRuleResponse\022+\n\005items\030\001 \003"
-  "(\0132\034.livekit.SIPDispatchRuleInfo\"<\n\034Dele"
-  "teSIPDispatchRuleRequest\022\034\n\024sip_dispatch"
-  "_rule_id\030\001 \001(\t\"\235\003\n\021SIPOutboundConfig\022\020\n\010"
-  "hostname\030\001 \001(\t\022(\n\ttransport\030\002 \001(\0162\025.live"
-  "kit.SIPTransport\022\025\n\rauth_username\030\003 \001(\t\022"
-  "\025\n\rauth_password\030\004 \001(\t\022R\n\025headers_to_att"
-  "ributes\030\005 \003(\01323.livekit.SIPOutboundConfi"
-  "g.HeadersToAttributesEntry\022R\n\025attributes"
-  "_to_headers\030\006 \003(\01323.livekit.SIPOutboundC"
-  "onfig.AttributesToHeadersEntry\032:\n\030Header"
-  "sToAttributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
-  "\030\002 \001(\t:\0028\001\032:\n\030AttributesToHeadersEntry\022\013"
-  "\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\347\006\n\033Creat"
-  "eSIPParticipantRequest\022\024\n\014sip_trunk_id\030\001"
-  " \001(\t\022)\n\005trunk\030\024 \001(\0132\032.livekit.SIPOutboun"
-  "dConfig\022\023\n\013sip_call_to\030\002 \001(\t\022\022\n\nsip_numb"
-  "er\030\017 \001(\t\022\021\n\troom_name\030\003 \001(\t\022\034\n\024participa"
-  "nt_identity\030\004 \001(\t\022\030\n\020participant_name\030\007 "
-  "\001(\t\022\034\n\024participant_metadata\030\010 \001(\t\022_\n\026par"
-  "ticipant_attributes\030\t \003(\0132\?.livekit.Crea"
-  "teSIPParticipantRequest.ParticipantAttri"
-  "butesEntry\022\014\n\004dtmf\030\005 \001(\t\022\031\n\rplay_rington"
-  "e\030\006 \001(\010B\002\030\001\022\025\n\rplay_dialtone\030\r \001(\010\022\031\n\021hi"
-  "de_phone_number\030\n \001(\010\022B\n\007headers\030\020 \003(\01321"
-  ".livekit.CreateSIPParticipantRequest.Hea"
-  "dersEntry\0222\n\017include_headers\030\021 \001(\0162\031.liv"
-  "ekit.SIPHeaderOptions\0222\n\017ringing_timeout"
-  "\030\013 \001(\0132\031.google.protobuf.Duration\0224\n\021max"
-  "_call_duration\030\014 \001(\0132\031.google.protobuf.D"
-  "uration\022\025\n\rkrisp_enabled\030\016 \001(\010\0225\n\020media_"
-  "encryption\030\022 \001(\0162\033.livekit.SIPMediaEncry"
-  "ption\022\033\n\023wait_until_answered\030\023 \001(\010\032<\n\032Pa"
-  "rticipantAttributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n"
-  "\005value\030\002 \001(\t:\0028\001\032.\n\014HeadersEntry\022\013\n\003key\030"
-  "\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"r\n\022SIPParticipa"
-  "ntInfo\022\026\n\016participant_id\030\001 \001(\t\022\034\n\024partic"
-  "ipant_identity\030\002 \001(\t\022\021\n\troom_name\030\003 \001(\t\022"
-  "\023\n\013sip_call_id\030\004 \001(\t\"\362\001\n\035TransferSIPPart"
-  "icipantRequest\022\034\n\024participant_identity\030\001"
-  " \001(\t\022\021\n\troom_name\030\002 \001(\t\022\023\n\013transfer_to\030\003"
-  " \001(\t\022\025\n\rplay_dialtone\030\004 \001(\010\022D\n\007headers\030\005"
-  " \003(\01323.livekit.TransferSIPParticipantReq"
-  "uest.HeadersEntry\032.\n\014HeadersEntry\022\013\n\003key"
-  "\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\251\006\n\013SIPCallInf"
-  "o\022\017\n\007call_id\030\001 \001(\t\022\020\n\010trunk_id\030\002 \001(\t\022\030\n\020"
-  "dispatch_rule_id\030\020 \001(\t\022\016\n\006region\030\021 \001(\t\022\021"
-  "\n\troom_name\030\003 \001(\t\022\017\n\007room_id\030\004 \001(\t\022\034\n\024pa"
-  "rticipant_identity\030\005 \001(\t\022O\n\026participant_"
-  "attributes\030\022 \003(\0132/.livekit.SIPCallInfo.P"
-  "articipantAttributesEntry\022!\n\010from_uri\030\006 "
-  "\001(\0132\017.livekit.SIPUri\022\037\n\006to_uri\030\007 \001(\0132\017.l"
-  "ivekit.SIPUri\022\026\n\ncreated_at\030\t \001(\003B\002\030\001\022\026\n"
-  "\nstarted_at\030\n \001(\003B\002\030\001\022\024\n\010ended_at\030\013 \001(\003B"
-  "\002\030\001\022-\n\020enabled_features\030\016 \003(\0162\023.livekit."
-  "SIPFeature\0221\n\016call_direction\030\017 \001(\0162\031.liv"
-  "ekit.SIPCallDirection\022+\n\013call_status\030\010 \001"
-  "(\0162\026.livekit.SIPCallStatus\022\025\n\rcreated_at"
-  "_ns\030\026 \001(\003\022\025\n\rstarted_at_ns\030\027 \001(\003\022\023\n\013ende"
-  "d_at_ns\030\030 \001(\003\0224\n\021disconnect_reason\030\014 \001(\016"
-  "2\031.livekit.DisconnectReason\022\r\n\005error\030\r \001"
-  "(\t\022,\n\020call_status_code\030\023 \001(\0132\022.livekit.S"
-  "IPStatus\022\023\n\013audio_codec\030\024 \001(\t\022\030\n\020media_e"
-  "ncryption\030\025 \001(\t\032<\n\032ParticipantAttributes"
-  "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"h\n"
-  "\006SIPUri\022\014\n\004user\030\001 \001(\t\022\014\n\004host\030\002 \001(\t\022\n\n\002i"
-  "p\030\003 \001(\t\022\014\n\004port\030\004 \001(\r\022(\n\ttransport\030\005 \001(\016"
-  "2\025.livekit.SIPTransport*\357\014\n\rSIPStatusCod"
-  "e\022\026\n\022SIP_STATUS_UNKNOWN\020\000\022\025\n\021SIP_STATUS_"
-  "TRYING\020d\022\027\n\022SIP_STATUS_RINGING\020\264\001\022!\n\034SIP"
-  "_STATUS_CALL_IS_FORWARDED\020\265\001\022\026\n\021SIP_STAT"
-  "US_QUEUED\020\266\001\022 \n\033SIP_STATUS_SESSION_PROGR"
-  "ESS\020\267\001\022\022\n\rSIP_STATUS_OK\020\310\001\022\030\n\023SIP_STATUS"
-  "_ACCEPTED\020\312\001\022!\n\034SIP_STATUS_MOVED_PERMANE"
-  "NTLY\020\255\002\022!\n\034SIP_STATUS_MOVED_TEMPORARILY\020"
-  "\256\002\022\031\n\024SIP_STATUS_USE_PROXY\020\261\002\022\033\n\026SIP_STA"
-  "TUS_BAD_REQUEST\020\220\003\022\034\n\027SIP_STATUS_UNAUTHO"
-  "RIZED\020\221\003\022 \n\033SIP_STATUS_PAYMENT_REQUIRED\020"
-  "\222\003\022\031\n\024SIP_STATUS_FORBIDDEN\020\223\003\022\030\n\023SIP_STA"
-  "TUS_NOTFOUND\020\224\003\022\"\n\035SIP_STATUS_METHOD_NOT"
-  "_ALLOWED\020\225\003\022\036\n\031SIP_STATUS_NOT_ACCEPTABLE"
-  "\020\226\003\022#\n\036SIP_STATUS_PROXY_AUTH_REQUIRED\020\227\003"
-  "\022\037\n\032SIP_STATUS_REQUEST_TIMEOUT\020\230\003\022\030\n\023SIP"
-  "_STATUS_CONFLICT\020\231\003\022\024\n\017SIP_STATUS_GONE\020\232"
-  "\003\022(\n#SIP_STATUS_REQUEST_ENTITY_TOO_LARGE"
-  "\020\235\003\022$\n\037SIP_STATUS_REQUEST_URI_TOO_LONG\020\236"
-  "\003\022&\n!SIP_STATUS_UNSUPPORTED_MEDIA_TYPE\020\237"
-  "\003\022/\n*SIP_STATUS_REQUESTED_RANGE_NOT_SATI"
-  "SFIABLE\020\240\003\022\035\n\030SIP_STATUS_BAD_EXTENSION\020\244"
-  "\003\022\"\n\035SIP_STATUS_EXTENSION_REQUIRED\020\245\003\022\"\n"
-  "\035SIP_STATUS_INTERVAL_TOO_BRIEF\020\247\003\022\'\n\"SIP"
-  "_STATUS_TEMPORARILY_UNAVAILABLE\020\340\003\0220\n+SI"
-  "P_STATUS_CALL_TRANSACTION_DOES_NOT_EXIST"
-  "S\020\341\003\022\035\n\030SIP_STATUS_LOOP_DETECTED\020\342\003\022\035\n\030S"
-  "IP_STATUS_TOO_MANY_HOPS\020\343\003\022\"\n\035SIP_STATUS"
-  "_ADDRESS_INCOMPLETE\020\344\003\022\031\n\024SIP_STATUS_AMB"
-  "IGUOUS\020\345\003\022\031\n\024SIP_STATUS_BUSY_HERE\020\346\003\022\"\n\035"
-  "SIP_STATUS_REQUEST_TERMINATED\020\347\003\022#\n\036SIP_"
-  "STATUS_NOT_ACCEPTABLE_HERE\020\350\003\022%\n SIP_STA"
-  "TUS_INTERNAL_SERVER_ERROR\020\364\003\022\037\n\032SIP_STAT"
-  "US_NOT_IMPLEMENTED\020\365\003\022\033\n\026SIP_STATUS_BAD_"
-  "GATEWAY\020\366\003\022#\n\036SIP_STATUS_SERVICE_UNAVAIL"
-  "ABLE\020\367\003\022\037\n\032SIP_STATUS_GATEWAY_TIMEOUT\020\370\003"
-  "\022%\n SIP_STATUS_VERSION_NOT_SUPPORTED\020\371\003\022"
-  "!\n\034SIP_STATUS_MESSAGE_TOO_LARGE\020\201\004\022&\n!SI"
-  "P_STATUS_GLOBAL_BUSY_EVERYWHERE\020\330\004\022\036\n\031SI"
-  "P_STATUS_GLOBAL_DECLINE\020\333\004\022.\n)SIP_STATUS"
-  "_GLOBAL_DOES_NOT_EXIST_ANYWHERE\020\334\004\022%\n SI"
-  "P_STATUS_GLOBAL_NOT_ACCEPTABLE\020\336\004*k\n\014SIP"
-  "Transport\022\026\n\022SIP_TRANSPORT_AUTO\020\000\022\025\n\021SIP"
-  "_TRANSPORT_UDP\020\001\022\025\n\021SIP_TRANSPORT_TCP\020\002\022"
-  "\025\n\021SIP_TRANSPORT_TLS\020\003*N\n\020SIPHeaderOptio"
-  "ns\022\022\n\016SIP_NO_HEADERS\020\000\022\021\n\rSIP_X_HEADERS\020"
-  "\001\022\023\n\017SIP_ALL_HEADERS\020\002*o\n\022SIPMediaEncryp"
-  "tion\022\035\n\031SIP_MEDIA_ENCRYPT_DISABLE\020\000\022\033\n\027S"
-  "IP_MEDIA_ENCRYPT_ALLOW\020\001\022\035\n\031SIP_MEDIA_EN"
-  "CRYPT_REQUIRE\020\002*w\n\rSIPCallStatus\022\025\n\021SCS_"
-  "CALL_INCOMING\020\000\022\032\n\026SCS_PARTICIPANT_JOINE"
-  "D\020\001\022\016\n\nSCS_ACTIVE\020\002\022\024\n\020SCS_DISCONNECTED\020"
-  "\003\022\r\n\tSCS_ERROR\020\004*)\n\nSIPFeature\022\010\n\004NONE\020\000"
-  "\022\021\n\rKRISP_ENABLED\020\001*F\n\020SIPCallDirection\022"
-  "\017\n\013SCD_UNKNOWN\020\000\022\017\n\013SCD_INBOUND\020\001\022\020\n\014SCD"
-  "_OUTBOUND\020\0022\272\t\n\003SIP\022P\n\014ListSIPTrunk\022\034.li"
-  "vekit.ListSIPTrunkRequest\032\035.livekit.List"
-  "SIPTrunkResponse\"\003\210\002\001\022\\\n\025CreateSIPInboun"
-  "dTrunk\022%.livekit.CreateSIPInboundTrunkRe"
-  "quest\032\034.livekit.SIPInboundTrunkInfo\022_\n\026C"
-  "reateSIPOutboundTrunk\022&.livekit.CreateSI"
-  "POutboundTrunkRequest\032\035.livekit.SIPOutbo"
-  "undTrunkInfo\022]\n\022GetSIPInboundTrunk\022\".liv"
-  "ekit.GetSIPInboundTrunkRequest\032#.livekit"
-  ".GetSIPInboundTrunkResponse\022`\n\023GetSIPOut"
-  "boundTrunk\022#.livekit.GetSIPOutboundTrunk"
-  "Request\032$.livekit.GetSIPOutboundTrunkRes"
-  "ponse\022`\n\023ListSIPInboundTrunk\022#.livekit.L"
-  "istSIPInboundTrunkRequest\032$.livekit.List"
-  "SIPInboundTrunkResponse\022c\n\024ListSIPOutbou"
-  "ndTrunk\022$.livekit.ListSIPOutboundTrunkRe"
-  "quest\032%.livekit.ListSIPOutboundTrunkResp"
-  "onse\022G\n\016DeleteSIPTrunk\022\036.livekit.DeleteS"
-  "IPTrunkRequest\032\025.livekit.SIPTrunkInfo\022\\\n"
-  "\025CreateSIPDispatchRule\022%.livekit.CreateS"
-  "IPDispatchRuleRequest\032\034.livekit.SIPDispa"
-  "tchRuleInfo\022`\n\023ListSIPDispatchRule\022#.liv"
-  "ekit.ListSIPDispatchRuleRequest\032$.liveki"
-  "t.ListSIPDispatchRuleResponse\022\\\n\025DeleteS"
-  "IPDispatchRule\022%.livekit.DeleteSIPDispat"
-  "chRuleRequest\032\034.livekit.SIPDispatchRuleI"
-  "nfo\022Y\n\024CreateSIPParticipant\022$.livekit.Cr"
-  "eateSIPParticipantRequest\032\033.livekit.SIPP"
-  "articipantInfo\022X\n\026TransferSIPParticipant"
-  "\022&.livekit.TransferSIPParticipantRequest"
-  "\032\026.google.protobuf.EmptyBFZ#github.com/l"
-  "ivekit/protocol/livekit\252\002\rLiveKit.Proto\352"
-  "\002\016LiveKit::Protob\006proto3"
+  "SIPInboundTrunkInfo\"\241\001\n\034UpdateSIPInbound"
+  "TrunkRequest\022\024\n\014sip_trunk_id\030\001 \001(\t\022/\n\007re"
+  "place\030\002 \001(\0132\034.livekit.SIPInboundTrunkInf"
+  "oH\000\0220\n\006update\030\003 \001(\0132\036.livekit.SIPInbound"
+  "TrunkUpdateH\000B\010\n\006action\"\272\006\n\023SIPInboundTr"
+  "unkInfo\022\024\n\014sip_trunk_id\030\001 \001(\t\022\014\n\004name\030\002 "
+  "\001(\t\022\020\n\010metadata\030\003 \001(\t\022\017\n\007numbers\030\004 \003(\t\022\031"
+  "\n\021allowed_addresses\030\005 \003(\t\022\027\n\017allowed_num"
+  "bers\030\006 \003(\t\022\025\n\rauth_username\030\007 \001(\t\022\025\n\raut"
+  "h_password\030\010 \001(\t\022:\n\007headers\030\t \003(\0132).live"
+  "kit.SIPInboundTrunkInfo.HeadersEntry\022T\n\025"
+  "headers_to_attributes\030\n \003(\01325.livekit.SI"
+  "PInboundTrunkInfo.HeadersToAttributesEnt"
+  "ry\022T\n\025attributes_to_headers\030\016 \003(\01325.live"
+  "kit.SIPInboundTrunkInfo.AttributesToHead"
+  "ersEntry\0222\n\017include_headers\030\017 \001(\0162\031.live"
+  "kit.SIPHeaderOptions\0222\n\017ringing_timeout\030"
+  "\013 \001(\0132\031.google.protobuf.Duration\0224\n\021max_"
+  "call_duration\030\014 \001(\0132\031.google.protobuf.Du"
+  "ration\022\025\n\rkrisp_enabled\030\r \001(\010\0225\n\020media_e"
+  "ncryption\030\020 \001(\0162\033.livekit.SIPMediaEncryp"
+  "tion\032.\n\014HeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val"
+  "ue\030\002 \001(\t:\0028\001\032:\n\030HeadersToAttributesEntry"
+  "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032:\n\030Attr"
+  "ibutesToHeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val"
+  "ue\030\002 \001(\t:\0028\001\"\210\003\n\025SIPInboundTrunkUpdate\022$"
+  "\n\007numbers\030\001 \001(\0132\023.livekit.ListUpdate\022.\n\021"
+  "allowed_addresses\030\002 \001(\0132\023.livekit.ListUp"
+  "date\022,\n\017allowed_numbers\030\003 \001(\0132\023.livekit."
+  "ListUpdate\022\032\n\rauth_username\030\004 \001(\tH\000\210\001\001\022\032"
+  "\n\rauth_password\030\005 \001(\tH\001\210\001\001\022\021\n\004name\030\006 \001(\t"
+  "H\002\210\001\001\022\025\n\010metadata\030\007 \001(\tH\003\210\001\001\022:\n\020media_en"
+  "cryption\030\010 \001(\0162\033.livekit.SIPMediaEncrypt"
+  "ionH\004\210\001\001B\020\n\016_auth_usernameB\020\n\016_auth_pass"
+  "wordB\007\n\005_nameB\013\n\t_metadataB\023\n\021_media_enc"
+  "ryption\"M\n\035CreateSIPOutboundTrunkRequest"
+  "\022,\n\005trunk\030\001 \001(\0132\035.livekit.SIPOutboundTru"
+  "nkInfo\"\244\001\n\035UpdateSIPOutboundTrunkRequest"
+  "\022\024\n\014sip_trunk_id\030\001 \001(\t\0220\n\007replace\030\002 \001(\0132"
+  "\035.livekit.SIPOutboundTrunkInfoH\000\0221\n\006upda"
+  "te\030\003 \001(\0132\037.livekit.SIPOutboundTrunkUpdat"
+  "eH\000B\010\n\006action\"\341\005\n\024SIPOutboundTrunkInfo\022\024"
+  "\n\014sip_trunk_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\020\n\010me"
+  "tadata\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\022\033\n\023destina"
+  "tion_country\030\016 \001(\t\022(\n\ttransport\030\005 \001(\0162\025."
+  "livekit.SIPTransport\022\017\n\007numbers\030\006 \003(\t\022\025\n"
+  "\rauth_username\030\007 \001(\t\022\025\n\rauth_password\030\010 "
+  "\001(\t\022;\n\007headers\030\t \003(\0132*.livekit.SIPOutbou"
+  "ndTrunkInfo.HeadersEntry\022U\n\025headers_to_a"
+  "ttributes\030\n \003(\01326.livekit.SIPOutboundTru"
+  "nkInfo.HeadersToAttributesEntry\022U\n\025attri"
+  "butes_to_headers\030\013 \003(\01326.livekit.SIPOutb"
+  "oundTrunkInfo.AttributesToHeadersEntry\0222"
+  "\n\017include_headers\030\014 \001(\0162\031.livekit.SIPHea"
+  "derOptions\0225\n\020media_encryption\030\r \001(\0162\033.l"
+  "ivekit.SIPMediaEncryption\032.\n\014HeadersEntr"
+  "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032:\n\030Hea"
+  "dersToAttributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005va"
+  "lue\030\002 \001(\t:\0028\001\032:\n\030AttributesToHeadersEntr"
+  "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\304\003\n\026SI"
+  "POutboundTrunkUpdate\022\024\n\007address\030\001 \001(\tH\000\210"
+  "\001\001\022-\n\ttransport\030\002 \001(\0162\025.livekit.SIPTrans"
+  "portH\001\210\001\001\022 \n\023destination_country\030\t \001(\tH\002"
+  "\210\001\001\022$\n\007numbers\030\003 \001(\0132\023.livekit.ListUpdat"
+  "e\022\032\n\rauth_username\030\004 \001(\tH\003\210\001\001\022\032\n\rauth_pa"
+  "ssword\030\005 \001(\tH\004\210\001\001\022\021\n\004name\030\006 \001(\tH\005\210\001\001\022\025\n\010"
+  "metadata\030\007 \001(\tH\006\210\001\001\022:\n\020media_encryption\030"
+  "\010 \001(\0162\033.livekit.SIPMediaEncryptionH\007\210\001\001B"
+  "\n\n\010_addressB\014\n\n_transportB\026\n\024_destinatio"
+  "n_countryB\020\n\016_auth_usernameB\020\n\016_auth_pas"
+  "swordB\007\n\005_nameB\013\n\t_metadataB\023\n\021_media_en"
+  "cryption\"1\n\031GetSIPInboundTrunkRequest\022\024\n"
+  "\014sip_trunk_id\030\001 \001(\t\"I\n\032GetSIPInboundTrun"
+  "kResponse\022+\n\005trunk\030\001 \001(\0132\034.livekit.SIPIn"
+  "boundTrunkInfo\"2\n\032GetSIPOutboundTrunkReq"
+  "uest\022\024\n\014sip_trunk_id\030\001 \001(\t\"K\n\033GetSIPOutb"
+  "oundTrunkResponse\022,\n\005trunk\030\001 \001(\0132\035.livek"
+  "it.SIPOutboundTrunkInfo\"<\n\023ListSIPTrunkR"
+  "equest\022!\n\004page\030\001 \001(\0132\023.livekit.Paginatio"
+  "n:\002\030\001\"@\n\024ListSIPTrunkResponse\022$\n\005items\030\001"
+  " \003(\0132\025.livekit.SIPTrunkInfo:\002\030\001\"c\n\032ListS"
+  "IPInboundTrunkRequest\022!\n\004page\030\003 \001(\0132\023.li"
+  "vekit.Pagination\022\021\n\ttrunk_ids\030\001 \003(\t\022\017\n\007n"
+  "umbers\030\002 \003(\t\"J\n\033ListSIPInboundTrunkRespo"
+  "nse\022+\n\005items\030\001 \003(\0132\034.livekit.SIPInboundT"
+  "runkInfo\"d\n\033ListSIPOutboundTrunkRequest\022"
+  "!\n\004page\030\003 \001(\0132\023.livekit.Pagination\022\021\n\ttr"
+  "unk_ids\030\001 \003(\t\022\017\n\007numbers\030\002 \003(\t\"L\n\034ListSI"
+  "POutboundTrunkResponse\022,\n\005items\030\001 \003(\0132\035."
+  "livekit.SIPOutboundTrunkInfo\"-\n\025DeleteSI"
+  "PTrunkRequest\022\024\n\014sip_trunk_id\030\001 \001(\t\"7\n\025S"
+  "IPDispatchRuleDirect\022\021\n\troom_name\030\001 \001(\t\022"
+  "\013\n\003pin\030\002 \001(\t\"=\n\031SIPDispatchRuleIndividua"
+  "l\022\023\n\013room_prefix\030\001 \001(\t\022\013\n\003pin\030\002 \001(\t\"L\n\025S"
+  "IPDispatchRuleCallee\022\023\n\013room_prefix\030\001 \001("
+  "\t\022\013\n\003pin\030\002 \001(\t\022\021\n\trandomize\030\003 \001(\010\"\341\001\n\017SI"
+  "PDispatchRule\022>\n\024dispatch_rule_direct\030\001 "
+  "\001(\0132\036.livekit.SIPDispatchRuleDirectH\000\022F\n"
+  "\030dispatch_rule_individual\030\002 \001(\0132\".liveki"
+  "t.SIPDispatchRuleIndividualH\000\022>\n\024dispatc"
+  "h_rule_callee\030\003 \001(\0132\036.livekit.SIPDispatc"
+  "hRuleCalleeH\000B\006\n\004rule\"\312\003\n\034CreateSIPDispa"
+  "tchRuleRequest\0223\n\rdispatch_rule\030\n \001(\0132\034."
+  "livekit.SIPDispatchRuleInfo\022*\n\004rule\030\001 \001("
+  "\0132\030.livekit.SIPDispatchRuleB\002\030\001\022\025\n\ttrunk"
+  "_ids\030\002 \003(\tB\002\030\001\022\035\n\021hide_phone_number\030\003 \001("
+  "\010B\002\030\001\022\033\n\017inbound_numbers\030\006 \003(\tB\002\030\001\022\020\n\004na"
+  "me\030\004 \001(\tB\002\030\001\022\024\n\010metadata\030\005 \001(\tB\002\030\001\022M\n\nat"
+  "tributes\030\007 \003(\01325.livekit.CreateSIPDispat"
+  "chRuleRequest.AttributesEntryB\002\030\001\022\027\n\013roo"
+  "m_preset\030\010 \001(\tB\002\030\001\0223\n\013room_config\030\t \001(\0132"
+  "\032.livekit.RoomConfigurationB\002\030\001\0321\n\017Attri"
+  "butesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\002"
+  "8\001\"\251\001\n\034UpdateSIPDispatchRuleRequest\022\034\n\024s"
+  "ip_dispatch_rule_id\030\001 \001(\t\022/\n\007replace\030\002 \001"
+  "(\0132\034.livekit.SIPDispatchRuleInfoH\000\0220\n\006up"
+  "date\030\003 \001(\0132\036.livekit.SIPDispatchRuleUpda"
+  "teH\000B\010\n\006action\"\313\003\n\023SIPDispatchRuleInfo\022\034"
+  "\n\024sip_dispatch_rule_id\030\001 \001(\t\022&\n\004rule\030\002 \001"
+  "(\0132\030.livekit.SIPDispatchRule\022\021\n\ttrunk_id"
+  "s\030\003 \003(\t\022\031\n\021hide_phone_number\030\004 \001(\010\022\027\n\017in"
+  "bound_numbers\030\007 \003(\t\022\014\n\004name\030\005 \001(\t\022\020\n\010met"
+  "adata\030\006 \001(\t\022@\n\nattributes\030\010 \003(\0132,.liveki"
+  "t.SIPDispatchRuleInfo.AttributesEntry\022\023\n"
+  "\013room_preset\030\t \001(\t\022/\n\013room_config\030\n \001(\0132"
+  "\032.livekit.RoomConfiguration\022\025\n\rkrisp_ena"
+  "bled\030\013 \001(\010\0225\n\020media_encryption\030\014 \001(\0162\033.l"
+  "ivekit.SIPMediaEncryption\0321\n\017AttributesE"
+  "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\357\002\n"
+  "\025SIPDispatchRuleUpdate\022&\n\ttrunk_ids\030\001 \001("
+  "\0132\023.livekit.ListUpdate\022&\n\004rule\030\002 \001(\0132\030.l"
+  "ivekit.SIPDispatchRule\022\021\n\004name\030\003 \001(\tH\000\210\001"
+  "\001\022\025\n\010metadata\030\004 \001(\tH\001\210\001\001\022B\n\nattributes\030\005"
+  " \003(\0132..livekit.SIPDispatchRuleUpdate.Att"
+  "ributesEntry\022:\n\020media_encryption\030\006 \001(\0162\033"
+  ".livekit.SIPMediaEncryptionH\002\210\001\001\0321\n\017Attr"
+  "ibutesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:"
+  "\0028\001B\007\n\005_nameB\013\n\t_metadataB\023\n\021_media_encr"
+  "yption\"m\n\032ListSIPDispatchRuleRequest\022!\n\004"
+  "page\030\003 \001(\0132\023.livekit.Pagination\022\031\n\021dispa"
+  "tch_rule_ids\030\001 \003(\t\022\021\n\ttrunk_ids\030\002 \003(\t\"J\n"
+  "\033ListSIPDispatchRuleResponse\022+\n\005items\030\001 "
+  "\003(\0132\034.livekit.SIPDispatchRuleInfo\"<\n\034Del"
+  "eteSIPDispatchRuleRequest\022\034\n\024sip_dispatc"
+  "h_rule_id\030\001 \001(\t\"\272\003\n\021SIPOutboundConfig\022\020\n"
+  "\010hostname\030\001 \001(\t\022\033\n\023destination_country\030\007"
+  " \001(\t\022(\n\ttransport\030\002 \001(\0162\025.livekit.SIPTra"
+  "nsport\022\025\n\rauth_username\030\003 \001(\t\022\025\n\rauth_pa"
+  "ssword\030\004 \001(\t\022R\n\025headers_to_attributes\030\005 "
+  "\003(\01323.livekit.SIPOutboundConfig.HeadersT"
+  "oAttributesEntry\022R\n\025attributes_to_header"
+  "s\030\006 \003(\01323.livekit.SIPOutboundConfig.Attr"
+  "ibutesToHeadersEntry\032:\n\030HeadersToAttribu"
+  "tesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001"
+  "\032:\n\030AttributesToHeadersEntry\022\013\n\003key\030\001 \001("
+  "\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\347\006\n\033CreateSIPPartic"
+  "ipantRequest\022\024\n\014sip_trunk_id\030\001 \001(\t\022)\n\005tr"
+  "unk\030\024 \001(\0132\032.livekit.SIPOutboundConfig\022\023\n"
+  "\013sip_call_to\030\002 \001(\t\022\022\n\nsip_number\030\017 \001(\t\022\021"
+  "\n\troom_name\030\003 \001(\t\022\034\n\024participant_identit"
+  "y\030\004 \001(\t\022\030\n\020participant_name\030\007 \001(\t\022\034\n\024par"
+  "ticipant_metadata\030\010 \001(\t\022_\n\026participant_a"
+  "ttributes\030\t \003(\0132\?.livekit.CreateSIPParti"
+  "cipantRequest.ParticipantAttributesEntry"
+  "\022\014\n\004dtmf\030\005 \001(\t\022\031\n\rplay_ringtone\030\006 \001(\010B\002\030"
+  "\001\022\025\n\rplay_dialtone\030\r \001(\010\022\031\n\021hide_phone_n"
+  "umber\030\n \001(\010\022B\n\007headers\030\020 \003(\01321.livekit.C"
+  "reateSIPParticipantRequest.HeadersEntry\022"
+  "2\n\017include_headers\030\021 \001(\0162\031.livekit.SIPHe"
+  "aderOptions\0222\n\017ringing_timeout\030\013 \001(\0132\031.g"
+  "oogle.protobuf.Duration\0224\n\021max_call_dura"
+  "tion\030\014 \001(\0132\031.google.protobuf.Duration\022\025\n"
+  "\rkrisp_enabled\030\016 \001(\010\0225\n\020media_encryption"
+  "\030\022 \001(\0162\033.livekit.SIPMediaEncryption\022\033\n\023w"
+  "ait_until_answered\030\023 \001(\010\032<\n\032ParticipantA"
+  "ttributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001"
+  "(\t:\0028\001\032.\n\014HeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
+  "alue\030\002 \001(\t:\0028\001\"r\n\022SIPParticipantInfo\022\026\n\016"
+  "participant_id\030\001 \001(\t\022\034\n\024participant_iden"
+  "tity\030\002 \001(\t\022\021\n\troom_name\030\003 \001(\t\022\023\n\013sip_cal"
+  "l_id\030\004 \001(\t\"\246\002\n\035TransferSIPParticipantReq"
+  "uest\022\034\n\024participant_identity\030\001 \001(\t\022\021\n\tro"
+  "om_name\030\002 \001(\t\022\023\n\013transfer_to\030\003 \001(\t\022\025\n\rpl"
+  "ay_dialtone\030\004 \001(\010\022D\n\007headers\030\005 \003(\01323.liv"
+  "ekit.TransferSIPParticipantRequest.Heade"
+  "rsEntry\0222\n\017ringing_timeout\030\006 \001(\0132\031.googl"
+  "e.protobuf.Duration\032.\n\014HeadersEntry\022\013\n\003k"
+  "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\251\006\n\013SIPCallI"
+  "nfo\022\017\n\007call_id\030\001 \001(\t\022\020\n\010trunk_id\030\002 \001(\t\022\030"
+  "\n\020dispatch_rule_id\030\020 \001(\t\022\016\n\006region\030\021 \001(\t"
+  "\022\021\n\troom_name\030\003 \001(\t\022\017\n\007room_id\030\004 \001(\t\022\034\n\024"
+  "participant_identity\030\005 \001(\t\022O\n\026participan"
+  "t_attributes\030\022 \003(\0132/.livekit.SIPCallInfo"
+  ".ParticipantAttributesEntry\022!\n\010from_uri\030"
+  "\006 \001(\0132\017.livekit.SIPUri\022\037\n\006to_uri\030\007 \001(\0132\017"
+  ".livekit.SIPUri\022\026\n\ncreated_at\030\t \001(\003B\002\030\001\022"
+  "\026\n\nstarted_at\030\n \001(\003B\002\030\001\022\024\n\010ended_at\030\013 \001("
+  "\003B\002\030\001\022-\n\020enabled_features\030\016 \003(\0162\023.liveki"
+  "t.SIPFeature\0221\n\016call_direction\030\017 \001(\0162\031.l"
+  "ivekit.SIPCallDirection\022+\n\013call_status\030\010"
+  " \001(\0162\026.livekit.SIPCallStatus\022\025\n\rcreated_"
+  "at_ns\030\026 \001(\003\022\025\n\rstarted_at_ns\030\027 \001(\003\022\023\n\013en"
+  "ded_at_ns\030\030 \001(\003\0224\n\021disconnect_reason\030\014 \001"
+  "(\0162\031.livekit.DisconnectReason\022\r\n\005error\030\r"
+  " \001(\t\022,\n\020call_status_code\030\023 \001(\0132\022.livekit"
+  ".SIPStatus\022\023\n\013audio_codec\030\024 \001(\t\022\030\n\020media"
+  "_encryption\030\025 \001(\t\032<\n\032ParticipantAttribut"
+  "esEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\""
+  "\206\002\n\017SIPTransferInfo\022\023\n\013transfer_id\030\001 \001(\t"
+  "\022\017\n\007call_id\030\002 \001(\t\022\023\n\013transfer_to\030\003 \001(\t\022 "
+  "\n\030transfer_initiated_at_ns\030\004 \001(\003\022 \n\030tran"
+  "sfer_completed_at_ns\030\005 \001(\003\0223\n\017transfer_s"
+  "tatus\030\006 \001(\0162\032.livekit.SIPTransferStatus\022"
+  "\r\n\005error\030\007 \001(\t\0220\n\024transfer_status_code\030\010"
+  " \001(\0132\022.livekit.SIPStatus\"h\n\006SIPUri\022\014\n\004us"
+  "er\030\001 \001(\t\022\014\n\004host\030\002 \001(\t\022\n\n\002ip\030\003 \001(\t\022\014\n\004po"
+  "rt\030\004 \001(\r\022(\n\ttransport\030\005 \001(\0162\025.livekit.SI"
+  "PTransport*\357\014\n\rSIPStatusCode\022\026\n\022SIP_STAT"
+  "US_UNKNOWN\020\000\022\025\n\021SIP_STATUS_TRYING\020d\022\027\n\022S"
+  "IP_STATUS_RINGING\020\264\001\022!\n\034SIP_STATUS_CALL_"
+  "IS_FORWARDED\020\265\001\022\026\n\021SIP_STATUS_QUEUED\020\266\001\022"
+  " \n\033SIP_STATUS_SESSION_PROGRESS\020\267\001\022\022\n\rSIP"
+  "_STATUS_OK\020\310\001\022\030\n\023SIP_STATUS_ACCEPTED\020\312\001\022"
+  "!\n\034SIP_STATUS_MOVED_PERMANENTLY\020\255\002\022!\n\034SI"
+  "P_STATUS_MOVED_TEMPORARILY\020\256\002\022\031\n\024SIP_STA"
+  "TUS_USE_PROXY\020\261\002\022\033\n\026SIP_STATUS_BAD_REQUE"
+  "ST\020\220\003\022\034\n\027SIP_STATUS_UNAUTHORIZED\020\221\003\022 \n\033S"
+  "IP_STATUS_PAYMENT_REQUIRED\020\222\003\022\031\n\024SIP_STA"
+  "TUS_FORBIDDEN\020\223\003\022\030\n\023SIP_STATUS_NOTFOUND\020"
+  "\224\003\022\"\n\035SIP_STATUS_METHOD_NOT_ALLOWED\020\225\003\022\036"
+  "\n\031SIP_STATUS_NOT_ACCEPTABLE\020\226\003\022#\n\036SIP_ST"
+  "ATUS_PROXY_AUTH_REQUIRED\020\227\003\022\037\n\032SIP_STATU"
+  "S_REQUEST_TIMEOUT\020\230\003\022\030\n\023SIP_STATUS_CONFL"
+  "ICT\020\231\003\022\024\n\017SIP_STATUS_GONE\020\232\003\022(\n#SIP_STAT"
+  "US_REQUEST_ENTITY_TOO_LARGE\020\235\003\022$\n\037SIP_ST"
+  "ATUS_REQUEST_URI_TOO_LONG\020\236\003\022&\n!SIP_STAT"
+  "US_UNSUPPORTED_MEDIA_TYPE\020\237\003\022/\n*SIP_STAT"
+  "US_REQUESTED_RANGE_NOT_SATISFIABLE\020\240\003\022\035\n"
+  "\030SIP_STATUS_BAD_EXTENSION\020\244\003\022\"\n\035SIP_STAT"
+  "US_EXTENSION_REQUIRED\020\245\003\022\"\n\035SIP_STATUS_I"
+  "NTERVAL_TOO_BRIEF\020\247\003\022\'\n\"SIP_STATUS_TEMPO"
+  "RARILY_UNAVAILABLE\020\340\003\0220\n+SIP_STATUS_CALL"
+  "_TRANSACTION_DOES_NOT_EXISTS\020\341\003\022\035\n\030SIP_S"
+  "TATUS_LOOP_DETECTED\020\342\003\022\035\n\030SIP_STATUS_TOO"
+  "_MANY_HOPS\020\343\003\022\"\n\035SIP_STATUS_ADDRESS_INCO"
+  "MPLETE\020\344\003\022\031\n\024SIP_STATUS_AMBIGUOUS\020\345\003\022\031\n\024"
+  "SIP_STATUS_BUSY_HERE\020\346\003\022\"\n\035SIP_STATUS_RE"
+  "QUEST_TERMINATED\020\347\003\022#\n\036SIP_STATUS_NOT_AC"
+  "CEPTABLE_HERE\020\350\003\022%\n SIP_STATUS_INTERNAL_"
+  "SERVER_ERROR\020\364\003\022\037\n\032SIP_STATUS_NOT_IMPLEM"
+  "ENTED\020\365\003\022\033\n\026SIP_STATUS_BAD_GATEWAY\020\366\003\022#\n"
+  "\036SIP_STATUS_SERVICE_UNAVAILABLE\020\367\003\022\037\n\032SI"
+  "P_STATUS_GATEWAY_TIMEOUT\020\370\003\022%\n SIP_STATU"
+  "S_VERSION_NOT_SUPPORTED\020\371\003\022!\n\034SIP_STATUS"
+  "_MESSAGE_TOO_LARGE\020\201\004\022&\n!SIP_STATUS_GLOB"
+  "AL_BUSY_EVERYWHERE\020\330\004\022\036\n\031SIP_STATUS_GLOB"
+  "AL_DECLINE\020\333\004\022.\n)SIP_STATUS_GLOBAL_DOES_"
+  "NOT_EXIST_ANYWHERE\020\334\004\022%\n SIP_STATUS_GLOB"
+  "AL_NOT_ACCEPTABLE\020\336\004*k\n\014SIPTransport\022\026\n\022"
+  "SIP_TRANSPORT_AUTO\020\000\022\025\n\021SIP_TRANSPORT_UD"
+  "P\020\001\022\025\n\021SIP_TRANSPORT_TCP\020\002\022\025\n\021SIP_TRANSP"
+  "ORT_TLS\020\003*N\n\020SIPHeaderOptions\022\022\n\016SIP_NO_"
+  "HEADERS\020\000\022\021\n\rSIP_X_HEADERS\020\001\022\023\n\017SIP_ALL_"
+  "HEADERS\020\002*o\n\022SIPMediaEncryption\022\035\n\031SIP_M"
+  "EDIA_ENCRYPT_DISABLE\020\000\022\033\n\027SIP_MEDIA_ENCR"
+  "YPT_ALLOW\020\001\022\035\n\031SIP_MEDIA_ENCRYPT_REQUIRE"
+  "\020\002*w\n\rSIPCallStatus\022\025\n\021SCS_CALL_INCOMING"
+  "\020\000\022\032\n\026SCS_PARTICIPANT_JOINED\020\001\022\016\n\nSCS_AC"
+  "TIVE\020\002\022\024\n\020SCS_DISCONNECTED\020\003\022\r\n\tSCS_ERRO"
+  "R\020\004*c\n\021SIPTransferStatus\022\030\n\024STS_TRANSFER"
+  "_ONGOING\020\000\022\027\n\023STS_TRANSFER_FAILED\020\001\022\033\n\027S"
+  "TS_TRANSFER_SUCCESSFUL\020\002*)\n\nSIPFeature\022\010"
+  "\n\004NONE\020\000\022\021\n\rKRISP_ENABLED\020\001*F\n\020SIPCallDi"
+  "rection\022\017\n\013SCD_UNKNOWN\020\000\022\017\n\013SCD_INBOUND\020"
+  "\001\022\020\n\014SCD_OUTBOUND\020\0022\327\013\n\003SIP\022P\n\014ListSIPTr"
+  "unk\022\034.livekit.ListSIPTrunkRequest\032\035.live"
+  "kit.ListSIPTrunkResponse\"\003\210\002\001\022\\\n\025CreateS"
+  "IPInboundTrunk\022%.livekit.CreateSIPInboun"
+  "dTrunkRequest\032\034.livekit.SIPInboundTrunkI"
+  "nfo\022_\n\026CreateSIPOutboundTrunk\022&.livekit."
+  "CreateSIPOutboundTrunkRequest\032\035.livekit."
+  "SIPOutboundTrunkInfo\022\\\n\025UpdateSIPInbound"
+  "Trunk\022%.livekit.UpdateSIPInboundTrunkReq"
+  "uest\032\034.livekit.SIPInboundTrunkInfo\022_\n\026Up"
+  "dateSIPOutboundTrunk\022&.livekit.UpdateSIP"
+  "OutboundTrunkRequest\032\035.livekit.SIPOutbou"
+  "ndTrunkInfo\022]\n\022GetSIPInboundTrunk\022\".live"
+  "kit.GetSIPInboundTrunkRequest\032#.livekit."
+  "GetSIPInboundTrunkResponse\022`\n\023GetSIPOutb"
+  "oundTrunk\022#.livekit.GetSIPOutboundTrunkR"
+  "equest\032$.livekit.GetSIPOutboundTrunkResp"
+  "onse\022`\n\023ListSIPInboundTrunk\022#.livekit.Li"
+  "stSIPInboundTrunkRequest\032$.livekit.ListS"
+  "IPInboundTrunkResponse\022c\n\024ListSIPOutboun"
+  "dTrunk\022$.livekit.ListSIPOutboundTrunkReq"
+  "uest\032%.livekit.ListSIPOutboundTrunkRespo"
+  "nse\022G\n\016DeleteSIPTrunk\022\036.livekit.DeleteSI"
+  "PTrunkRequest\032\025.livekit.SIPTrunkInfo\022\\\n\025"
+  "CreateSIPDispatchRule\022%.livekit.CreateSI"
+  "PDispatchRuleRequest\032\034.livekit.SIPDispat"
+  "chRuleInfo\022\\\n\025UpdateSIPDispatchRule\022%.li"
+  "vekit.UpdateSIPDispatchRuleRequest\032\034.liv"
+  "ekit.SIPDispatchRuleInfo\022`\n\023ListSIPDispa"
+  "tchRule\022#.livekit.ListSIPDispatchRuleReq"
+  "uest\032$.livekit.ListSIPDispatchRuleRespon"
+  "se\022\\\n\025DeleteSIPDispatchRule\022%.livekit.De"
+  "leteSIPDispatchRuleRequest\032\034.livekit.SIP"
+  "DispatchRuleInfo\022Y\n\024CreateSIPParticipant"
+  "\022$.livekit.CreateSIPParticipantRequest\032\033"
+  ".livekit.SIPParticipantInfo\022X\n\026TransferS"
+  "IPParticipant\022&.livekit.TransferSIPParti"
+  "cipantRequest\032\026.google.protobuf.EmptyBFZ"
+  "#github.com/livekit/protocol/livekit\252\002\rL"
+  "iveKit.Proto\352\002\016LiveKit::Protob\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_livekit_5fsip_2eproto_deps[4] = {
   &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
@@ -1649,9 +1993,9 @@ static const ::_pbi::DescriptorTable* const descriptor_table_livekit_5fsip_2epro
 };
 static ::_pbi::once_flag descriptor_table_livekit_5fsip_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_livekit_5fsip_2eproto = {
-    false, false, 11024, descriptor_table_protodef_livekit_5fsip_2eproto,
+    false, false, 13597, descriptor_table_protodef_livekit_5fsip_2eproto,
     "livekit_sip.proto",
-    &descriptor_table_livekit_5fsip_2eproto_once, descriptor_table_livekit_5fsip_2eproto_deps, 4, 47,
+    &descriptor_table_livekit_5fsip_2eproto_once, descriptor_table_livekit_5fsip_2eproto_deps, 4, 55,
     schemas, file_default_instances, TableStruct_livekit_5fsip_2eproto::offsets,
     file_level_metadata_livekit_5fsip_2eproto, file_level_enum_descriptors_livekit_5fsip_2eproto,
     file_level_service_descriptors_livekit_5fsip_2eproto,
@@ -1810,9 +2154,24 @@ bool SIPCallStatus_IsValid(int value) {
   }
 }
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SIPFeature_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SIPTransferStatus_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_livekit_5fsip_2eproto);
   return file_level_enum_descriptors_livekit_5fsip_2eproto[6];
+}
+bool SIPTransferStatus_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SIPFeature_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_livekit_5fsip_2eproto);
+  return file_level_enum_descriptors_livekit_5fsip_2eproto[7];
 }
 bool SIPFeature_IsValid(int value) {
   switch (value) {
@@ -1826,7 +2185,7 @@ bool SIPFeature_IsValid(int value) {
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SIPCallDirection_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_livekit_5fsip_2eproto);
-  return file_level_enum_descriptors_livekit_5fsip_2eproto[7];
+  return file_level_enum_descriptors_livekit_5fsip_2eproto[8];
 }
 bool SIPCallDirection_IsValid(int value) {
   switch (value) {
@@ -3724,6 +4083,363 @@ void CreateSIPInboundTrunkRequest::InternalSwap(CreateSIPInboundTrunkRequest* ot
 
 // ===================================================================
 
+class UpdateSIPInboundTrunkRequest::_Internal {
+ public:
+  static const ::livekit::SIPInboundTrunkInfo& replace(const UpdateSIPInboundTrunkRequest* msg);
+  static const ::livekit::SIPInboundTrunkUpdate& update(const UpdateSIPInboundTrunkRequest* msg);
+};
+
+const ::livekit::SIPInboundTrunkInfo&
+UpdateSIPInboundTrunkRequest::_Internal::replace(const UpdateSIPInboundTrunkRequest* msg) {
+  return *msg->_impl_.action_.replace_;
+}
+const ::livekit::SIPInboundTrunkUpdate&
+UpdateSIPInboundTrunkRequest::_Internal::update(const UpdateSIPInboundTrunkRequest* msg) {
+  return *msg->_impl_.action_.update_;
+}
+void UpdateSIPInboundTrunkRequest::set_allocated_replace(::livekit::SIPInboundTrunkInfo* replace) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_action();
+  if (replace) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(replace);
+    if (message_arena != submessage_arena) {
+      replace = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, replace, submessage_arena);
+    }
+    set_has_replace();
+    _impl_.action_.replace_ = replace;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPInboundTrunkRequest.replace)
+}
+void UpdateSIPInboundTrunkRequest::set_allocated_update(::livekit::SIPInboundTrunkUpdate* update) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_action();
+  if (update) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(update);
+    if (message_arena != submessage_arena) {
+      update = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, update, submessage_arena);
+    }
+    set_has_update();
+    _impl_.action_.update_ = update;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPInboundTrunkRequest.update)
+}
+UpdateSIPInboundTrunkRequest::UpdateSIPInboundTrunkRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.UpdateSIPInboundTrunkRequest)
+}
+UpdateSIPInboundTrunkRequest::UpdateSIPInboundTrunkRequest(const UpdateSIPInboundTrunkRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UpdateSIPInboundTrunkRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sip_trunk_id_){}
+    , decltype(_impl_.action_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.sip_trunk_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.sip_trunk_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sip_trunk_id().empty()) {
+    _this->_impl_.sip_trunk_id_.Set(from._internal_sip_trunk_id(), 
+      _this->GetArenaForAllocation());
+  }
+  clear_has_action();
+  switch (from.action_case()) {
+    case kReplace: {
+      _this->_internal_mutable_replace()->::livekit::SIPInboundTrunkInfo::MergeFrom(
+          from._internal_replace());
+      break;
+    }
+    case kUpdate: {
+      _this->_internal_mutable_update()->::livekit::SIPInboundTrunkUpdate::MergeFrom(
+          from._internal_update());
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  // @@protoc_insertion_point(copy_constructor:livekit.UpdateSIPInboundTrunkRequest)
+}
+
+inline void UpdateSIPInboundTrunkRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sip_trunk_id_){}
+    , decltype(_impl_.action_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
+  };
+  _impl_.sip_trunk_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.sip_trunk_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  clear_has_action();
+}
+
+UpdateSIPInboundTrunkRequest::~UpdateSIPInboundTrunkRequest() {
+  // @@protoc_insertion_point(destructor:livekit.UpdateSIPInboundTrunkRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UpdateSIPInboundTrunkRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.sip_trunk_id_.Destroy();
+  if (has_action()) {
+    clear_action();
+  }
+}
+
+void UpdateSIPInboundTrunkRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UpdateSIPInboundTrunkRequest::clear_action() {
+// @@protoc_insertion_point(one_of_clear_start:livekit.UpdateSIPInboundTrunkRequest)
+  switch (action_case()) {
+    case kReplace: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.action_.replace_;
+      }
+      break;
+    }
+    case kUpdate: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.action_.update_;
+      }
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = ACTION_NOT_SET;
+}
+
+
+void UpdateSIPInboundTrunkRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.UpdateSIPInboundTrunkRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.sip_trunk_id_.ClearToEmpty();
+  clear_action();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateSIPInboundTrunkRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string sip_trunk_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_sip_trunk_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.UpdateSIPInboundTrunkRequest.sip_trunk_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPInboundTrunkInfo replace = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_replace(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPInboundTrunkUpdate update = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_update(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UpdateSIPInboundTrunkRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.UpdateSIPInboundTrunkRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string sip_trunk_id = 1;
+  if (!this->_internal_sip_trunk_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_sip_trunk_id().data(), static_cast<int>(this->_internal_sip_trunk_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.UpdateSIPInboundTrunkRequest.sip_trunk_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_sip_trunk_id(), target);
+  }
+
+  // .livekit.SIPInboundTrunkInfo replace = 2;
+  if (_internal_has_replace()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::replace(this),
+        _Internal::replace(this).GetCachedSize(), target, stream);
+  }
+
+  // .livekit.SIPInboundTrunkUpdate update = 3;
+  if (_internal_has_update()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::update(this),
+        _Internal::update(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.UpdateSIPInboundTrunkRequest)
+  return target;
+}
+
+size_t UpdateSIPInboundTrunkRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.UpdateSIPInboundTrunkRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string sip_trunk_id = 1;
+  if (!this->_internal_sip_trunk_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_sip_trunk_id());
+  }
+
+  switch (action_case()) {
+    // .livekit.SIPInboundTrunkInfo replace = 2;
+    case kReplace: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.action_.replace_);
+      break;
+    }
+    // .livekit.SIPInboundTrunkUpdate update = 3;
+    case kUpdate: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.action_.update_);
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UpdateSIPInboundTrunkRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UpdateSIPInboundTrunkRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UpdateSIPInboundTrunkRequest::GetClassData() const { return &_class_data_; }
+
+
+void UpdateSIPInboundTrunkRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UpdateSIPInboundTrunkRequest*>(&to_msg);
+  auto& from = static_cast<const UpdateSIPInboundTrunkRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.UpdateSIPInboundTrunkRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_sip_trunk_id().empty()) {
+    _this->_internal_set_sip_trunk_id(from._internal_sip_trunk_id());
+  }
+  switch (from.action_case()) {
+    case kReplace: {
+      _this->_internal_mutable_replace()->::livekit::SIPInboundTrunkInfo::MergeFrom(
+          from._internal_replace());
+      break;
+    }
+    case kUpdate: {
+      _this->_internal_mutable_update()->::livekit::SIPInboundTrunkUpdate::MergeFrom(
+          from._internal_update());
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateSIPInboundTrunkRequest::CopyFrom(const UpdateSIPInboundTrunkRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.UpdateSIPInboundTrunkRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateSIPInboundTrunkRequest::IsInitialized() const {
+  return true;
+}
+
+void UpdateSIPInboundTrunkRequest::InternalSwap(UpdateSIPInboundTrunkRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.sip_trunk_id_, lhs_arena,
+      &other->_impl_.sip_trunk_id_, rhs_arena
+  );
+  swap(_impl_.action_, other->_impl_.action_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateSIPInboundTrunkRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
+      file_level_metadata_livekit_5fsip_2eproto[4]);
+}
+
+// ===================================================================
+
 SIPInboundTrunkInfo_HeadersEntry_DoNotUse::SIPInboundTrunkInfo_HeadersEntry_DoNotUse() {}
 SIPInboundTrunkInfo_HeadersEntry_DoNotUse::SIPInboundTrunkInfo_HeadersEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
     : SuperType(arena) {}
@@ -3733,7 +4449,7 @@ void SIPInboundTrunkInfo_HeadersEntry_DoNotUse::MergeFrom(const SIPInboundTrunkI
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPInboundTrunkInfo_HeadersEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[4]);
+      file_level_metadata_livekit_5fsip_2eproto[5]);
 }
 
 // ===================================================================
@@ -3747,7 +4463,7 @@ void SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse::MergeFrom(const SIPI
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPInboundTrunkInfo_HeadersToAttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[5]);
+      file_level_metadata_livekit_5fsip_2eproto[6]);
 }
 
 // ===================================================================
@@ -3761,7 +4477,7 @@ void SIPInboundTrunkInfo_AttributesToHeadersEntry_DoNotUse::MergeFrom(const SIPI
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPInboundTrunkInfo_AttributesToHeadersEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[6]);
+      file_level_metadata_livekit_5fsip_2eproto[7]);
 }
 
 // ===================================================================
@@ -4655,7 +5371,575 @@ void SIPInboundTrunkInfo::InternalSwap(SIPInboundTrunkInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPInboundTrunkInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[7]);
+      file_level_metadata_livekit_5fsip_2eproto[8]);
+}
+
+// ===================================================================
+
+class SIPInboundTrunkUpdate::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SIPInboundTrunkUpdate>()._impl_._has_bits_);
+  static const ::livekit::ListUpdate& numbers(const SIPInboundTrunkUpdate* msg);
+  static const ::livekit::ListUpdate& allowed_addresses(const SIPInboundTrunkUpdate* msg);
+  static const ::livekit::ListUpdate& allowed_numbers(const SIPInboundTrunkUpdate* msg);
+  static void set_has_auth_username(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_auth_password(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_name(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_metadata(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_media_encryption(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+};
+
+const ::livekit::ListUpdate&
+SIPInboundTrunkUpdate::_Internal::numbers(const SIPInboundTrunkUpdate* msg) {
+  return *msg->_impl_.numbers_;
+}
+const ::livekit::ListUpdate&
+SIPInboundTrunkUpdate::_Internal::allowed_addresses(const SIPInboundTrunkUpdate* msg) {
+  return *msg->_impl_.allowed_addresses_;
+}
+const ::livekit::ListUpdate&
+SIPInboundTrunkUpdate::_Internal::allowed_numbers(const SIPInboundTrunkUpdate* msg) {
+  return *msg->_impl_.allowed_numbers_;
+}
+void SIPInboundTrunkUpdate::clear_numbers() {
+  if (GetArenaForAllocation() == nullptr && _impl_.numbers_ != nullptr) {
+    delete _impl_.numbers_;
+  }
+  _impl_.numbers_ = nullptr;
+}
+void SIPInboundTrunkUpdate::clear_allowed_addresses() {
+  if (GetArenaForAllocation() == nullptr && _impl_.allowed_addresses_ != nullptr) {
+    delete _impl_.allowed_addresses_;
+  }
+  _impl_.allowed_addresses_ = nullptr;
+}
+void SIPInboundTrunkUpdate::clear_allowed_numbers() {
+  if (GetArenaForAllocation() == nullptr && _impl_.allowed_numbers_ != nullptr) {
+    delete _impl_.allowed_numbers_;
+  }
+  _impl_.allowed_numbers_ = nullptr;
+}
+SIPInboundTrunkUpdate::SIPInboundTrunkUpdate(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.SIPInboundTrunkUpdate)
+}
+SIPInboundTrunkUpdate::SIPInboundTrunkUpdate(const SIPInboundTrunkUpdate& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SIPInboundTrunkUpdate* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.auth_username_){}
+    , decltype(_impl_.auth_password_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.metadata_){}
+    , decltype(_impl_.numbers_){nullptr}
+    , decltype(_impl_.allowed_addresses_){nullptr}
+    , decltype(_impl_.allowed_numbers_){nullptr}
+    , decltype(_impl_.media_encryption_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.auth_username_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.auth_username_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_auth_username()) {
+    _this->_impl_.auth_username_.Set(from._internal_auth_username(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.auth_password_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.auth_password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_auth_password()) {
+    _this->_impl_.auth_password_.Set(from._internal_auth_password(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_name()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.metadata_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_metadata()) {
+    _this->_impl_.metadata_.Set(from._internal_metadata(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_numbers()) {
+    _this->_impl_.numbers_ = new ::livekit::ListUpdate(*from._impl_.numbers_);
+  }
+  if (from._internal_has_allowed_addresses()) {
+    _this->_impl_.allowed_addresses_ = new ::livekit::ListUpdate(*from._impl_.allowed_addresses_);
+  }
+  if (from._internal_has_allowed_numbers()) {
+    _this->_impl_.allowed_numbers_ = new ::livekit::ListUpdate(*from._impl_.allowed_numbers_);
+  }
+  _this->_impl_.media_encryption_ = from._impl_.media_encryption_;
+  // @@protoc_insertion_point(copy_constructor:livekit.SIPInboundTrunkUpdate)
+}
+
+inline void SIPInboundTrunkUpdate::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.auth_username_){}
+    , decltype(_impl_.auth_password_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.metadata_){}
+    , decltype(_impl_.numbers_){nullptr}
+    , decltype(_impl_.allowed_addresses_){nullptr}
+    , decltype(_impl_.allowed_numbers_){nullptr}
+    , decltype(_impl_.media_encryption_){0}
+  };
+  _impl_.auth_username_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.auth_username_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.auth_password_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.auth_password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.metadata_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+SIPInboundTrunkUpdate::~SIPInboundTrunkUpdate() {
+  // @@protoc_insertion_point(destructor:livekit.SIPInboundTrunkUpdate)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SIPInboundTrunkUpdate::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.auth_username_.Destroy();
+  _impl_.auth_password_.Destroy();
+  _impl_.name_.Destroy();
+  _impl_.metadata_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.numbers_;
+  if (this != internal_default_instance()) delete _impl_.allowed_addresses_;
+  if (this != internal_default_instance()) delete _impl_.allowed_numbers_;
+}
+
+void SIPInboundTrunkUpdate::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SIPInboundTrunkUpdate::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.SIPInboundTrunkUpdate)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.auth_username_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.auth_password_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _impl_.name_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _impl_.metadata_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (GetArenaForAllocation() == nullptr && _impl_.numbers_ != nullptr) {
+    delete _impl_.numbers_;
+  }
+  _impl_.numbers_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.allowed_addresses_ != nullptr) {
+    delete _impl_.allowed_addresses_;
+  }
+  _impl_.allowed_addresses_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.allowed_numbers_ != nullptr) {
+    delete _impl_.allowed_numbers_;
+  }
+  _impl_.allowed_numbers_ = nullptr;
+  _impl_.media_encryption_ = 0;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SIPInboundTrunkUpdate::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .livekit.ListUpdate numbers = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_numbers(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.ListUpdate allowed_addresses = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_allowed_addresses(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.ListUpdate allowed_numbers = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_allowed_numbers(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string auth_username = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_auth_username();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPInboundTrunkUpdate.auth_username"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string auth_password = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_auth_password();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPInboundTrunkUpdate.auth_password"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string name = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPInboundTrunkUpdate.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string metadata = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_metadata();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPInboundTrunkUpdate.metadata"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .livekit.SIPMediaEncryption media_encryption = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_media_encryption(static_cast<::livekit::SIPMediaEncryption>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SIPInboundTrunkUpdate::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.SIPInboundTrunkUpdate)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .livekit.ListUpdate numbers = 1;
+  if (this->_internal_has_numbers()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::numbers(this),
+        _Internal::numbers(this).GetCachedSize(), target, stream);
+  }
+
+  // .livekit.ListUpdate allowed_addresses = 2;
+  if (this->_internal_has_allowed_addresses()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::allowed_addresses(this),
+        _Internal::allowed_addresses(this).GetCachedSize(), target, stream);
+  }
+
+  // .livekit.ListUpdate allowed_numbers = 3;
+  if (this->_internal_has_allowed_numbers()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::allowed_numbers(this),
+        _Internal::allowed_numbers(this).GetCachedSize(), target, stream);
+  }
+
+  // optional string auth_username = 4;
+  if (_internal_has_auth_username()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_auth_username().data(), static_cast<int>(this->_internal_auth_username().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPInboundTrunkUpdate.auth_username");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_auth_username(), target);
+  }
+
+  // optional string auth_password = 5;
+  if (_internal_has_auth_password()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_auth_password().data(), static_cast<int>(this->_internal_auth_password().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPInboundTrunkUpdate.auth_password");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_auth_password(), target);
+  }
+
+  // optional string name = 6;
+  if (_internal_has_name()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPInboundTrunkUpdate.name");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_name(), target);
+  }
+
+  // optional string metadata = 7;
+  if (_internal_has_metadata()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_metadata().data(), static_cast<int>(this->_internal_metadata().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPInboundTrunkUpdate.metadata");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_metadata(), target);
+  }
+
+  // optional .livekit.SIPMediaEncryption media_encryption = 8;
+  if (_internal_has_media_encryption()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      8, this->_internal_media_encryption(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.SIPInboundTrunkUpdate)
+  return target;
+}
+
+size_t SIPInboundTrunkUpdate::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.SIPInboundTrunkUpdate)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    // optional string auth_username = 4;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_auth_username());
+    }
+
+    // optional string auth_password = 5;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_auth_password());
+    }
+
+    // optional string name = 6;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_name());
+    }
+
+    // optional string metadata = 7;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_metadata());
+    }
+
+  }
+  // .livekit.ListUpdate numbers = 1;
+  if (this->_internal_has_numbers()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.numbers_);
+  }
+
+  // .livekit.ListUpdate allowed_addresses = 2;
+  if (this->_internal_has_allowed_addresses()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.allowed_addresses_);
+  }
+
+  // .livekit.ListUpdate allowed_numbers = 3;
+  if (this->_internal_has_allowed_numbers()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.allowed_numbers_);
+  }
+
+  // optional .livekit.SIPMediaEncryption media_encryption = 8;
+  if (cached_has_bits & 0x00000010u) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_media_encryption());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SIPInboundTrunkUpdate::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SIPInboundTrunkUpdate::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SIPInboundTrunkUpdate::GetClassData() const { return &_class_data_; }
+
+
+void SIPInboundTrunkUpdate::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SIPInboundTrunkUpdate*>(&to_msg);
+  auto& from = static_cast<const SIPInboundTrunkUpdate&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.SIPInboundTrunkUpdate)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_auth_username(from._internal_auth_username());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_auth_password(from._internal_auth_password());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_internal_set_name(from._internal_name());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_internal_set_metadata(from._internal_metadata());
+    }
+  }
+  if (from._internal_has_numbers()) {
+    _this->_internal_mutable_numbers()->::livekit::ListUpdate::MergeFrom(
+        from._internal_numbers());
+  }
+  if (from._internal_has_allowed_addresses()) {
+    _this->_internal_mutable_allowed_addresses()->::livekit::ListUpdate::MergeFrom(
+        from._internal_allowed_addresses());
+  }
+  if (from._internal_has_allowed_numbers()) {
+    _this->_internal_mutable_allowed_numbers()->::livekit::ListUpdate::MergeFrom(
+        from._internal_allowed_numbers());
+  }
+  if (cached_has_bits & 0x00000010u) {
+    _this->_internal_set_media_encryption(from._internal_media_encryption());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SIPInboundTrunkUpdate::CopyFrom(const SIPInboundTrunkUpdate& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.SIPInboundTrunkUpdate)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SIPInboundTrunkUpdate::IsInitialized() const {
+  return true;
+}
+
+void SIPInboundTrunkUpdate::InternalSwap(SIPInboundTrunkUpdate* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.auth_username_, lhs_arena,
+      &other->_impl_.auth_username_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.auth_password_, lhs_arena,
+      &other->_impl_.auth_password_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.metadata_, lhs_arena,
+      &other->_impl_.metadata_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SIPInboundTrunkUpdate, _impl_.media_encryption_)
+      + sizeof(SIPInboundTrunkUpdate::_impl_.media_encryption_)
+      - PROTOBUF_FIELD_OFFSET(SIPInboundTrunkUpdate, _impl_.numbers_)>(
+          reinterpret_cast<char*>(&_impl_.numbers_),
+          reinterpret_cast<char*>(&other->_impl_.numbers_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SIPInboundTrunkUpdate::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
+      file_level_metadata_livekit_5fsip_2eproto[9]);
 }
 
 // ===================================================================
@@ -4848,7 +6132,364 @@ void CreateSIPOutboundTrunkRequest::InternalSwap(CreateSIPOutboundTrunkRequest* 
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateSIPOutboundTrunkRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[8]);
+      file_level_metadata_livekit_5fsip_2eproto[10]);
+}
+
+// ===================================================================
+
+class UpdateSIPOutboundTrunkRequest::_Internal {
+ public:
+  static const ::livekit::SIPOutboundTrunkInfo& replace(const UpdateSIPOutboundTrunkRequest* msg);
+  static const ::livekit::SIPOutboundTrunkUpdate& update(const UpdateSIPOutboundTrunkRequest* msg);
+};
+
+const ::livekit::SIPOutboundTrunkInfo&
+UpdateSIPOutboundTrunkRequest::_Internal::replace(const UpdateSIPOutboundTrunkRequest* msg) {
+  return *msg->_impl_.action_.replace_;
+}
+const ::livekit::SIPOutboundTrunkUpdate&
+UpdateSIPOutboundTrunkRequest::_Internal::update(const UpdateSIPOutboundTrunkRequest* msg) {
+  return *msg->_impl_.action_.update_;
+}
+void UpdateSIPOutboundTrunkRequest::set_allocated_replace(::livekit::SIPOutboundTrunkInfo* replace) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_action();
+  if (replace) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(replace);
+    if (message_arena != submessage_arena) {
+      replace = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, replace, submessage_arena);
+    }
+    set_has_replace();
+    _impl_.action_.replace_ = replace;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPOutboundTrunkRequest.replace)
+}
+void UpdateSIPOutboundTrunkRequest::set_allocated_update(::livekit::SIPOutboundTrunkUpdate* update) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_action();
+  if (update) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(update);
+    if (message_arena != submessage_arena) {
+      update = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, update, submessage_arena);
+    }
+    set_has_update();
+    _impl_.action_.update_ = update;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPOutboundTrunkRequest.update)
+}
+UpdateSIPOutboundTrunkRequest::UpdateSIPOutboundTrunkRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.UpdateSIPOutboundTrunkRequest)
+}
+UpdateSIPOutboundTrunkRequest::UpdateSIPOutboundTrunkRequest(const UpdateSIPOutboundTrunkRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UpdateSIPOutboundTrunkRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sip_trunk_id_){}
+    , decltype(_impl_.action_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.sip_trunk_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.sip_trunk_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sip_trunk_id().empty()) {
+    _this->_impl_.sip_trunk_id_.Set(from._internal_sip_trunk_id(), 
+      _this->GetArenaForAllocation());
+  }
+  clear_has_action();
+  switch (from.action_case()) {
+    case kReplace: {
+      _this->_internal_mutable_replace()->::livekit::SIPOutboundTrunkInfo::MergeFrom(
+          from._internal_replace());
+      break;
+    }
+    case kUpdate: {
+      _this->_internal_mutable_update()->::livekit::SIPOutboundTrunkUpdate::MergeFrom(
+          from._internal_update());
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  // @@protoc_insertion_point(copy_constructor:livekit.UpdateSIPOutboundTrunkRequest)
+}
+
+inline void UpdateSIPOutboundTrunkRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sip_trunk_id_){}
+    , decltype(_impl_.action_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
+  };
+  _impl_.sip_trunk_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.sip_trunk_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  clear_has_action();
+}
+
+UpdateSIPOutboundTrunkRequest::~UpdateSIPOutboundTrunkRequest() {
+  // @@protoc_insertion_point(destructor:livekit.UpdateSIPOutboundTrunkRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UpdateSIPOutboundTrunkRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.sip_trunk_id_.Destroy();
+  if (has_action()) {
+    clear_action();
+  }
+}
+
+void UpdateSIPOutboundTrunkRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UpdateSIPOutboundTrunkRequest::clear_action() {
+// @@protoc_insertion_point(one_of_clear_start:livekit.UpdateSIPOutboundTrunkRequest)
+  switch (action_case()) {
+    case kReplace: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.action_.replace_;
+      }
+      break;
+    }
+    case kUpdate: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.action_.update_;
+      }
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = ACTION_NOT_SET;
+}
+
+
+void UpdateSIPOutboundTrunkRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.UpdateSIPOutboundTrunkRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.sip_trunk_id_.ClearToEmpty();
+  clear_action();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateSIPOutboundTrunkRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string sip_trunk_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_sip_trunk_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.UpdateSIPOutboundTrunkRequest.sip_trunk_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPOutboundTrunkInfo replace = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_replace(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPOutboundTrunkUpdate update = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_update(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UpdateSIPOutboundTrunkRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.UpdateSIPOutboundTrunkRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string sip_trunk_id = 1;
+  if (!this->_internal_sip_trunk_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_sip_trunk_id().data(), static_cast<int>(this->_internal_sip_trunk_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.UpdateSIPOutboundTrunkRequest.sip_trunk_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_sip_trunk_id(), target);
+  }
+
+  // .livekit.SIPOutboundTrunkInfo replace = 2;
+  if (_internal_has_replace()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::replace(this),
+        _Internal::replace(this).GetCachedSize(), target, stream);
+  }
+
+  // .livekit.SIPOutboundTrunkUpdate update = 3;
+  if (_internal_has_update()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::update(this),
+        _Internal::update(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.UpdateSIPOutboundTrunkRequest)
+  return target;
+}
+
+size_t UpdateSIPOutboundTrunkRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.UpdateSIPOutboundTrunkRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string sip_trunk_id = 1;
+  if (!this->_internal_sip_trunk_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_sip_trunk_id());
+  }
+
+  switch (action_case()) {
+    // .livekit.SIPOutboundTrunkInfo replace = 2;
+    case kReplace: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.action_.replace_);
+      break;
+    }
+    // .livekit.SIPOutboundTrunkUpdate update = 3;
+    case kUpdate: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.action_.update_);
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UpdateSIPOutboundTrunkRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UpdateSIPOutboundTrunkRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UpdateSIPOutboundTrunkRequest::GetClassData() const { return &_class_data_; }
+
+
+void UpdateSIPOutboundTrunkRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UpdateSIPOutboundTrunkRequest*>(&to_msg);
+  auto& from = static_cast<const UpdateSIPOutboundTrunkRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.UpdateSIPOutboundTrunkRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_sip_trunk_id().empty()) {
+    _this->_internal_set_sip_trunk_id(from._internal_sip_trunk_id());
+  }
+  switch (from.action_case()) {
+    case kReplace: {
+      _this->_internal_mutable_replace()->::livekit::SIPOutboundTrunkInfo::MergeFrom(
+          from._internal_replace());
+      break;
+    }
+    case kUpdate: {
+      _this->_internal_mutable_update()->::livekit::SIPOutboundTrunkUpdate::MergeFrom(
+          from._internal_update());
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateSIPOutboundTrunkRequest::CopyFrom(const UpdateSIPOutboundTrunkRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.UpdateSIPOutboundTrunkRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateSIPOutboundTrunkRequest::IsInitialized() const {
+  return true;
+}
+
+void UpdateSIPOutboundTrunkRequest::InternalSwap(UpdateSIPOutboundTrunkRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.sip_trunk_id_, lhs_arena,
+      &other->_impl_.sip_trunk_id_, rhs_arena
+  );
+  swap(_impl_.action_, other->_impl_.action_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateSIPOutboundTrunkRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
+      file_level_metadata_livekit_5fsip_2eproto[11]);
 }
 
 // ===================================================================
@@ -4862,7 +6503,7 @@ void SIPOutboundTrunkInfo_HeadersEntry_DoNotUse::MergeFrom(const SIPOutboundTrun
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPOutboundTrunkInfo_HeadersEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[9]);
+      file_level_metadata_livekit_5fsip_2eproto[12]);
 }
 
 // ===================================================================
@@ -4876,7 +6517,7 @@ void SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse::MergeFrom(const SIP
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPOutboundTrunkInfo_HeadersToAttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[10]);
+      file_level_metadata_livekit_5fsip_2eproto[13]);
 }
 
 // ===================================================================
@@ -4890,7 +6531,7 @@ void SIPOutboundTrunkInfo_AttributesToHeadersEntry_DoNotUse::MergeFrom(const SIP
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPOutboundTrunkInfo_AttributesToHeadersEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[11]);
+      file_level_metadata_livekit_5fsip_2eproto[14]);
 }
 
 // ===================================================================
@@ -4922,6 +6563,7 @@ SIPOutboundTrunkInfo::SIPOutboundTrunkInfo(const SIPOutboundTrunkInfo& from)
     , decltype(_impl_.address_){}
     , decltype(_impl_.auth_username_){}
     , decltype(_impl_.auth_password_){}
+    , decltype(_impl_.destination_country_){}
     , decltype(_impl_.transport_){}
     , decltype(_impl_.include_headers_){}
     , decltype(_impl_.media_encryption_){}
@@ -4979,6 +6621,14 @@ SIPOutboundTrunkInfo::SIPOutboundTrunkInfo(const SIPOutboundTrunkInfo& from)
     _this->_impl_.auth_password_.Set(from._internal_auth_password(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.destination_country_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_destination_country().empty()) {
+    _this->_impl_.destination_country_.Set(from._internal_destination_country(), 
+      _this->GetArenaForAllocation());
+  }
   ::memcpy(&_impl_.transport_, &from._impl_.transport_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.media_encryption_) -
     reinterpret_cast<char*>(&_impl_.transport_)) + sizeof(_impl_.media_encryption_));
@@ -5000,6 +6650,7 @@ inline void SIPOutboundTrunkInfo::SharedCtor(
     , decltype(_impl_.address_){}
     , decltype(_impl_.auth_username_){}
     , decltype(_impl_.auth_password_){}
+    , decltype(_impl_.destination_country_){}
     , decltype(_impl_.transport_){0}
     , decltype(_impl_.include_headers_){0}
     , decltype(_impl_.media_encryption_){0}
@@ -5029,6 +6680,10 @@ inline void SIPOutboundTrunkInfo::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.auth_password_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.destination_country_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 SIPOutboundTrunkInfo::~SIPOutboundTrunkInfo() {
@@ -5056,6 +6711,7 @@ inline void SIPOutboundTrunkInfo::SharedDtor() {
   _impl_.address_.Destroy();
   _impl_.auth_username_.Destroy();
   _impl_.auth_password_.Destroy();
+  _impl_.destination_country_.Destroy();
 }
 
 void SIPOutboundTrunkInfo::ArenaDtor(void* object) {
@@ -5084,6 +6740,7 @@ void SIPOutboundTrunkInfo::Clear() {
   _impl_.address_.ClearToEmpty();
   _impl_.auth_username_.ClearToEmpty();
   _impl_.auth_password_.ClearToEmpty();
+  _impl_.destination_country_.ClearToEmpty();
   ::memset(&_impl_.transport_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.media_encryption_) -
       reinterpret_cast<char*>(&_impl_.transport_)) + sizeof(_impl_.media_encryption_));
@@ -5234,6 +6891,16 @@ const char* SIPOutboundTrunkInfo::_InternalParse(const char* ptr, ::_pbi::ParseC
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_media_encryption(static_cast<::livekit::SIPMediaEncryption>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // string destination_country = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 114)) {
+          auto str = _internal_mutable_destination_country();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPOutboundTrunkInfo.destination_country"));
         } else
           goto handle_unusual;
         continue;
@@ -5447,6 +7114,16 @@ uint8_t* SIPOutboundTrunkInfo::_InternalSerialize(
       13, this->_internal_media_encryption(), target);
   }
 
+  // string destination_country = 14;
+  if (!this->_internal_destination_country().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_destination_country().data(), static_cast<int>(this->_internal_destination_country().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPOutboundTrunkInfo.destination_country");
+    target = stream->WriteStringMaybeAliased(
+        14, this->_internal_destination_country(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -5540,6 +7217,13 @@ size_t SIPOutboundTrunkInfo::ByteSizeLong() const {
         this->_internal_auth_password());
   }
 
+  // string destination_country = 14;
+  if (!this->_internal_destination_country().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_destination_country());
+  }
+
   // .livekit.SIPTransport transport = 5;
   if (this->_internal_transport() != 0) {
     total_size += 1 +
@@ -5598,6 +7282,9 @@ void SIPOutboundTrunkInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   if (!from._internal_auth_password().empty()) {
     _this->_internal_set_auth_password(from._internal_auth_password());
   }
+  if (!from._internal_destination_country().empty()) {
+    _this->_internal_set_destination_country(from._internal_destination_country());
+  }
   if (from._internal_transport() != 0) {
     _this->_internal_set_transport(from._internal_transport());
   }
@@ -5654,6 +7341,10 @@ void SIPOutboundTrunkInfo::InternalSwap(SIPOutboundTrunkInfo* other) {
       &_impl_.auth_password_, lhs_arena,
       &other->_impl_.auth_password_, rhs_arena
   );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.destination_country_, lhs_arena,
+      &other->_impl_.destination_country_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SIPOutboundTrunkInfo, _impl_.media_encryption_)
       + sizeof(SIPOutboundTrunkInfo::_impl_.media_encryption_)
@@ -5665,7 +7356,632 @@ void SIPOutboundTrunkInfo::InternalSwap(SIPOutboundTrunkInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPOutboundTrunkInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[12]);
+      file_level_metadata_livekit_5fsip_2eproto[15]);
+}
+
+// ===================================================================
+
+class SIPOutboundTrunkUpdate::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SIPOutboundTrunkUpdate>()._impl_._has_bits_);
+  static void set_has_address(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_transport(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static void set_has_destination_country(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static const ::livekit::ListUpdate& numbers(const SIPOutboundTrunkUpdate* msg);
+  static void set_has_auth_username(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_auth_password(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_name(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_metadata(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_media_encryption(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+};
+
+const ::livekit::ListUpdate&
+SIPOutboundTrunkUpdate::_Internal::numbers(const SIPOutboundTrunkUpdate* msg) {
+  return *msg->_impl_.numbers_;
+}
+void SIPOutboundTrunkUpdate::clear_numbers() {
+  if (GetArenaForAllocation() == nullptr && _impl_.numbers_ != nullptr) {
+    delete _impl_.numbers_;
+  }
+  _impl_.numbers_ = nullptr;
+}
+SIPOutboundTrunkUpdate::SIPOutboundTrunkUpdate(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.SIPOutboundTrunkUpdate)
+}
+SIPOutboundTrunkUpdate::SIPOutboundTrunkUpdate(const SIPOutboundTrunkUpdate& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SIPOutboundTrunkUpdate* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.address_){}
+    , decltype(_impl_.auth_username_){}
+    , decltype(_impl_.auth_password_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.metadata_){}
+    , decltype(_impl_.destination_country_){}
+    , decltype(_impl_.numbers_){nullptr}
+    , decltype(_impl_.transport_){}
+    , decltype(_impl_.media_encryption_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_address()) {
+    _this->_impl_.address_.Set(from._internal_address(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.auth_username_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.auth_username_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_auth_username()) {
+    _this->_impl_.auth_username_.Set(from._internal_auth_username(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.auth_password_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.auth_password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_auth_password()) {
+    _this->_impl_.auth_password_.Set(from._internal_auth_password(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_name()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.metadata_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_metadata()) {
+    _this->_impl_.metadata_.Set(from._internal_metadata(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.destination_country_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_destination_country()) {
+    _this->_impl_.destination_country_.Set(from._internal_destination_country(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_numbers()) {
+    _this->_impl_.numbers_ = new ::livekit::ListUpdate(*from._impl_.numbers_);
+  }
+  ::memcpy(&_impl_.transport_, &from._impl_.transport_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.media_encryption_) -
+    reinterpret_cast<char*>(&_impl_.transport_)) + sizeof(_impl_.media_encryption_));
+  // @@protoc_insertion_point(copy_constructor:livekit.SIPOutboundTrunkUpdate)
+}
+
+inline void SIPOutboundTrunkUpdate::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.address_){}
+    , decltype(_impl_.auth_username_){}
+    , decltype(_impl_.auth_password_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.metadata_){}
+    , decltype(_impl_.destination_country_){}
+    , decltype(_impl_.numbers_){nullptr}
+    , decltype(_impl_.transport_){0}
+    , decltype(_impl_.media_encryption_){0}
+  };
+  _impl_.address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.auth_username_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.auth_username_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.auth_password_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.auth_password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.metadata_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.destination_country_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+SIPOutboundTrunkUpdate::~SIPOutboundTrunkUpdate() {
+  // @@protoc_insertion_point(destructor:livekit.SIPOutboundTrunkUpdate)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SIPOutboundTrunkUpdate::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.address_.Destroy();
+  _impl_.auth_username_.Destroy();
+  _impl_.auth_password_.Destroy();
+  _impl_.name_.Destroy();
+  _impl_.metadata_.Destroy();
+  _impl_.destination_country_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.numbers_;
+}
+
+void SIPOutboundTrunkUpdate::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SIPOutboundTrunkUpdate::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.SIPOutboundTrunkUpdate)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000003fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.address_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.auth_username_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _impl_.auth_password_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _impl_.name_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000010u) {
+      _impl_.metadata_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000020u) {
+      _impl_.destination_country_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (GetArenaForAllocation() == nullptr && _impl_.numbers_ != nullptr) {
+    delete _impl_.numbers_;
+  }
+  _impl_.numbers_ = nullptr;
+  if (cached_has_bits & 0x000000c0u) {
+    ::memset(&_impl_.transport_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.media_encryption_) -
+        reinterpret_cast<char*>(&_impl_.transport_)) + sizeof(_impl_.media_encryption_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SIPOutboundTrunkUpdate::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional string address = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPOutboundTrunkUpdate.address"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .livekit.SIPTransport transport = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_transport(static_cast<::livekit::SIPTransport>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.ListUpdate numbers = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_numbers(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string auth_username = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_auth_username();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPOutboundTrunkUpdate.auth_username"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string auth_password = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_auth_password();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPOutboundTrunkUpdate.auth_password"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string name = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPOutboundTrunkUpdate.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string metadata = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_metadata();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPOutboundTrunkUpdate.metadata"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .livekit.SIPMediaEncryption media_encryption = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_media_encryption(static_cast<::livekit::SIPMediaEncryption>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string destination_country = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          auto str = _internal_mutable_destination_country();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPOutboundTrunkUpdate.destination_country"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SIPOutboundTrunkUpdate::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.SIPOutboundTrunkUpdate)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional string address = 1;
+  if (_internal_has_address()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_address().data(), static_cast<int>(this->_internal_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPOutboundTrunkUpdate.address");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_address(), target);
+  }
+
+  // optional .livekit.SIPTransport transport = 2;
+  if (_internal_has_transport()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_transport(), target);
+  }
+
+  // .livekit.ListUpdate numbers = 3;
+  if (this->_internal_has_numbers()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::numbers(this),
+        _Internal::numbers(this).GetCachedSize(), target, stream);
+  }
+
+  // optional string auth_username = 4;
+  if (_internal_has_auth_username()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_auth_username().data(), static_cast<int>(this->_internal_auth_username().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPOutboundTrunkUpdate.auth_username");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_auth_username(), target);
+  }
+
+  // optional string auth_password = 5;
+  if (_internal_has_auth_password()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_auth_password().data(), static_cast<int>(this->_internal_auth_password().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPOutboundTrunkUpdate.auth_password");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_auth_password(), target);
+  }
+
+  // optional string name = 6;
+  if (_internal_has_name()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPOutboundTrunkUpdate.name");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_name(), target);
+  }
+
+  // optional string metadata = 7;
+  if (_internal_has_metadata()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_metadata().data(), static_cast<int>(this->_internal_metadata().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPOutboundTrunkUpdate.metadata");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_metadata(), target);
+  }
+
+  // optional .livekit.SIPMediaEncryption media_encryption = 8;
+  if (_internal_has_media_encryption()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      8, this->_internal_media_encryption(), target);
+  }
+
+  // optional string destination_country = 9;
+  if (_internal_has_destination_country()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_destination_country().data(), static_cast<int>(this->_internal_destination_country().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPOutboundTrunkUpdate.destination_country");
+    target = stream->WriteStringMaybeAliased(
+        9, this->_internal_destination_country(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.SIPOutboundTrunkUpdate)
+  return target;
+}
+
+size_t SIPOutboundTrunkUpdate::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.SIPOutboundTrunkUpdate)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000003fu) {
+    // optional string address = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_address());
+    }
+
+    // optional string auth_username = 4;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_auth_username());
+    }
+
+    // optional string auth_password = 5;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_auth_password());
+    }
+
+    // optional string name = 6;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_name());
+    }
+
+    // optional string metadata = 7;
+    if (cached_has_bits & 0x00000010u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_metadata());
+    }
+
+    // optional string destination_country = 9;
+    if (cached_has_bits & 0x00000020u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_destination_country());
+    }
+
+  }
+  // .livekit.ListUpdate numbers = 3;
+  if (this->_internal_has_numbers()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.numbers_);
+  }
+
+  if (cached_has_bits & 0x000000c0u) {
+    // optional .livekit.SIPTransport transport = 2;
+    if (cached_has_bits & 0x00000040u) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::EnumSize(this->_internal_transport());
+    }
+
+    // optional .livekit.SIPMediaEncryption media_encryption = 8;
+    if (cached_has_bits & 0x00000080u) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::EnumSize(this->_internal_media_encryption());
+    }
+
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SIPOutboundTrunkUpdate::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SIPOutboundTrunkUpdate::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SIPOutboundTrunkUpdate::GetClassData() const { return &_class_data_; }
+
+
+void SIPOutboundTrunkUpdate::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SIPOutboundTrunkUpdate*>(&to_msg);
+  auto& from = static_cast<const SIPOutboundTrunkUpdate&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.SIPOutboundTrunkUpdate)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000003fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_address(from._internal_address());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_auth_username(from._internal_auth_username());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_internal_set_auth_password(from._internal_auth_password());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_internal_set_name(from._internal_name());
+    }
+    if (cached_has_bits & 0x00000010u) {
+      _this->_internal_set_metadata(from._internal_metadata());
+    }
+    if (cached_has_bits & 0x00000020u) {
+      _this->_internal_set_destination_country(from._internal_destination_country());
+    }
+  }
+  if (from._internal_has_numbers()) {
+    _this->_internal_mutable_numbers()->::livekit::ListUpdate::MergeFrom(
+        from._internal_numbers());
+  }
+  if (cached_has_bits & 0x000000c0u) {
+    if (cached_has_bits & 0x00000040u) {
+      _this->_impl_.transport_ = from._impl_.transport_;
+    }
+    if (cached_has_bits & 0x00000080u) {
+      _this->_impl_.media_encryption_ = from._impl_.media_encryption_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SIPOutboundTrunkUpdate::CopyFrom(const SIPOutboundTrunkUpdate& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.SIPOutboundTrunkUpdate)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SIPOutboundTrunkUpdate::IsInitialized() const {
+  return true;
+}
+
+void SIPOutboundTrunkUpdate::InternalSwap(SIPOutboundTrunkUpdate* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.address_, lhs_arena,
+      &other->_impl_.address_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.auth_username_, lhs_arena,
+      &other->_impl_.auth_username_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.auth_password_, lhs_arena,
+      &other->_impl_.auth_password_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.metadata_, lhs_arena,
+      &other->_impl_.metadata_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.destination_country_, lhs_arena,
+      &other->_impl_.destination_country_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SIPOutboundTrunkUpdate, _impl_.media_encryption_)
+      + sizeof(SIPOutboundTrunkUpdate::_impl_.media_encryption_)
+      - PROTOBUF_FIELD_OFFSET(SIPOutboundTrunkUpdate, _impl_.numbers_)>(
+          reinterpret_cast<char*>(&_impl_.numbers_),
+          reinterpret_cast<char*>(&other->_impl_.numbers_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SIPOutboundTrunkUpdate::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
+      file_level_metadata_livekit_5fsip_2eproto[16]);
 }
 
 // ===================================================================
@@ -5868,7 +8184,7 @@ void GetSIPInboundTrunkRequest::InternalSwap(GetSIPInboundTrunkRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetSIPInboundTrunkRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[13]);
+      file_level_metadata_livekit_5fsip_2eproto[17]);
 }
 
 // ===================================================================
@@ -6061,7 +8377,7 @@ void GetSIPInboundTrunkResponse::InternalSwap(GetSIPInboundTrunkResponse* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata GetSIPInboundTrunkResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[14]);
+      file_level_metadata_livekit_5fsip_2eproto[18]);
 }
 
 // ===================================================================
@@ -6264,7 +8580,7 @@ void GetSIPOutboundTrunkRequest::InternalSwap(GetSIPOutboundTrunkRequest* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata GetSIPOutboundTrunkRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[15]);
+      file_level_metadata_livekit_5fsip_2eproto[19]);
 }
 
 // ===================================================================
@@ -6457,7 +8773,7 @@ void GetSIPOutboundTrunkResponse::InternalSwap(GetSIPOutboundTrunkResponse* othe
 ::PROTOBUF_NAMESPACE_ID::Metadata GetSIPOutboundTrunkResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[16]);
+      file_level_metadata_livekit_5fsip_2eproto[20]);
 }
 
 // ===================================================================
@@ -6656,7 +8972,7 @@ void ListSIPTrunkRequest::InternalSwap(ListSIPTrunkRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListSIPTrunkRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[17]);
+      file_level_metadata_livekit_5fsip_2eproto[21]);
 }
 
 // ===================================================================
@@ -6841,7 +9157,7 @@ void ListSIPTrunkResponse::InternalSwap(ListSIPTrunkResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListSIPTrunkResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[18]);
+      file_level_metadata_livekit_5fsip_2eproto[22]);
 }
 
 // ===================================================================
@@ -7118,7 +9434,7 @@ void ListSIPInboundTrunkRequest::InternalSwap(ListSIPInboundTrunkRequest* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata ListSIPInboundTrunkRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[19]);
+      file_level_metadata_livekit_5fsip_2eproto[23]);
 }
 
 // ===================================================================
@@ -7303,7 +9619,7 @@ void ListSIPInboundTrunkResponse::InternalSwap(ListSIPInboundTrunkResponse* othe
 ::PROTOBUF_NAMESPACE_ID::Metadata ListSIPInboundTrunkResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[20]);
+      file_level_metadata_livekit_5fsip_2eproto[24]);
 }
 
 // ===================================================================
@@ -7580,7 +9896,7 @@ void ListSIPOutboundTrunkRequest::InternalSwap(ListSIPOutboundTrunkRequest* othe
 ::PROTOBUF_NAMESPACE_ID::Metadata ListSIPOutboundTrunkRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[21]);
+      file_level_metadata_livekit_5fsip_2eproto[25]);
 }
 
 // ===================================================================
@@ -7765,7 +10081,7 @@ void ListSIPOutboundTrunkResponse::InternalSwap(ListSIPOutboundTrunkResponse* ot
 ::PROTOBUF_NAMESPACE_ID::Metadata ListSIPOutboundTrunkResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[22]);
+      file_level_metadata_livekit_5fsip_2eproto[26]);
 }
 
 // ===================================================================
@@ -7968,7 +10284,7 @@ void DeleteSIPTrunkRequest::InternalSwap(DeleteSIPTrunkRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteSIPTrunkRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[23]);
+      file_level_metadata_livekit_5fsip_2eproto[27]);
 }
 
 // ===================================================================
@@ -8221,7 +10537,7 @@ void SIPDispatchRuleDirect::InternalSwap(SIPDispatchRuleDirect* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPDispatchRuleDirect::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[24]);
+      file_level_metadata_livekit_5fsip_2eproto[28]);
 }
 
 // ===================================================================
@@ -8474,7 +10790,7 @@ void SIPDispatchRuleIndividual::InternalSwap(SIPDispatchRuleIndividual* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPDispatchRuleIndividual::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[25]);
+      file_level_metadata_livekit_5fsip_2eproto[29]);
 }
 
 // ===================================================================
@@ -8754,7 +11070,7 @@ void SIPDispatchRuleCallee::InternalSwap(SIPDispatchRuleCallee* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPDispatchRuleCallee::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[26]);
+      file_level_metadata_livekit_5fsip_2eproto[30]);
 }
 
 // ===================================================================
@@ -9117,7 +11433,7 @@ void SIPDispatchRule::InternalSwap(SIPDispatchRule* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPDispatchRule::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[27]);
+      file_level_metadata_livekit_5fsip_2eproto[31]);
 }
 
 // ===================================================================
@@ -9131,17 +11447,22 @@ void CreateSIPDispatchRuleRequest_AttributesEntry_DoNotUse::MergeFrom(const Crea
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateSIPDispatchRuleRequest_AttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[28]);
+      file_level_metadata_livekit_5fsip_2eproto[32]);
 }
 
 // ===================================================================
 
 class CreateSIPDispatchRuleRequest::_Internal {
  public:
+  static const ::livekit::SIPDispatchRuleInfo& dispatch_rule(const CreateSIPDispatchRuleRequest* msg);
   static const ::livekit::SIPDispatchRule& rule(const CreateSIPDispatchRuleRequest* msg);
   static const ::livekit::RoomConfiguration& room_config(const CreateSIPDispatchRuleRequest* msg);
 };
 
+const ::livekit::SIPDispatchRuleInfo&
+CreateSIPDispatchRuleRequest::_Internal::dispatch_rule(const CreateSIPDispatchRuleRequest* msg) {
+  return *msg->_impl_.dispatch_rule_;
+}
 const ::livekit::SIPDispatchRule&
 CreateSIPDispatchRuleRequest::_Internal::rule(const CreateSIPDispatchRuleRequest* msg) {
   return *msg->_impl_.rule_;
@@ -9177,6 +11498,7 @@ CreateSIPDispatchRuleRequest::CreateSIPDispatchRuleRequest(const CreateSIPDispat
     , decltype(_impl_.room_preset_){}
     , decltype(_impl_.rule_){nullptr}
     , decltype(_impl_.room_config_){nullptr}
+    , decltype(_impl_.dispatch_rule_){nullptr}
     , decltype(_impl_.hide_phone_number_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
@@ -9212,6 +11534,9 @@ CreateSIPDispatchRuleRequest::CreateSIPDispatchRuleRequest(const CreateSIPDispat
   if (from._internal_has_room_config()) {
     _this->_impl_.room_config_ = new ::livekit::RoomConfiguration(*from._impl_.room_config_);
   }
+  if (from._internal_has_dispatch_rule()) {
+    _this->_impl_.dispatch_rule_ = new ::livekit::SIPDispatchRuleInfo(*from._impl_.dispatch_rule_);
+  }
   _this->_impl_.hide_phone_number_ = from._impl_.hide_phone_number_;
   // @@protoc_insertion_point(copy_constructor:livekit.CreateSIPDispatchRuleRequest)
 }
@@ -9229,6 +11554,7 @@ inline void CreateSIPDispatchRuleRequest::SharedCtor(
     , decltype(_impl_.room_preset_){}
     , decltype(_impl_.rule_){nullptr}
     , decltype(_impl_.room_config_){nullptr}
+    , decltype(_impl_.dispatch_rule_){nullptr}
     , decltype(_impl_.hide_phone_number_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -9267,6 +11593,7 @@ inline void CreateSIPDispatchRuleRequest::SharedDtor() {
   _impl_.room_preset_.Destroy();
   if (this != internal_default_instance()) delete _impl_.rule_;
   if (this != internal_default_instance()) delete _impl_.room_config_;
+  if (this != internal_default_instance()) delete _impl_.dispatch_rule_;
 }
 
 void CreateSIPDispatchRuleRequest::ArenaDtor(void* object) {
@@ -9297,6 +11624,10 @@ void CreateSIPDispatchRuleRequest::Clear() {
     delete _impl_.room_config_;
   }
   _impl_.room_config_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.dispatch_rule_ != nullptr) {
+    delete _impl_.dispatch_rule_;
+  }
+  _impl_.dispatch_rule_ = nullptr;
   _impl_.hide_phone_number_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -9307,7 +11638,7 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .livekit.SIPDispatchRule rule = 1;
+      // .livekit.SIPDispatchRule rule = 1 [deprecated = true];
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_rule(), ptr);
@@ -9315,7 +11646,7 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // repeated string trunk_ids = 2;
+      // repeated string trunk_ids = 2 [deprecated = true];
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr -= 1;
@@ -9330,7 +11661,7 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // bool hide_phone_number = 3;
+      // bool hide_phone_number = 3 [deprecated = true];
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           _impl_.hide_phone_number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
@@ -9338,7 +11669,7 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // string name = 4;
+      // string name = 4 [deprecated = true];
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_name();
@@ -9348,7 +11679,7 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // string metadata = 5;
+      // string metadata = 5 [deprecated = true];
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_metadata();
@@ -9358,7 +11689,7 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // repeated string inbound_numbers = 6;
+      // repeated string inbound_numbers = 6 [deprecated = true];
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           ptr -= 1;
@@ -9373,7 +11704,7 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // map<string, string> attributes = 7;
+      // map<string, string> attributes = 7 [deprecated = true];
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
           ptr -= 1;
@@ -9386,7 +11717,7 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // string room_preset = 8;
+      // string room_preset = 8 [deprecated = true];
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
           auto str = _internal_mutable_room_preset();
@@ -9396,10 +11727,18 @@ const char* CreateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // .livekit.RoomConfiguration room_config = 9;
+      // .livekit.RoomConfiguration room_config = 9 [deprecated = true];
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
           ptr = ctx->ParseMessage(_internal_mutable_room_config(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPDispatchRuleInfo dispatch_rule = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
+          ptr = ctx->ParseMessage(_internal_mutable_dispatch_rule(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -9433,14 +11772,14 @@ uint8_t* CreateSIPDispatchRuleRequest::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .livekit.SIPDispatchRule rule = 1;
+  // .livekit.SIPDispatchRule rule = 1 [deprecated = true];
   if (this->_internal_has_rule()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::rule(this),
         _Internal::rule(this).GetCachedSize(), target, stream);
   }
 
-  // repeated string trunk_ids = 2;
+  // repeated string trunk_ids = 2 [deprecated = true];
   for (int i = 0, n = this->_internal_trunk_ids_size(); i < n; i++) {
     const auto& s = this->_internal_trunk_ids(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
@@ -9450,13 +11789,13 @@ uint8_t* CreateSIPDispatchRuleRequest::_InternalSerialize(
     target = stream->WriteString(2, s, target);
   }
 
-  // bool hide_phone_number = 3;
+  // bool hide_phone_number = 3 [deprecated = true];
   if (this->_internal_hide_phone_number() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_hide_phone_number(), target);
   }
 
-  // string name = 4;
+  // string name = 4 [deprecated = true];
   if (!this->_internal_name().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
@@ -9466,7 +11805,7 @@ uint8_t* CreateSIPDispatchRuleRequest::_InternalSerialize(
         4, this->_internal_name(), target);
   }
 
-  // string metadata = 5;
+  // string metadata = 5 [deprecated = true];
   if (!this->_internal_metadata().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_metadata().data(), static_cast<int>(this->_internal_metadata().length()),
@@ -9476,7 +11815,7 @@ uint8_t* CreateSIPDispatchRuleRequest::_InternalSerialize(
         5, this->_internal_metadata(), target);
   }
 
-  // repeated string inbound_numbers = 6;
+  // repeated string inbound_numbers = 6 [deprecated = true];
   for (int i = 0, n = this->_internal_inbound_numbers_size(); i < n; i++) {
     const auto& s = this->_internal_inbound_numbers(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
@@ -9486,7 +11825,7 @@ uint8_t* CreateSIPDispatchRuleRequest::_InternalSerialize(
     target = stream->WriteString(6, s, target);
   }
 
-  // map<string, string> attributes = 7;
+  // map<string, string> attributes = 7 [deprecated = true];
   if (!this->_internal_attributes().empty()) {
     using MapType = ::_pb::Map<std::string, std::string>;
     using WireHelper = CreateSIPDispatchRuleRequest_AttributesEntry_DoNotUse::Funcs;
@@ -9516,7 +11855,7 @@ uint8_t* CreateSIPDispatchRuleRequest::_InternalSerialize(
     }
   }
 
-  // string room_preset = 8;
+  // string room_preset = 8 [deprecated = true];
   if (!this->_internal_room_preset().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_room_preset().data(), static_cast<int>(this->_internal_room_preset().length()),
@@ -9526,11 +11865,18 @@ uint8_t* CreateSIPDispatchRuleRequest::_InternalSerialize(
         8, this->_internal_room_preset(), target);
   }
 
-  // .livekit.RoomConfiguration room_config = 9;
+  // .livekit.RoomConfiguration room_config = 9 [deprecated = true];
   if (this->_internal_has_room_config()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(9, _Internal::room_config(this),
         _Internal::room_config(this).GetCachedSize(), target, stream);
+  }
+
+  // .livekit.SIPDispatchRuleInfo dispatch_rule = 10;
+  if (this->_internal_has_dispatch_rule()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(10, _Internal::dispatch_rule(this),
+        _Internal::dispatch_rule(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -9549,7 +11895,7 @@ size_t CreateSIPDispatchRuleRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated string trunk_ids = 2;
+  // repeated string trunk_ids = 2 [deprecated = true];
   total_size += 1 *
       ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.trunk_ids_.size());
   for (int i = 0, n = _impl_.trunk_ids_.size(); i < n; i++) {
@@ -9557,7 +11903,7 @@ size_t CreateSIPDispatchRuleRequest::ByteSizeLong() const {
       _impl_.trunk_ids_.Get(i));
   }
 
-  // repeated string inbound_numbers = 6;
+  // repeated string inbound_numbers = 6 [deprecated = true];
   total_size += 1 *
       ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.inbound_numbers_.size());
   for (int i = 0, n = _impl_.inbound_numbers_.size(); i < n; i++) {
@@ -9565,7 +11911,7 @@ size_t CreateSIPDispatchRuleRequest::ByteSizeLong() const {
       _impl_.inbound_numbers_.Get(i));
   }
 
-  // map<string, string> attributes = 7;
+  // map<string, string> attributes = 7 [deprecated = true];
   total_size += 1 *
       ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_attributes_size());
   for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
@@ -9574,42 +11920,49 @@ size_t CreateSIPDispatchRuleRequest::ByteSizeLong() const {
     total_size += CreateSIPDispatchRuleRequest_AttributesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
-  // string name = 4;
+  // string name = 4 [deprecated = true];
   if (!this->_internal_name().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_name());
   }
 
-  // string metadata = 5;
+  // string metadata = 5 [deprecated = true];
   if (!this->_internal_metadata().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_metadata());
   }
 
-  // string room_preset = 8;
+  // string room_preset = 8 [deprecated = true];
   if (!this->_internal_room_preset().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_room_preset());
   }
 
-  // .livekit.SIPDispatchRule rule = 1;
+  // .livekit.SIPDispatchRule rule = 1 [deprecated = true];
   if (this->_internal_has_rule()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.rule_);
   }
 
-  // .livekit.RoomConfiguration room_config = 9;
+  // .livekit.RoomConfiguration room_config = 9 [deprecated = true];
   if (this->_internal_has_room_config()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.room_config_);
   }
 
-  // bool hide_phone_number = 3;
+  // .livekit.SIPDispatchRuleInfo dispatch_rule = 10;
+  if (this->_internal_has_dispatch_rule()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.dispatch_rule_);
+  }
+
+  // bool hide_phone_number = 3 [deprecated = true];
   if (this->_internal_hide_phone_number() != 0) {
     total_size += 1 + 1;
   }
@@ -9651,6 +12004,10 @@ void CreateSIPDispatchRuleRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& t
   if (from._internal_has_room_config()) {
     _this->_internal_mutable_room_config()->::livekit::RoomConfiguration::MergeFrom(
         from._internal_room_config());
+  }
+  if (from._internal_has_dispatch_rule()) {
+    _this->_internal_mutable_dispatch_rule()->::livekit::SIPDispatchRuleInfo::MergeFrom(
+        from._internal_dispatch_rule());
   }
   if (from._internal_hide_phone_number() != 0) {
     _this->_internal_set_hide_phone_number(from._internal_hide_phone_number());
@@ -9700,7 +12057,364 @@ void CreateSIPDispatchRuleRequest::InternalSwap(CreateSIPDispatchRuleRequest* ot
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateSIPDispatchRuleRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[29]);
+      file_level_metadata_livekit_5fsip_2eproto[33]);
+}
+
+// ===================================================================
+
+class UpdateSIPDispatchRuleRequest::_Internal {
+ public:
+  static const ::livekit::SIPDispatchRuleInfo& replace(const UpdateSIPDispatchRuleRequest* msg);
+  static const ::livekit::SIPDispatchRuleUpdate& update(const UpdateSIPDispatchRuleRequest* msg);
+};
+
+const ::livekit::SIPDispatchRuleInfo&
+UpdateSIPDispatchRuleRequest::_Internal::replace(const UpdateSIPDispatchRuleRequest* msg) {
+  return *msg->_impl_.action_.replace_;
+}
+const ::livekit::SIPDispatchRuleUpdate&
+UpdateSIPDispatchRuleRequest::_Internal::update(const UpdateSIPDispatchRuleRequest* msg) {
+  return *msg->_impl_.action_.update_;
+}
+void UpdateSIPDispatchRuleRequest::set_allocated_replace(::livekit::SIPDispatchRuleInfo* replace) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_action();
+  if (replace) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(replace);
+    if (message_arena != submessage_arena) {
+      replace = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, replace, submessage_arena);
+    }
+    set_has_replace();
+    _impl_.action_.replace_ = replace;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPDispatchRuleRequest.replace)
+}
+void UpdateSIPDispatchRuleRequest::set_allocated_update(::livekit::SIPDispatchRuleUpdate* update) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_action();
+  if (update) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(update);
+    if (message_arena != submessage_arena) {
+      update = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, update, submessage_arena);
+    }
+    set_has_update();
+    _impl_.action_.update_ = update;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.UpdateSIPDispatchRuleRequest.update)
+}
+UpdateSIPDispatchRuleRequest::UpdateSIPDispatchRuleRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.UpdateSIPDispatchRuleRequest)
+}
+UpdateSIPDispatchRuleRequest::UpdateSIPDispatchRuleRequest(const UpdateSIPDispatchRuleRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UpdateSIPDispatchRuleRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sip_dispatch_rule_id_){}
+    , decltype(_impl_.action_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.sip_dispatch_rule_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.sip_dispatch_rule_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_sip_dispatch_rule_id().empty()) {
+    _this->_impl_.sip_dispatch_rule_id_.Set(from._internal_sip_dispatch_rule_id(), 
+      _this->GetArenaForAllocation());
+  }
+  clear_has_action();
+  switch (from.action_case()) {
+    case kReplace: {
+      _this->_internal_mutable_replace()->::livekit::SIPDispatchRuleInfo::MergeFrom(
+          from._internal_replace());
+      break;
+    }
+    case kUpdate: {
+      _this->_internal_mutable_update()->::livekit::SIPDispatchRuleUpdate::MergeFrom(
+          from._internal_update());
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  // @@protoc_insertion_point(copy_constructor:livekit.UpdateSIPDispatchRuleRequest)
+}
+
+inline void UpdateSIPDispatchRuleRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.sip_dispatch_rule_id_){}
+    , decltype(_impl_.action_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
+  };
+  _impl_.sip_dispatch_rule_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.sip_dispatch_rule_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  clear_has_action();
+}
+
+UpdateSIPDispatchRuleRequest::~UpdateSIPDispatchRuleRequest() {
+  // @@protoc_insertion_point(destructor:livekit.UpdateSIPDispatchRuleRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UpdateSIPDispatchRuleRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.sip_dispatch_rule_id_.Destroy();
+  if (has_action()) {
+    clear_action();
+  }
+}
+
+void UpdateSIPDispatchRuleRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UpdateSIPDispatchRuleRequest::clear_action() {
+// @@protoc_insertion_point(one_of_clear_start:livekit.UpdateSIPDispatchRuleRequest)
+  switch (action_case()) {
+    case kReplace: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.action_.replace_;
+      }
+      break;
+    }
+    case kUpdate: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.action_.update_;
+      }
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = ACTION_NOT_SET;
+}
+
+
+void UpdateSIPDispatchRuleRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.UpdateSIPDispatchRuleRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.sip_dispatch_rule_id_.ClearToEmpty();
+  clear_action();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateSIPDispatchRuleRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string sip_dispatch_rule_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_sip_dispatch_rule_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.UpdateSIPDispatchRuleRequest.sip_dispatch_rule_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPDispatchRuleInfo replace = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_replace(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPDispatchRuleUpdate update = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_update(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UpdateSIPDispatchRuleRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.UpdateSIPDispatchRuleRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string sip_dispatch_rule_id = 1;
+  if (!this->_internal_sip_dispatch_rule_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_sip_dispatch_rule_id().data(), static_cast<int>(this->_internal_sip_dispatch_rule_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.UpdateSIPDispatchRuleRequest.sip_dispatch_rule_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_sip_dispatch_rule_id(), target);
+  }
+
+  // .livekit.SIPDispatchRuleInfo replace = 2;
+  if (_internal_has_replace()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::replace(this),
+        _Internal::replace(this).GetCachedSize(), target, stream);
+  }
+
+  // .livekit.SIPDispatchRuleUpdate update = 3;
+  if (_internal_has_update()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::update(this),
+        _Internal::update(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.UpdateSIPDispatchRuleRequest)
+  return target;
+}
+
+size_t UpdateSIPDispatchRuleRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.UpdateSIPDispatchRuleRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string sip_dispatch_rule_id = 1;
+  if (!this->_internal_sip_dispatch_rule_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_sip_dispatch_rule_id());
+  }
+
+  switch (action_case()) {
+    // .livekit.SIPDispatchRuleInfo replace = 2;
+    case kReplace: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.action_.replace_);
+      break;
+    }
+    // .livekit.SIPDispatchRuleUpdate update = 3;
+    case kUpdate: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.action_.update_);
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UpdateSIPDispatchRuleRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UpdateSIPDispatchRuleRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UpdateSIPDispatchRuleRequest::GetClassData() const { return &_class_data_; }
+
+
+void UpdateSIPDispatchRuleRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UpdateSIPDispatchRuleRequest*>(&to_msg);
+  auto& from = static_cast<const UpdateSIPDispatchRuleRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.UpdateSIPDispatchRuleRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_sip_dispatch_rule_id().empty()) {
+    _this->_internal_set_sip_dispatch_rule_id(from._internal_sip_dispatch_rule_id());
+  }
+  switch (from.action_case()) {
+    case kReplace: {
+      _this->_internal_mutable_replace()->::livekit::SIPDispatchRuleInfo::MergeFrom(
+          from._internal_replace());
+      break;
+    }
+    case kUpdate: {
+      _this->_internal_mutable_update()->::livekit::SIPDispatchRuleUpdate::MergeFrom(
+          from._internal_update());
+      break;
+    }
+    case ACTION_NOT_SET: {
+      break;
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateSIPDispatchRuleRequest::CopyFrom(const UpdateSIPDispatchRuleRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.UpdateSIPDispatchRuleRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateSIPDispatchRuleRequest::IsInitialized() const {
+  return true;
+}
+
+void UpdateSIPDispatchRuleRequest::InternalSwap(UpdateSIPDispatchRuleRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.sip_dispatch_rule_id_, lhs_arena,
+      &other->_impl_.sip_dispatch_rule_id_, rhs_arena
+  );
+  swap(_impl_.action_, other->_impl_.action_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateSIPDispatchRuleRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
+      file_level_metadata_livekit_5fsip_2eproto[34]);
 }
 
 // ===================================================================
@@ -9714,7 +12428,7 @@ void SIPDispatchRuleInfo_AttributesEntry_DoNotUse::MergeFrom(const SIPDispatchRu
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPDispatchRuleInfo_AttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[30]);
+      file_level_metadata_livekit_5fsip_2eproto[35]);
 }
 
 // ===================================================================
@@ -10388,7 +13102,494 @@ void SIPDispatchRuleInfo::InternalSwap(SIPDispatchRuleInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPDispatchRuleInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[31]);
+      file_level_metadata_livekit_5fsip_2eproto[36]);
+}
+
+// ===================================================================
+
+SIPDispatchRuleUpdate_AttributesEntry_DoNotUse::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse() {}
+SIPDispatchRuleUpdate_AttributesEntry_DoNotUse::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void SIPDispatchRuleUpdate_AttributesEntry_DoNotUse::MergeFrom(const SIPDispatchRuleUpdate_AttributesEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata SIPDispatchRuleUpdate_AttributesEntry_DoNotUse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
+      file_level_metadata_livekit_5fsip_2eproto[37]);
+}
+
+// ===================================================================
+
+class SIPDispatchRuleUpdate::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SIPDispatchRuleUpdate>()._impl_._has_bits_);
+  static const ::livekit::ListUpdate& trunk_ids(const SIPDispatchRuleUpdate* msg);
+  static const ::livekit::SIPDispatchRule& rule(const SIPDispatchRuleUpdate* msg);
+  static void set_has_name(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_metadata(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_media_encryption(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+};
+
+const ::livekit::ListUpdate&
+SIPDispatchRuleUpdate::_Internal::trunk_ids(const SIPDispatchRuleUpdate* msg) {
+  return *msg->_impl_.trunk_ids_;
+}
+const ::livekit::SIPDispatchRule&
+SIPDispatchRuleUpdate::_Internal::rule(const SIPDispatchRuleUpdate* msg) {
+  return *msg->_impl_.rule_;
+}
+void SIPDispatchRuleUpdate::clear_trunk_ids() {
+  if (GetArenaForAllocation() == nullptr && _impl_.trunk_ids_ != nullptr) {
+    delete _impl_.trunk_ids_;
+  }
+  _impl_.trunk_ids_ = nullptr;
+}
+SIPDispatchRuleUpdate::SIPDispatchRuleUpdate(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  if (arena != nullptr && !is_message_owned) {
+    arena->OwnCustomDestructor(this, &SIPDispatchRuleUpdate::ArenaDtor);
+  }
+  // @@protoc_insertion_point(arena_constructor:livekit.SIPDispatchRuleUpdate)
+}
+SIPDispatchRuleUpdate::SIPDispatchRuleUpdate(const SIPDispatchRuleUpdate& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SIPDispatchRuleUpdate* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_.attributes_)*/{}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.metadata_){}
+    , decltype(_impl_.trunk_ids_){nullptr}
+    , decltype(_impl_.rule_){nullptr}
+    , decltype(_impl_.media_encryption_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.attributes_.MergeFrom(from._impl_.attributes_);
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_name()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.metadata_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_metadata()) {
+    _this->_impl_.metadata_.Set(from._internal_metadata(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_trunk_ids()) {
+    _this->_impl_.trunk_ids_ = new ::livekit::ListUpdate(*from._impl_.trunk_ids_);
+  }
+  if (from._internal_has_rule()) {
+    _this->_impl_.rule_ = new ::livekit::SIPDispatchRule(*from._impl_.rule_);
+  }
+  _this->_impl_.media_encryption_ = from._impl_.media_encryption_;
+  // @@protoc_insertion_point(copy_constructor:livekit.SIPDispatchRuleUpdate)
+}
+
+inline void SIPDispatchRuleUpdate::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_.attributes_)*/{::_pbi::ArenaInitialized(), arena}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.metadata_){}
+    , decltype(_impl_.trunk_ids_){nullptr}
+    , decltype(_impl_.rule_){nullptr}
+    , decltype(_impl_.media_encryption_){0}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.metadata_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+SIPDispatchRuleUpdate::~SIPDispatchRuleUpdate() {
+  // @@protoc_insertion_point(destructor:livekit.SIPDispatchRuleUpdate)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    ArenaDtor(this);
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SIPDispatchRuleUpdate::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.attributes_.Destruct();
+  _impl_.attributes_.~MapField();
+  _impl_.name_.Destroy();
+  _impl_.metadata_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.trunk_ids_;
+  if (this != internal_default_instance()) delete _impl_.rule_;
+}
+
+void SIPDispatchRuleUpdate::ArenaDtor(void* object) {
+  SIPDispatchRuleUpdate* _this = reinterpret_cast< SIPDispatchRuleUpdate* >(object);
+  _this->_impl_.attributes_.Destruct();
+}
+void SIPDispatchRuleUpdate::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SIPDispatchRuleUpdate::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.SIPDispatchRuleUpdate)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.attributes_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.name_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.metadata_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (GetArenaForAllocation() == nullptr && _impl_.trunk_ids_ != nullptr) {
+    delete _impl_.trunk_ids_;
+  }
+  _impl_.trunk_ids_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.rule_ != nullptr) {
+    delete _impl_.rule_;
+  }
+  _impl_.rule_ = nullptr;
+  _impl_.media_encryption_ = 0;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SIPDispatchRuleUpdate::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .livekit.ListUpdate trunk_ids = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_trunk_ids(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPDispatchRule rule = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_rule(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string name = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPDispatchRuleUpdate.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string metadata = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_metadata();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPDispatchRuleUpdate.metadata"));
+        } else
+          goto handle_unusual;
+        continue;
+      // map<string, string> attributes = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&_impl_.attributes_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .livekit.SIPMediaEncryption media_encryption = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_media_encryption(static_cast<::livekit::SIPMediaEncryption>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SIPDispatchRuleUpdate::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.SIPDispatchRuleUpdate)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .livekit.ListUpdate trunk_ids = 1;
+  if (this->_internal_has_trunk_ids()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::trunk_ids(this),
+        _Internal::trunk_ids(this).GetCachedSize(), target, stream);
+  }
+
+  // .livekit.SIPDispatchRule rule = 2;
+  if (this->_internal_has_rule()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::rule(this),
+        _Internal::rule(this).GetCachedSize(), target, stream);
+  }
+
+  // optional string name = 3;
+  if (_internal_has_name()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPDispatchRuleUpdate.name");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_name(), target);
+  }
+
+  // optional string metadata = 4;
+  if (_internal_has_metadata()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_metadata().data(), static_cast<int>(this->_internal_metadata().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPDispatchRuleUpdate.metadata");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_metadata(), target);
+  }
+
+  // map<string, string> attributes = 5;
+  if (!this->_internal_attributes().empty()) {
+    using MapType = ::_pb::Map<std::string, std::string>;
+    using WireHelper = SIPDispatchRuleUpdate_AttributesEntry_DoNotUse::Funcs;
+    const auto& map_field = this->_internal_attributes();
+    auto check_utf8 = [](const MapType::value_type& entry) {
+      (void)entry;
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.first.data(), static_cast<int>(entry.first.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "livekit.SIPDispatchRuleUpdate.AttributesEntry.key");
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.second.data(), static_cast<int>(entry.second.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "livekit.SIPDispatchRuleUpdate.AttributesEntry.value");
+    };
+
+    if (stream->IsSerializationDeterministic() && map_field.size() > 1) {
+      for (const auto& entry : ::_pbi::MapSorterPtr<MapType>(map_field)) {
+        target = WireHelper::InternalSerialize(5, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    } else {
+      for (const auto& entry : map_field) {
+        target = WireHelper::InternalSerialize(5, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    }
+  }
+
+  // optional .livekit.SIPMediaEncryption media_encryption = 6;
+  if (_internal_has_media_encryption()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      6, this->_internal_media_encryption(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.SIPDispatchRuleUpdate)
+  return target;
+}
+
+size_t SIPDispatchRuleUpdate::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.SIPDispatchRuleUpdate)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> attributes = 5;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_attributes_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_attributes().begin();
+      it != this->_internal_attributes().end(); ++it) {
+    total_size += SIPDispatchRuleUpdate_AttributesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // optional string name = 3;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_name());
+    }
+
+    // optional string metadata = 4;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_metadata());
+    }
+
+  }
+  // .livekit.ListUpdate trunk_ids = 1;
+  if (this->_internal_has_trunk_ids()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.trunk_ids_);
+  }
+
+  // .livekit.SIPDispatchRule rule = 2;
+  if (this->_internal_has_rule()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.rule_);
+  }
+
+  // optional .livekit.SIPMediaEncryption media_encryption = 6;
+  if (cached_has_bits & 0x00000004u) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_media_encryption());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SIPDispatchRuleUpdate::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SIPDispatchRuleUpdate::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SIPDispatchRuleUpdate::GetClassData() const { return &_class_data_; }
+
+
+void SIPDispatchRuleUpdate::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SIPDispatchRuleUpdate*>(&to_msg);
+  auto& from = static_cast<const SIPDispatchRuleUpdate&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.SIPDispatchRuleUpdate)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.attributes_.MergeFrom(from._impl_.attributes_);
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_name(from._internal_name());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_metadata(from._internal_metadata());
+    }
+  }
+  if (from._internal_has_trunk_ids()) {
+    _this->_internal_mutable_trunk_ids()->::livekit::ListUpdate::MergeFrom(
+        from._internal_trunk_ids());
+  }
+  if (from._internal_has_rule()) {
+    _this->_internal_mutable_rule()->::livekit::SIPDispatchRule::MergeFrom(
+        from._internal_rule());
+  }
+  if (cached_has_bits & 0x00000004u) {
+    _this->_internal_set_media_encryption(from._internal_media_encryption());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SIPDispatchRuleUpdate::CopyFrom(const SIPDispatchRuleUpdate& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.SIPDispatchRuleUpdate)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SIPDispatchRuleUpdate::IsInitialized() const {
+  return true;
+}
+
+void SIPDispatchRuleUpdate::InternalSwap(SIPDispatchRuleUpdate* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.attributes_.InternalSwap(&other->_impl_.attributes_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.metadata_, lhs_arena,
+      &other->_impl_.metadata_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SIPDispatchRuleUpdate, _impl_.media_encryption_)
+      + sizeof(SIPDispatchRuleUpdate::_impl_.media_encryption_)
+      - PROTOBUF_FIELD_OFFSET(SIPDispatchRuleUpdate, _impl_.trunk_ids_)>(
+          reinterpret_cast<char*>(&_impl_.trunk_ids_),
+          reinterpret_cast<char*>(&other->_impl_.trunk_ids_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SIPDispatchRuleUpdate::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
+      file_level_metadata_livekit_5fsip_2eproto[38]);
 }
 
 // ===================================================================
@@ -10665,7 +13866,7 @@ void ListSIPDispatchRuleRequest::InternalSwap(ListSIPDispatchRuleRequest* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata ListSIPDispatchRuleRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[32]);
+      file_level_metadata_livekit_5fsip_2eproto[39]);
 }
 
 // ===================================================================
@@ -10850,7 +14051,7 @@ void ListSIPDispatchRuleResponse::InternalSwap(ListSIPDispatchRuleResponse* othe
 ::PROTOBUF_NAMESPACE_ID::Metadata ListSIPDispatchRuleResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[33]);
+      file_level_metadata_livekit_5fsip_2eproto[40]);
 }
 
 // ===================================================================
@@ -11053,7 +14254,7 @@ void DeleteSIPDispatchRuleRequest::InternalSwap(DeleteSIPDispatchRuleRequest* ot
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteSIPDispatchRuleRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[34]);
+      file_level_metadata_livekit_5fsip_2eproto[41]);
 }
 
 // ===================================================================
@@ -11067,7 +14268,7 @@ void SIPOutboundConfig_HeadersToAttributesEntry_DoNotUse::MergeFrom(const SIPOut
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPOutboundConfig_HeadersToAttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[35]);
+      file_level_metadata_livekit_5fsip_2eproto[42]);
 }
 
 // ===================================================================
@@ -11081,7 +14282,7 @@ void SIPOutboundConfig_AttributesToHeadersEntry_DoNotUse::MergeFrom(const SIPOut
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPOutboundConfig_AttributesToHeadersEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[36]);
+      file_level_metadata_livekit_5fsip_2eproto[43]);
 }
 
 // ===================================================================
@@ -11108,6 +14309,7 @@ SIPOutboundConfig::SIPOutboundConfig(const SIPOutboundConfig& from)
     , decltype(_impl_.hostname_){}
     , decltype(_impl_.auth_username_){}
     , decltype(_impl_.auth_password_){}
+    , decltype(_impl_.destination_country_){}
     , decltype(_impl_.transport_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
@@ -11138,6 +14340,14 @@ SIPOutboundConfig::SIPOutboundConfig(const SIPOutboundConfig& from)
     _this->_impl_.auth_password_.Set(from._internal_auth_password(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.destination_country_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_destination_country().empty()) {
+    _this->_impl_.destination_country_.Set(from._internal_destination_country(), 
+      _this->GetArenaForAllocation());
+  }
   _this->_impl_.transport_ = from._impl_.transport_;
   // @@protoc_insertion_point(copy_constructor:livekit.SIPOutboundConfig)
 }
@@ -11152,6 +14362,7 @@ inline void SIPOutboundConfig::SharedCtor(
     , decltype(_impl_.hostname_){}
     , decltype(_impl_.auth_username_){}
     , decltype(_impl_.auth_password_){}
+    , decltype(_impl_.destination_country_){}
     , decltype(_impl_.transport_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -11166,6 +14377,10 @@ inline void SIPOutboundConfig::SharedCtor(
   _impl_.auth_password_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.auth_password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.destination_country_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_country_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -11188,6 +14403,7 @@ inline void SIPOutboundConfig::SharedDtor() {
   _impl_.hostname_.Destroy();
   _impl_.auth_username_.Destroy();
   _impl_.auth_password_.Destroy();
+  _impl_.destination_country_.Destroy();
 }
 
 void SIPOutboundConfig::ArenaDtor(void* object) {
@@ -11210,6 +14426,7 @@ void SIPOutboundConfig::Clear() {
   _impl_.hostname_.ClearToEmpty();
   _impl_.auth_username_.ClearToEmpty();
   _impl_.auth_password_.ClearToEmpty();
+  _impl_.destination_country_.ClearToEmpty();
   _impl_.transport_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -11282,6 +14499,16 @@ const char* SIPOutboundConfig::_InternalParse(const char* ptr, ::_pbi::ParseCont
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // string destination_country = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_destination_country();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPOutboundConfig.destination_country"));
         } else
           goto handle_unusual;
         continue;
@@ -11411,6 +14638,16 @@ uint8_t* SIPOutboundConfig::_InternalSerialize(
     }
   }
 
+  // string destination_country = 7;
+  if (!this->_internal_destination_country().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_destination_country().data(), static_cast<int>(this->_internal_destination_country().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPOutboundConfig.destination_country");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_destination_country(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -11466,6 +14703,13 @@ size_t SIPOutboundConfig::ByteSizeLong() const {
         this->_internal_auth_password());
   }
 
+  // string destination_country = 7;
+  if (!this->_internal_destination_country().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_destination_country());
+  }
+
   // .livekit.SIPTransport transport = 2;
   if (this->_internal_transport() != 0) {
     total_size += 1 +
@@ -11500,6 +14744,9 @@ void SIPOutboundConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   }
   if (!from._internal_auth_password().empty()) {
     _this->_internal_set_auth_password(from._internal_auth_password());
+  }
+  if (!from._internal_destination_country().empty()) {
+    _this->_internal_set_destination_country(from._internal_destination_country());
   }
   if (from._internal_transport() != 0) {
     _this->_internal_set_transport(from._internal_transport());
@@ -11537,13 +14784,17 @@ void SIPOutboundConfig::InternalSwap(SIPOutboundConfig* other) {
       &_impl_.auth_password_, lhs_arena,
       &other->_impl_.auth_password_, rhs_arena
   );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.destination_country_, lhs_arena,
+      &other->_impl_.destination_country_, rhs_arena
+  );
   swap(_impl_.transport_, other->_impl_.transport_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPOutboundConfig::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[37]);
+      file_level_metadata_livekit_5fsip_2eproto[44]);
 }
 
 // ===================================================================
@@ -11557,7 +14808,7 @@ void CreateSIPParticipantRequest_ParticipantAttributesEntry_DoNotUse::MergeFrom(
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateSIPParticipantRequest_ParticipantAttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[38]);
+      file_level_metadata_livekit_5fsip_2eproto[45]);
 }
 
 // ===================================================================
@@ -11571,7 +14822,7 @@ void CreateSIPParticipantRequest_HeadersEntry_DoNotUse::MergeFrom(const CreateSI
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateSIPParticipantRequest_HeadersEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[39]);
+      file_level_metadata_livekit_5fsip_2eproto[46]);
 }
 
 // ===================================================================
@@ -12574,7 +15825,7 @@ void CreateSIPParticipantRequest::InternalSwap(CreateSIPParticipantRequest* othe
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateSIPParticipantRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[40]);
+      file_level_metadata_livekit_5fsip_2eproto[47]);
 }
 
 // ===================================================================
@@ -12927,7 +16178,7 @@ void SIPParticipantInfo::InternalSwap(SIPParticipantInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPParticipantInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[41]);
+      file_level_metadata_livekit_5fsip_2eproto[48]);
 }
 
 // ===================================================================
@@ -12941,15 +16192,26 @@ void TransferSIPParticipantRequest_HeadersEntry_DoNotUse::MergeFrom(const Transf
 ::PROTOBUF_NAMESPACE_ID::Metadata TransferSIPParticipantRequest_HeadersEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[42]);
+      file_level_metadata_livekit_5fsip_2eproto[49]);
 }
 
 // ===================================================================
 
 class TransferSIPParticipantRequest::_Internal {
  public:
+  static const ::PROTOBUF_NAMESPACE_ID::Duration& ringing_timeout(const TransferSIPParticipantRequest* msg);
 };
 
+const ::PROTOBUF_NAMESPACE_ID::Duration&
+TransferSIPParticipantRequest::_Internal::ringing_timeout(const TransferSIPParticipantRequest* msg) {
+  return *msg->_impl_.ringing_timeout_;
+}
+void TransferSIPParticipantRequest::clear_ringing_timeout() {
+  if (GetArenaForAllocation() == nullptr && _impl_.ringing_timeout_ != nullptr) {
+    delete _impl_.ringing_timeout_;
+  }
+  _impl_.ringing_timeout_ = nullptr;
+}
 TransferSIPParticipantRequest::TransferSIPParticipantRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -12967,6 +16229,7 @@ TransferSIPParticipantRequest::TransferSIPParticipantRequest(const TransferSIPPa
     , decltype(_impl_.participant_identity_){}
     , decltype(_impl_.room_name_){}
     , decltype(_impl_.transfer_to_){}
+    , decltype(_impl_.ringing_timeout_){nullptr}
     , decltype(_impl_.play_dialtone_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
@@ -12996,6 +16259,9 @@ TransferSIPParticipantRequest::TransferSIPParticipantRequest(const TransferSIPPa
     _this->_impl_.transfer_to_.Set(from._internal_transfer_to(), 
       _this->GetArenaForAllocation());
   }
+  if (from._internal_has_ringing_timeout()) {
+    _this->_impl_.ringing_timeout_ = new ::PROTOBUF_NAMESPACE_ID::Duration(*from._impl_.ringing_timeout_);
+  }
   _this->_impl_.play_dialtone_ = from._impl_.play_dialtone_;
   // @@protoc_insertion_point(copy_constructor:livekit.TransferSIPParticipantRequest)
 }
@@ -13009,6 +16275,7 @@ inline void TransferSIPParticipantRequest::SharedCtor(
     , decltype(_impl_.participant_identity_){}
     , decltype(_impl_.room_name_){}
     , decltype(_impl_.transfer_to_){}
+    , decltype(_impl_.ringing_timeout_){nullptr}
     , decltype(_impl_.play_dialtone_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -13043,6 +16310,7 @@ inline void TransferSIPParticipantRequest::SharedDtor() {
   _impl_.participant_identity_.Destroy();
   _impl_.room_name_.Destroy();
   _impl_.transfer_to_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.ringing_timeout_;
 }
 
 void TransferSIPParticipantRequest::ArenaDtor(void* object) {
@@ -13063,6 +16331,10 @@ void TransferSIPParticipantRequest::Clear() {
   _impl_.participant_identity_.ClearToEmpty();
   _impl_.room_name_.ClearToEmpty();
   _impl_.transfer_to_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.ringing_timeout_ != nullptr) {
+    delete _impl_.ringing_timeout_;
+  }
+  _impl_.ringing_timeout_ = nullptr;
   _impl_.play_dialtone_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -13121,6 +16393,14 @@ const char* TransferSIPParticipantRequest::_InternalParse(const char* ptr, ::_pb
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Duration ringing_timeout = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr = ctx->ParseMessage(_internal_mutable_ringing_timeout(), ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -13219,6 +16499,13 @@ uint8_t* TransferSIPParticipantRequest::_InternalSerialize(
     }
   }
 
+  // .google.protobuf.Duration ringing_timeout = 6;
+  if (this->_internal_has_ringing_timeout()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(6, _Internal::ringing_timeout(this),
+        _Internal::ringing_timeout(this).GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -13265,6 +16552,13 @@ size_t TransferSIPParticipantRequest::ByteSizeLong() const {
         this->_internal_transfer_to());
   }
 
+  // .google.protobuf.Duration ringing_timeout = 6;
+  if (this->_internal_has_ringing_timeout()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.ringing_timeout_);
+  }
+
   // bool play_dialtone = 4;
   if (this->_internal_play_dialtone() != 0) {
     total_size += 1 + 1;
@@ -13297,6 +16591,10 @@ void TransferSIPParticipantRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& 
   }
   if (!from._internal_transfer_to().empty()) {
     _this->_internal_set_transfer_to(from._internal_transfer_to());
+  }
+  if (from._internal_has_ringing_timeout()) {
+    _this->_internal_mutable_ringing_timeout()->::PROTOBUF_NAMESPACE_ID::Duration::MergeFrom(
+        from._internal_ringing_timeout());
   }
   if (from._internal_play_dialtone() != 0) {
     _this->_internal_set_play_dialtone(from._internal_play_dialtone());
@@ -13333,13 +16631,18 @@ void TransferSIPParticipantRequest::InternalSwap(TransferSIPParticipantRequest* 
       &_impl_.transfer_to_, lhs_arena,
       &other->_impl_.transfer_to_, rhs_arena
   );
-  swap(_impl_.play_dialtone_, other->_impl_.play_dialtone_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TransferSIPParticipantRequest, _impl_.play_dialtone_)
+      + sizeof(TransferSIPParticipantRequest::_impl_.play_dialtone_)
+      - PROTOBUF_FIELD_OFFSET(TransferSIPParticipantRequest, _impl_.ringing_timeout_)>(
+          reinterpret_cast<char*>(&_impl_.ringing_timeout_),
+          reinterpret_cast<char*>(&other->_impl_.ringing_timeout_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TransferSIPParticipantRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[43]);
+      file_level_metadata_livekit_5fsip_2eproto[50]);
 }
 
 // ===================================================================
@@ -13353,7 +16656,7 @@ void SIPCallInfo_ParticipantAttributesEntry_DoNotUse::MergeFrom(const SIPCallInf
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPCallInfo_ParticipantAttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[44]);
+      file_level_metadata_livekit_5fsip_2eproto[51]);
 }
 
 // ===================================================================
@@ -14486,7 +17789,488 @@ void SIPCallInfo::InternalSwap(SIPCallInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPCallInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[45]);
+      file_level_metadata_livekit_5fsip_2eproto[52]);
+}
+
+// ===================================================================
+
+class SIPTransferInfo::_Internal {
+ public:
+  static const ::livekit::SIPStatus& transfer_status_code(const SIPTransferInfo* msg);
+};
+
+const ::livekit::SIPStatus&
+SIPTransferInfo::_Internal::transfer_status_code(const SIPTransferInfo* msg) {
+  return *msg->_impl_.transfer_status_code_;
+}
+SIPTransferInfo::SIPTransferInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.SIPTransferInfo)
+}
+SIPTransferInfo::SIPTransferInfo(const SIPTransferInfo& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SIPTransferInfo* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.transfer_id_){}
+    , decltype(_impl_.call_id_){}
+    , decltype(_impl_.transfer_to_){}
+    , decltype(_impl_.error_){}
+    , decltype(_impl_.transfer_status_code_){nullptr}
+    , decltype(_impl_.transfer_initiated_at_ns_){}
+    , decltype(_impl_.transfer_completed_at_ns_){}
+    , decltype(_impl_.transfer_status_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.transfer_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.transfer_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_transfer_id().empty()) {
+    _this->_impl_.transfer_id_.Set(from._internal_transfer_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_call_id().empty()) {
+    _this->_impl_.call_id_.Set(from._internal_call_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.transfer_to_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.transfer_to_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_transfer_to().empty()) {
+    _this->_impl_.transfer_to_.Set(from._internal_transfer_to(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.error_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_error().empty()) {
+    _this->_impl_.error_.Set(from._internal_error(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_transfer_status_code()) {
+    _this->_impl_.transfer_status_code_ = new ::livekit::SIPStatus(*from._impl_.transfer_status_code_);
+  }
+  ::memcpy(&_impl_.transfer_initiated_at_ns_, &from._impl_.transfer_initiated_at_ns_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.transfer_status_) -
+    reinterpret_cast<char*>(&_impl_.transfer_initiated_at_ns_)) + sizeof(_impl_.transfer_status_));
+  // @@protoc_insertion_point(copy_constructor:livekit.SIPTransferInfo)
+}
+
+inline void SIPTransferInfo::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.transfer_id_){}
+    , decltype(_impl_.call_id_){}
+    , decltype(_impl_.transfer_to_){}
+    , decltype(_impl_.error_){}
+    , decltype(_impl_.transfer_status_code_){nullptr}
+    , decltype(_impl_.transfer_initiated_at_ns_){int64_t{0}}
+    , decltype(_impl_.transfer_completed_at_ns_){int64_t{0}}
+    , decltype(_impl_.transfer_status_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.transfer_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.transfer_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.transfer_to_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.transfer_to_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.error_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+SIPTransferInfo::~SIPTransferInfo() {
+  // @@protoc_insertion_point(destructor:livekit.SIPTransferInfo)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SIPTransferInfo::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.transfer_id_.Destroy();
+  _impl_.call_id_.Destroy();
+  _impl_.transfer_to_.Destroy();
+  _impl_.error_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.transfer_status_code_;
+}
+
+void SIPTransferInfo::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SIPTransferInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.SIPTransferInfo)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.transfer_id_.ClearToEmpty();
+  _impl_.call_id_.ClearToEmpty();
+  _impl_.transfer_to_.ClearToEmpty();
+  _impl_.error_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.transfer_status_code_ != nullptr) {
+    delete _impl_.transfer_status_code_;
+  }
+  _impl_.transfer_status_code_ = nullptr;
+  ::memset(&_impl_.transfer_initiated_at_ns_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.transfer_status_) -
+      reinterpret_cast<char*>(&_impl_.transfer_initiated_at_ns_)) + sizeof(_impl_.transfer_status_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SIPTransferInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string transfer_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_transfer_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPTransferInfo.transfer_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string call_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_call_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPTransferInfo.call_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string transfer_to = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_transfer_to();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPTransferInfo.transfer_to"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 transfer_initiated_at_ns = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          _impl_.transfer_initiated_at_ns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 transfer_completed_at_ns = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.transfer_completed_at_ns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPTransferStatus transfer_status = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_transfer_status(static_cast<::livekit::SIPTransferStatus>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // string error = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_error();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.SIPTransferInfo.error"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.SIPStatus transfer_status_code = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          ptr = ctx->ParseMessage(_internal_mutable_transfer_status_code(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SIPTransferInfo::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.SIPTransferInfo)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string transfer_id = 1;
+  if (!this->_internal_transfer_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_transfer_id().data(), static_cast<int>(this->_internal_transfer_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPTransferInfo.transfer_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_transfer_id(), target);
+  }
+
+  // string call_id = 2;
+  if (!this->_internal_call_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_call_id().data(), static_cast<int>(this->_internal_call_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPTransferInfo.call_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_call_id(), target);
+  }
+
+  // string transfer_to = 3;
+  if (!this->_internal_transfer_to().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_transfer_to().data(), static_cast<int>(this->_internal_transfer_to().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPTransferInfo.transfer_to");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_transfer_to(), target);
+  }
+
+  // int64 transfer_initiated_at_ns = 4;
+  if (this->_internal_transfer_initiated_at_ns() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(4, this->_internal_transfer_initiated_at_ns(), target);
+  }
+
+  // int64 transfer_completed_at_ns = 5;
+  if (this->_internal_transfer_completed_at_ns() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(5, this->_internal_transfer_completed_at_ns(), target);
+  }
+
+  // .livekit.SIPTransferStatus transfer_status = 6;
+  if (this->_internal_transfer_status() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      6, this->_internal_transfer_status(), target);
+  }
+
+  // string error = 7;
+  if (!this->_internal_error().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_error().data(), static_cast<int>(this->_internal_error().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.SIPTransferInfo.error");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_error(), target);
+  }
+
+  // .livekit.SIPStatus transfer_status_code = 8;
+  if (this->_internal_has_transfer_status_code()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(8, _Internal::transfer_status_code(this),
+        _Internal::transfer_status_code(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.SIPTransferInfo)
+  return target;
+}
+
+size_t SIPTransferInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.SIPTransferInfo)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string transfer_id = 1;
+  if (!this->_internal_transfer_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_transfer_id());
+  }
+
+  // string call_id = 2;
+  if (!this->_internal_call_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_call_id());
+  }
+
+  // string transfer_to = 3;
+  if (!this->_internal_transfer_to().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_transfer_to());
+  }
+
+  // string error = 7;
+  if (!this->_internal_error().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_error());
+  }
+
+  // .livekit.SIPStatus transfer_status_code = 8;
+  if (this->_internal_has_transfer_status_code()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.transfer_status_code_);
+  }
+
+  // int64 transfer_initiated_at_ns = 4;
+  if (this->_internal_transfer_initiated_at_ns() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_transfer_initiated_at_ns());
+  }
+
+  // int64 transfer_completed_at_ns = 5;
+  if (this->_internal_transfer_completed_at_ns() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_transfer_completed_at_ns());
+  }
+
+  // .livekit.SIPTransferStatus transfer_status = 6;
+  if (this->_internal_transfer_status() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_transfer_status());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SIPTransferInfo::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SIPTransferInfo::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SIPTransferInfo::GetClassData() const { return &_class_data_; }
+
+
+void SIPTransferInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SIPTransferInfo*>(&to_msg);
+  auto& from = static_cast<const SIPTransferInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.SIPTransferInfo)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_transfer_id().empty()) {
+    _this->_internal_set_transfer_id(from._internal_transfer_id());
+  }
+  if (!from._internal_call_id().empty()) {
+    _this->_internal_set_call_id(from._internal_call_id());
+  }
+  if (!from._internal_transfer_to().empty()) {
+    _this->_internal_set_transfer_to(from._internal_transfer_to());
+  }
+  if (!from._internal_error().empty()) {
+    _this->_internal_set_error(from._internal_error());
+  }
+  if (from._internal_has_transfer_status_code()) {
+    _this->_internal_mutable_transfer_status_code()->::livekit::SIPStatus::MergeFrom(
+        from._internal_transfer_status_code());
+  }
+  if (from._internal_transfer_initiated_at_ns() != 0) {
+    _this->_internal_set_transfer_initiated_at_ns(from._internal_transfer_initiated_at_ns());
+  }
+  if (from._internal_transfer_completed_at_ns() != 0) {
+    _this->_internal_set_transfer_completed_at_ns(from._internal_transfer_completed_at_ns());
+  }
+  if (from._internal_transfer_status() != 0) {
+    _this->_internal_set_transfer_status(from._internal_transfer_status());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SIPTransferInfo::CopyFrom(const SIPTransferInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.SIPTransferInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SIPTransferInfo::IsInitialized() const {
+  return true;
+}
+
+void SIPTransferInfo::InternalSwap(SIPTransferInfo* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.transfer_id_, lhs_arena,
+      &other->_impl_.transfer_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.call_id_, lhs_arena,
+      &other->_impl_.call_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.transfer_to_, lhs_arena,
+      &other->_impl_.transfer_to_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.error_, lhs_arena,
+      &other->_impl_.error_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SIPTransferInfo, _impl_.transfer_status_)
+      + sizeof(SIPTransferInfo::_impl_.transfer_status_)
+      - PROTOBUF_FIELD_OFFSET(SIPTransferInfo, _impl_.transfer_status_code_)>(
+          reinterpret_cast<char*>(&_impl_.transfer_status_code_),
+          reinterpret_cast<char*>(&other->_impl_.transfer_status_code_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SIPTransferInfo::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
+      file_level_metadata_livekit_5fsip_2eproto[53]);
 }
 
 // ===================================================================
@@ -14852,7 +18636,7 @@ void SIPUri::InternalSwap(SIPUri* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SIPUri::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_livekit_5fsip_2eproto_getter, &descriptor_table_livekit_5fsip_2eproto_once,
-      file_level_metadata_livekit_5fsip_2eproto[46]);
+      file_level_metadata_livekit_5fsip_2eproto[54]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -14874,6 +18658,10 @@ template<> PROTOBUF_NOINLINE ::livekit::CreateSIPInboundTrunkRequest*
 Arena::CreateMaybeMessage< ::livekit::CreateSIPInboundTrunkRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::CreateSIPInboundTrunkRequest >(arena);
 }
+template<> PROTOBUF_NOINLINE ::livekit::UpdateSIPInboundTrunkRequest*
+Arena::CreateMaybeMessage< ::livekit::UpdateSIPInboundTrunkRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::UpdateSIPInboundTrunkRequest >(arena);
+}
 template<> PROTOBUF_NOINLINE ::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse*
 Arena::CreateMaybeMessage< ::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::SIPInboundTrunkInfo_HeadersEntry_DoNotUse >(arena);
@@ -14890,9 +18678,17 @@ template<> PROTOBUF_NOINLINE ::livekit::SIPInboundTrunkInfo*
 Arena::CreateMaybeMessage< ::livekit::SIPInboundTrunkInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::SIPInboundTrunkInfo >(arena);
 }
+template<> PROTOBUF_NOINLINE ::livekit::SIPInboundTrunkUpdate*
+Arena::CreateMaybeMessage< ::livekit::SIPInboundTrunkUpdate >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::SIPInboundTrunkUpdate >(arena);
+}
 template<> PROTOBUF_NOINLINE ::livekit::CreateSIPOutboundTrunkRequest*
 Arena::CreateMaybeMessage< ::livekit::CreateSIPOutboundTrunkRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::CreateSIPOutboundTrunkRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::UpdateSIPOutboundTrunkRequest*
+Arena::CreateMaybeMessage< ::livekit::UpdateSIPOutboundTrunkRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::UpdateSIPOutboundTrunkRequest >(arena);
 }
 template<> PROTOBUF_NOINLINE ::livekit::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse*
 Arena::CreateMaybeMessage< ::livekit::SIPOutboundTrunkInfo_HeadersEntry_DoNotUse >(Arena* arena) {
@@ -14909,6 +18705,10 @@ Arena::CreateMaybeMessage< ::livekit::SIPOutboundTrunkInfo_AttributesToHeadersEn
 template<> PROTOBUF_NOINLINE ::livekit::SIPOutboundTrunkInfo*
 Arena::CreateMaybeMessage< ::livekit::SIPOutboundTrunkInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::SIPOutboundTrunkInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::SIPOutboundTrunkUpdate*
+Arena::CreateMaybeMessage< ::livekit::SIPOutboundTrunkUpdate >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::SIPOutboundTrunkUpdate >(arena);
 }
 template<> PROTOBUF_NOINLINE ::livekit::GetSIPInboundTrunkRequest*
 Arena::CreateMaybeMessage< ::livekit::GetSIPInboundTrunkRequest >(Arena* arena) {
@@ -14978,6 +18778,10 @@ template<> PROTOBUF_NOINLINE ::livekit::CreateSIPDispatchRuleRequest*
 Arena::CreateMaybeMessage< ::livekit::CreateSIPDispatchRuleRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::CreateSIPDispatchRuleRequest >(arena);
 }
+template<> PROTOBUF_NOINLINE ::livekit::UpdateSIPDispatchRuleRequest*
+Arena::CreateMaybeMessage< ::livekit::UpdateSIPDispatchRuleRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::UpdateSIPDispatchRuleRequest >(arena);
+}
 template<> PROTOBUF_NOINLINE ::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse*
 Arena::CreateMaybeMessage< ::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotUse >(arena);
@@ -14985,6 +18789,14 @@ Arena::CreateMaybeMessage< ::livekit::SIPDispatchRuleInfo_AttributesEntry_DoNotU
 template<> PROTOBUF_NOINLINE ::livekit::SIPDispatchRuleInfo*
 Arena::CreateMaybeMessage< ::livekit::SIPDispatchRuleInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::SIPDispatchRuleInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse*
+Arena::CreateMaybeMessage< ::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::SIPDispatchRuleUpdate_AttributesEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::SIPDispatchRuleUpdate*
+Arena::CreateMaybeMessage< ::livekit::SIPDispatchRuleUpdate >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::SIPDispatchRuleUpdate >(arena);
 }
 template<> PROTOBUF_NOINLINE ::livekit::ListSIPDispatchRuleRequest*
 Arena::CreateMaybeMessage< ::livekit::ListSIPDispatchRuleRequest >(Arena* arena) {
@@ -15041,6 +18853,10 @@ Arena::CreateMaybeMessage< ::livekit::SIPCallInfo_ParticipantAttributesEntry_DoN
 template<> PROTOBUF_NOINLINE ::livekit::SIPCallInfo*
 Arena::CreateMaybeMessage< ::livekit::SIPCallInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::SIPCallInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::SIPTransferInfo*
+Arena::CreateMaybeMessage< ::livekit::SIPTransferInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::SIPTransferInfo >(arena);
 }
 template<> PROTOBUF_NOINLINE ::livekit::SIPUri*
 Arena::CreateMaybeMessage< ::livekit::SIPUri >(Arena* arena) {

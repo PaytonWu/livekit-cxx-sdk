@@ -41,6 +41,7 @@
 #include "track.pb.h"
 #include "video_frame.pb.h"
 #include "stats.pb.h"
+#include "data_stream.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_room_2eproto
@@ -69,6 +70,9 @@ extern AudioEncodingDefaultTypeInternal _AudioEncoding_default_instance_;
 class BufferInfo;
 struct BufferInfoDefaultTypeInternal;
 extern BufferInfoDefaultTypeInternal _BufferInfo_default_instance_;
+class ByteStreamOpened;
+struct ByteStreamOpenedDefaultTypeInternal;
+extern ByteStreamOpenedDefaultTypeInternal _ByteStreamOpened_default_instance_;
 class ChatMessage;
 struct ChatMessageDefaultTypeInternal;
 extern ChatMessageDefaultTypeInternal _ChatMessage_default_instance_;
@@ -201,6 +205,9 @@ extern ParticipantMetadataChangedDefaultTypeInternal _ParticipantMetadataChanged
 class ParticipantNameChanged;
 struct ParticipantNameChangedDefaultTypeInternal;
 extern ParticipantNameChangedDefaultTypeInternal _ParticipantNameChanged_default_instance_;
+class ParticipantsUpdated;
+struct ParticipantsUpdatedDefaultTypeInternal;
+extern ParticipantsUpdatedDefaultTypeInternal _ParticipantsUpdated_default_instance_;
 class PublishDataCallback;
 struct PublishDataCallbackDefaultTypeInternal;
 extern PublishDataCallbackDefaultTypeInternal _PublishDataCallback_default_instance_;
@@ -342,6 +349,9 @@ extern SetSubscribedResponseDefaultTypeInternal _SetSubscribedResponse_default_i
 class SipDTMF;
 struct SipDTMFDefaultTypeInternal;
 extern SipDTMFDefaultTypeInternal _SipDTMF_default_instance_;
+class TextStreamOpened;
+struct TextStreamOpenedDefaultTypeInternal;
+extern TextStreamOpenedDefaultTypeInternal _TextStreamOpened_default_instance_;
 class TrackMuted;
 struct TrackMutedDefaultTypeInternal;
 extern TrackMutedDefaultTypeInternal _TrackMuted_default_instance_;
@@ -394,6 +404,7 @@ template<> ::livekit::proto::ActiveSpeakersChanged* Arena::CreateMaybeMessage<::
 template<> ::livekit::proto::AttributesEntry* Arena::CreateMaybeMessage<::livekit::proto::AttributesEntry>(Arena*);
 template<> ::livekit::proto::AudioEncoding* Arena::CreateMaybeMessage<::livekit::proto::AudioEncoding>(Arena*);
 template<> ::livekit::proto::BufferInfo* Arena::CreateMaybeMessage<::livekit::proto::BufferInfo>(Arena*);
+template<> ::livekit::proto::ByteStreamOpened* Arena::CreateMaybeMessage<::livekit::proto::ByteStreamOpened>(Arena*);
 template<> ::livekit::proto::ChatMessage* Arena::CreateMaybeMessage<::livekit::proto::ChatMessage>(Arena*);
 template<> ::livekit::proto::ChatMessageReceived* Arena::CreateMaybeMessage<::livekit::proto::ChatMessageReceived>(Arena*);
 template<> ::livekit::proto::ConnectCallback* Arena::CreateMaybeMessage<::livekit::proto::ConnectCallback>(Arena*);
@@ -438,6 +449,7 @@ template<> ::livekit::proto::ParticipantConnected* Arena::CreateMaybeMessage<::l
 template<> ::livekit::proto::ParticipantDisconnected* Arena::CreateMaybeMessage<::livekit::proto::ParticipantDisconnected>(Arena*);
 template<> ::livekit::proto::ParticipantMetadataChanged* Arena::CreateMaybeMessage<::livekit::proto::ParticipantMetadataChanged>(Arena*);
 template<> ::livekit::proto::ParticipantNameChanged* Arena::CreateMaybeMessage<::livekit::proto::ParticipantNameChanged>(Arena*);
+template<> ::livekit::proto::ParticipantsUpdated* Arena::CreateMaybeMessage<::livekit::proto::ParticipantsUpdated>(Arena*);
 template<> ::livekit::proto::PublishDataCallback* Arena::CreateMaybeMessage<::livekit::proto::PublishDataCallback>(Arena*);
 template<> ::livekit::proto::PublishDataRequest* Arena::CreateMaybeMessage<::livekit::proto::PublishDataRequest>(Arena*);
 template<> ::livekit::proto::PublishDataResponse* Arena::CreateMaybeMessage<::livekit::proto::PublishDataResponse>(Arena*);
@@ -485,6 +497,7 @@ template<> ::livekit::proto::SetLocalNameResponse* Arena::CreateMaybeMessage<::l
 template<> ::livekit::proto::SetSubscribedRequest* Arena::CreateMaybeMessage<::livekit::proto::SetSubscribedRequest>(Arena*);
 template<> ::livekit::proto::SetSubscribedResponse* Arena::CreateMaybeMessage<::livekit::proto::SetSubscribedResponse>(Arena*);
 template<> ::livekit::proto::SipDTMF* Arena::CreateMaybeMessage<::livekit::proto::SipDTMF>(Arena*);
+template<> ::livekit::proto::TextStreamOpened* Arena::CreateMaybeMessage<::livekit::proto::TextStreamOpened>(Arena*);
 template<> ::livekit::proto::TrackMuted* Arena::CreateMaybeMessage<::livekit::proto::TrackMuted>(Arena*);
 template<> ::livekit::proto::TrackPublishOptions* Arena::CreateMaybeMessage<::livekit::proto::TrackPublishOptions>(Arena*);
 template<> ::livekit::proto::TrackPublished* Arena::CreateMaybeMessage<::livekit::proto::TrackPublished>(Arena*);
@@ -9087,6 +9100,7 @@ class TrackPublishOptions final :
     kDtxFieldNumber = 4,
     kRedFieldNumber = 5,
     kSimulcastFieldNumber = 6,
+    kPreconnectBufferFieldNumber = 9,
     kSourceFieldNumber = 7,
   };
   // optional string stream = 8;
@@ -9195,6 +9209,19 @@ class TrackPublishOptions final :
   void _internal_set_simulcast(bool value);
   public:
 
+  // optional bool preconnect_buffer = 9;
+  bool has_preconnect_buffer() const;
+  private:
+  bool _internal_has_preconnect_buffer() const;
+  public:
+  void clear_preconnect_buffer();
+  bool preconnect_buffer() const;
+  void set_preconnect_buffer(bool value);
+  private:
+  bool _internal_preconnect_buffer() const;
+  void _internal_set_preconnect_buffer(bool value);
+  public:
+
   // optional .livekit.proto.TrackSource source = 7;
   bool has_source() const;
   private:
@@ -9225,6 +9252,7 @@ class TrackPublishOptions final :
     bool dtx_;
     bool red_;
     bool simulcast_;
+    bool preconnect_buffer_;
     int source_;
   };
   union { Impl_ _impl_; };
@@ -10585,6 +10613,11 @@ class RoomEvent final :
     kStreamChunkReceived = 31,
     kStreamTrailerReceived = 32,
     kDataChannelLowThresholdChanged = 33,
+    kByteStreamOpened = 34,
+    kTextStreamOpened = 35,
+    kRoomUpdated = 36,
+    kMoved = 37,
+    kParticipantsUpdated = 38,
     MESSAGE_NOT_SET = 0,
   };
 
@@ -10699,6 +10732,11 @@ class RoomEvent final :
     kStreamChunkReceivedFieldNumber = 31,
     kStreamTrailerReceivedFieldNumber = 32,
     kDataChannelLowThresholdChangedFieldNumber = 33,
+    kByteStreamOpenedFieldNumber = 34,
+    kTextStreamOpenedFieldNumber = 35,
+    kRoomUpdatedFieldNumber = 36,
+    kMovedFieldNumber = 37,
+    kParticipantsUpdatedFieldNumber = 38,
   };
   // required uint64 room_handle = 1;
   bool has_room_handle() const;
@@ -11289,6 +11327,96 @@ class RoomEvent final :
       ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged* data_channel_low_threshold_changed);
   ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged* unsafe_arena_release_data_channel_low_threshold_changed();
 
+  // .livekit.proto.ByteStreamOpened byte_stream_opened = 34;
+  bool has_byte_stream_opened() const;
+  private:
+  bool _internal_has_byte_stream_opened() const;
+  public:
+  void clear_byte_stream_opened();
+  const ::livekit::proto::ByteStreamOpened& byte_stream_opened() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamOpened* release_byte_stream_opened();
+  ::livekit::proto::ByteStreamOpened* mutable_byte_stream_opened();
+  void set_allocated_byte_stream_opened(::livekit::proto::ByteStreamOpened* byte_stream_opened);
+  private:
+  const ::livekit::proto::ByteStreamOpened& _internal_byte_stream_opened() const;
+  ::livekit::proto::ByteStreamOpened* _internal_mutable_byte_stream_opened();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_opened(
+      ::livekit::proto::ByteStreamOpened* byte_stream_opened);
+  ::livekit::proto::ByteStreamOpened* unsafe_arena_release_byte_stream_opened();
+
+  // .livekit.proto.TextStreamOpened text_stream_opened = 35;
+  bool has_text_stream_opened() const;
+  private:
+  bool _internal_has_text_stream_opened() const;
+  public:
+  void clear_text_stream_opened();
+  const ::livekit::proto::TextStreamOpened& text_stream_opened() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamOpened* release_text_stream_opened();
+  ::livekit::proto::TextStreamOpened* mutable_text_stream_opened();
+  void set_allocated_text_stream_opened(::livekit::proto::TextStreamOpened* text_stream_opened);
+  private:
+  const ::livekit::proto::TextStreamOpened& _internal_text_stream_opened() const;
+  ::livekit::proto::TextStreamOpened* _internal_mutable_text_stream_opened();
+  public:
+  void unsafe_arena_set_allocated_text_stream_opened(
+      ::livekit::proto::TextStreamOpened* text_stream_opened);
+  ::livekit::proto::TextStreamOpened* unsafe_arena_release_text_stream_opened();
+
+  // .livekit.proto.RoomInfo room_updated = 36;
+  bool has_room_updated() const;
+  private:
+  bool _internal_has_room_updated() const;
+  public:
+  void clear_room_updated();
+  const ::livekit::proto::RoomInfo& room_updated() const;
+  PROTOBUF_NODISCARD ::livekit::proto::RoomInfo* release_room_updated();
+  ::livekit::proto::RoomInfo* mutable_room_updated();
+  void set_allocated_room_updated(::livekit::proto::RoomInfo* room_updated);
+  private:
+  const ::livekit::proto::RoomInfo& _internal_room_updated() const;
+  ::livekit::proto::RoomInfo* _internal_mutable_room_updated();
+  public:
+  void unsafe_arena_set_allocated_room_updated(
+      ::livekit::proto::RoomInfo* room_updated);
+  ::livekit::proto::RoomInfo* unsafe_arena_release_room_updated();
+
+  // .livekit.proto.RoomInfo moved = 37;
+  bool has_moved() const;
+  private:
+  bool _internal_has_moved() const;
+  public:
+  void clear_moved();
+  const ::livekit::proto::RoomInfo& moved() const;
+  PROTOBUF_NODISCARD ::livekit::proto::RoomInfo* release_moved();
+  ::livekit::proto::RoomInfo* mutable_moved();
+  void set_allocated_moved(::livekit::proto::RoomInfo* moved);
+  private:
+  const ::livekit::proto::RoomInfo& _internal_moved() const;
+  ::livekit::proto::RoomInfo* _internal_mutable_moved();
+  public:
+  void unsafe_arena_set_allocated_moved(
+      ::livekit::proto::RoomInfo* moved);
+  ::livekit::proto::RoomInfo* unsafe_arena_release_moved();
+
+  // .livekit.proto.ParticipantsUpdated participants_updated = 38;
+  bool has_participants_updated() const;
+  private:
+  bool _internal_has_participants_updated() const;
+  public:
+  void clear_participants_updated();
+  const ::livekit::proto::ParticipantsUpdated& participants_updated() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ParticipantsUpdated* release_participants_updated();
+  ::livekit::proto::ParticipantsUpdated* mutable_participants_updated();
+  void set_allocated_participants_updated(::livekit::proto::ParticipantsUpdated* participants_updated);
+  private:
+  const ::livekit::proto::ParticipantsUpdated& _internal_participants_updated() const;
+  ::livekit::proto::ParticipantsUpdated* _internal_mutable_participants_updated();
+  public:
+  void unsafe_arena_set_allocated_participants_updated(
+      ::livekit::proto::ParticipantsUpdated* participants_updated);
+  ::livekit::proto::ParticipantsUpdated* unsafe_arena_release_participants_updated();
+
   void clear_message();
   MessageCase message_case() const;
   // @@protoc_insertion_point(class_scope:livekit.proto.RoomEvent)
@@ -11326,6 +11454,11 @@ class RoomEvent final :
   void set_has_stream_chunk_received();
   void set_has_stream_trailer_received();
   void set_has_data_channel_low_threshold_changed();
+  void set_has_byte_stream_opened();
+  void set_has_text_stream_opened();
+  void set_has_room_updated();
+  void set_has_moved();
+  void set_has_participants_updated();
 
   inline bool has_message() const;
   inline void clear_has_message();
@@ -11372,6 +11505,11 @@ class RoomEvent final :
       ::livekit::proto::DataStreamChunkReceived* stream_chunk_received_;
       ::livekit::proto::DataStreamTrailerReceived* stream_trailer_received_;
       ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged* data_channel_low_threshold_changed_;
+      ::livekit::proto::ByteStreamOpened* byte_stream_opened_;
+      ::livekit::proto::TextStreamOpened* text_stream_opened_;
+      ::livekit::proto::RoomInfo* room_updated_;
+      ::livekit::proto::RoomInfo* moved_;
+      ::livekit::proto::ParticipantsUpdated* participants_updated_;
     } message_;
     uint32_t _oneof_case_[1];
 
@@ -11514,6 +11652,13 @@ class RoomInfo final :
     kMetadataFieldNumber = 3,
     kLossyDcBufferedAmountLowThresholdFieldNumber = 4,
     kReliableDcBufferedAmountLowThresholdFieldNumber = 5,
+    kEmptyTimeoutFieldNumber = 6,
+    kDepartureTimeoutFieldNumber = 7,
+    kCreationTimeFieldNumber = 9,
+    kMaxParticipantsFieldNumber = 8,
+    kNumParticipantsFieldNumber = 10,
+    kNumPublishersFieldNumber = 11,
+    kActiveRecordingFieldNumber = 12,
   };
   // optional string sid = 1;
   bool has_sid() const;
@@ -11595,6 +11740,97 @@ class RoomInfo final :
   void _internal_set_reliable_dc_buffered_amount_low_threshold(uint64_t value);
   public:
 
+  // required uint32 empty_timeout = 6;
+  bool has_empty_timeout() const;
+  private:
+  bool _internal_has_empty_timeout() const;
+  public:
+  void clear_empty_timeout();
+  uint32_t empty_timeout() const;
+  void set_empty_timeout(uint32_t value);
+  private:
+  uint32_t _internal_empty_timeout() const;
+  void _internal_set_empty_timeout(uint32_t value);
+  public:
+
+  // required uint32 departure_timeout = 7;
+  bool has_departure_timeout() const;
+  private:
+  bool _internal_has_departure_timeout() const;
+  public:
+  void clear_departure_timeout();
+  uint32_t departure_timeout() const;
+  void set_departure_timeout(uint32_t value);
+  private:
+  uint32_t _internal_departure_timeout() const;
+  void _internal_set_departure_timeout(uint32_t value);
+  public:
+
+  // required int64 creation_time = 9;
+  bool has_creation_time() const;
+  private:
+  bool _internal_has_creation_time() const;
+  public:
+  void clear_creation_time();
+  int64_t creation_time() const;
+  void set_creation_time(int64_t value);
+  private:
+  int64_t _internal_creation_time() const;
+  void _internal_set_creation_time(int64_t value);
+  public:
+
+  // required uint32 max_participants = 8;
+  bool has_max_participants() const;
+  private:
+  bool _internal_has_max_participants() const;
+  public:
+  void clear_max_participants();
+  uint32_t max_participants() const;
+  void set_max_participants(uint32_t value);
+  private:
+  uint32_t _internal_max_participants() const;
+  void _internal_set_max_participants(uint32_t value);
+  public:
+
+  // required uint32 num_participants = 10;
+  bool has_num_participants() const;
+  private:
+  bool _internal_has_num_participants() const;
+  public:
+  void clear_num_participants();
+  uint32_t num_participants() const;
+  void set_num_participants(uint32_t value);
+  private:
+  uint32_t _internal_num_participants() const;
+  void _internal_set_num_participants(uint32_t value);
+  public:
+
+  // required uint32 num_publishers = 11;
+  bool has_num_publishers() const;
+  private:
+  bool _internal_has_num_publishers() const;
+  public:
+  void clear_num_publishers();
+  uint32_t num_publishers() const;
+  void set_num_publishers(uint32_t value);
+  private:
+  uint32_t _internal_num_publishers() const;
+  void _internal_set_num_publishers(uint32_t value);
+  public:
+
+  // required bool active_recording = 12;
+  bool has_active_recording() const;
+  private:
+  bool _internal_has_active_recording() const;
+  public:
+  void clear_active_recording();
+  bool active_recording() const;
+  void set_active_recording(bool value);
+  private:
+  bool _internal_active_recording() const;
+  void _internal_set_active_recording(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.proto.RoomInfo)
  private:
   class _Internal;
@@ -11613,6 +11849,13 @@ class RoomInfo final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr metadata_;
     uint64_t lossy_dc_buffered_amount_low_threshold_;
     uint64_t reliable_dc_buffered_amount_low_threshold_;
+    uint32_t empty_timeout_;
+    uint32_t departure_timeout_;
+    int64_t creation_time_;
+    uint32_t max_participants_;
+    uint32_t num_participants_;
+    uint32_t num_publishers_;
+    bool active_recording_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_room_2eproto;
@@ -11807,6 +12050,170 @@ class OwnedRoom final :
 };
 // -------------------------------------------------------------------
 
+class ParticipantsUpdated final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.proto.ParticipantsUpdated) */ {
+ public:
+  inline ParticipantsUpdated() : ParticipantsUpdated(nullptr) {}
+  ~ParticipantsUpdated() override;
+  explicit PROTOBUF_CONSTEXPR ParticipantsUpdated(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ParticipantsUpdated(const ParticipantsUpdated& from);
+  ParticipantsUpdated(ParticipantsUpdated&& from) noexcept
+    : ParticipantsUpdated() {
+    *this = ::std::move(from);
+  }
+
+  inline ParticipantsUpdated& operator=(const ParticipantsUpdated& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ParticipantsUpdated& operator=(ParticipantsUpdated&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ParticipantsUpdated& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ParticipantsUpdated* internal_default_instance() {
+    return reinterpret_cast<const ParticipantsUpdated*>(
+               &_ParticipantsUpdated_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    55;
+
+  friend void swap(ParticipantsUpdated& a, ParticipantsUpdated& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ParticipantsUpdated* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ParticipantsUpdated* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ParticipantsUpdated* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ParticipantsUpdated>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ParticipantsUpdated& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ParticipantsUpdated& from) {
+    ParticipantsUpdated::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ParticipantsUpdated* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.proto.ParticipantsUpdated";
+  }
+  protected:
+  explicit ParticipantsUpdated(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kParticipantsFieldNumber = 1,
+  };
+  // repeated .livekit.proto.ParticipantInfo participants = 1;
+  int participants_size() const;
+  private:
+  int _internal_participants_size() const;
+  public:
+  void clear_participants();
+  ::livekit::proto::ParticipantInfo* mutable_participants(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::proto::ParticipantInfo >*
+      mutable_participants();
+  private:
+  const ::livekit::proto::ParticipantInfo& _internal_participants(int index) const;
+  ::livekit::proto::ParticipantInfo* _internal_add_participants();
+  public:
+  const ::livekit::proto::ParticipantInfo& participants(int index) const;
+  ::livekit::proto::ParticipantInfo* add_participants();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::proto::ParticipantInfo >&
+      participants() const;
+
+  // @@protoc_insertion_point(class_scope:livekit.proto.ParticipantsUpdated)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::proto::ParticipantInfo > participants_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_room_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ParticipantConnected final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.proto.ParticipantConnected) */ {
  public:
@@ -11862,7 +12269,7 @@ class ParticipantConnected final :
                &_ParticipantConnected_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    56;
 
   friend void swap(ParticipantConnected& a, ParticipantConnected& b) {
     a.Swap(&b);
@@ -12027,7 +12434,7 @@ class ParticipantDisconnected final :
                &_ParticipantDisconnected_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    57;
 
   friend void swap(ParticipantDisconnected& a, ParticipantDisconnected& b) {
     a.Swap(&b);
@@ -12210,7 +12617,7 @@ class LocalTrackPublished final :
                &_LocalTrackPublished_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    57;
+    58;
 
   friend void swap(LocalTrackPublished& a, LocalTrackPublished& b) {
     a.Swap(&b);
@@ -12375,7 +12782,7 @@ class LocalTrackUnpublished final :
                &_LocalTrackUnpublished_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    59;
 
   friend void swap(LocalTrackUnpublished& a, LocalTrackUnpublished& b) {
     a.Swap(&b);
@@ -12540,7 +12947,7 @@ class LocalTrackSubscribed final :
                &_LocalTrackSubscribed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    60;
 
   friend void swap(LocalTrackSubscribed& a, LocalTrackSubscribed& b) {
     a.Swap(&b);
@@ -12705,7 +13112,7 @@ class TrackPublished final :
                &_TrackPublished_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    61;
 
   friend void swap(TrackPublished& a, TrackPublished& b) {
     a.Swap(&b);
@@ -12893,7 +13300,7 @@ class TrackUnpublished final :
                &_TrackUnpublished_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    62;
 
   friend void swap(TrackUnpublished& a, TrackUnpublished& b) {
     a.Swap(&b);
@@ -13081,7 +13488,7 @@ class TrackSubscribed final :
                &_TrackSubscribed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    63;
 
   friend void swap(TrackSubscribed& a, TrackSubscribed& b) {
     a.Swap(&b);
@@ -13269,7 +13676,7 @@ class TrackUnsubscribed final :
                &_TrackUnsubscribed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    64;
 
   friend void swap(TrackUnsubscribed& a, TrackUnsubscribed& b) {
     a.Swap(&b);
@@ -13457,7 +13864,7 @@ class TrackSubscriptionFailed final :
                &_TrackSubscriptionFailed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    65;
 
   friend void swap(TrackSubscriptionFailed& a, TrackSubscriptionFailed& b) {
     a.Swap(&b);
@@ -13665,7 +14072,7 @@ class TrackMuted final :
                &_TrackMuted_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    66;
 
   friend void swap(TrackMuted& a, TrackMuted& b) {
     a.Swap(&b);
@@ -13853,7 +14260,7 @@ class TrackUnmuted final :
                &_TrackUnmuted_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    66;
+    67;
 
   friend void swap(TrackUnmuted& a, TrackUnmuted& b) {
     a.Swap(&b);
@@ -14041,7 +14448,7 @@ class E2eeStateChanged final :
                &_E2eeStateChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    67;
+    68;
 
   friend void swap(E2eeStateChanged& a, E2eeStateChanged& b) {
     a.Swap(&b);
@@ -14224,7 +14631,7 @@ class ActiveSpeakersChanged final :
                &_ActiveSpeakersChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    68;
+    69;
 
   friend void swap(ActiveSpeakersChanged& a, ActiveSpeakersChanged& b) {
     a.Swap(&b);
@@ -14394,7 +14801,7 @@ class RoomMetadataChanged final :
                &_RoomMetadataChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    69;
+    70;
 
   friend void swap(RoomMetadataChanged& a, RoomMetadataChanged& b) {
     a.Swap(&b);
@@ -14559,7 +14966,7 @@ class RoomSidChanged final :
                &_RoomSidChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    70;
+    71;
 
   friend void swap(RoomSidChanged& a, RoomSidChanged& b) {
     a.Swap(&b);
@@ -14724,7 +15131,7 @@ class ParticipantMetadataChanged final :
                &_ParticipantMetadataChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    71;
+    72;
 
   friend void swap(ParticipantMetadataChanged& a, ParticipantMetadataChanged& b) {
     a.Swap(&b);
@@ -14912,7 +15319,7 @@ class ParticipantAttributesChanged final :
                &_ParticipantAttributesChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    72;
+    73;
 
   friend void swap(ParticipantAttributesChanged& a, ParticipantAttributesChanged& b) {
     a.Swap(&b);
@@ -15117,7 +15524,7 @@ class ParticipantNameChanged final :
                &_ParticipantNameChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    73;
+    74;
 
   friend void swap(ParticipantNameChanged& a, ParticipantNameChanged& b) {
     a.Swap(&b);
@@ -15305,7 +15712,7 @@ class ConnectionQualityChanged final :
                &_ConnectionQualityChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    74;
+    75;
 
   friend void swap(ConnectionQualityChanged& a, ConnectionQualityChanged& b) {
     a.Swap(&b);
@@ -15488,7 +15895,7 @@ class UserPacket final :
                &_UserPacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    75;
+    76;
 
   friend void swap(UserPacket& a, UserPacket& b) {
     a.Swap(&b);
@@ -15673,7 +16080,7 @@ class ChatMessage final :
                &_ChatMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    76;
+    77;
 
   friend void swap(ChatMessage& a, ChatMessage& b) {
     a.Swap(&b);
@@ -15921,7 +16328,7 @@ class ChatMessageReceived final :
                &_ChatMessageReceived_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    77;
+    78;
 
   friend void swap(ChatMessageReceived& a, ChatMessageReceived& b) {
     a.Swap(&b);
@@ -16109,7 +16516,7 @@ class SipDTMF final :
                &_SipDTMF_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    78;
+    79;
 
   friend void swap(SipDTMF& a, SipDTMF& b) {
     a.Swap(&b);
@@ -16295,7 +16702,7 @@ class DataPacketReceived final :
                &_DataPacketReceived_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    79;
+    80;
 
   friend void swap(DataPacketReceived& a, DataPacketReceived& b) {
     a.Swap(&b);
@@ -16531,7 +16938,7 @@ class TranscriptionReceived final :
                &_TranscriptionReceived_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    80;
+    81;
 
   friend void swap(TranscriptionReceived& a, TranscriptionReceived& b) {
     a.Swap(&b);
@@ -16736,7 +17143,7 @@ class ConnectionStateChanged final :
                &_ConnectionStateChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    81;
+    82;
 
   friend void swap(ConnectionStateChanged& a, ConnectionStateChanged& b) {
     a.Swap(&b);
@@ -16895,7 +17302,7 @@ class Connected final :
                &_Connected_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    82;
+    83;
 
   friend void swap(Connected& a, Connected& b) {
     a.Swap(&b);
@@ -17021,7 +17428,7 @@ class Disconnected final :
                &_Disconnected_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    83;
+    84;
 
   friend void swap(Disconnected& a, Disconnected& b) {
     a.Swap(&b);
@@ -17180,7 +17587,7 @@ class Reconnecting final :
                &_Reconnecting_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    84;
+    85;
 
   friend void swap(Reconnecting& a, Reconnecting& b) {
     a.Swap(&b);
@@ -17305,7 +17712,7 @@ class Reconnected final :
                &_Reconnected_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    85;
+    86;
 
   friend void swap(Reconnected& a, Reconnected& b) {
     a.Swap(&b);
@@ -17430,7 +17837,7 @@ class RoomEOS final :
                &_RoomEOS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    86;
+    87;
 
   friend void swap(RoomEOS& a, RoomEOS& b) {
     a.Swap(&b);
@@ -17556,7 +17963,7 @@ class DataStream_TextHeader final :
                &_DataStream_TextHeader_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    87;
+    88;
 
   friend void swap(DataStream_TextHeader& a, DataStream_TextHeader& b) {
     a.Swap(&b);
@@ -17792,7 +18199,7 @@ class DataStream_ByteHeader final :
                &_DataStream_ByteHeader_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    88;
+    89;
 
   friend void swap(DataStream_ByteHeader& a, DataStream_ByteHeader& b) {
     a.Swap(&b);
@@ -18003,7 +18410,7 @@ class DataStream_Header final :
                &_DataStream_Header_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    90;
+    91;
 
   friend void swap(DataStream_Header& a, DataStream_Header& b) {
     a.Swap(&b);
@@ -18320,7 +18727,7 @@ class DataStream_Chunk final :
                &_DataStream_Chunk_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    91;
+    92;
 
   friend void swap(DataStream_Chunk& a, DataStream_Chunk& b) {
     a.Swap(&b);
@@ -18598,7 +19005,7 @@ class DataStream_Trailer final :
                &_DataStream_Trailer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    93;
+    94;
 
   friend void swap(DataStream_Trailer& a, DataStream_Trailer& b) {
     a.Swap(&b);
@@ -18811,7 +19218,7 @@ class DataStream final :
                &_DataStream_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    94;
+    95;
 
   friend void swap(DataStream& a, DataStream& b) {
     a.Swap(&b);
@@ -18977,7 +19384,7 @@ class DataStreamHeaderReceived final :
                &_DataStreamHeaderReceived_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    95;
+    96;
 
   friend void swap(DataStreamHeaderReceived& a, DataStreamHeaderReceived& b) {
     a.Swap(&b);
@@ -19165,7 +19572,7 @@ class DataStreamChunkReceived final :
                &_DataStreamChunkReceived_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    96;
+    97;
 
   friend void swap(DataStreamChunkReceived& a, DataStreamChunkReceived& b) {
     a.Swap(&b);
@@ -19353,7 +19760,7 @@ class DataStreamTrailerReceived final :
                &_DataStreamTrailerReceived_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    97;
+    98;
 
   friend void swap(DataStreamTrailerReceived& a, DataStreamTrailerReceived& b) {
     a.Swap(&b);
@@ -19541,7 +19948,7 @@ class SendStreamHeaderRequest final :
                &_SendStreamHeaderRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    98;
+    99;
 
   friend void swap(SendStreamHeaderRequest& a, SendStreamHeaderRequest& b) {
     a.Swap(&b);
@@ -19770,7 +20177,7 @@ class SendStreamChunkRequest final :
                &_SendStreamChunkRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    99;
+    100;
 
   friend void swap(SendStreamChunkRequest& a, SendStreamChunkRequest& b) {
     a.Swap(&b);
@@ -19999,7 +20406,7 @@ class SendStreamTrailerRequest final :
                &_SendStreamTrailerRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    100;
+    101;
 
   friend void swap(SendStreamTrailerRequest& a, SendStreamTrailerRequest& b) {
     a.Swap(&b);
@@ -20228,7 +20635,7 @@ class SendStreamHeaderResponse final :
                &_SendStreamHeaderResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    101;
+    102;
 
   friend void swap(SendStreamHeaderResponse& a, SendStreamHeaderResponse& b) {
     a.Swap(&b);
@@ -20388,7 +20795,7 @@ class SendStreamChunkResponse final :
                &_SendStreamChunkResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    102;
+    103;
 
   friend void swap(SendStreamChunkResponse& a, SendStreamChunkResponse& b) {
     a.Swap(&b);
@@ -20548,7 +20955,7 @@ class SendStreamTrailerResponse final :
                &_SendStreamTrailerResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    103;
+    104;
 
   friend void swap(SendStreamTrailerResponse& a, SendStreamTrailerResponse& b) {
     a.Swap(&b);
@@ -20708,7 +21115,7 @@ class SendStreamHeaderCallback final :
                &_SendStreamHeaderCallback_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    104;
+    105;
 
   friend void swap(SendStreamHeaderCallback& a, SendStreamHeaderCallback& b) {
     a.Swap(&b);
@@ -20888,7 +21295,7 @@ class SendStreamChunkCallback final :
                &_SendStreamChunkCallback_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    105;
+    106;
 
   friend void swap(SendStreamChunkCallback& a, SendStreamChunkCallback& b) {
     a.Swap(&b);
@@ -21068,7 +21475,7 @@ class SendStreamTrailerCallback final :
                &_SendStreamTrailerCallback_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    106;
+    107;
 
   friend void swap(SendStreamTrailerCallback& a, SendStreamTrailerCallback& b) {
     a.Swap(&b);
@@ -21248,7 +21655,7 @@ class SetDataChannelBufferedAmountLowThresholdRequest final :
                &_SetDataChannelBufferedAmountLowThresholdRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    107;
+    108;
 
   friend void swap(SetDataChannelBufferedAmountLowThresholdRequest& a, SetDataChannelBufferedAmountLowThresholdRequest& b) {
     a.Swap(&b);
@@ -21440,7 +21847,7 @@ class SetDataChannelBufferedAmountLowThresholdResponse final :
                &_SetDataChannelBufferedAmountLowThresholdResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    108;
+    109;
 
   friend void swap(SetDataChannelBufferedAmountLowThresholdResponse& a, SetDataChannelBufferedAmountLowThresholdResponse& b) {
     a.Swap(&b);
@@ -21566,7 +21973,7 @@ class DataChannelBufferedAmountLowThresholdChanged final :
                &_DataChannelBufferedAmountLowThresholdChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    109;
+    110;
 
   friend void swap(DataChannelBufferedAmountLowThresholdChanged& a, DataChannelBufferedAmountLowThresholdChanged& b) {
     a.Swap(&b);
@@ -21683,6 +22090,382 @@ class DataChannelBufferedAmountLowThresholdChanged final :
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint64_t threshold_;
     int kind_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_room_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ByteStreamOpened final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.proto.ByteStreamOpened) */ {
+ public:
+  inline ByteStreamOpened() : ByteStreamOpened(nullptr) {}
+  ~ByteStreamOpened() override;
+  explicit PROTOBUF_CONSTEXPR ByteStreamOpened(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ByteStreamOpened(const ByteStreamOpened& from);
+  ByteStreamOpened(ByteStreamOpened&& from) noexcept
+    : ByteStreamOpened() {
+    *this = ::std::move(from);
+  }
+
+  inline ByteStreamOpened& operator=(const ByteStreamOpened& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ByteStreamOpened& operator=(ByteStreamOpened&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ByteStreamOpened& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ByteStreamOpened* internal_default_instance() {
+    return reinterpret_cast<const ByteStreamOpened*>(
+               &_ByteStreamOpened_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    111;
+
+  friend void swap(ByteStreamOpened& a, ByteStreamOpened& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ByteStreamOpened* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ByteStreamOpened* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ByteStreamOpened* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ByteStreamOpened>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ByteStreamOpened& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ByteStreamOpened& from) {
+    ByteStreamOpened::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ByteStreamOpened* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.proto.ByteStreamOpened";
+  }
+  protected:
+  explicit ByteStreamOpened(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kParticipantIdentityFieldNumber = 2,
+    kReaderFieldNumber = 1,
+  };
+  // required string participant_identity = 2;
+  bool has_participant_identity() const;
+  private:
+  bool _internal_has_participant_identity() const;
+  public:
+  void clear_participant_identity();
+  const std::string& participant_identity() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_participant_identity(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_participant_identity();
+  PROTOBUF_NODISCARD std::string* release_participant_identity();
+  void set_allocated_participant_identity(std::string* participant_identity);
+  private:
+  const std::string& _internal_participant_identity() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_participant_identity(const std::string& value);
+  std::string* _internal_mutable_participant_identity();
+  public:
+
+  // required .livekit.proto.OwnedByteStreamReader reader = 1;
+  bool has_reader() const;
+  private:
+  bool _internal_has_reader() const;
+  public:
+  void clear_reader();
+  const ::livekit::proto::OwnedByteStreamReader& reader() const;
+  PROTOBUF_NODISCARD ::livekit::proto::OwnedByteStreamReader* release_reader();
+  ::livekit::proto::OwnedByteStreamReader* mutable_reader();
+  void set_allocated_reader(::livekit::proto::OwnedByteStreamReader* reader);
+  private:
+  const ::livekit::proto::OwnedByteStreamReader& _internal_reader() const;
+  ::livekit::proto::OwnedByteStreamReader* _internal_mutable_reader();
+  public:
+  void unsafe_arena_set_allocated_reader(
+      ::livekit::proto::OwnedByteStreamReader* reader);
+  ::livekit::proto::OwnedByteStreamReader* unsafe_arena_release_reader();
+
+  // @@protoc_insertion_point(class_scope:livekit.proto.ByteStreamOpened)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr participant_identity_;
+    ::livekit::proto::OwnedByteStreamReader* reader_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_room_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TextStreamOpened final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.proto.TextStreamOpened) */ {
+ public:
+  inline TextStreamOpened() : TextStreamOpened(nullptr) {}
+  ~TextStreamOpened() override;
+  explicit PROTOBUF_CONSTEXPR TextStreamOpened(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TextStreamOpened(const TextStreamOpened& from);
+  TextStreamOpened(TextStreamOpened&& from) noexcept
+    : TextStreamOpened() {
+    *this = ::std::move(from);
+  }
+
+  inline TextStreamOpened& operator=(const TextStreamOpened& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TextStreamOpened& operator=(TextStreamOpened&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TextStreamOpened& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TextStreamOpened* internal_default_instance() {
+    return reinterpret_cast<const TextStreamOpened*>(
+               &_TextStreamOpened_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    112;
+
+  friend void swap(TextStreamOpened& a, TextStreamOpened& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TextStreamOpened* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TextStreamOpened* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TextStreamOpened* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TextStreamOpened>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TextStreamOpened& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TextStreamOpened& from) {
+    TextStreamOpened::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TextStreamOpened* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.proto.TextStreamOpened";
+  }
+  protected:
+  explicit TextStreamOpened(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kParticipantIdentityFieldNumber = 2,
+    kReaderFieldNumber = 1,
+  };
+  // required string participant_identity = 2;
+  bool has_participant_identity() const;
+  private:
+  bool _internal_has_participant_identity() const;
+  public:
+  void clear_participant_identity();
+  const std::string& participant_identity() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_participant_identity(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_participant_identity();
+  PROTOBUF_NODISCARD std::string* release_participant_identity();
+  void set_allocated_participant_identity(std::string* participant_identity);
+  private:
+  const std::string& _internal_participant_identity() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_participant_identity(const std::string& value);
+  std::string* _internal_mutable_participant_identity();
+  public:
+
+  // required .livekit.proto.OwnedTextStreamReader reader = 1;
+  bool has_reader() const;
+  private:
+  bool _internal_has_reader() const;
+  public:
+  void clear_reader();
+  const ::livekit::proto::OwnedTextStreamReader& reader() const;
+  PROTOBUF_NODISCARD ::livekit::proto::OwnedTextStreamReader* release_reader();
+  ::livekit::proto::OwnedTextStreamReader* mutable_reader();
+  void set_allocated_reader(::livekit::proto::OwnedTextStreamReader* reader);
+  private:
+  const ::livekit::proto::OwnedTextStreamReader& _internal_reader() const;
+  ::livekit::proto::OwnedTextStreamReader* _internal_mutable_reader();
+  public:
+  void unsafe_arena_set_allocated_reader(
+      ::livekit::proto::OwnedTextStreamReader* reader);
+  ::livekit::proto::OwnedTextStreamReader* unsafe_arena_release_reader();
+
+  // @@protoc_insertion_point(class_scope:livekit.proto.TextStreamOpened)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr participant_identity_;
+    ::livekit::proto::OwnedTextStreamReader* reader_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_room_2eproto;
@@ -26757,7 +27540,7 @@ inline void TrackPublishOptions::set_simulcast(bool value) {
 
 // optional .livekit.proto.TrackSource source = 7;
 inline bool TrackPublishOptions::_internal_has_source() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
   return value;
 }
 inline bool TrackPublishOptions::has_source() const {
@@ -26765,7 +27548,7 @@ inline bool TrackPublishOptions::has_source() const {
 }
 inline void TrackPublishOptions::clear_source() {
   _impl_.source_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000080u;
+  _impl_._has_bits_[0] &= ~0x00000100u;
 }
 inline ::livekit::proto::TrackSource TrackPublishOptions::_internal_source() const {
   return static_cast< ::livekit::proto::TrackSource >(_impl_.source_);
@@ -26776,7 +27559,7 @@ inline ::livekit::proto::TrackSource TrackPublishOptions::source() const {
 }
 inline void TrackPublishOptions::_internal_set_source(::livekit::proto::TrackSource value) {
   assert(::livekit::proto::TrackSource_IsValid(value));
-  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_._has_bits_[0] |= 0x00000100u;
   _impl_.source_ = value;
 }
 inline void TrackPublishOptions::set_source(::livekit::proto::TrackSource value) {
@@ -26850,6 +27633,34 @@ inline void TrackPublishOptions::set_allocated_stream(std::string* stream) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.proto.TrackPublishOptions.stream)
+}
+
+// optional bool preconnect_buffer = 9;
+inline bool TrackPublishOptions::_internal_has_preconnect_buffer() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool TrackPublishOptions::has_preconnect_buffer() const {
+  return _internal_has_preconnect_buffer();
+}
+inline void TrackPublishOptions::clear_preconnect_buffer() {
+  _impl_.preconnect_buffer_ = false;
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline bool TrackPublishOptions::_internal_preconnect_buffer() const {
+  return _impl_.preconnect_buffer_;
+}
+inline bool TrackPublishOptions::preconnect_buffer() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.TrackPublishOptions.preconnect_buffer)
+  return _internal_preconnect_buffer();
+}
+inline void TrackPublishOptions::_internal_set_preconnect_buffer(bool value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.preconnect_buffer_ = value;
+}
+inline void TrackPublishOptions::set_preconnect_buffer(bool value) {
+  _internal_set_preconnect_buffer(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.TrackPublishOptions.preconnect_buffer)
 }
 
 // -------------------------------------------------------------------
@@ -30395,6 +31206,376 @@ inline ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged* RoomEvent
   return _msg;
 }
 
+// .livekit.proto.ByteStreamOpened byte_stream_opened = 34;
+inline bool RoomEvent::_internal_has_byte_stream_opened() const {
+  return message_case() == kByteStreamOpened;
+}
+inline bool RoomEvent::has_byte_stream_opened() const {
+  return _internal_has_byte_stream_opened();
+}
+inline void RoomEvent::set_has_byte_stream_opened() {
+  _impl_._oneof_case_[0] = kByteStreamOpened;
+}
+inline void RoomEvent::clear_byte_stream_opened() {
+  if (_internal_has_byte_stream_opened()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.message_.byte_stream_opened_;
+    }
+    clear_has_message();
+  }
+}
+inline ::livekit::proto::ByteStreamOpened* RoomEvent::release_byte_stream_opened() {
+  // @@protoc_insertion_point(field_release:livekit.proto.RoomEvent.byte_stream_opened)
+  if (_internal_has_byte_stream_opened()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamOpened* temp = _impl_.message_.byte_stream_opened_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_opened_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamOpened& RoomEvent::_internal_byte_stream_opened() const {
+  return _internal_has_byte_stream_opened()
+      ? *_impl_.message_.byte_stream_opened_
+      : reinterpret_cast< ::livekit::proto::ByteStreamOpened&>(::livekit::proto::_ByteStreamOpened_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamOpened& RoomEvent::byte_stream_opened() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomEvent.byte_stream_opened)
+  return _internal_byte_stream_opened();
+}
+inline ::livekit::proto::ByteStreamOpened* RoomEvent::unsafe_arena_release_byte_stream_opened() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.RoomEvent.byte_stream_opened)
+  if (_internal_has_byte_stream_opened()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamOpened* temp = _impl_.message_.byte_stream_opened_;
+    _impl_.message_.byte_stream_opened_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void RoomEvent::unsafe_arena_set_allocated_byte_stream_opened(::livekit::proto::ByteStreamOpened* byte_stream_opened) {
+  clear_message();
+  if (byte_stream_opened) {
+    set_has_byte_stream_opened();
+    _impl_.message_.byte_stream_opened_ = byte_stream_opened;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.RoomEvent.byte_stream_opened)
+}
+inline ::livekit::proto::ByteStreamOpened* RoomEvent::_internal_mutable_byte_stream_opened() {
+  if (!_internal_has_byte_stream_opened()) {
+    clear_message();
+    set_has_byte_stream_opened();
+    _impl_.message_.byte_stream_opened_ = CreateMaybeMessage< ::livekit::proto::ByteStreamOpened >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_opened_;
+}
+inline ::livekit::proto::ByteStreamOpened* RoomEvent::mutable_byte_stream_opened() {
+  ::livekit::proto::ByteStreamOpened* _msg = _internal_mutable_byte_stream_opened();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.RoomEvent.byte_stream_opened)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamOpened text_stream_opened = 35;
+inline bool RoomEvent::_internal_has_text_stream_opened() const {
+  return message_case() == kTextStreamOpened;
+}
+inline bool RoomEvent::has_text_stream_opened() const {
+  return _internal_has_text_stream_opened();
+}
+inline void RoomEvent::set_has_text_stream_opened() {
+  _impl_._oneof_case_[0] = kTextStreamOpened;
+}
+inline void RoomEvent::clear_text_stream_opened() {
+  if (_internal_has_text_stream_opened()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.message_.text_stream_opened_;
+    }
+    clear_has_message();
+  }
+}
+inline ::livekit::proto::TextStreamOpened* RoomEvent::release_text_stream_opened() {
+  // @@protoc_insertion_point(field_release:livekit.proto.RoomEvent.text_stream_opened)
+  if (_internal_has_text_stream_opened()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamOpened* temp = _impl_.message_.text_stream_opened_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_opened_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamOpened& RoomEvent::_internal_text_stream_opened() const {
+  return _internal_has_text_stream_opened()
+      ? *_impl_.message_.text_stream_opened_
+      : reinterpret_cast< ::livekit::proto::TextStreamOpened&>(::livekit::proto::_TextStreamOpened_default_instance_);
+}
+inline const ::livekit::proto::TextStreamOpened& RoomEvent::text_stream_opened() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomEvent.text_stream_opened)
+  return _internal_text_stream_opened();
+}
+inline ::livekit::proto::TextStreamOpened* RoomEvent::unsafe_arena_release_text_stream_opened() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.RoomEvent.text_stream_opened)
+  if (_internal_has_text_stream_opened()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamOpened* temp = _impl_.message_.text_stream_opened_;
+    _impl_.message_.text_stream_opened_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void RoomEvent::unsafe_arena_set_allocated_text_stream_opened(::livekit::proto::TextStreamOpened* text_stream_opened) {
+  clear_message();
+  if (text_stream_opened) {
+    set_has_text_stream_opened();
+    _impl_.message_.text_stream_opened_ = text_stream_opened;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.RoomEvent.text_stream_opened)
+}
+inline ::livekit::proto::TextStreamOpened* RoomEvent::_internal_mutable_text_stream_opened() {
+  if (!_internal_has_text_stream_opened()) {
+    clear_message();
+    set_has_text_stream_opened();
+    _impl_.message_.text_stream_opened_ = CreateMaybeMessage< ::livekit::proto::TextStreamOpened >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_opened_;
+}
+inline ::livekit::proto::TextStreamOpened* RoomEvent::mutable_text_stream_opened() {
+  ::livekit::proto::TextStreamOpened* _msg = _internal_mutable_text_stream_opened();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.RoomEvent.text_stream_opened)
+  return _msg;
+}
+
+// .livekit.proto.RoomInfo room_updated = 36;
+inline bool RoomEvent::_internal_has_room_updated() const {
+  return message_case() == kRoomUpdated;
+}
+inline bool RoomEvent::has_room_updated() const {
+  return _internal_has_room_updated();
+}
+inline void RoomEvent::set_has_room_updated() {
+  _impl_._oneof_case_[0] = kRoomUpdated;
+}
+inline void RoomEvent::clear_room_updated() {
+  if (_internal_has_room_updated()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.message_.room_updated_;
+    }
+    clear_has_message();
+  }
+}
+inline ::livekit::proto::RoomInfo* RoomEvent::release_room_updated() {
+  // @@protoc_insertion_point(field_release:livekit.proto.RoomEvent.room_updated)
+  if (_internal_has_room_updated()) {
+    clear_has_message();
+    ::livekit::proto::RoomInfo* temp = _impl_.message_.room_updated_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.room_updated_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::RoomInfo& RoomEvent::_internal_room_updated() const {
+  return _internal_has_room_updated()
+      ? *_impl_.message_.room_updated_
+      : reinterpret_cast< ::livekit::proto::RoomInfo&>(::livekit::proto::_RoomInfo_default_instance_);
+}
+inline const ::livekit::proto::RoomInfo& RoomEvent::room_updated() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomEvent.room_updated)
+  return _internal_room_updated();
+}
+inline ::livekit::proto::RoomInfo* RoomEvent::unsafe_arena_release_room_updated() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.RoomEvent.room_updated)
+  if (_internal_has_room_updated()) {
+    clear_has_message();
+    ::livekit::proto::RoomInfo* temp = _impl_.message_.room_updated_;
+    _impl_.message_.room_updated_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void RoomEvent::unsafe_arena_set_allocated_room_updated(::livekit::proto::RoomInfo* room_updated) {
+  clear_message();
+  if (room_updated) {
+    set_has_room_updated();
+    _impl_.message_.room_updated_ = room_updated;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.RoomEvent.room_updated)
+}
+inline ::livekit::proto::RoomInfo* RoomEvent::_internal_mutable_room_updated() {
+  if (!_internal_has_room_updated()) {
+    clear_message();
+    set_has_room_updated();
+    _impl_.message_.room_updated_ = CreateMaybeMessage< ::livekit::proto::RoomInfo >(GetArenaForAllocation());
+  }
+  return _impl_.message_.room_updated_;
+}
+inline ::livekit::proto::RoomInfo* RoomEvent::mutable_room_updated() {
+  ::livekit::proto::RoomInfo* _msg = _internal_mutable_room_updated();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.RoomEvent.room_updated)
+  return _msg;
+}
+
+// .livekit.proto.RoomInfo moved = 37;
+inline bool RoomEvent::_internal_has_moved() const {
+  return message_case() == kMoved;
+}
+inline bool RoomEvent::has_moved() const {
+  return _internal_has_moved();
+}
+inline void RoomEvent::set_has_moved() {
+  _impl_._oneof_case_[0] = kMoved;
+}
+inline void RoomEvent::clear_moved() {
+  if (_internal_has_moved()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.message_.moved_;
+    }
+    clear_has_message();
+  }
+}
+inline ::livekit::proto::RoomInfo* RoomEvent::release_moved() {
+  // @@protoc_insertion_point(field_release:livekit.proto.RoomEvent.moved)
+  if (_internal_has_moved()) {
+    clear_has_message();
+    ::livekit::proto::RoomInfo* temp = _impl_.message_.moved_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.moved_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::RoomInfo& RoomEvent::_internal_moved() const {
+  return _internal_has_moved()
+      ? *_impl_.message_.moved_
+      : reinterpret_cast< ::livekit::proto::RoomInfo&>(::livekit::proto::_RoomInfo_default_instance_);
+}
+inline const ::livekit::proto::RoomInfo& RoomEvent::moved() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomEvent.moved)
+  return _internal_moved();
+}
+inline ::livekit::proto::RoomInfo* RoomEvent::unsafe_arena_release_moved() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.RoomEvent.moved)
+  if (_internal_has_moved()) {
+    clear_has_message();
+    ::livekit::proto::RoomInfo* temp = _impl_.message_.moved_;
+    _impl_.message_.moved_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void RoomEvent::unsafe_arena_set_allocated_moved(::livekit::proto::RoomInfo* moved) {
+  clear_message();
+  if (moved) {
+    set_has_moved();
+    _impl_.message_.moved_ = moved;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.RoomEvent.moved)
+}
+inline ::livekit::proto::RoomInfo* RoomEvent::_internal_mutable_moved() {
+  if (!_internal_has_moved()) {
+    clear_message();
+    set_has_moved();
+    _impl_.message_.moved_ = CreateMaybeMessage< ::livekit::proto::RoomInfo >(GetArenaForAllocation());
+  }
+  return _impl_.message_.moved_;
+}
+inline ::livekit::proto::RoomInfo* RoomEvent::mutable_moved() {
+  ::livekit::proto::RoomInfo* _msg = _internal_mutable_moved();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.RoomEvent.moved)
+  return _msg;
+}
+
+// .livekit.proto.ParticipantsUpdated participants_updated = 38;
+inline bool RoomEvent::_internal_has_participants_updated() const {
+  return message_case() == kParticipantsUpdated;
+}
+inline bool RoomEvent::has_participants_updated() const {
+  return _internal_has_participants_updated();
+}
+inline void RoomEvent::set_has_participants_updated() {
+  _impl_._oneof_case_[0] = kParticipantsUpdated;
+}
+inline void RoomEvent::clear_participants_updated() {
+  if (_internal_has_participants_updated()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.message_.participants_updated_;
+    }
+    clear_has_message();
+  }
+}
+inline ::livekit::proto::ParticipantsUpdated* RoomEvent::release_participants_updated() {
+  // @@protoc_insertion_point(field_release:livekit.proto.RoomEvent.participants_updated)
+  if (_internal_has_participants_updated()) {
+    clear_has_message();
+    ::livekit::proto::ParticipantsUpdated* temp = _impl_.message_.participants_updated_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.participants_updated_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ParticipantsUpdated& RoomEvent::_internal_participants_updated() const {
+  return _internal_has_participants_updated()
+      ? *_impl_.message_.participants_updated_
+      : reinterpret_cast< ::livekit::proto::ParticipantsUpdated&>(::livekit::proto::_ParticipantsUpdated_default_instance_);
+}
+inline const ::livekit::proto::ParticipantsUpdated& RoomEvent::participants_updated() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomEvent.participants_updated)
+  return _internal_participants_updated();
+}
+inline ::livekit::proto::ParticipantsUpdated* RoomEvent::unsafe_arena_release_participants_updated() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.RoomEvent.participants_updated)
+  if (_internal_has_participants_updated()) {
+    clear_has_message();
+    ::livekit::proto::ParticipantsUpdated* temp = _impl_.message_.participants_updated_;
+    _impl_.message_.participants_updated_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void RoomEvent::unsafe_arena_set_allocated_participants_updated(::livekit::proto::ParticipantsUpdated* participants_updated) {
+  clear_message();
+  if (participants_updated) {
+    set_has_participants_updated();
+    _impl_.message_.participants_updated_ = participants_updated;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.RoomEvent.participants_updated)
+}
+inline ::livekit::proto::ParticipantsUpdated* RoomEvent::_internal_mutable_participants_updated() {
+  if (!_internal_has_participants_updated()) {
+    clear_message();
+    set_has_participants_updated();
+    _impl_.message_.participants_updated_ = CreateMaybeMessage< ::livekit::proto::ParticipantsUpdated >(GetArenaForAllocation());
+  }
+  return _impl_.message_.participants_updated_;
+}
+inline ::livekit::proto::ParticipantsUpdated* RoomEvent::mutable_participants_updated() {
+  ::livekit::proto::ParticipantsUpdated* _msg = _internal_mutable_participants_updated();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.RoomEvent.participants_updated)
+  return _msg;
+}
+
 inline bool RoomEvent::has_message() const {
   return message_case() != MESSAGE_NOT_SET;
 }
@@ -30668,6 +31849,202 @@ inline void RoomInfo::set_reliable_dc_buffered_amount_low_threshold(uint64_t val
   // @@protoc_insertion_point(field_set:livekit.proto.RoomInfo.reliable_dc_buffered_amount_low_threshold)
 }
 
+// required uint32 empty_timeout = 6;
+inline bool RoomInfo::_internal_has_empty_timeout() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool RoomInfo::has_empty_timeout() const {
+  return _internal_has_empty_timeout();
+}
+inline void RoomInfo::clear_empty_timeout() {
+  _impl_.empty_timeout_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline uint32_t RoomInfo::_internal_empty_timeout() const {
+  return _impl_.empty_timeout_;
+}
+inline uint32_t RoomInfo::empty_timeout() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomInfo.empty_timeout)
+  return _internal_empty_timeout();
+}
+inline void RoomInfo::_internal_set_empty_timeout(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.empty_timeout_ = value;
+}
+inline void RoomInfo::set_empty_timeout(uint32_t value) {
+  _internal_set_empty_timeout(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.RoomInfo.empty_timeout)
+}
+
+// required uint32 departure_timeout = 7;
+inline bool RoomInfo::_internal_has_departure_timeout() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool RoomInfo::has_departure_timeout() const {
+  return _internal_has_departure_timeout();
+}
+inline void RoomInfo::clear_departure_timeout() {
+  _impl_.departure_timeout_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline uint32_t RoomInfo::_internal_departure_timeout() const {
+  return _impl_.departure_timeout_;
+}
+inline uint32_t RoomInfo::departure_timeout() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomInfo.departure_timeout)
+  return _internal_departure_timeout();
+}
+inline void RoomInfo::_internal_set_departure_timeout(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.departure_timeout_ = value;
+}
+inline void RoomInfo::set_departure_timeout(uint32_t value) {
+  _internal_set_departure_timeout(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.RoomInfo.departure_timeout)
+}
+
+// required uint32 max_participants = 8;
+inline bool RoomInfo::_internal_has_max_participants() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
+  return value;
+}
+inline bool RoomInfo::has_max_participants() const {
+  return _internal_has_max_participants();
+}
+inline void RoomInfo::clear_max_participants() {
+  _impl_.max_participants_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000100u;
+}
+inline uint32_t RoomInfo::_internal_max_participants() const {
+  return _impl_.max_participants_;
+}
+inline uint32_t RoomInfo::max_participants() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomInfo.max_participants)
+  return _internal_max_participants();
+}
+inline void RoomInfo::_internal_set_max_participants(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000100u;
+  _impl_.max_participants_ = value;
+}
+inline void RoomInfo::set_max_participants(uint32_t value) {
+  _internal_set_max_participants(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.RoomInfo.max_participants)
+}
+
+// required int64 creation_time = 9;
+inline bool RoomInfo::_internal_has_creation_time() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool RoomInfo::has_creation_time() const {
+  return _internal_has_creation_time();
+}
+inline void RoomInfo::clear_creation_time() {
+  _impl_.creation_time_ = int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline int64_t RoomInfo::_internal_creation_time() const {
+  return _impl_.creation_time_;
+}
+inline int64_t RoomInfo::creation_time() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomInfo.creation_time)
+  return _internal_creation_time();
+}
+inline void RoomInfo::_internal_set_creation_time(int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.creation_time_ = value;
+}
+inline void RoomInfo::set_creation_time(int64_t value) {
+  _internal_set_creation_time(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.RoomInfo.creation_time)
+}
+
+// required uint32 num_participants = 10;
+inline bool RoomInfo::_internal_has_num_participants() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000200u) != 0;
+  return value;
+}
+inline bool RoomInfo::has_num_participants() const {
+  return _internal_has_num_participants();
+}
+inline void RoomInfo::clear_num_participants() {
+  _impl_.num_participants_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline uint32_t RoomInfo::_internal_num_participants() const {
+  return _impl_.num_participants_;
+}
+inline uint32_t RoomInfo::num_participants() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomInfo.num_participants)
+  return _internal_num_participants();
+}
+inline void RoomInfo::_internal_set_num_participants(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000200u;
+  _impl_.num_participants_ = value;
+}
+inline void RoomInfo::set_num_participants(uint32_t value) {
+  _internal_set_num_participants(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.RoomInfo.num_participants)
+}
+
+// required uint32 num_publishers = 11;
+inline bool RoomInfo::_internal_has_num_publishers() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000400u) != 0;
+  return value;
+}
+inline bool RoomInfo::has_num_publishers() const {
+  return _internal_has_num_publishers();
+}
+inline void RoomInfo::clear_num_publishers() {
+  _impl_.num_publishers_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000400u;
+}
+inline uint32_t RoomInfo::_internal_num_publishers() const {
+  return _impl_.num_publishers_;
+}
+inline uint32_t RoomInfo::num_publishers() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomInfo.num_publishers)
+  return _internal_num_publishers();
+}
+inline void RoomInfo::_internal_set_num_publishers(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000400u;
+  _impl_.num_publishers_ = value;
+}
+inline void RoomInfo::set_num_publishers(uint32_t value) {
+  _internal_set_num_publishers(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.RoomInfo.num_publishers)
+}
+
+// required bool active_recording = 12;
+inline bool RoomInfo::_internal_has_active_recording() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000800u) != 0;
+  return value;
+}
+inline bool RoomInfo::has_active_recording() const {
+  return _internal_has_active_recording();
+}
+inline void RoomInfo::clear_active_recording() {
+  _impl_.active_recording_ = false;
+  _impl_._has_bits_[0] &= ~0x00000800u;
+}
+inline bool RoomInfo::_internal_active_recording() const {
+  return _impl_.active_recording_;
+}
+inline bool RoomInfo::active_recording() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.RoomInfo.active_recording)
+  return _internal_active_recording();
+}
+inline void RoomInfo::_internal_set_active_recording(bool value) {
+  _impl_._has_bits_[0] |= 0x00000800u;
+  _impl_.active_recording_ = value;
+}
+inline void RoomInfo::set_active_recording(bool value) {
+  _internal_set_active_recording(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.RoomInfo.active_recording)
+}
+
 // -------------------------------------------------------------------
 
 // OwnedRoom
@@ -30847,6 +32224,47 @@ inline void OwnedRoom::set_allocated_info(::livekit::proto::RoomInfo* info) {
   }
   _impl_.info_ = info;
   // @@protoc_insertion_point(field_set_allocated:livekit.proto.OwnedRoom.info)
+}
+
+// -------------------------------------------------------------------
+
+// ParticipantsUpdated
+
+// repeated .livekit.proto.ParticipantInfo participants = 1;
+inline int ParticipantsUpdated::_internal_participants_size() const {
+  return _impl_.participants_.size();
+}
+inline int ParticipantsUpdated::participants_size() const {
+  return _internal_participants_size();
+}
+inline ::livekit::proto::ParticipantInfo* ParticipantsUpdated::mutable_participants(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.proto.ParticipantsUpdated.participants)
+  return _impl_.participants_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::proto::ParticipantInfo >*
+ParticipantsUpdated::mutable_participants() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.proto.ParticipantsUpdated.participants)
+  return &_impl_.participants_;
+}
+inline const ::livekit::proto::ParticipantInfo& ParticipantsUpdated::_internal_participants(int index) const {
+  return _impl_.participants_.Get(index);
+}
+inline const ::livekit::proto::ParticipantInfo& ParticipantsUpdated::participants(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.proto.ParticipantsUpdated.participants)
+  return _internal_participants(index);
+}
+inline ::livekit::proto::ParticipantInfo* ParticipantsUpdated::_internal_add_participants() {
+  return _impl_.participants_.Add();
+}
+inline ::livekit::proto::ParticipantInfo* ParticipantsUpdated::add_participants() {
+  ::livekit::proto::ParticipantInfo* _add = _internal_add_participants();
+  // @@protoc_insertion_point(field_add:livekit.proto.ParticipantsUpdated.participants)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::proto::ParticipantInfo >&
+ParticipantsUpdated::participants() const {
+  // @@protoc_insertion_point(field_list:livekit.proto.ParticipantsUpdated.participants)
+  return _impl_.participants_;
 }
 
 // -------------------------------------------------------------------
@@ -37422,9 +38840,333 @@ inline void DataChannelBufferedAmountLowThresholdChanged::set_threshold(uint64_t
   // @@protoc_insertion_point(field_set:livekit.proto.DataChannelBufferedAmountLowThresholdChanged.threshold)
 }
 
+// -------------------------------------------------------------------
+
+// ByteStreamOpened
+
+// required .livekit.proto.OwnedByteStreamReader reader = 1;
+inline bool ByteStreamOpened::_internal_has_reader() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.reader_ != nullptr);
+  return value;
+}
+inline bool ByteStreamOpened::has_reader() const {
+  return _internal_has_reader();
+}
+inline const ::livekit::proto::OwnedByteStreamReader& ByteStreamOpened::_internal_reader() const {
+  const ::livekit::proto::OwnedByteStreamReader* p = _impl_.reader_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::proto::OwnedByteStreamReader&>(
+      ::livekit::proto::_OwnedByteStreamReader_default_instance_);
+}
+inline const ::livekit::proto::OwnedByteStreamReader& ByteStreamOpened::reader() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.ByteStreamOpened.reader)
+  return _internal_reader();
+}
+inline void ByteStreamOpened::unsafe_arena_set_allocated_reader(
+    ::livekit::proto::OwnedByteStreamReader* reader) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.reader_);
+  }
+  _impl_.reader_ = reader;
+  if (reader) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.ByteStreamOpened.reader)
+}
+inline ::livekit::proto::OwnedByteStreamReader* ByteStreamOpened::release_reader() {
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::livekit::proto::OwnedByteStreamReader* temp = _impl_.reader_;
+  _impl_.reader_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::proto::OwnedByteStreamReader* ByteStreamOpened::unsafe_arena_release_reader() {
+  // @@protoc_insertion_point(field_release:livekit.proto.ByteStreamOpened.reader)
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::livekit::proto::OwnedByteStreamReader* temp = _impl_.reader_;
+  _impl_.reader_ = nullptr;
+  return temp;
+}
+inline ::livekit::proto::OwnedByteStreamReader* ByteStreamOpened::_internal_mutable_reader() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  if (_impl_.reader_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::proto::OwnedByteStreamReader>(GetArenaForAllocation());
+    _impl_.reader_ = p;
+  }
+  return _impl_.reader_;
+}
+inline ::livekit::proto::OwnedByteStreamReader* ByteStreamOpened::mutable_reader() {
+  ::livekit::proto::OwnedByteStreamReader* _msg = _internal_mutable_reader();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.ByteStreamOpened.reader)
+  return _msg;
+}
+inline void ByteStreamOpened::set_allocated_reader(::livekit::proto::OwnedByteStreamReader* reader) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.reader_);
+  }
+  if (reader) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(reader));
+    if (message_arena != submessage_arena) {
+      reader = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, reader, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.reader_ = reader;
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.ByteStreamOpened.reader)
+}
+
+// required string participant_identity = 2;
+inline bool ByteStreamOpened::_internal_has_participant_identity() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool ByteStreamOpened::has_participant_identity() const {
+  return _internal_has_participant_identity();
+}
+inline void ByteStreamOpened::clear_participant_identity() {
+  _impl_.participant_identity_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& ByteStreamOpened::participant_identity() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.ByteStreamOpened.participant_identity)
+  return _internal_participant_identity();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ByteStreamOpened::set_participant_identity(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.participant_identity_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.proto.ByteStreamOpened.participant_identity)
+}
+inline std::string* ByteStreamOpened::mutable_participant_identity() {
+  std::string* _s = _internal_mutable_participant_identity();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.ByteStreamOpened.participant_identity)
+  return _s;
+}
+inline const std::string& ByteStreamOpened::_internal_participant_identity() const {
+  return _impl_.participant_identity_.Get();
+}
+inline void ByteStreamOpened::_internal_set_participant_identity(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.participant_identity_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ByteStreamOpened::_internal_mutable_participant_identity() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.participant_identity_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ByteStreamOpened::release_participant_identity() {
+  // @@protoc_insertion_point(field_release:livekit.proto.ByteStreamOpened.participant_identity)
+  if (!_internal_has_participant_identity()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.participant_identity_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.participant_identity_.IsDefault()) {
+    _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void ByteStreamOpened::set_allocated_participant_identity(std::string* participant_identity) {
+  if (participant_identity != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.participant_identity_.SetAllocated(participant_identity, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.participant_identity_.IsDefault()) {
+    _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.ByteStreamOpened.participant_identity)
+}
+
+// -------------------------------------------------------------------
+
+// TextStreamOpened
+
+// required .livekit.proto.OwnedTextStreamReader reader = 1;
+inline bool TextStreamOpened::_internal_has_reader() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.reader_ != nullptr);
+  return value;
+}
+inline bool TextStreamOpened::has_reader() const {
+  return _internal_has_reader();
+}
+inline const ::livekit::proto::OwnedTextStreamReader& TextStreamOpened::_internal_reader() const {
+  const ::livekit::proto::OwnedTextStreamReader* p = _impl_.reader_;
+  return p != nullptr ? *p : reinterpret_cast<const ::livekit::proto::OwnedTextStreamReader&>(
+      ::livekit::proto::_OwnedTextStreamReader_default_instance_);
+}
+inline const ::livekit::proto::OwnedTextStreamReader& TextStreamOpened::reader() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.TextStreamOpened.reader)
+  return _internal_reader();
+}
+inline void TextStreamOpened::unsafe_arena_set_allocated_reader(
+    ::livekit::proto::OwnedTextStreamReader* reader) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.reader_);
+  }
+  _impl_.reader_ = reader;
+  if (reader) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.TextStreamOpened.reader)
+}
+inline ::livekit::proto::OwnedTextStreamReader* TextStreamOpened::release_reader() {
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::livekit::proto::OwnedTextStreamReader* temp = _impl_.reader_;
+  _impl_.reader_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::livekit::proto::OwnedTextStreamReader* TextStreamOpened::unsafe_arena_release_reader() {
+  // @@protoc_insertion_point(field_release:livekit.proto.TextStreamOpened.reader)
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::livekit::proto::OwnedTextStreamReader* temp = _impl_.reader_;
+  _impl_.reader_ = nullptr;
+  return temp;
+}
+inline ::livekit::proto::OwnedTextStreamReader* TextStreamOpened::_internal_mutable_reader() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  if (_impl_.reader_ == nullptr) {
+    auto* p = CreateMaybeMessage<::livekit::proto::OwnedTextStreamReader>(GetArenaForAllocation());
+    _impl_.reader_ = p;
+  }
+  return _impl_.reader_;
+}
+inline ::livekit::proto::OwnedTextStreamReader* TextStreamOpened::mutable_reader() {
+  ::livekit::proto::OwnedTextStreamReader* _msg = _internal_mutable_reader();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.TextStreamOpened.reader)
+  return _msg;
+}
+inline void TextStreamOpened::set_allocated_reader(::livekit::proto::OwnedTextStreamReader* reader) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.reader_);
+  }
+  if (reader) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(reader));
+    if (message_arena != submessage_arena) {
+      reader = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, reader, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.reader_ = reader;
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.TextStreamOpened.reader)
+}
+
+// required string participant_identity = 2;
+inline bool TextStreamOpened::_internal_has_participant_identity() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool TextStreamOpened::has_participant_identity() const {
+  return _internal_has_participant_identity();
+}
+inline void TextStreamOpened::clear_participant_identity() {
+  _impl_.participant_identity_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& TextStreamOpened::participant_identity() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.TextStreamOpened.participant_identity)
+  return _internal_participant_identity();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TextStreamOpened::set_participant_identity(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.participant_identity_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.proto.TextStreamOpened.participant_identity)
+}
+inline std::string* TextStreamOpened::mutable_participant_identity() {
+  std::string* _s = _internal_mutable_participant_identity();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.TextStreamOpened.participant_identity)
+  return _s;
+}
+inline const std::string& TextStreamOpened::_internal_participant_identity() const {
+  return _impl_.participant_identity_.Get();
+}
+inline void TextStreamOpened::_internal_set_participant_identity(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.participant_identity_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TextStreamOpened::_internal_mutable_participant_identity() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.participant_identity_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TextStreamOpened::release_participant_identity() {
+  // @@protoc_insertion_point(field_release:livekit.proto.TextStreamOpened.participant_identity)
+  if (!_internal_has_participant_identity()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.participant_identity_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.participant_identity_.IsDefault()) {
+    _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void TextStreamOpened::set_allocated_participant_identity(std::string* participant_identity) {
+  if (participant_identity != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.participant_identity_.SetAllocated(participant_identity, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.participant_identity_.IsDefault()) {
+    _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.TextStreamOpened.participant_identity)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

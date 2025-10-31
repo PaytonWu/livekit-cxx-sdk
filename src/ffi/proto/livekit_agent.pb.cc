@@ -47,6 +47,8 @@ PROTOBUF_CONSTEXPR JobState::JobState(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.error_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.participant_identity_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.worker_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.agent_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.started_at_)*/int64_t{0}
   , /*decltype(_impl_.ended_at_)*/int64_t{0}
   , /*decltype(_impl_.updated_at_)*/int64_t{0}
@@ -211,6 +213,7 @@ PROTOBUF_CONSTEXPR AvailabilityResponse::AvailabilityResponse(
   , /*decltype(_impl_.participant_metadata_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.available_)*/false
   , /*decltype(_impl_.supports_resume_)*/false
+  , /*decltype(_impl_.terminate_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct AvailabilityResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR AvailabilityResponseDefaultTypeInternal()
@@ -323,6 +326,8 @@ const uint32_t TableStruct_livekit_5fagent_2eproto::offsets[] PROTOBUF_SECTION_V
   PROTOBUF_FIELD_OFFSET(::livekit::JobState, _impl_.ended_at_),
   PROTOBUF_FIELD_OFFSET(::livekit::JobState, _impl_.updated_at_),
   PROTOBUF_FIELD_OFFSET(::livekit::JobState, _impl_.participant_identity_),
+  PROTOBUF_FIELD_OFFSET(::livekit::JobState, _impl_.worker_id_),
+  PROTOBUF_FIELD_OFFSET(::livekit::JobState, _impl_.agent_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::livekit::WorkerMessage, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -433,6 +438,7 @@ const uint32_t TableStruct_livekit_5fagent_2eproto::offsets[] PROTOBUF_SECTION_V
   PROTOBUF_FIELD_OFFSET(::livekit::AvailabilityResponse, _impl_.job_id_),
   PROTOBUF_FIELD_OFFSET(::livekit::AvailabilityResponse, _impl_.available_),
   PROTOBUF_FIELD_OFFSET(::livekit::AvailabilityResponse, _impl_.supports_resume_),
+  PROTOBUF_FIELD_OFFSET(::livekit::AvailabilityResponse, _impl_.terminate_),
   PROTOBUF_FIELD_OFFSET(::livekit::AvailabilityResponse, _impl_.participant_name_),
   PROTOBUF_FIELD_OFFSET(::livekit::AvailabilityResponse, _impl_.participant_identity_),
   PROTOBUF_FIELD_OFFSET(::livekit::AvailabilityResponse, _impl_.participant_metadata_),
@@ -481,21 +487,21 @@ const uint32_t TableStruct_livekit_5fagent_2eproto::offsets[] PROTOBUF_SECTION_V
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 15, -1, sizeof(::livekit::Job)},
   { 24, -1, -1, sizeof(::livekit::JobState)},
-  { 36, -1, -1, sizeof(::livekit::WorkerMessage)},
-  { 50, -1, -1, sizeof(::livekit::ServerMessage)},
-  { 62, -1, -1, sizeof(::livekit::SimulateJobRequest)},
-  { 71, -1, -1, sizeof(::livekit::WorkerPing)},
-  { 78, -1, -1, sizeof(::livekit::WorkerPong)},
-  { 86, 98, -1, sizeof(::livekit::RegisterWorkerRequest)},
-  { 104, -1, -1, sizeof(::livekit::RegisterWorkerResponse)},
-  { 112, -1, -1, sizeof(::livekit::MigrateJobRequest)},
-  { 119, -1, -1, sizeof(::livekit::AvailabilityRequest)},
-  { 127, 135, -1, sizeof(::livekit::AvailabilityResponse_ParticipantAttributesEntry_DoNotUse)},
-  { 137, -1, -1, sizeof(::livekit::AvailabilityResponse)},
-  { 150, -1, -1, sizeof(::livekit::UpdateJobStatus)},
-  { 159, 168, -1, sizeof(::livekit::UpdateWorkerStatus)},
-  { 171, 180, -1, sizeof(::livekit::JobAssignment)},
-  { 183, -1, -1, sizeof(::livekit::JobTermination)},
+  { 38, -1, -1, sizeof(::livekit::WorkerMessage)},
+  { 52, -1, -1, sizeof(::livekit::ServerMessage)},
+  { 64, -1, -1, sizeof(::livekit::SimulateJobRequest)},
+  { 73, -1, -1, sizeof(::livekit::WorkerPing)},
+  { 80, -1, -1, sizeof(::livekit::WorkerPong)},
+  { 88, 100, -1, sizeof(::livekit::RegisterWorkerRequest)},
+  { 106, -1, -1, sizeof(::livekit::RegisterWorkerResponse)},
+  { 114, -1, -1, sizeof(::livekit::MigrateJobRequest)},
+  { 121, -1, -1, sizeof(::livekit::AvailabilityRequest)},
+  { 129, 137, -1, sizeof(::livekit::AvailabilityResponse_ParticipantAttributesEntry_DoNotUse)},
+  { 139, -1, -1, sizeof(::livekit::AvailabilityResponse)},
+  { 153, -1, -1, sizeof(::livekit::UpdateJobStatus)},
+  { 162, 171, -1, sizeof(::livekit::UpdateWorkerStatus)},
+  { 174, 183, -1, sizeof(::livekit::JobAssignment)},
+  { 186, -1, -1, sizeof(::livekit::JobTermination)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -526,73 +532,74 @@ const char descriptor_table_protodef_livekit_5fagent_2eproto[] PROTOBUF_SECTION_
   "rticipant\030\004 \001(\0132\030.livekit.ParticipantInf"
   "oH\000\210\001\001\022\025\n\tnamespace\030\005 \001(\tB\002\030\001\022\020\n\010metadat"
   "a\030\006 \001(\t\022\022\n\nagent_name\030\007 \001(\t\022 \n\005state\030\010 \001"
-  "(\0132\021.livekit.JobStateB\016\n\014_participant\"\225\001"
+  "(\0132\021.livekit.JobStateB\016\n\014_participant\"\272\001"
   "\n\010JobState\022\"\n\006status\030\001 \001(\0162\022.livekit.Job"
   "Status\022\r\n\005error\030\002 \001(\t\022\022\n\nstarted_at\030\003 \001("
   "\003\022\020\n\010ended_at\030\004 \001(\003\022\022\n\nupdated_at\030\005 \001(\003\022"
-  "\034\n\024participant_identity\030\006 \001(\t\"\370\002\n\rWorker"
-  "Message\0222\n\010register\030\001 \001(\0132\036.livekit.Regi"
-  "sterWorkerRequestH\000\0225\n\014availability\030\002 \001("
-  "\0132\035.livekit.AvailabilityResponseH\000\0224\n\rup"
-  "date_worker\030\003 \001(\0132\033.livekit.UpdateWorker"
-  "StatusH\000\022.\n\nupdate_job\030\004 \001(\0132\030.livekit.U"
-  "pdateJobStatusH\000\022#\n\004ping\030\005 \001(\0132\023.livekit"
-  ".WorkerPingH\000\0223\n\014simulate_job\030\006 \001(\0132\033.li"
-  "vekit.SimulateJobRequestH\000\0221\n\013migrate_jo"
-  "b\030\007 \001(\0132\032.livekit.MigrateJobRequestH\000B\t\n"
-  "\007message\"\210\002\n\rServerMessage\0223\n\010register\030\001"
-  " \001(\0132\037.livekit.RegisterWorkerResponseH\000\022"
-  "4\n\014availability\030\002 \001(\0132\034.livekit.Availabi"
-  "lityRequestH\000\022,\n\nassignment\030\003 \001(\0132\026.live"
-  "kit.JobAssignmentH\000\022.\n\013termination\030\005 \001(\013"
-  "2\027.livekit.JobTerminationH\000\022#\n\004pong\030\004 \001("
-  "\0132\023.livekit.WorkerPongH\000B\t\n\007message\"\200\001\n\022"
-  "SimulateJobRequest\022\036\n\004type\030\001 \001(\0162\020.livek"
-  "it.JobType\022\033\n\004room\030\002 \001(\0132\r.livekit.Room\022"
-  "-\n\013participant\030\003 \001(\0132\030.livekit.Participa"
-  "ntInfo\"\037\n\nWorkerPing\022\021\n\ttimestamp\030\001 \001(\003\""
-  "7\n\nWorkerPong\022\026\n\016last_timestamp\030\001 \001(\003\022\021\n"
-  "\ttimestamp\030\002 \001(\003\"\326\001\n\025RegisterWorkerReque"
-  "st\022\036\n\004type\030\001 \001(\0162\020.livekit.JobType\022\022\n\nag"
-  "ent_name\030\010 \001(\t\022\017\n\007version\030\003 \001(\t\022\025\n\rping_"
-  "interval\030\005 \001(\r\022\026\n\tnamespace\030\006 \001(\tH\000\210\001\001\022;"
-  "\n\023allowed_permissions\030\007 \001(\0132\036.livekit.Pa"
-  "rticipantPermissionB\014\n\n_namespace\"U\n\026Reg"
-  "isterWorkerResponse\022\021\n\tworker_id\030\001 \001(\t\022("
-  "\n\013server_info\030\003 \001(\0132\023.livekit.ServerInfo"
-  "\"$\n\021MigrateJobRequest\022\017\n\007job_ids\030\002 \003(\t\"B"
-  "\n\023AvailabilityRequest\022\031\n\003job\030\001 \001(\0132\014.liv"
-  "ekit.Job\022\020\n\010resuming\030\002 \001(\010\"\300\002\n\024Availabil"
-  "ityResponse\022\016\n\006job_id\030\001 \001(\t\022\021\n\tavailable"
-  "\030\002 \001(\010\022\027\n\017supports_resume\030\003 \001(\010\022\030\n\020parti"
-  "cipant_name\030\004 \001(\t\022\034\n\024participant_identit"
-  "y\030\005 \001(\t\022\034\n\024participant_metadata\030\006 \001(\t\022X\n"
-  "\026participant_attributes\030\007 \003(\01328.livekit."
-  "AvailabilityResponse.ParticipantAttribut"
-  "esEntry\032<\n\032ParticipantAttributesEntry\022\013\n"
-  "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"T\n\017UpdateJ"
-  "obStatus\022\016\n\006job_id\030\001 \001(\t\022\"\n\006status\030\002 \001(\016"
-  "2\022.livekit.JobStatus\022\r\n\005error\030\003 \001(\t\"l\n\022U"
-  "pdateWorkerStatus\022*\n\006status\030\001 \001(\0162\025.live"
-  "kit.WorkerStatusH\000\210\001\001\022\014\n\004load\030\003 \001(\002\022\021\n\tj"
-  "ob_count\030\004 \001(\rB\t\n\007_status\"S\n\rJobAssignme"
-  "nt\022\031\n\003job\030\001 \001(\0132\014.livekit.Job\022\020\n\003url\030\002 \001"
-  "(\tH\000\210\001\001\022\r\n\005token\030\003 \001(\tB\006\n\004_url\" \n\016JobTer"
-  "mination\022\016\n\006job_id\030\001 \001(\t*<\n\007JobType\022\013\n\007J"
-  "T_ROOM\020\000\022\020\n\014JT_PUBLISHER\020\001\022\022\n\016JT_PARTICI"
-  "PANT\020\002*-\n\014WorkerStatus\022\020\n\014WS_AVAILABLE\020\000"
-  "\022\013\n\007WS_FULL\020\001*J\n\tJobStatus\022\016\n\nJS_PENDING"
-  "\020\000\022\016\n\nJS_RUNNING\020\001\022\016\n\nJS_SUCCESS\020\002\022\r\n\tJS"
-  "_FAILED\020\003BFZ#github.com/livekit/protocol"
-  "/livekit\252\002\rLiveKit.Proto\352\002\016LiveKit::Prot"
-  "ob\006proto3"
+  "\034\n\024participant_identity\030\006 \001(\t\022\021\n\tworker_"
+  "id\030\007 \001(\t\022\020\n\010agent_id\030\010 \001(\t\"\370\002\n\rWorkerMes"
+  "sage\0222\n\010register\030\001 \001(\0132\036.livekit.Registe"
+  "rWorkerRequestH\000\0225\n\014availability\030\002 \001(\0132\035"
+  ".livekit.AvailabilityResponseH\000\0224\n\rupdat"
+  "e_worker\030\003 \001(\0132\033.livekit.UpdateWorkerSta"
+  "tusH\000\022.\n\nupdate_job\030\004 \001(\0132\030.livekit.Upda"
+  "teJobStatusH\000\022#\n\004ping\030\005 \001(\0132\023.livekit.Wo"
+  "rkerPingH\000\0223\n\014simulate_job\030\006 \001(\0132\033.livek"
+  "it.SimulateJobRequestH\000\0221\n\013migrate_job\030\007"
+  " \001(\0132\032.livekit.MigrateJobRequestH\000B\t\n\007me"
+  "ssage\"\210\002\n\rServerMessage\0223\n\010register\030\001 \001("
+  "\0132\037.livekit.RegisterWorkerResponseH\000\0224\n\014"
+  "availability\030\002 \001(\0132\034.livekit.Availabilit"
+  "yRequestH\000\022,\n\nassignment\030\003 \001(\0132\026.livekit"
+  ".JobAssignmentH\000\022.\n\013termination\030\005 \001(\0132\027."
+  "livekit.JobTerminationH\000\022#\n\004pong\030\004 \001(\0132\023"
+  ".livekit.WorkerPongH\000B\t\n\007message\"\200\001\n\022Sim"
+  "ulateJobRequest\022\036\n\004type\030\001 \001(\0162\020.livekit."
+  "JobType\022\033\n\004room\030\002 \001(\0132\r.livekit.Room\022-\n\013"
+  "participant\030\003 \001(\0132\030.livekit.ParticipantI"
+  "nfo\"\037\n\nWorkerPing\022\021\n\ttimestamp\030\001 \001(\003\"7\n\n"
+  "WorkerPong\022\026\n\016last_timestamp\030\001 \001(\003\022\021\n\tti"
+  "mestamp\030\002 \001(\003\"\326\001\n\025RegisterWorkerRequest\022"
+  "\036\n\004type\030\001 \001(\0162\020.livekit.JobType\022\022\n\nagent"
+  "_name\030\010 \001(\t\022\017\n\007version\030\003 \001(\t\022\025\n\rping_int"
+  "erval\030\005 \001(\r\022\026\n\tnamespace\030\006 \001(\tH\000\210\001\001\022;\n\023a"
+  "llowed_permissions\030\007 \001(\0132\036.livekit.Parti"
+  "cipantPermissionB\014\n\n_namespace\"U\n\026Regist"
+  "erWorkerResponse\022\021\n\tworker_id\030\001 \001(\t\022(\n\013s"
+  "erver_info\030\003 \001(\0132\023.livekit.ServerInfo\"$\n"
+  "\021MigrateJobRequest\022\017\n\007job_ids\030\002 \003(\t\"B\n\023A"
+  "vailabilityRequest\022\031\n\003job\030\001 \001(\0132\014.liveki"
+  "t.Job\022\020\n\010resuming\030\002 \001(\010\"\323\002\n\024Availability"
+  "Response\022\016\n\006job_id\030\001 \001(\t\022\021\n\tavailable\030\002 "
+  "\001(\010\022\027\n\017supports_resume\030\003 \001(\010\022\021\n\tterminat"
+  "e\030\010 \001(\010\022\030\n\020participant_name\030\004 \001(\t\022\034\n\024par"
+  "ticipant_identity\030\005 \001(\t\022\034\n\024participant_m"
+  "etadata\030\006 \001(\t\022X\n\026participant_attributes\030"
+  "\007 \003(\01328.livekit.AvailabilityResponse.Par"
+  "ticipantAttributesEntry\032<\n\032ParticipantAt"
+  "tributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001("
+  "\t:\0028\001\"T\n\017UpdateJobStatus\022\016\n\006job_id\030\001 \001(\t"
+  "\022\"\n\006status\030\002 \001(\0162\022.livekit.JobStatus\022\r\n\005"
+  "error\030\003 \001(\t\"l\n\022UpdateWorkerStatus\022*\n\006sta"
+  "tus\030\001 \001(\0162\025.livekit.WorkerStatusH\000\210\001\001\022\014\n"
+  "\004load\030\003 \001(\002\022\021\n\tjob_count\030\004 \001(\rB\t\n\007_statu"
+  "s\"S\n\rJobAssignment\022\031\n\003job\030\001 \001(\0132\014.liveki"
+  "t.Job\022\020\n\003url\030\002 \001(\tH\000\210\001\001\022\r\n\005token\030\003 \001(\tB\006"
+  "\n\004_url\" \n\016JobTermination\022\016\n\006job_id\030\001 \001(\t"
+  "*<\n\007JobType\022\013\n\007JT_ROOM\020\000\022\020\n\014JT_PUBLISHER"
+  "\020\001\022\022\n\016JT_PARTICIPANT\020\002*-\n\014WorkerStatus\022\020"
+  "\n\014WS_AVAILABLE\020\000\022\013\n\007WS_FULL\020\001*J\n\tJobStat"
+  "us\022\016\n\nJS_PENDING\020\000\022\016\n\nJS_RUNNING\020\001\022\016\n\nJS"
+  "_SUCCESS\020\002\022\r\n\tJS_FAILED\020\003BFZ#github.com/"
+  "livekit/protocol/livekit\252\002\rLiveKit.Proto"
+  "\352\002\016LiveKit::Protob\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_livekit_5fagent_2eproto_deps[1] = {
   &::descriptor_table_livekit_5fmodels_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_livekit_5fagent_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_livekit_5fagent_2eproto = {
-    false, false, 2649, descriptor_table_protodef_livekit_5fagent_2eproto,
+    false, false, 2705, descriptor_table_protodef_livekit_5fagent_2eproto,
     "livekit_agent.proto",
     &descriptor_table_livekit_5fagent_2eproto_once, descriptor_table_livekit_5fagent_2eproto_deps, 1, 17,
     schemas, file_default_instances, TableStruct_livekit_5fagent_2eproto::offsets,
@@ -1253,6 +1260,8 @@ JobState::JobState(const JobState& from)
   new (&_impl_) Impl_{
       decltype(_impl_.error_){}
     , decltype(_impl_.participant_identity_){}
+    , decltype(_impl_.worker_id_){}
+    , decltype(_impl_.agent_id_){}
     , decltype(_impl_.started_at_){}
     , decltype(_impl_.ended_at_){}
     , decltype(_impl_.updated_at_){}
@@ -1276,6 +1285,22 @@ JobState::JobState(const JobState& from)
     _this->_impl_.participant_identity_.Set(from._internal_participant_identity(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.worker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.worker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_worker_id().empty()) {
+    _this->_impl_.worker_id_.Set(from._internal_worker_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.agent_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.agent_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_agent_id().empty()) {
+    _this->_impl_.agent_id_.Set(from._internal_agent_id(), 
+      _this->GetArenaForAllocation());
+  }
   ::memcpy(&_impl_.started_at_, &from._impl_.started_at_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.status_) -
     reinterpret_cast<char*>(&_impl_.started_at_)) + sizeof(_impl_.status_));
@@ -1289,6 +1314,8 @@ inline void JobState::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_.error_){}
     , decltype(_impl_.participant_identity_){}
+    , decltype(_impl_.worker_id_){}
+    , decltype(_impl_.agent_id_){}
     , decltype(_impl_.started_at_){int64_t{0}}
     , decltype(_impl_.ended_at_){int64_t{0}}
     , decltype(_impl_.updated_at_){int64_t{0}}
@@ -1302,6 +1329,14 @@ inline void JobState::SharedCtor(
   _impl_.participant_identity_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.worker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.worker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.agent_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.agent_id_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -1318,6 +1353,8 @@ inline void JobState::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.error_.Destroy();
   _impl_.participant_identity_.Destroy();
+  _impl_.worker_id_.Destroy();
+  _impl_.agent_id_.Destroy();
 }
 
 void JobState::SetCachedSize(int size) const {
@@ -1332,6 +1369,8 @@ void JobState::Clear() {
 
   _impl_.error_.ClearToEmpty();
   _impl_.participant_identity_.ClearToEmpty();
+  _impl_.worker_id_.ClearToEmpty();
+  _impl_.agent_id_.ClearToEmpty();
   ::memset(&_impl_.started_at_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.status_) -
       reinterpret_cast<char*>(&_impl_.started_at_)) + sizeof(_impl_.status_));
@@ -1394,6 +1433,26 @@ const char* JobState::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "livekit.JobState.participant_identity"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string worker_id = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_worker_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.JobState.worker_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string agent_id = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_agent_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "livekit.JobState.agent_id"));
         } else
           goto handle_unusual;
         continue;
@@ -1471,6 +1530,26 @@ uint8_t* JobState::_InternalSerialize(
         6, this->_internal_participant_identity(), target);
   }
 
+  // string worker_id = 7;
+  if (!this->_internal_worker_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_worker_id().data(), static_cast<int>(this->_internal_worker_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.JobState.worker_id");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_worker_id(), target);
+  }
+
+  // string agent_id = 8;
+  if (!this->_internal_agent_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_agent_id().data(), static_cast<int>(this->_internal_agent_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "livekit.JobState.agent_id");
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_agent_id(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1499,6 +1578,20 @@ size_t JobState::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_participant_identity());
+  }
+
+  // string worker_id = 7;
+  if (!this->_internal_worker_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_worker_id());
+  }
+
+  // string agent_id = 8;
+  if (!this->_internal_agent_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_agent_id());
   }
 
   // int64 started_at = 3;
@@ -1546,6 +1639,12 @@ void JobState::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
   if (!from._internal_participant_identity().empty()) {
     _this->_internal_set_participant_identity(from._internal_participant_identity());
   }
+  if (!from._internal_worker_id().empty()) {
+    _this->_internal_set_worker_id(from._internal_worker_id());
+  }
+  if (!from._internal_agent_id().empty()) {
+    _this->_internal_set_agent_id(from._internal_agent_id());
+  }
   if (from._internal_started_at() != 0) {
     _this->_internal_set_started_at(from._internal_started_at());
   }
@@ -1584,6 +1683,14 @@ void JobState::InternalSwap(JobState* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.participant_identity_, lhs_arena,
       &other->_impl_.participant_identity_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.worker_id_, lhs_arena,
+      &other->_impl_.worker_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.agent_id_, lhs_arena,
+      &other->_impl_.agent_id_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(JobState, _impl_.status_)
@@ -4474,6 +4581,7 @@ AvailabilityResponse::AvailabilityResponse(const AvailabilityResponse& from)
     , decltype(_impl_.participant_metadata_){}
     , decltype(_impl_.available_){}
     , decltype(_impl_.supports_resume_){}
+    , decltype(_impl_.terminate_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -4511,8 +4619,8 @@ AvailabilityResponse::AvailabilityResponse(const AvailabilityResponse& from)
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.available_, &from._impl_.available_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.supports_resume_) -
-    reinterpret_cast<char*>(&_impl_.available_)) + sizeof(_impl_.supports_resume_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.terminate_) -
+    reinterpret_cast<char*>(&_impl_.available_)) + sizeof(_impl_.terminate_));
   // @@protoc_insertion_point(copy_constructor:livekit.AvailabilityResponse)
 }
 
@@ -4528,6 +4636,7 @@ inline void AvailabilityResponse::SharedCtor(
     , decltype(_impl_.participant_metadata_){}
     , decltype(_impl_.available_){false}
     , decltype(_impl_.supports_resume_){false}
+    , decltype(_impl_.terminate_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.job_id_.InitDefault();
@@ -4588,8 +4697,8 @@ void AvailabilityResponse::Clear() {
   _impl_.participant_identity_.ClearToEmpty();
   _impl_.participant_metadata_.ClearToEmpty();
   ::memset(&_impl_.available_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.supports_resume_) -
-      reinterpret_cast<char*>(&_impl_.available_)) + sizeof(_impl_.supports_resume_));
+      reinterpret_cast<char*>(&_impl_.terminate_) -
+      reinterpret_cast<char*>(&_impl_.available_)) + sizeof(_impl_.terminate_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -4665,6 +4774,14 @@ const char* AvailabilityResponse::_InternalParse(const char* ptr, ::_pbi::ParseC
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool terminate = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+          _impl_.terminate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -4779,6 +4896,12 @@ uint8_t* AvailabilityResponse::_InternalSerialize(
     }
   }
 
+  // bool terminate = 8;
+  if (this->_internal_terminate() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(8, this->_internal_terminate(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -4842,6 +4965,11 @@ size_t AvailabilityResponse::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
+  // bool terminate = 8;
+  if (this->_internal_terminate() != 0) {
+    total_size += 1 + 1;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -4878,6 +5006,9 @@ void AvailabilityResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   }
   if (from._internal_supports_resume() != 0) {
     _this->_internal_set_supports_resume(from._internal_supports_resume());
+  }
+  if (from._internal_terminate() != 0) {
+    _this->_internal_set_terminate(from._internal_terminate());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -4916,8 +5047,8 @@ void AvailabilityResponse::InternalSwap(AvailabilityResponse* other) {
       &other->_impl_.participant_metadata_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(AvailabilityResponse, _impl_.supports_resume_)
-      + sizeof(AvailabilityResponse::_impl_.supports_resume_)
+      PROTOBUF_FIELD_OFFSET(AvailabilityResponse, _impl_.terminate_)
+      + sizeof(AvailabilityResponse::_impl_.terminate_)
       - PROTOBUF_FIELD_OFFSET(AvailabilityResponse, _impl_.available_)>(
           reinterpret_cast<char*>(&_impl_.available_),
           reinterpret_cast<char*>(&other->_impl_.available_));

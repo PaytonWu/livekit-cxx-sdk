@@ -280,12 +280,13 @@ inline bool SegmentedFileSuffix_Parse(
 enum ImageFileSuffix : int {
   IMAGE_SUFFIX_INDEX = 0,
   IMAGE_SUFFIX_TIMESTAMP = 1,
+  IMAGE_SUFFIX_NONE_OVERWRITE = 2,
   ImageFileSuffix_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   ImageFileSuffix_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool ImageFileSuffix_IsValid(int value);
 constexpr ImageFileSuffix ImageFileSuffix_MIN = IMAGE_SUFFIX_INDEX;
-constexpr ImageFileSuffix ImageFileSuffix_MAX = IMAGE_SUFFIX_TIMESTAMP;
+constexpr ImageFileSuffix ImageFileSuffix_MAX = IMAGE_SUFFIX_NONE_OVERWRITE;
 constexpr int ImageFileSuffix_ARRAYSIZE = ImageFileSuffix_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ImageFileSuffix_descriptor();
@@ -580,6 +581,7 @@ class RoomCompositeEgressRequest final :
     kStreamOutputsFieldNumber = 12,
     kSegmentOutputsFieldNumber = 13,
     kImageOutputsFieldNumber = 14,
+    kWebhooksFieldNumber = 16,
     kRoomNameFieldNumber = 1,
     kLayoutFieldNumber = 2,
     kCustomBaseUrlFieldNumber = 5,
@@ -663,6 +665,24 @@ class RoomCompositeEgressRequest final :
   ::livekit::ImageOutput* add_image_outputs();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput >&
       image_outputs() const;
+
+  // repeated .livekit.WebhookConfig webhooks = 16;
+  int webhooks_size() const;
+  private:
+  int _internal_webhooks_size() const;
+  public:
+  void clear_webhooks();
+  ::livekit::WebhookConfig* mutable_webhooks(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+      mutable_webhooks();
+  private:
+  const ::livekit::WebhookConfig& _internal_webhooks(int index) const;
+  ::livekit::WebhookConfig* _internal_add_webhooks();
+  public:
+  const ::livekit::WebhookConfig& webhooks(int index) const;
+  ::livekit::WebhookConfig* add_webhooks();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+      webhooks() const;
 
   // string room_name = 1;
   void clear_room_name();
@@ -845,6 +865,7 @@ class RoomCompositeEgressRequest final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::StreamOutput > stream_outputs_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SegmentedFileOutput > segment_outputs_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput > image_outputs_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig > webhooks_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr layout_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr custom_base_url_;
@@ -1011,6 +1032,7 @@ class WebEgressRequest final :
     kStreamOutputsFieldNumber = 10,
     kSegmentOutputsFieldNumber = 11,
     kImageOutputsFieldNumber = 13,
+    kWebhooksFieldNumber = 14,
     kUrlFieldNumber = 1,
     kAudioOnlyFieldNumber = 2,
     kVideoOnlyFieldNumber = 3,
@@ -1092,6 +1114,24 @@ class WebEgressRequest final :
   ::livekit::ImageOutput* add_image_outputs();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput >&
       image_outputs() const;
+
+  // repeated .livekit.WebhookConfig webhooks = 14;
+  int webhooks_size() const;
+  private:
+  int _internal_webhooks_size() const;
+  public:
+  void clear_webhooks();
+  ::livekit::WebhookConfig* mutable_webhooks(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+      mutable_webhooks();
+  private:
+  const ::livekit::WebhookConfig& _internal_webhooks(int index) const;
+  ::livekit::WebhookConfig* _internal_add_webhooks();
+  public:
+  const ::livekit::WebhookConfig& webhooks(int index) const;
+  ::livekit::WebhookConfig* add_webhooks();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+      webhooks() const;
 
   // string url = 1;
   void clear_url();
@@ -1246,6 +1286,7 @@ class WebEgressRequest final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::StreamOutput > stream_outputs_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SegmentedFileOutput > segment_outputs_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput > image_outputs_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig > webhooks_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr url_;
     bool audio_only_;
     bool video_only_;
@@ -1403,6 +1444,7 @@ class ParticipantEgressRequest final :
     kStreamOutputsFieldNumber = 7,
     kSegmentOutputsFieldNumber = 8,
     kImageOutputsFieldNumber = 9,
+    kWebhooksFieldNumber = 10,
     kRoomNameFieldNumber = 1,
     kIdentityFieldNumber = 2,
     kScreenShareFieldNumber = 3,
@@ -1480,6 +1522,24 @@ class ParticipantEgressRequest final :
   ::livekit::ImageOutput* add_image_outputs();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput >&
       image_outputs() const;
+
+  // repeated .livekit.WebhookConfig webhooks = 10;
+  int webhooks_size() const;
+  private:
+  int _internal_webhooks_size() const;
+  public:
+  void clear_webhooks();
+  ::livekit::WebhookConfig* mutable_webhooks(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+      mutable_webhooks();
+  private:
+  const ::livekit::WebhookConfig& _internal_webhooks(int index) const;
+  ::livekit::WebhookConfig* _internal_add_webhooks();
+  public:
+  const ::livekit::WebhookConfig& webhooks(int index) const;
+  ::livekit::WebhookConfig* add_webhooks();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+      webhooks() const;
 
   // string room_name = 1;
   void clear_room_name();
@@ -1568,6 +1628,7 @@ class ParticipantEgressRequest final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::StreamOutput > stream_outputs_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SegmentedFileOutput > segment_outputs_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput > image_outputs_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig > webhooks_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr identity_;
     bool screen_share_;
@@ -1724,6 +1785,7 @@ class TrackCompositeEgressRequest final :
     kStreamOutputsFieldNumber = 12,
     kSegmentOutputsFieldNumber = 13,
     kImageOutputsFieldNumber = 14,
+    kWebhooksFieldNumber = 15,
     kRoomNameFieldNumber = 1,
     kAudioTrackIdFieldNumber = 2,
     kVideoTrackIdFieldNumber = 3,
@@ -1804,6 +1866,24 @@ class TrackCompositeEgressRequest final :
   ::livekit::ImageOutput* add_image_outputs();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput >&
       image_outputs() const;
+
+  // repeated .livekit.WebhookConfig webhooks = 15;
+  int webhooks_size() const;
+  private:
+  int _internal_webhooks_size() const;
+  public:
+  void clear_webhooks();
+  ::livekit::WebhookConfig* mutable_webhooks(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+      mutable_webhooks();
+  private:
+  const ::livekit::WebhookConfig& _internal_webhooks(int index) const;
+  ::livekit::WebhookConfig* _internal_add_webhooks();
+  public:
+  const ::livekit::WebhookConfig& webhooks(int index) const;
+  ::livekit::WebhookConfig* add_webhooks();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+      webhooks() const;
 
   // string room_name = 1;
   void clear_room_name();
@@ -1959,6 +2039,7 @@ class TrackCompositeEgressRequest final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::StreamOutput > stream_outputs_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::SegmentedFileOutput > segment_outputs_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput > image_outputs_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig > webhooks_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_track_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr video_track_id_;
@@ -2111,11 +2192,30 @@ class TrackEgressRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kWebhooksFieldNumber = 5,
     kRoomNameFieldNumber = 1,
     kTrackIdFieldNumber = 2,
     kFileFieldNumber = 3,
     kWebsocketUrlFieldNumber = 4,
   };
+  // repeated .livekit.WebhookConfig webhooks = 5;
+  int webhooks_size() const;
+  private:
+  int _internal_webhooks_size() const;
+  public:
+  void clear_webhooks();
+  ::livekit::WebhookConfig* mutable_webhooks(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+      mutable_webhooks();
+  private:
+  const ::livekit::WebhookConfig& _internal_webhooks(int index) const;
+  ::livekit::WebhookConfig* _internal_add_webhooks();
+  public:
+  const ::livekit::WebhookConfig& webhooks(int index) const;
+  ::livekit::WebhookConfig* add_webhooks();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+      webhooks() const;
+
   // string room_name = 1;
   void clear_room_name();
   const std::string& room_name() const;
@@ -2195,6 +2295,7 @@ class TrackEgressRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig > webhooks_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr track_id_;
     union OutputUnion {
@@ -3572,6 +3673,8 @@ class S3Upload final :
     kTaggingFieldNumber = 8,
     kContentDispositionFieldNumber = 9,
     kSessionTokenFieldNumber = 11,
+    kAssumeRoleArnFieldNumber = 12,
+    kAssumeRoleExternalIdFieldNumber = 13,
     kProxyFieldNumber = 10,
     kForcePathStyleFieldNumber = 6,
   };
@@ -3704,6 +3807,34 @@ class S3Upload final :
   std::string* _internal_mutable_session_token();
   public:
 
+  // string assume_role_arn = 12;
+  void clear_assume_role_arn();
+  const std::string& assume_role_arn() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_assume_role_arn(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_assume_role_arn();
+  PROTOBUF_NODISCARD std::string* release_assume_role_arn();
+  void set_allocated_assume_role_arn(std::string* assume_role_arn);
+  private:
+  const std::string& _internal_assume_role_arn() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_assume_role_arn(const std::string& value);
+  std::string* _internal_mutable_assume_role_arn();
+  public:
+
+  // string assume_role_external_id = 13;
+  void clear_assume_role_external_id();
+  const std::string& assume_role_external_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_assume_role_external_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_assume_role_external_id();
+  PROTOBUF_NODISCARD std::string* release_assume_role_external_id();
+  void set_allocated_assume_role_external_id(std::string* assume_role_external_id);
+  private:
+  const std::string& _internal_assume_role_external_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_assume_role_external_id(const std::string& value);
+  std::string* _internal_mutable_assume_role_external_id();
+  public:
+
   // .livekit.ProxyConfig proxy = 10;
   bool has_proxy() const;
   private:
@@ -3752,6 +3883,8 @@ class S3Upload final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tagging_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr content_disposition_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_token_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr assume_role_arn_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr assume_role_external_id_;
     ::livekit::ProxyConfig* proxy_;
     bool force_path_style_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -8706,6 +8839,43 @@ RoomCompositeEgressRequest::image_outputs() const {
   return _impl_.image_outputs_;
 }
 
+// repeated .livekit.WebhookConfig webhooks = 16;
+inline int RoomCompositeEgressRequest::_internal_webhooks_size() const {
+  return _impl_.webhooks_.size();
+}
+inline int RoomCompositeEgressRequest::webhooks_size() const {
+  return _internal_webhooks_size();
+}
+inline ::livekit::WebhookConfig* RoomCompositeEgressRequest::mutable_webhooks(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.RoomCompositeEgressRequest.webhooks)
+  return _impl_.webhooks_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+RoomCompositeEgressRequest::mutable_webhooks() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.RoomCompositeEgressRequest.webhooks)
+  return &_impl_.webhooks_;
+}
+inline const ::livekit::WebhookConfig& RoomCompositeEgressRequest::_internal_webhooks(int index) const {
+  return _impl_.webhooks_.Get(index);
+}
+inline const ::livekit::WebhookConfig& RoomCompositeEgressRequest::webhooks(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.RoomCompositeEgressRequest.webhooks)
+  return _internal_webhooks(index);
+}
+inline ::livekit::WebhookConfig* RoomCompositeEgressRequest::_internal_add_webhooks() {
+  return _impl_.webhooks_.Add();
+}
+inline ::livekit::WebhookConfig* RoomCompositeEgressRequest::add_webhooks() {
+  ::livekit::WebhookConfig* _add = _internal_add_webhooks();
+  // @@protoc_insertion_point(field_add:livekit.RoomCompositeEgressRequest.webhooks)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+RoomCompositeEgressRequest::webhooks() const {
+  // @@protoc_insertion_point(field_list:livekit.RoomCompositeEgressRequest.webhooks)
+  return _impl_.webhooks_;
+}
+
 inline bool RoomCompositeEgressRequest::has_output() const {
   return output_case() != OUTPUT_NOT_SET;
 }
@@ -9332,6 +9502,43 @@ WebEgressRequest::image_outputs() const {
   return _impl_.image_outputs_;
 }
 
+// repeated .livekit.WebhookConfig webhooks = 14;
+inline int WebEgressRequest::_internal_webhooks_size() const {
+  return _impl_.webhooks_.size();
+}
+inline int WebEgressRequest::webhooks_size() const {
+  return _internal_webhooks_size();
+}
+inline ::livekit::WebhookConfig* WebEgressRequest::mutable_webhooks(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.WebEgressRequest.webhooks)
+  return _impl_.webhooks_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+WebEgressRequest::mutable_webhooks() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.WebEgressRequest.webhooks)
+  return &_impl_.webhooks_;
+}
+inline const ::livekit::WebhookConfig& WebEgressRequest::_internal_webhooks(int index) const {
+  return _impl_.webhooks_.Get(index);
+}
+inline const ::livekit::WebhookConfig& WebEgressRequest::webhooks(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.WebEgressRequest.webhooks)
+  return _internal_webhooks(index);
+}
+inline ::livekit::WebhookConfig* WebEgressRequest::_internal_add_webhooks() {
+  return _impl_.webhooks_.Add();
+}
+inline ::livekit::WebhookConfig* WebEgressRequest::add_webhooks() {
+  ::livekit::WebhookConfig* _add = _internal_add_webhooks();
+  // @@protoc_insertion_point(field_add:livekit.WebEgressRequest.webhooks)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+WebEgressRequest::webhooks() const {
+  // @@protoc_insertion_point(field_list:livekit.WebEgressRequest.webhooks)
+  return _impl_.webhooks_;
+}
+
 inline bool WebEgressRequest::has_output() const {
   return output_case() != OUTPUT_NOT_SET;
 }
@@ -9744,6 +9951,43 @@ inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::ImageOutput >
 ParticipantEgressRequest::image_outputs() const {
   // @@protoc_insertion_point(field_list:livekit.ParticipantEgressRequest.image_outputs)
   return _impl_.image_outputs_;
+}
+
+// repeated .livekit.WebhookConfig webhooks = 10;
+inline int ParticipantEgressRequest::_internal_webhooks_size() const {
+  return _impl_.webhooks_.size();
+}
+inline int ParticipantEgressRequest::webhooks_size() const {
+  return _internal_webhooks_size();
+}
+inline ::livekit::WebhookConfig* ParticipantEgressRequest::mutable_webhooks(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.ParticipantEgressRequest.webhooks)
+  return _impl_.webhooks_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+ParticipantEgressRequest::mutable_webhooks() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.ParticipantEgressRequest.webhooks)
+  return &_impl_.webhooks_;
+}
+inline const ::livekit::WebhookConfig& ParticipantEgressRequest::_internal_webhooks(int index) const {
+  return _impl_.webhooks_.Get(index);
+}
+inline const ::livekit::WebhookConfig& ParticipantEgressRequest::webhooks(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.ParticipantEgressRequest.webhooks)
+  return _internal_webhooks(index);
+}
+inline ::livekit::WebhookConfig* ParticipantEgressRequest::_internal_add_webhooks() {
+  return _impl_.webhooks_.Add();
+}
+inline ::livekit::WebhookConfig* ParticipantEgressRequest::add_webhooks() {
+  ::livekit::WebhookConfig* _add = _internal_add_webhooks();
+  // @@protoc_insertion_point(field_add:livekit.ParticipantEgressRequest.webhooks)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+ParticipantEgressRequest::webhooks() const {
+  // @@protoc_insertion_point(field_list:livekit.ParticipantEgressRequest.webhooks)
+  return _impl_.webhooks_;
 }
 
 inline bool ParticipantEgressRequest::has_options() const {
@@ -10403,6 +10647,43 @@ TrackCompositeEgressRequest::image_outputs() const {
   return _impl_.image_outputs_;
 }
 
+// repeated .livekit.WebhookConfig webhooks = 15;
+inline int TrackCompositeEgressRequest::_internal_webhooks_size() const {
+  return _impl_.webhooks_.size();
+}
+inline int TrackCompositeEgressRequest::webhooks_size() const {
+  return _internal_webhooks_size();
+}
+inline ::livekit::WebhookConfig* TrackCompositeEgressRequest::mutable_webhooks(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.TrackCompositeEgressRequest.webhooks)
+  return _impl_.webhooks_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+TrackCompositeEgressRequest::mutable_webhooks() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.TrackCompositeEgressRequest.webhooks)
+  return &_impl_.webhooks_;
+}
+inline const ::livekit::WebhookConfig& TrackCompositeEgressRequest::_internal_webhooks(int index) const {
+  return _impl_.webhooks_.Get(index);
+}
+inline const ::livekit::WebhookConfig& TrackCompositeEgressRequest::webhooks(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.TrackCompositeEgressRequest.webhooks)
+  return _internal_webhooks(index);
+}
+inline ::livekit::WebhookConfig* TrackCompositeEgressRequest::_internal_add_webhooks() {
+  return _impl_.webhooks_.Add();
+}
+inline ::livekit::WebhookConfig* TrackCompositeEgressRequest::add_webhooks() {
+  ::livekit::WebhookConfig* _add = _internal_add_webhooks();
+  // @@protoc_insertion_point(field_add:livekit.TrackCompositeEgressRequest.webhooks)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+TrackCompositeEgressRequest::webhooks() const {
+  // @@protoc_insertion_point(field_list:livekit.TrackCompositeEgressRequest.webhooks)
+  return _impl_.webhooks_;
+}
+
 inline bool TrackCompositeEgressRequest::has_output() const {
   return output_case() != OUTPUT_NOT_SET;
 }
@@ -10674,6 +10955,43 @@ inline void TrackEgressRequest::set_allocated_websocket_url(std::string* websock
     _impl_.output_.websocket_url_.InitAllocated(websocket_url, GetArenaForAllocation());
   }
   // @@protoc_insertion_point(field_set_allocated:livekit.TrackEgressRequest.websocket_url)
+}
+
+// repeated .livekit.WebhookConfig webhooks = 5;
+inline int TrackEgressRequest::_internal_webhooks_size() const {
+  return _impl_.webhooks_.size();
+}
+inline int TrackEgressRequest::webhooks_size() const {
+  return _internal_webhooks_size();
+}
+inline ::livekit::WebhookConfig* TrackEgressRequest::mutable_webhooks(int index) {
+  // @@protoc_insertion_point(field_mutable:livekit.TrackEgressRequest.webhooks)
+  return _impl_.webhooks_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >*
+TrackEgressRequest::mutable_webhooks() {
+  // @@protoc_insertion_point(field_mutable_list:livekit.TrackEgressRequest.webhooks)
+  return &_impl_.webhooks_;
+}
+inline const ::livekit::WebhookConfig& TrackEgressRequest::_internal_webhooks(int index) const {
+  return _impl_.webhooks_.Get(index);
+}
+inline const ::livekit::WebhookConfig& TrackEgressRequest::webhooks(int index) const {
+  // @@protoc_insertion_point(field_get:livekit.TrackEgressRequest.webhooks)
+  return _internal_webhooks(index);
+}
+inline ::livekit::WebhookConfig* TrackEgressRequest::_internal_add_webhooks() {
+  return _impl_.webhooks_.Add();
+}
+inline ::livekit::WebhookConfig* TrackEgressRequest::add_webhooks() {
+  ::livekit::WebhookConfig* _add = _internal_add_webhooks();
+  // @@protoc_insertion_point(field_add:livekit.TrackEgressRequest.webhooks)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::WebhookConfig >&
+TrackEgressRequest::webhooks() const {
+  // @@protoc_insertion_point(field_list:livekit.TrackEgressRequest.webhooks)
+  return _impl_.webhooks_;
 }
 
 inline bool TrackEgressRequest::has_output() const {
@@ -12635,6 +12953,106 @@ inline void S3Upload::set_allocated_session_token(std::string* session_token) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.S3Upload.session_token)
+}
+
+// string assume_role_arn = 12;
+inline void S3Upload::clear_assume_role_arn() {
+  _impl_.assume_role_arn_.ClearToEmpty();
+}
+inline const std::string& S3Upload::assume_role_arn() const {
+  // @@protoc_insertion_point(field_get:livekit.S3Upload.assume_role_arn)
+  return _internal_assume_role_arn();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void S3Upload::set_assume_role_arn(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.assume_role_arn_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.S3Upload.assume_role_arn)
+}
+inline std::string* S3Upload::mutable_assume_role_arn() {
+  std::string* _s = _internal_mutable_assume_role_arn();
+  // @@protoc_insertion_point(field_mutable:livekit.S3Upload.assume_role_arn)
+  return _s;
+}
+inline const std::string& S3Upload::_internal_assume_role_arn() const {
+  return _impl_.assume_role_arn_.Get();
+}
+inline void S3Upload::_internal_set_assume_role_arn(const std::string& value) {
+  
+  _impl_.assume_role_arn_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S3Upload::_internal_mutable_assume_role_arn() {
+  
+  return _impl_.assume_role_arn_.Mutable(GetArenaForAllocation());
+}
+inline std::string* S3Upload::release_assume_role_arn() {
+  // @@protoc_insertion_point(field_release:livekit.S3Upload.assume_role_arn)
+  return _impl_.assume_role_arn_.Release();
+}
+inline void S3Upload::set_allocated_assume_role_arn(std::string* assume_role_arn) {
+  if (assume_role_arn != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.assume_role_arn_.SetAllocated(assume_role_arn, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.assume_role_arn_.IsDefault()) {
+    _impl_.assume_role_arn_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.S3Upload.assume_role_arn)
+}
+
+// string assume_role_external_id = 13;
+inline void S3Upload::clear_assume_role_external_id() {
+  _impl_.assume_role_external_id_.ClearToEmpty();
+}
+inline const std::string& S3Upload::assume_role_external_id() const {
+  // @@protoc_insertion_point(field_get:livekit.S3Upload.assume_role_external_id)
+  return _internal_assume_role_external_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void S3Upload::set_assume_role_external_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.assume_role_external_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.S3Upload.assume_role_external_id)
+}
+inline std::string* S3Upload::mutable_assume_role_external_id() {
+  std::string* _s = _internal_mutable_assume_role_external_id();
+  // @@protoc_insertion_point(field_mutable:livekit.S3Upload.assume_role_external_id)
+  return _s;
+}
+inline const std::string& S3Upload::_internal_assume_role_external_id() const {
+  return _impl_.assume_role_external_id_.Get();
+}
+inline void S3Upload::_internal_set_assume_role_external_id(const std::string& value) {
+  
+  _impl_.assume_role_external_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S3Upload::_internal_mutable_assume_role_external_id() {
+  
+  return _impl_.assume_role_external_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* S3Upload::release_assume_role_external_id() {
+  // @@protoc_insertion_point(field_release:livekit.S3Upload.assume_role_external_id)
+  return _impl_.assume_role_external_id_.Release();
+}
+inline void S3Upload::set_allocated_assume_role_external_id(std::string* assume_role_external_id) {
+  if (assume_role_external_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.assume_role_external_id_.SetAllocated(assume_role_external_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.assume_role_external_id_.IsDefault()) {
+    _impl_.assume_role_external_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.S3Upload.assume_role_external_id)
 }
 
 // string region = 3;

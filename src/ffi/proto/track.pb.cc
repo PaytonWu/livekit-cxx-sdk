@@ -139,6 +139,7 @@ PROTOBUF_CONSTEXPR TrackPublicationInfo::TrackPublicationInfo(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.audio_features_)*/{}
   , /*decltype(_impl_.sid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.mime_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -312,7 +313,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace proto
 }  // namespace livekit
 static ::_pb::Metadata file_level_metadata_track_2eproto[19];
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_track_2eproto[3];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_track_2eproto[4];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_track_2eproto = nullptr;
 
 const uint32_t TableStruct_track_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -403,6 +404,7 @@ const uint32_t TableStruct_track_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   PROTOBUF_FIELD_OFFSET(::livekit::proto::TrackPublicationInfo, _impl_.muted_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::TrackPublicationInfo, _impl_.remote_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::TrackPublicationInfo, _impl_.encryption_type_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::TrackPublicationInfo, _impl_.audio_features_),
   0,
   1,
   3,
@@ -414,6 +416,7 @@ const uint32_t TableStruct_track_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   8,
   9,
   10,
+  ~0u,
   PROTOBUF_FIELD_OFFSET(::livekit::proto::OwnedTrackPublication, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::OwnedTrackPublication, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -528,17 +531,17 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 44, 51, -1, sizeof(::livekit::proto::GetStatsResponse)},
   { 52, 61, -1, sizeof(::livekit::proto::GetStatsCallback)},
   { 64, -1, -1, sizeof(::livekit::proto::TrackEvent)},
-  { 70, 87, -1, sizeof(::livekit::proto::TrackPublicationInfo)},
-  { 98, 106, -1, sizeof(::livekit::proto::OwnedTrackPublication)},
-  { 108, 120, -1, sizeof(::livekit::proto::TrackInfo)},
-  { 126, 134, -1, sizeof(::livekit::proto::OwnedTrack)},
-  { 136, 144, -1, sizeof(::livekit::proto::LocalTrackMuteRequest)},
-  { 146, 153, -1, sizeof(::livekit::proto::LocalTrackMuteResponse)},
-  { 154, 162, -1, sizeof(::livekit::proto::EnableRemoteTrackRequest)},
-  { 164, 171, -1, sizeof(::livekit::proto::EnableRemoteTrackResponse)},
-  { 172, 181, -1, sizeof(::livekit::proto::SetTrackSubscriptionPermissionsRequest)},
-  { 184, 193, -1, sizeof(::livekit::proto::ParticipantTrackPermission)},
-  { 196, -1, -1, sizeof(::livekit::proto::SetTrackSubscriptionPermissionsResponse)},
+  { 70, 88, -1, sizeof(::livekit::proto::TrackPublicationInfo)},
+  { 100, 108, -1, sizeof(::livekit::proto::OwnedTrackPublication)},
+  { 110, 122, -1, sizeof(::livekit::proto::TrackInfo)},
+  { 128, 136, -1, sizeof(::livekit::proto::OwnedTrack)},
+  { 138, 146, -1, sizeof(::livekit::proto::LocalTrackMuteRequest)},
+  { 148, 155, -1, sizeof(::livekit::proto::LocalTrackMuteResponse)},
+  { 156, 164, -1, sizeof(::livekit::proto::EnableRemoteTrackRequest)},
+  { 166, 173, -1, sizeof(::livekit::proto::EnableRemoteTrackResponse)},
+  { 174, 183, -1, sizeof(::livekit::proto::SetTrackSubscriptionPermissionsRequest)},
+  { 186, 195, -1, sizeof(::livekit::proto::ParticipantTrackPermission)},
+  { 198, -1, -1, sizeof(::livekit::proto::SetTrackSubscriptionPermissionsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -577,44 +580,50 @@ const char descriptor_table_protodef_track_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "async_id\030\001 \002(\004\"[\n\020GetStatsCallback\022\020\n\010as"
   "ync_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\022&\n\005stats\030\003 \003"
   "(\0132\027.livekit.proto.RtcStats\"\014\n\nTrackEven"
-  "t\"\243\002\n\024TrackPublicationInfo\022\013\n\003sid\030\001 \002(\t\022"
+  "t\"\335\002\n\024TrackPublicationInfo\022\013\n\003sid\030\001 \002(\t\022"
   "\014\n\004name\030\002 \002(\t\022&\n\004kind\030\003 \002(\0162\030.livekit.pr"
   "oto.TrackKind\022*\n\006source\030\004 \002(\0162\032.livekit."
   "proto.TrackSource\022\023\n\013simulcasted\030\005 \002(\010\022\r"
   "\n\005width\030\006 \002(\r\022\016\n\006height\030\007 \002(\r\022\021\n\tmime_ty"
   "pe\030\010 \002(\t\022\r\n\005muted\030\t \002(\010\022\016\n\006remote\030\n \002(\010\022"
   "6\n\017encryption_type\030\013 \002(\0162\035.livekit.proto"
-  ".EncryptionType\"y\n\025OwnedTrackPublication"
-  "\022-\n\006handle\030\001 \002(\0132\035.livekit.proto.FfiOwne"
-  "dHandle\0221\n\004info\030\002 \002(\0132#.livekit.proto.Tr"
-  "ackPublicationInfo\"\237\001\n\tTrackInfo\022\013\n\003sid\030"
-  "\001 \002(\t\022\014\n\004name\030\002 \002(\t\022&\n\004kind\030\003 \002(\0162\030.live"
-  "kit.proto.TrackKind\0220\n\014stream_state\030\004 \002("
-  "\0162\032.livekit.proto.StreamState\022\r\n\005muted\030\005"
-  " \002(\010\022\016\n\006remote\030\006 \002(\010\"c\n\nOwnedTrack\022-\n\006ha"
-  "ndle\030\001 \002(\0132\035.livekit.proto.FfiOwnedHandl"
-  "e\022&\n\004info\030\002 \002(\0132\030.livekit.proto.TrackInf"
-  "o\";\n\025LocalTrackMuteRequest\022\024\n\014track_hand"
-  "le\030\001 \002(\004\022\014\n\004mute\030\002 \002(\010\"\'\n\026LocalTrackMute"
-  "Response\022\r\n\005muted\030\001 \002(\010\"A\n\030EnableRemoteT"
-  "rackRequest\022\024\n\014track_handle\030\001 \002(\004\022\017\n\007ena"
-  "bled\030\002 \002(\010\",\n\031EnableRemoteTrackResponse\022"
-  "\017\n\007enabled\030\001 \002(\010\"\254\001\n&SetTrackSubscriptio"
-  "nPermissionsRequest\022 \n\030local_participant"
-  "_handle\030\001 \002(\004\022 \n\030all_participants_allowe"
-  "d\030\002 \002(\010\022>\n\013permissions\030\003 \003(\0132).livekit.p"
-  "roto.ParticipantTrackPermission\"i\n\032Parti"
-  "cipantTrackPermission\022\034\n\024participant_ide"
-  "ntity\030\001 \002(\t\022\021\n\tallow_all\030\002 \001(\010\022\032\n\022allowe"
-  "d_track_sids\030\003 \003(\t\")\n\'SetTrackSubscripti"
-  "onPermissionsResponse*=\n\tTrackKind\022\020\n\014KI"
-  "ND_UNKNOWN\020\000\022\016\n\nKIND_AUDIO\020\001\022\016\n\nKIND_VID"
-  "EO\020\002*\201\001\n\013TrackSource\022\022\n\016SOURCE_UNKNOWN\020\000"
-  "\022\021\n\rSOURCE_CAMERA\020\001\022\025\n\021SOURCE_MICROPHONE"
-  "\020\002\022\026\n\022SOURCE_SCREENSHARE\020\003\022\034\n\030SOURCE_SCR"
-  "EENSHARE_AUDIO\020\004*D\n\013StreamState\022\021\n\rSTATE"
-  "_UNKNOWN\020\000\022\020\n\014STATE_ACTIVE\020\001\022\020\n\014STATE_PA"
-  "USED\020\002B\020\252\002\rLiveKit.Proto"
+  ".EncryptionType\0228\n\016audio_features\030\014 \003(\0162"
+  " .livekit.proto.AudioTrackFeature\"y\n\025Own"
+  "edTrackPublication\022-\n\006handle\030\001 \002(\0132\035.liv"
+  "ekit.proto.FfiOwnedHandle\0221\n\004info\030\002 \002(\0132"
+  "#.livekit.proto.TrackPublicationInfo\"\237\001\n"
+  "\tTrackInfo\022\013\n\003sid\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022&\n"
+  "\004kind\030\003 \002(\0162\030.livekit.proto.TrackKind\0220\n"
+  "\014stream_state\030\004 \002(\0162\032.livekit.proto.Stre"
+  "amState\022\r\n\005muted\030\005 \002(\010\022\016\n\006remote\030\006 \002(\010\"c"
+  "\n\nOwnedTrack\022-\n\006handle\030\001 \002(\0132\035.livekit.p"
+  "roto.FfiOwnedHandle\022&\n\004info\030\002 \002(\0132\030.live"
+  "kit.proto.TrackInfo\";\n\025LocalTrackMuteReq"
+  "uest\022\024\n\014track_handle\030\001 \002(\004\022\014\n\004mute\030\002 \002(\010"
+  "\"\'\n\026LocalTrackMuteResponse\022\r\n\005muted\030\001 \002("
+  "\010\"A\n\030EnableRemoteTrackRequest\022\024\n\014track_h"
+  "andle\030\001 \002(\004\022\017\n\007enabled\030\002 \002(\010\",\n\031EnableRe"
+  "moteTrackResponse\022\017\n\007enabled\030\001 \002(\010\"\254\001\n&S"
+  "etTrackSubscriptionPermissionsRequest\022 \n"
+  "\030local_participant_handle\030\001 \002(\004\022 \n\030all_p"
+  "articipants_allowed\030\002 \002(\010\022>\n\013permissions"
+  "\030\003 \003(\0132).livekit.proto.ParticipantTrackP"
+  "ermission\"i\n\032ParticipantTrackPermission\022"
+  "\034\n\024participant_identity\030\001 \002(\t\022\021\n\tallow_a"
+  "ll\030\002 \001(\010\022\032\n\022allowed_track_sids\030\003 \003(\t\")\n\'"
+  "SetTrackSubscriptionPermissionsResponse*"
+  "=\n\tTrackKind\022\020\n\014KIND_UNKNOWN\020\000\022\016\n\nKIND_A"
+  "UDIO\020\001\022\016\n\nKIND_VIDEO\020\002*\201\001\n\013TrackSource\022\022"
+  "\n\016SOURCE_UNKNOWN\020\000\022\021\n\rSOURCE_CAMERA\020\001\022\025\n"
+  "\021SOURCE_MICROPHONE\020\002\022\026\n\022SOURCE_SCREENSHA"
+  "RE\020\003\022\034\n\030SOURCE_SCREENSHARE_AUDIO\020\004*D\n\013St"
+  "reamState\022\021\n\rSTATE_UNKNOWN\020\000\022\020\n\014STATE_AC"
+  "TIVE\020\001\022\020\n\014STATE_PAUSED\020\002*\275\001\n\021AudioTrackF"
+  "eature\022\r\n\tTF_STEREO\020\000\022\r\n\tTF_NO_DTX\020\001\022\030\n\024"
+  "TF_AUTO_GAIN_CONTROL\020\002\022\030\n\024TF_ECHO_CANCEL"
+  "LATION\020\003\022\030\n\024TF_NOISE_SUPPRESSION\020\004\022\"\n\036TF"
+  "_ENHANCED_NOISE_CANCELLATION\020\005\022\030\n\024TF_PRE"
+  "CONNECT_BUFFER\020\006B\020\252\002\rLiveKit.Proto"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_track_2eproto_deps[3] = {
   &::descriptor_table_e2ee_2eproto,
@@ -623,7 +632,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_track_2eproto_deps[
 };
 static ::_pbi::once_flag descriptor_table_track_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_track_2eproto = {
-    false, false, 2024, descriptor_table_protodef_track_2eproto,
+    false, false, 2274, descriptor_table_protodef_track_2eproto,
     "track.proto",
     &descriptor_table_track_2eproto_once, descriptor_table_track_2eproto_deps, 3, 19,
     schemas, file_default_instances, TableStruct_track_2eproto::offsets,
@@ -679,6 +688,25 @@ bool StreamState_IsValid(int value) {
     case 0:
     case 1:
     case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* AudioTrackFeature_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_track_2eproto);
+  return file_level_enum_descriptors_track_2eproto[3];
+}
+bool AudioTrackFeature_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;
@@ -2438,6 +2466,7 @@ TrackPublicationInfo::TrackPublicationInfo(const TrackPublicationInfo& from)
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
     , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.audio_features_){from._impl_.audio_features_}
     , decltype(_impl_.sid_){}
     , decltype(_impl_.name_){}
     , decltype(_impl_.mime_type_){}
@@ -2488,6 +2517,7 @@ inline void TrackPublicationInfo::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){}
     , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.audio_features_){arena}
     , decltype(_impl_.sid_){}
     , decltype(_impl_.name_){}
     , decltype(_impl_.mime_type_){}
@@ -2525,6 +2555,7 @@ TrackPublicationInfo::~TrackPublicationInfo() {
 
 inline void TrackPublicationInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.audio_features_.~RepeatedField();
   _impl_.sid_.Destroy();
   _impl_.name_.Destroy();
   _impl_.mime_type_.Destroy();
@@ -2540,6 +2571,7 @@ void TrackPublicationInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.audio_features_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
@@ -2693,6 +2725,27 @@ const char* TrackPublicationInfo::_InternalParse(const char* ptr, ::_pbi::ParseC
         } else
           goto handle_unusual;
         continue;
+      // repeated .livekit.proto.AudioTrackFeature audio_features = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 96)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+            CHK_(ptr);
+            if (PROTOBUF_PREDICT_TRUE(::livekit::proto::AudioTrackFeature_IsValid(val))) {
+              _internal_add_audio_features(static_cast<::livekit::proto::AudioTrackFeature>(val));
+            } else {
+              ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(12, val, mutable_unknown_fields());
+            }
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<96>(ptr));
+        } else if (static_cast<uint8_t>(tag) == 98) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedEnumParser<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(_internal_mutable_audio_features(), ptr, ctx, ::livekit::proto::AudioTrackFeature_IsValid, &_internal_metadata_, 12);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -2803,6 +2856,13 @@ uint8_t* TrackPublicationInfo::_InternalSerialize(
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
       11, this->_internal_encryption_type(), target);
+  }
+
+  // repeated .livekit.proto.AudioTrackFeature audio_features = 12;
+  for (int i = 0, n = this->_internal_audio_features_size(); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        12, this->_internal_audio_features(i), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2937,6 +2997,16 @@ size_t TrackPublicationInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // repeated .livekit.proto.AudioTrackFeature audio_features = 12;
+  {
+    size_t data_size = 0;
+    unsigned int count = static_cast<unsigned int>(this->_internal_audio_features_size());for (unsigned int i = 0; i < count; i++) {
+      data_size += ::_pbi::WireFormatLite::EnumSize(
+        this->_internal_audio_features(static_cast<int>(i)));
+    }
+    total_size += (1UL * count) + data_size;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -2955,6 +3025,7 @@ void TrackPublicationInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.audio_features_.MergeFrom(from._impl_.audio_features_);
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
@@ -3016,6 +3087,7 @@ void TrackPublicationInfo::InternalSwap(TrackPublicationInfo* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.audio_features_.InternalSwap(&other->_impl_.audio_features_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.sid_, lhs_arena,
       &other->_impl_.sid_, rhs_arena

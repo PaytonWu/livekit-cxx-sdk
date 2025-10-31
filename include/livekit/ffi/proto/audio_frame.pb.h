@@ -62,6 +62,12 @@ extern ApmProcessStreamRequestDefaultTypeInternal _ApmProcessStreamRequest_defau
 class ApmProcessStreamResponse;
 struct ApmProcessStreamResponseDefaultTypeInternal;
 extern ApmProcessStreamResponseDefaultTypeInternal _ApmProcessStreamResponse_default_instance_;
+class ApmSetStreamDelayRequest;
+struct ApmSetStreamDelayRequestDefaultTypeInternal;
+extern ApmSetStreamDelayRequestDefaultTypeInternal _ApmSetStreamDelayRequest_default_instance_;
+class ApmSetStreamDelayResponse;
+struct ApmSetStreamDelayResponseDefaultTypeInternal;
+extern ApmSetStreamDelayResponseDefaultTypeInternal _ApmSetStreamDelayResponse_default_instance_;
 class AudioFrameBufferInfo;
 struct AudioFrameBufferInfoDefaultTypeInternal;
 extern AudioFrameBufferInfoDefaultTypeInternal _AudioFrameBufferInfo_default_instance_;
@@ -189,6 +195,8 @@ template<> ::livekit::proto::ApmProcessReverseStreamRequest* Arena::CreateMaybeM
 template<> ::livekit::proto::ApmProcessReverseStreamResponse* Arena::CreateMaybeMessage<::livekit::proto::ApmProcessReverseStreamResponse>(Arena*);
 template<> ::livekit::proto::ApmProcessStreamRequest* Arena::CreateMaybeMessage<::livekit::proto::ApmProcessStreamRequest>(Arena*);
 template<> ::livekit::proto::ApmProcessStreamResponse* Arena::CreateMaybeMessage<::livekit::proto::ApmProcessStreamResponse>(Arena*);
+template<> ::livekit::proto::ApmSetStreamDelayRequest* Arena::CreateMaybeMessage<::livekit::proto::ApmSetStreamDelayRequest>(Arena*);
+template<> ::livekit::proto::ApmSetStreamDelayResponse* Arena::CreateMaybeMessage<::livekit::proto::ApmSetStreamDelayResponse>(Arena*);
 template<> ::livekit::proto::AudioFrameBufferInfo* Arena::CreateMaybeMessage<::livekit::proto::AudioFrameBufferInfo>(Arena*);
 template<> ::livekit::proto::AudioFrameReceived* Arena::CreateMaybeMessage<::livekit::proto::AudioFrameReceived>(Arena*);
 template<> ::livekit::proto::AudioResamplerInfo* Arena::CreateMaybeMessage<::livekit::proto::AudioResamplerInfo>(Arena*);
@@ -490,6 +498,7 @@ class NewAudioStreamRequest final :
     kTypeFieldNumber = 2,
     kSampleRateFieldNumber = 3,
     kNumChannelsFieldNumber = 4,
+    kFrameSizeMsFieldNumber = 7,
   };
   // optional string audio_filter_module_id = 5;
   bool has_audio_filter_module_id() const;
@@ -579,6 +588,19 @@ class NewAudioStreamRequest final :
   void _internal_set_num_channels(uint32_t value);
   public:
 
+  // optional uint32 frame_size_ms = 7;
+  bool has_frame_size_ms() const;
+  private:
+  bool _internal_has_frame_size_ms() const;
+  public:
+  void clear_frame_size_ms();
+  uint32_t frame_size_ms() const;
+  void set_frame_size_ms(uint32_t value);
+  private:
+  uint32_t _internal_frame_size_ms() const;
+  void _internal_set_frame_size_ms(uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.proto.NewAudioStreamRequest)
  private:
   class _Internal;
@@ -598,6 +620,7 @@ class NewAudioStreamRequest final :
     int type_;
     uint32_t sample_rate_;
     uint32_t num_channels_;
+    uint32_t frame_size_ms_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_audio_5fframe_2eproto;
@@ -904,6 +927,7 @@ class AudioStreamFromParticipantRequest final :
     kTrackSourceFieldNumber = 3,
     kSampleRateFieldNumber = 5,
     kNumChannelsFieldNumber = 6,
+    kFrameSizeMsFieldNumber = 9,
   };
   // optional string audio_filter_module_id = 7;
   bool has_audio_filter_module_id() const;
@@ -1006,6 +1030,19 @@ class AudioStreamFromParticipantRequest final :
   void _internal_set_num_channels(uint32_t value);
   public:
 
+  // optional uint32 frame_size_ms = 9;
+  bool has_frame_size_ms() const;
+  private:
+  bool _internal_has_frame_size_ms() const;
+  public:
+  void clear_frame_size_ms();
+  uint32_t frame_size_ms() const;
+  void set_frame_size_ms(uint32_t value);
+  private:
+  uint32_t _internal_frame_size_ms() const;
+  void _internal_set_frame_size_ms(uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.proto.AudioStreamFromParticipantRequest)
  private:
   class _Internal;
@@ -1026,6 +1063,7 @@ class AudioStreamFromParticipantRequest final :
     int track_source_;
     uint32_t sample_rate_;
     uint32_t num_channels_;
+    uint32_t frame_size_ms_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_audio_5fframe_2eproto;
@@ -4215,6 +4253,349 @@ class ApmProcessReverseStreamResponse final :
 };
 // -------------------------------------------------------------------
 
+class ApmSetStreamDelayRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.proto.ApmSetStreamDelayRequest) */ {
+ public:
+  inline ApmSetStreamDelayRequest() : ApmSetStreamDelayRequest(nullptr) {}
+  ~ApmSetStreamDelayRequest() override;
+  explicit PROTOBUF_CONSTEXPR ApmSetStreamDelayRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ApmSetStreamDelayRequest(const ApmSetStreamDelayRequest& from);
+  ApmSetStreamDelayRequest(ApmSetStreamDelayRequest&& from) noexcept
+    : ApmSetStreamDelayRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ApmSetStreamDelayRequest& operator=(const ApmSetStreamDelayRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ApmSetStreamDelayRequest& operator=(ApmSetStreamDelayRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ApmSetStreamDelayRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ApmSetStreamDelayRequest* internal_default_instance() {
+    return reinterpret_cast<const ApmSetStreamDelayRequest*>(
+               &_ApmSetStreamDelayRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  friend void swap(ApmSetStreamDelayRequest& a, ApmSetStreamDelayRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ApmSetStreamDelayRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ApmSetStreamDelayRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ApmSetStreamDelayRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ApmSetStreamDelayRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ApmSetStreamDelayRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ApmSetStreamDelayRequest& from) {
+    ApmSetStreamDelayRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ApmSetStreamDelayRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.proto.ApmSetStreamDelayRequest";
+  }
+  protected:
+  explicit ApmSetStreamDelayRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kApmHandleFieldNumber = 1,
+    kDelayMsFieldNumber = 2,
+  };
+  // required uint64 apm_handle = 1;
+  bool has_apm_handle() const;
+  private:
+  bool _internal_has_apm_handle() const;
+  public:
+  void clear_apm_handle();
+  uint64_t apm_handle() const;
+  void set_apm_handle(uint64_t value);
+  private:
+  uint64_t _internal_apm_handle() const;
+  void _internal_set_apm_handle(uint64_t value);
+  public:
+
+  // required int32 delay_ms = 2;
+  bool has_delay_ms() const;
+  private:
+  bool _internal_has_delay_ms() const;
+  public:
+  void clear_delay_ms();
+  int32_t delay_ms() const;
+  void set_delay_ms(int32_t value);
+  private:
+  int32_t _internal_delay_ms() const;
+  void _internal_set_delay_ms(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.proto.ApmSetStreamDelayRequest)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint64_t apm_handle_;
+    int32_t delay_ms_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_audio_5fframe_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ApmSetStreamDelayResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.proto.ApmSetStreamDelayResponse) */ {
+ public:
+  inline ApmSetStreamDelayResponse() : ApmSetStreamDelayResponse(nullptr) {}
+  ~ApmSetStreamDelayResponse() override;
+  explicit PROTOBUF_CONSTEXPR ApmSetStreamDelayResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ApmSetStreamDelayResponse(const ApmSetStreamDelayResponse& from);
+  ApmSetStreamDelayResponse(ApmSetStreamDelayResponse&& from) noexcept
+    : ApmSetStreamDelayResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ApmSetStreamDelayResponse& operator=(const ApmSetStreamDelayResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ApmSetStreamDelayResponse& operator=(ApmSetStreamDelayResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ApmSetStreamDelayResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ApmSetStreamDelayResponse* internal_default_instance() {
+    return reinterpret_cast<const ApmSetStreamDelayResponse*>(
+               &_ApmSetStreamDelayResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  friend void swap(ApmSetStreamDelayResponse& a, ApmSetStreamDelayResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ApmSetStreamDelayResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ApmSetStreamDelayResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ApmSetStreamDelayResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ApmSetStreamDelayResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ApmSetStreamDelayResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ApmSetStreamDelayResponse& from) {
+    ApmSetStreamDelayResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ApmSetStreamDelayResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.proto.ApmSetStreamDelayResponse";
+  }
+  protected:
+  explicit ApmSetStreamDelayResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kErrorFieldNumber = 1,
+  };
+  // optional string error = 1;
+  bool has_error() const;
+  private:
+  bool _internal_has_error() const;
+  public:
+  void clear_error();
+  const std::string& error() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_error(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_error();
+  PROTOBUF_NODISCARD std::string* release_error();
+  void set_allocated_error(std::string* error);
+  private:
+  const std::string& _internal_error() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_error(const std::string& value);
+  std::string* _internal_mutable_error();
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.proto.ApmSetStreamDelayResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_audio_5fframe_2eproto;
+};
+// -------------------------------------------------------------------
+
 class NewSoxResamplerRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.proto.NewSoxResamplerRequest) */ {
  public:
@@ -4270,7 +4651,7 @@ class NewSoxResamplerRequest final :
                &_NewSoxResamplerRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    23;
 
   friend void swap(NewSoxResamplerRequest& a, NewSoxResamplerRequest& b) {
     a.Swap(&b);
@@ -4529,7 +4910,7 @@ class NewSoxResamplerResponse final :
                &_NewSoxResamplerResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    24;
 
   friend void swap(NewSoxResamplerResponse& a, NewSoxResamplerResponse& b) {
     a.Swap(&b);
@@ -4726,7 +5107,7 @@ class PushSoxResamplerRequest final :
                &_PushSoxResamplerRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    25;
 
   friend void swap(PushSoxResamplerRequest& a, PushSoxResamplerRequest& b) {
     a.Swap(&b);
@@ -4919,7 +5300,7 @@ class PushSoxResamplerResponse final :
                &_PushSoxResamplerResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    26;
 
   friend void swap(PushSoxResamplerResponse& a, PushSoxResamplerResponse& b) {
     a.Swap(&b);
@@ -5117,7 +5498,7 @@ class FlushSoxResamplerRequest final :
                &_FlushSoxResamplerRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    27;
 
   friend void swap(FlushSoxResamplerRequest& a, FlushSoxResamplerRequest& b) {
     a.Swap(&b);
@@ -5277,7 +5658,7 @@ class FlushSoxResamplerResponse final :
                &_FlushSoxResamplerResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    28;
 
   friend void swap(FlushSoxResamplerResponse& a, FlushSoxResamplerResponse& b) {
     a.Swap(&b);
@@ -5475,7 +5856,7 @@ class AudioFrameBufferInfo final :
                &_AudioFrameBufferInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    29;
 
   friend void swap(AudioFrameBufferInfo& a, AudioFrameBufferInfo& b) {
     a.Swap(&b);
@@ -5683,7 +6064,7 @@ class OwnedAudioFrameBuffer final :
                &_OwnedAudioFrameBuffer_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    30;
 
   friend void swap(OwnedAudioFrameBuffer& a, OwnedAudioFrameBuffer& b) {
     a.Swap(&b);
@@ -5871,7 +6252,7 @@ class AudioStreamInfo final :
                &_AudioStreamInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    31;
 
   friend void swap(AudioStreamInfo& a, AudioStreamInfo& b) {
     a.Swap(&b);
@@ -6031,7 +6412,7 @@ class OwnedAudioStream final :
                &_OwnedAudioStream_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    32;
 
   friend void swap(OwnedAudioStream& a, OwnedAudioStream& b) {
     a.Swap(&b);
@@ -6225,7 +6606,7 @@ class AudioStreamEvent final :
                &_AudioStreamEvent_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    33;
 
   friend void swap(AudioStreamEvent& a, AudioStreamEvent& b) {
     a.Swap(&b);
@@ -6438,7 +6819,7 @@ class AudioFrameReceived final :
                &_AudioFrameReceived_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    34;
 
   friend void swap(AudioFrameReceived& a, AudioFrameReceived& b) {
     a.Swap(&b);
@@ -6602,7 +6983,7 @@ class AudioStreamEOS final :
                &_AudioStreamEOS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    35;
 
   friend void swap(AudioStreamEOS& a, AudioStreamEOS& b) {
     a.Swap(&b);
@@ -6728,7 +7109,7 @@ class AudioSourceOptions final :
                &_AudioSourceOptions_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    36;
 
   friend void swap(AudioSourceOptions& a, AudioSourceOptions& b) {
     a.Swap(&b);
@@ -6921,7 +7302,7 @@ class AudioSourceInfo final :
                &_AudioSourceInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    37;
 
   friend void swap(AudioSourceInfo& a, AudioSourceInfo& b) {
     a.Swap(&b);
@@ -7081,7 +7462,7 @@ class OwnedAudioSource final :
                &_OwnedAudioSource_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    38;
 
   friend void swap(OwnedAudioSource& a, OwnedAudioSource& b) {
     a.Swap(&b);
@@ -7268,7 +7649,7 @@ class AudioResamplerInfo final :
                &_AudioResamplerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    39;
 
   friend void swap(AudioResamplerInfo& a, AudioResamplerInfo& b) {
     a.Swap(&b);
@@ -7394,7 +7775,7 @@ class OwnedAudioResampler final :
                &_OwnedAudioResampler_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    40;
 
   friend void swap(OwnedAudioResampler& a, OwnedAudioResampler& b) {
     a.Swap(&b);
@@ -7582,7 +7963,7 @@ class OwnedApm final :
                &_OwnedApm_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    41;
 
   friend void swap(OwnedApm& a, OwnedApm& b) {
     a.Swap(&b);
@@ -7746,7 +8127,7 @@ class SoxResamplerInfo final :
                &_SoxResamplerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    42;
 
   friend void swap(SoxResamplerInfo& a, SoxResamplerInfo& b) {
     a.Swap(&b);
@@ -7872,7 +8253,7 @@ class OwnedSoxResampler final :
                &_OwnedSoxResampler_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    43;
 
   friend void swap(OwnedSoxResampler& a, OwnedSoxResampler& b) {
     a.Swap(&b);
@@ -8060,7 +8441,7 @@ class LoadAudioFilterPluginRequest final :
                &_LoadAudioFilterPluginRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    44;
 
   friend void swap(LoadAudioFilterPluginRequest& a, LoadAudioFilterPluginRequest& b) {
     a.Swap(&b);
@@ -8274,7 +8655,7 @@ class LoadAudioFilterPluginResponse final :
                &_LoadAudioFilterPluginResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    45;
 
   friend void swap(LoadAudioFilterPluginResponse& a, LoadAudioFilterPluginResponse& b) {
     a.Swap(&b);
@@ -8640,6 +9021,34 @@ inline void NewAudioStreamRequest::set_allocated_audio_filter_options(std::strin
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.proto.NewAudioStreamRequest.audio_filter_options)
+}
+
+// optional uint32 frame_size_ms = 7;
+inline bool NewAudioStreamRequest::_internal_has_frame_size_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool NewAudioStreamRequest::has_frame_size_ms() const {
+  return _internal_has_frame_size_ms();
+}
+inline void NewAudioStreamRequest::clear_frame_size_ms() {
+  _impl_.frame_size_ms_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline uint32_t NewAudioStreamRequest::_internal_frame_size_ms() const {
+  return _impl_.frame_size_ms_;
+}
+inline uint32_t NewAudioStreamRequest::frame_size_ms() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.NewAudioStreamRequest.frame_size_ms)
+  return _internal_frame_size_ms();
+}
+inline void NewAudioStreamRequest::_internal_set_frame_size_ms(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.frame_size_ms_ = value;
+}
+inline void NewAudioStreamRequest::set_frame_size_ms(uint32_t value) {
+  _internal_set_frame_size_ms(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.NewAudioStreamRequest.frame_size_ms)
 }
 
 // -------------------------------------------------------------------
@@ -9016,6 +9425,34 @@ inline void AudioStreamFromParticipantRequest::set_allocated_audio_filter_option
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.proto.AudioStreamFromParticipantRequest.audio_filter_options)
+}
+
+// optional uint32 frame_size_ms = 9;
+inline bool AudioStreamFromParticipantRequest::_internal_has_frame_size_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool AudioStreamFromParticipantRequest::has_frame_size_ms() const {
+  return _internal_has_frame_size_ms();
+}
+inline void AudioStreamFromParticipantRequest::clear_frame_size_ms() {
+  _impl_.frame_size_ms_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline uint32_t AudioStreamFromParticipantRequest::_internal_frame_size_ms() const {
+  return _impl_.frame_size_ms_;
+}
+inline uint32_t AudioStreamFromParticipantRequest::frame_size_ms() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.AudioStreamFromParticipantRequest.frame_size_ms)
+  return _internal_frame_size_ms();
+}
+inline void AudioStreamFromParticipantRequest::_internal_set_frame_size_ms(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.frame_size_ms_ = value;
+}
+inline void AudioStreamFromParticipantRequest::set_frame_size_ms(uint32_t value) {
+  _internal_set_frame_size_ms(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.AudioStreamFromParticipantRequest.frame_size_ms)
 }
 
 // -------------------------------------------------------------------
@@ -10713,6 +11150,138 @@ inline void ApmProcessReverseStreamResponse::set_allocated_error(std::string* er
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.proto.ApmProcessReverseStreamResponse.error)
+}
+
+// -------------------------------------------------------------------
+
+// ApmSetStreamDelayRequest
+
+// required uint64 apm_handle = 1;
+inline bool ApmSetStreamDelayRequest::_internal_has_apm_handle() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool ApmSetStreamDelayRequest::has_apm_handle() const {
+  return _internal_has_apm_handle();
+}
+inline void ApmSetStreamDelayRequest::clear_apm_handle() {
+  _impl_.apm_handle_ = uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline uint64_t ApmSetStreamDelayRequest::_internal_apm_handle() const {
+  return _impl_.apm_handle_;
+}
+inline uint64_t ApmSetStreamDelayRequest::apm_handle() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.ApmSetStreamDelayRequest.apm_handle)
+  return _internal_apm_handle();
+}
+inline void ApmSetStreamDelayRequest::_internal_set_apm_handle(uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.apm_handle_ = value;
+}
+inline void ApmSetStreamDelayRequest::set_apm_handle(uint64_t value) {
+  _internal_set_apm_handle(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.ApmSetStreamDelayRequest.apm_handle)
+}
+
+// required int32 delay_ms = 2;
+inline bool ApmSetStreamDelayRequest::_internal_has_delay_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool ApmSetStreamDelayRequest::has_delay_ms() const {
+  return _internal_has_delay_ms();
+}
+inline void ApmSetStreamDelayRequest::clear_delay_ms() {
+  _impl_.delay_ms_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline int32_t ApmSetStreamDelayRequest::_internal_delay_ms() const {
+  return _impl_.delay_ms_;
+}
+inline int32_t ApmSetStreamDelayRequest::delay_ms() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.ApmSetStreamDelayRequest.delay_ms)
+  return _internal_delay_ms();
+}
+inline void ApmSetStreamDelayRequest::_internal_set_delay_ms(int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.delay_ms_ = value;
+}
+inline void ApmSetStreamDelayRequest::set_delay_ms(int32_t value) {
+  _internal_set_delay_ms(value);
+  // @@protoc_insertion_point(field_set:livekit.proto.ApmSetStreamDelayRequest.delay_ms)
+}
+
+// -------------------------------------------------------------------
+
+// ApmSetStreamDelayResponse
+
+// optional string error = 1;
+inline bool ApmSetStreamDelayResponse::_internal_has_error() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool ApmSetStreamDelayResponse::has_error() const {
+  return _internal_has_error();
+}
+inline void ApmSetStreamDelayResponse::clear_error() {
+  _impl_.error_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& ApmSetStreamDelayResponse::error() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.ApmSetStreamDelayResponse.error)
+  return _internal_error();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ApmSetStreamDelayResponse::set_error(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.error_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.proto.ApmSetStreamDelayResponse.error)
+}
+inline std::string* ApmSetStreamDelayResponse::mutable_error() {
+  std::string* _s = _internal_mutable_error();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.ApmSetStreamDelayResponse.error)
+  return _s;
+}
+inline const std::string& ApmSetStreamDelayResponse::_internal_error() const {
+  return _impl_.error_.Get();
+}
+inline void ApmSetStreamDelayResponse::_internal_set_error(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.error_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ApmSetStreamDelayResponse::_internal_mutable_error() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.error_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ApmSetStreamDelayResponse::release_error() {
+  // @@protoc_insertion_point(field_release:livekit.proto.ApmSetStreamDelayResponse.error)
+  if (!_internal_has_error()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.error_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.error_.IsDefault()) {
+    _impl_.error_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void ApmSetStreamDelayResponse::set_allocated_error(std::string* error) {
+  if (error != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.error_.SetAllocated(error, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.error_.IsDefault()) {
+    _impl_.error_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.ApmSetStreamDelayResponse.error)
 }
 
 // -------------------------------------------------------------------
@@ -13309,6 +13878,10 @@ inline void LoadAudioFilterPluginResponse::set_allocated_error(std::string* erro
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -317,10 +317,10 @@ class WebhookEvent final :
   void _internal_set_created_at(int64_t value);
   public:
 
-  // int32 num_dropped = 11;
-  void clear_num_dropped();
-  int32_t num_dropped() const;
-  void set_num_dropped(int32_t value);
+  // int32 num_dropped = 11 [deprecated = true];
+  PROTOBUF_DEPRECATED void clear_num_dropped();
+  PROTOBUF_DEPRECATED int32_t num_dropped() const;
+  PROTOBUF_DEPRECATED void set_num_dropped(int32_t value);
   private:
   int32_t _internal_num_dropped() const;
   void _internal_set_num_dropped(int32_t value);
@@ -904,7 +904,7 @@ inline void WebhookEvent::set_created_at(int64_t value) {
   // @@protoc_insertion_point(field_set:livekit.WebhookEvent.created_at)
 }
 
-// int32 num_dropped = 11;
+// int32 num_dropped = 11 [deprecated = true];
 inline void WebhookEvent::clear_num_dropped() {
   _impl_.num_dropped_ = 0;
 }

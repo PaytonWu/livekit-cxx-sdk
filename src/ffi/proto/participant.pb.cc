@@ -144,7 +144,7 @@ const char descriptor_table_protodef_participant_2eproto[] PROTOBUF_SECTION_VARI
   "ipantKind\022\035\n\031PARTICIPANT_KIND_STANDARD\020\000"
   "\022\034\n\030PARTICIPANT_KIND_INGRESS\020\001\022\033\n\027PARTIC"
   "IPANT_KIND_EGRESS\020\002\022\030\n\024PARTICIPANT_KIND_"
-  "SIP\020\003\022\032\n\026PARTICIPANT_KIND_AGENT\020\004*\254\002\n\020Di"
+  "SIP\020\003\022\032\n\026PARTICIPANT_KIND_AGENT\020\004*\327\002\n\020Di"
   "sconnectReason\022\022\n\016UNKNOWN_REASON\020\000\022\024\n\020CL"
   "IENT_INITIATED\020\001\022\026\n\022DUPLICATE_IDENTITY\020\002"
   "\022\023\n\017SERVER_SHUTDOWN\020\003\022\027\n\023PARTICIPANT_REM"
@@ -152,14 +152,15 @@ const char descriptor_table_protodef_participant_2eproto[] PROTOBUF_SECTION_VARI
   "CH\020\006\022\020\n\014JOIN_FAILURE\020\007\022\r\n\tMIGRATION\020\010\022\020\n"
   "\014SIGNAL_CLOSE\020\t\022\017\n\013ROOM_CLOSED\020\n\022\024\n\020USER"
   "_UNAVAILABLE\020\013\022\021\n\rUSER_REJECTED\020\014\022\025\n\021SIP"
-  "_TRUNK_FAILURE\020\rB\020\252\002\rLiveKit.Proto"
+  "_TRUNK_FAILURE\020\r\022\026\n\022CONNECTION_TIMEOUT\020\016"
+  "\022\021\n\rMEDIA_FAILURE\020\017B\020\252\002\rLiveKit.Proto"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_participant_2eproto_deps[1] = {
   &::descriptor_table_handle_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_participant_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_participant_2eproto = {
-    false, false, 954, descriptor_table_protodef_participant_2eproto,
+    false, false, 997, descriptor_table_protodef_participant_2eproto,
     "participant.proto",
     &descriptor_table_participant_2eproto_once, descriptor_table_participant_2eproto_deps, 1, 3,
     schemas, file_default_instances, TableStruct_participant_2eproto::offsets,
@@ -211,6 +212,8 @@ bool DisconnectReason_IsValid(int value) {
     case 11:
     case 12:
     case 13:
+    case 14:
+    case 15:
       return true;
     default:
       return false;

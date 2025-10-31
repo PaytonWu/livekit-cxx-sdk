@@ -61,6 +61,12 @@ extern DeleteRoomRequestDefaultTypeInternal _DeleteRoomRequest_default_instance_
 class DeleteRoomResponse;
 struct DeleteRoomResponseDefaultTypeInternal;
 extern DeleteRoomResponseDefaultTypeInternal _DeleteRoomResponse_default_instance_;
+class ForwardParticipantRequest;
+struct ForwardParticipantRequestDefaultTypeInternal;
+extern ForwardParticipantRequestDefaultTypeInternal _ForwardParticipantRequest_default_instance_;
+class ForwardParticipantResponse;
+struct ForwardParticipantResponseDefaultTypeInternal;
+extern ForwardParticipantResponseDefaultTypeInternal _ForwardParticipantResponse_default_instance_;
 class ListParticipantsRequest;
 struct ListParticipantsRequestDefaultTypeInternal;
 extern ListParticipantsRequestDefaultTypeInternal _ListParticipantsRequest_default_instance_;
@@ -73,6 +79,12 @@ extern ListRoomsRequestDefaultTypeInternal _ListRoomsRequest_default_instance_;
 class ListRoomsResponse;
 struct ListRoomsResponseDefaultTypeInternal;
 extern ListRoomsResponseDefaultTypeInternal _ListRoomsResponse_default_instance_;
+class MoveParticipantRequest;
+struct MoveParticipantRequestDefaultTypeInternal;
+extern MoveParticipantRequestDefaultTypeInternal _MoveParticipantRequest_default_instance_;
+class MoveParticipantResponse;
+struct MoveParticipantResponseDefaultTypeInternal;
+extern MoveParticipantResponseDefaultTypeInternal _MoveParticipantResponse_default_instance_;
 class MuteRoomTrackRequest;
 struct MuteRoomTrackRequestDefaultTypeInternal;
 extern MuteRoomTrackRequestDefaultTypeInternal _MuteRoomTrackRequest_default_instance_;
@@ -120,10 +132,14 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::livekit::CreateRoomRequest* Arena::CreateMaybeMessage<::livekit::CreateRoomRequest>(Arena*);
 template<> ::livekit::DeleteRoomRequest* Arena::CreateMaybeMessage<::livekit::DeleteRoomRequest>(Arena*);
 template<> ::livekit::DeleteRoomResponse* Arena::CreateMaybeMessage<::livekit::DeleteRoomResponse>(Arena*);
+template<> ::livekit::ForwardParticipantRequest* Arena::CreateMaybeMessage<::livekit::ForwardParticipantRequest>(Arena*);
+template<> ::livekit::ForwardParticipantResponse* Arena::CreateMaybeMessage<::livekit::ForwardParticipantResponse>(Arena*);
 template<> ::livekit::ListParticipantsRequest* Arena::CreateMaybeMessage<::livekit::ListParticipantsRequest>(Arena*);
 template<> ::livekit::ListParticipantsResponse* Arena::CreateMaybeMessage<::livekit::ListParticipantsResponse>(Arena*);
 template<> ::livekit::ListRoomsRequest* Arena::CreateMaybeMessage<::livekit::ListRoomsRequest>(Arena*);
 template<> ::livekit::ListRoomsResponse* Arena::CreateMaybeMessage<::livekit::ListRoomsResponse>(Arena*);
+template<> ::livekit::MoveParticipantRequest* Arena::CreateMaybeMessage<::livekit::MoveParticipantRequest>(Arena*);
+template<> ::livekit::MoveParticipantResponse* Arena::CreateMaybeMessage<::livekit::MoveParticipantResponse>(Arena*);
 template<> ::livekit::MuteRoomTrackRequest* Arena::CreateMaybeMessage<::livekit::MuteRoomTrackRequest>(Arena*);
 template<> ::livekit::MuteRoomTrackResponse* Arena::CreateMaybeMessage<::livekit::MuteRoomTrackResponse>(Arena*);
 template<> ::livekit::RemoveParticipantResponse* Arena::CreateMaybeMessage<::livekit::RemoveParticipantResponse>(Arena*);
@@ -3654,6 +3670,7 @@ class RoomConfiguration final :
   enum : int {
     kAgentsFieldNumber = 10,
     kNameFieldNumber = 1,
+    kMetadataFieldNumber = 11,
     kEgressFieldNumber = 5,
     kEmptyTimeoutFieldNumber = 2,
     kDepartureTimeoutFieldNumber = 3,
@@ -3692,6 +3709,20 @@ class RoomConfiguration final :
   const std::string& _internal_name() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
   std::string* _internal_mutable_name();
+  public:
+
+  // string metadata = 11;
+  void clear_metadata();
+  const std::string& metadata() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_metadata(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_metadata();
+  PROTOBUF_NODISCARD std::string* release_metadata();
+  void set_allocated_metadata(std::string* metadata);
+  private:
+  const std::string& _internal_metadata() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_metadata(const std::string& value);
+  std::string* _internal_mutable_metadata();
   public:
 
   // .livekit.RoomEgress egress = 5;
@@ -3776,6 +3807,7 @@ class RoomConfiguration final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::livekit::RoomAgentDispatch > agents_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr metadata_;
     ::livekit::RoomEgress* egress_;
     uint32_t empty_timeout_;
     uint32_t departure_timeout_;
@@ -3786,6 +3818,612 @@ class RoomConfiguration final :
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5froom_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ForwardParticipantRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.ForwardParticipantRequest) */ {
+ public:
+  inline ForwardParticipantRequest() : ForwardParticipantRequest(nullptr) {}
+  ~ForwardParticipantRequest() override;
+  explicit PROTOBUF_CONSTEXPR ForwardParticipantRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ForwardParticipantRequest(const ForwardParticipantRequest& from);
+  ForwardParticipantRequest(ForwardParticipantRequest&& from) noexcept
+    : ForwardParticipantRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ForwardParticipantRequest& operator=(const ForwardParticipantRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ForwardParticipantRequest& operator=(ForwardParticipantRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ForwardParticipantRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ForwardParticipantRequest* internal_default_instance() {
+    return reinterpret_cast<const ForwardParticipantRequest*>(
+               &_ForwardParticipantRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  friend void swap(ForwardParticipantRequest& a, ForwardParticipantRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ForwardParticipantRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ForwardParticipantRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ForwardParticipantRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ForwardParticipantRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ForwardParticipantRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ForwardParticipantRequest& from) {
+    ForwardParticipantRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ForwardParticipantRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.ForwardParticipantRequest";
+  }
+  protected:
+  explicit ForwardParticipantRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRoomFieldNumber = 1,
+    kIdentityFieldNumber = 2,
+    kDestinationRoomFieldNumber = 3,
+  };
+  // string room = 1;
+  void clear_room();
+  const std::string& room() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_room(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_room();
+  PROTOBUF_NODISCARD std::string* release_room();
+  void set_allocated_room(std::string* room);
+  private:
+  const std::string& _internal_room() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_room(const std::string& value);
+  std::string* _internal_mutable_room();
+  public:
+
+  // string identity = 2;
+  void clear_identity();
+  const std::string& identity() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_identity(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_identity();
+  PROTOBUF_NODISCARD std::string* release_identity();
+  void set_allocated_identity(std::string* identity);
+  private:
+  const std::string& _internal_identity() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_identity(const std::string& value);
+  std::string* _internal_mutable_identity();
+  public:
+
+  // string destination_room = 3;
+  void clear_destination_room();
+  const std::string& destination_room() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_destination_room(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_destination_room();
+  PROTOBUF_NODISCARD std::string* release_destination_room();
+  void set_allocated_destination_room(std::string* destination_room);
+  private:
+  const std::string& _internal_destination_room() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_destination_room(const std::string& value);
+  std::string* _internal_mutable_destination_room();
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.ForwardParticipantRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr identity_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_room_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5froom_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ForwardParticipantResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:livekit.ForwardParticipantResponse) */ {
+ public:
+  inline ForwardParticipantResponse() : ForwardParticipantResponse(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR ForwardParticipantResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ForwardParticipantResponse(const ForwardParticipantResponse& from);
+  ForwardParticipantResponse(ForwardParticipantResponse&& from) noexcept
+    : ForwardParticipantResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ForwardParticipantResponse& operator=(const ForwardParticipantResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ForwardParticipantResponse& operator=(ForwardParticipantResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ForwardParticipantResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ForwardParticipantResponse* internal_default_instance() {
+    return reinterpret_cast<const ForwardParticipantResponse*>(
+               &_ForwardParticipantResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  friend void swap(ForwardParticipantResponse& a, ForwardParticipantResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ForwardParticipantResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ForwardParticipantResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ForwardParticipantResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ForwardParticipantResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const ForwardParticipantResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const ForwardParticipantResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.ForwardParticipantResponse";
+  }
+  protected:
+  explicit ForwardParticipantResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:livekit.ForwardParticipantResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+  };
+  friend struct ::TableStruct_livekit_5froom_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MoveParticipantRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:livekit.MoveParticipantRequest) */ {
+ public:
+  inline MoveParticipantRequest() : MoveParticipantRequest(nullptr) {}
+  ~MoveParticipantRequest() override;
+  explicit PROTOBUF_CONSTEXPR MoveParticipantRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MoveParticipantRequest(const MoveParticipantRequest& from);
+  MoveParticipantRequest(MoveParticipantRequest&& from) noexcept
+    : MoveParticipantRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline MoveParticipantRequest& operator=(const MoveParticipantRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MoveParticipantRequest& operator=(MoveParticipantRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MoveParticipantRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MoveParticipantRequest* internal_default_instance() {
+    return reinterpret_cast<const MoveParticipantRequest*>(
+               &_MoveParticipantRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  friend void swap(MoveParticipantRequest& a, MoveParticipantRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MoveParticipantRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MoveParticipantRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MoveParticipantRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MoveParticipantRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MoveParticipantRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const MoveParticipantRequest& from) {
+    MoveParticipantRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MoveParticipantRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.MoveParticipantRequest";
+  }
+  protected:
+  explicit MoveParticipantRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRoomFieldNumber = 1,
+    kIdentityFieldNumber = 2,
+    kDestinationRoomFieldNumber = 3,
+  };
+  // string room = 1;
+  void clear_room();
+  const std::string& room() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_room(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_room();
+  PROTOBUF_NODISCARD std::string* release_room();
+  void set_allocated_room(std::string* room);
+  private:
+  const std::string& _internal_room() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_room(const std::string& value);
+  std::string* _internal_mutable_room();
+  public:
+
+  // string identity = 2;
+  void clear_identity();
+  const std::string& identity() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_identity(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_identity();
+  PROTOBUF_NODISCARD std::string* release_identity();
+  void set_allocated_identity(std::string* identity);
+  private:
+  const std::string& _internal_identity() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_identity(const std::string& value);
+  std::string* _internal_mutable_identity();
+  public:
+
+  // string destination_room = 3;
+  void clear_destination_room();
+  const std::string& destination_room() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_destination_room(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_destination_room();
+  PROTOBUF_NODISCARD std::string* release_destination_room();
+  void set_allocated_destination_room(std::string* destination_room);
+  private:
+  const std::string& _internal_destination_room() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_destination_room(const std::string& value);
+  std::string* _internal_mutable_destination_room();
+  public:
+
+  // @@protoc_insertion_point(class_scope:livekit.MoveParticipantRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr identity_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_room_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_livekit_5froom_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MoveParticipantResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:livekit.MoveParticipantResponse) */ {
+ public:
+  inline MoveParticipantResponse() : MoveParticipantResponse(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR MoveParticipantResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MoveParticipantResponse(const MoveParticipantResponse& from);
+  MoveParticipantResponse(MoveParticipantResponse&& from) noexcept
+    : MoveParticipantResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline MoveParticipantResponse& operator=(const MoveParticipantResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MoveParticipantResponse& operator=(MoveParticipantResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MoveParticipantResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MoveParticipantResponse* internal_default_instance() {
+    return reinterpret_cast<const MoveParticipantResponse*>(
+               &_MoveParticipantResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  friend void swap(MoveParticipantResponse& a, MoveParticipantResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MoveParticipantResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MoveParticipantResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MoveParticipantResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MoveParticipantResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const MoveParticipantResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const MoveParticipantResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "livekit.MoveParticipantResponse";
+  }
+  protected:
+  explicit MoveParticipantResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:livekit.MoveParticipantResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+  };
   friend struct ::TableStruct_livekit_5froom_2eproto;
 };
 // ===================================================================
@@ -6384,6 +7022,56 @@ inline void RoomConfiguration::set_max_participants(uint32_t value) {
   // @@protoc_insertion_point(field_set:livekit.RoomConfiguration.max_participants)
 }
 
+// string metadata = 11;
+inline void RoomConfiguration::clear_metadata() {
+  _impl_.metadata_.ClearToEmpty();
+}
+inline const std::string& RoomConfiguration::metadata() const {
+  // @@protoc_insertion_point(field_get:livekit.RoomConfiguration.metadata)
+  return _internal_metadata();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RoomConfiguration::set_metadata(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.metadata_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.RoomConfiguration.metadata)
+}
+inline std::string* RoomConfiguration::mutable_metadata() {
+  std::string* _s = _internal_mutable_metadata();
+  // @@protoc_insertion_point(field_mutable:livekit.RoomConfiguration.metadata)
+  return _s;
+}
+inline const std::string& RoomConfiguration::_internal_metadata() const {
+  return _impl_.metadata_.Get();
+}
+inline void RoomConfiguration::_internal_set_metadata(const std::string& value) {
+  
+  _impl_.metadata_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RoomConfiguration::_internal_mutable_metadata() {
+  
+  return _impl_.metadata_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RoomConfiguration::release_metadata() {
+  // @@protoc_insertion_point(field_release:livekit.RoomConfiguration.metadata)
+  return _impl_.metadata_.Release();
+}
+inline void RoomConfiguration::set_allocated_metadata(std::string* metadata) {
+  if (metadata != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.metadata_.SetAllocated(metadata, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.metadata_.IsDefault()) {
+    _impl_.metadata_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.RoomConfiguration.metadata)
+}
+
 // .livekit.RoomEgress egress = 5;
 inline bool RoomConfiguration::_internal_has_egress() const {
   return this != internal_default_instance() && _impl_.egress_ != nullptr;
@@ -6571,9 +7259,333 @@ RoomConfiguration::agents() const {
   return _impl_.agents_;
 }
 
+// -------------------------------------------------------------------
+
+// ForwardParticipantRequest
+
+// string room = 1;
+inline void ForwardParticipantRequest::clear_room() {
+  _impl_.room_.ClearToEmpty();
+}
+inline const std::string& ForwardParticipantRequest::room() const {
+  // @@protoc_insertion_point(field_get:livekit.ForwardParticipantRequest.room)
+  return _internal_room();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ForwardParticipantRequest::set_room(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.room_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.ForwardParticipantRequest.room)
+}
+inline std::string* ForwardParticipantRequest::mutable_room() {
+  std::string* _s = _internal_mutable_room();
+  // @@protoc_insertion_point(field_mutable:livekit.ForwardParticipantRequest.room)
+  return _s;
+}
+inline const std::string& ForwardParticipantRequest::_internal_room() const {
+  return _impl_.room_.Get();
+}
+inline void ForwardParticipantRequest::_internal_set_room(const std::string& value) {
+  
+  _impl_.room_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ForwardParticipantRequest::_internal_mutable_room() {
+  
+  return _impl_.room_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ForwardParticipantRequest::release_room() {
+  // @@protoc_insertion_point(field_release:livekit.ForwardParticipantRequest.room)
+  return _impl_.room_.Release();
+}
+inline void ForwardParticipantRequest::set_allocated_room(std::string* room) {
+  if (room != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.room_.SetAllocated(room, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.room_.IsDefault()) {
+    _impl_.room_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.ForwardParticipantRequest.room)
+}
+
+// string identity = 2;
+inline void ForwardParticipantRequest::clear_identity() {
+  _impl_.identity_.ClearToEmpty();
+}
+inline const std::string& ForwardParticipantRequest::identity() const {
+  // @@protoc_insertion_point(field_get:livekit.ForwardParticipantRequest.identity)
+  return _internal_identity();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ForwardParticipantRequest::set_identity(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.identity_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.ForwardParticipantRequest.identity)
+}
+inline std::string* ForwardParticipantRequest::mutable_identity() {
+  std::string* _s = _internal_mutable_identity();
+  // @@protoc_insertion_point(field_mutable:livekit.ForwardParticipantRequest.identity)
+  return _s;
+}
+inline const std::string& ForwardParticipantRequest::_internal_identity() const {
+  return _impl_.identity_.Get();
+}
+inline void ForwardParticipantRequest::_internal_set_identity(const std::string& value) {
+  
+  _impl_.identity_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ForwardParticipantRequest::_internal_mutable_identity() {
+  
+  return _impl_.identity_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ForwardParticipantRequest::release_identity() {
+  // @@protoc_insertion_point(field_release:livekit.ForwardParticipantRequest.identity)
+  return _impl_.identity_.Release();
+}
+inline void ForwardParticipantRequest::set_allocated_identity(std::string* identity) {
+  if (identity != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.identity_.SetAllocated(identity, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.identity_.IsDefault()) {
+    _impl_.identity_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.ForwardParticipantRequest.identity)
+}
+
+// string destination_room = 3;
+inline void ForwardParticipantRequest::clear_destination_room() {
+  _impl_.destination_room_.ClearToEmpty();
+}
+inline const std::string& ForwardParticipantRequest::destination_room() const {
+  // @@protoc_insertion_point(field_get:livekit.ForwardParticipantRequest.destination_room)
+  return _internal_destination_room();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ForwardParticipantRequest::set_destination_room(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.destination_room_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.ForwardParticipantRequest.destination_room)
+}
+inline std::string* ForwardParticipantRequest::mutable_destination_room() {
+  std::string* _s = _internal_mutable_destination_room();
+  // @@protoc_insertion_point(field_mutable:livekit.ForwardParticipantRequest.destination_room)
+  return _s;
+}
+inline const std::string& ForwardParticipantRequest::_internal_destination_room() const {
+  return _impl_.destination_room_.Get();
+}
+inline void ForwardParticipantRequest::_internal_set_destination_room(const std::string& value) {
+  
+  _impl_.destination_room_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ForwardParticipantRequest::_internal_mutable_destination_room() {
+  
+  return _impl_.destination_room_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ForwardParticipantRequest::release_destination_room() {
+  // @@protoc_insertion_point(field_release:livekit.ForwardParticipantRequest.destination_room)
+  return _impl_.destination_room_.Release();
+}
+inline void ForwardParticipantRequest::set_allocated_destination_room(std::string* destination_room) {
+  if (destination_room != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.destination_room_.SetAllocated(destination_room, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.destination_room_.IsDefault()) {
+    _impl_.destination_room_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.ForwardParticipantRequest.destination_room)
+}
+
+// -------------------------------------------------------------------
+
+// ForwardParticipantResponse
+
+// -------------------------------------------------------------------
+
+// MoveParticipantRequest
+
+// string room = 1;
+inline void MoveParticipantRequest::clear_room() {
+  _impl_.room_.ClearToEmpty();
+}
+inline const std::string& MoveParticipantRequest::room() const {
+  // @@protoc_insertion_point(field_get:livekit.MoveParticipantRequest.room)
+  return _internal_room();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MoveParticipantRequest::set_room(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.room_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.MoveParticipantRequest.room)
+}
+inline std::string* MoveParticipantRequest::mutable_room() {
+  std::string* _s = _internal_mutable_room();
+  // @@protoc_insertion_point(field_mutable:livekit.MoveParticipantRequest.room)
+  return _s;
+}
+inline const std::string& MoveParticipantRequest::_internal_room() const {
+  return _impl_.room_.Get();
+}
+inline void MoveParticipantRequest::_internal_set_room(const std::string& value) {
+  
+  _impl_.room_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MoveParticipantRequest::_internal_mutable_room() {
+  
+  return _impl_.room_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MoveParticipantRequest::release_room() {
+  // @@protoc_insertion_point(field_release:livekit.MoveParticipantRequest.room)
+  return _impl_.room_.Release();
+}
+inline void MoveParticipantRequest::set_allocated_room(std::string* room) {
+  if (room != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.room_.SetAllocated(room, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.room_.IsDefault()) {
+    _impl_.room_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.MoveParticipantRequest.room)
+}
+
+// string identity = 2;
+inline void MoveParticipantRequest::clear_identity() {
+  _impl_.identity_.ClearToEmpty();
+}
+inline const std::string& MoveParticipantRequest::identity() const {
+  // @@protoc_insertion_point(field_get:livekit.MoveParticipantRequest.identity)
+  return _internal_identity();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MoveParticipantRequest::set_identity(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.identity_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.MoveParticipantRequest.identity)
+}
+inline std::string* MoveParticipantRequest::mutable_identity() {
+  std::string* _s = _internal_mutable_identity();
+  // @@protoc_insertion_point(field_mutable:livekit.MoveParticipantRequest.identity)
+  return _s;
+}
+inline const std::string& MoveParticipantRequest::_internal_identity() const {
+  return _impl_.identity_.Get();
+}
+inline void MoveParticipantRequest::_internal_set_identity(const std::string& value) {
+  
+  _impl_.identity_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MoveParticipantRequest::_internal_mutable_identity() {
+  
+  return _impl_.identity_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MoveParticipantRequest::release_identity() {
+  // @@protoc_insertion_point(field_release:livekit.MoveParticipantRequest.identity)
+  return _impl_.identity_.Release();
+}
+inline void MoveParticipantRequest::set_allocated_identity(std::string* identity) {
+  if (identity != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.identity_.SetAllocated(identity, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.identity_.IsDefault()) {
+    _impl_.identity_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.MoveParticipantRequest.identity)
+}
+
+// string destination_room = 3;
+inline void MoveParticipantRequest::clear_destination_room() {
+  _impl_.destination_room_.ClearToEmpty();
+}
+inline const std::string& MoveParticipantRequest::destination_room() const {
+  // @@protoc_insertion_point(field_get:livekit.MoveParticipantRequest.destination_room)
+  return _internal_destination_room();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MoveParticipantRequest::set_destination_room(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.destination_room_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.MoveParticipantRequest.destination_room)
+}
+inline std::string* MoveParticipantRequest::mutable_destination_room() {
+  std::string* _s = _internal_mutable_destination_room();
+  // @@protoc_insertion_point(field_mutable:livekit.MoveParticipantRequest.destination_room)
+  return _s;
+}
+inline const std::string& MoveParticipantRequest::_internal_destination_room() const {
+  return _impl_.destination_room_.Get();
+}
+inline void MoveParticipantRequest::_internal_set_destination_room(const std::string& value) {
+  
+  _impl_.destination_room_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MoveParticipantRequest::_internal_mutable_destination_room() {
+  
+  return _impl_.destination_room_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MoveParticipantRequest::release_destination_room() {
+  // @@protoc_insertion_point(field_release:livekit.MoveParticipantRequest.destination_room)
+  return _impl_.destination_room_.Release();
+}
+inline void MoveParticipantRequest::set_allocated_destination_room(std::string* destination_room) {
+  if (destination_room != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.destination_room_.SetAllocated(destination_room, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.destination_room_.IsDefault()) {
+    _impl_.destination_room_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.MoveParticipantRequest.destination_room)
+}
+
+// -------------------------------------------------------------------
+
+// MoveParticipantResponse
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

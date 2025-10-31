@@ -31,7 +31,8 @@ PROTOBUF_CONSTEXPR NewAudioStreamRequest::NewAudioStreamRequest(
   , /*decltype(_impl_.track_handle_)*/uint64_t{0u}
   , /*decltype(_impl_.type_)*/0
   , /*decltype(_impl_.sample_rate_)*/0u
-  , /*decltype(_impl_.num_channels_)*/0u} {}
+  , /*decltype(_impl_.num_channels_)*/0u
+  , /*decltype(_impl_.frame_size_ms_)*/0u} {}
 struct NewAudioStreamRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR NewAudioStreamRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -65,7 +66,8 @@ PROTOBUF_CONSTEXPR AudioStreamFromParticipantRequest::AudioStreamFromParticipant
   , /*decltype(_impl_.type_)*/0
   , /*decltype(_impl_.track_source_)*/0
   , /*decltype(_impl_.sample_rate_)*/0u
-  , /*decltype(_impl_.num_channels_)*/0u} {}
+  , /*decltype(_impl_.num_channels_)*/0u
+  , /*decltype(_impl_.frame_size_ms_)*/0u} {}
 struct AudioStreamFromParticipantRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR AudioStreamFromParticipantRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -341,6 +343,35 @@ struct ApmProcessReverseStreamResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ApmProcessReverseStreamResponseDefaultTypeInternal _ApmProcessReverseStreamResponse_default_instance_;
+PROTOBUF_CONSTEXPR ApmSetStreamDelayRequest::ApmSetStreamDelayRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.apm_handle_)*/uint64_t{0u}
+  , /*decltype(_impl_.delay_ms_)*/0} {}
+struct ApmSetStreamDelayRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ApmSetStreamDelayRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ApmSetStreamDelayRequestDefaultTypeInternal() {}
+  union {
+    ApmSetStreamDelayRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ApmSetStreamDelayRequestDefaultTypeInternal _ApmSetStreamDelayRequest_default_instance_;
+PROTOBUF_CONSTEXPR ApmSetStreamDelayResponse::ApmSetStreamDelayResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.error_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}} {}
+struct ApmSetStreamDelayResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ApmSetStreamDelayResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ApmSetStreamDelayResponseDefaultTypeInternal() {}
+  union {
+    ApmSetStreamDelayResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ApmSetStreamDelayResponseDefaultTypeInternal _ApmSetStreamDelayResponse_default_instance_;
 PROTOBUF_CONSTEXPR NewSoxResamplerRequest::NewSoxResamplerRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
@@ -682,7 +713,7 @@ struct LoadAudioFilterPluginResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LoadAudioFilterPluginResponseDefaultTypeInternal _LoadAudioFilterPluginResponse_default_instance_;
 }  // namespace proto
 }  // namespace livekit
-static ::_pb::Metadata file_level_metadata_audio_5fframe_2eproto[44];
+static ::_pb::Metadata file_level_metadata_audio_5fframe_2eproto[46];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_audio_5fframe_2eproto[5];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_audio_5fframe_2eproto = nullptr;
 
@@ -699,12 +730,14 @@ const uint32_t TableStruct_audio_5fframe_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::proto::NewAudioStreamRequest, _impl_.num_channels_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::NewAudioStreamRequest, _impl_.audio_filter_module_id_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::NewAudioStreamRequest, _impl_.audio_filter_options_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::NewAudioStreamRequest, _impl_.frame_size_ms_),
   2,
   3,
   4,
   5,
   0,
   1,
+  6,
   PROTOBUF_FIELD_OFFSET(::livekit::proto::NewAudioStreamResponse, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::NewAudioStreamResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -726,6 +759,7 @@ const uint32_t TableStruct_audio_5fframe_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::livekit::proto::AudioStreamFromParticipantRequest, _impl_.num_channels_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::AudioStreamFromParticipantRequest, _impl_.audio_filter_module_id_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::AudioStreamFromParticipantRequest, _impl_.audio_filter_options_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::AudioStreamFromParticipantRequest, _impl_.frame_size_ms_),
   2,
   3,
   4,
@@ -733,6 +767,7 @@ const uint32_t TableStruct_audio_5fframe_2eproto::offsets[] PROTOBUF_SECTION_VAR
   6,
   0,
   1,
+  7,
   PROTOBUF_FIELD_OFFSET(::livekit::proto::AudioStreamFromParticipantResponse, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::AudioStreamFromParticipantResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -912,6 +947,24 @@ const uint32_t TableStruct_audio_5fframe_2eproto::offsets[] PROTOBUF_SECTION_VAR
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::livekit::proto::ApmProcessReverseStreamResponse, _impl_.error_),
+  0,
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ApmSetStreamDelayRequest, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ApmSetStreamDelayRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ApmSetStreamDelayRequest, _impl_.apm_handle_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ApmSetStreamDelayRequest, _impl_.delay_ms_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ApmSetStreamDelayResponse, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ApmSetStreamDelayResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ApmSetStreamDelayResponse, _impl_.error_),
   0,
   PROTOBUF_FIELD_OFFSET(::livekit::proto::NewSoxResamplerRequest, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::NewSoxResamplerRequest, _internal_metadata_),
@@ -1147,50 +1200,52 @@ const uint32_t TableStruct_audio_5fframe_2eproto::offsets[] PROTOBUF_SECTION_VAR
   0,
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 12, -1, sizeof(::livekit::proto::NewAudioStreamRequest)},
-  { 18, 25, -1, sizeof(::livekit::proto::NewAudioStreamResponse)},
-  { 26, 39, -1, sizeof(::livekit::proto::AudioStreamFromParticipantRequest)},
-  { 46, 53, -1, sizeof(::livekit::proto::AudioStreamFromParticipantResponse)},
-  { 54, 65, -1, sizeof(::livekit::proto::NewAudioSourceRequest)},
-  { 70, 77, -1, sizeof(::livekit::proto::NewAudioSourceResponse)},
-  { 78, 86, -1, sizeof(::livekit::proto::CaptureAudioFrameRequest)},
-  { 88, 95, -1, sizeof(::livekit::proto::CaptureAudioFrameResponse)},
-  { 96, 104, -1, sizeof(::livekit::proto::CaptureAudioFrameCallback)},
-  { 106, 113, -1, sizeof(::livekit::proto::ClearAudioBufferRequest)},
-  { 114, -1, -1, sizeof(::livekit::proto::ClearAudioBufferResponse)},
-  { 120, -1, -1, sizeof(::livekit::proto::NewAudioResamplerRequest)},
-  { 126, 133, -1, sizeof(::livekit::proto::NewAudioResamplerResponse)},
-  { 134, 144, -1, sizeof(::livekit::proto::RemixAndResampleRequest)},
-  { 148, 155, -1, sizeof(::livekit::proto::RemixAndResampleResponse)},
-  { 156, 166, -1, sizeof(::livekit::proto::NewApmRequest)},
-  { 170, 177, -1, sizeof(::livekit::proto::NewApmResponse)},
-  { 178, 189, -1, sizeof(::livekit::proto::ApmProcessStreamRequest)},
-  { 194, 201, -1, sizeof(::livekit::proto::ApmProcessStreamResponse)},
-  { 202, 213, -1, sizeof(::livekit::proto::ApmProcessReverseStreamRequest)},
-  { 218, 225, -1, sizeof(::livekit::proto::ApmProcessReverseStreamResponse)},
-  { 226, 239, -1, sizeof(::livekit::proto::NewSoxResamplerRequest)},
-  { 246, -1, -1, sizeof(::livekit::proto::NewSoxResamplerResponse)},
-  { 255, 264, -1, sizeof(::livekit::proto::PushSoxResamplerRequest)},
-  { 267, 276, -1, sizeof(::livekit::proto::PushSoxResamplerResponse)},
-  { 279, 286, -1, sizeof(::livekit::proto::FlushSoxResamplerRequest)},
-  { 287, 296, -1, sizeof(::livekit::proto::FlushSoxResamplerResponse)},
-  { 299, 309, -1, sizeof(::livekit::proto::AudioFrameBufferInfo)},
-  { 313, 321, -1, sizeof(::livekit::proto::OwnedAudioFrameBuffer)},
-  { 323, 330, -1, sizeof(::livekit::proto::AudioStreamInfo)},
-  { 331, 339, -1, sizeof(::livekit::proto::OwnedAudioStream)},
-  { 341, 351, -1, sizeof(::livekit::proto::AudioStreamEvent)},
-  { 354, 361, -1, sizeof(::livekit::proto::AudioFrameReceived)},
-  { 362, -1, -1, sizeof(::livekit::proto::AudioStreamEOS)},
-  { 368, 377, -1, sizeof(::livekit::proto::AudioSourceOptions)},
-  { 380, 387, -1, sizeof(::livekit::proto::AudioSourceInfo)},
-  { 388, 396, -1, sizeof(::livekit::proto::OwnedAudioSource)},
-  { 398, -1, -1, sizeof(::livekit::proto::AudioResamplerInfo)},
-  { 404, 412, -1, sizeof(::livekit::proto::OwnedAudioResampler)},
-  { 414, 421, -1, sizeof(::livekit::proto::OwnedApm)},
-  { 422, -1, -1, sizeof(::livekit::proto::SoxResamplerInfo)},
-  { 428, 436, -1, sizeof(::livekit::proto::OwnedSoxResampler)},
-  { 438, 447, -1, sizeof(::livekit::proto::LoadAudioFilterPluginRequest)},
-  { 450, 457, -1, sizeof(::livekit::proto::LoadAudioFilterPluginResponse)},
+  { 0, 13, -1, sizeof(::livekit::proto::NewAudioStreamRequest)},
+  { 20, 27, -1, sizeof(::livekit::proto::NewAudioStreamResponse)},
+  { 28, 42, -1, sizeof(::livekit::proto::AudioStreamFromParticipantRequest)},
+  { 50, 57, -1, sizeof(::livekit::proto::AudioStreamFromParticipantResponse)},
+  { 58, 69, -1, sizeof(::livekit::proto::NewAudioSourceRequest)},
+  { 74, 81, -1, sizeof(::livekit::proto::NewAudioSourceResponse)},
+  { 82, 90, -1, sizeof(::livekit::proto::CaptureAudioFrameRequest)},
+  { 92, 99, -1, sizeof(::livekit::proto::CaptureAudioFrameResponse)},
+  { 100, 108, -1, sizeof(::livekit::proto::CaptureAudioFrameCallback)},
+  { 110, 117, -1, sizeof(::livekit::proto::ClearAudioBufferRequest)},
+  { 118, -1, -1, sizeof(::livekit::proto::ClearAudioBufferResponse)},
+  { 124, -1, -1, sizeof(::livekit::proto::NewAudioResamplerRequest)},
+  { 130, 137, -1, sizeof(::livekit::proto::NewAudioResamplerResponse)},
+  { 138, 148, -1, sizeof(::livekit::proto::RemixAndResampleRequest)},
+  { 152, 159, -1, sizeof(::livekit::proto::RemixAndResampleResponse)},
+  { 160, 170, -1, sizeof(::livekit::proto::NewApmRequest)},
+  { 174, 181, -1, sizeof(::livekit::proto::NewApmResponse)},
+  { 182, 193, -1, sizeof(::livekit::proto::ApmProcessStreamRequest)},
+  { 198, 205, -1, sizeof(::livekit::proto::ApmProcessStreamResponse)},
+  { 206, 217, -1, sizeof(::livekit::proto::ApmProcessReverseStreamRequest)},
+  { 222, 229, -1, sizeof(::livekit::proto::ApmProcessReverseStreamResponse)},
+  { 230, 238, -1, sizeof(::livekit::proto::ApmSetStreamDelayRequest)},
+  { 240, 247, -1, sizeof(::livekit::proto::ApmSetStreamDelayResponse)},
+  { 248, 261, -1, sizeof(::livekit::proto::NewSoxResamplerRequest)},
+  { 268, -1, -1, sizeof(::livekit::proto::NewSoxResamplerResponse)},
+  { 277, 286, -1, sizeof(::livekit::proto::PushSoxResamplerRequest)},
+  { 289, 298, -1, sizeof(::livekit::proto::PushSoxResamplerResponse)},
+  { 301, 308, -1, sizeof(::livekit::proto::FlushSoxResamplerRequest)},
+  { 309, 318, -1, sizeof(::livekit::proto::FlushSoxResamplerResponse)},
+  { 321, 331, -1, sizeof(::livekit::proto::AudioFrameBufferInfo)},
+  { 335, 343, -1, sizeof(::livekit::proto::OwnedAudioFrameBuffer)},
+  { 345, 352, -1, sizeof(::livekit::proto::AudioStreamInfo)},
+  { 353, 361, -1, sizeof(::livekit::proto::OwnedAudioStream)},
+  { 363, 373, -1, sizeof(::livekit::proto::AudioStreamEvent)},
+  { 376, 383, -1, sizeof(::livekit::proto::AudioFrameReceived)},
+  { 384, -1, -1, sizeof(::livekit::proto::AudioStreamEOS)},
+  { 390, 399, -1, sizeof(::livekit::proto::AudioSourceOptions)},
+  { 402, 409, -1, sizeof(::livekit::proto::AudioSourceInfo)},
+  { 410, 418, -1, sizeof(::livekit::proto::OwnedAudioSource)},
+  { 420, -1, -1, sizeof(::livekit::proto::AudioResamplerInfo)},
+  { 426, 434, -1, sizeof(::livekit::proto::OwnedAudioResampler)},
+  { 436, 443, -1, sizeof(::livekit::proto::OwnedApm)},
+  { 444, -1, -1, sizeof(::livekit::proto::SoxResamplerInfo)},
+  { 450, 458, -1, sizeof(::livekit::proto::OwnedSoxResampler)},
+  { 460, 469, -1, sizeof(::livekit::proto::LoadAudioFilterPluginRequest)},
+  { 472, 479, -1, sizeof(::livekit::proto::LoadAudioFilterPluginResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -1215,6 +1270,8 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::livekit::proto::_ApmProcessStreamResponse_default_instance_._instance,
   &::livekit::proto::_ApmProcessReverseStreamRequest_default_instance_._instance,
   &::livekit::proto::_ApmProcessReverseStreamResponse_default_instance_._instance,
+  &::livekit::proto::_ApmSetStreamDelayRequest_default_instance_._instance,
+  &::livekit::proto::_ApmSetStreamDelayResponse_default_instance_._instance,
   &::livekit::proto::_NewSoxResamplerRequest_default_instance_._instance,
   &::livekit::proto::_NewSoxResamplerResponse_default_instance_._instance,
   &::livekit::proto::_PushSoxResamplerRequest_default_instance_._instance,
@@ -1242,125 +1299,128 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_audio_5fframe_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\021audio_frame.proto\022\rlivekit.proto\032\014hand"
-  "le.proto\032\013track.proto\"\304\001\n\025NewAudioStream"
+  "le.proto\032\013track.proto\"\333\001\n\025NewAudioStream"
   "Request\022\024\n\014track_handle\030\001 \002(\004\022,\n\004type\030\002 "
   "\002(\0162\036.livekit.proto.AudioStreamType\022\023\n\013s"
   "ample_rate\030\003 \001(\r\022\024\n\014num_channels\030\004 \001(\r\022\036"
   "\n\026audio_filter_module_id\030\005 \001(\t\022\034\n\024audio_"
-  "filter_options\030\006 \001(\t\"I\n\026NewAudioStreamRe"
+  "filter_options\030\006 \001(\t\022\025\n\rframe_size_ms\030\007 "
+  "\001(\r\"I\n\026NewAudioStreamResponse\022/\n\006stream\030"
+  "\001 \002(\0132\037.livekit.proto.OwnedAudioStream\"\237"
+  "\002\n!AudioStreamFromParticipantRequest\022\032\n\022"
+  "participant_handle\030\001 \002(\004\022,\n\004type\030\002 \002(\0162\036"
+  ".livekit.proto.AudioStreamType\0220\n\014track_"
+  "source\030\003 \001(\0162\032.livekit.proto.TrackSource"
+  "\022\023\n\013sample_rate\030\005 \001(\r\022\024\n\014num_channels\030\006 "
+  "\001(\r\022\036\n\026audio_filter_module_id\030\007 \001(\t\022\034\n\024a"
+  "udio_filter_options\030\010 \001(\t\022\025\n\rframe_size_"
+  "ms\030\t \001(\r\"U\n\"AudioStreamFromParticipantRe"
   "sponse\022/\n\006stream\030\001 \002(\0132\037.livekit.proto.O"
-  "wnedAudioStream\"\210\002\n!AudioStreamFromParti"
-  "cipantRequest\022\032\n\022participant_handle\030\001 \002("
-  "\004\022,\n\004type\030\002 \002(\0162\036.livekit.proto.AudioStr"
-  "eamType\0220\n\014track_source\030\003 \001(\0162\032.livekit."
-  "proto.TrackSource\022\023\n\013sample_rate\030\005 \001(\r\022\024"
-  "\n\014num_channels\030\006 \001(\r\022\036\n\026audio_filter_mod"
-  "ule_id\030\007 \001(\t\022\034\n\024audio_filter_options\030\010 \001"
-  "(\t\"U\n\"AudioStreamFromParticipantResponse"
-  "\022/\n\006stream\030\001 \002(\0132\037.livekit.proto.OwnedAu"
-  "dioStream\"\273\001\n\025NewAudioSourceRequest\022,\n\004t"
-  "ype\030\001 \002(\0162\036.livekit.proto.AudioSourceTyp"
-  "e\0222\n\007options\030\002 \001(\0132!.livekit.proto.Audio"
-  "SourceOptions\022\023\n\013sample_rate\030\003 \002(\r\022\024\n\014nu"
-  "m_channels\030\004 \002(\r\022\025\n\rqueue_size_ms\030\005 \001(\r\""
-  "I\n\026NewAudioSourceResponse\022/\n\006source\030\001 \002("
-  "\0132\037.livekit.proto.OwnedAudioSource\"f\n\030Ca"
-  "ptureAudioFrameRequest\022\025\n\rsource_handle\030"
-  "\001 \002(\004\0223\n\006buffer\030\002 \002(\0132#.livekit.proto.Au"
-  "dioFrameBufferInfo\"-\n\031CaptureAudioFrameR"
-  "esponse\022\020\n\010async_id\030\001 \002(\004\"<\n\031CaptureAudi"
-  "oFrameCallback\022\020\n\010async_id\030\001 \002(\004\022\r\n\005erro"
-  "r\030\002 \001(\t\"0\n\027ClearAudioBufferRequest\022\025\n\rso"
-  "urce_handle\030\001 \002(\004\"\032\n\030ClearAudioBufferRes"
-  "ponse\"\032\n\030NewAudioResamplerRequest\"R\n\031New"
-  "AudioResamplerResponse\0225\n\tresampler\030\001 \002("
-  "\0132\".livekit.proto.OwnedAudioResampler\"\223\001"
-  "\n\027RemixAndResampleRequest\022\030\n\020resampler_h"
+  "wnedAudioStream\"\273\001\n\025NewAudioSourceReques"
+  "t\022,\n\004type\030\001 \002(\0162\036.livekit.proto.AudioSou"
+  "rceType\0222\n\007options\030\002 \001(\0132!.livekit.proto"
+  ".AudioSourceOptions\022\023\n\013sample_rate\030\003 \002(\r"
+  "\022\024\n\014num_channels\030\004 \002(\r\022\025\n\rqueue_size_ms\030"
+  "\005 \001(\r\"I\n\026NewAudioSourceResponse\022/\n\006sourc"
+  "e\030\001 \002(\0132\037.livekit.proto.OwnedAudioSource"
+  "\"f\n\030CaptureAudioFrameRequest\022\025\n\rsource_h"
   "andle\030\001 \002(\004\0223\n\006buffer\030\002 \002(\0132#.livekit.pr"
-  "oto.AudioFrameBufferInfo\022\024\n\014num_channels"
-  "\030\003 \002(\r\022\023\n\013sample_rate\030\004 \002(\r\"P\n\030RemixAndR"
-  "esampleResponse\0224\n\006buffer\030\001 \002(\0132$.liveki"
-  "t.proto.OwnedAudioFrameBuffer\"\225\001\n\rNewApm"
-  "Request\022\036\n\026echo_canceller_enabled\030\001 \002(\010\022"
-  "\037\n\027gain_controller_enabled\030\002 \002(\010\022 \n\030high"
-  "_pass_filter_enabled\030\003 \002(\010\022!\n\031noise_supp"
-  "ression_enabled\030\004 \002(\010\"6\n\016NewApmResponse\022"
-  "$\n\003apm\030\001 \002(\0132\027.livekit.proto.OwnedApm\"x\n"
-  "\027ApmProcessStreamRequest\022\022\n\napm_handle\030\001"
-  " \002(\004\022\020\n\010data_ptr\030\002 \002(\004\022\014\n\004size\030\003 \002(\r\022\023\n\013"
-  "sample_rate\030\004 \002(\r\022\024\n\014num_channels\030\005 \002(\r\""
-  ")\n\030ApmProcessStreamResponse\022\r\n\005error\030\001 \001"
-  "(\t\"\177\n\036ApmProcessReverseStreamRequest\022\022\n\n"
-  "apm_handle\030\001 \002(\004\022\020\n\010data_ptr\030\002 \002(\004\022\014\n\004si"
-  "ze\030\003 \002(\r\022\023\n\013sample_rate\030\004 \002(\r\022\024\n\014num_cha"
-  "nnels\030\005 \002(\r\"0\n\037ApmProcessReverseStreamRe"
-  "sponse\022\r\n\005error\030\001 \001(\t\"\234\002\n\026NewSoxResample"
-  "rRequest\022\022\n\ninput_rate\030\001 \002(\001\022\023\n\013output_r"
-  "ate\030\002 \002(\001\022\024\n\014num_channels\030\003 \002(\r\022<\n\017input"
-  "_data_type\030\004 \002(\0162#.livekit.proto.SoxResa"
-  "mplerDataType\022=\n\020output_data_type\030\005 \002(\0162"
-  "#.livekit.proto.SoxResamplerDataType\0227\n\016"
-  "quality_recipe\030\006 \002(\0162\037.livekit.proto.Sox"
-  "QualityRecipe\022\r\n\005flags\030\007 \001(\r\"l\n\027NewSoxRe"
-  "samplerResponse\0225\n\tresampler\030\001 \001(\0132 .liv"
-  "ekit.proto.OwnedSoxResamplerH\000\022\017\n\005error\030"
-  "\002 \001(\tH\000B\t\n\007message\"S\n\027PushSoxResamplerRe"
-  "quest\022\030\n\020resampler_handle\030\001 \002(\004\022\020\n\010data_"
-  "ptr\030\002 \002(\004\022\014\n\004size\030\003 \002(\r\"K\n\030PushSoxResamp"
-  "lerResponse\022\022\n\noutput_ptr\030\001 \002(\004\022\014\n\004size\030"
-  "\002 \002(\r\022\r\n\005error\030\003 \001(\t\"4\n\030FlushSoxResample"
-  "rRequest\022\030\n\020resampler_handle\030\001 \002(\004\"L\n\031Fl"
-  "ushSoxResamplerResponse\022\022\n\noutput_ptr\030\001 "
-  "\002(\004\022\014\n\004size\030\002 \002(\r\022\r\n\005error\030\003 \001(\t\"p\n\024Audi"
-  "oFrameBufferInfo\022\020\n\010data_ptr\030\001 \002(\004\022\024\n\014nu"
-  "m_channels\030\002 \002(\r\022\023\n\013sample_rate\030\003 \002(\r\022\033\n"
-  "\023samples_per_channel\030\004 \002(\r\"y\n\025OwnedAudio"
-  "FrameBuffer\022-\n\006handle\030\001 \002(\0132\035.livekit.pr"
-  "oto.FfiOwnedHandle\0221\n\004info\030\002 \002(\0132#.livek"
-  "it.proto.AudioFrameBufferInfo\"\?\n\017AudioSt"
-  "reamInfo\022,\n\004type\030\001 \002(\0162\036.livekit.proto.A"
-  "udioStreamType\"o\n\020OwnedAudioStream\022-\n\006ha"
-  "ndle\030\001 \002(\0132\035.livekit.proto.FfiOwnedHandl"
-  "e\022,\n\004info\030\002 \002(\0132\036.livekit.proto.AudioStr"
-  "eamInfo\"\237\001\n\020AudioStreamEvent\022\025\n\rstream_h"
-  "andle\030\001 \002(\004\022;\n\016frame_received\030\002 \001(\0132!.li"
-  "vekit.proto.AudioFrameReceivedH\000\022,\n\003eos\030"
-  "\003 \001(\0132\035.livekit.proto.AudioStreamEOSH\000B\t"
-  "\n\007message\"I\n\022AudioFrameReceived\0223\n\005frame"
-  "\030\001 \002(\0132$.livekit.proto.OwnedAudioFrameBu"
-  "ffer\"\020\n\016AudioStreamEOS\"e\n\022AudioSourceOpt"
-  "ions\022\031\n\021echo_cancellation\030\001 \002(\010\022\031\n\021noise"
-  "_suppression\030\002 \002(\010\022\031\n\021auto_gain_control\030"
-  "\003 \002(\010\"\?\n\017AudioSourceInfo\022,\n\004type\030\002 \002(\0162\036"
-  ".livekit.proto.AudioSourceType\"o\n\020OwnedA"
-  "udioSource\022-\n\006handle\030\001 \002(\0132\035.livekit.pro"
-  "to.FfiOwnedHandle\022,\n\004info\030\002 \002(\0132\036.liveki"
-  "t.proto.AudioSourceInfo\"\024\n\022AudioResample"
-  "rInfo\"u\n\023OwnedAudioResampler\022-\n\006handle\030\001"
-  " \002(\0132\035.livekit.proto.FfiOwnedHandle\022/\n\004i"
-  "nfo\030\002 \002(\0132!.livekit.proto.AudioResampler"
-  "Info\"9\n\010OwnedApm\022-\n\006handle\030\001 \002(\0132\035.livek"
-  "it.proto.FfiOwnedHandle\"\022\n\020SoxResamplerI"
-  "nfo\"q\n\021OwnedSoxResampler\022-\n\006handle\030\001 \002(\013"
-  "2\035.livekit.proto.FfiOwnedHandle\022-\n\004info\030"
-  "\002 \002(\0132\037.livekit.proto.SoxResamplerInfo\"\\"
-  "\n\034LoadAudioFilterPluginRequest\022\023\n\013plugin"
-  "_path\030\001 \002(\t\022\024\n\014dependencies\030\002 \003(\t\022\021\n\tmod"
-  "ule_id\030\003 \002(\t\".\n\035LoadAudioFilterPluginRes"
-  "ponse\022\r\n\005error\030\001 \001(\t*J\n\024SoxResamplerData"
-  "Type\022\030\n\024SOXR_DATATYPE_INT16I\020\000\022\030\n\024SOXR_D"
-  "ATATYPE_INT16S\020\001*\213\001\n\020SoxQualityRecipe\022\026\n"
-  "\022SOXR_QUALITY_QUICK\020\000\022\024\n\020SOXR_QUALITY_LO"
-  "W\020\001\022\027\n\023SOXR_QUALITY_MEDIUM\020\002\022\025\n\021SOXR_QUA"
-  "LITY_HIGH\020\003\022\031\n\025SOXR_QUALITY_VERYHIGH\020\004*\227"
-  "\001\n\013SoxFlagBits\022\026\n\022SOXR_ROLLOFF_SMALL\020\000\022\027"
-  "\n\023SOXR_ROLLOFF_MEDIUM\020\001\022\025\n\021SOXR_ROLLOFF_"
-  "NONE\020\002\022\030\n\024SOXR_HIGH_PREC_CLOCK\020\003\022\031\n\025SOXR"
-  "_DOUBLE_PRECISION\020\004\022\013\n\007SOXR_VR\020\005*A\n\017Audi"
-  "oStreamType\022\027\n\023AUDIO_STREAM_NATIVE\020\000\022\025\n\021"
-  "AUDIO_STREAM_HTML\020\001**\n\017AudioSourceType\022\027"
-  "\n\023AUDIO_SOURCE_NATIVE\020\000B\020\252\002\rLiveKit.Prot"
-  "o"
+  "oto.AudioFrameBufferInfo\"-\n\031CaptureAudio"
+  "FrameResponse\022\020\n\010async_id\030\001 \002(\004\"<\n\031Captu"
+  "reAudioFrameCallback\022\020\n\010async_id\030\001 \002(\004\022\r"
+  "\n\005error\030\002 \001(\t\"0\n\027ClearAudioBufferRequest"
+  "\022\025\n\rsource_handle\030\001 \002(\004\"\032\n\030ClearAudioBuf"
+  "ferResponse\"\032\n\030NewAudioResamplerRequest\""
+  "R\n\031NewAudioResamplerResponse\0225\n\tresample"
+  "r\030\001 \002(\0132\".livekit.proto.OwnedAudioResamp"
+  "ler\"\223\001\n\027RemixAndResampleRequest\022\030\n\020resam"
+  "pler_handle\030\001 \002(\004\0223\n\006buffer\030\002 \002(\0132#.live"
+  "kit.proto.AudioFrameBufferInfo\022\024\n\014num_ch"
+  "annels\030\003 \002(\r\022\023\n\013sample_rate\030\004 \002(\r\"P\n\030Rem"
+  "ixAndResampleResponse\0224\n\006buffer\030\001 \002(\0132$."
+  "livekit.proto.OwnedAudioFrameBuffer\"\225\001\n\r"
+  "NewApmRequest\022\036\n\026echo_canceller_enabled\030"
+  "\001 \002(\010\022\037\n\027gain_controller_enabled\030\002 \002(\010\022 "
+  "\n\030high_pass_filter_enabled\030\003 \002(\010\022!\n\031nois"
+  "e_suppression_enabled\030\004 \002(\010\"6\n\016NewApmRes"
+  "ponse\022$\n\003apm\030\001 \002(\0132\027.livekit.proto.Owned"
+  "Apm\"x\n\027ApmProcessStreamRequest\022\022\n\napm_ha"
+  "ndle\030\001 \002(\004\022\020\n\010data_ptr\030\002 \002(\004\022\014\n\004size\030\003 \002"
+  "(\r\022\023\n\013sample_rate\030\004 \002(\r\022\024\n\014num_channels\030"
+  "\005 \002(\r\")\n\030ApmProcessStreamResponse\022\r\n\005err"
+  "or\030\001 \001(\t\"\177\n\036ApmProcessReverseStreamReque"
+  "st\022\022\n\napm_handle\030\001 \002(\004\022\020\n\010data_ptr\030\002 \002(\004"
+  "\022\014\n\004size\030\003 \002(\r\022\023\n\013sample_rate\030\004 \002(\r\022\024\n\014n"
+  "um_channels\030\005 \002(\r\"0\n\037ApmProcessReverseSt"
+  "reamResponse\022\r\n\005error\030\001 \001(\t\"@\n\030ApmSetStr"
+  "eamDelayRequest\022\022\n\napm_handle\030\001 \002(\004\022\020\n\010d"
+  "elay_ms\030\002 \002(\005\"*\n\031ApmSetStreamDelayRespon"
+  "se\022\r\n\005error\030\001 \001(\t\"\234\002\n\026NewSoxResamplerReq"
+  "uest\022\022\n\ninput_rate\030\001 \002(\001\022\023\n\013output_rate\030"
+  "\002 \002(\001\022\024\n\014num_channels\030\003 \002(\r\022<\n\017input_dat"
+  "a_type\030\004 \002(\0162#.livekit.proto.SoxResample"
+  "rDataType\022=\n\020output_data_type\030\005 \002(\0162#.li"
+  "vekit.proto.SoxResamplerDataType\0227\n\016qual"
+  "ity_recipe\030\006 \002(\0162\037.livekit.proto.SoxQual"
+  "ityRecipe\022\r\n\005flags\030\007 \001(\r\"l\n\027NewSoxResamp"
+  "lerResponse\0225\n\tresampler\030\001 \001(\0132 .livekit"
+  ".proto.OwnedSoxResamplerH\000\022\017\n\005error\030\002 \001("
+  "\tH\000B\t\n\007message\"S\n\027PushSoxResamplerReques"
+  "t\022\030\n\020resampler_handle\030\001 \002(\004\022\020\n\010data_ptr\030"
+  "\002 \002(\004\022\014\n\004size\030\003 \002(\r\"K\n\030PushSoxResamplerR"
+  "esponse\022\022\n\noutput_ptr\030\001 \002(\004\022\014\n\004size\030\002 \002("
+  "\r\022\r\n\005error\030\003 \001(\t\"4\n\030FlushSoxResamplerReq"
+  "uest\022\030\n\020resampler_handle\030\001 \002(\004\"L\n\031FlushS"
+  "oxResamplerResponse\022\022\n\noutput_ptr\030\001 \002(\004\022"
+  "\014\n\004size\030\002 \002(\r\022\r\n\005error\030\003 \001(\t\"p\n\024AudioFra"
+  "meBufferInfo\022\020\n\010data_ptr\030\001 \002(\004\022\024\n\014num_ch"
+  "annels\030\002 \002(\r\022\023\n\013sample_rate\030\003 \002(\r\022\033\n\023sam"
+  "ples_per_channel\030\004 \002(\r\"y\n\025OwnedAudioFram"
+  "eBuffer\022-\n\006handle\030\001 \002(\0132\035.livekit.proto."
+  "FfiOwnedHandle\0221\n\004info\030\002 \002(\0132#.livekit.p"
+  "roto.AudioFrameBufferInfo\"\?\n\017AudioStream"
+  "Info\022,\n\004type\030\001 \002(\0162\036.livekit.proto.Audio"
+  "StreamType\"o\n\020OwnedAudioStream\022-\n\006handle"
+  "\030\001 \002(\0132\035.livekit.proto.FfiOwnedHandle\022,\n"
+  "\004info\030\002 \002(\0132\036.livekit.proto.AudioStreamI"
+  "nfo\"\237\001\n\020AudioStreamEvent\022\025\n\rstream_handl"
+  "e\030\001 \002(\004\022;\n\016frame_received\030\002 \001(\0132!.liveki"
+  "t.proto.AudioFrameReceivedH\000\022,\n\003eos\030\003 \001("
+  "\0132\035.livekit.proto.AudioStreamEOSH\000B\t\n\007me"
+  "ssage\"I\n\022AudioFrameReceived\0223\n\005frame\030\001 \002"
+  "(\0132$.livekit.proto.OwnedAudioFrameBuffer"
+  "\"\020\n\016AudioStreamEOS\"e\n\022AudioSourceOptions"
+  "\022\031\n\021echo_cancellation\030\001 \002(\010\022\031\n\021noise_sup"
+  "pression\030\002 \002(\010\022\031\n\021auto_gain_control\030\003 \002("
+  "\010\"\?\n\017AudioSourceInfo\022,\n\004type\030\002 \002(\0162\036.liv"
+  "ekit.proto.AudioSourceType\"o\n\020OwnedAudio"
+  "Source\022-\n\006handle\030\001 \002(\0132\035.livekit.proto.F"
+  "fiOwnedHandle\022,\n\004info\030\002 \002(\0132\036.livekit.pr"
+  "oto.AudioSourceInfo\"\024\n\022AudioResamplerInf"
+  "o\"u\n\023OwnedAudioResampler\022-\n\006handle\030\001 \002(\013"
+  "2\035.livekit.proto.FfiOwnedHandle\022/\n\004info\030"
+  "\002 \002(\0132!.livekit.proto.AudioResamplerInfo"
+  "\"9\n\010OwnedApm\022-\n\006handle\030\001 \002(\0132\035.livekit.p"
+  "roto.FfiOwnedHandle\"\022\n\020SoxResamplerInfo\""
+  "q\n\021OwnedSoxResampler\022-\n\006handle\030\001 \002(\0132\035.l"
+  "ivekit.proto.FfiOwnedHandle\022-\n\004info\030\002 \002("
+  "\0132\037.livekit.proto.SoxResamplerInfo\"\\\n\034Lo"
+  "adAudioFilterPluginRequest\022\023\n\013plugin_pat"
+  "h\030\001 \002(\t\022\024\n\014dependencies\030\002 \003(\t\022\021\n\tmodule_"
+  "id\030\003 \002(\t\".\n\035LoadAudioFilterPluginRespons"
+  "e\022\r\n\005error\030\001 \001(\t*J\n\024SoxResamplerDataType"
+  "\022\030\n\024SOXR_DATATYPE_INT16I\020\000\022\030\n\024SOXR_DATAT"
+  "YPE_INT16S\020\001*\213\001\n\020SoxQualityRecipe\022\026\n\022SOX"
+  "R_QUALITY_QUICK\020\000\022\024\n\020SOXR_QUALITY_LOW\020\001\022"
+  "\027\n\023SOXR_QUALITY_MEDIUM\020\002\022\025\n\021SOXR_QUALITY"
+  "_HIGH\020\003\022\031\n\025SOXR_QUALITY_VERYHIGH\020\004*\227\001\n\013S"
+  "oxFlagBits\022\026\n\022SOXR_ROLLOFF_SMALL\020\000\022\027\n\023SO"
+  "XR_ROLLOFF_MEDIUM\020\001\022\025\n\021SOXR_ROLLOFF_NONE"
+  "\020\002\022\030\n\024SOXR_HIGH_PREC_CLOCK\020\003\022\031\n\025SOXR_DOU"
+  "BLE_PRECISION\020\004\022\013\n\007SOXR_VR\020\005*A\n\017AudioStr"
+  "eamType\022\027\n\023AUDIO_STREAM_NATIVE\020\000\022\025\n\021AUDI"
+  "O_STREAM_HTML\020\001**\n\017AudioSourceType\022\027\n\023AU"
+  "DIO_SOURCE_NATIVE\020\000B\020\252\002\rLiveKit.Proto"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_audio_5fframe_2eproto_deps[2] = {
   &::descriptor_table_handle_2eproto,
@@ -1368,9 +1428,9 @@ static const ::_pbi::DescriptorTable* const descriptor_table_audio_5fframe_2epro
 };
 static ::_pbi::once_flag descriptor_table_audio_5fframe_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_audio_5fframe_2eproto = {
-    false, false, 4761, descriptor_table_protodef_audio_5fframe_2eproto,
+    false, false, 4917, descriptor_table_protodef_audio_5fframe_2eproto,
     "audio_frame.proto",
-    &descriptor_table_audio_5fframe_2eproto_once, descriptor_table_audio_5fframe_2eproto_deps, 2, 44,
+    &descriptor_table_audio_5fframe_2eproto_once, descriptor_table_audio_5fframe_2eproto_deps, 2, 46,
     schemas, file_default_instances, TableStruct_audio_5fframe_2eproto::offsets,
     file_level_metadata_audio_5fframe_2eproto, file_level_enum_descriptors_audio_5fframe_2eproto,
     file_level_service_descriptors_audio_5fframe_2eproto,
@@ -1483,6 +1543,9 @@ class NewAudioStreamRequest::_Internal {
   static void set_has_audio_filter_options(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
+  static void set_has_frame_size_ms(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
   static bool MissingRequiredFields(const HasBits& has_bits) {
     return ((has_bits[0] & 0x0000000c) ^ 0x0000000c) != 0;
   }
@@ -1505,7 +1568,8 @@ NewAudioStreamRequest::NewAudioStreamRequest(const NewAudioStreamRequest& from)
     , decltype(_impl_.track_handle_){}
     , decltype(_impl_.type_){}
     , decltype(_impl_.sample_rate_){}
-    , decltype(_impl_.num_channels_){}};
+    , decltype(_impl_.num_channels_){}
+    , decltype(_impl_.frame_size_ms_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.audio_filter_module_id_.InitDefault();
@@ -1525,8 +1589,8 @@ NewAudioStreamRequest::NewAudioStreamRequest(const NewAudioStreamRequest& from)
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.track_handle_, &from._impl_.track_handle_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.num_channels_) -
-    reinterpret_cast<char*>(&_impl_.track_handle_)) + sizeof(_impl_.num_channels_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.frame_size_ms_) -
+    reinterpret_cast<char*>(&_impl_.track_handle_)) + sizeof(_impl_.frame_size_ms_));
   // @@protoc_insertion_point(copy_constructor:livekit.proto.NewAudioStreamRequest)
 }
 
@@ -1543,6 +1607,7 @@ inline void NewAudioStreamRequest::SharedCtor(
     , decltype(_impl_.type_){0}
     , decltype(_impl_.sample_rate_){0u}
     , decltype(_impl_.num_channels_){0u}
+    , decltype(_impl_.frame_size_ms_){0u}
   };
   _impl_.audio_filter_module_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1588,10 +1653,10 @@ void NewAudioStreamRequest::Clear() {
       _impl_.audio_filter_options_.ClearNonDefaultToEmpty();
     }
   }
-  if (cached_has_bits & 0x0000003cu) {
+  if (cached_has_bits & 0x0000007cu) {
     ::memset(&_impl_.track_handle_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.num_channels_) -
-        reinterpret_cast<char*>(&_impl_.track_handle_)) + sizeof(_impl_.num_channels_));
+        reinterpret_cast<char*>(&_impl_.frame_size_ms_) -
+        reinterpret_cast<char*>(&_impl_.track_handle_)) + sizeof(_impl_.frame_size_ms_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1665,6 +1730,15 @@ const char* NewAudioStreamRequest::_InternalParse(const char* ptr, ::_pbi::Parse
           #ifndef NDEBUG
           ::_pbi::VerifyUTF8(str, "livekit.proto.NewAudioStreamRequest.audio_filter_options");
           #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // optional uint32 frame_size_ms = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          _Internal::set_has_frame_size_ms(&has_bits);
+          _impl_.frame_size_ms_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -1744,6 +1818,12 @@ uint8_t* NewAudioStreamRequest::_InternalSerialize(
         6, this->_internal_audio_filter_options(), target);
   }
 
+  // optional uint32 frame_size_ms = 7;
+  if (cached_has_bits & 0x00000040u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_frame_size_ms(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1805,7 +1885,7 @@ size_t NewAudioStreamRequest::ByteSizeLong() const {
     }
 
   }
-  if (cached_has_bits & 0x00000030u) {
+  if (cached_has_bits & 0x00000070u) {
     // optional uint32 sample_rate = 3;
     if (cached_has_bits & 0x00000010u) {
       total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_sample_rate());
@@ -1814,6 +1894,11 @@ size_t NewAudioStreamRequest::ByteSizeLong() const {
     // optional uint32 num_channels = 4;
     if (cached_has_bits & 0x00000020u) {
       total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_num_channels());
+    }
+
+    // optional uint32 frame_size_ms = 7;
+    if (cached_has_bits & 0x00000040u) {
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_frame_size_ms());
     }
 
   }
@@ -1836,7 +1921,7 @@ void NewAudioStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000003fu) {
+  if (cached_has_bits & 0x0000007fu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_internal_set_audio_filter_module_id(from._internal_audio_filter_module_id());
     }
@@ -1854,6 +1939,9 @@ void NewAudioStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
     }
     if (cached_has_bits & 0x00000020u) {
       _this->_impl_.num_channels_ = from._impl_.num_channels_;
+    }
+    if (cached_has_bits & 0x00000040u) {
+      _this->_impl_.frame_size_ms_ = from._impl_.frame_size_ms_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
@@ -1887,8 +1975,8 @@ void NewAudioStreamRequest::InternalSwap(NewAudioStreamRequest* other) {
       &other->_impl_.audio_filter_options_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(NewAudioStreamRequest, _impl_.num_channels_)
-      + sizeof(NewAudioStreamRequest::_impl_.num_channels_)
+      PROTOBUF_FIELD_OFFSET(NewAudioStreamRequest, _impl_.frame_size_ms_)
+      + sizeof(NewAudioStreamRequest::_impl_.frame_size_ms_)
       - PROTOBUF_FIELD_OFFSET(NewAudioStreamRequest, _impl_.track_handle_)>(
           reinterpret_cast<char*>(&_impl_.track_handle_),
           reinterpret_cast<char*>(&other->_impl_.track_handle_));
@@ -2137,6 +2225,9 @@ class AudioStreamFromParticipantRequest::_Internal {
   static void set_has_audio_filter_options(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
+  static void set_has_frame_size_ms(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
   static bool MissingRequiredFields(const HasBits& has_bits) {
     return ((has_bits[0] & 0x0000000c) ^ 0x0000000c) != 0;
   }
@@ -2160,7 +2251,8 @@ AudioStreamFromParticipantRequest::AudioStreamFromParticipantRequest(const Audio
     , decltype(_impl_.type_){}
     , decltype(_impl_.track_source_){}
     , decltype(_impl_.sample_rate_){}
-    , decltype(_impl_.num_channels_){}};
+    , decltype(_impl_.num_channels_){}
+    , decltype(_impl_.frame_size_ms_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.audio_filter_module_id_.InitDefault();
@@ -2180,8 +2272,8 @@ AudioStreamFromParticipantRequest::AudioStreamFromParticipantRequest(const Audio
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.participant_handle_, &from._impl_.participant_handle_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.num_channels_) -
-    reinterpret_cast<char*>(&_impl_.participant_handle_)) + sizeof(_impl_.num_channels_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.frame_size_ms_) -
+    reinterpret_cast<char*>(&_impl_.participant_handle_)) + sizeof(_impl_.frame_size_ms_));
   // @@protoc_insertion_point(copy_constructor:livekit.proto.AudioStreamFromParticipantRequest)
 }
 
@@ -2199,6 +2291,7 @@ inline void AudioStreamFromParticipantRequest::SharedCtor(
     , decltype(_impl_.track_source_){0}
     , decltype(_impl_.sample_rate_){0u}
     , decltype(_impl_.num_channels_){0u}
+    , decltype(_impl_.frame_size_ms_){0u}
   };
   _impl_.audio_filter_module_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2244,10 +2337,10 @@ void AudioStreamFromParticipantRequest::Clear() {
       _impl_.audio_filter_options_.ClearNonDefaultToEmpty();
     }
   }
-  if (cached_has_bits & 0x0000007cu) {
+  if (cached_has_bits & 0x000000fcu) {
     ::memset(&_impl_.participant_handle_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.num_channels_) -
-        reinterpret_cast<char*>(&_impl_.participant_handle_)) + sizeof(_impl_.num_channels_));
+        reinterpret_cast<char*>(&_impl_.frame_size_ms_) -
+        reinterpret_cast<char*>(&_impl_.participant_handle_)) + sizeof(_impl_.frame_size_ms_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -2337,6 +2430,15 @@ const char* AudioStreamFromParticipantRequest::_InternalParse(const char* ptr, :
         } else
           goto handle_unusual;
         continue;
+      // optional uint32 frame_size_ms = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
+          _Internal::set_has_frame_size_ms(&has_bits);
+          _impl_.frame_size_ms_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -2420,6 +2522,12 @@ uint8_t* AudioStreamFromParticipantRequest::_InternalSerialize(
         8, this->_internal_audio_filter_options(), target);
   }
 
+  // optional uint32 frame_size_ms = 9;
+  if (cached_has_bits & 0x00000080u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(9, this->_internal_frame_size_ms(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2481,7 +2589,7 @@ size_t AudioStreamFromParticipantRequest::ByteSizeLong() const {
     }
 
   }
-  if (cached_has_bits & 0x00000070u) {
+  if (cached_has_bits & 0x000000f0u) {
     // optional .livekit.proto.TrackSource track_source = 3;
     if (cached_has_bits & 0x00000010u) {
       total_size += 1 +
@@ -2496,6 +2604,11 @@ size_t AudioStreamFromParticipantRequest::ByteSizeLong() const {
     // optional uint32 num_channels = 6;
     if (cached_has_bits & 0x00000040u) {
       total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_num_channels());
+    }
+
+    // optional uint32 frame_size_ms = 9;
+    if (cached_has_bits & 0x00000080u) {
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_frame_size_ms());
     }
 
   }
@@ -2518,7 +2631,7 @@ void AudioStreamFromParticipantRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Messa
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000007fu) {
+  if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_internal_set_audio_filter_module_id(from._internal_audio_filter_module_id());
     }
@@ -2539,6 +2652,9 @@ void AudioStreamFromParticipantRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Messa
     }
     if (cached_has_bits & 0x00000040u) {
       _this->_impl_.num_channels_ = from._impl_.num_channels_;
+    }
+    if (cached_has_bits & 0x00000080u) {
+      _this->_impl_.frame_size_ms_ = from._impl_.frame_size_ms_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
@@ -2572,8 +2688,8 @@ void AudioStreamFromParticipantRequest::InternalSwap(AudioStreamFromParticipantR
       &other->_impl_.audio_filter_options_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(AudioStreamFromParticipantRequest, _impl_.num_channels_)
-      + sizeof(AudioStreamFromParticipantRequest::_impl_.num_channels_)
+      PROTOBUF_FIELD_OFFSET(AudioStreamFromParticipantRequest, _impl_.frame_size_ms_)
+      + sizeof(AudioStreamFromParticipantRequest::_impl_.frame_size_ms_)
       - PROTOBUF_FIELD_OFFSET(AudioStreamFromParticipantRequest, _impl_.participant_handle_)>(
           reinterpret_cast<char*>(&_impl_.participant_handle_),
           reinterpret_cast<char*>(&other->_impl_.participant_handle_));
@@ -6787,6 +6903,480 @@ void ApmProcessReverseStreamResponse::InternalSwap(ApmProcessReverseStreamRespon
 
 // ===================================================================
 
+class ApmSetStreamDelayRequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<ApmSetStreamDelayRequest>()._impl_._has_bits_);
+  static void set_has_apm_handle(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_delay_ms(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000003) ^ 0x00000003) != 0;
+  }
+};
+
+ApmSetStreamDelayRequest::ApmSetStreamDelayRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.proto.ApmSetStreamDelayRequest)
+}
+ApmSetStreamDelayRequest::ApmSetStreamDelayRequest(const ApmSetStreamDelayRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ApmSetStreamDelayRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.apm_handle_){}
+    , decltype(_impl_.delay_ms_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.apm_handle_, &from._impl_.apm_handle_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.delay_ms_) -
+    reinterpret_cast<char*>(&_impl_.apm_handle_)) + sizeof(_impl_.delay_ms_));
+  // @@protoc_insertion_point(copy_constructor:livekit.proto.ApmSetStreamDelayRequest)
+}
+
+inline void ApmSetStreamDelayRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.apm_handle_){uint64_t{0u}}
+    , decltype(_impl_.delay_ms_){0}
+  };
+}
+
+ApmSetStreamDelayRequest::~ApmSetStreamDelayRequest() {
+  // @@protoc_insertion_point(destructor:livekit.proto.ApmSetStreamDelayRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ApmSetStreamDelayRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void ApmSetStreamDelayRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ApmSetStreamDelayRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.proto.ApmSetStreamDelayRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    ::memset(&_impl_.apm_handle_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.delay_ms_) -
+        reinterpret_cast<char*>(&_impl_.apm_handle_)) + sizeof(_impl_.delay_ms_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ApmSetStreamDelayRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required uint64 apm_handle = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _Internal::set_has_apm_handle(&has_bits);
+          _impl_.apm_handle_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required int32 delay_ms = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _Internal::set_has_delay_ms(&has_bits);
+          _impl_.delay_ms_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ApmSetStreamDelayRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.proto.ApmSetStreamDelayRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required uint64 apm_handle = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(1, this->_internal_apm_handle(), target);
+  }
+
+  // required int32 delay_ms = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_delay_ms(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.proto.ApmSetStreamDelayRequest)
+  return target;
+}
+
+size_t ApmSetStreamDelayRequest::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:livekit.proto.ApmSetStreamDelayRequest)
+  size_t total_size = 0;
+
+  if (_internal_has_apm_handle()) {
+    // required uint64 apm_handle = 1;
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_apm_handle());
+  }
+
+  if (_internal_has_delay_ms()) {
+    // required int32 delay_ms = 2;
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_delay_ms());
+  }
+
+  return total_size;
+}
+size_t ApmSetStreamDelayRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.proto.ApmSetStreamDelayRequest)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required uint64 apm_handle = 1;
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_apm_handle());
+
+    // required int32 delay_ms = 2;
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_delay_ms());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ApmSetStreamDelayRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ApmSetStreamDelayRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ApmSetStreamDelayRequest::GetClassData() const { return &_class_data_; }
+
+
+void ApmSetStreamDelayRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ApmSetStreamDelayRequest*>(&to_msg);
+  auto& from = static_cast<const ApmSetStreamDelayRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.proto.ApmSetStreamDelayRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_impl_.apm_handle_ = from._impl_.apm_handle_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_impl_.delay_ms_ = from._impl_.delay_ms_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ApmSetStreamDelayRequest::CopyFrom(const ApmSetStreamDelayRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.proto.ApmSetStreamDelayRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ApmSetStreamDelayRequest::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  return true;
+}
+
+void ApmSetStreamDelayRequest::InternalSwap(ApmSetStreamDelayRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ApmSetStreamDelayRequest, _impl_.delay_ms_)
+      + sizeof(ApmSetStreamDelayRequest::_impl_.delay_ms_)
+      - PROTOBUF_FIELD_OFFSET(ApmSetStreamDelayRequest, _impl_.apm_handle_)>(
+          reinterpret_cast<char*>(&_impl_.apm_handle_),
+          reinterpret_cast<char*>(&other->_impl_.apm_handle_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ApmSetStreamDelayRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
+      file_level_metadata_audio_5fframe_2eproto[21]);
+}
+
+// ===================================================================
+
+class ApmSetStreamDelayResponse::_Internal {
+ public:
+  using HasBits = decltype(std::declval<ApmSetStreamDelayResponse>()._impl_._has_bits_);
+  static void set_has_error(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+ApmSetStreamDelayResponse::ApmSetStreamDelayResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.proto.ApmSetStreamDelayResponse)
+}
+ApmSetStreamDelayResponse::ApmSetStreamDelayResponse(const ApmSetStreamDelayResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ApmSetStreamDelayResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.error_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.error_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_error()) {
+    _this->_impl_.error_.Set(from._internal_error(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:livekit.proto.ApmSetStreamDelayResponse)
+}
+
+inline void ApmSetStreamDelayResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.error_){}
+  };
+  _impl_.error_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+ApmSetStreamDelayResponse::~ApmSetStreamDelayResponse() {
+  // @@protoc_insertion_point(destructor:livekit.proto.ApmSetStreamDelayResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ApmSetStreamDelayResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.error_.Destroy();
+}
+
+void ApmSetStreamDelayResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ApmSetStreamDelayResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.proto.ApmSetStreamDelayResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.error_.ClearNonDefaultToEmpty();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ApmSetStreamDelayResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional string error = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_error();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "livekit.proto.ApmSetStreamDelayResponse.error");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ApmSetStreamDelayResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.proto.ApmSetStreamDelayResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // optional string error = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_error().data(), static_cast<int>(this->_internal_error().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "livekit.proto.ApmSetStreamDelayResponse.error");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_error(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.proto.ApmSetStreamDelayResponse)
+  return target;
+}
+
+size_t ApmSetStreamDelayResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.proto.ApmSetStreamDelayResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional string error = 1;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_error());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ApmSetStreamDelayResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ApmSetStreamDelayResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ApmSetStreamDelayResponse::GetClassData() const { return &_class_data_; }
+
+
+void ApmSetStreamDelayResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ApmSetStreamDelayResponse*>(&to_msg);
+  auto& from = static_cast<const ApmSetStreamDelayResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.proto.ApmSetStreamDelayResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_error()) {
+    _this->_internal_set_error(from._internal_error());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ApmSetStreamDelayResponse::CopyFrom(const ApmSetStreamDelayResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.proto.ApmSetStreamDelayResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ApmSetStreamDelayResponse::IsInitialized() const {
+  return true;
+}
+
+void ApmSetStreamDelayResponse::InternalSwap(ApmSetStreamDelayResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.error_, lhs_arena,
+      &other->_impl_.error_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ApmSetStreamDelayResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
+      file_level_metadata_audio_5fframe_2eproto[22]);
+}
+
+// ===================================================================
+
 class NewSoxResamplerRequest::_Internal {
  public:
   using HasBits = decltype(std::declval<NewSoxResamplerRequest>()._impl_._has_bits_);
@@ -7210,7 +7800,7 @@ void NewSoxResamplerRequest::InternalSwap(NewSoxResamplerRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata NewSoxResamplerRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[21]);
+      file_level_metadata_audio_5fframe_2eproto[23]);
 }
 
 // ===================================================================
@@ -7513,7 +8103,7 @@ void NewSoxResamplerResponse::InternalSwap(NewSoxResamplerResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata NewSoxResamplerResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[22]);
+      file_level_metadata_audio_5fframe_2eproto[24]);
 }
 
 // ===================================================================
@@ -7798,7 +8388,7 @@ void PushSoxResamplerRequest::InternalSwap(PushSoxResamplerRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PushSoxResamplerRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[23]);
+      file_level_metadata_audio_5fframe_2eproto[25]);
 }
 
 // ===================================================================
@@ -8112,7 +8702,7 @@ void PushSoxResamplerResponse::InternalSwap(PushSoxResamplerResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PushSoxResamplerResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[24]);
+      file_level_metadata_audio_5fframe_2eproto[26]);
 }
 
 // ===================================================================
@@ -8305,7 +8895,7 @@ void FlushSoxResamplerRequest::InternalSwap(FlushSoxResamplerRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FlushSoxResamplerRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[25]);
+      file_level_metadata_audio_5fframe_2eproto[27]);
 }
 
 // ===================================================================
@@ -8619,7 +9209,7 @@ void FlushSoxResamplerResponse::InternalSwap(FlushSoxResamplerResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FlushSoxResamplerResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[26]);
+      file_level_metadata_audio_5fframe_2eproto[28]);
 }
 
 // ===================================================================
@@ -8935,7 +9525,7 @@ void AudioFrameBufferInfo::InternalSwap(AudioFrameBufferInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioFrameBufferInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[27]);
+      file_level_metadata_audio_5fframe_2eproto[29]);
 }
 
 // ===================================================================
@@ -9228,7 +9818,7 @@ void OwnedAudioFrameBuffer::InternalSwap(OwnedAudioFrameBuffer* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata OwnedAudioFrameBuffer::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[28]);
+      file_level_metadata_audio_5fframe_2eproto[30]);
 }
 
 // ===================================================================
@@ -9427,7 +10017,7 @@ void AudioStreamInfo::InternalSwap(AudioStreamInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioStreamInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[29]);
+      file_level_metadata_audio_5fframe_2eproto[31]);
 }
 
 // ===================================================================
@@ -9720,7 +10310,7 @@ void OwnedAudioStream::InternalSwap(OwnedAudioStream* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata OwnedAudioStream::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[30]);
+      file_level_metadata_audio_5fframe_2eproto[32]);
 }
 
 // ===================================================================
@@ -10082,7 +10672,7 @@ void AudioStreamEvent::InternalSwap(AudioStreamEvent* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioStreamEvent::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[31]);
+      file_level_metadata_audio_5fframe_2eproto[33]);
 }
 
 // ===================================================================
@@ -10293,7 +10883,7 @@ void AudioFrameReceived::InternalSwap(AudioFrameReceived* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioFrameReceived::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[32]);
+      file_level_metadata_audio_5fframe_2eproto[34]);
 }
 
 // ===================================================================
@@ -10333,7 +10923,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*AudioStreamEOS::GetClassData()
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioStreamEOS::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[33]);
+      file_level_metadata_audio_5fframe_2eproto[35]);
 }
 
 // ===================================================================
@@ -10615,7 +11205,7 @@ void AudioSourceOptions::InternalSwap(AudioSourceOptions* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioSourceOptions::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[34]);
+      file_level_metadata_audio_5fframe_2eproto[36]);
 }
 
 // ===================================================================
@@ -10814,7 +11404,7 @@ void AudioSourceInfo::InternalSwap(AudioSourceInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioSourceInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[35]);
+      file_level_metadata_audio_5fframe_2eproto[37]);
 }
 
 // ===================================================================
@@ -11107,7 +11697,7 @@ void OwnedAudioSource::InternalSwap(OwnedAudioSource* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata OwnedAudioSource::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[36]);
+      file_level_metadata_audio_5fframe_2eproto[38]);
 }
 
 // ===================================================================
@@ -11147,7 +11737,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*AudioResamplerInfo::GetClassDa
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioResamplerInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[37]);
+      file_level_metadata_audio_5fframe_2eproto[39]);
 }
 
 // ===================================================================
@@ -11437,7 +12027,7 @@ void OwnedAudioResampler::InternalSwap(OwnedAudioResampler* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata OwnedAudioResampler::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[38]);
+      file_level_metadata_audio_5fframe_2eproto[40]);
 }
 
 // ===================================================================
@@ -11652,7 +12242,7 @@ void OwnedApm::InternalSwap(OwnedApm* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata OwnedApm::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[39]);
+      file_level_metadata_audio_5fframe_2eproto[41]);
 }
 
 // ===================================================================
@@ -11692,7 +12282,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SoxResamplerInfo::GetClassData
 ::PROTOBUF_NAMESPACE_ID::Metadata SoxResamplerInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[40]);
+      file_level_metadata_audio_5fframe_2eproto[42]);
 }
 
 // ===================================================================
@@ -11982,7 +12572,7 @@ void OwnedSoxResampler::InternalSwap(OwnedSoxResampler* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata OwnedSoxResampler::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[41]);
+      file_level_metadata_audio_5fframe_2eproto[43]);
 }
 
 // ===================================================================
@@ -12328,7 +12918,7 @@ void LoadAudioFilterPluginRequest::InternalSwap(LoadAudioFilterPluginRequest* ot
 ::PROTOBUF_NAMESPACE_ID::Metadata LoadAudioFilterPluginRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[42]);
+      file_level_metadata_audio_5fframe_2eproto[44]);
 }
 
 // ===================================================================
@@ -12548,7 +13138,7 @@ void LoadAudioFilterPluginResponse::InternalSwap(LoadAudioFilterPluginResponse* 
 ::PROTOBUF_NAMESPACE_ID::Metadata LoadAudioFilterPluginResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_audio_5fframe_2eproto_getter, &descriptor_table_audio_5fframe_2eproto_once,
-      file_level_metadata_audio_5fframe_2eproto[43]);
+      file_level_metadata_audio_5fframe_2eproto[45]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -12638,6 +13228,14 @@ Arena::CreateMaybeMessage< ::livekit::proto::ApmProcessReverseStreamRequest >(Ar
 template<> PROTOBUF_NOINLINE ::livekit::proto::ApmProcessReverseStreamResponse*
 Arena::CreateMaybeMessage< ::livekit::proto::ApmProcessReverseStreamResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::proto::ApmProcessReverseStreamResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::proto::ApmSetStreamDelayRequest*
+Arena::CreateMaybeMessage< ::livekit::proto::ApmSetStreamDelayRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::proto::ApmSetStreamDelayRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::proto::ApmSetStreamDelayResponse*
+Arena::CreateMaybeMessage< ::livekit::proto::ApmSetStreamDelayResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::proto::ApmSetStreamDelayResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::livekit::proto::NewSoxResamplerRequest*
 Arena::CreateMaybeMessage< ::livekit::proto::NewSoxResamplerRequest >(Arena* arena) {

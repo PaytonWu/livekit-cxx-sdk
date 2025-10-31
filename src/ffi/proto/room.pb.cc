@@ -709,6 +709,7 @@ PROTOBUF_CONSTEXPR TrackPublishOptions::TrackPublishOptions(
   , /*decltype(_impl_.dtx_)*/false
   , /*decltype(_impl_.red_)*/false
   , /*decltype(_impl_.simulcast_)*/false
+  , /*decltype(_impl_.preconnect_buffer_)*/false
   , /*decltype(_impl_.source_)*/0} {}
 struct TrackPublishOptionsDefaultTypeInternal {
   PROTOBUF_CONSTEXPR TrackPublishOptionsDefaultTypeInternal()
@@ -843,7 +844,14 @@ PROTOBUF_CONSTEXPR RoomInfo::RoomInfo(
   , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.metadata_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.lossy_dc_buffered_amount_low_threshold_)*/uint64_t{0u}
-  , /*decltype(_impl_.reliable_dc_buffered_amount_low_threshold_)*/uint64_t{0u}} {}
+  , /*decltype(_impl_.reliable_dc_buffered_amount_low_threshold_)*/uint64_t{0u}
+  , /*decltype(_impl_.empty_timeout_)*/0u
+  , /*decltype(_impl_.departure_timeout_)*/0u
+  , /*decltype(_impl_.creation_time_)*/int64_t{0}
+  , /*decltype(_impl_.max_participants_)*/0u
+  , /*decltype(_impl_.num_participants_)*/0u
+  , /*decltype(_impl_.num_publishers_)*/0u
+  , /*decltype(_impl_.active_recording_)*/false} {}
 struct RoomInfoDefaultTypeInternal {
   PROTOBUF_CONSTEXPR RoomInfoDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -868,6 +876,19 @@ struct OwnedRoomDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OwnedRoomDefaultTypeInternal _OwnedRoom_default_instance_;
+PROTOBUF_CONSTEXPR ParticipantsUpdated::ParticipantsUpdated(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.participants_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ParticipantsUpdatedDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ParticipantsUpdatedDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ParticipantsUpdatedDefaultTypeInternal() {}
+  union {
+    ParticipantsUpdated _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ParticipantsUpdatedDefaultTypeInternal _ParticipantsUpdated_default_instance_;
 PROTOBUF_CONSTEXPR ParticipantConnected::ParticipantConnected(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
@@ -1676,9 +1697,39 @@ struct DataChannelBufferedAmountLowThresholdChangedDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DataChannelBufferedAmountLowThresholdChangedDefaultTypeInternal _DataChannelBufferedAmountLowThresholdChanged_default_instance_;
+PROTOBUF_CONSTEXPR ByteStreamOpened::ByteStreamOpened(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.participant_identity_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.reader_)*/nullptr} {}
+struct ByteStreamOpenedDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ByteStreamOpenedDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ByteStreamOpenedDefaultTypeInternal() {}
+  union {
+    ByteStreamOpened _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ByteStreamOpenedDefaultTypeInternal _ByteStreamOpened_default_instance_;
+PROTOBUF_CONSTEXPR TextStreamOpened::TextStreamOpened(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.participant_identity_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.reader_)*/nullptr} {}
+struct TextStreamOpenedDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TextStreamOpenedDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TextStreamOpenedDefaultTypeInternal() {}
+  union {
+    TextStreamOpened _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TextStreamOpenedDefaultTypeInternal _TextStreamOpened_default_instance_;
 }  // namespace proto
 }  // namespace livekit
-static ::_pb::Metadata file_level_metadata_room_2eproto[110];
+static ::_pb::Metadata file_level_metadata_room_2eproto[113];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_room_2eproto[6];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_room_2eproto = nullptr;
 
@@ -2157,14 +2208,16 @@ const uint32_t TableStruct_room_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   PROTOBUF_FIELD_OFFSET(::livekit::proto::TrackPublishOptions, _impl_.simulcast_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::TrackPublishOptions, _impl_.source_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::TrackPublishOptions, _impl_.stream_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::TrackPublishOptions, _impl_.preconnect_buffer_),
   1,
   2,
   3,
   4,
   5,
   6,
-  7,
+  8,
   0,
+  7,
   PROTOBUF_FIELD_OFFSET(::livekit::proto::IceServer, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::IceServer, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2284,8 +2337,18 @@ const uint32_t TableStruct_room_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
   PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomEvent, _impl_.message_),
   0,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
   ~0u,
   ~0u,
   ~0u,
@@ -2329,11 +2392,25 @@ const uint32_t TableStruct_room_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.metadata_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.lossy_dc_buffered_amount_low_threshold_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.reliable_dc_buffered_amount_low_threshold_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.empty_timeout_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.departure_timeout_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.max_participants_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.creation_time_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.num_participants_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.num_publishers_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::RoomInfo, _impl_.active_recording_),
   0,
   1,
   2,
   3,
   4,
+  5,
+  6,
+  8,
+  7,
+  9,
+  10,
+  11,
   PROTOBUF_FIELD_OFFSET(::livekit::proto::OwnedRoom, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::OwnedRoom, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2344,6 +2421,13 @@ const uint32_t TableStruct_room_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   PROTOBUF_FIELD_OFFSET(::livekit::proto::OwnedRoom, _impl_.info_),
   0,
   1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ParticipantsUpdated, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ParticipantsUpdated, _impl_.participants_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::ParticipantConnected, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::livekit::proto::ParticipantConnected, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2903,6 +2987,26 @@ const uint32_t TableStruct_room_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   PROTOBUF_FIELD_OFFSET(::livekit::proto::DataChannelBufferedAmountLowThresholdChanged, _impl_.threshold_),
   1,
   0,
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ByteStreamOpened, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ByteStreamOpened, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ByteStreamOpened, _impl_.reader_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::ByteStreamOpened, _impl_.participant_identity_),
+  1,
+  0,
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::TextStreamOpened, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::TextStreamOpened, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::TextStreamOpened, _impl_.reader_),
+  PROTOBUF_FIELD_OFFSET(::livekit::proto::TextStreamOpened, _impl_.participant_identity_),
+  1,
+  0,
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 9, -1, sizeof(::livekit::proto::ConnectRequest)},
@@ -2950,71 +3054,74 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 429, 439, -1, sizeof(::livekit::proto::GetSessionStatsCallback)},
   { 442, 450, -1, sizeof(::livekit::proto::VideoEncoding)},
   { 452, 459, -1, sizeof(::livekit::proto::AudioEncoding)},
-  { 460, 474, -1, sizeof(::livekit::proto::TrackPublishOptions)},
-  { 482, 491, -1, sizeof(::livekit::proto::IceServer)},
-  { 494, 503, -1, sizeof(::livekit::proto::RtcConfig)},
-  { 506, 518, -1, sizeof(::livekit::proto::RoomOptions)},
-  { 524, 536, -1, sizeof(::livekit::proto::TranscriptionSegment)},
-  { 542, 550, -1, sizeof(::livekit::proto::BufferInfo)},
-  { 552, 560, -1, sizeof(::livekit::proto::OwnedBuffer)},
-  { 562, 602, -1, sizeof(::livekit::proto::RoomEvent)},
-  { 635, 646, -1, sizeof(::livekit::proto::RoomInfo)},
-  { 651, 659, -1, sizeof(::livekit::proto::OwnedRoom)},
-  { 661, 668, -1, sizeof(::livekit::proto::ParticipantConnected)},
-  { 669, 677, -1, sizeof(::livekit::proto::ParticipantDisconnected)},
-  { 679, 686, -1, sizeof(::livekit::proto::LocalTrackPublished)},
-  { 687, 694, -1, sizeof(::livekit::proto::LocalTrackUnpublished)},
-  { 695, 702, -1, sizeof(::livekit::proto::LocalTrackSubscribed)},
-  { 703, 711, -1, sizeof(::livekit::proto::TrackPublished)},
-  { 713, 721, -1, sizeof(::livekit::proto::TrackUnpublished)},
-  { 723, 731, -1, sizeof(::livekit::proto::TrackSubscribed)},
-  { 733, 741, -1, sizeof(::livekit::proto::TrackUnsubscribed)},
-  { 743, 752, -1, sizeof(::livekit::proto::TrackSubscriptionFailed)},
-  { 755, 763, -1, sizeof(::livekit::proto::TrackMuted)},
-  { 765, 773, -1, sizeof(::livekit::proto::TrackUnmuted)},
-  { 775, 783, -1, sizeof(::livekit::proto::E2eeStateChanged)},
-  { 785, -1, -1, sizeof(::livekit::proto::ActiveSpeakersChanged)},
-  { 792, 799, -1, sizeof(::livekit::proto::RoomMetadataChanged)},
-  { 800, 807, -1, sizeof(::livekit::proto::RoomSidChanged)},
-  { 808, 816, -1, sizeof(::livekit::proto::ParticipantMetadataChanged)},
-  { 818, 827, -1, sizeof(::livekit::proto::ParticipantAttributesChanged)},
-  { 830, 838, -1, sizeof(::livekit::proto::ParticipantNameChanged)},
-  { 840, 848, -1, sizeof(::livekit::proto::ConnectionQualityChanged)},
-  { 850, 858, -1, sizeof(::livekit::proto::UserPacket)},
-  { 860, 872, -1, sizeof(::livekit::proto::ChatMessage)},
-  { 878, 886, -1, sizeof(::livekit::proto::ChatMessageReceived)},
-  { 888, 896, -1, sizeof(::livekit::proto::SipDTMF)},
-  { 898, 909, -1, sizeof(::livekit::proto::DataPacketReceived)},
-  { 913, 922, -1, sizeof(::livekit::proto::TranscriptionReceived)},
-  { 925, 932, -1, sizeof(::livekit::proto::ConnectionStateChanged)},
-  { 933, -1, -1, sizeof(::livekit::proto::Connected)},
-  { 939, 946, -1, sizeof(::livekit::proto::Disconnected)},
-  { 947, -1, -1, sizeof(::livekit::proto::Reconnecting)},
-  { 953, -1, -1, sizeof(::livekit::proto::Reconnected)},
-  { 959, -1, -1, sizeof(::livekit::proto::RoomEOS)},
-  { 965, 976, -1, sizeof(::livekit::proto::DataStream_TextHeader)},
-  { 981, 988, -1, sizeof(::livekit::proto::DataStream_ByteHeader)},
-  { 989, 997, -1, sizeof(::livekit::proto::DataStream_Header_AttributesEntry_DoNotUse)},
-  { 999, 1014, -1, sizeof(::livekit::proto::DataStream_Header)},
-  { 1022, 1033, -1, sizeof(::livekit::proto::DataStream_Chunk)},
-  { 1038, 1046, -1, sizeof(::livekit::proto::DataStream_Trailer_AttributesEntry_DoNotUse)},
-  { 1048, 1057, -1, sizeof(::livekit::proto::DataStream_Trailer)},
-  { 1060, -1, -1, sizeof(::livekit::proto::DataStream)},
-  { 1066, 1074, -1, sizeof(::livekit::proto::DataStreamHeaderReceived)},
-  { 1076, 1084, -1, sizeof(::livekit::proto::DataStreamChunkReceived)},
-  { 1086, 1094, -1, sizeof(::livekit::proto::DataStreamTrailerReceived)},
-  { 1096, 1106, -1, sizeof(::livekit::proto::SendStreamHeaderRequest)},
-  { 1110, 1120, -1, sizeof(::livekit::proto::SendStreamChunkRequest)},
-  { 1124, 1134, -1, sizeof(::livekit::proto::SendStreamTrailerRequest)},
-  { 1138, 1145, -1, sizeof(::livekit::proto::SendStreamHeaderResponse)},
-  { 1146, 1153, -1, sizeof(::livekit::proto::SendStreamChunkResponse)},
-  { 1154, 1161, -1, sizeof(::livekit::proto::SendStreamTrailerResponse)},
-  { 1162, 1170, -1, sizeof(::livekit::proto::SendStreamHeaderCallback)},
-  { 1172, 1180, -1, sizeof(::livekit::proto::SendStreamChunkCallback)},
-  { 1182, 1190, -1, sizeof(::livekit::proto::SendStreamTrailerCallback)},
-  { 1192, 1201, -1, sizeof(::livekit::proto::SetDataChannelBufferedAmountLowThresholdRequest)},
-  { 1204, -1, -1, sizeof(::livekit::proto::SetDataChannelBufferedAmountLowThresholdResponse)},
-  { 1210, 1218, -1, sizeof(::livekit::proto::DataChannelBufferedAmountLowThresholdChanged)},
+  { 460, 475, -1, sizeof(::livekit::proto::TrackPublishOptions)},
+  { 484, 493, -1, sizeof(::livekit::proto::IceServer)},
+  { 496, 505, -1, sizeof(::livekit::proto::RtcConfig)},
+  { 508, 520, -1, sizeof(::livekit::proto::RoomOptions)},
+  { 526, 538, -1, sizeof(::livekit::proto::TranscriptionSegment)},
+  { 544, 552, -1, sizeof(::livekit::proto::BufferInfo)},
+  { 554, 562, -1, sizeof(::livekit::proto::OwnedBuffer)},
+  { 564, 609, -1, sizeof(::livekit::proto::RoomEvent)},
+  { 647, 665, -1, sizeof(::livekit::proto::RoomInfo)},
+  { 677, 685, -1, sizeof(::livekit::proto::OwnedRoom)},
+  { 687, -1, -1, sizeof(::livekit::proto::ParticipantsUpdated)},
+  { 694, 701, -1, sizeof(::livekit::proto::ParticipantConnected)},
+  { 702, 710, -1, sizeof(::livekit::proto::ParticipantDisconnected)},
+  { 712, 719, -1, sizeof(::livekit::proto::LocalTrackPublished)},
+  { 720, 727, -1, sizeof(::livekit::proto::LocalTrackUnpublished)},
+  { 728, 735, -1, sizeof(::livekit::proto::LocalTrackSubscribed)},
+  { 736, 744, -1, sizeof(::livekit::proto::TrackPublished)},
+  { 746, 754, -1, sizeof(::livekit::proto::TrackUnpublished)},
+  { 756, 764, -1, sizeof(::livekit::proto::TrackSubscribed)},
+  { 766, 774, -1, sizeof(::livekit::proto::TrackUnsubscribed)},
+  { 776, 785, -1, sizeof(::livekit::proto::TrackSubscriptionFailed)},
+  { 788, 796, -1, sizeof(::livekit::proto::TrackMuted)},
+  { 798, 806, -1, sizeof(::livekit::proto::TrackUnmuted)},
+  { 808, 816, -1, sizeof(::livekit::proto::E2eeStateChanged)},
+  { 818, -1, -1, sizeof(::livekit::proto::ActiveSpeakersChanged)},
+  { 825, 832, -1, sizeof(::livekit::proto::RoomMetadataChanged)},
+  { 833, 840, -1, sizeof(::livekit::proto::RoomSidChanged)},
+  { 841, 849, -1, sizeof(::livekit::proto::ParticipantMetadataChanged)},
+  { 851, 860, -1, sizeof(::livekit::proto::ParticipantAttributesChanged)},
+  { 863, 871, -1, sizeof(::livekit::proto::ParticipantNameChanged)},
+  { 873, 881, -1, sizeof(::livekit::proto::ConnectionQualityChanged)},
+  { 883, 891, -1, sizeof(::livekit::proto::UserPacket)},
+  { 893, 905, -1, sizeof(::livekit::proto::ChatMessage)},
+  { 911, 919, -1, sizeof(::livekit::proto::ChatMessageReceived)},
+  { 921, 929, -1, sizeof(::livekit::proto::SipDTMF)},
+  { 931, 942, -1, sizeof(::livekit::proto::DataPacketReceived)},
+  { 946, 955, -1, sizeof(::livekit::proto::TranscriptionReceived)},
+  { 958, 965, -1, sizeof(::livekit::proto::ConnectionStateChanged)},
+  { 966, -1, -1, sizeof(::livekit::proto::Connected)},
+  { 972, 979, -1, sizeof(::livekit::proto::Disconnected)},
+  { 980, -1, -1, sizeof(::livekit::proto::Reconnecting)},
+  { 986, -1, -1, sizeof(::livekit::proto::Reconnected)},
+  { 992, -1, -1, sizeof(::livekit::proto::RoomEOS)},
+  { 998, 1009, -1, sizeof(::livekit::proto::DataStream_TextHeader)},
+  { 1014, 1021, -1, sizeof(::livekit::proto::DataStream_ByteHeader)},
+  { 1022, 1030, -1, sizeof(::livekit::proto::DataStream_Header_AttributesEntry_DoNotUse)},
+  { 1032, 1047, -1, sizeof(::livekit::proto::DataStream_Header)},
+  { 1055, 1066, -1, sizeof(::livekit::proto::DataStream_Chunk)},
+  { 1071, 1079, -1, sizeof(::livekit::proto::DataStream_Trailer_AttributesEntry_DoNotUse)},
+  { 1081, 1090, -1, sizeof(::livekit::proto::DataStream_Trailer)},
+  { 1093, -1, -1, sizeof(::livekit::proto::DataStream)},
+  { 1099, 1107, -1, sizeof(::livekit::proto::DataStreamHeaderReceived)},
+  { 1109, 1117, -1, sizeof(::livekit::proto::DataStreamChunkReceived)},
+  { 1119, 1127, -1, sizeof(::livekit::proto::DataStreamTrailerReceived)},
+  { 1129, 1139, -1, sizeof(::livekit::proto::SendStreamHeaderRequest)},
+  { 1143, 1153, -1, sizeof(::livekit::proto::SendStreamChunkRequest)},
+  { 1157, 1167, -1, sizeof(::livekit::proto::SendStreamTrailerRequest)},
+  { 1171, 1178, -1, sizeof(::livekit::proto::SendStreamHeaderResponse)},
+  { 1179, 1186, -1, sizeof(::livekit::proto::SendStreamChunkResponse)},
+  { 1187, 1194, -1, sizeof(::livekit::proto::SendStreamTrailerResponse)},
+  { 1195, 1203, -1, sizeof(::livekit::proto::SendStreamHeaderCallback)},
+  { 1205, 1213, -1, sizeof(::livekit::proto::SendStreamChunkCallback)},
+  { 1215, 1223, -1, sizeof(::livekit::proto::SendStreamTrailerCallback)},
+  { 1225, 1234, -1, sizeof(::livekit::proto::SetDataChannelBufferedAmountLowThresholdRequest)},
+  { 1237, -1, -1, sizeof(::livekit::proto::SetDataChannelBufferedAmountLowThresholdResponse)},
+  { 1243, 1251, -1, sizeof(::livekit::proto::DataChannelBufferedAmountLowThresholdChanged)},
+  { 1253, 1261, -1, sizeof(::livekit::proto::ByteStreamOpened)},
+  { 1263, 1271, -1, sizeof(::livekit::proto::TextStreamOpened)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -3073,6 +3180,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::livekit::proto::_RoomEvent_default_instance_._instance,
   &::livekit::proto::_RoomInfo_default_instance_._instance,
   &::livekit::proto::_OwnedRoom_default_instance_._instance,
+  &::livekit::proto::_ParticipantsUpdated_default_instance_._instance,
   &::livekit::proto::_ParticipantConnected_default_instance_._instance,
   &::livekit::proto::_ParticipantDisconnected_default_instance_._instance,
   &::livekit::proto::_LocalTrackPublished_default_instance_._instance,
@@ -3128,323 +3236,346 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::livekit::proto::_SetDataChannelBufferedAmountLowThresholdRequest_default_instance_._instance,
   &::livekit::proto::_SetDataChannelBufferedAmountLowThresholdResponse_default_instance_._instance,
   &::livekit::proto::_DataChannelBufferedAmountLowThresholdChanged_default_instance_._instance,
+  &::livekit::proto::_ByteStreamOpened_default_instance_._instance,
+  &::livekit::proto::_TextStreamOpened_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_room_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\nroom.proto\022\rlivekit.proto\032\ne2ee.proto\032"
   "\014handle.proto\032\021participant.proto\032\013track."
-  "proto\032\021video_frame.proto\032\013stats.proto\"Y\n"
-  "\016ConnectRequest\022\013\n\003url\030\001 \002(\t\022\r\n\005token\030\002 "
-  "\002(\t\022+\n\007options\030\003 \002(\0132\032.livekit.proto.Roo"
-  "mOptions\"#\n\017ConnectResponse\022\020\n\010async_id\030"
-  "\001 \002(\004\"\277\003\n\017ConnectCallback\022\020\n\010async_id\030\001 "
-  "\002(\004\022\017\n\005error\030\002 \001(\tH\000\0227\n\006result\030\003 \001(\0132%.l"
-  "ivekit.proto.ConnectCallback.ResultH\000\032\211\001"
-  "\n\025ParticipantWithTracks\0224\n\013participant\030\001"
-  " \002(\0132\037.livekit.proto.OwnedParticipant\022:\n"
-  "\014publications\030\002 \003(\0132$.livekit.proto.Owne"
-  "dTrackPublication\032\270\001\n\006Result\022&\n\004room\030\001 \002"
-  "(\0132\030.livekit.proto.OwnedRoom\022:\n\021local_pa"
-  "rticipant\030\002 \002(\0132\037.livekit.proto.OwnedPar"
-  "ticipant\022J\n\014participants\030\003 \003(\01324.livekit"
-  ".proto.ConnectCallback.ParticipantWithTr"
-  "acksB\t\n\007message\"(\n\021DisconnectRequest\022\023\n\013"
-  "room_handle\030\001 \002(\004\"&\n\022DisconnectResponse\022"
-  "\020\n\010async_id\030\001 \002(\004\"&\n\022DisconnectCallback\022"
-  "\020\n\010async_id\030\001 \002(\004\"\202\001\n\023PublishTrackReques"
-  "t\022 \n\030local_participant_handle\030\001 \002(\004\022\024\n\014t"
-  "rack_handle\030\002 \002(\004\0223\n\007options\030\003 \002(\0132\".liv"
-  "ekit.proto.TrackPublishOptions\"(\n\024Publis"
-  "hTrackResponse\022\020\n\010async_id\030\001 \002(\004\"\201\001\n\024Pub"
-  "lishTrackCallback\022\020\n\010async_id\030\001 \002(\004\022\017\n\005e"
-  "rror\030\002 \001(\tH\000\022;\n\013publication\030\003 \001(\0132$.live"
-  "kit.proto.OwnedTrackPublicationH\000B\t\n\007mes"
-  "sage\"g\n\025UnpublishTrackRequest\022 \n\030local_p"
-  "articipant_handle\030\001 \002(\004\022\021\n\ttrack_sid\030\002 \002"
-  "(\t\022\031\n\021stop_on_unpublish\030\003 \002(\010\"*\n\026Unpubli"
-  "shTrackResponse\022\020\n\010async_id\030\001 \002(\004\"9\n\026Unp"
-  "ublishTrackCallback\022\020\n\010async_id\030\001 \002(\004\022\r\n"
-  "\005error\030\002 \001(\t\"\271\001\n\022PublishDataRequest\022 \n\030l"
-  "ocal_participant_handle\030\001 \002(\004\022\020\n\010data_pt"
-  "r\030\002 \002(\004\022\020\n\010data_len\030\003 \002(\004\022\020\n\010reliable\030\004 "
-  "\002(\010\022\034\n\020destination_sids\030\005 \003(\tB\002\030\001\022\r\n\005top"
-  "ic\030\006 \001(\t\022\036\n\026destination_identities\030\007 \003(\t"
-  "\"\'\n\023PublishDataResponse\022\020\n\010async_id\030\001 \002("
-  "\004\"6\n\023PublishDataCallback\022\020\n\010async_id\030\001 \002"
-  "(\004\022\r\n\005error\030\002 \001(\t\"\246\001\n\033PublishTranscripti"
-  "onRequest\022 \n\030local_participant_handle\030\001 "
-  "\002(\004\022\034\n\024participant_identity\030\002 \002(\t\022\020\n\010tra"
-  "ck_id\030\003 \002(\t\0225\n\010segments\030\004 \003(\0132#.livekit."
-  "proto.TranscriptionSegment\"0\n\034PublishTra"
-  "nscriptionResponse\022\020\n\010async_id\030\001 \002(\004\"\?\n\034"
-  "PublishTranscriptionCallback\022\020\n\010async_id"
-  "\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\"v\n\025PublishSipDtmfR"
-  "equest\022 \n\030local_participant_handle\030\001 \002(\004"
-  "\022\014\n\004code\030\002 \002(\r\022\r\n\005digit\030\003 \002(\t\022\036\n\026destina"
-  "tion_identities\030\004 \003(\t\"*\n\026PublishSipDtmfR"
-  "esponse\022\020\n\010async_id\030\001 \002(\004\"9\n\026PublishSipD"
-  "tmfCallback\022\020\n\010async_id\030\001 \002(\004\022\r\n\005error\030\002"
-  " \001(\t\"M\n\027SetLocalMetadataRequest\022 \n\030local"
-  "_participant_handle\030\001 \002(\004\022\020\n\010metadata\030\002 "
-  "\002(\t\",\n\030SetLocalMetadataResponse\022\020\n\010async"
-  "_id\030\001 \002(\004\";\n\030SetLocalMetadataCallback\022\020\n"
-  "\010async_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\"\204\001\n\026SendC"
-  "hatMessageRequest\022 \n\030local_participant_h"
-  "andle\030\001 \002(\004\022\017\n\007message\030\002 \002(\t\022\036\n\026destinat"
-  "ion_identities\030\003 \003(\t\022\027\n\017sender_identity\030"
-  "\004 \001(\t\"\274\001\n\026EditChatMessageRequest\022 \n\030loca"
-  "l_participant_handle\030\001 \002(\004\022\021\n\tedit_text\030"
-  "\002 \002(\t\0224\n\020original_message\030\003 \002(\0132\032.liveki"
-  "t.proto.ChatMessage\022\036\n\026destination_ident"
-  "ities\030\004 \003(\t\022\027\n\017sender_identity\030\005 \001(\t\"+\n\027"
-  "SendChatMessageResponse\022\020\n\010async_id\030\001 \002("
-  "\004\"{\n\027SendChatMessageCallback\022\020\n\010async_id"
-  "\030\001 \002(\004\022\017\n\005error\030\002 \001(\tH\000\0222\n\014chat_message\030"
-  "\003 \001(\0132\032.livekit.proto.ChatMessageH\000B\t\n\007m"
-  "essage\"q\n\031SetLocalAttributesRequest\022 \n\030l"
-  "ocal_participant_handle\030\001 \002(\004\0222\n\nattribu"
-  "tes\030\002 \003(\0132\036.livekit.proto.AttributesEntr"
-  "y\"-\n\017AttributesEntry\022\013\n\003key\030\001 \002(\t\022\r\n\005val"
-  "ue\030\002 \002(\t\".\n\032SetLocalAttributesResponse\022\020"
-  "\n\010async_id\030\001 \002(\004\"=\n\032SetLocalAttributesCa"
-  "llback\022\020\n\010async_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\""
-  "E\n\023SetLocalNameRequest\022 \n\030local_particip"
-  "ant_handle\030\001 \002(\004\022\014\n\004name\030\002 \002(\t\"(\n\024SetLoc"
-  "alNameResponse\022\020\n\010async_id\030\001 \002(\004\"7\n\024SetL"
-  "ocalNameCallback\022\020\n\010async_id\030\001 \002(\004\022\r\n\005er"
-  "ror\030\002 \001(\t\"E\n\024SetSubscribedRequest\022\021\n\tsub"
-  "scribe\030\001 \002(\010\022\032\n\022publication_handle\030\002 \002(\004"
-  "\"\027\n\025SetSubscribedResponse\"-\n\026GetSessionS"
-  "tatsRequest\022\023\n\013room_handle\030\001 \002(\004\"+\n\027GetS"
-  "essionStatsResponse\022\020\n\010async_id\030\001 \002(\004\"\367\001"
-  "\n\027GetSessionStatsCallback\022\020\n\010async_id\030\001 "
-  "\002(\004\022\017\n\005error\030\002 \001(\tH\000\022\?\n\006result\030\003 \001(\0132-.l"
-  "ivekit.proto.GetSessionStatsCallback.Res"
-  "ultH\000\032m\n\006Result\0220\n\017publisher_stats\030\001 \003(\013"
-  "2\027.livekit.proto.RtcStats\0221\n\020subscriber_"
-  "stats\030\002 \003(\0132\027.livekit.proto.RtcStatsB\t\n\007"
-  "message\";\n\rVideoEncoding\022\023\n\013max_bitrate\030"
-  "\001 \002(\004\022\025\n\rmax_framerate\030\002 \002(\001\"$\n\rAudioEnc"
-  "oding\022\023\n\013max_bitrate\030\001 \002(\004\"\232\002\n\023TrackPubl"
-  "ishOptions\0224\n\016video_encoding\030\001 \001(\0132\034.liv"
-  "ekit.proto.VideoEncoding\0224\n\016audio_encodi"
-  "ng\030\002 \001(\0132\034.livekit.proto.AudioEncoding\022."
-  "\n\013video_codec\030\003 \001(\0162\031.livekit.proto.Vide"
-  "oCodec\022\013\n\003dtx\030\004 \001(\010\022\013\n\003red\030\005 \001(\010\022\021\n\tsimu"
-  "lcast\030\006 \001(\010\022*\n\006source\030\007 \001(\0162\032.livekit.pr"
-  "oto.TrackSource\022\016\n\006stream\030\010 \001(\t\"=\n\tIceSe"
-  "rver\022\014\n\004urls\030\001 \003(\t\022\020\n\010username\030\002 \001(\t\022\020\n\010"
-  "password\030\003 \001(\t\"\304\001\n\tRtcConfig\022;\n\022ice_tran"
-  "sport_type\030\001 \001(\0162\037.livekit.proto.IceTran"
-  "sportType\022K\n\032continual_gathering_policy\030"
-  "\002 \001(\0162\'.livekit.proto.ContinualGathering"
-  "Policy\022-\n\013ice_servers\030\003 \003(\0132\030.livekit.pr"
-  "oto.IceServer\"\276\001\n\013RoomOptions\022\026\n\016auto_su"
-  "bscribe\030\001 \001(\010\022\027\n\017adaptive_stream\030\002 \001(\010\022\020"
-  "\n\010dynacast\030\003 \001(\010\022(\n\004e2ee\030\004 \001(\0132\032.livekit"
-  ".proto.E2eeOptions\022,\n\nrtc_config\030\005 \001(\0132\030"
-  ".livekit.proto.RtcConfig\022\024\n\014join_retries"
-  "\030\006 \001(\r\"w\n\024TranscriptionSegment\022\n\n\002id\030\001 \002"
-  "(\t\022\014\n\004text\030\002 \002(\t\022\022\n\nstart_time\030\003 \002(\004\022\020\n\010"
-  "end_time\030\004 \002(\004\022\r\n\005final\030\005 \002(\010\022\020\n\010languag"
-  "e\030\006 \002(\t\"0\n\nBufferInfo\022\020\n\010data_ptr\030\001 \002(\004\022"
-  "\020\n\010data_len\030\002 \002(\004\"e\n\013OwnedBuffer\022-\n\006hand"
-  "le\030\001 \002(\0132\035.livekit.proto.FfiOwnedHandle\022"
-  "\'\n\004data\030\002 \002(\0132\031.livekit.proto.BufferInfo"
-  "\"\251\021\n\tRoomEvent\022\023\n\013room_handle\030\001 \002(\004\022D\n\025p"
-  "articipant_connected\030\002 \001(\0132#.livekit.pro"
-  "to.ParticipantConnectedH\000\022J\n\030participant"
-  "_disconnected\030\003 \001(\0132&.livekit.proto.Part"
-  "icipantDisconnectedH\000\022C\n\025local_track_pub"
-  "lished\030\004 \001(\0132\".livekit.proto.LocalTrackP"
-  "ublishedH\000\022G\n\027local_track_unpublished\030\005 "
-  "\001(\0132$.livekit.proto.LocalTrackUnpublishe"
-  "dH\000\022E\n\026local_track_subscribed\030\006 \001(\0132#.li"
-  "vekit.proto.LocalTrackSubscribedH\000\0228\n\017tr"
-  "ack_published\030\007 \001(\0132\035.livekit.proto.Trac"
-  "kPublishedH\000\022<\n\021track_unpublished\030\010 \001(\0132"
-  "\037.livekit.proto.TrackUnpublishedH\000\022:\n\020tr"
-  "ack_subscribed\030\t \001(\0132\036.livekit.proto.Tra"
-  "ckSubscribedH\000\022>\n\022track_unsubscribed\030\n \001"
-  "(\0132 .livekit.proto.TrackUnsubscribedH\000\022K"
-  "\n\031track_subscription_failed\030\013 \001(\0132&.live"
-  "kit.proto.TrackSubscriptionFailedH\000\0220\n\013t"
-  "rack_muted\030\014 \001(\0132\031.livekit.proto.TrackMu"
-  "tedH\000\0224\n\rtrack_unmuted\030\r \001(\0132\033.livekit.p"
-  "roto.TrackUnmutedH\000\022G\n\027active_speakers_c"
-  "hanged\030\016 \001(\0132$.livekit.proto.ActiveSpeak"
-  "ersChangedH\000\022C\n\025room_metadata_changed\030\017 "
-  "\001(\0132\".livekit.proto.RoomMetadataChangedH"
-  "\000\0229\n\020room_sid_changed\030\020 \001(\0132\035.livekit.pr"
-  "oto.RoomSidChangedH\000\022Q\n\034participant_meta"
-  "data_changed\030\021 \001(\0132).livekit.proto.Parti"
-  "cipantMetadataChangedH\000\022I\n\030participant_n"
-  "ame_changed\030\022 \001(\0132%.livekit.proto.Partic"
-  "ipantNameChangedH\000\022U\n\036participant_attrib"
-  "utes_changed\030\023 \001(\0132+.livekit.proto.Parti"
-  "cipantAttributesChangedH\000\022M\n\032connection_"
-  "quality_changed\030\024 \001(\0132\'.livekit.proto.Co"
-  "nnectionQualityChangedH\000\022I\n\030connection_s"
-  "tate_changed\030\025 \001(\0132%.livekit.proto.Conne"
-  "ctionStateChangedH\000\0223\n\014disconnected\030\026 \001("
-  "\0132\033.livekit.proto.DisconnectedH\000\0223\n\014reco"
-  "nnecting\030\027 \001(\0132\033.livekit.proto.Reconnect"
-  "ingH\000\0221\n\013reconnected\030\030 \001(\0132\032.livekit.pro"
-  "to.ReconnectedH\000\022=\n\022e2ee_state_changed\030\031"
-  " \001(\0132\037.livekit.proto.E2eeStateChangedH\000\022"
-  "%\n\003eos\030\032 \001(\0132\026.livekit.proto.RoomEOSH\000\022A"
-  "\n\024data_packet_received\030\033 \001(\0132!.livekit.p"
-  "roto.DataPacketReceivedH\000\022F\n\026transcripti"
-  "on_received\030\034 \001(\0132$.livekit.proto.Transc"
-  "riptionReceivedH\000\022:\n\014chat_message\030\035 \001(\0132"
-  "\".livekit.proto.ChatMessageReceivedH\000\022I\n"
-  "\026stream_header_received\030\036 \001(\0132\'.livekit."
-  "proto.DataStreamHeaderReceivedH\000\022G\n\025stre"
-  "am_chunk_received\030\037 \001(\0132&.livekit.proto."
-  "DataStreamChunkReceivedH\000\022K\n\027stream_trai"
-  "ler_received\030  \001(\0132(.livekit.proto.DataS"
-  "treamTrailerReceivedH\000\022i\n\"data_channel_l"
-  "ow_threshold_changed\030! \001(\0132;.livekit.pro"
-  "to.DataChannelBufferedAmountLowThreshold"
-  "ChangedH\000B\t\n\007message\"\232\001\n\010RoomInfo\022\013\n\003sid"
-  "\030\001 \001(\t\022\014\n\004name\030\002 \002(\t\022\020\n\010metadata\030\003 \002(\t\022."
-  "\n&lossy_dc_buffered_amount_low_threshold"
-  "\030\004 \002(\004\0221\n)reliable_dc_buffered_amount_lo"
-  "w_threshold\030\005 \002(\004\"a\n\tOwnedRoom\022-\n\006handle"
-  "\030\001 \002(\0132\035.livekit.proto.FfiOwnedHandle\022%\n"
-  "\004info\030\002 \002(\0132\027.livekit.proto.RoomInfo\"E\n\024"
-  "ParticipantConnected\022-\n\004info\030\001 \002(\0132\037.liv"
-  "ekit.proto.OwnedParticipant\"s\n\027Participa"
-  "ntDisconnected\022\034\n\024participant_identity\030\001"
-  " \002(\t\022:\n\021disconnect_reason\030\002 \002(\0162\037.liveki"
-  "t.proto.DisconnectReason\"(\n\023LocalTrackPu"
-  "blished\022\021\n\ttrack_sid\030\001 \002(\t\"0\n\025LocalTrack"
-  "Unpublished\022\027\n\017publication_sid\030\001 \002(\t\")\n\024"
-  "LocalTrackSubscribed\022\021\n\ttrack_sid\030\002 \002(\t\""
-  "i\n\016TrackPublished\022\034\n\024participant_identit"
-  "y\030\001 \002(\t\0229\n\013publication\030\002 \002(\0132$.livekit.p"
-  "roto.OwnedTrackPublication\"I\n\020TrackUnpub"
-  "lished\022\034\n\024participant_identity\030\001 \002(\t\022\027\n\017"
-  "publication_sid\030\002 \002(\t\"Y\n\017TrackSubscribed"
-  "\022\034\n\024participant_identity\030\001 \002(\t\022(\n\005track\030"
-  "\002 \002(\0132\031.livekit.proto.OwnedTrack\"D\n\021Trac"
-  "kUnsubscribed\022\034\n\024participant_identity\030\001 "
-  "\002(\t\022\021\n\ttrack_sid\030\002 \002(\t\"Y\n\027TrackSubscript"
-  "ionFailed\022\034\n\024participant_identity\030\001 \002(\t\022"
-  "\021\n\ttrack_sid\030\002 \002(\t\022\r\n\005error\030\003 \002(\t\"=\n\nTra"
-  "ckMuted\022\034\n\024participant_identity\030\001 \002(\t\022\021\n"
-  "\ttrack_sid\030\002 \002(\t\"\?\n\014TrackUnmuted\022\034\n\024part"
+  "proto\032\021video_frame.proto\032\013stats.proto\032\021d"
+  "ata_stream.proto\"Y\n\016ConnectRequest\022\013\n\003ur"
+  "l\030\001 \002(\t\022\r\n\005token\030\002 \002(\t\022+\n\007options\030\003 \002(\0132"
+  "\032.livekit.proto.RoomOptions\"#\n\017ConnectRe"
+  "sponse\022\020\n\010async_id\030\001 \002(\004\"\277\003\n\017ConnectCall"
+  "back\022\020\n\010async_id\030\001 \002(\004\022\017\n\005error\030\002 \001(\tH\000\022"
+  "7\n\006result\030\003 \001(\0132%.livekit.proto.ConnectC"
+  "allback.ResultH\000\032\211\001\n\025ParticipantWithTrac"
+  "ks\0224\n\013participant\030\001 \002(\0132\037.livekit.proto."
+  "OwnedParticipant\022:\n\014publications\030\002 \003(\0132$"
+  ".livekit.proto.OwnedTrackPublication\032\270\001\n"
+  "\006Result\022&\n\004room\030\001 \002(\0132\030.livekit.proto.Ow"
+  "nedRoom\022:\n\021local_participant\030\002 \002(\0132\037.liv"
+  "ekit.proto.OwnedParticipant\022J\n\014participa"
+  "nts\030\003 \003(\01324.livekit.proto.ConnectCallbac"
+  "k.ParticipantWithTracksB\t\n\007message\"(\n\021Di"
+  "sconnectRequest\022\023\n\013room_handle\030\001 \002(\004\"&\n\022"
+  "DisconnectResponse\022\020\n\010async_id\030\001 \002(\004\"&\n\022"
+  "DisconnectCallback\022\020\n\010async_id\030\001 \002(\004\"\202\001\n"
+  "\023PublishTrackRequest\022 \n\030local_participan"
+  "t_handle\030\001 \002(\004\022\024\n\014track_handle\030\002 \002(\004\0223\n\007"
+  "options\030\003 \002(\0132\".livekit.proto.TrackPubli"
+  "shOptions\"(\n\024PublishTrackResponse\022\020\n\010asy"
+  "nc_id\030\001 \002(\004\"\201\001\n\024PublishTrackCallback\022\020\n\010"
+  "async_id\030\001 \002(\004\022\017\n\005error\030\002 \001(\tH\000\022;\n\013publi"
+  "cation\030\003 \001(\0132$.livekit.proto.OwnedTrackP"
+  "ublicationH\000B\t\n\007message\"g\n\025UnpublishTrac"
+  "kRequest\022 \n\030local_participant_handle\030\001 \002"
+  "(\004\022\021\n\ttrack_sid\030\002 \002(\t\022\031\n\021stop_on_unpubli"
+  "sh\030\003 \002(\010\"*\n\026UnpublishTrackResponse\022\020\n\010as"
+  "ync_id\030\001 \002(\004\"9\n\026UnpublishTrackCallback\022\020"
+  "\n\010async_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\"\271\001\n\022Publ"
+  "ishDataRequest\022 \n\030local_participant_hand"
+  "le\030\001 \002(\004\022\020\n\010data_ptr\030\002 \002(\004\022\020\n\010data_len\030\003"
+  " \002(\004\022\020\n\010reliable\030\004 \002(\010\022\034\n\020destination_si"
+  "ds\030\005 \003(\tB\002\030\001\022\r\n\005topic\030\006 \001(\t\022\036\n\026destinati"
+  "on_identities\030\007 \003(\t\"\'\n\023PublishDataRespon"
+  "se\022\020\n\010async_id\030\001 \002(\004\"6\n\023PublishDataCallb"
+  "ack\022\020\n\010async_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\"\246\001\n"
+  "\033PublishTranscriptionRequest\022 \n\030local_pa"
+  "rticipant_handle\030\001 \002(\004\022\034\n\024participant_id"
+  "entity\030\002 \002(\t\022\020\n\010track_id\030\003 \002(\t\0225\n\010segmen"
+  "ts\030\004 \003(\0132#.livekit.proto.TranscriptionSe"
+  "gment\"0\n\034PublishTranscriptionResponse\022\020\n"
+  "\010async_id\030\001 \002(\004\"\?\n\034PublishTranscriptionC"
+  "allback\022\020\n\010async_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t"
+  "\"v\n\025PublishSipDtmfRequest\022 \n\030local_parti"
+  "cipant_handle\030\001 \002(\004\022\014\n\004code\030\002 \002(\r\022\r\n\005dig"
+  "it\030\003 \002(\t\022\036\n\026destination_identities\030\004 \003(\t"
+  "\"*\n\026PublishSipDtmfResponse\022\020\n\010async_id\030\001"
+  " \002(\004\"9\n\026PublishSipDtmfCallback\022\020\n\010async_"
+  "id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\"M\n\027SetLocalMetad"
+  "ataRequest\022 \n\030local_participant_handle\030\001"
+  " \002(\004\022\020\n\010metadata\030\002 \002(\t\",\n\030SetLocalMetada"
+  "taResponse\022\020\n\010async_id\030\001 \002(\004\";\n\030SetLocal"
+  "MetadataCallback\022\020\n\010async_id\030\001 \002(\004\022\r\n\005er"
+  "ror\030\002 \001(\t\"\204\001\n\026SendChatMessageRequest\022 \n\030"
+  "local_participant_handle\030\001 \002(\004\022\017\n\007messag"
+  "e\030\002 \002(\t\022\036\n\026destination_identities\030\003 \003(\t\022"
+  "\027\n\017sender_identity\030\004 \001(\t\"\274\001\n\026EditChatMes"
+  "sageRequest\022 \n\030local_participant_handle\030"
+  "\001 \002(\004\022\021\n\tedit_text\030\002 \002(\t\0224\n\020original_mes"
+  "sage\030\003 \002(\0132\032.livekit.proto.ChatMessage\022\036"
+  "\n\026destination_identities\030\004 \003(\t\022\027\n\017sender"
+  "_identity\030\005 \001(\t\"+\n\027SendChatMessageRespon"
+  "se\022\020\n\010async_id\030\001 \002(\004\"{\n\027SendChatMessageC"
+  "allback\022\020\n\010async_id\030\001 \002(\004\022\017\n\005error\030\002 \001(\t"
+  "H\000\0222\n\014chat_message\030\003 \001(\0132\032.livekit.proto"
+  ".ChatMessageH\000B\t\n\007message\"q\n\031SetLocalAtt"
+  "ributesRequest\022 \n\030local_participant_hand"
+  "le\030\001 \002(\004\0222\n\nattributes\030\002 \003(\0132\036.livekit.p"
+  "roto.AttributesEntry\"-\n\017AttributesEntry\022"
+  "\013\n\003key\030\001 \002(\t\022\r\n\005value\030\002 \002(\t\".\n\032SetLocalA"
+  "ttributesResponse\022\020\n\010async_id\030\001 \002(\004\"=\n\032S"
+  "etLocalAttributesCallback\022\020\n\010async_id\030\001 "
+  "\002(\004\022\r\n\005error\030\002 \001(\t\"E\n\023SetLocalNameReques"
+  "t\022 \n\030local_participant_handle\030\001 \002(\004\022\014\n\004n"
+  "ame\030\002 \002(\t\"(\n\024SetLocalNameResponse\022\020\n\010asy"
+  "nc_id\030\001 \002(\004\"7\n\024SetLocalNameCallback\022\020\n\010a"
+  "sync_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\"E\n\024SetSubsc"
+  "ribedRequest\022\021\n\tsubscribe\030\001 \002(\010\022\032\n\022publi"
+  "cation_handle\030\002 \002(\004\"\027\n\025SetSubscribedResp"
+  "onse\"-\n\026GetSessionStatsRequest\022\023\n\013room_h"
+  "andle\030\001 \002(\004\"+\n\027GetSessionStatsResponse\022\020"
+  "\n\010async_id\030\001 \002(\004\"\367\001\n\027GetSessionStatsCall"
+  "back\022\020\n\010async_id\030\001 \002(\004\022\017\n\005error\030\002 \001(\tH\000\022"
+  "\?\n\006result\030\003 \001(\0132-.livekit.proto.GetSessi"
+  "onStatsCallback.ResultH\000\032m\n\006Result\0220\n\017pu"
+  "blisher_stats\030\001 \003(\0132\027.livekit.proto.RtcS"
+  "tats\0221\n\020subscriber_stats\030\002 \003(\0132\027.livekit"
+  ".proto.RtcStatsB\t\n\007message\";\n\rVideoEncod"
+  "ing\022\023\n\013max_bitrate\030\001 \002(\004\022\025\n\rmax_framerat"
+  "e\030\002 \002(\001\"$\n\rAudioEncoding\022\023\n\013max_bitrate\030"
+  "\001 \002(\004\"\265\002\n\023TrackPublishOptions\0224\n\016video_e"
+  "ncoding\030\001 \001(\0132\034.livekit.proto.VideoEncod"
+  "ing\0224\n\016audio_encoding\030\002 \001(\0132\034.livekit.pr"
+  "oto.AudioEncoding\022.\n\013video_codec\030\003 \001(\0162\031"
+  ".livekit.proto.VideoCodec\022\013\n\003dtx\030\004 \001(\010\022\013"
+  "\n\003red\030\005 \001(\010\022\021\n\tsimulcast\030\006 \001(\010\022*\n\006source"
+  "\030\007 \001(\0162\032.livekit.proto.TrackSource\022\016\n\006st"
+  "ream\030\010 \001(\t\022\031\n\021preconnect_buffer\030\t \001(\010\"=\n"
+  "\tIceServer\022\014\n\004urls\030\001 \003(\t\022\020\n\010username\030\002 \001"
+  "(\t\022\020\n\010password\030\003 \001(\t\"\304\001\n\tRtcConfig\022;\n\022ic"
+  "e_transport_type\030\001 \001(\0162\037.livekit.proto.I"
+  "ceTransportType\022K\n\032continual_gathering_p"
+  "olicy\030\002 \001(\0162\'.livekit.proto.ContinualGat"
+  "heringPolicy\022-\n\013ice_servers\030\003 \003(\0132\030.live"
+  "kit.proto.IceServer\"\276\001\n\013RoomOptions\022\026\n\016a"
+  "uto_subscribe\030\001 \001(\010\022\027\n\017adaptive_stream\030\002"
+  " \001(\010\022\020\n\010dynacast\030\003 \001(\010\022(\n\004e2ee\030\004 \001(\0132\032.l"
+  "ivekit.proto.E2eeOptions\022,\n\nrtc_config\030\005"
+  " \001(\0132\030.livekit.proto.RtcConfig\022\024\n\014join_r"
+  "etries\030\006 \001(\r\"w\n\024TranscriptionSegment\022\n\n\002"
+  "id\030\001 \002(\t\022\014\n\004text\030\002 \002(\t\022\022\n\nstart_time\030\003 \002"
+  "(\004\022\020\n\010end_time\030\004 \002(\004\022\r\n\005final\030\005 \002(\010\022\020\n\010l"
+  "anguage\030\006 \002(\t\"0\n\nBufferInfo\022\020\n\010data_ptr\030"
+  "\001 \002(\004\022\020\n\010data_len\030\002 \002(\004\"e\n\013OwnedBuffer\022-"
+  "\n\006handle\030\001 \002(\0132\035.livekit.proto.FfiOwnedH"
+  "andle\022\'\n\004data\030\002 \002(\0132\031.livekit.proto.Buff"
+  "erInfo\"\306\023\n\tRoomEvent\022\023\n\013room_handle\030\001 \002("
+  "\004\022D\n\025participant_connected\030\002 \001(\0132#.livek"
+  "it.proto.ParticipantConnectedH\000\022J\n\030parti"
+  "cipant_disconnected\030\003 \001(\0132&.livekit.prot"
+  "o.ParticipantDisconnectedH\000\022C\n\025local_tra"
+  "ck_published\030\004 \001(\0132\".livekit.proto.Local"
+  "TrackPublishedH\000\022G\n\027local_track_unpublis"
+  "hed\030\005 \001(\0132$.livekit.proto.LocalTrackUnpu"
+  "blishedH\000\022E\n\026local_track_subscribed\030\006 \001("
+  "\0132#.livekit.proto.LocalTrackSubscribedH\000"
+  "\0228\n\017track_published\030\007 \001(\0132\035.livekit.prot"
+  "o.TrackPublishedH\000\022<\n\021track_unpublished\030"
+  "\010 \001(\0132\037.livekit.proto.TrackUnpublishedH\000"
+  "\022:\n\020track_subscribed\030\t \001(\0132\036.livekit.pro"
+  "to.TrackSubscribedH\000\022>\n\022track_unsubscrib"
+  "ed\030\n \001(\0132 .livekit.proto.TrackUnsubscrib"
+  "edH\000\022K\n\031track_subscription_failed\030\013 \001(\0132"
+  "&.livekit.proto.TrackSubscriptionFailedH"
+  "\000\0220\n\013track_muted\030\014 \001(\0132\031.livekit.proto.T"
+  "rackMutedH\000\0224\n\rtrack_unmuted\030\r \001(\0132\033.liv"
+  "ekit.proto.TrackUnmutedH\000\022G\n\027active_spea"
+  "kers_changed\030\016 \001(\0132$.livekit.proto.Activ"
+  "eSpeakersChangedH\000\022C\n\025room_metadata_chan"
+  "ged\030\017 \001(\0132\".livekit.proto.RoomMetadataCh"
+  "angedH\000\0229\n\020room_sid_changed\030\020 \001(\0132\035.live"
+  "kit.proto.RoomSidChangedH\000\022Q\n\034participan"
+  "t_metadata_changed\030\021 \001(\0132).livekit.proto"
+  ".ParticipantMetadataChangedH\000\022I\n\030partici"
+  "pant_name_changed\030\022 \001(\0132%.livekit.proto."
+  "ParticipantNameChangedH\000\022U\n\036participant_"
+  "attributes_changed\030\023 \001(\0132+.livekit.proto"
+  ".ParticipantAttributesChangedH\000\022M\n\032conne"
+  "ction_quality_changed\030\024 \001(\0132\'.livekit.pr"
+  "oto.ConnectionQualityChangedH\000\022I\n\030connec"
+  "tion_state_changed\030\025 \001(\0132%.livekit.proto"
+  ".ConnectionStateChangedH\000\0223\n\014disconnecte"
+  "d\030\026 \001(\0132\033.livekit.proto.DisconnectedH\000\0223"
+  "\n\014reconnecting\030\027 \001(\0132\033.livekit.proto.Rec"
+  "onnectingH\000\0221\n\013reconnected\030\030 \001(\0132\032.livek"
+  "it.proto.ReconnectedH\000\022=\n\022e2ee_state_cha"
+  "nged\030\031 \001(\0132\037.livekit.proto.E2eeStateChan"
+  "gedH\000\022%\n\003eos\030\032 \001(\0132\026.livekit.proto.RoomE"
+  "OSH\000\022A\n\024data_packet_received\030\033 \001(\0132!.liv"
+  "ekit.proto.DataPacketReceivedH\000\022F\n\026trans"
+  "cription_received\030\034 \001(\0132$.livekit.proto."
+  "TranscriptionReceivedH\000\022:\n\014chat_message\030"
+  "\035 \001(\0132\".livekit.proto.ChatMessageReceive"
+  "dH\000\022I\n\026stream_header_received\030\036 \001(\0132\'.li"
+  "vekit.proto.DataStreamHeaderReceivedH\000\022G"
+  "\n\025stream_chunk_received\030\037 \001(\0132&.livekit."
+  "proto.DataStreamChunkReceivedH\000\022K\n\027strea"
+  "m_trailer_received\030  \001(\0132(.livekit.proto"
+  ".DataStreamTrailerReceivedH\000\022i\n\"data_cha"
+  "nnel_low_threshold_changed\030! \001(\0132;.livek"
+  "it.proto.DataChannelBufferedAmountLowThr"
+  "esholdChangedH\000\022=\n\022byte_stream_opened\030\" "
+  "\001(\0132\037.livekit.proto.ByteStreamOpenedH\000\022="
+  "\n\022text_stream_opened\030# \001(\0132\037.livekit.pro"
+  "to.TextStreamOpenedH\000\022/\n\014room_updated\030$ "
+  "\001(\0132\027.livekit.proto.RoomInfoH\000\022(\n\005moved\030"
+  "% \001(\0132\027.livekit.proto.RoomInfoH\000\022B\n\024part"
+  "icipants_updated\030& \001(\0132\".livekit.proto.P"
+  "articipantsUpdatedH\000B\t\n\007message\"\311\002\n\010Room"
+  "Info\022\013\n\003sid\030\001 \001(\t\022\014\n\004name\030\002 \002(\t\022\020\n\010metad"
+  "ata\030\003 \002(\t\022.\n&lossy_dc_buffered_amount_lo"
+  "w_threshold\030\004 \002(\004\0221\n)reliable_dc_buffere"
+  "d_amount_low_threshold\030\005 \002(\004\022\025\n\rempty_ti"
+  "meout\030\006 \002(\r\022\031\n\021departure_timeout\030\007 \002(\r\022\030"
+  "\n\020max_participants\030\010 \002(\r\022\025\n\rcreation_tim"
+  "e\030\t \002(\003\022\030\n\020num_participants\030\n \002(\r\022\026\n\016num"
+  "_publishers\030\013 \002(\r\022\030\n\020active_recording\030\014 "
+  "\002(\010\"a\n\tOwnedRoom\022-\n\006handle\030\001 \002(\0132\035.livek"
+  "it.proto.FfiOwnedHandle\022%\n\004info\030\002 \002(\0132\027."
+  "livekit.proto.RoomInfo\"K\n\023ParticipantsUp"
+  "dated\0224\n\014participants\030\001 \003(\0132\036.livekit.pr"
+  "oto.ParticipantInfo\"E\n\024ParticipantConnec"
+  "ted\022-\n\004info\030\001 \002(\0132\037.livekit.proto.OwnedP"
+  "articipant\"s\n\027ParticipantDisconnected\022\034\n"
+  "\024participant_identity\030\001 \002(\t\022:\n\021disconnec"
+  "t_reason\030\002 \002(\0162\037.livekit.proto.Disconnec"
+  "tReason\"(\n\023LocalTrackPublished\022\021\n\ttrack_"
+  "sid\030\001 \002(\t\"0\n\025LocalTrackUnpublished\022\027\n\017pu"
+  "blication_sid\030\001 \002(\t\")\n\024LocalTrackSubscri"
+  "bed\022\021\n\ttrack_sid\030\002 \002(\t\"i\n\016TrackPublished"
+  "\022\034\n\024participant_identity\030\001 \002(\t\0229\n\013public"
+  "ation\030\002 \002(\0132$.livekit.proto.OwnedTrackPu"
+  "blication\"I\n\020TrackUnpublished\022\034\n\024partici"
+  "pant_identity\030\001 \002(\t\022\027\n\017publication_sid\030\002"
+  " \002(\t\"Y\n\017TrackSubscribed\022\034\n\024participant_i"
+  "dentity\030\001 \002(\t\022(\n\005track\030\002 \002(\0132\031.livekit.p"
+  "roto.OwnedTrack\"D\n\021TrackUnsubscribed\022\034\n\024"
+  "participant_identity\030\001 \002(\t\022\021\n\ttrack_sid\030"
+  "\002 \002(\t\"Y\n\027TrackSubscriptionFailed\022\034\n\024part"
   "icipant_identity\030\001 \002(\t\022\021\n\ttrack_sid\030\002 \002("
-  "\t\"_\n\020E2eeStateChanged\022\034\n\024participant_ide"
-  "ntity\030\001 \002(\t\022-\n\005state\030\002 \002(\0162\036.livekit.pro"
-  "to.EncryptionState\"7\n\025ActiveSpeakersChan"
-  "ged\022\036\n\026participant_identities\030\001 \003(\t\"\'\n\023R"
-  "oomMetadataChanged\022\020\n\010metadata\030\001 \002(\t\"\035\n\016"
-  "RoomSidChanged\022\013\n\003sid\030\001 \002(\t\"L\n\032Participa"
-  "ntMetadataChanged\022\034\n\024participant_identit"
-  "y\030\001 \002(\t\022\020\n\010metadata\030\002 \002(\t\"\254\001\n\034Participan"
-  "tAttributesChanged\022\034\n\024participant_identi"
-  "ty\030\001 \002(\t\0222\n\nattributes\030\002 \003(\0132\036.livekit.p"
-  "roto.AttributesEntry\022:\n\022changed_attribut"
-  "es\030\003 \003(\0132\036.livekit.proto.AttributesEntry"
-  "\"D\n\026ParticipantNameChanged\022\034\n\024participan"
-  "t_identity\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\"k\n\030Connec"
-  "tionQualityChanged\022\034\n\024participant_identi"
-  "ty\030\001 \002(\t\0221\n\007quality\030\002 \002(\0162 .livekit.prot"
-  "o.ConnectionQuality\"E\n\nUserPacket\022(\n\004dat"
-  "a\030\001 \002(\0132\032.livekit.proto.OwnedBuffer\022\r\n\005t"
-  "opic\030\002 \001(\t\"y\n\013ChatMessage\022\n\n\002id\030\001 \002(\t\022\021\n"
-  "\ttimestamp\030\002 \002(\003\022\017\n\007message\030\003 \002(\t\022\026\n\016edi"
-  "t_timestamp\030\004 \001(\003\022\017\n\007deleted\030\005 \001(\010\022\021\n\tge"
-  "nerated\030\006 \001(\010\"`\n\023ChatMessageReceived\022+\n\007"
-  "message\030\001 \002(\0132\032.livekit.proto.ChatMessag"
-  "e\022\034\n\024participant_identity\030\002 \002(\t\"&\n\007SipDT"
-  "MF\022\014\n\004code\030\001 \002(\r\022\r\n\005digit\030\002 \001(\t\"\277\001\n\022Data"
-  "PacketReceived\022+\n\004kind\030\001 \002(\0162\035.livekit.p"
-  "roto.DataPacketKind\022\034\n\024participant_ident"
-  "ity\030\002 \002(\t\022)\n\004user\030\004 \001(\0132\031.livekit.proto."
-  "UserPacketH\000\022*\n\010sip_dtmf\030\005 \001(\0132\026.livekit"
-  ".proto.SipDTMFH\000B\007\n\005value\"\177\n\025Transcripti"
-  "onReceived\022\034\n\024participant_identity\030\001 \001(\t"
-  "\022\021\n\ttrack_sid\030\002 \001(\t\0225\n\010segments\030\003 \003(\0132#."
-  "livekit.proto.TranscriptionSegment\"G\n\026Co"
-  "nnectionStateChanged\022-\n\005state\030\001 \002(\0162\036.li"
-  "vekit.proto.ConnectionState\"\013\n\tConnected"
-  "\"\?\n\014Disconnected\022/\n\006reason\030\001 \002(\0162\037.livek"
-  "it.proto.DisconnectReason\"\016\n\014Reconnectin"
-  "g\"\r\n\013Reconnected\"\t\n\007RoomEOS\"\216\007\n\nDataStre"
-  "am\032\252\001\n\nTextHeader\022\?\n\016operation_type\030\001 \002("
-  "\0162\'.livekit.proto.DataStream.OperationTy"
-  "pe\022\017\n\007version\030\002 \001(\005\022\032\n\022reply_to_stream_i"
-  "d\030\003 \001(\t\022\033\n\023attached_stream_ids\030\004 \003(\t\022\021\n\t"
-  "generated\030\005 \001(\010\032\032\n\nByteHeader\022\014\n\004name\030\001 "
-  "\002(\t\032\353\002\n\006Header\022\021\n\tstream_id\030\001 \002(\t\022\021\n\ttim"
-  "estamp\030\002 \002(\003\022\021\n\tmime_type\030\003 \002(\t\022\r\n\005topic"
-  "\030\004 \002(\t\022\024\n\014total_length\030\005 \001(\004\022D\n\nattribut"
-  "es\030\006 \003(\01320.livekit.proto.DataStream.Head"
-  "er.AttributesEntry\022;\n\013text_header\030\007 \001(\0132"
-  "$.livekit.proto.DataStream.TextHeaderH\000\022"
-  ";\n\013byte_header\030\010 \001(\0132$.livekit.proto.Dat"
-  "aStream.ByteHeaderH\000\0321\n\017AttributesEntry\022"
-  "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001B\020\n\016conte"
-  "nt_header\032]\n\005Chunk\022\021\n\tstream_id\030\001 \002(\t\022\023\n"
-  "\013chunk_index\030\002 \002(\004\022\017\n\007content\030\003 \002(\014\022\017\n\007v"
-  "ersion\030\004 \001(\005\022\n\n\002iv\030\005 \001(\014\032\246\001\n\007Trailer\022\021\n\t"
-  "stream_id\030\001 \002(\t\022\016\n\006reason\030\002 \002(\t\022E\n\nattri"
-  "butes\030\003 \003(\01321.livekit.proto.DataStream.T"
-  "railer.AttributesEntry\0321\n\017AttributesEntr"
-  "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"A\n\rOpe"
-  "rationType\022\n\n\006CREATE\020\000\022\n\n\006UPDATE\020\001\022\n\n\006DE"
-  "LETE\020\002\022\014\n\010REACTION\020\003\"j\n\030DataStreamHeader"
-  "Received\022\034\n\024participant_identity\030\001 \002(\t\0220"
-  "\n\006header\030\002 \002(\0132 .livekit.proto.DataStrea"
-  "m.Header\"g\n\027DataStreamChunkReceived\022\034\n\024p"
-  "articipant_identity\030\001 \002(\t\022.\n\005chunk\030\002 \002(\013"
-  "2\037.livekit.proto.DataStream.Chunk\"m\n\031Dat"
-  "aStreamTrailerReceived\022\034\n\024participant_id"
-  "entity\030\001 \002(\t\0222\n\007trailer\030\002 \002(\0132!.livekit."
-  "proto.DataStream.Trailer\"\246\001\n\027SendStreamH"
-  "eaderRequest\022 \n\030local_participant_handle"
-  "\030\001 \002(\004\0220\n\006header\030\002 \002(\0132 .livekit.proto.D"
-  "ataStream.Header\022\036\n\026destination_identiti"
-  "es\030\003 \003(\t\022\027\n\017sender_identity\030\004 \002(\t\"\243\001\n\026Se"
-  "ndStreamChunkRequest\022 \n\030local_participan"
-  "t_handle\030\001 \002(\004\022.\n\005chunk\030\002 \002(\0132\037.livekit."
-  "proto.DataStream.Chunk\022\036\n\026destination_id"
-  "entities\030\003 \003(\t\022\027\n\017sender_identity\030\004 \002(\t\""
-  "\251\001\n\030SendStreamTrailerRequest\022 \n\030local_pa"
-  "rticipant_handle\030\001 \002(\004\0222\n\007trailer\030\002 \002(\0132"
-  "!.livekit.proto.DataStream.Trailer\022\036\n\026de"
-  "stination_identities\030\003 \003(\t\022\027\n\017sender_ide"
-  "ntity\030\004 \002(\t\",\n\030SendStreamHeaderResponse\022"
-  "\020\n\010async_id\030\001 \002(\004\"+\n\027SendStreamChunkResp"
-  "onse\022\020\n\010async_id\030\001 \002(\004\"-\n\031SendStreamTrai"
-  "lerResponse\022\020\n\010async_id\030\001 \002(\004\";\n\030SendStr"
-  "eamHeaderCallback\022\020\n\010async_id\030\001 \002(\004\022\r\n\005e"
-  "rror\030\002 \001(\t\":\n\027SendStreamChunkCallback\022\020\n"
-  "\010async_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\"<\n\031SendSt"
-  "reamTrailerCallback\022\020\n\010async_id\030\001 \002(\004\022\r\n"
-  "\005error\030\002 \001(\t\"\223\001\n/SetDataChannelBufferedA"
-  "mountLowThresholdRequest\022 \n\030local_partic"
-  "ipant_handle\030\001 \002(\004\022\021\n\tthreshold\030\002 \002(\004\022+\n"
-  "\004kind\030\003 \002(\0162\035.livekit.proto.DataPacketKi"
-  "nd\"2\n0SetDataChannelBufferedAmountLowThr"
-  "esholdResponse\"n\n,DataChannelBufferedAmo"
-  "untLowThresholdChanged\022+\n\004kind\030\001 \002(\0162\035.l"
-  "ivekit.proto.DataPacketKind\022\021\n\tthreshold"
-  "\030\002 \002(\004*P\n\020IceTransportType\022\023\n\017TRANSPORT_"
-  "RELAY\020\000\022\024\n\020TRANSPORT_NOHOST\020\001\022\021\n\rTRANSPO"
-  "RT_ALL\020\002*C\n\030ContinualGatheringPolicy\022\017\n\013"
-  "GATHER_ONCE\020\000\022\026\n\022GATHER_CONTINUALLY\020\001*`\n"
-  "\021ConnectionQuality\022\020\n\014QUALITY_POOR\020\000\022\020\n\014"
-  "QUALITY_GOOD\020\001\022\025\n\021QUALITY_EXCELLENT\020\002\022\020\n"
-  "\014QUALITY_LOST\020\003*S\n\017ConnectionState\022\025\n\021CO"
-  "NN_DISCONNECTED\020\000\022\022\n\016CONN_CONNECTED\020\001\022\025\n"
-  "\021CONN_RECONNECTING\020\002*3\n\016DataPacketKind\022\016"
-  "\n\nKIND_LOSSY\020\000\022\021\n\rKIND_RELIABLE\020\001B\020\252\002\rLi"
-  "veKit.Proto"
+  "\t\022\r\n\005error\030\003 \002(\t\"=\n\nTrackMuted\022\034\n\024partic"
+  "ipant_identity\030\001 \002(\t\022\021\n\ttrack_sid\030\002 \002(\t\""
+  "\?\n\014TrackUnmuted\022\034\n\024participant_identity\030"
+  "\001 \002(\t\022\021\n\ttrack_sid\030\002 \002(\t\"_\n\020E2eeStateCha"
+  "nged\022\034\n\024participant_identity\030\001 \002(\t\022-\n\005st"
+  "ate\030\002 \002(\0162\036.livekit.proto.EncryptionStat"
+  "e\"7\n\025ActiveSpeakersChanged\022\036\n\026participan"
+  "t_identities\030\001 \003(\t\"\'\n\023RoomMetadataChange"
+  "d\022\020\n\010metadata\030\001 \002(\t\"\035\n\016RoomSidChanged\022\013\n"
+  "\003sid\030\001 \002(\t\"L\n\032ParticipantMetadataChanged"
+  "\022\034\n\024participant_identity\030\001 \002(\t\022\020\n\010metada"
+  "ta\030\002 \002(\t\"\254\001\n\034ParticipantAttributesChange"
+  "d\022\034\n\024participant_identity\030\001 \002(\t\0222\n\nattri"
+  "butes\030\002 \003(\0132\036.livekit.proto.AttributesEn"
+  "try\022:\n\022changed_attributes\030\003 \003(\0132\036.liveki"
+  "t.proto.AttributesEntry\"D\n\026ParticipantNa"
+  "meChanged\022\034\n\024participant_identity\030\001 \002(\t\022"
+  "\014\n\004name\030\002 \002(\t\"k\n\030ConnectionQualityChange"
+  "d\022\034\n\024participant_identity\030\001 \002(\t\0221\n\007quali"
+  "ty\030\002 \002(\0162 .livekit.proto.ConnectionQuali"
+  "ty\"E\n\nUserPacket\022(\n\004data\030\001 \002(\0132\032.livekit"
+  ".proto.OwnedBuffer\022\r\n\005topic\030\002 \001(\t\"y\n\013Cha"
+  "tMessage\022\n\n\002id\030\001 \002(\t\022\021\n\ttimestamp\030\002 \002(\003\022"
+  "\017\n\007message\030\003 \002(\t\022\026\n\016edit_timestamp\030\004 \001(\003"
+  "\022\017\n\007deleted\030\005 \001(\010\022\021\n\tgenerated\030\006 \001(\010\"`\n\023"
+  "ChatMessageReceived\022+\n\007message\030\001 \002(\0132\032.l"
+  "ivekit.proto.ChatMessage\022\034\n\024participant_"
+  "identity\030\002 \002(\t\"&\n\007SipDTMF\022\014\n\004code\030\001 \002(\r\022"
+  "\r\n\005digit\030\002 \001(\t\"\277\001\n\022DataPacketReceived\022+\n"
+  "\004kind\030\001 \002(\0162\035.livekit.proto.DataPacketKi"
+  "nd\022\034\n\024participant_identity\030\002 \002(\t\022)\n\004user"
+  "\030\004 \001(\0132\031.livekit.proto.UserPacketH\000\022*\n\010s"
+  "ip_dtmf\030\005 \001(\0132\026.livekit.proto.SipDTMFH\000B"
+  "\007\n\005value\"\177\n\025TranscriptionReceived\022\034\n\024par"
+  "ticipant_identity\030\001 \001(\t\022\021\n\ttrack_sid\030\002 \001"
+  "(\t\0225\n\010segments\030\003 \003(\0132#.livekit.proto.Tra"
+  "nscriptionSegment\"G\n\026ConnectionStateChan"
+  "ged\022-\n\005state\030\001 \002(\0162\036.livekit.proto.Conne"
+  "ctionState\"\013\n\tConnected\"\?\n\014Disconnected\022"
+  "/\n\006reason\030\001 \002(\0162\037.livekit.proto.Disconne"
+  "ctReason\"\016\n\014Reconnecting\"\r\n\013Reconnected\""
+  "\t\n\007RoomEOS\"\216\007\n\nDataStream\032\252\001\n\nTextHeader"
+  "\022\?\n\016operation_type\030\001 \002(\0162\'.livekit.proto"
+  ".DataStream.OperationType\022\017\n\007version\030\002 \001"
+  "(\005\022\032\n\022reply_to_stream_id\030\003 \001(\t\022\033\n\023attach"
+  "ed_stream_ids\030\004 \003(\t\022\021\n\tgenerated\030\005 \001(\010\032\032"
+  "\n\nByteHeader\022\014\n\004name\030\001 \002(\t\032\353\002\n\006Header\022\021\n"
+  "\tstream_id\030\001 \002(\t\022\021\n\ttimestamp\030\002 \002(\003\022\021\n\tm"
+  "ime_type\030\003 \002(\t\022\r\n\005topic\030\004 \002(\t\022\024\n\014total_l"
+  "ength\030\005 \001(\004\022D\n\nattributes\030\006 \003(\01320.liveki"
+  "t.proto.DataStream.Header.AttributesEntr"
+  "y\022;\n\013text_header\030\007 \001(\0132$.livekit.proto.D"
+  "ataStream.TextHeaderH\000\022;\n\013byte_header\030\010 "
+  "\001(\0132$.livekit.proto.DataStream.ByteHeade"
+  "rH\000\0321\n\017AttributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
+  "alue\030\002 \001(\t:\0028\001B\020\n\016content_header\032]\n\005Chun"
+  "k\022\021\n\tstream_id\030\001 \002(\t\022\023\n\013chunk_index\030\002 \002("
+  "\004\022\017\n\007content\030\003 \002(\014\022\017\n\007version\030\004 \001(\005\022\n\n\002i"
+  "v\030\005 \001(\014\032\246\001\n\007Trailer\022\021\n\tstream_id\030\001 \002(\t\022\016"
+  "\n\006reason\030\002 \002(\t\022E\n\nattributes\030\003 \003(\01321.liv"
+  "ekit.proto.DataStream.Trailer.Attributes"
+  "Entry\0321\n\017AttributesEntry\022\013\n\003key\030\001 \001(\t\022\r\n"
+  "\005value\030\002 \001(\t:\0028\001\"A\n\rOperationType\022\n\n\006CRE"
+  "ATE\020\000\022\n\n\006UPDATE\020\001\022\n\n\006DELETE\020\002\022\014\n\010REACTIO"
+  "N\020\003\"j\n\030DataStreamHeaderReceived\022\034\n\024parti"
+  "cipant_identity\030\001 \002(\t\0220\n\006header\030\002 \002(\0132 ."
+  "livekit.proto.DataStream.Header\"g\n\027DataS"
+  "treamChunkReceived\022\034\n\024participant_identi"
+  "ty\030\001 \002(\t\022.\n\005chunk\030\002 \002(\0132\037.livekit.proto."
+  "DataStream.Chunk\"m\n\031DataStreamTrailerRec"
+  "eived\022\034\n\024participant_identity\030\001 \002(\t\0222\n\007t"
+  "railer\030\002 \002(\0132!.livekit.proto.DataStream."
+  "Trailer\"\246\001\n\027SendStreamHeaderRequest\022 \n\030l"
+  "ocal_participant_handle\030\001 \002(\004\0220\n\006header\030"
+  "\002 \002(\0132 .livekit.proto.DataStream.Header\022"
+  "\036\n\026destination_identities\030\003 \003(\t\022\027\n\017sende"
+  "r_identity\030\004 \002(\t\"\243\001\n\026SendStreamChunkRequ"
+  "est\022 \n\030local_participant_handle\030\001 \002(\004\022.\n"
+  "\005chunk\030\002 \002(\0132\037.livekit.proto.DataStream."
+  "Chunk\022\036\n\026destination_identities\030\003 \003(\t\022\027\n"
+  "\017sender_identity\030\004 \002(\t\"\251\001\n\030SendStreamTra"
+  "ilerRequest\022 \n\030local_participant_handle\030"
+  "\001 \002(\004\0222\n\007trailer\030\002 \002(\0132!.livekit.proto.D"
+  "ataStream.Trailer\022\036\n\026destination_identit"
+  "ies\030\003 \003(\t\022\027\n\017sender_identity\030\004 \002(\t\",\n\030Se"
+  "ndStreamHeaderResponse\022\020\n\010async_id\030\001 \002(\004"
+  "\"+\n\027SendStreamChunkResponse\022\020\n\010async_id\030"
+  "\001 \002(\004\"-\n\031SendStreamTrailerResponse\022\020\n\010as"
+  "ync_id\030\001 \002(\004\";\n\030SendStreamHeaderCallback"
+  "\022\020\n\010async_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\":\n\027Sen"
+  "dStreamChunkCallback\022\020\n\010async_id\030\001 \002(\004\022\r"
+  "\n\005error\030\002 \001(\t\"<\n\031SendStreamTrailerCallba"
+  "ck\022\020\n\010async_id\030\001 \002(\004\022\r\n\005error\030\002 \001(\t\"\223\001\n/"
+  "SetDataChannelBufferedAmountLowThreshold"
+  "Request\022 \n\030local_participant_handle\030\001 \002("
+  "\004\022\021\n\tthreshold\030\002 \002(\004\022+\n\004kind\030\003 \002(\0162\035.liv"
+  "ekit.proto.DataPacketKind\"2\n0SetDataChan"
+  "nelBufferedAmountLowThresholdResponse\"n\n"
+  ",DataChannelBufferedAmountLowThresholdCh"
+  "anged\022+\n\004kind\030\001 \002(\0162\035.livekit.proto.Data"
+  "PacketKind\022\021\n\tthreshold\030\002 \002(\004\"f\n\020ByteStr"
+  "eamOpened\0224\n\006reader\030\001 \002(\0132$.livekit.prot"
+  "o.OwnedByteStreamReader\022\034\n\024participant_i"
+  "dentity\030\002 \002(\t\"f\n\020TextStreamOpened\0224\n\006rea"
+  "der\030\001 \002(\0132$.livekit.proto.OwnedTextStrea"
+  "mReader\022\034\n\024participant_identity\030\002 \002(\t*P\n"
+  "\020IceTransportType\022\023\n\017TRANSPORT_RELAY\020\000\022\024"
+  "\n\020TRANSPORT_NOHOST\020\001\022\021\n\rTRANSPORT_ALL\020\002*"
+  "C\n\030ContinualGatheringPolicy\022\017\n\013GATHER_ON"
+  "CE\020\000\022\026\n\022GATHER_CONTINUALLY\020\001*`\n\021Connecti"
+  "onQuality\022\020\n\014QUALITY_POOR\020\000\022\020\n\014QUALITY_G"
+  "OOD\020\001\022\025\n\021QUALITY_EXCELLENT\020\002\022\020\n\014QUALITY_"
+  "LOST\020\003*S\n\017ConnectionState\022\025\n\021CONN_DISCON"
+  "NECTED\020\000\022\022\n\016CONN_CONNECTED\020\001\022\025\n\021CONN_REC"
+  "ONNECTING\020\002*3\n\016DataPacketKind\022\016\n\nKIND_LO"
+  "SSY\020\000\022\021\n\rKIND_RELIABLE\020\001B\020\252\002\rLiveKit.Pro"
+  "to"
   ;
-static const ::_pbi::DescriptorTable* const descriptor_table_room_2eproto_deps[6] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_room_2eproto_deps[7] = {
+  &::descriptor_table_data_5fstream_2eproto,
   &::descriptor_table_e2ee_2eproto,
   &::descriptor_table_handle_2eproto,
   &::descriptor_table_participant_2eproto,
@@ -3454,9 +3585,9 @@ static const ::_pbi::DescriptorTable* const descriptor_table_room_2eproto_deps[6
 };
 static ::_pbi::once_flag descriptor_table_room_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_room_2eproto = {
-    false, false, 12451, descriptor_table_protodef_room_2eproto,
+    false, false, 13242, descriptor_table_protodef_room_2eproto,
     "room.proto",
-    &descriptor_table_room_2eproto_once, descriptor_table_room_2eproto_deps, 6, 110,
+    &descriptor_table_room_2eproto_once, descriptor_table_room_2eproto_deps, 7, 113,
     schemas, file_default_instances, TableStruct_room_2eproto::offsets,
     file_level_metadata_room_2eproto, file_level_enum_descriptors_room_2eproto,
     file_level_service_descriptors_room_2eproto,
@@ -15310,10 +15441,13 @@ class TrackPublishOptions::_Internal {
     (*has_bits)[0] |= 64u;
   }
   static void set_has_source(HasBits* has_bits) {
-    (*has_bits)[0] |= 128u;
+    (*has_bits)[0] |= 256u;
   }
   static void set_has_stream(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
+  }
+  static void set_has_preconnect_buffer(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
   }
 };
 
@@ -15344,6 +15478,7 @@ TrackPublishOptions::TrackPublishOptions(const TrackPublishOptions& from)
     , decltype(_impl_.dtx_){}
     , decltype(_impl_.red_){}
     , decltype(_impl_.simulcast_){}
+    , decltype(_impl_.preconnect_buffer_){}
     , decltype(_impl_.source_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -15381,6 +15516,7 @@ inline void TrackPublishOptions::SharedCtor(
     , decltype(_impl_.dtx_){false}
     , decltype(_impl_.red_){false}
     , decltype(_impl_.simulcast_){false}
+    , decltype(_impl_.preconnect_buffer_){false}
     , decltype(_impl_.source_){0}
   };
   _impl_.stream_.InitDefault();
@@ -15431,9 +15567,10 @@ void TrackPublishOptions::Clear() {
   }
   if (cached_has_bits & 0x000000f8u) {
     ::memset(&_impl_.video_codec_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.source_) -
-        reinterpret_cast<char*>(&_impl_.video_codec_)) + sizeof(_impl_.source_));
+        reinterpret_cast<char*>(&_impl_.preconnect_buffer_) -
+        reinterpret_cast<char*>(&_impl_.video_codec_)) + sizeof(_impl_.preconnect_buffer_));
   }
+  _impl_.source_ = 0;
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -15526,6 +15663,15 @@ const char* TrackPublishOptions::_InternalParse(const char* ptr, ::_pbi::ParseCo
         } else
           goto handle_unusual;
         continue;
+      // optional bool preconnect_buffer = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
+          _Internal::set_has_preconnect_buffer(&has_bits);
+          _impl_.preconnect_buffer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -15597,7 +15743,7 @@ uint8_t* TrackPublishOptions::_InternalSerialize(
   }
 
   // optional .livekit.proto.TrackSource source = 7;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000100u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
       7, this->_internal_source(), target);
@@ -15611,6 +15757,12 @@ uint8_t* TrackPublishOptions::_InternalSerialize(
       "livekit.proto.TrackPublishOptions.stream");
     target = stream->WriteStringMaybeAliased(
         8, this->_internal_stream(), target);
+  }
+
+  // optional bool preconnect_buffer = 9;
+  if (cached_has_bits & 0x00000080u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(9, this->_internal_preconnect_buffer(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -15673,13 +15825,18 @@ size_t TrackPublishOptions::ByteSizeLong() const {
       total_size += 1 + 1;
     }
 
-    // optional .livekit.proto.TrackSource source = 7;
+    // optional bool preconnect_buffer = 9;
     if (cached_has_bits & 0x00000080u) {
-      total_size += 1 +
-        ::_pbi::WireFormatLite::EnumSize(this->_internal_source());
+      total_size += 1 + 1;
     }
 
   }
+  // optional .livekit.proto.TrackSource source = 7;
+  if (cached_has_bits & 0x00000100u) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_source());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -15724,9 +15881,12 @@ void TrackPublishOptions::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, co
       _this->_impl_.simulcast_ = from._impl_.simulcast_;
     }
     if (cached_has_bits & 0x00000080u) {
-      _this->_impl_.source_ = from._impl_.source_;
+      _this->_impl_.preconnect_buffer_ = from._impl_.preconnect_buffer_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  if (cached_has_bits & 0x00000100u) {
+    _this->_internal_set_source(from._internal_source());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -17832,6 +17992,11 @@ class RoomEvent::_Internal {
   static const ::livekit::proto::DataStreamChunkReceived& stream_chunk_received(const RoomEvent* msg);
   static const ::livekit::proto::DataStreamTrailerReceived& stream_trailer_received(const RoomEvent* msg);
   static const ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged& data_channel_low_threshold_changed(const RoomEvent* msg);
+  static const ::livekit::proto::ByteStreamOpened& byte_stream_opened(const RoomEvent* msg);
+  static const ::livekit::proto::TextStreamOpened& text_stream_opened(const RoomEvent* msg);
+  static const ::livekit::proto::RoomInfo& room_updated(const RoomEvent* msg);
+  static const ::livekit::proto::RoomInfo& moved(const RoomEvent* msg);
+  static const ::livekit::proto::ParticipantsUpdated& participants_updated(const RoomEvent* msg);
   static bool MissingRequiredFields(const HasBits& has_bits) {
     return ((has_bits[0] & 0x00000001) ^ 0x00000001) != 0;
   }
@@ -17964,6 +18129,26 @@ RoomEvent::_Internal::stream_trailer_received(const RoomEvent* msg) {
 const ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged&
 RoomEvent::_Internal::data_channel_low_threshold_changed(const RoomEvent* msg) {
   return *msg->_impl_.message_.data_channel_low_threshold_changed_;
+}
+const ::livekit::proto::ByteStreamOpened&
+RoomEvent::_Internal::byte_stream_opened(const RoomEvent* msg) {
+  return *msg->_impl_.message_.byte_stream_opened_;
+}
+const ::livekit::proto::TextStreamOpened&
+RoomEvent::_Internal::text_stream_opened(const RoomEvent* msg) {
+  return *msg->_impl_.message_.text_stream_opened_;
+}
+const ::livekit::proto::RoomInfo&
+RoomEvent::_Internal::room_updated(const RoomEvent* msg) {
+  return *msg->_impl_.message_.room_updated_;
+}
+const ::livekit::proto::RoomInfo&
+RoomEvent::_Internal::moved(const RoomEvent* msg) {
+  return *msg->_impl_.message_.moved_;
+}
+const ::livekit::proto::ParticipantsUpdated&
+RoomEvent::_Internal::participants_updated(const RoomEvent* msg) {
+  return *msg->_impl_.message_.participants_updated_;
 }
 void RoomEvent::set_allocated_participant_connected(::livekit::proto::ParticipantConnected* participant_connected) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
@@ -18445,6 +18630,81 @@ void RoomEvent::set_allocated_data_channel_low_threshold_changed(::livekit::prot
   }
   // @@protoc_insertion_point(field_set_allocated:livekit.proto.RoomEvent.data_channel_low_threshold_changed)
 }
+void RoomEvent::set_allocated_byte_stream_opened(::livekit::proto::ByteStreamOpened* byte_stream_opened) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_message();
+  if (byte_stream_opened) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(byte_stream_opened);
+    if (message_arena != submessage_arena) {
+      byte_stream_opened = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, byte_stream_opened, submessage_arena);
+    }
+    set_has_byte_stream_opened();
+    _impl_.message_.byte_stream_opened_ = byte_stream_opened;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.RoomEvent.byte_stream_opened)
+}
+void RoomEvent::set_allocated_text_stream_opened(::livekit::proto::TextStreamOpened* text_stream_opened) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_message();
+  if (text_stream_opened) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(text_stream_opened);
+    if (message_arena != submessage_arena) {
+      text_stream_opened = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, text_stream_opened, submessage_arena);
+    }
+    set_has_text_stream_opened();
+    _impl_.message_.text_stream_opened_ = text_stream_opened;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.RoomEvent.text_stream_opened)
+}
+void RoomEvent::set_allocated_room_updated(::livekit::proto::RoomInfo* room_updated) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_message();
+  if (room_updated) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(room_updated);
+    if (message_arena != submessage_arena) {
+      room_updated = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, room_updated, submessage_arena);
+    }
+    set_has_room_updated();
+    _impl_.message_.room_updated_ = room_updated;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.RoomEvent.room_updated)
+}
+void RoomEvent::set_allocated_moved(::livekit::proto::RoomInfo* moved) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_message();
+  if (moved) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(moved);
+    if (message_arena != submessage_arena) {
+      moved = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, moved, submessage_arena);
+    }
+    set_has_moved();
+    _impl_.message_.moved_ = moved;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.RoomEvent.moved)
+}
+void RoomEvent::set_allocated_participants_updated(::livekit::proto::ParticipantsUpdated* participants_updated) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_message();
+  if (participants_updated) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(participants_updated);
+    if (message_arena != submessage_arena) {
+      participants_updated = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, participants_updated, submessage_arena);
+    }
+    set_has_participants_updated();
+    _impl_.message_.participants_updated_ = participants_updated;
+  }
+  // @@protoc_insertion_point(field_set_allocated:livekit.proto.RoomEvent.participants_updated)
+}
 RoomEvent::RoomEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -18623,6 +18883,31 @@ RoomEvent::RoomEvent(const RoomEvent& from)
     case kDataChannelLowThresholdChanged: {
       _this->_internal_mutable_data_channel_low_threshold_changed()->::livekit::proto::DataChannelBufferedAmountLowThresholdChanged::MergeFrom(
           from._internal_data_channel_low_threshold_changed());
+      break;
+    }
+    case kByteStreamOpened: {
+      _this->_internal_mutable_byte_stream_opened()->::livekit::proto::ByteStreamOpened::MergeFrom(
+          from._internal_byte_stream_opened());
+      break;
+    }
+    case kTextStreamOpened: {
+      _this->_internal_mutable_text_stream_opened()->::livekit::proto::TextStreamOpened::MergeFrom(
+          from._internal_text_stream_opened());
+      break;
+    }
+    case kRoomUpdated: {
+      _this->_internal_mutable_room_updated()->::livekit::proto::RoomInfo::MergeFrom(
+          from._internal_room_updated());
+      break;
+    }
+    case kMoved: {
+      _this->_internal_mutable_moved()->::livekit::proto::RoomInfo::MergeFrom(
+          from._internal_moved());
+      break;
+    }
+    case kParticipantsUpdated: {
+      _this->_internal_mutable_participants_updated()->::livekit::proto::ParticipantsUpdated::MergeFrom(
+          from._internal_participants_updated());
       break;
     }
     case MESSAGE_NOT_SET: {
@@ -18858,6 +19143,36 @@ void RoomEvent::clear_message() {
     case kDataChannelLowThresholdChanged: {
       if (GetArenaForAllocation() == nullptr) {
         delete _impl_.message_.data_channel_low_threshold_changed_;
+      }
+      break;
+    }
+    case kByteStreamOpened: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.message_.byte_stream_opened_;
+      }
+      break;
+    }
+    case kTextStreamOpened: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.message_.text_stream_opened_;
+      }
+      break;
+    }
+    case kRoomUpdated: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.message_.room_updated_;
+      }
+      break;
+    }
+    case kMoved: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.message_.moved_;
+      }
+      break;
+    }
+    case kParticipantsUpdated: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.message_.participants_updated_;
       }
       break;
     }
@@ -19153,6 +19468,46 @@ const char* RoomEvent::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
         } else
           goto handle_unusual;
         continue;
+      // .livekit.proto.ByteStreamOpened byte_stream_opened = 34;
+      case 34:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_byte_stream_opened(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.proto.TextStreamOpened text_stream_opened = 35;
+      case 35:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_text_stream_opened(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.proto.RoomInfo room_updated = 36;
+      case 36:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_room_updated(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.proto.RoomInfo moved = 37;
+      case 37:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_moved(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .livekit.proto.ParticipantsUpdated participants_updated = 38;
+      case 38:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr = ctx->ParseMessage(_internal_mutable_participants_updated(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -19381,6 +19736,36 @@ uint8_t* RoomEvent::_InternalSerialize(
       target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(33, _Internal::data_channel_low_threshold_changed(this),
           _Internal::data_channel_low_threshold_changed(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kByteStreamOpened: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(34, _Internal::byte_stream_opened(this),
+          _Internal::byte_stream_opened(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kTextStreamOpened: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(35, _Internal::text_stream_opened(this),
+          _Internal::text_stream_opened(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kRoomUpdated: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(36, _Internal::room_updated(this),
+          _Internal::room_updated(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kMoved: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(37, _Internal::moved(this),
+          _Internal::moved(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kParticipantsUpdated: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(38, _Internal::participants_updated(this),
+          _Internal::participants_updated(this).GetCachedSize(), target, stream);
       break;
     }
     default: ;
@@ -19630,6 +20015,41 @@ size_t RoomEvent::ByteSizeLong() const {
           *_impl_.message_.data_channel_low_threshold_changed_);
       break;
     }
+    // .livekit.proto.ByteStreamOpened byte_stream_opened = 34;
+    case kByteStreamOpened: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.message_.byte_stream_opened_);
+      break;
+    }
+    // .livekit.proto.TextStreamOpened text_stream_opened = 35;
+    case kTextStreamOpened: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.message_.text_stream_opened_);
+      break;
+    }
+    // .livekit.proto.RoomInfo room_updated = 36;
+    case kRoomUpdated: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.message_.room_updated_);
+      break;
+    }
+    // .livekit.proto.RoomInfo moved = 37;
+    case kMoved: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.message_.moved_);
+      break;
+    }
+    // .livekit.proto.ParticipantsUpdated participants_updated = 38;
+    case kParticipantsUpdated: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.message_.participants_updated_);
+      break;
+    }
     case MESSAGE_NOT_SET: {
       break;
     }
@@ -19814,6 +20234,31 @@ void RoomEvent::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROT
     case kDataChannelLowThresholdChanged: {
       _this->_internal_mutable_data_channel_low_threshold_changed()->::livekit::proto::DataChannelBufferedAmountLowThresholdChanged::MergeFrom(
           from._internal_data_channel_low_threshold_changed());
+      break;
+    }
+    case kByteStreamOpened: {
+      _this->_internal_mutable_byte_stream_opened()->::livekit::proto::ByteStreamOpened::MergeFrom(
+          from._internal_byte_stream_opened());
+      break;
+    }
+    case kTextStreamOpened: {
+      _this->_internal_mutable_text_stream_opened()->::livekit::proto::TextStreamOpened::MergeFrom(
+          from._internal_text_stream_opened());
+      break;
+    }
+    case kRoomUpdated: {
+      _this->_internal_mutable_room_updated()->::livekit::proto::RoomInfo::MergeFrom(
+          from._internal_room_updated());
+      break;
+    }
+    case kMoved: {
+      _this->_internal_mutable_moved()->::livekit::proto::RoomInfo::MergeFrom(
+          from._internal_moved());
+      break;
+    }
+    case kParticipantsUpdated: {
+      _this->_internal_mutable_participants_updated()->::livekit::proto::ParticipantsUpdated::MergeFrom(
+          from._internal_participants_updated());
       break;
     }
     case MESSAGE_NOT_SET: {
@@ -20013,6 +20458,36 @@ bool RoomEvent::IsInitialized() const {
       }
       break;
     }
+    case kByteStreamOpened: {
+      if (_internal_has_byte_stream_opened()) {
+        if (!_impl_.message_.byte_stream_opened_->IsInitialized()) return false;
+      }
+      break;
+    }
+    case kTextStreamOpened: {
+      if (_internal_has_text_stream_opened()) {
+        if (!_impl_.message_.text_stream_opened_->IsInitialized()) return false;
+      }
+      break;
+    }
+    case kRoomUpdated: {
+      if (_internal_has_room_updated()) {
+        if (!_impl_.message_.room_updated_->IsInitialized()) return false;
+      }
+      break;
+    }
+    case kMoved: {
+      if (_internal_has_moved()) {
+        if (!_impl_.message_.moved_->IsInitialized()) return false;
+      }
+      break;
+    }
+    case kParticipantsUpdated: {
+      if (_internal_has_participants_updated()) {
+        if (!_impl_.message_.participants_updated_->IsInitialized()) return false;
+      }
+      break;
+    }
     case MESSAGE_NOT_SET: {
       break;
     }
@@ -20055,8 +20530,29 @@ class RoomInfo::_Internal {
   static void set_has_reliable_dc_buffered_amount_low_threshold(HasBits* has_bits) {
     (*has_bits)[0] |= 16u;
   }
+  static void set_has_empty_timeout(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static void set_has_departure_timeout(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static void set_has_max_participants(HasBits* has_bits) {
+    (*has_bits)[0] |= 256u;
+  }
+  static void set_has_creation_time(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+  static void set_has_num_participants(HasBits* has_bits) {
+    (*has_bits)[0] |= 512u;
+  }
+  static void set_has_num_publishers(HasBits* has_bits) {
+    (*has_bits)[0] |= 1024u;
+  }
+  static void set_has_active_recording(HasBits* has_bits) {
+    (*has_bits)[0] |= 2048u;
+  }
   static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x0000001e) ^ 0x0000001e) != 0;
+    return ((has_bits[0] & 0x00000ffe) ^ 0x00000ffe) != 0;
   }
 };
 
@@ -20076,7 +20572,14 @@ RoomInfo::RoomInfo(const RoomInfo& from)
     , decltype(_impl_.name_){}
     , decltype(_impl_.metadata_){}
     , decltype(_impl_.lossy_dc_buffered_amount_low_threshold_){}
-    , decltype(_impl_.reliable_dc_buffered_amount_low_threshold_){}};
+    , decltype(_impl_.reliable_dc_buffered_amount_low_threshold_){}
+    , decltype(_impl_.empty_timeout_){}
+    , decltype(_impl_.departure_timeout_){}
+    , decltype(_impl_.creation_time_){}
+    , decltype(_impl_.max_participants_){}
+    , decltype(_impl_.num_participants_){}
+    , decltype(_impl_.num_publishers_){}
+    , decltype(_impl_.active_recording_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.sid_.InitDefault();
@@ -20104,8 +20607,8 @@ RoomInfo::RoomInfo(const RoomInfo& from)
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.lossy_dc_buffered_amount_low_threshold_, &from._impl_.lossy_dc_buffered_amount_low_threshold_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.reliable_dc_buffered_amount_low_threshold_) -
-    reinterpret_cast<char*>(&_impl_.lossy_dc_buffered_amount_low_threshold_)) + sizeof(_impl_.reliable_dc_buffered_amount_low_threshold_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.active_recording_) -
+    reinterpret_cast<char*>(&_impl_.lossy_dc_buffered_amount_low_threshold_)) + sizeof(_impl_.active_recording_));
   // @@protoc_insertion_point(copy_constructor:livekit.proto.RoomInfo)
 }
 
@@ -20121,6 +20624,13 @@ inline void RoomInfo::SharedCtor(
     , decltype(_impl_.metadata_){}
     , decltype(_impl_.lossy_dc_buffered_amount_low_threshold_){uint64_t{0u}}
     , decltype(_impl_.reliable_dc_buffered_amount_low_threshold_){uint64_t{0u}}
+    , decltype(_impl_.empty_timeout_){0u}
+    , decltype(_impl_.departure_timeout_){0u}
+    , decltype(_impl_.creation_time_){int64_t{0}}
+    , decltype(_impl_.max_participants_){0u}
+    , decltype(_impl_.num_participants_){0u}
+    , decltype(_impl_.num_publishers_){0u}
+    , decltype(_impl_.active_recording_){false}
   };
   _impl_.sid_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -20174,10 +20684,15 @@ void RoomInfo::Clear() {
       _impl_.metadata_.ClearNonDefaultToEmpty();
     }
   }
-  if (cached_has_bits & 0x00000018u) {
+  if (cached_has_bits & 0x000000f8u) {
     ::memset(&_impl_.lossy_dc_buffered_amount_low_threshold_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.reliable_dc_buffered_amount_low_threshold_) -
-        reinterpret_cast<char*>(&_impl_.lossy_dc_buffered_amount_low_threshold_)) + sizeof(_impl_.reliable_dc_buffered_amount_low_threshold_));
+        reinterpret_cast<char*>(&_impl_.creation_time_) -
+        reinterpret_cast<char*>(&_impl_.lossy_dc_buffered_amount_low_threshold_)) + sizeof(_impl_.creation_time_));
+  }
+  if (cached_has_bits & 0x00000f00u) {
+    ::memset(&_impl_.max_participants_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.active_recording_) -
+        reinterpret_cast<char*>(&_impl_.max_participants_)) + sizeof(_impl_.active_recording_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -20240,6 +20755,69 @@ const char* RoomInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           _Internal::set_has_reliable_dc_buffered_amount_low_threshold(&has_bits);
           _impl_.reliable_dc_buffered_amount_low_threshold_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required uint32 empty_timeout = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          _Internal::set_has_empty_timeout(&has_bits);
+          _impl_.empty_timeout_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required uint32 departure_timeout = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          _Internal::set_has_departure_timeout(&has_bits);
+          _impl_.departure_timeout_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required uint32 max_participants = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+          _Internal::set_has_max_participants(&has_bits);
+          _impl_.max_participants_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required int64 creation_time = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
+          _Internal::set_has_creation_time(&has_bits);
+          _impl_.creation_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required uint32 num_participants = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 80)) {
+          _Internal::set_has_num_participants(&has_bits);
+          _impl_.num_participants_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required uint32 num_publishers = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 88)) {
+          _Internal::set_has_num_publishers(&has_bits);
+          _impl_.num_publishers_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required bool active_recording = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 96)) {
+          _Internal::set_has_active_recording(&has_bits);
+          _impl_.active_recording_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -20317,6 +20895,48 @@ uint8_t* RoomInfo::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt64ToArray(5, this->_internal_reliable_dc_buffered_amount_low_threshold(), target);
   }
 
+  // required uint32 empty_timeout = 6;
+  if (cached_has_bits & 0x00000020u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(6, this->_internal_empty_timeout(), target);
+  }
+
+  // required uint32 departure_timeout = 7;
+  if (cached_has_bits & 0x00000040u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_departure_timeout(), target);
+  }
+
+  // required uint32 max_participants = 8;
+  if (cached_has_bits & 0x00000100u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(8, this->_internal_max_participants(), target);
+  }
+
+  // required int64 creation_time = 9;
+  if (cached_has_bits & 0x00000080u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(9, this->_internal_creation_time(), target);
+  }
+
+  // required uint32 num_participants = 10;
+  if (cached_has_bits & 0x00000200u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(10, this->_internal_num_participants(), target);
+  }
+
+  // required uint32 num_publishers = 11;
+  if (cached_has_bits & 0x00000400u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(11, this->_internal_num_publishers(), target);
+  }
+
+  // required bool active_recording = 12;
+  if (cached_has_bits & 0x00000800u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(12, this->_internal_active_recording(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -20353,13 +20973,48 @@ size_t RoomInfo::RequiredFieldsByteSizeFallback() const {
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_reliable_dc_buffered_amount_low_threshold());
   }
 
+  if (_internal_has_empty_timeout()) {
+    // required uint32 empty_timeout = 6;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_empty_timeout());
+  }
+
+  if (_internal_has_departure_timeout()) {
+    // required uint32 departure_timeout = 7;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_departure_timeout());
+  }
+
+  if (_internal_has_creation_time()) {
+    // required int64 creation_time = 9;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_creation_time());
+  }
+
+  if (_internal_has_max_participants()) {
+    // required uint32 max_participants = 8;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_max_participants());
+  }
+
+  if (_internal_has_num_participants()) {
+    // required uint32 num_participants = 10;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_num_participants());
+  }
+
+  if (_internal_has_num_publishers()) {
+    // required uint32 num_publishers = 11;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_num_publishers());
+  }
+
+  if (_internal_has_active_recording()) {
+    // required bool active_recording = 12;
+    total_size += 1 + 1;
+  }
+
   return total_size;
 }
 size_t RoomInfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:livekit.proto.RoomInfo)
   size_t total_size = 0;
 
-  if (((_impl_._has_bits_[0] & 0x0000001e) ^ 0x0000001e) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000ffe) ^ 0x00000ffe) == 0) {  // All required fields are present.
     // required string name = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -20375,6 +21030,27 @@ size_t RoomInfo::ByteSizeLong() const {
 
     // required uint64 reliable_dc_buffered_amount_low_threshold = 5;
     total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_reliable_dc_buffered_amount_low_threshold());
+
+    // required uint32 empty_timeout = 6;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_empty_timeout());
+
+    // required uint32 departure_timeout = 7;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_departure_timeout());
+
+    // required int64 creation_time = 9;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_creation_time());
+
+    // required uint32 max_participants = 8;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_max_participants());
+
+    // required uint32 num_participants = 10;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_num_participants());
+
+    // required uint32 num_publishers = 11;
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_num_publishers());
+
+    // required bool active_recording = 12;
+    total_size += 1 + 1;
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -20410,7 +21086,7 @@ void RoomInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_internal_set_sid(from._internal_sid());
     }
@@ -20425,6 +21101,30 @@ void RoomInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
     }
     if (cached_has_bits & 0x00000010u) {
       _this->_impl_.reliable_dc_buffered_amount_low_threshold_ = from._impl_.reliable_dc_buffered_amount_low_threshold_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      _this->_impl_.empty_timeout_ = from._impl_.empty_timeout_;
+    }
+    if (cached_has_bits & 0x00000040u) {
+      _this->_impl_.departure_timeout_ = from._impl_.departure_timeout_;
+    }
+    if (cached_has_bits & 0x00000080u) {
+      _this->_impl_.creation_time_ = from._impl_.creation_time_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  if (cached_has_bits & 0x00000f00u) {
+    if (cached_has_bits & 0x00000100u) {
+      _this->_impl_.max_participants_ = from._impl_.max_participants_;
+    }
+    if (cached_has_bits & 0x00000200u) {
+      _this->_impl_.num_participants_ = from._impl_.num_participants_;
+    }
+    if (cached_has_bits & 0x00000400u) {
+      _this->_impl_.num_publishers_ = from._impl_.num_publishers_;
+    }
+    if (cached_has_bits & 0x00000800u) {
+      _this->_impl_.active_recording_ = from._impl_.active_recording_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
@@ -20462,8 +21162,8 @@ void RoomInfo::InternalSwap(RoomInfo* other) {
       &other->_impl_.metadata_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RoomInfo, _impl_.reliable_dc_buffered_amount_low_threshold_)
-      + sizeof(RoomInfo::_impl_.reliable_dc_buffered_amount_low_threshold_)
+      PROTOBUF_FIELD_OFFSET(RoomInfo, _impl_.active_recording_)
+      + sizeof(RoomInfo::_impl_.active_recording_)
       - PROTOBUF_FIELD_OFFSET(RoomInfo, _impl_.lossy_dc_buffered_amount_low_threshold_)>(
           reinterpret_cast<char*>(&_impl_.lossy_dc_buffered_amount_low_threshold_),
           reinterpret_cast<char*>(&other->_impl_.lossy_dc_buffered_amount_low_threshold_));
@@ -20770,6 +21470,196 @@ void OwnedRoom::InternalSwap(OwnedRoom* other) {
 
 // ===================================================================
 
+class ParticipantsUpdated::_Internal {
+ public:
+};
+
+void ParticipantsUpdated::clear_participants() {
+  _impl_.participants_.Clear();
+}
+ParticipantsUpdated::ParticipantsUpdated(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.proto.ParticipantsUpdated)
+}
+ParticipantsUpdated::ParticipantsUpdated(const ParticipantsUpdated& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ParticipantsUpdated* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.participants_){from._impl_.participants_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:livekit.proto.ParticipantsUpdated)
+}
+
+inline void ParticipantsUpdated::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.participants_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+ParticipantsUpdated::~ParticipantsUpdated() {
+  // @@protoc_insertion_point(destructor:livekit.proto.ParticipantsUpdated)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ParticipantsUpdated::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.participants_.~RepeatedPtrField();
+}
+
+void ParticipantsUpdated::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ParticipantsUpdated::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.proto.ParticipantsUpdated)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.participants_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ParticipantsUpdated::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .livekit.proto.ParticipantInfo participants = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_participants(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ParticipantsUpdated::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.proto.ParticipantsUpdated)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .livekit.proto.ParticipantInfo participants = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_participants_size()); i < n; i++) {
+    const auto& repfield = this->_internal_participants(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.proto.ParticipantsUpdated)
+  return target;
+}
+
+size_t ParticipantsUpdated::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.proto.ParticipantsUpdated)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .livekit.proto.ParticipantInfo participants = 1;
+  total_size += 1UL * this->_internal_participants_size();
+  for (const auto& msg : this->_impl_.participants_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ParticipantsUpdated::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ParticipantsUpdated::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ParticipantsUpdated::GetClassData() const { return &_class_data_; }
+
+
+void ParticipantsUpdated::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ParticipantsUpdated*>(&to_msg);
+  auto& from = static_cast<const ParticipantsUpdated&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.proto.ParticipantsUpdated)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.participants_.MergeFrom(from._impl_.participants_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ParticipantsUpdated::CopyFrom(const ParticipantsUpdated& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.proto.ParticipantsUpdated)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ParticipantsUpdated::IsInitialized() const {
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.participants_))
+    return false;
+  return true;
+}
+
+void ParticipantsUpdated::InternalSwap(ParticipantsUpdated* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.participants_.InternalSwap(&other->_impl_.participants_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ParticipantsUpdated::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
+      file_level_metadata_room_2eproto[55]);
+}
+
+// ===================================================================
+
 class ParticipantConnected::_Internal {
  public:
   using HasBits = decltype(std::declval<ParticipantConnected>()._impl_._has_bits_);
@@ -20980,7 +21870,7 @@ void ParticipantConnected::InternalSwap(ParticipantConnected* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ParticipantConnected::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[55]);
+      file_level_metadata_room_2eproto[56]);
 }
 
 // ===================================================================
@@ -21263,7 +22153,7 @@ void ParticipantDisconnected::InternalSwap(ParticipantDisconnected* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ParticipantDisconnected::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[56]);
+      file_level_metadata_room_2eproto[57]);
 }
 
 // ===================================================================
@@ -21485,7 +22375,7 @@ void LocalTrackPublished::InternalSwap(LocalTrackPublished* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata LocalTrackPublished::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[57]);
+      file_level_metadata_room_2eproto[58]);
 }
 
 // ===================================================================
@@ -21707,7 +22597,7 @@ void LocalTrackUnpublished::InternalSwap(LocalTrackUnpublished* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata LocalTrackUnpublished::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[58]);
+      file_level_metadata_room_2eproto[59]);
 }
 
 // ===================================================================
@@ -21929,7 +22819,7 @@ void LocalTrackSubscribed::InternalSwap(LocalTrackSubscribed* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata LocalTrackSubscribed::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[59]);
+      file_level_metadata_room_2eproto[60]);
 }
 
 // ===================================================================
@@ -22229,7 +23119,7 @@ void TrackPublished::InternalSwap(TrackPublished* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TrackPublished::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[60]);
+      file_level_metadata_room_2eproto[61]);
 }
 
 // ===================================================================
@@ -22534,7 +23424,7 @@ void TrackUnpublished::InternalSwap(TrackUnpublished* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TrackUnpublished::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[61]);
+      file_level_metadata_room_2eproto[62]);
 }
 
 // ===================================================================
@@ -22834,7 +23724,7 @@ void TrackSubscribed::InternalSwap(TrackSubscribed* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TrackSubscribed::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[62]);
+      file_level_metadata_room_2eproto[63]);
 }
 
 // ===================================================================
@@ -23139,7 +24029,7 @@ void TrackUnsubscribed::InternalSwap(TrackUnsubscribed* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TrackUnsubscribed::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[63]);
+      file_level_metadata_room_2eproto[64]);
 }
 
 // ===================================================================
@@ -23506,7 +24396,7 @@ void TrackSubscriptionFailed::InternalSwap(TrackSubscriptionFailed* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TrackSubscriptionFailed::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[64]);
+      file_level_metadata_room_2eproto[65]);
 }
 
 // ===================================================================
@@ -23811,7 +24701,7 @@ void TrackMuted::InternalSwap(TrackMuted* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TrackMuted::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[65]);
+      file_level_metadata_room_2eproto[66]);
 }
 
 // ===================================================================
@@ -24116,7 +25006,7 @@ void TrackUnmuted::InternalSwap(TrackUnmuted* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TrackUnmuted::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[66]);
+      file_level_metadata_room_2eproto[67]);
 }
 
 // ===================================================================
@@ -24399,7 +25289,7 @@ void E2eeStateChanged::InternalSwap(E2eeStateChanged* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata E2eeStateChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[67]);
+      file_level_metadata_room_2eproto[68]);
 }
 
 // ===================================================================
@@ -24591,7 +25481,7 @@ void ActiveSpeakersChanged::InternalSwap(ActiveSpeakersChanged* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ActiveSpeakersChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[68]);
+      file_level_metadata_room_2eproto[69]);
 }
 
 // ===================================================================
@@ -24813,7 +25703,7 @@ void RoomMetadataChanged::InternalSwap(RoomMetadataChanged* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RoomMetadataChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[69]);
+      file_level_metadata_room_2eproto[70]);
 }
 
 // ===================================================================
@@ -25035,7 +25925,7 @@ void RoomSidChanged::InternalSwap(RoomSidChanged* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RoomSidChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[70]);
+      file_level_metadata_room_2eproto[71]);
 }
 
 // ===================================================================
@@ -25340,7 +26230,7 @@ void ParticipantMetadataChanged::InternalSwap(ParticipantMetadataChanged* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata ParticipantMetadataChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[71]);
+      file_level_metadata_room_2eproto[72]);
 }
 
 // ===================================================================
@@ -25634,7 +26524,7 @@ void ParticipantAttributesChanged::InternalSwap(ParticipantAttributesChanged* ot
 ::PROTOBUF_NAMESPACE_ID::Metadata ParticipantAttributesChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[72]);
+      file_level_metadata_room_2eproto[73]);
 }
 
 // ===================================================================
@@ -25939,7 +26829,7 @@ void ParticipantNameChanged::InternalSwap(ParticipantNameChanged* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ParticipantNameChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[73]);
+      file_level_metadata_room_2eproto[74]);
 }
 
 // ===================================================================
@@ -26222,7 +27112,7 @@ void ConnectionQualityChanged::InternalSwap(ConnectionQualityChanged* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ConnectionQualityChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[74]);
+      file_level_metadata_room_2eproto[75]);
 }
 
 // ===================================================================
@@ -26498,7 +27388,7 @@ void UserPacket::InternalSwap(UserPacket* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UserPacket::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[75]);
+      file_level_metadata_room_2eproto[76]);
 }
 
 // ===================================================================
@@ -26936,7 +27826,7 @@ void ChatMessage::InternalSwap(ChatMessage* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ChatMessage::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[76]);
+      file_level_metadata_room_2eproto[77]);
 }
 
 // ===================================================================
@@ -27232,7 +28122,7 @@ void ChatMessageReceived::InternalSwap(ChatMessageReceived* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ChatMessageReceived::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[77]);
+      file_level_metadata_room_2eproto[78]);
 }
 
 // ===================================================================
@@ -27490,7 +28380,7 @@ void SipDTMF::InternalSwap(SipDTMF* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SipDTMF::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[78]);
+      file_level_metadata_room_2eproto[79]);
 }
 
 // ===================================================================
@@ -27945,7 +28835,7 @@ void DataPacketReceived::InternalSwap(DataPacketReceived* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataPacketReceived::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[79]);
+      file_level_metadata_room_2eproto[80]);
 }
 
 // ===================================================================
@@ -28265,7 +29155,7 @@ void TranscriptionReceived::InternalSwap(TranscriptionReceived* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TranscriptionReceived::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[80]);
+      file_level_metadata_room_2eproto[81]);
 }
 
 // ===================================================================
@@ -28464,7 +29354,7 @@ void ConnectionStateChanged::InternalSwap(ConnectionStateChanged* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ConnectionStateChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[81]);
+      file_level_metadata_room_2eproto[82]);
 }
 
 // ===================================================================
@@ -28504,7 +29394,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Connected::GetClassData() cons
 ::PROTOBUF_NAMESPACE_ID::Metadata Connected::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[82]);
+      file_level_metadata_room_2eproto[83]);
 }
 
 // ===================================================================
@@ -28703,7 +29593,7 @@ void Disconnected::InternalSwap(Disconnected* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Disconnected::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[83]);
+      file_level_metadata_room_2eproto[84]);
 }
 
 // ===================================================================
@@ -28743,7 +29633,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Reconnecting::GetClassData() c
 ::PROTOBUF_NAMESPACE_ID::Metadata Reconnecting::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[84]);
+      file_level_metadata_room_2eproto[85]);
 }
 
 // ===================================================================
@@ -28783,7 +29673,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Reconnected::GetClassData() co
 ::PROTOBUF_NAMESPACE_ID::Metadata Reconnected::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[85]);
+      file_level_metadata_room_2eproto[86]);
 }
 
 // ===================================================================
@@ -28823,7 +29713,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RoomEOS::GetClassData() const 
 ::PROTOBUF_NAMESPACE_ID::Metadata RoomEOS::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[86]);
+      file_level_metadata_room_2eproto[87]);
 }
 
 // ===================================================================
@@ -29197,7 +30087,7 @@ void DataStream_TextHeader::InternalSwap(DataStream_TextHeader* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStream_TextHeader::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[87]);
+      file_level_metadata_room_2eproto[88]);
 }
 
 // ===================================================================
@@ -29419,7 +30309,7 @@ void DataStream_ByteHeader::InternalSwap(DataStream_ByteHeader* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStream_ByteHeader::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[88]);
+      file_level_metadata_room_2eproto[89]);
 }
 
 // ===================================================================
@@ -29433,7 +30323,7 @@ void DataStream_Header_AttributesEntry_DoNotUse::MergeFrom(const DataStream_Head
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStream_Header_AttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[89]);
+      file_level_metadata_room_2eproto[90]);
 }
 
 // ===================================================================
@@ -30115,7 +31005,7 @@ void DataStream_Header::InternalSwap(DataStream_Header* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStream_Header::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[90]);
+      file_level_metadata_room_2eproto[91]);
 }
 
 // ===================================================================
@@ -30538,7 +31428,7 @@ void DataStream_Chunk::InternalSwap(DataStream_Chunk* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStream_Chunk::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[91]);
+      file_level_metadata_room_2eproto[92]);
 }
 
 // ===================================================================
@@ -30552,7 +31442,7 @@ void DataStream_Trailer_AttributesEntry_DoNotUse::MergeFrom(const DataStream_Tra
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStream_Trailer_AttributesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[92]);
+      file_level_metadata_room_2eproto[93]);
 }
 
 // ===================================================================
@@ -30925,7 +31815,7 @@ void DataStream_Trailer::InternalSwap(DataStream_Trailer* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStream_Trailer::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[93]);
+      file_level_metadata_room_2eproto[94]);
 }
 
 // ===================================================================
@@ -30965,7 +31855,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DataStream::GetClassData() con
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStream::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[94]);
+      file_level_metadata_room_2eproto[95]);
 }
 
 // ===================================================================
@@ -31261,7 +32151,7 @@ void DataStreamHeaderReceived::InternalSwap(DataStreamHeaderReceived* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStreamHeaderReceived::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[95]);
+      file_level_metadata_room_2eproto[96]);
 }
 
 // ===================================================================
@@ -31557,7 +32447,7 @@ void DataStreamChunkReceived::InternalSwap(DataStreamChunkReceived* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStreamChunkReceived::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[96]);
+      file_level_metadata_room_2eproto[97]);
 }
 
 // ===================================================================
@@ -31853,7 +32743,7 @@ void DataStreamTrailerReceived::InternalSwap(DataStreamTrailerReceived* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DataStreamTrailerReceived::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[97]);
+      file_level_metadata_room_2eproto[98]);
 }
 
 // ===================================================================
@@ -32229,7 +33119,7 @@ void SendStreamHeaderRequest::InternalSwap(SendStreamHeaderRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamHeaderRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[98]);
+      file_level_metadata_room_2eproto[99]);
 }
 
 // ===================================================================
@@ -32605,7 +33495,7 @@ void SendStreamChunkRequest::InternalSwap(SendStreamChunkRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamChunkRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[99]);
+      file_level_metadata_room_2eproto[100]);
 }
 
 // ===================================================================
@@ -32981,7 +33871,7 @@ void SendStreamTrailerRequest::InternalSwap(SendStreamTrailerRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamTrailerRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[100]);
+      file_level_metadata_room_2eproto[101]);
 }
 
 // ===================================================================
@@ -33174,7 +34064,7 @@ void SendStreamHeaderResponse::InternalSwap(SendStreamHeaderResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamHeaderResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[101]);
+      file_level_metadata_room_2eproto[102]);
 }
 
 // ===================================================================
@@ -33367,7 +34257,7 @@ void SendStreamChunkResponse::InternalSwap(SendStreamChunkResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamChunkResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[102]);
+      file_level_metadata_room_2eproto[103]);
 }
 
 // ===================================================================
@@ -33560,7 +34450,7 @@ void SendStreamTrailerResponse::InternalSwap(SendStreamTrailerResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamTrailerResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[103]);
+      file_level_metadata_room_2eproto[104]);
 }
 
 // ===================================================================
@@ -33818,7 +34708,7 @@ void SendStreamHeaderCallback::InternalSwap(SendStreamHeaderCallback* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamHeaderCallback::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[104]);
+      file_level_metadata_room_2eproto[105]);
 }
 
 // ===================================================================
@@ -34076,7 +34966,7 @@ void SendStreamChunkCallback::InternalSwap(SendStreamChunkCallback* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamChunkCallback::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[105]);
+      file_level_metadata_room_2eproto[106]);
 }
 
 // ===================================================================
@@ -34334,7 +35224,7 @@ void SendStreamTrailerCallback::InternalSwap(SendStreamTrailerCallback* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendStreamTrailerCallback::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[106]);
+      file_level_metadata_room_2eproto[107]);
 }
 
 // ===================================================================
@@ -34626,7 +35516,7 @@ void SetDataChannelBufferedAmountLowThresholdRequest::InternalSwap(SetDataChanne
 ::PROTOBUF_NAMESPACE_ID::Metadata SetDataChannelBufferedAmountLowThresholdRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[107]);
+      file_level_metadata_room_2eproto[108]);
 }
 
 // ===================================================================
@@ -34666,7 +35556,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetDataChannelBufferedAmountLo
 ::PROTOBUF_NAMESPACE_ID::Metadata SetDataChannelBufferedAmountLowThresholdResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[108]);
+      file_level_metadata_room_2eproto[109]);
 }
 
 // ===================================================================
@@ -34927,7 +35817,607 @@ void DataChannelBufferedAmountLowThresholdChanged::InternalSwap(DataChannelBuffe
 ::PROTOBUF_NAMESPACE_ID::Metadata DataChannelBufferedAmountLowThresholdChanged::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
-      file_level_metadata_room_2eproto[109]);
+      file_level_metadata_room_2eproto[110]);
+}
+
+// ===================================================================
+
+class ByteStreamOpened::_Internal {
+ public:
+  using HasBits = decltype(std::declval<ByteStreamOpened>()._impl_._has_bits_);
+  static const ::livekit::proto::OwnedByteStreamReader& reader(const ByteStreamOpened* msg);
+  static void set_has_reader(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_participant_identity(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000003) ^ 0x00000003) != 0;
+  }
+};
+
+const ::livekit::proto::OwnedByteStreamReader&
+ByteStreamOpened::_Internal::reader(const ByteStreamOpened* msg) {
+  return *msg->_impl_.reader_;
+}
+void ByteStreamOpened::clear_reader() {
+  if (_impl_.reader_ != nullptr) _impl_.reader_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+ByteStreamOpened::ByteStreamOpened(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.proto.ByteStreamOpened)
+}
+ByteStreamOpened::ByteStreamOpened(const ByteStreamOpened& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ByteStreamOpened* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.participant_identity_){}
+    , decltype(_impl_.reader_){nullptr}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.participant_identity_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_participant_identity()) {
+    _this->_impl_.participant_identity_.Set(from._internal_participant_identity(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_reader()) {
+    _this->_impl_.reader_ = new ::livekit::proto::OwnedByteStreamReader(*from._impl_.reader_);
+  }
+  // @@protoc_insertion_point(copy_constructor:livekit.proto.ByteStreamOpened)
+}
+
+inline void ByteStreamOpened::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.participant_identity_){}
+    , decltype(_impl_.reader_){nullptr}
+  };
+  _impl_.participant_identity_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+ByteStreamOpened::~ByteStreamOpened() {
+  // @@protoc_insertion_point(destructor:livekit.proto.ByteStreamOpened)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ByteStreamOpened::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.participant_identity_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.reader_;
+}
+
+void ByteStreamOpened::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ByteStreamOpened::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.proto.ByteStreamOpened)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.participant_identity_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(_impl_.reader_ != nullptr);
+      _impl_.reader_->Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ByteStreamOpened::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required .livekit.proto.OwnedByteStreamReader reader = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_reader(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required string participant_identity = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_participant_identity();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "livekit.proto.ByteStreamOpened.participant_identity");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ByteStreamOpened::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.proto.ByteStreamOpened)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required .livekit.proto.OwnedByteStreamReader reader = 1;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::reader(this),
+        _Internal::reader(this).GetCachedSize(), target, stream);
+  }
+
+  // required string participant_identity = 2;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_participant_identity().data(), static_cast<int>(this->_internal_participant_identity().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "livekit.proto.ByteStreamOpened.participant_identity");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_participant_identity(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.proto.ByteStreamOpened)
+  return target;
+}
+
+size_t ByteStreamOpened::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:livekit.proto.ByteStreamOpened)
+  size_t total_size = 0;
+
+  if (_internal_has_participant_identity()) {
+    // required string participant_identity = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_participant_identity());
+  }
+
+  if (_internal_has_reader()) {
+    // required .livekit.proto.OwnedByteStreamReader reader = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.reader_);
+  }
+
+  return total_size;
+}
+size_t ByteStreamOpened::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.proto.ByteStreamOpened)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required string participant_identity = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_participant_identity());
+
+    // required .livekit.proto.OwnedByteStreamReader reader = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.reader_);
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ByteStreamOpened::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ByteStreamOpened::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ByteStreamOpened::GetClassData() const { return &_class_data_; }
+
+
+void ByteStreamOpened::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ByteStreamOpened*>(&to_msg);
+  auto& from = static_cast<const ByteStreamOpened&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.proto.ByteStreamOpened)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_participant_identity(from._internal_participant_identity());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_reader()->::livekit::proto::OwnedByteStreamReader::MergeFrom(
+          from._internal_reader());
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ByteStreamOpened::CopyFrom(const ByteStreamOpened& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.proto.ByteStreamOpened)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ByteStreamOpened::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (_internal_has_reader()) {
+    if (!_impl_.reader_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void ByteStreamOpened::InternalSwap(ByteStreamOpened* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.participant_identity_, lhs_arena,
+      &other->_impl_.participant_identity_, rhs_arena
+  );
+  swap(_impl_.reader_, other->_impl_.reader_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ByteStreamOpened::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
+      file_level_metadata_room_2eproto[111]);
+}
+
+// ===================================================================
+
+class TextStreamOpened::_Internal {
+ public:
+  using HasBits = decltype(std::declval<TextStreamOpened>()._impl_._has_bits_);
+  static const ::livekit::proto::OwnedTextStreamReader& reader(const TextStreamOpened* msg);
+  static void set_has_reader(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_participant_identity(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000003) ^ 0x00000003) != 0;
+  }
+};
+
+const ::livekit::proto::OwnedTextStreamReader&
+TextStreamOpened::_Internal::reader(const TextStreamOpened* msg) {
+  return *msg->_impl_.reader_;
+}
+void TextStreamOpened::clear_reader() {
+  if (_impl_.reader_ != nullptr) _impl_.reader_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+TextStreamOpened::TextStreamOpened(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:livekit.proto.TextStreamOpened)
+}
+TextStreamOpened::TextStreamOpened(const TextStreamOpened& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TextStreamOpened* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.participant_identity_){}
+    , decltype(_impl_.reader_){nullptr}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.participant_identity_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_participant_identity()) {
+    _this->_impl_.participant_identity_.Set(from._internal_participant_identity(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_reader()) {
+    _this->_impl_.reader_ = new ::livekit::proto::OwnedTextStreamReader(*from._impl_.reader_);
+  }
+  // @@protoc_insertion_point(copy_constructor:livekit.proto.TextStreamOpened)
+}
+
+inline void TextStreamOpened::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.participant_identity_){}
+    , decltype(_impl_.reader_){nullptr}
+  };
+  _impl_.participant_identity_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.participant_identity_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+TextStreamOpened::~TextStreamOpened() {
+  // @@protoc_insertion_point(destructor:livekit.proto.TextStreamOpened)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TextStreamOpened::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.participant_identity_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.reader_;
+}
+
+void TextStreamOpened::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TextStreamOpened::Clear() {
+// @@protoc_insertion_point(message_clear_start:livekit.proto.TextStreamOpened)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.participant_identity_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(_impl_.reader_ != nullptr);
+      _impl_.reader_->Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TextStreamOpened::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required .livekit.proto.OwnedTextStreamReader reader = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_reader(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required string participant_identity = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_participant_identity();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "livekit.proto.TextStreamOpened.participant_identity");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* TextStreamOpened::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:livekit.proto.TextStreamOpened)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required .livekit.proto.OwnedTextStreamReader reader = 1;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::reader(this),
+        _Internal::reader(this).GetCachedSize(), target, stream);
+  }
+
+  // required string participant_identity = 2;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_participant_identity().data(), static_cast<int>(this->_internal_participant_identity().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "livekit.proto.TextStreamOpened.participant_identity");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_participant_identity(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:livekit.proto.TextStreamOpened)
+  return target;
+}
+
+size_t TextStreamOpened::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:livekit.proto.TextStreamOpened)
+  size_t total_size = 0;
+
+  if (_internal_has_participant_identity()) {
+    // required string participant_identity = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_participant_identity());
+  }
+
+  if (_internal_has_reader()) {
+    // required .livekit.proto.OwnedTextStreamReader reader = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.reader_);
+  }
+
+  return total_size;
+}
+size_t TextStreamOpened::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:livekit.proto.TextStreamOpened)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required string participant_identity = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_participant_identity());
+
+    // required .livekit.proto.OwnedTextStreamReader reader = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.reader_);
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TextStreamOpened::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TextStreamOpened::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TextStreamOpened::GetClassData() const { return &_class_data_; }
+
+
+void TextStreamOpened::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TextStreamOpened*>(&to_msg);
+  auto& from = static_cast<const TextStreamOpened&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:livekit.proto.TextStreamOpened)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_participant_identity(from._internal_participant_identity());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_reader()->::livekit::proto::OwnedTextStreamReader::MergeFrom(
+          from._internal_reader());
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TextStreamOpened::CopyFrom(const TextStreamOpened& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:livekit.proto.TextStreamOpened)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TextStreamOpened::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (_internal_has_reader()) {
+    if (!_impl_.reader_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void TextStreamOpened::InternalSwap(TextStreamOpened* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.participant_identity_, lhs_arena,
+      &other->_impl_.participant_identity_, rhs_arena
+  );
+  swap(_impl_.reader_, other->_impl_.reader_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TextStreamOpened::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_room_2eproto_getter, &descriptor_table_room_2eproto_once,
+      file_level_metadata_room_2eproto[112]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -35154,6 +36644,10 @@ template<> PROTOBUF_NOINLINE ::livekit::proto::OwnedRoom*
 Arena::CreateMaybeMessage< ::livekit::proto::OwnedRoom >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::proto::OwnedRoom >(arena);
 }
+template<> PROTOBUF_NOINLINE ::livekit::proto::ParticipantsUpdated*
+Arena::CreateMaybeMessage< ::livekit::proto::ParticipantsUpdated >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::proto::ParticipantsUpdated >(arena);
+}
 template<> PROTOBUF_NOINLINE ::livekit::proto::ParticipantConnected*
 Arena::CreateMaybeMessage< ::livekit::proto::ParticipantConnected >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::proto::ParticipantConnected >(arena);
@@ -35373,6 +36867,14 @@ Arena::CreateMaybeMessage< ::livekit::proto::SetDataChannelBufferedAmountLowThre
 template<> PROTOBUF_NOINLINE ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged*
 Arena::CreateMaybeMessage< ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged >(Arena* arena) {
   return Arena::CreateMessageInternal< ::livekit::proto::DataChannelBufferedAmountLowThresholdChanged >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::proto::ByteStreamOpened*
+Arena::CreateMaybeMessage< ::livekit::proto::ByteStreamOpened >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::proto::ByteStreamOpened >(arena);
+}
+template<> PROTOBUF_NOINLINE ::livekit::proto::TextStreamOpened*
+Arena::CreateMaybeMessage< ::livekit::proto::TextStreamOpened >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::livekit::proto::TextStreamOpened >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

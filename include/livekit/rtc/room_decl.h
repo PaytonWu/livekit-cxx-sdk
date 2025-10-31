@@ -101,6 +101,7 @@ public:
     auto connection_state() const noexcept -> proto::ConnectionState;
     auto name() const noexcept -> std::string const &;
     auto metadata() const noexcept -> std::string const &;
+    auto num_participants() const noexcept -> std::size_t;
 
 private:
     auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant;

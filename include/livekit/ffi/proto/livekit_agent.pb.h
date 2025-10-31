@@ -615,6 +615,8 @@ class JobState final :
   enum : int {
     kErrorFieldNumber = 2,
     kParticipantIdentityFieldNumber = 6,
+    kWorkerIdFieldNumber = 7,
+    kAgentIdFieldNumber = 8,
     kStartedAtFieldNumber = 3,
     kEndedAtFieldNumber = 4,
     kUpdatedAtFieldNumber = 5,
@@ -646,6 +648,34 @@ class JobState final :
   const std::string& _internal_participant_identity() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_participant_identity(const std::string& value);
   std::string* _internal_mutable_participant_identity();
+  public:
+
+  // string worker_id = 7;
+  void clear_worker_id();
+  const std::string& worker_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_worker_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_worker_id();
+  PROTOBUF_NODISCARD std::string* release_worker_id();
+  void set_allocated_worker_id(std::string* worker_id);
+  private:
+  const std::string& _internal_worker_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_worker_id(const std::string& value);
+  std::string* _internal_mutable_worker_id();
+  public:
+
+  // string agent_id = 8;
+  void clear_agent_id();
+  const std::string& agent_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_agent_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_agent_id();
+  PROTOBUF_NODISCARD std::string* release_agent_id();
+  void set_allocated_agent_id(std::string* agent_id);
+  private:
+  const std::string& _internal_agent_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_agent_id(const std::string& value);
+  std::string* _internal_mutable_agent_id();
   public:
 
   // int64 started_at = 3;
@@ -694,6 +724,8 @@ class JobState final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr participant_identity_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr worker_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr agent_id_;
     int64_t started_at_;
     int64_t ended_at_;
     int64_t updated_at_;
@@ -2663,6 +2695,7 @@ class AvailabilityResponse final :
     kParticipantMetadataFieldNumber = 6,
     kAvailableFieldNumber = 2,
     kSupportsResumeFieldNumber = 3,
+    kTerminateFieldNumber = 8,
   };
   // map<string, string> participant_attributes = 7;
   int participant_attributes_size() const;
@@ -2755,6 +2788,15 @@ class AvailabilityResponse final :
   void _internal_set_supports_resume(bool value);
   public:
 
+  // bool terminate = 8;
+  void clear_terminate();
+  bool terminate() const;
+  void set_terminate(bool value);
+  private:
+  bool _internal_terminate() const;
+  void _internal_set_terminate(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:livekit.AvailabilityResponse)
  private:
   class _Internal;
@@ -2774,6 +2816,7 @@ class AvailabilityResponse final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr participant_metadata_;
     bool available_;
     bool supports_resume_;
+    bool terminate_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -4206,6 +4249,106 @@ inline void JobState::set_allocated_participant_identity(std::string* participan
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:livekit.JobState.participant_identity)
+}
+
+// string worker_id = 7;
+inline void JobState::clear_worker_id() {
+  _impl_.worker_id_.ClearToEmpty();
+}
+inline const std::string& JobState::worker_id() const {
+  // @@protoc_insertion_point(field_get:livekit.JobState.worker_id)
+  return _internal_worker_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void JobState::set_worker_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.worker_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.JobState.worker_id)
+}
+inline std::string* JobState::mutable_worker_id() {
+  std::string* _s = _internal_mutable_worker_id();
+  // @@protoc_insertion_point(field_mutable:livekit.JobState.worker_id)
+  return _s;
+}
+inline const std::string& JobState::_internal_worker_id() const {
+  return _impl_.worker_id_.Get();
+}
+inline void JobState::_internal_set_worker_id(const std::string& value) {
+  
+  _impl_.worker_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* JobState::_internal_mutable_worker_id() {
+  
+  return _impl_.worker_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* JobState::release_worker_id() {
+  // @@protoc_insertion_point(field_release:livekit.JobState.worker_id)
+  return _impl_.worker_id_.Release();
+}
+inline void JobState::set_allocated_worker_id(std::string* worker_id) {
+  if (worker_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.worker_id_.SetAllocated(worker_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.worker_id_.IsDefault()) {
+    _impl_.worker_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.JobState.worker_id)
+}
+
+// string agent_id = 8;
+inline void JobState::clear_agent_id() {
+  _impl_.agent_id_.ClearToEmpty();
+}
+inline const std::string& JobState::agent_id() const {
+  // @@protoc_insertion_point(field_get:livekit.JobState.agent_id)
+  return _internal_agent_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void JobState::set_agent_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.agent_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:livekit.JobState.agent_id)
+}
+inline std::string* JobState::mutable_agent_id() {
+  std::string* _s = _internal_mutable_agent_id();
+  // @@protoc_insertion_point(field_mutable:livekit.JobState.agent_id)
+  return _s;
+}
+inline const std::string& JobState::_internal_agent_id() const {
+  return _impl_.agent_id_.Get();
+}
+inline void JobState::_internal_set_agent_id(const std::string& value) {
+  
+  _impl_.agent_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* JobState::_internal_mutable_agent_id() {
+  
+  return _impl_.agent_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* JobState::release_agent_id() {
+  // @@protoc_insertion_point(field_release:livekit.JobState.agent_id)
+  return _impl_.agent_id_.Release();
+}
+inline void JobState::set_allocated_agent_id(std::string* agent_id) {
+  if (agent_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.agent_id_.SetAllocated(agent_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.agent_id_.IsDefault()) {
+    _impl_.agent_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:livekit.JobState.agent_id)
 }
 
 // -------------------------------------------------------------------
@@ -6107,6 +6250,26 @@ inline void AvailabilityResponse::_internal_set_supports_resume(bool value) {
 inline void AvailabilityResponse::set_supports_resume(bool value) {
   _internal_set_supports_resume(value);
   // @@protoc_insertion_point(field_set:livekit.AvailabilityResponse.supports_resume)
+}
+
+// bool terminate = 8;
+inline void AvailabilityResponse::clear_terminate() {
+  _impl_.terminate_ = false;
+}
+inline bool AvailabilityResponse::_internal_terminate() const {
+  return _impl_.terminate_;
+}
+inline bool AvailabilityResponse::terminate() const {
+  // @@protoc_insertion_point(field_get:livekit.AvailabilityResponse.terminate)
+  return _internal_terminate();
+}
+inline void AvailabilityResponse::_internal_set_terminate(bool value) {
+  
+  _impl_.terminate_ = value;
+}
+inline void AvailabilityResponse::set_terminate(bool value) {
+  _internal_set_terminate(value);
+  // @@protoc_insertion_point(field_set:livekit.AvailabilityResponse.terminate)
 }
 
 // string participant_name = 4;

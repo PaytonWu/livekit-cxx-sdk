@@ -38,6 +38,7 @@
 #include "video_frame.pb.h"
 #include "audio_frame.pb.h"
 #include "rpc.pb.h"
+#include "data_stream.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_ffi_2eproto
@@ -227,6 +228,21 @@ class FfiRequest final :
     kNewApm = 50,
     kApmProcessStream = 51,
     kApmProcessReverseStream = 52,
+    kApmSetStreamDelay = 53,
+    kByteReadIncremental = 54,
+    kByteReadAll = 55,
+    kByteWriteToFile = 56,
+    kTextReadIncremental = 57,
+    kTextReadAll = 58,
+    kSendFile = 59,
+    kSendText = 60,
+    kByteStreamOpen = 61,
+    kByteStreamWrite = 62,
+    kByteStreamClose = 63,
+    kTextStreamOpen = 64,
+    kTextStreamWrite = 65,
+    kTextStreamClose = 66,
+    kSendBytes = 67,
     MESSAGE_NOT_SET = 0,
   };
 
@@ -359,6 +375,21 @@ class FfiRequest final :
     kNewApmFieldNumber = 50,
     kApmProcessStreamFieldNumber = 51,
     kApmProcessReverseStreamFieldNumber = 52,
+    kApmSetStreamDelayFieldNumber = 53,
+    kByteReadIncrementalFieldNumber = 54,
+    kByteReadAllFieldNumber = 55,
+    kByteWriteToFileFieldNumber = 56,
+    kTextReadIncrementalFieldNumber = 57,
+    kTextReadAllFieldNumber = 58,
+    kSendFileFieldNumber = 59,
+    kSendTextFieldNumber = 60,
+    kByteStreamOpenFieldNumber = 61,
+    kByteStreamWriteFieldNumber = 62,
+    kByteStreamCloseFieldNumber = 63,
+    kTextStreamOpenFieldNumber = 64,
+    kTextStreamWriteFieldNumber = 65,
+    kTextStreamCloseFieldNumber = 66,
+    kSendBytesFieldNumber = 67,
   };
   // .livekit.proto.DisposeRequest dispose = 2;
   bool has_dispose() const;
@@ -1278,6 +1309,276 @@ class FfiRequest final :
       ::livekit::proto::ApmProcessReverseStreamRequest* apm_process_reverse_stream);
   ::livekit::proto::ApmProcessReverseStreamRequest* unsafe_arena_release_apm_process_reverse_stream();
 
+  // .livekit.proto.ApmSetStreamDelayRequest apm_set_stream_delay = 53;
+  bool has_apm_set_stream_delay() const;
+  private:
+  bool _internal_has_apm_set_stream_delay() const;
+  public:
+  void clear_apm_set_stream_delay();
+  const ::livekit::proto::ApmSetStreamDelayRequest& apm_set_stream_delay() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ApmSetStreamDelayRequest* release_apm_set_stream_delay();
+  ::livekit::proto::ApmSetStreamDelayRequest* mutable_apm_set_stream_delay();
+  void set_allocated_apm_set_stream_delay(::livekit::proto::ApmSetStreamDelayRequest* apm_set_stream_delay);
+  private:
+  const ::livekit::proto::ApmSetStreamDelayRequest& _internal_apm_set_stream_delay() const;
+  ::livekit::proto::ApmSetStreamDelayRequest* _internal_mutable_apm_set_stream_delay();
+  public:
+  void unsafe_arena_set_allocated_apm_set_stream_delay(
+      ::livekit::proto::ApmSetStreamDelayRequest* apm_set_stream_delay);
+  ::livekit::proto::ApmSetStreamDelayRequest* unsafe_arena_release_apm_set_stream_delay();
+
+  // .livekit.proto.ByteStreamReaderReadIncrementalRequest byte_read_incremental = 54;
+  bool has_byte_read_incremental() const;
+  private:
+  bool _internal_has_byte_read_incremental() const;
+  public:
+  void clear_byte_read_incremental();
+  const ::livekit::proto::ByteStreamReaderReadIncrementalRequest& byte_read_incremental() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderReadIncrementalRequest* release_byte_read_incremental();
+  ::livekit::proto::ByteStreamReaderReadIncrementalRequest* mutable_byte_read_incremental();
+  void set_allocated_byte_read_incremental(::livekit::proto::ByteStreamReaderReadIncrementalRequest* byte_read_incremental);
+  private:
+  const ::livekit::proto::ByteStreamReaderReadIncrementalRequest& _internal_byte_read_incremental() const;
+  ::livekit::proto::ByteStreamReaderReadIncrementalRequest* _internal_mutable_byte_read_incremental();
+  public:
+  void unsafe_arena_set_allocated_byte_read_incremental(
+      ::livekit::proto::ByteStreamReaderReadIncrementalRequest* byte_read_incremental);
+  ::livekit::proto::ByteStreamReaderReadIncrementalRequest* unsafe_arena_release_byte_read_incremental();
+
+  // .livekit.proto.ByteStreamReaderReadAllRequest byte_read_all = 55;
+  bool has_byte_read_all() const;
+  private:
+  bool _internal_has_byte_read_all() const;
+  public:
+  void clear_byte_read_all();
+  const ::livekit::proto::ByteStreamReaderReadAllRequest& byte_read_all() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderReadAllRequest* release_byte_read_all();
+  ::livekit::proto::ByteStreamReaderReadAllRequest* mutable_byte_read_all();
+  void set_allocated_byte_read_all(::livekit::proto::ByteStreamReaderReadAllRequest* byte_read_all);
+  private:
+  const ::livekit::proto::ByteStreamReaderReadAllRequest& _internal_byte_read_all() const;
+  ::livekit::proto::ByteStreamReaderReadAllRequest* _internal_mutable_byte_read_all();
+  public:
+  void unsafe_arena_set_allocated_byte_read_all(
+      ::livekit::proto::ByteStreamReaderReadAllRequest* byte_read_all);
+  ::livekit::proto::ByteStreamReaderReadAllRequest* unsafe_arena_release_byte_read_all();
+
+  // .livekit.proto.ByteStreamReaderWriteToFileRequest byte_write_to_file = 56;
+  bool has_byte_write_to_file() const;
+  private:
+  bool _internal_has_byte_write_to_file() const;
+  public:
+  void clear_byte_write_to_file();
+  const ::livekit::proto::ByteStreamReaderWriteToFileRequest& byte_write_to_file() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderWriteToFileRequest* release_byte_write_to_file();
+  ::livekit::proto::ByteStreamReaderWriteToFileRequest* mutable_byte_write_to_file();
+  void set_allocated_byte_write_to_file(::livekit::proto::ByteStreamReaderWriteToFileRequest* byte_write_to_file);
+  private:
+  const ::livekit::proto::ByteStreamReaderWriteToFileRequest& _internal_byte_write_to_file() const;
+  ::livekit::proto::ByteStreamReaderWriteToFileRequest* _internal_mutable_byte_write_to_file();
+  public:
+  void unsafe_arena_set_allocated_byte_write_to_file(
+      ::livekit::proto::ByteStreamReaderWriteToFileRequest* byte_write_to_file);
+  ::livekit::proto::ByteStreamReaderWriteToFileRequest* unsafe_arena_release_byte_write_to_file();
+
+  // .livekit.proto.TextStreamReaderReadIncrementalRequest text_read_incremental = 57;
+  bool has_text_read_incremental() const;
+  private:
+  bool _internal_has_text_read_incremental() const;
+  public:
+  void clear_text_read_incremental();
+  const ::livekit::proto::TextStreamReaderReadIncrementalRequest& text_read_incremental() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamReaderReadIncrementalRequest* release_text_read_incremental();
+  ::livekit::proto::TextStreamReaderReadIncrementalRequest* mutable_text_read_incremental();
+  void set_allocated_text_read_incremental(::livekit::proto::TextStreamReaderReadIncrementalRequest* text_read_incremental);
+  private:
+  const ::livekit::proto::TextStreamReaderReadIncrementalRequest& _internal_text_read_incremental() const;
+  ::livekit::proto::TextStreamReaderReadIncrementalRequest* _internal_mutable_text_read_incremental();
+  public:
+  void unsafe_arena_set_allocated_text_read_incremental(
+      ::livekit::proto::TextStreamReaderReadIncrementalRequest* text_read_incremental);
+  ::livekit::proto::TextStreamReaderReadIncrementalRequest* unsafe_arena_release_text_read_incremental();
+
+  // .livekit.proto.TextStreamReaderReadAllRequest text_read_all = 58;
+  bool has_text_read_all() const;
+  private:
+  bool _internal_has_text_read_all() const;
+  public:
+  void clear_text_read_all();
+  const ::livekit::proto::TextStreamReaderReadAllRequest& text_read_all() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamReaderReadAllRequest* release_text_read_all();
+  ::livekit::proto::TextStreamReaderReadAllRequest* mutable_text_read_all();
+  void set_allocated_text_read_all(::livekit::proto::TextStreamReaderReadAllRequest* text_read_all);
+  private:
+  const ::livekit::proto::TextStreamReaderReadAllRequest& _internal_text_read_all() const;
+  ::livekit::proto::TextStreamReaderReadAllRequest* _internal_mutable_text_read_all();
+  public:
+  void unsafe_arena_set_allocated_text_read_all(
+      ::livekit::proto::TextStreamReaderReadAllRequest* text_read_all);
+  ::livekit::proto::TextStreamReaderReadAllRequest* unsafe_arena_release_text_read_all();
+
+  // .livekit.proto.StreamSendFileRequest send_file = 59;
+  bool has_send_file() const;
+  private:
+  bool _internal_has_send_file() const;
+  public:
+  void clear_send_file();
+  const ::livekit::proto::StreamSendFileRequest& send_file() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendFileRequest* release_send_file();
+  ::livekit::proto::StreamSendFileRequest* mutable_send_file();
+  void set_allocated_send_file(::livekit::proto::StreamSendFileRequest* send_file);
+  private:
+  const ::livekit::proto::StreamSendFileRequest& _internal_send_file() const;
+  ::livekit::proto::StreamSendFileRequest* _internal_mutable_send_file();
+  public:
+  void unsafe_arena_set_allocated_send_file(
+      ::livekit::proto::StreamSendFileRequest* send_file);
+  ::livekit::proto::StreamSendFileRequest* unsafe_arena_release_send_file();
+
+  // .livekit.proto.StreamSendTextRequest send_text = 60;
+  bool has_send_text() const;
+  private:
+  bool _internal_has_send_text() const;
+  public:
+  void clear_send_text();
+  const ::livekit::proto::StreamSendTextRequest& send_text() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendTextRequest* release_send_text();
+  ::livekit::proto::StreamSendTextRequest* mutable_send_text();
+  void set_allocated_send_text(::livekit::proto::StreamSendTextRequest* send_text);
+  private:
+  const ::livekit::proto::StreamSendTextRequest& _internal_send_text() const;
+  ::livekit::proto::StreamSendTextRequest* _internal_mutable_send_text();
+  public:
+  void unsafe_arena_set_allocated_send_text(
+      ::livekit::proto::StreamSendTextRequest* send_text);
+  ::livekit::proto::StreamSendTextRequest* unsafe_arena_release_send_text();
+
+  // .livekit.proto.ByteStreamOpenRequest byte_stream_open = 61;
+  bool has_byte_stream_open() const;
+  private:
+  bool _internal_has_byte_stream_open() const;
+  public:
+  void clear_byte_stream_open();
+  const ::livekit::proto::ByteStreamOpenRequest& byte_stream_open() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamOpenRequest* release_byte_stream_open();
+  ::livekit::proto::ByteStreamOpenRequest* mutable_byte_stream_open();
+  void set_allocated_byte_stream_open(::livekit::proto::ByteStreamOpenRequest* byte_stream_open);
+  private:
+  const ::livekit::proto::ByteStreamOpenRequest& _internal_byte_stream_open() const;
+  ::livekit::proto::ByteStreamOpenRequest* _internal_mutable_byte_stream_open();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_open(
+      ::livekit::proto::ByteStreamOpenRequest* byte_stream_open);
+  ::livekit::proto::ByteStreamOpenRequest* unsafe_arena_release_byte_stream_open();
+
+  // .livekit.proto.ByteStreamWriterWriteRequest byte_stream_write = 62;
+  bool has_byte_stream_write() const;
+  private:
+  bool _internal_has_byte_stream_write() const;
+  public:
+  void clear_byte_stream_write();
+  const ::livekit::proto::ByteStreamWriterWriteRequest& byte_stream_write() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamWriterWriteRequest* release_byte_stream_write();
+  ::livekit::proto::ByteStreamWriterWriteRequest* mutable_byte_stream_write();
+  void set_allocated_byte_stream_write(::livekit::proto::ByteStreamWriterWriteRequest* byte_stream_write);
+  private:
+  const ::livekit::proto::ByteStreamWriterWriteRequest& _internal_byte_stream_write() const;
+  ::livekit::proto::ByteStreamWriterWriteRequest* _internal_mutable_byte_stream_write();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_write(
+      ::livekit::proto::ByteStreamWriterWriteRequest* byte_stream_write);
+  ::livekit::proto::ByteStreamWriterWriteRequest* unsafe_arena_release_byte_stream_write();
+
+  // .livekit.proto.ByteStreamWriterCloseRequest byte_stream_close = 63;
+  bool has_byte_stream_close() const;
+  private:
+  bool _internal_has_byte_stream_close() const;
+  public:
+  void clear_byte_stream_close();
+  const ::livekit::proto::ByteStreamWriterCloseRequest& byte_stream_close() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamWriterCloseRequest* release_byte_stream_close();
+  ::livekit::proto::ByteStreamWriterCloseRequest* mutable_byte_stream_close();
+  void set_allocated_byte_stream_close(::livekit::proto::ByteStreamWriterCloseRequest* byte_stream_close);
+  private:
+  const ::livekit::proto::ByteStreamWriterCloseRequest& _internal_byte_stream_close() const;
+  ::livekit::proto::ByteStreamWriterCloseRequest* _internal_mutable_byte_stream_close();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_close(
+      ::livekit::proto::ByteStreamWriterCloseRequest* byte_stream_close);
+  ::livekit::proto::ByteStreamWriterCloseRequest* unsafe_arena_release_byte_stream_close();
+
+  // .livekit.proto.TextStreamOpenRequest text_stream_open = 64;
+  bool has_text_stream_open() const;
+  private:
+  bool _internal_has_text_stream_open() const;
+  public:
+  void clear_text_stream_open();
+  const ::livekit::proto::TextStreamOpenRequest& text_stream_open() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamOpenRequest* release_text_stream_open();
+  ::livekit::proto::TextStreamOpenRequest* mutable_text_stream_open();
+  void set_allocated_text_stream_open(::livekit::proto::TextStreamOpenRequest* text_stream_open);
+  private:
+  const ::livekit::proto::TextStreamOpenRequest& _internal_text_stream_open() const;
+  ::livekit::proto::TextStreamOpenRequest* _internal_mutable_text_stream_open();
+  public:
+  void unsafe_arena_set_allocated_text_stream_open(
+      ::livekit::proto::TextStreamOpenRequest* text_stream_open);
+  ::livekit::proto::TextStreamOpenRequest* unsafe_arena_release_text_stream_open();
+
+  // .livekit.proto.TextStreamWriterWriteRequest text_stream_write = 65;
+  bool has_text_stream_write() const;
+  private:
+  bool _internal_has_text_stream_write() const;
+  public:
+  void clear_text_stream_write();
+  const ::livekit::proto::TextStreamWriterWriteRequest& text_stream_write() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamWriterWriteRequest* release_text_stream_write();
+  ::livekit::proto::TextStreamWriterWriteRequest* mutable_text_stream_write();
+  void set_allocated_text_stream_write(::livekit::proto::TextStreamWriterWriteRequest* text_stream_write);
+  private:
+  const ::livekit::proto::TextStreamWriterWriteRequest& _internal_text_stream_write() const;
+  ::livekit::proto::TextStreamWriterWriteRequest* _internal_mutable_text_stream_write();
+  public:
+  void unsafe_arena_set_allocated_text_stream_write(
+      ::livekit::proto::TextStreamWriterWriteRequest* text_stream_write);
+  ::livekit::proto::TextStreamWriterWriteRequest* unsafe_arena_release_text_stream_write();
+
+  // .livekit.proto.TextStreamWriterCloseRequest text_stream_close = 66;
+  bool has_text_stream_close() const;
+  private:
+  bool _internal_has_text_stream_close() const;
+  public:
+  void clear_text_stream_close();
+  const ::livekit::proto::TextStreamWriterCloseRequest& text_stream_close() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamWriterCloseRequest* release_text_stream_close();
+  ::livekit::proto::TextStreamWriterCloseRequest* mutable_text_stream_close();
+  void set_allocated_text_stream_close(::livekit::proto::TextStreamWriterCloseRequest* text_stream_close);
+  private:
+  const ::livekit::proto::TextStreamWriterCloseRequest& _internal_text_stream_close() const;
+  ::livekit::proto::TextStreamWriterCloseRequest* _internal_mutable_text_stream_close();
+  public:
+  void unsafe_arena_set_allocated_text_stream_close(
+      ::livekit::proto::TextStreamWriterCloseRequest* text_stream_close);
+  ::livekit::proto::TextStreamWriterCloseRequest* unsafe_arena_release_text_stream_close();
+
+  // .livekit.proto.StreamSendBytesRequest send_bytes = 67;
+  bool has_send_bytes() const;
+  private:
+  bool _internal_has_send_bytes() const;
+  public:
+  void clear_send_bytes();
+  const ::livekit::proto::StreamSendBytesRequest& send_bytes() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendBytesRequest* release_send_bytes();
+  ::livekit::proto::StreamSendBytesRequest* mutable_send_bytes();
+  void set_allocated_send_bytes(::livekit::proto::StreamSendBytesRequest* send_bytes);
+  private:
+  const ::livekit::proto::StreamSendBytesRequest& _internal_send_bytes() const;
+  ::livekit::proto::StreamSendBytesRequest* _internal_mutable_send_bytes();
+  public:
+  void unsafe_arena_set_allocated_send_bytes(
+      ::livekit::proto::StreamSendBytesRequest* send_bytes);
+  ::livekit::proto::StreamSendBytesRequest* unsafe_arena_release_send_bytes();
+
   void clear_message();
   MessageCase message_case() const;
   // @@protoc_insertion_point(class_scope:livekit.proto.FfiRequest)
@@ -1334,6 +1635,21 @@ class FfiRequest final :
   void set_has_new_apm();
   void set_has_apm_process_stream();
   void set_has_apm_process_reverse_stream();
+  void set_has_apm_set_stream_delay();
+  void set_has_byte_read_incremental();
+  void set_has_byte_read_all();
+  void set_has_byte_write_to_file();
+  void set_has_text_read_incremental();
+  void set_has_text_read_all();
+  void set_has_send_file();
+  void set_has_send_text();
+  void set_has_byte_stream_open();
+  void set_has_byte_stream_write();
+  void set_has_byte_stream_close();
+  void set_has_text_stream_open();
+  void set_has_text_stream_write();
+  void set_has_text_stream_close();
+  void set_has_send_bytes();
 
   inline bool has_message() const;
   inline void clear_has_message();
@@ -1396,6 +1712,21 @@ class FfiRequest final :
       ::livekit::proto::NewApmRequest* new_apm_;
       ::livekit::proto::ApmProcessStreamRequest* apm_process_stream_;
       ::livekit::proto::ApmProcessReverseStreamRequest* apm_process_reverse_stream_;
+      ::livekit::proto::ApmSetStreamDelayRequest* apm_set_stream_delay_;
+      ::livekit::proto::ByteStreamReaderReadIncrementalRequest* byte_read_incremental_;
+      ::livekit::proto::ByteStreamReaderReadAllRequest* byte_read_all_;
+      ::livekit::proto::ByteStreamReaderWriteToFileRequest* byte_write_to_file_;
+      ::livekit::proto::TextStreamReaderReadIncrementalRequest* text_read_incremental_;
+      ::livekit::proto::TextStreamReaderReadAllRequest* text_read_all_;
+      ::livekit::proto::StreamSendFileRequest* send_file_;
+      ::livekit::proto::StreamSendTextRequest* send_text_;
+      ::livekit::proto::ByteStreamOpenRequest* byte_stream_open_;
+      ::livekit::proto::ByteStreamWriterWriteRequest* byte_stream_write_;
+      ::livekit::proto::ByteStreamWriterCloseRequest* byte_stream_close_;
+      ::livekit::proto::TextStreamOpenRequest* text_stream_open_;
+      ::livekit::proto::TextStreamWriterWriteRequest* text_stream_write_;
+      ::livekit::proto::TextStreamWriterCloseRequest* text_stream_close_;
+      ::livekit::proto::StreamSendBytesRequest* send_bytes_;
     } message_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -1507,6 +1838,21 @@ class FfiResponse final :
     kNewApm = 49,
     kApmProcessStream = 50,
     kApmProcessReverseStream = 51,
+    kApmSetStreamDelay = 52,
+    kByteReadIncremental = 53,
+    kByteReadAll = 54,
+    kByteWriteToFile = 55,
+    kTextReadIncremental = 56,
+    kTextReadAll = 57,
+    kSendFile = 58,
+    kSendText = 59,
+    kByteStreamOpen = 60,
+    kByteStreamWrite = 61,
+    kByteStreamClose = 62,
+    kTextStreamOpen = 63,
+    kTextStreamWrite = 64,
+    kTextStreamClose = 65,
+    kSendBytes = 66,
     MESSAGE_NOT_SET = 0,
   };
 
@@ -1638,6 +1984,21 @@ class FfiResponse final :
     kNewApmFieldNumber = 49,
     kApmProcessStreamFieldNumber = 50,
     kApmProcessReverseStreamFieldNumber = 51,
+    kApmSetStreamDelayFieldNumber = 52,
+    kByteReadIncrementalFieldNumber = 53,
+    kByteReadAllFieldNumber = 54,
+    kByteWriteToFileFieldNumber = 55,
+    kTextReadIncrementalFieldNumber = 56,
+    kTextReadAllFieldNumber = 57,
+    kSendFileFieldNumber = 58,
+    kSendTextFieldNumber = 59,
+    kByteStreamOpenFieldNumber = 60,
+    kByteStreamWriteFieldNumber = 61,
+    kByteStreamCloseFieldNumber = 62,
+    kTextStreamOpenFieldNumber = 63,
+    kTextStreamWriteFieldNumber = 64,
+    kTextStreamCloseFieldNumber = 65,
+    kSendBytesFieldNumber = 66,
   };
   // .livekit.proto.DisposeResponse dispose = 2;
   bool has_dispose() const;
@@ -2539,6 +2900,276 @@ class FfiResponse final :
       ::livekit::proto::ApmProcessReverseStreamResponse* apm_process_reverse_stream);
   ::livekit::proto::ApmProcessReverseStreamResponse* unsafe_arena_release_apm_process_reverse_stream();
 
+  // .livekit.proto.ApmSetStreamDelayResponse apm_set_stream_delay = 52;
+  bool has_apm_set_stream_delay() const;
+  private:
+  bool _internal_has_apm_set_stream_delay() const;
+  public:
+  void clear_apm_set_stream_delay();
+  const ::livekit::proto::ApmSetStreamDelayResponse& apm_set_stream_delay() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ApmSetStreamDelayResponse* release_apm_set_stream_delay();
+  ::livekit::proto::ApmSetStreamDelayResponse* mutable_apm_set_stream_delay();
+  void set_allocated_apm_set_stream_delay(::livekit::proto::ApmSetStreamDelayResponse* apm_set_stream_delay);
+  private:
+  const ::livekit::proto::ApmSetStreamDelayResponse& _internal_apm_set_stream_delay() const;
+  ::livekit::proto::ApmSetStreamDelayResponse* _internal_mutable_apm_set_stream_delay();
+  public:
+  void unsafe_arena_set_allocated_apm_set_stream_delay(
+      ::livekit::proto::ApmSetStreamDelayResponse* apm_set_stream_delay);
+  ::livekit::proto::ApmSetStreamDelayResponse* unsafe_arena_release_apm_set_stream_delay();
+
+  // .livekit.proto.ByteStreamReaderReadIncrementalResponse byte_read_incremental = 53;
+  bool has_byte_read_incremental() const;
+  private:
+  bool _internal_has_byte_read_incremental() const;
+  public:
+  void clear_byte_read_incremental();
+  const ::livekit::proto::ByteStreamReaderReadIncrementalResponse& byte_read_incremental() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderReadIncrementalResponse* release_byte_read_incremental();
+  ::livekit::proto::ByteStreamReaderReadIncrementalResponse* mutable_byte_read_incremental();
+  void set_allocated_byte_read_incremental(::livekit::proto::ByteStreamReaderReadIncrementalResponse* byte_read_incremental);
+  private:
+  const ::livekit::proto::ByteStreamReaderReadIncrementalResponse& _internal_byte_read_incremental() const;
+  ::livekit::proto::ByteStreamReaderReadIncrementalResponse* _internal_mutable_byte_read_incremental();
+  public:
+  void unsafe_arena_set_allocated_byte_read_incremental(
+      ::livekit::proto::ByteStreamReaderReadIncrementalResponse* byte_read_incremental);
+  ::livekit::proto::ByteStreamReaderReadIncrementalResponse* unsafe_arena_release_byte_read_incremental();
+
+  // .livekit.proto.ByteStreamReaderReadAllResponse byte_read_all = 54;
+  bool has_byte_read_all() const;
+  private:
+  bool _internal_has_byte_read_all() const;
+  public:
+  void clear_byte_read_all();
+  const ::livekit::proto::ByteStreamReaderReadAllResponse& byte_read_all() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderReadAllResponse* release_byte_read_all();
+  ::livekit::proto::ByteStreamReaderReadAllResponse* mutable_byte_read_all();
+  void set_allocated_byte_read_all(::livekit::proto::ByteStreamReaderReadAllResponse* byte_read_all);
+  private:
+  const ::livekit::proto::ByteStreamReaderReadAllResponse& _internal_byte_read_all() const;
+  ::livekit::proto::ByteStreamReaderReadAllResponse* _internal_mutable_byte_read_all();
+  public:
+  void unsafe_arena_set_allocated_byte_read_all(
+      ::livekit::proto::ByteStreamReaderReadAllResponse* byte_read_all);
+  ::livekit::proto::ByteStreamReaderReadAllResponse* unsafe_arena_release_byte_read_all();
+
+  // .livekit.proto.ByteStreamReaderWriteToFileResponse byte_write_to_file = 55;
+  bool has_byte_write_to_file() const;
+  private:
+  bool _internal_has_byte_write_to_file() const;
+  public:
+  void clear_byte_write_to_file();
+  const ::livekit::proto::ByteStreamReaderWriteToFileResponse& byte_write_to_file() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderWriteToFileResponse* release_byte_write_to_file();
+  ::livekit::proto::ByteStreamReaderWriteToFileResponse* mutable_byte_write_to_file();
+  void set_allocated_byte_write_to_file(::livekit::proto::ByteStreamReaderWriteToFileResponse* byte_write_to_file);
+  private:
+  const ::livekit::proto::ByteStreamReaderWriteToFileResponse& _internal_byte_write_to_file() const;
+  ::livekit::proto::ByteStreamReaderWriteToFileResponse* _internal_mutable_byte_write_to_file();
+  public:
+  void unsafe_arena_set_allocated_byte_write_to_file(
+      ::livekit::proto::ByteStreamReaderWriteToFileResponse* byte_write_to_file);
+  ::livekit::proto::ByteStreamReaderWriteToFileResponse* unsafe_arena_release_byte_write_to_file();
+
+  // .livekit.proto.TextStreamReaderReadIncrementalResponse text_read_incremental = 56;
+  bool has_text_read_incremental() const;
+  private:
+  bool _internal_has_text_read_incremental() const;
+  public:
+  void clear_text_read_incremental();
+  const ::livekit::proto::TextStreamReaderReadIncrementalResponse& text_read_incremental() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamReaderReadIncrementalResponse* release_text_read_incremental();
+  ::livekit::proto::TextStreamReaderReadIncrementalResponse* mutable_text_read_incremental();
+  void set_allocated_text_read_incremental(::livekit::proto::TextStreamReaderReadIncrementalResponse* text_read_incremental);
+  private:
+  const ::livekit::proto::TextStreamReaderReadIncrementalResponse& _internal_text_read_incremental() const;
+  ::livekit::proto::TextStreamReaderReadIncrementalResponse* _internal_mutable_text_read_incremental();
+  public:
+  void unsafe_arena_set_allocated_text_read_incremental(
+      ::livekit::proto::TextStreamReaderReadIncrementalResponse* text_read_incremental);
+  ::livekit::proto::TextStreamReaderReadIncrementalResponse* unsafe_arena_release_text_read_incremental();
+
+  // .livekit.proto.TextStreamReaderReadAllResponse text_read_all = 57;
+  bool has_text_read_all() const;
+  private:
+  bool _internal_has_text_read_all() const;
+  public:
+  void clear_text_read_all();
+  const ::livekit::proto::TextStreamReaderReadAllResponse& text_read_all() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamReaderReadAllResponse* release_text_read_all();
+  ::livekit::proto::TextStreamReaderReadAllResponse* mutable_text_read_all();
+  void set_allocated_text_read_all(::livekit::proto::TextStreamReaderReadAllResponse* text_read_all);
+  private:
+  const ::livekit::proto::TextStreamReaderReadAllResponse& _internal_text_read_all() const;
+  ::livekit::proto::TextStreamReaderReadAllResponse* _internal_mutable_text_read_all();
+  public:
+  void unsafe_arena_set_allocated_text_read_all(
+      ::livekit::proto::TextStreamReaderReadAllResponse* text_read_all);
+  ::livekit::proto::TextStreamReaderReadAllResponse* unsafe_arena_release_text_read_all();
+
+  // .livekit.proto.StreamSendFileResponse send_file = 58;
+  bool has_send_file() const;
+  private:
+  bool _internal_has_send_file() const;
+  public:
+  void clear_send_file();
+  const ::livekit::proto::StreamSendFileResponse& send_file() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendFileResponse* release_send_file();
+  ::livekit::proto::StreamSendFileResponse* mutable_send_file();
+  void set_allocated_send_file(::livekit::proto::StreamSendFileResponse* send_file);
+  private:
+  const ::livekit::proto::StreamSendFileResponse& _internal_send_file() const;
+  ::livekit::proto::StreamSendFileResponse* _internal_mutable_send_file();
+  public:
+  void unsafe_arena_set_allocated_send_file(
+      ::livekit::proto::StreamSendFileResponse* send_file);
+  ::livekit::proto::StreamSendFileResponse* unsafe_arena_release_send_file();
+
+  // .livekit.proto.StreamSendTextResponse send_text = 59;
+  bool has_send_text() const;
+  private:
+  bool _internal_has_send_text() const;
+  public:
+  void clear_send_text();
+  const ::livekit::proto::StreamSendTextResponse& send_text() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendTextResponse* release_send_text();
+  ::livekit::proto::StreamSendTextResponse* mutable_send_text();
+  void set_allocated_send_text(::livekit::proto::StreamSendTextResponse* send_text);
+  private:
+  const ::livekit::proto::StreamSendTextResponse& _internal_send_text() const;
+  ::livekit::proto::StreamSendTextResponse* _internal_mutable_send_text();
+  public:
+  void unsafe_arena_set_allocated_send_text(
+      ::livekit::proto::StreamSendTextResponse* send_text);
+  ::livekit::proto::StreamSendTextResponse* unsafe_arena_release_send_text();
+
+  // .livekit.proto.ByteStreamOpenResponse byte_stream_open = 60;
+  bool has_byte_stream_open() const;
+  private:
+  bool _internal_has_byte_stream_open() const;
+  public:
+  void clear_byte_stream_open();
+  const ::livekit::proto::ByteStreamOpenResponse& byte_stream_open() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamOpenResponse* release_byte_stream_open();
+  ::livekit::proto::ByteStreamOpenResponse* mutable_byte_stream_open();
+  void set_allocated_byte_stream_open(::livekit::proto::ByteStreamOpenResponse* byte_stream_open);
+  private:
+  const ::livekit::proto::ByteStreamOpenResponse& _internal_byte_stream_open() const;
+  ::livekit::proto::ByteStreamOpenResponse* _internal_mutable_byte_stream_open();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_open(
+      ::livekit::proto::ByteStreamOpenResponse* byte_stream_open);
+  ::livekit::proto::ByteStreamOpenResponse* unsafe_arena_release_byte_stream_open();
+
+  // .livekit.proto.ByteStreamWriterWriteResponse byte_stream_write = 61;
+  bool has_byte_stream_write() const;
+  private:
+  bool _internal_has_byte_stream_write() const;
+  public:
+  void clear_byte_stream_write();
+  const ::livekit::proto::ByteStreamWriterWriteResponse& byte_stream_write() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamWriterWriteResponse* release_byte_stream_write();
+  ::livekit::proto::ByteStreamWriterWriteResponse* mutable_byte_stream_write();
+  void set_allocated_byte_stream_write(::livekit::proto::ByteStreamWriterWriteResponse* byte_stream_write);
+  private:
+  const ::livekit::proto::ByteStreamWriterWriteResponse& _internal_byte_stream_write() const;
+  ::livekit::proto::ByteStreamWriterWriteResponse* _internal_mutable_byte_stream_write();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_write(
+      ::livekit::proto::ByteStreamWriterWriteResponse* byte_stream_write);
+  ::livekit::proto::ByteStreamWriterWriteResponse* unsafe_arena_release_byte_stream_write();
+
+  // .livekit.proto.ByteStreamWriterCloseResponse byte_stream_close = 62;
+  bool has_byte_stream_close() const;
+  private:
+  bool _internal_has_byte_stream_close() const;
+  public:
+  void clear_byte_stream_close();
+  const ::livekit::proto::ByteStreamWriterCloseResponse& byte_stream_close() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamWriterCloseResponse* release_byte_stream_close();
+  ::livekit::proto::ByteStreamWriterCloseResponse* mutable_byte_stream_close();
+  void set_allocated_byte_stream_close(::livekit::proto::ByteStreamWriterCloseResponse* byte_stream_close);
+  private:
+  const ::livekit::proto::ByteStreamWriterCloseResponse& _internal_byte_stream_close() const;
+  ::livekit::proto::ByteStreamWriterCloseResponse* _internal_mutable_byte_stream_close();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_close(
+      ::livekit::proto::ByteStreamWriterCloseResponse* byte_stream_close);
+  ::livekit::proto::ByteStreamWriterCloseResponse* unsafe_arena_release_byte_stream_close();
+
+  // .livekit.proto.TextStreamOpenResponse text_stream_open = 63;
+  bool has_text_stream_open() const;
+  private:
+  bool _internal_has_text_stream_open() const;
+  public:
+  void clear_text_stream_open();
+  const ::livekit::proto::TextStreamOpenResponse& text_stream_open() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamOpenResponse* release_text_stream_open();
+  ::livekit::proto::TextStreamOpenResponse* mutable_text_stream_open();
+  void set_allocated_text_stream_open(::livekit::proto::TextStreamOpenResponse* text_stream_open);
+  private:
+  const ::livekit::proto::TextStreamOpenResponse& _internal_text_stream_open() const;
+  ::livekit::proto::TextStreamOpenResponse* _internal_mutable_text_stream_open();
+  public:
+  void unsafe_arena_set_allocated_text_stream_open(
+      ::livekit::proto::TextStreamOpenResponse* text_stream_open);
+  ::livekit::proto::TextStreamOpenResponse* unsafe_arena_release_text_stream_open();
+
+  // .livekit.proto.TextStreamWriterWriteResponse text_stream_write = 64;
+  bool has_text_stream_write() const;
+  private:
+  bool _internal_has_text_stream_write() const;
+  public:
+  void clear_text_stream_write();
+  const ::livekit::proto::TextStreamWriterWriteResponse& text_stream_write() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamWriterWriteResponse* release_text_stream_write();
+  ::livekit::proto::TextStreamWriterWriteResponse* mutable_text_stream_write();
+  void set_allocated_text_stream_write(::livekit::proto::TextStreamWriterWriteResponse* text_stream_write);
+  private:
+  const ::livekit::proto::TextStreamWriterWriteResponse& _internal_text_stream_write() const;
+  ::livekit::proto::TextStreamWriterWriteResponse* _internal_mutable_text_stream_write();
+  public:
+  void unsafe_arena_set_allocated_text_stream_write(
+      ::livekit::proto::TextStreamWriterWriteResponse* text_stream_write);
+  ::livekit::proto::TextStreamWriterWriteResponse* unsafe_arena_release_text_stream_write();
+
+  // .livekit.proto.TextStreamWriterCloseResponse text_stream_close = 65;
+  bool has_text_stream_close() const;
+  private:
+  bool _internal_has_text_stream_close() const;
+  public:
+  void clear_text_stream_close();
+  const ::livekit::proto::TextStreamWriterCloseResponse& text_stream_close() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamWriterCloseResponse* release_text_stream_close();
+  ::livekit::proto::TextStreamWriterCloseResponse* mutable_text_stream_close();
+  void set_allocated_text_stream_close(::livekit::proto::TextStreamWriterCloseResponse* text_stream_close);
+  private:
+  const ::livekit::proto::TextStreamWriterCloseResponse& _internal_text_stream_close() const;
+  ::livekit::proto::TextStreamWriterCloseResponse* _internal_mutable_text_stream_close();
+  public:
+  void unsafe_arena_set_allocated_text_stream_close(
+      ::livekit::proto::TextStreamWriterCloseResponse* text_stream_close);
+  ::livekit::proto::TextStreamWriterCloseResponse* unsafe_arena_release_text_stream_close();
+
+  // .livekit.proto.StreamSendBytesResponse send_bytes = 66;
+  bool has_send_bytes() const;
+  private:
+  bool _internal_has_send_bytes() const;
+  public:
+  void clear_send_bytes();
+  const ::livekit::proto::StreamSendBytesResponse& send_bytes() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendBytesResponse* release_send_bytes();
+  ::livekit::proto::StreamSendBytesResponse* mutable_send_bytes();
+  void set_allocated_send_bytes(::livekit::proto::StreamSendBytesResponse* send_bytes);
+  private:
+  const ::livekit::proto::StreamSendBytesResponse& _internal_send_bytes() const;
+  ::livekit::proto::StreamSendBytesResponse* _internal_mutable_send_bytes();
+  public:
+  void unsafe_arena_set_allocated_send_bytes(
+      ::livekit::proto::StreamSendBytesResponse* send_bytes);
+  ::livekit::proto::StreamSendBytesResponse* unsafe_arena_release_send_bytes();
+
   void clear_message();
   MessageCase message_case() const;
   // @@protoc_insertion_point(class_scope:livekit.proto.FfiResponse)
@@ -2594,6 +3225,21 @@ class FfiResponse final :
   void set_has_new_apm();
   void set_has_apm_process_stream();
   void set_has_apm_process_reverse_stream();
+  void set_has_apm_set_stream_delay();
+  void set_has_byte_read_incremental();
+  void set_has_byte_read_all();
+  void set_has_byte_write_to_file();
+  void set_has_text_read_incremental();
+  void set_has_text_read_all();
+  void set_has_send_file();
+  void set_has_send_text();
+  void set_has_byte_stream_open();
+  void set_has_byte_stream_write();
+  void set_has_byte_stream_close();
+  void set_has_text_stream_open();
+  void set_has_text_stream_write();
+  void set_has_text_stream_close();
+  void set_has_send_bytes();
 
   inline bool has_message() const;
   inline void clear_has_message();
@@ -2655,6 +3301,21 @@ class FfiResponse final :
       ::livekit::proto::NewApmResponse* new_apm_;
       ::livekit::proto::ApmProcessStreamResponse* apm_process_stream_;
       ::livekit::proto::ApmProcessReverseStreamResponse* apm_process_reverse_stream_;
+      ::livekit::proto::ApmSetStreamDelayResponse* apm_set_stream_delay_;
+      ::livekit::proto::ByteStreamReaderReadIncrementalResponse* byte_read_incremental_;
+      ::livekit::proto::ByteStreamReaderReadAllResponse* byte_read_all_;
+      ::livekit::proto::ByteStreamReaderWriteToFileResponse* byte_write_to_file_;
+      ::livekit::proto::TextStreamReaderReadIncrementalResponse* text_read_incremental_;
+      ::livekit::proto::TextStreamReaderReadAllResponse* text_read_all_;
+      ::livekit::proto::StreamSendFileResponse* send_file_;
+      ::livekit::proto::StreamSendTextResponse* send_text_;
+      ::livekit::proto::ByteStreamOpenResponse* byte_stream_open_;
+      ::livekit::proto::ByteStreamWriterWriteResponse* byte_stream_write_;
+      ::livekit::proto::ByteStreamWriterCloseResponse* byte_stream_close_;
+      ::livekit::proto::TextStreamOpenResponse* text_stream_open_;
+      ::livekit::proto::TextStreamWriterWriteResponse* text_stream_write_;
+      ::livekit::proto::TextStreamWriterCloseResponse* text_stream_close_;
+      ::livekit::proto::StreamSendBytesResponse* send_bytes_;
     } message_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -2742,6 +3403,20 @@ class FfiEvent final :
     kSendStreamHeader = 25,
     kSendStreamChunk = 26,
     kSendStreamTrailer = 27,
+    kByteStreamReaderEvent = 28,
+    kByteStreamReaderReadAll = 29,
+    kByteStreamReaderWriteToFile = 30,
+    kByteStreamOpen = 31,
+    kByteStreamWriterWrite = 32,
+    kByteStreamWriterClose = 33,
+    kSendFile = 34,
+    kTextStreamReaderEvent = 35,
+    kTextStreamReaderReadAll = 36,
+    kTextStreamOpen = 37,
+    kTextStreamWriterWrite = 38,
+    kTextStreamWriterClose = 39,
+    kSendText = 40,
+    kSendBytes = 41,
     MESSAGE_NOT_SET = 0,
   };
 
@@ -2849,6 +3524,20 @@ class FfiEvent final :
     kSendStreamHeaderFieldNumber = 25,
     kSendStreamChunkFieldNumber = 26,
     kSendStreamTrailerFieldNumber = 27,
+    kByteStreamReaderEventFieldNumber = 28,
+    kByteStreamReaderReadAllFieldNumber = 29,
+    kByteStreamReaderWriteToFileFieldNumber = 30,
+    kByteStreamOpenFieldNumber = 31,
+    kByteStreamWriterWriteFieldNumber = 32,
+    kByteStreamWriterCloseFieldNumber = 33,
+    kSendFileFieldNumber = 34,
+    kTextStreamReaderEventFieldNumber = 35,
+    kTextStreamReaderReadAllFieldNumber = 36,
+    kTextStreamOpenFieldNumber = 37,
+    kTextStreamWriterWriteFieldNumber = 38,
+    kTextStreamWriterCloseFieldNumber = 39,
+    kSendTextFieldNumber = 40,
+    kSendBytesFieldNumber = 41,
   };
   // .livekit.proto.RoomEvent room_event = 1;
   bool has_room_event() const;
@@ -3318,6 +4007,258 @@ class FfiEvent final :
       ::livekit::proto::SendStreamTrailerCallback* send_stream_trailer);
   ::livekit::proto::SendStreamTrailerCallback* unsafe_arena_release_send_stream_trailer();
 
+  // .livekit.proto.ByteStreamReaderEvent byte_stream_reader_event = 28;
+  bool has_byte_stream_reader_event() const;
+  private:
+  bool _internal_has_byte_stream_reader_event() const;
+  public:
+  void clear_byte_stream_reader_event();
+  const ::livekit::proto::ByteStreamReaderEvent& byte_stream_reader_event() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderEvent* release_byte_stream_reader_event();
+  ::livekit::proto::ByteStreamReaderEvent* mutable_byte_stream_reader_event();
+  void set_allocated_byte_stream_reader_event(::livekit::proto::ByteStreamReaderEvent* byte_stream_reader_event);
+  private:
+  const ::livekit::proto::ByteStreamReaderEvent& _internal_byte_stream_reader_event() const;
+  ::livekit::proto::ByteStreamReaderEvent* _internal_mutable_byte_stream_reader_event();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_reader_event(
+      ::livekit::proto::ByteStreamReaderEvent* byte_stream_reader_event);
+  ::livekit::proto::ByteStreamReaderEvent* unsafe_arena_release_byte_stream_reader_event();
+
+  // .livekit.proto.ByteStreamReaderReadAllCallback byte_stream_reader_read_all = 29;
+  bool has_byte_stream_reader_read_all() const;
+  private:
+  bool _internal_has_byte_stream_reader_read_all() const;
+  public:
+  void clear_byte_stream_reader_read_all();
+  const ::livekit::proto::ByteStreamReaderReadAllCallback& byte_stream_reader_read_all() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderReadAllCallback* release_byte_stream_reader_read_all();
+  ::livekit::proto::ByteStreamReaderReadAllCallback* mutable_byte_stream_reader_read_all();
+  void set_allocated_byte_stream_reader_read_all(::livekit::proto::ByteStreamReaderReadAllCallback* byte_stream_reader_read_all);
+  private:
+  const ::livekit::proto::ByteStreamReaderReadAllCallback& _internal_byte_stream_reader_read_all() const;
+  ::livekit::proto::ByteStreamReaderReadAllCallback* _internal_mutable_byte_stream_reader_read_all();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_reader_read_all(
+      ::livekit::proto::ByteStreamReaderReadAllCallback* byte_stream_reader_read_all);
+  ::livekit::proto::ByteStreamReaderReadAllCallback* unsafe_arena_release_byte_stream_reader_read_all();
+
+  // .livekit.proto.ByteStreamReaderWriteToFileCallback byte_stream_reader_write_to_file = 30;
+  bool has_byte_stream_reader_write_to_file() const;
+  private:
+  bool _internal_has_byte_stream_reader_write_to_file() const;
+  public:
+  void clear_byte_stream_reader_write_to_file();
+  const ::livekit::proto::ByteStreamReaderWriteToFileCallback& byte_stream_reader_write_to_file() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamReaderWriteToFileCallback* release_byte_stream_reader_write_to_file();
+  ::livekit::proto::ByteStreamReaderWriteToFileCallback* mutable_byte_stream_reader_write_to_file();
+  void set_allocated_byte_stream_reader_write_to_file(::livekit::proto::ByteStreamReaderWriteToFileCallback* byte_stream_reader_write_to_file);
+  private:
+  const ::livekit::proto::ByteStreamReaderWriteToFileCallback& _internal_byte_stream_reader_write_to_file() const;
+  ::livekit::proto::ByteStreamReaderWriteToFileCallback* _internal_mutable_byte_stream_reader_write_to_file();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_reader_write_to_file(
+      ::livekit::proto::ByteStreamReaderWriteToFileCallback* byte_stream_reader_write_to_file);
+  ::livekit::proto::ByteStreamReaderWriteToFileCallback* unsafe_arena_release_byte_stream_reader_write_to_file();
+
+  // .livekit.proto.ByteStreamOpenCallback byte_stream_open = 31;
+  bool has_byte_stream_open() const;
+  private:
+  bool _internal_has_byte_stream_open() const;
+  public:
+  void clear_byte_stream_open();
+  const ::livekit::proto::ByteStreamOpenCallback& byte_stream_open() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamOpenCallback* release_byte_stream_open();
+  ::livekit::proto::ByteStreamOpenCallback* mutable_byte_stream_open();
+  void set_allocated_byte_stream_open(::livekit::proto::ByteStreamOpenCallback* byte_stream_open);
+  private:
+  const ::livekit::proto::ByteStreamOpenCallback& _internal_byte_stream_open() const;
+  ::livekit::proto::ByteStreamOpenCallback* _internal_mutable_byte_stream_open();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_open(
+      ::livekit::proto::ByteStreamOpenCallback* byte_stream_open);
+  ::livekit::proto::ByteStreamOpenCallback* unsafe_arena_release_byte_stream_open();
+
+  // .livekit.proto.ByteStreamWriterWriteCallback byte_stream_writer_write = 32;
+  bool has_byte_stream_writer_write() const;
+  private:
+  bool _internal_has_byte_stream_writer_write() const;
+  public:
+  void clear_byte_stream_writer_write();
+  const ::livekit::proto::ByteStreamWriterWriteCallback& byte_stream_writer_write() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamWriterWriteCallback* release_byte_stream_writer_write();
+  ::livekit::proto::ByteStreamWriterWriteCallback* mutable_byte_stream_writer_write();
+  void set_allocated_byte_stream_writer_write(::livekit::proto::ByteStreamWriterWriteCallback* byte_stream_writer_write);
+  private:
+  const ::livekit::proto::ByteStreamWriterWriteCallback& _internal_byte_stream_writer_write() const;
+  ::livekit::proto::ByteStreamWriterWriteCallback* _internal_mutable_byte_stream_writer_write();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_writer_write(
+      ::livekit::proto::ByteStreamWriterWriteCallback* byte_stream_writer_write);
+  ::livekit::proto::ByteStreamWriterWriteCallback* unsafe_arena_release_byte_stream_writer_write();
+
+  // .livekit.proto.ByteStreamWriterCloseCallback byte_stream_writer_close = 33;
+  bool has_byte_stream_writer_close() const;
+  private:
+  bool _internal_has_byte_stream_writer_close() const;
+  public:
+  void clear_byte_stream_writer_close();
+  const ::livekit::proto::ByteStreamWriterCloseCallback& byte_stream_writer_close() const;
+  PROTOBUF_NODISCARD ::livekit::proto::ByteStreamWriterCloseCallback* release_byte_stream_writer_close();
+  ::livekit::proto::ByteStreamWriterCloseCallback* mutable_byte_stream_writer_close();
+  void set_allocated_byte_stream_writer_close(::livekit::proto::ByteStreamWriterCloseCallback* byte_stream_writer_close);
+  private:
+  const ::livekit::proto::ByteStreamWriterCloseCallback& _internal_byte_stream_writer_close() const;
+  ::livekit::proto::ByteStreamWriterCloseCallback* _internal_mutable_byte_stream_writer_close();
+  public:
+  void unsafe_arena_set_allocated_byte_stream_writer_close(
+      ::livekit::proto::ByteStreamWriterCloseCallback* byte_stream_writer_close);
+  ::livekit::proto::ByteStreamWriterCloseCallback* unsafe_arena_release_byte_stream_writer_close();
+
+  // .livekit.proto.StreamSendFileCallback send_file = 34;
+  bool has_send_file() const;
+  private:
+  bool _internal_has_send_file() const;
+  public:
+  void clear_send_file();
+  const ::livekit::proto::StreamSendFileCallback& send_file() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendFileCallback* release_send_file();
+  ::livekit::proto::StreamSendFileCallback* mutable_send_file();
+  void set_allocated_send_file(::livekit::proto::StreamSendFileCallback* send_file);
+  private:
+  const ::livekit::proto::StreamSendFileCallback& _internal_send_file() const;
+  ::livekit::proto::StreamSendFileCallback* _internal_mutable_send_file();
+  public:
+  void unsafe_arena_set_allocated_send_file(
+      ::livekit::proto::StreamSendFileCallback* send_file);
+  ::livekit::proto::StreamSendFileCallback* unsafe_arena_release_send_file();
+
+  // .livekit.proto.TextStreamReaderEvent text_stream_reader_event = 35;
+  bool has_text_stream_reader_event() const;
+  private:
+  bool _internal_has_text_stream_reader_event() const;
+  public:
+  void clear_text_stream_reader_event();
+  const ::livekit::proto::TextStreamReaderEvent& text_stream_reader_event() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamReaderEvent* release_text_stream_reader_event();
+  ::livekit::proto::TextStreamReaderEvent* mutable_text_stream_reader_event();
+  void set_allocated_text_stream_reader_event(::livekit::proto::TextStreamReaderEvent* text_stream_reader_event);
+  private:
+  const ::livekit::proto::TextStreamReaderEvent& _internal_text_stream_reader_event() const;
+  ::livekit::proto::TextStreamReaderEvent* _internal_mutable_text_stream_reader_event();
+  public:
+  void unsafe_arena_set_allocated_text_stream_reader_event(
+      ::livekit::proto::TextStreamReaderEvent* text_stream_reader_event);
+  ::livekit::proto::TextStreamReaderEvent* unsafe_arena_release_text_stream_reader_event();
+
+  // .livekit.proto.TextStreamReaderReadAllCallback text_stream_reader_read_all = 36;
+  bool has_text_stream_reader_read_all() const;
+  private:
+  bool _internal_has_text_stream_reader_read_all() const;
+  public:
+  void clear_text_stream_reader_read_all();
+  const ::livekit::proto::TextStreamReaderReadAllCallback& text_stream_reader_read_all() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamReaderReadAllCallback* release_text_stream_reader_read_all();
+  ::livekit::proto::TextStreamReaderReadAllCallback* mutable_text_stream_reader_read_all();
+  void set_allocated_text_stream_reader_read_all(::livekit::proto::TextStreamReaderReadAllCallback* text_stream_reader_read_all);
+  private:
+  const ::livekit::proto::TextStreamReaderReadAllCallback& _internal_text_stream_reader_read_all() const;
+  ::livekit::proto::TextStreamReaderReadAllCallback* _internal_mutable_text_stream_reader_read_all();
+  public:
+  void unsafe_arena_set_allocated_text_stream_reader_read_all(
+      ::livekit::proto::TextStreamReaderReadAllCallback* text_stream_reader_read_all);
+  ::livekit::proto::TextStreamReaderReadAllCallback* unsafe_arena_release_text_stream_reader_read_all();
+
+  // .livekit.proto.TextStreamOpenCallback text_stream_open = 37;
+  bool has_text_stream_open() const;
+  private:
+  bool _internal_has_text_stream_open() const;
+  public:
+  void clear_text_stream_open();
+  const ::livekit::proto::TextStreamOpenCallback& text_stream_open() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamOpenCallback* release_text_stream_open();
+  ::livekit::proto::TextStreamOpenCallback* mutable_text_stream_open();
+  void set_allocated_text_stream_open(::livekit::proto::TextStreamOpenCallback* text_stream_open);
+  private:
+  const ::livekit::proto::TextStreamOpenCallback& _internal_text_stream_open() const;
+  ::livekit::proto::TextStreamOpenCallback* _internal_mutable_text_stream_open();
+  public:
+  void unsafe_arena_set_allocated_text_stream_open(
+      ::livekit::proto::TextStreamOpenCallback* text_stream_open);
+  ::livekit::proto::TextStreamOpenCallback* unsafe_arena_release_text_stream_open();
+
+  // .livekit.proto.TextStreamWriterWriteCallback text_stream_writer_write = 38;
+  bool has_text_stream_writer_write() const;
+  private:
+  bool _internal_has_text_stream_writer_write() const;
+  public:
+  void clear_text_stream_writer_write();
+  const ::livekit::proto::TextStreamWriterWriteCallback& text_stream_writer_write() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamWriterWriteCallback* release_text_stream_writer_write();
+  ::livekit::proto::TextStreamWriterWriteCallback* mutable_text_stream_writer_write();
+  void set_allocated_text_stream_writer_write(::livekit::proto::TextStreamWriterWriteCallback* text_stream_writer_write);
+  private:
+  const ::livekit::proto::TextStreamWriterWriteCallback& _internal_text_stream_writer_write() const;
+  ::livekit::proto::TextStreamWriterWriteCallback* _internal_mutable_text_stream_writer_write();
+  public:
+  void unsafe_arena_set_allocated_text_stream_writer_write(
+      ::livekit::proto::TextStreamWriterWriteCallback* text_stream_writer_write);
+  ::livekit::proto::TextStreamWriterWriteCallback* unsafe_arena_release_text_stream_writer_write();
+
+  // .livekit.proto.TextStreamWriterCloseCallback text_stream_writer_close = 39;
+  bool has_text_stream_writer_close() const;
+  private:
+  bool _internal_has_text_stream_writer_close() const;
+  public:
+  void clear_text_stream_writer_close();
+  const ::livekit::proto::TextStreamWriterCloseCallback& text_stream_writer_close() const;
+  PROTOBUF_NODISCARD ::livekit::proto::TextStreamWriterCloseCallback* release_text_stream_writer_close();
+  ::livekit::proto::TextStreamWriterCloseCallback* mutable_text_stream_writer_close();
+  void set_allocated_text_stream_writer_close(::livekit::proto::TextStreamWriterCloseCallback* text_stream_writer_close);
+  private:
+  const ::livekit::proto::TextStreamWriterCloseCallback& _internal_text_stream_writer_close() const;
+  ::livekit::proto::TextStreamWriterCloseCallback* _internal_mutable_text_stream_writer_close();
+  public:
+  void unsafe_arena_set_allocated_text_stream_writer_close(
+      ::livekit::proto::TextStreamWriterCloseCallback* text_stream_writer_close);
+  ::livekit::proto::TextStreamWriterCloseCallback* unsafe_arena_release_text_stream_writer_close();
+
+  // .livekit.proto.StreamSendTextCallback send_text = 40;
+  bool has_send_text() const;
+  private:
+  bool _internal_has_send_text() const;
+  public:
+  void clear_send_text();
+  const ::livekit::proto::StreamSendTextCallback& send_text() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendTextCallback* release_send_text();
+  ::livekit::proto::StreamSendTextCallback* mutable_send_text();
+  void set_allocated_send_text(::livekit::proto::StreamSendTextCallback* send_text);
+  private:
+  const ::livekit::proto::StreamSendTextCallback& _internal_send_text() const;
+  ::livekit::proto::StreamSendTextCallback* _internal_mutable_send_text();
+  public:
+  void unsafe_arena_set_allocated_send_text(
+      ::livekit::proto::StreamSendTextCallback* send_text);
+  ::livekit::proto::StreamSendTextCallback* unsafe_arena_release_send_text();
+
+  // .livekit.proto.StreamSendBytesCallback send_bytes = 41;
+  bool has_send_bytes() const;
+  private:
+  bool _internal_has_send_bytes() const;
+  public:
+  void clear_send_bytes();
+  const ::livekit::proto::StreamSendBytesCallback& send_bytes() const;
+  PROTOBUF_NODISCARD ::livekit::proto::StreamSendBytesCallback* release_send_bytes();
+  ::livekit::proto::StreamSendBytesCallback* mutable_send_bytes();
+  void set_allocated_send_bytes(::livekit::proto::StreamSendBytesCallback* send_bytes);
+  private:
+  const ::livekit::proto::StreamSendBytesCallback& _internal_send_bytes() const;
+  ::livekit::proto::StreamSendBytesCallback* _internal_mutable_send_bytes();
+  public:
+  void unsafe_arena_set_allocated_send_bytes(
+      ::livekit::proto::StreamSendBytesCallback* send_bytes);
+  ::livekit::proto::StreamSendBytesCallback* unsafe_arena_release_send_bytes();
+
   void clear_message();
   MessageCase message_case() const;
   // @@protoc_insertion_point(class_scope:livekit.proto.FfiEvent)
@@ -3349,6 +4290,20 @@ class FfiEvent final :
   void set_has_send_stream_header();
   void set_has_send_stream_chunk();
   void set_has_send_stream_trailer();
+  void set_has_byte_stream_reader_event();
+  void set_has_byte_stream_reader_read_all();
+  void set_has_byte_stream_reader_write_to_file();
+  void set_has_byte_stream_open();
+  void set_has_byte_stream_writer_write();
+  void set_has_byte_stream_writer_close();
+  void set_has_send_file();
+  void set_has_text_stream_reader_event();
+  void set_has_text_stream_reader_read_all();
+  void set_has_text_stream_open();
+  void set_has_text_stream_writer_write();
+  void set_has_text_stream_writer_close();
+  void set_has_send_text();
+  void set_has_send_bytes();
 
   inline bool has_message() const;
   inline void clear_has_message();
@@ -3386,6 +4341,20 @@ class FfiEvent final :
       ::livekit::proto::SendStreamHeaderCallback* send_stream_header_;
       ::livekit::proto::SendStreamChunkCallback* send_stream_chunk_;
       ::livekit::proto::SendStreamTrailerCallback* send_stream_trailer_;
+      ::livekit::proto::ByteStreamReaderEvent* byte_stream_reader_event_;
+      ::livekit::proto::ByteStreamReaderReadAllCallback* byte_stream_reader_read_all_;
+      ::livekit::proto::ByteStreamReaderWriteToFileCallback* byte_stream_reader_write_to_file_;
+      ::livekit::proto::ByteStreamOpenCallback* byte_stream_open_;
+      ::livekit::proto::ByteStreamWriterWriteCallback* byte_stream_writer_write_;
+      ::livekit::proto::ByteStreamWriterCloseCallback* byte_stream_writer_close_;
+      ::livekit::proto::StreamSendFileCallback* send_file_;
+      ::livekit::proto::TextStreamReaderEvent* text_stream_reader_event_;
+      ::livekit::proto::TextStreamReaderReadAllCallback* text_stream_reader_read_all_;
+      ::livekit::proto::TextStreamOpenCallback* text_stream_open_;
+      ::livekit::proto::TextStreamWriterWriteCallback* text_stream_writer_write_;
+      ::livekit::proto::TextStreamWriterCloseCallback* text_stream_writer_close_;
+      ::livekit::proto::StreamSendTextCallback* send_text_;
+      ::livekit::proto::StreamSendBytesCallback* send_bytes_;
     } message_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -7846,6 +8815,996 @@ inline ::livekit::proto::ApmProcessReverseStreamRequest* FfiRequest::mutable_apm
   return _msg;
 }
 
+// .livekit.proto.ApmSetStreamDelayRequest apm_set_stream_delay = 53;
+inline bool FfiRequest::_internal_has_apm_set_stream_delay() const {
+  return message_case() == kApmSetStreamDelay;
+}
+inline bool FfiRequest::has_apm_set_stream_delay() const {
+  return _internal_has_apm_set_stream_delay();
+}
+inline void FfiRequest::set_has_apm_set_stream_delay() {
+  _impl_._oneof_case_[0] = kApmSetStreamDelay;
+}
+inline ::livekit::proto::ApmSetStreamDelayRequest* FfiRequest::release_apm_set_stream_delay() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.apm_set_stream_delay)
+  if (_internal_has_apm_set_stream_delay()) {
+    clear_has_message();
+    ::livekit::proto::ApmSetStreamDelayRequest* temp = _impl_.message_.apm_set_stream_delay_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.apm_set_stream_delay_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ApmSetStreamDelayRequest& FfiRequest::_internal_apm_set_stream_delay() const {
+  return _internal_has_apm_set_stream_delay()
+      ? *_impl_.message_.apm_set_stream_delay_
+      : reinterpret_cast< ::livekit::proto::ApmSetStreamDelayRequest&>(::livekit::proto::_ApmSetStreamDelayRequest_default_instance_);
+}
+inline const ::livekit::proto::ApmSetStreamDelayRequest& FfiRequest::apm_set_stream_delay() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.apm_set_stream_delay)
+  return _internal_apm_set_stream_delay();
+}
+inline ::livekit::proto::ApmSetStreamDelayRequest* FfiRequest::unsafe_arena_release_apm_set_stream_delay() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.apm_set_stream_delay)
+  if (_internal_has_apm_set_stream_delay()) {
+    clear_has_message();
+    ::livekit::proto::ApmSetStreamDelayRequest* temp = _impl_.message_.apm_set_stream_delay_;
+    _impl_.message_.apm_set_stream_delay_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_apm_set_stream_delay(::livekit::proto::ApmSetStreamDelayRequest* apm_set_stream_delay) {
+  clear_message();
+  if (apm_set_stream_delay) {
+    set_has_apm_set_stream_delay();
+    _impl_.message_.apm_set_stream_delay_ = apm_set_stream_delay;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.apm_set_stream_delay)
+}
+inline ::livekit::proto::ApmSetStreamDelayRequest* FfiRequest::_internal_mutable_apm_set_stream_delay() {
+  if (!_internal_has_apm_set_stream_delay()) {
+    clear_message();
+    set_has_apm_set_stream_delay();
+    _impl_.message_.apm_set_stream_delay_ = CreateMaybeMessage< ::livekit::proto::ApmSetStreamDelayRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.apm_set_stream_delay_;
+}
+inline ::livekit::proto::ApmSetStreamDelayRequest* FfiRequest::mutable_apm_set_stream_delay() {
+  ::livekit::proto::ApmSetStreamDelayRequest* _msg = _internal_mutable_apm_set_stream_delay();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.apm_set_stream_delay)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderReadIncrementalRequest byte_read_incremental = 54;
+inline bool FfiRequest::_internal_has_byte_read_incremental() const {
+  return message_case() == kByteReadIncremental;
+}
+inline bool FfiRequest::has_byte_read_incremental() const {
+  return _internal_has_byte_read_incremental();
+}
+inline void FfiRequest::set_has_byte_read_incremental() {
+  _impl_._oneof_case_[0] = kByteReadIncremental;
+}
+inline ::livekit::proto::ByteStreamReaderReadIncrementalRequest* FfiRequest::release_byte_read_incremental() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.byte_read_incremental)
+  if (_internal_has_byte_read_incremental()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadIncrementalRequest* temp = _impl_.message_.byte_read_incremental_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_read_incremental_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderReadIncrementalRequest& FfiRequest::_internal_byte_read_incremental() const {
+  return _internal_has_byte_read_incremental()
+      ? *_impl_.message_.byte_read_incremental_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderReadIncrementalRequest&>(::livekit::proto::_ByteStreamReaderReadIncrementalRequest_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderReadIncrementalRequest& FfiRequest::byte_read_incremental() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.byte_read_incremental)
+  return _internal_byte_read_incremental();
+}
+inline ::livekit::proto::ByteStreamReaderReadIncrementalRequest* FfiRequest::unsafe_arena_release_byte_read_incremental() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.byte_read_incremental)
+  if (_internal_has_byte_read_incremental()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadIncrementalRequest* temp = _impl_.message_.byte_read_incremental_;
+    _impl_.message_.byte_read_incremental_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_byte_read_incremental(::livekit::proto::ByteStreamReaderReadIncrementalRequest* byte_read_incremental) {
+  clear_message();
+  if (byte_read_incremental) {
+    set_has_byte_read_incremental();
+    _impl_.message_.byte_read_incremental_ = byte_read_incremental;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.byte_read_incremental)
+}
+inline ::livekit::proto::ByteStreamReaderReadIncrementalRequest* FfiRequest::_internal_mutable_byte_read_incremental() {
+  if (!_internal_has_byte_read_incremental()) {
+    clear_message();
+    set_has_byte_read_incremental();
+    _impl_.message_.byte_read_incremental_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderReadIncrementalRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_read_incremental_;
+}
+inline ::livekit::proto::ByteStreamReaderReadIncrementalRequest* FfiRequest::mutable_byte_read_incremental() {
+  ::livekit::proto::ByteStreamReaderReadIncrementalRequest* _msg = _internal_mutable_byte_read_incremental();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.byte_read_incremental)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderReadAllRequest byte_read_all = 55;
+inline bool FfiRequest::_internal_has_byte_read_all() const {
+  return message_case() == kByteReadAll;
+}
+inline bool FfiRequest::has_byte_read_all() const {
+  return _internal_has_byte_read_all();
+}
+inline void FfiRequest::set_has_byte_read_all() {
+  _impl_._oneof_case_[0] = kByteReadAll;
+}
+inline ::livekit::proto::ByteStreamReaderReadAllRequest* FfiRequest::release_byte_read_all() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.byte_read_all)
+  if (_internal_has_byte_read_all()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadAllRequest* temp = _impl_.message_.byte_read_all_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderReadAllRequest& FfiRequest::_internal_byte_read_all() const {
+  return _internal_has_byte_read_all()
+      ? *_impl_.message_.byte_read_all_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderReadAllRequest&>(::livekit::proto::_ByteStreamReaderReadAllRequest_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderReadAllRequest& FfiRequest::byte_read_all() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.byte_read_all)
+  return _internal_byte_read_all();
+}
+inline ::livekit::proto::ByteStreamReaderReadAllRequest* FfiRequest::unsafe_arena_release_byte_read_all() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.byte_read_all)
+  if (_internal_has_byte_read_all()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadAllRequest* temp = _impl_.message_.byte_read_all_;
+    _impl_.message_.byte_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_byte_read_all(::livekit::proto::ByteStreamReaderReadAllRequest* byte_read_all) {
+  clear_message();
+  if (byte_read_all) {
+    set_has_byte_read_all();
+    _impl_.message_.byte_read_all_ = byte_read_all;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.byte_read_all)
+}
+inline ::livekit::proto::ByteStreamReaderReadAllRequest* FfiRequest::_internal_mutable_byte_read_all() {
+  if (!_internal_has_byte_read_all()) {
+    clear_message();
+    set_has_byte_read_all();
+    _impl_.message_.byte_read_all_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderReadAllRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_read_all_;
+}
+inline ::livekit::proto::ByteStreamReaderReadAllRequest* FfiRequest::mutable_byte_read_all() {
+  ::livekit::proto::ByteStreamReaderReadAllRequest* _msg = _internal_mutable_byte_read_all();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.byte_read_all)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderWriteToFileRequest byte_write_to_file = 56;
+inline bool FfiRequest::_internal_has_byte_write_to_file() const {
+  return message_case() == kByteWriteToFile;
+}
+inline bool FfiRequest::has_byte_write_to_file() const {
+  return _internal_has_byte_write_to_file();
+}
+inline void FfiRequest::set_has_byte_write_to_file() {
+  _impl_._oneof_case_[0] = kByteWriteToFile;
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileRequest* FfiRequest::release_byte_write_to_file() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.byte_write_to_file)
+  if (_internal_has_byte_write_to_file()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderWriteToFileRequest* temp = _impl_.message_.byte_write_to_file_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_write_to_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderWriteToFileRequest& FfiRequest::_internal_byte_write_to_file() const {
+  return _internal_has_byte_write_to_file()
+      ? *_impl_.message_.byte_write_to_file_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderWriteToFileRequest&>(::livekit::proto::_ByteStreamReaderWriteToFileRequest_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderWriteToFileRequest& FfiRequest::byte_write_to_file() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.byte_write_to_file)
+  return _internal_byte_write_to_file();
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileRequest* FfiRequest::unsafe_arena_release_byte_write_to_file() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.byte_write_to_file)
+  if (_internal_has_byte_write_to_file()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderWriteToFileRequest* temp = _impl_.message_.byte_write_to_file_;
+    _impl_.message_.byte_write_to_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_byte_write_to_file(::livekit::proto::ByteStreamReaderWriteToFileRequest* byte_write_to_file) {
+  clear_message();
+  if (byte_write_to_file) {
+    set_has_byte_write_to_file();
+    _impl_.message_.byte_write_to_file_ = byte_write_to_file;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.byte_write_to_file)
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileRequest* FfiRequest::_internal_mutable_byte_write_to_file() {
+  if (!_internal_has_byte_write_to_file()) {
+    clear_message();
+    set_has_byte_write_to_file();
+    _impl_.message_.byte_write_to_file_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderWriteToFileRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_write_to_file_;
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileRequest* FfiRequest::mutable_byte_write_to_file() {
+  ::livekit::proto::ByteStreamReaderWriteToFileRequest* _msg = _internal_mutable_byte_write_to_file();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.byte_write_to_file)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamReaderReadIncrementalRequest text_read_incremental = 57;
+inline bool FfiRequest::_internal_has_text_read_incremental() const {
+  return message_case() == kTextReadIncremental;
+}
+inline bool FfiRequest::has_text_read_incremental() const {
+  return _internal_has_text_read_incremental();
+}
+inline void FfiRequest::set_has_text_read_incremental() {
+  _impl_._oneof_case_[0] = kTextReadIncremental;
+}
+inline ::livekit::proto::TextStreamReaderReadIncrementalRequest* FfiRequest::release_text_read_incremental() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.text_read_incremental)
+  if (_internal_has_text_read_incremental()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadIncrementalRequest* temp = _impl_.message_.text_read_incremental_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_read_incremental_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamReaderReadIncrementalRequest& FfiRequest::_internal_text_read_incremental() const {
+  return _internal_has_text_read_incremental()
+      ? *_impl_.message_.text_read_incremental_
+      : reinterpret_cast< ::livekit::proto::TextStreamReaderReadIncrementalRequest&>(::livekit::proto::_TextStreamReaderReadIncrementalRequest_default_instance_);
+}
+inline const ::livekit::proto::TextStreamReaderReadIncrementalRequest& FfiRequest::text_read_incremental() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.text_read_incremental)
+  return _internal_text_read_incremental();
+}
+inline ::livekit::proto::TextStreamReaderReadIncrementalRequest* FfiRequest::unsafe_arena_release_text_read_incremental() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.text_read_incremental)
+  if (_internal_has_text_read_incremental()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadIncrementalRequest* temp = _impl_.message_.text_read_incremental_;
+    _impl_.message_.text_read_incremental_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_text_read_incremental(::livekit::proto::TextStreamReaderReadIncrementalRequest* text_read_incremental) {
+  clear_message();
+  if (text_read_incremental) {
+    set_has_text_read_incremental();
+    _impl_.message_.text_read_incremental_ = text_read_incremental;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.text_read_incremental)
+}
+inline ::livekit::proto::TextStreamReaderReadIncrementalRequest* FfiRequest::_internal_mutable_text_read_incremental() {
+  if (!_internal_has_text_read_incremental()) {
+    clear_message();
+    set_has_text_read_incremental();
+    _impl_.message_.text_read_incremental_ = CreateMaybeMessage< ::livekit::proto::TextStreamReaderReadIncrementalRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_read_incremental_;
+}
+inline ::livekit::proto::TextStreamReaderReadIncrementalRequest* FfiRequest::mutable_text_read_incremental() {
+  ::livekit::proto::TextStreamReaderReadIncrementalRequest* _msg = _internal_mutable_text_read_incremental();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.text_read_incremental)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamReaderReadAllRequest text_read_all = 58;
+inline bool FfiRequest::_internal_has_text_read_all() const {
+  return message_case() == kTextReadAll;
+}
+inline bool FfiRequest::has_text_read_all() const {
+  return _internal_has_text_read_all();
+}
+inline void FfiRequest::set_has_text_read_all() {
+  _impl_._oneof_case_[0] = kTextReadAll;
+}
+inline ::livekit::proto::TextStreamReaderReadAllRequest* FfiRequest::release_text_read_all() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.text_read_all)
+  if (_internal_has_text_read_all()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadAllRequest* temp = _impl_.message_.text_read_all_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamReaderReadAllRequest& FfiRequest::_internal_text_read_all() const {
+  return _internal_has_text_read_all()
+      ? *_impl_.message_.text_read_all_
+      : reinterpret_cast< ::livekit::proto::TextStreamReaderReadAllRequest&>(::livekit::proto::_TextStreamReaderReadAllRequest_default_instance_);
+}
+inline const ::livekit::proto::TextStreamReaderReadAllRequest& FfiRequest::text_read_all() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.text_read_all)
+  return _internal_text_read_all();
+}
+inline ::livekit::proto::TextStreamReaderReadAllRequest* FfiRequest::unsafe_arena_release_text_read_all() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.text_read_all)
+  if (_internal_has_text_read_all()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadAllRequest* temp = _impl_.message_.text_read_all_;
+    _impl_.message_.text_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_text_read_all(::livekit::proto::TextStreamReaderReadAllRequest* text_read_all) {
+  clear_message();
+  if (text_read_all) {
+    set_has_text_read_all();
+    _impl_.message_.text_read_all_ = text_read_all;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.text_read_all)
+}
+inline ::livekit::proto::TextStreamReaderReadAllRequest* FfiRequest::_internal_mutable_text_read_all() {
+  if (!_internal_has_text_read_all()) {
+    clear_message();
+    set_has_text_read_all();
+    _impl_.message_.text_read_all_ = CreateMaybeMessage< ::livekit::proto::TextStreamReaderReadAllRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_read_all_;
+}
+inline ::livekit::proto::TextStreamReaderReadAllRequest* FfiRequest::mutable_text_read_all() {
+  ::livekit::proto::TextStreamReaderReadAllRequest* _msg = _internal_mutable_text_read_all();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.text_read_all)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendFileRequest send_file = 59;
+inline bool FfiRequest::_internal_has_send_file() const {
+  return message_case() == kSendFile;
+}
+inline bool FfiRequest::has_send_file() const {
+  return _internal_has_send_file();
+}
+inline void FfiRequest::set_has_send_file() {
+  _impl_._oneof_case_[0] = kSendFile;
+}
+inline ::livekit::proto::StreamSendFileRequest* FfiRequest::release_send_file() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.send_file)
+  if (_internal_has_send_file()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendFileRequest* temp = _impl_.message_.send_file_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendFileRequest& FfiRequest::_internal_send_file() const {
+  return _internal_has_send_file()
+      ? *_impl_.message_.send_file_
+      : reinterpret_cast< ::livekit::proto::StreamSendFileRequest&>(::livekit::proto::_StreamSendFileRequest_default_instance_);
+}
+inline const ::livekit::proto::StreamSendFileRequest& FfiRequest::send_file() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.send_file)
+  return _internal_send_file();
+}
+inline ::livekit::proto::StreamSendFileRequest* FfiRequest::unsafe_arena_release_send_file() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.send_file)
+  if (_internal_has_send_file()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendFileRequest* temp = _impl_.message_.send_file_;
+    _impl_.message_.send_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_send_file(::livekit::proto::StreamSendFileRequest* send_file) {
+  clear_message();
+  if (send_file) {
+    set_has_send_file();
+    _impl_.message_.send_file_ = send_file;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.send_file)
+}
+inline ::livekit::proto::StreamSendFileRequest* FfiRequest::_internal_mutable_send_file() {
+  if (!_internal_has_send_file()) {
+    clear_message();
+    set_has_send_file();
+    _impl_.message_.send_file_ = CreateMaybeMessage< ::livekit::proto::StreamSendFileRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_file_;
+}
+inline ::livekit::proto::StreamSendFileRequest* FfiRequest::mutable_send_file() {
+  ::livekit::proto::StreamSendFileRequest* _msg = _internal_mutable_send_file();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.send_file)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendTextRequest send_text = 60;
+inline bool FfiRequest::_internal_has_send_text() const {
+  return message_case() == kSendText;
+}
+inline bool FfiRequest::has_send_text() const {
+  return _internal_has_send_text();
+}
+inline void FfiRequest::set_has_send_text() {
+  _impl_._oneof_case_[0] = kSendText;
+}
+inline ::livekit::proto::StreamSendTextRequest* FfiRequest::release_send_text() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.send_text)
+  if (_internal_has_send_text()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendTextRequest* temp = _impl_.message_.send_text_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_text_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendTextRequest& FfiRequest::_internal_send_text() const {
+  return _internal_has_send_text()
+      ? *_impl_.message_.send_text_
+      : reinterpret_cast< ::livekit::proto::StreamSendTextRequest&>(::livekit::proto::_StreamSendTextRequest_default_instance_);
+}
+inline const ::livekit::proto::StreamSendTextRequest& FfiRequest::send_text() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.send_text)
+  return _internal_send_text();
+}
+inline ::livekit::proto::StreamSendTextRequest* FfiRequest::unsafe_arena_release_send_text() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.send_text)
+  if (_internal_has_send_text()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendTextRequest* temp = _impl_.message_.send_text_;
+    _impl_.message_.send_text_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_send_text(::livekit::proto::StreamSendTextRequest* send_text) {
+  clear_message();
+  if (send_text) {
+    set_has_send_text();
+    _impl_.message_.send_text_ = send_text;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.send_text)
+}
+inline ::livekit::proto::StreamSendTextRequest* FfiRequest::_internal_mutable_send_text() {
+  if (!_internal_has_send_text()) {
+    clear_message();
+    set_has_send_text();
+    _impl_.message_.send_text_ = CreateMaybeMessage< ::livekit::proto::StreamSendTextRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_text_;
+}
+inline ::livekit::proto::StreamSendTextRequest* FfiRequest::mutable_send_text() {
+  ::livekit::proto::StreamSendTextRequest* _msg = _internal_mutable_send_text();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.send_text)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamOpenRequest byte_stream_open = 61;
+inline bool FfiRequest::_internal_has_byte_stream_open() const {
+  return message_case() == kByteStreamOpen;
+}
+inline bool FfiRequest::has_byte_stream_open() const {
+  return _internal_has_byte_stream_open();
+}
+inline void FfiRequest::set_has_byte_stream_open() {
+  _impl_._oneof_case_[0] = kByteStreamOpen;
+}
+inline ::livekit::proto::ByteStreamOpenRequest* FfiRequest::release_byte_stream_open() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.byte_stream_open)
+  if (_internal_has_byte_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamOpenRequest* temp = _impl_.message_.byte_stream_open_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamOpenRequest& FfiRequest::_internal_byte_stream_open() const {
+  return _internal_has_byte_stream_open()
+      ? *_impl_.message_.byte_stream_open_
+      : reinterpret_cast< ::livekit::proto::ByteStreamOpenRequest&>(::livekit::proto::_ByteStreamOpenRequest_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamOpenRequest& FfiRequest::byte_stream_open() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.byte_stream_open)
+  return _internal_byte_stream_open();
+}
+inline ::livekit::proto::ByteStreamOpenRequest* FfiRequest::unsafe_arena_release_byte_stream_open() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.byte_stream_open)
+  if (_internal_has_byte_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamOpenRequest* temp = _impl_.message_.byte_stream_open_;
+    _impl_.message_.byte_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_byte_stream_open(::livekit::proto::ByteStreamOpenRequest* byte_stream_open) {
+  clear_message();
+  if (byte_stream_open) {
+    set_has_byte_stream_open();
+    _impl_.message_.byte_stream_open_ = byte_stream_open;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.byte_stream_open)
+}
+inline ::livekit::proto::ByteStreamOpenRequest* FfiRequest::_internal_mutable_byte_stream_open() {
+  if (!_internal_has_byte_stream_open()) {
+    clear_message();
+    set_has_byte_stream_open();
+    _impl_.message_.byte_stream_open_ = CreateMaybeMessage< ::livekit::proto::ByteStreamOpenRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_open_;
+}
+inline ::livekit::proto::ByteStreamOpenRequest* FfiRequest::mutable_byte_stream_open() {
+  ::livekit::proto::ByteStreamOpenRequest* _msg = _internal_mutable_byte_stream_open();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.byte_stream_open)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamWriterWriteRequest byte_stream_write = 62;
+inline bool FfiRequest::_internal_has_byte_stream_write() const {
+  return message_case() == kByteStreamWrite;
+}
+inline bool FfiRequest::has_byte_stream_write() const {
+  return _internal_has_byte_stream_write();
+}
+inline void FfiRequest::set_has_byte_stream_write() {
+  _impl_._oneof_case_[0] = kByteStreamWrite;
+}
+inline ::livekit::proto::ByteStreamWriterWriteRequest* FfiRequest::release_byte_stream_write() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.byte_stream_write)
+  if (_internal_has_byte_stream_write()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterWriteRequest* temp = _impl_.message_.byte_stream_write_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamWriterWriteRequest& FfiRequest::_internal_byte_stream_write() const {
+  return _internal_has_byte_stream_write()
+      ? *_impl_.message_.byte_stream_write_
+      : reinterpret_cast< ::livekit::proto::ByteStreamWriterWriteRequest&>(::livekit::proto::_ByteStreamWriterWriteRequest_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamWriterWriteRequest& FfiRequest::byte_stream_write() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.byte_stream_write)
+  return _internal_byte_stream_write();
+}
+inline ::livekit::proto::ByteStreamWriterWriteRequest* FfiRequest::unsafe_arena_release_byte_stream_write() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.byte_stream_write)
+  if (_internal_has_byte_stream_write()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterWriteRequest* temp = _impl_.message_.byte_stream_write_;
+    _impl_.message_.byte_stream_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_byte_stream_write(::livekit::proto::ByteStreamWriterWriteRequest* byte_stream_write) {
+  clear_message();
+  if (byte_stream_write) {
+    set_has_byte_stream_write();
+    _impl_.message_.byte_stream_write_ = byte_stream_write;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.byte_stream_write)
+}
+inline ::livekit::proto::ByteStreamWriterWriteRequest* FfiRequest::_internal_mutable_byte_stream_write() {
+  if (!_internal_has_byte_stream_write()) {
+    clear_message();
+    set_has_byte_stream_write();
+    _impl_.message_.byte_stream_write_ = CreateMaybeMessage< ::livekit::proto::ByteStreamWriterWriteRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_write_;
+}
+inline ::livekit::proto::ByteStreamWriterWriteRequest* FfiRequest::mutable_byte_stream_write() {
+  ::livekit::proto::ByteStreamWriterWriteRequest* _msg = _internal_mutable_byte_stream_write();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.byte_stream_write)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamWriterCloseRequest byte_stream_close = 63;
+inline bool FfiRequest::_internal_has_byte_stream_close() const {
+  return message_case() == kByteStreamClose;
+}
+inline bool FfiRequest::has_byte_stream_close() const {
+  return _internal_has_byte_stream_close();
+}
+inline void FfiRequest::set_has_byte_stream_close() {
+  _impl_._oneof_case_[0] = kByteStreamClose;
+}
+inline ::livekit::proto::ByteStreamWriterCloseRequest* FfiRequest::release_byte_stream_close() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.byte_stream_close)
+  if (_internal_has_byte_stream_close()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterCloseRequest* temp = _impl_.message_.byte_stream_close_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamWriterCloseRequest& FfiRequest::_internal_byte_stream_close() const {
+  return _internal_has_byte_stream_close()
+      ? *_impl_.message_.byte_stream_close_
+      : reinterpret_cast< ::livekit::proto::ByteStreamWriterCloseRequest&>(::livekit::proto::_ByteStreamWriterCloseRequest_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamWriterCloseRequest& FfiRequest::byte_stream_close() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.byte_stream_close)
+  return _internal_byte_stream_close();
+}
+inline ::livekit::proto::ByteStreamWriterCloseRequest* FfiRequest::unsafe_arena_release_byte_stream_close() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.byte_stream_close)
+  if (_internal_has_byte_stream_close()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterCloseRequest* temp = _impl_.message_.byte_stream_close_;
+    _impl_.message_.byte_stream_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_byte_stream_close(::livekit::proto::ByteStreamWriterCloseRequest* byte_stream_close) {
+  clear_message();
+  if (byte_stream_close) {
+    set_has_byte_stream_close();
+    _impl_.message_.byte_stream_close_ = byte_stream_close;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.byte_stream_close)
+}
+inline ::livekit::proto::ByteStreamWriterCloseRequest* FfiRequest::_internal_mutable_byte_stream_close() {
+  if (!_internal_has_byte_stream_close()) {
+    clear_message();
+    set_has_byte_stream_close();
+    _impl_.message_.byte_stream_close_ = CreateMaybeMessage< ::livekit::proto::ByteStreamWriterCloseRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_close_;
+}
+inline ::livekit::proto::ByteStreamWriterCloseRequest* FfiRequest::mutable_byte_stream_close() {
+  ::livekit::proto::ByteStreamWriterCloseRequest* _msg = _internal_mutable_byte_stream_close();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.byte_stream_close)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamOpenRequest text_stream_open = 64;
+inline bool FfiRequest::_internal_has_text_stream_open() const {
+  return message_case() == kTextStreamOpen;
+}
+inline bool FfiRequest::has_text_stream_open() const {
+  return _internal_has_text_stream_open();
+}
+inline void FfiRequest::set_has_text_stream_open() {
+  _impl_._oneof_case_[0] = kTextStreamOpen;
+}
+inline ::livekit::proto::TextStreamOpenRequest* FfiRequest::release_text_stream_open() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.text_stream_open)
+  if (_internal_has_text_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamOpenRequest* temp = _impl_.message_.text_stream_open_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamOpenRequest& FfiRequest::_internal_text_stream_open() const {
+  return _internal_has_text_stream_open()
+      ? *_impl_.message_.text_stream_open_
+      : reinterpret_cast< ::livekit::proto::TextStreamOpenRequest&>(::livekit::proto::_TextStreamOpenRequest_default_instance_);
+}
+inline const ::livekit::proto::TextStreamOpenRequest& FfiRequest::text_stream_open() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.text_stream_open)
+  return _internal_text_stream_open();
+}
+inline ::livekit::proto::TextStreamOpenRequest* FfiRequest::unsafe_arena_release_text_stream_open() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.text_stream_open)
+  if (_internal_has_text_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamOpenRequest* temp = _impl_.message_.text_stream_open_;
+    _impl_.message_.text_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_text_stream_open(::livekit::proto::TextStreamOpenRequest* text_stream_open) {
+  clear_message();
+  if (text_stream_open) {
+    set_has_text_stream_open();
+    _impl_.message_.text_stream_open_ = text_stream_open;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.text_stream_open)
+}
+inline ::livekit::proto::TextStreamOpenRequest* FfiRequest::_internal_mutable_text_stream_open() {
+  if (!_internal_has_text_stream_open()) {
+    clear_message();
+    set_has_text_stream_open();
+    _impl_.message_.text_stream_open_ = CreateMaybeMessage< ::livekit::proto::TextStreamOpenRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_open_;
+}
+inline ::livekit::proto::TextStreamOpenRequest* FfiRequest::mutable_text_stream_open() {
+  ::livekit::proto::TextStreamOpenRequest* _msg = _internal_mutable_text_stream_open();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.text_stream_open)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamWriterWriteRequest text_stream_write = 65;
+inline bool FfiRequest::_internal_has_text_stream_write() const {
+  return message_case() == kTextStreamWrite;
+}
+inline bool FfiRequest::has_text_stream_write() const {
+  return _internal_has_text_stream_write();
+}
+inline void FfiRequest::set_has_text_stream_write() {
+  _impl_._oneof_case_[0] = kTextStreamWrite;
+}
+inline ::livekit::proto::TextStreamWriterWriteRequest* FfiRequest::release_text_stream_write() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.text_stream_write)
+  if (_internal_has_text_stream_write()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterWriteRequest* temp = _impl_.message_.text_stream_write_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamWriterWriteRequest& FfiRequest::_internal_text_stream_write() const {
+  return _internal_has_text_stream_write()
+      ? *_impl_.message_.text_stream_write_
+      : reinterpret_cast< ::livekit::proto::TextStreamWriterWriteRequest&>(::livekit::proto::_TextStreamWriterWriteRequest_default_instance_);
+}
+inline const ::livekit::proto::TextStreamWriterWriteRequest& FfiRequest::text_stream_write() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.text_stream_write)
+  return _internal_text_stream_write();
+}
+inline ::livekit::proto::TextStreamWriterWriteRequest* FfiRequest::unsafe_arena_release_text_stream_write() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.text_stream_write)
+  if (_internal_has_text_stream_write()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterWriteRequest* temp = _impl_.message_.text_stream_write_;
+    _impl_.message_.text_stream_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_text_stream_write(::livekit::proto::TextStreamWriterWriteRequest* text_stream_write) {
+  clear_message();
+  if (text_stream_write) {
+    set_has_text_stream_write();
+    _impl_.message_.text_stream_write_ = text_stream_write;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.text_stream_write)
+}
+inline ::livekit::proto::TextStreamWriterWriteRequest* FfiRequest::_internal_mutable_text_stream_write() {
+  if (!_internal_has_text_stream_write()) {
+    clear_message();
+    set_has_text_stream_write();
+    _impl_.message_.text_stream_write_ = CreateMaybeMessage< ::livekit::proto::TextStreamWriterWriteRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_write_;
+}
+inline ::livekit::proto::TextStreamWriterWriteRequest* FfiRequest::mutable_text_stream_write() {
+  ::livekit::proto::TextStreamWriterWriteRequest* _msg = _internal_mutable_text_stream_write();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.text_stream_write)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamWriterCloseRequest text_stream_close = 66;
+inline bool FfiRequest::_internal_has_text_stream_close() const {
+  return message_case() == kTextStreamClose;
+}
+inline bool FfiRequest::has_text_stream_close() const {
+  return _internal_has_text_stream_close();
+}
+inline void FfiRequest::set_has_text_stream_close() {
+  _impl_._oneof_case_[0] = kTextStreamClose;
+}
+inline ::livekit::proto::TextStreamWriterCloseRequest* FfiRequest::release_text_stream_close() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.text_stream_close)
+  if (_internal_has_text_stream_close()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterCloseRequest* temp = _impl_.message_.text_stream_close_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamWriterCloseRequest& FfiRequest::_internal_text_stream_close() const {
+  return _internal_has_text_stream_close()
+      ? *_impl_.message_.text_stream_close_
+      : reinterpret_cast< ::livekit::proto::TextStreamWriterCloseRequest&>(::livekit::proto::_TextStreamWriterCloseRequest_default_instance_);
+}
+inline const ::livekit::proto::TextStreamWriterCloseRequest& FfiRequest::text_stream_close() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.text_stream_close)
+  return _internal_text_stream_close();
+}
+inline ::livekit::proto::TextStreamWriterCloseRequest* FfiRequest::unsafe_arena_release_text_stream_close() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.text_stream_close)
+  if (_internal_has_text_stream_close()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterCloseRequest* temp = _impl_.message_.text_stream_close_;
+    _impl_.message_.text_stream_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_text_stream_close(::livekit::proto::TextStreamWriterCloseRequest* text_stream_close) {
+  clear_message();
+  if (text_stream_close) {
+    set_has_text_stream_close();
+    _impl_.message_.text_stream_close_ = text_stream_close;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.text_stream_close)
+}
+inline ::livekit::proto::TextStreamWriterCloseRequest* FfiRequest::_internal_mutable_text_stream_close() {
+  if (!_internal_has_text_stream_close()) {
+    clear_message();
+    set_has_text_stream_close();
+    _impl_.message_.text_stream_close_ = CreateMaybeMessage< ::livekit::proto::TextStreamWriterCloseRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_close_;
+}
+inline ::livekit::proto::TextStreamWriterCloseRequest* FfiRequest::mutable_text_stream_close() {
+  ::livekit::proto::TextStreamWriterCloseRequest* _msg = _internal_mutable_text_stream_close();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.text_stream_close)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendBytesRequest send_bytes = 67;
+inline bool FfiRequest::_internal_has_send_bytes() const {
+  return message_case() == kSendBytes;
+}
+inline bool FfiRequest::has_send_bytes() const {
+  return _internal_has_send_bytes();
+}
+inline void FfiRequest::set_has_send_bytes() {
+  _impl_._oneof_case_[0] = kSendBytes;
+}
+inline ::livekit::proto::StreamSendBytesRequest* FfiRequest::release_send_bytes() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiRequest.send_bytes)
+  if (_internal_has_send_bytes()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendBytesRequest* temp = _impl_.message_.send_bytes_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_bytes_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendBytesRequest& FfiRequest::_internal_send_bytes() const {
+  return _internal_has_send_bytes()
+      ? *_impl_.message_.send_bytes_
+      : reinterpret_cast< ::livekit::proto::StreamSendBytesRequest&>(::livekit::proto::_StreamSendBytesRequest_default_instance_);
+}
+inline const ::livekit::proto::StreamSendBytesRequest& FfiRequest::send_bytes() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiRequest.send_bytes)
+  return _internal_send_bytes();
+}
+inline ::livekit::proto::StreamSendBytesRequest* FfiRequest::unsafe_arena_release_send_bytes() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiRequest.send_bytes)
+  if (_internal_has_send_bytes()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendBytesRequest* temp = _impl_.message_.send_bytes_;
+    _impl_.message_.send_bytes_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiRequest::unsafe_arena_set_allocated_send_bytes(::livekit::proto::StreamSendBytesRequest* send_bytes) {
+  clear_message();
+  if (send_bytes) {
+    set_has_send_bytes();
+    _impl_.message_.send_bytes_ = send_bytes;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiRequest.send_bytes)
+}
+inline ::livekit::proto::StreamSendBytesRequest* FfiRequest::_internal_mutable_send_bytes() {
+  if (!_internal_has_send_bytes()) {
+    clear_message();
+    set_has_send_bytes();
+    _impl_.message_.send_bytes_ = CreateMaybeMessage< ::livekit::proto::StreamSendBytesRequest >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_bytes_;
+}
+inline ::livekit::proto::StreamSendBytesRequest* FfiRequest::mutable_send_bytes() {
+  ::livekit::proto::StreamSendBytesRequest* _msg = _internal_mutable_send_bytes();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiRequest.send_bytes)
+  return _msg;
+}
+
 inline bool FfiRequest::has_message() const {
   return message_case() != MESSAGE_NOT_SET;
 }
@@ -11167,6 +13126,996 @@ inline ::livekit::proto::ApmProcessReverseStreamResponse* FfiResponse::mutable_a
   return _msg;
 }
 
+// .livekit.proto.ApmSetStreamDelayResponse apm_set_stream_delay = 52;
+inline bool FfiResponse::_internal_has_apm_set_stream_delay() const {
+  return message_case() == kApmSetStreamDelay;
+}
+inline bool FfiResponse::has_apm_set_stream_delay() const {
+  return _internal_has_apm_set_stream_delay();
+}
+inline void FfiResponse::set_has_apm_set_stream_delay() {
+  _impl_._oneof_case_[0] = kApmSetStreamDelay;
+}
+inline ::livekit::proto::ApmSetStreamDelayResponse* FfiResponse::release_apm_set_stream_delay() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.apm_set_stream_delay)
+  if (_internal_has_apm_set_stream_delay()) {
+    clear_has_message();
+    ::livekit::proto::ApmSetStreamDelayResponse* temp = _impl_.message_.apm_set_stream_delay_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.apm_set_stream_delay_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ApmSetStreamDelayResponse& FfiResponse::_internal_apm_set_stream_delay() const {
+  return _internal_has_apm_set_stream_delay()
+      ? *_impl_.message_.apm_set_stream_delay_
+      : reinterpret_cast< ::livekit::proto::ApmSetStreamDelayResponse&>(::livekit::proto::_ApmSetStreamDelayResponse_default_instance_);
+}
+inline const ::livekit::proto::ApmSetStreamDelayResponse& FfiResponse::apm_set_stream_delay() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.apm_set_stream_delay)
+  return _internal_apm_set_stream_delay();
+}
+inline ::livekit::proto::ApmSetStreamDelayResponse* FfiResponse::unsafe_arena_release_apm_set_stream_delay() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.apm_set_stream_delay)
+  if (_internal_has_apm_set_stream_delay()) {
+    clear_has_message();
+    ::livekit::proto::ApmSetStreamDelayResponse* temp = _impl_.message_.apm_set_stream_delay_;
+    _impl_.message_.apm_set_stream_delay_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_apm_set_stream_delay(::livekit::proto::ApmSetStreamDelayResponse* apm_set_stream_delay) {
+  clear_message();
+  if (apm_set_stream_delay) {
+    set_has_apm_set_stream_delay();
+    _impl_.message_.apm_set_stream_delay_ = apm_set_stream_delay;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.apm_set_stream_delay)
+}
+inline ::livekit::proto::ApmSetStreamDelayResponse* FfiResponse::_internal_mutable_apm_set_stream_delay() {
+  if (!_internal_has_apm_set_stream_delay()) {
+    clear_message();
+    set_has_apm_set_stream_delay();
+    _impl_.message_.apm_set_stream_delay_ = CreateMaybeMessage< ::livekit::proto::ApmSetStreamDelayResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.apm_set_stream_delay_;
+}
+inline ::livekit::proto::ApmSetStreamDelayResponse* FfiResponse::mutable_apm_set_stream_delay() {
+  ::livekit::proto::ApmSetStreamDelayResponse* _msg = _internal_mutable_apm_set_stream_delay();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.apm_set_stream_delay)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderReadIncrementalResponse byte_read_incremental = 53;
+inline bool FfiResponse::_internal_has_byte_read_incremental() const {
+  return message_case() == kByteReadIncremental;
+}
+inline bool FfiResponse::has_byte_read_incremental() const {
+  return _internal_has_byte_read_incremental();
+}
+inline void FfiResponse::set_has_byte_read_incremental() {
+  _impl_._oneof_case_[0] = kByteReadIncremental;
+}
+inline ::livekit::proto::ByteStreamReaderReadIncrementalResponse* FfiResponse::release_byte_read_incremental() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.byte_read_incremental)
+  if (_internal_has_byte_read_incremental()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadIncrementalResponse* temp = _impl_.message_.byte_read_incremental_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_read_incremental_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderReadIncrementalResponse& FfiResponse::_internal_byte_read_incremental() const {
+  return _internal_has_byte_read_incremental()
+      ? *_impl_.message_.byte_read_incremental_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderReadIncrementalResponse&>(::livekit::proto::_ByteStreamReaderReadIncrementalResponse_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderReadIncrementalResponse& FfiResponse::byte_read_incremental() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.byte_read_incremental)
+  return _internal_byte_read_incremental();
+}
+inline ::livekit::proto::ByteStreamReaderReadIncrementalResponse* FfiResponse::unsafe_arena_release_byte_read_incremental() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.byte_read_incremental)
+  if (_internal_has_byte_read_incremental()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadIncrementalResponse* temp = _impl_.message_.byte_read_incremental_;
+    _impl_.message_.byte_read_incremental_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_byte_read_incremental(::livekit::proto::ByteStreamReaderReadIncrementalResponse* byte_read_incremental) {
+  clear_message();
+  if (byte_read_incremental) {
+    set_has_byte_read_incremental();
+    _impl_.message_.byte_read_incremental_ = byte_read_incremental;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.byte_read_incremental)
+}
+inline ::livekit::proto::ByteStreamReaderReadIncrementalResponse* FfiResponse::_internal_mutable_byte_read_incremental() {
+  if (!_internal_has_byte_read_incremental()) {
+    clear_message();
+    set_has_byte_read_incremental();
+    _impl_.message_.byte_read_incremental_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderReadIncrementalResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_read_incremental_;
+}
+inline ::livekit::proto::ByteStreamReaderReadIncrementalResponse* FfiResponse::mutable_byte_read_incremental() {
+  ::livekit::proto::ByteStreamReaderReadIncrementalResponse* _msg = _internal_mutable_byte_read_incremental();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.byte_read_incremental)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderReadAllResponse byte_read_all = 54;
+inline bool FfiResponse::_internal_has_byte_read_all() const {
+  return message_case() == kByteReadAll;
+}
+inline bool FfiResponse::has_byte_read_all() const {
+  return _internal_has_byte_read_all();
+}
+inline void FfiResponse::set_has_byte_read_all() {
+  _impl_._oneof_case_[0] = kByteReadAll;
+}
+inline ::livekit::proto::ByteStreamReaderReadAllResponse* FfiResponse::release_byte_read_all() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.byte_read_all)
+  if (_internal_has_byte_read_all()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadAllResponse* temp = _impl_.message_.byte_read_all_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderReadAllResponse& FfiResponse::_internal_byte_read_all() const {
+  return _internal_has_byte_read_all()
+      ? *_impl_.message_.byte_read_all_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderReadAllResponse&>(::livekit::proto::_ByteStreamReaderReadAllResponse_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderReadAllResponse& FfiResponse::byte_read_all() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.byte_read_all)
+  return _internal_byte_read_all();
+}
+inline ::livekit::proto::ByteStreamReaderReadAllResponse* FfiResponse::unsafe_arena_release_byte_read_all() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.byte_read_all)
+  if (_internal_has_byte_read_all()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadAllResponse* temp = _impl_.message_.byte_read_all_;
+    _impl_.message_.byte_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_byte_read_all(::livekit::proto::ByteStreamReaderReadAllResponse* byte_read_all) {
+  clear_message();
+  if (byte_read_all) {
+    set_has_byte_read_all();
+    _impl_.message_.byte_read_all_ = byte_read_all;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.byte_read_all)
+}
+inline ::livekit::proto::ByteStreamReaderReadAllResponse* FfiResponse::_internal_mutable_byte_read_all() {
+  if (!_internal_has_byte_read_all()) {
+    clear_message();
+    set_has_byte_read_all();
+    _impl_.message_.byte_read_all_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderReadAllResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_read_all_;
+}
+inline ::livekit::proto::ByteStreamReaderReadAllResponse* FfiResponse::mutable_byte_read_all() {
+  ::livekit::proto::ByteStreamReaderReadAllResponse* _msg = _internal_mutable_byte_read_all();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.byte_read_all)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderWriteToFileResponse byte_write_to_file = 55;
+inline bool FfiResponse::_internal_has_byte_write_to_file() const {
+  return message_case() == kByteWriteToFile;
+}
+inline bool FfiResponse::has_byte_write_to_file() const {
+  return _internal_has_byte_write_to_file();
+}
+inline void FfiResponse::set_has_byte_write_to_file() {
+  _impl_._oneof_case_[0] = kByteWriteToFile;
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileResponse* FfiResponse::release_byte_write_to_file() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.byte_write_to_file)
+  if (_internal_has_byte_write_to_file()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderWriteToFileResponse* temp = _impl_.message_.byte_write_to_file_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_write_to_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderWriteToFileResponse& FfiResponse::_internal_byte_write_to_file() const {
+  return _internal_has_byte_write_to_file()
+      ? *_impl_.message_.byte_write_to_file_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderWriteToFileResponse&>(::livekit::proto::_ByteStreamReaderWriteToFileResponse_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderWriteToFileResponse& FfiResponse::byte_write_to_file() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.byte_write_to_file)
+  return _internal_byte_write_to_file();
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileResponse* FfiResponse::unsafe_arena_release_byte_write_to_file() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.byte_write_to_file)
+  if (_internal_has_byte_write_to_file()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderWriteToFileResponse* temp = _impl_.message_.byte_write_to_file_;
+    _impl_.message_.byte_write_to_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_byte_write_to_file(::livekit::proto::ByteStreamReaderWriteToFileResponse* byte_write_to_file) {
+  clear_message();
+  if (byte_write_to_file) {
+    set_has_byte_write_to_file();
+    _impl_.message_.byte_write_to_file_ = byte_write_to_file;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.byte_write_to_file)
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileResponse* FfiResponse::_internal_mutable_byte_write_to_file() {
+  if (!_internal_has_byte_write_to_file()) {
+    clear_message();
+    set_has_byte_write_to_file();
+    _impl_.message_.byte_write_to_file_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderWriteToFileResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_write_to_file_;
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileResponse* FfiResponse::mutable_byte_write_to_file() {
+  ::livekit::proto::ByteStreamReaderWriteToFileResponse* _msg = _internal_mutable_byte_write_to_file();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.byte_write_to_file)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamReaderReadIncrementalResponse text_read_incremental = 56;
+inline bool FfiResponse::_internal_has_text_read_incremental() const {
+  return message_case() == kTextReadIncremental;
+}
+inline bool FfiResponse::has_text_read_incremental() const {
+  return _internal_has_text_read_incremental();
+}
+inline void FfiResponse::set_has_text_read_incremental() {
+  _impl_._oneof_case_[0] = kTextReadIncremental;
+}
+inline ::livekit::proto::TextStreamReaderReadIncrementalResponse* FfiResponse::release_text_read_incremental() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.text_read_incremental)
+  if (_internal_has_text_read_incremental()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadIncrementalResponse* temp = _impl_.message_.text_read_incremental_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_read_incremental_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamReaderReadIncrementalResponse& FfiResponse::_internal_text_read_incremental() const {
+  return _internal_has_text_read_incremental()
+      ? *_impl_.message_.text_read_incremental_
+      : reinterpret_cast< ::livekit::proto::TextStreamReaderReadIncrementalResponse&>(::livekit::proto::_TextStreamReaderReadIncrementalResponse_default_instance_);
+}
+inline const ::livekit::proto::TextStreamReaderReadIncrementalResponse& FfiResponse::text_read_incremental() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.text_read_incremental)
+  return _internal_text_read_incremental();
+}
+inline ::livekit::proto::TextStreamReaderReadIncrementalResponse* FfiResponse::unsafe_arena_release_text_read_incremental() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.text_read_incremental)
+  if (_internal_has_text_read_incremental()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadIncrementalResponse* temp = _impl_.message_.text_read_incremental_;
+    _impl_.message_.text_read_incremental_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_text_read_incremental(::livekit::proto::TextStreamReaderReadIncrementalResponse* text_read_incremental) {
+  clear_message();
+  if (text_read_incremental) {
+    set_has_text_read_incremental();
+    _impl_.message_.text_read_incremental_ = text_read_incremental;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.text_read_incremental)
+}
+inline ::livekit::proto::TextStreamReaderReadIncrementalResponse* FfiResponse::_internal_mutable_text_read_incremental() {
+  if (!_internal_has_text_read_incremental()) {
+    clear_message();
+    set_has_text_read_incremental();
+    _impl_.message_.text_read_incremental_ = CreateMaybeMessage< ::livekit::proto::TextStreamReaderReadIncrementalResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_read_incremental_;
+}
+inline ::livekit::proto::TextStreamReaderReadIncrementalResponse* FfiResponse::mutable_text_read_incremental() {
+  ::livekit::proto::TextStreamReaderReadIncrementalResponse* _msg = _internal_mutable_text_read_incremental();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.text_read_incremental)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamReaderReadAllResponse text_read_all = 57;
+inline bool FfiResponse::_internal_has_text_read_all() const {
+  return message_case() == kTextReadAll;
+}
+inline bool FfiResponse::has_text_read_all() const {
+  return _internal_has_text_read_all();
+}
+inline void FfiResponse::set_has_text_read_all() {
+  _impl_._oneof_case_[0] = kTextReadAll;
+}
+inline ::livekit::proto::TextStreamReaderReadAllResponse* FfiResponse::release_text_read_all() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.text_read_all)
+  if (_internal_has_text_read_all()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadAllResponse* temp = _impl_.message_.text_read_all_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamReaderReadAllResponse& FfiResponse::_internal_text_read_all() const {
+  return _internal_has_text_read_all()
+      ? *_impl_.message_.text_read_all_
+      : reinterpret_cast< ::livekit::proto::TextStreamReaderReadAllResponse&>(::livekit::proto::_TextStreamReaderReadAllResponse_default_instance_);
+}
+inline const ::livekit::proto::TextStreamReaderReadAllResponse& FfiResponse::text_read_all() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.text_read_all)
+  return _internal_text_read_all();
+}
+inline ::livekit::proto::TextStreamReaderReadAllResponse* FfiResponse::unsafe_arena_release_text_read_all() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.text_read_all)
+  if (_internal_has_text_read_all()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadAllResponse* temp = _impl_.message_.text_read_all_;
+    _impl_.message_.text_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_text_read_all(::livekit::proto::TextStreamReaderReadAllResponse* text_read_all) {
+  clear_message();
+  if (text_read_all) {
+    set_has_text_read_all();
+    _impl_.message_.text_read_all_ = text_read_all;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.text_read_all)
+}
+inline ::livekit::proto::TextStreamReaderReadAllResponse* FfiResponse::_internal_mutable_text_read_all() {
+  if (!_internal_has_text_read_all()) {
+    clear_message();
+    set_has_text_read_all();
+    _impl_.message_.text_read_all_ = CreateMaybeMessage< ::livekit::proto::TextStreamReaderReadAllResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_read_all_;
+}
+inline ::livekit::proto::TextStreamReaderReadAllResponse* FfiResponse::mutable_text_read_all() {
+  ::livekit::proto::TextStreamReaderReadAllResponse* _msg = _internal_mutable_text_read_all();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.text_read_all)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendFileResponse send_file = 58;
+inline bool FfiResponse::_internal_has_send_file() const {
+  return message_case() == kSendFile;
+}
+inline bool FfiResponse::has_send_file() const {
+  return _internal_has_send_file();
+}
+inline void FfiResponse::set_has_send_file() {
+  _impl_._oneof_case_[0] = kSendFile;
+}
+inline ::livekit::proto::StreamSendFileResponse* FfiResponse::release_send_file() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.send_file)
+  if (_internal_has_send_file()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendFileResponse* temp = _impl_.message_.send_file_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendFileResponse& FfiResponse::_internal_send_file() const {
+  return _internal_has_send_file()
+      ? *_impl_.message_.send_file_
+      : reinterpret_cast< ::livekit::proto::StreamSendFileResponse&>(::livekit::proto::_StreamSendFileResponse_default_instance_);
+}
+inline const ::livekit::proto::StreamSendFileResponse& FfiResponse::send_file() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.send_file)
+  return _internal_send_file();
+}
+inline ::livekit::proto::StreamSendFileResponse* FfiResponse::unsafe_arena_release_send_file() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.send_file)
+  if (_internal_has_send_file()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendFileResponse* temp = _impl_.message_.send_file_;
+    _impl_.message_.send_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_send_file(::livekit::proto::StreamSendFileResponse* send_file) {
+  clear_message();
+  if (send_file) {
+    set_has_send_file();
+    _impl_.message_.send_file_ = send_file;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.send_file)
+}
+inline ::livekit::proto::StreamSendFileResponse* FfiResponse::_internal_mutable_send_file() {
+  if (!_internal_has_send_file()) {
+    clear_message();
+    set_has_send_file();
+    _impl_.message_.send_file_ = CreateMaybeMessage< ::livekit::proto::StreamSendFileResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_file_;
+}
+inline ::livekit::proto::StreamSendFileResponse* FfiResponse::mutable_send_file() {
+  ::livekit::proto::StreamSendFileResponse* _msg = _internal_mutable_send_file();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.send_file)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendTextResponse send_text = 59;
+inline bool FfiResponse::_internal_has_send_text() const {
+  return message_case() == kSendText;
+}
+inline bool FfiResponse::has_send_text() const {
+  return _internal_has_send_text();
+}
+inline void FfiResponse::set_has_send_text() {
+  _impl_._oneof_case_[0] = kSendText;
+}
+inline ::livekit::proto::StreamSendTextResponse* FfiResponse::release_send_text() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.send_text)
+  if (_internal_has_send_text()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendTextResponse* temp = _impl_.message_.send_text_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_text_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendTextResponse& FfiResponse::_internal_send_text() const {
+  return _internal_has_send_text()
+      ? *_impl_.message_.send_text_
+      : reinterpret_cast< ::livekit::proto::StreamSendTextResponse&>(::livekit::proto::_StreamSendTextResponse_default_instance_);
+}
+inline const ::livekit::proto::StreamSendTextResponse& FfiResponse::send_text() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.send_text)
+  return _internal_send_text();
+}
+inline ::livekit::proto::StreamSendTextResponse* FfiResponse::unsafe_arena_release_send_text() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.send_text)
+  if (_internal_has_send_text()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendTextResponse* temp = _impl_.message_.send_text_;
+    _impl_.message_.send_text_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_send_text(::livekit::proto::StreamSendTextResponse* send_text) {
+  clear_message();
+  if (send_text) {
+    set_has_send_text();
+    _impl_.message_.send_text_ = send_text;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.send_text)
+}
+inline ::livekit::proto::StreamSendTextResponse* FfiResponse::_internal_mutable_send_text() {
+  if (!_internal_has_send_text()) {
+    clear_message();
+    set_has_send_text();
+    _impl_.message_.send_text_ = CreateMaybeMessage< ::livekit::proto::StreamSendTextResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_text_;
+}
+inline ::livekit::proto::StreamSendTextResponse* FfiResponse::mutable_send_text() {
+  ::livekit::proto::StreamSendTextResponse* _msg = _internal_mutable_send_text();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.send_text)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamOpenResponse byte_stream_open = 60;
+inline bool FfiResponse::_internal_has_byte_stream_open() const {
+  return message_case() == kByteStreamOpen;
+}
+inline bool FfiResponse::has_byte_stream_open() const {
+  return _internal_has_byte_stream_open();
+}
+inline void FfiResponse::set_has_byte_stream_open() {
+  _impl_._oneof_case_[0] = kByteStreamOpen;
+}
+inline ::livekit::proto::ByteStreamOpenResponse* FfiResponse::release_byte_stream_open() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.byte_stream_open)
+  if (_internal_has_byte_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamOpenResponse* temp = _impl_.message_.byte_stream_open_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamOpenResponse& FfiResponse::_internal_byte_stream_open() const {
+  return _internal_has_byte_stream_open()
+      ? *_impl_.message_.byte_stream_open_
+      : reinterpret_cast< ::livekit::proto::ByteStreamOpenResponse&>(::livekit::proto::_ByteStreamOpenResponse_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamOpenResponse& FfiResponse::byte_stream_open() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.byte_stream_open)
+  return _internal_byte_stream_open();
+}
+inline ::livekit::proto::ByteStreamOpenResponse* FfiResponse::unsafe_arena_release_byte_stream_open() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.byte_stream_open)
+  if (_internal_has_byte_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamOpenResponse* temp = _impl_.message_.byte_stream_open_;
+    _impl_.message_.byte_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_byte_stream_open(::livekit::proto::ByteStreamOpenResponse* byte_stream_open) {
+  clear_message();
+  if (byte_stream_open) {
+    set_has_byte_stream_open();
+    _impl_.message_.byte_stream_open_ = byte_stream_open;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.byte_stream_open)
+}
+inline ::livekit::proto::ByteStreamOpenResponse* FfiResponse::_internal_mutable_byte_stream_open() {
+  if (!_internal_has_byte_stream_open()) {
+    clear_message();
+    set_has_byte_stream_open();
+    _impl_.message_.byte_stream_open_ = CreateMaybeMessage< ::livekit::proto::ByteStreamOpenResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_open_;
+}
+inline ::livekit::proto::ByteStreamOpenResponse* FfiResponse::mutable_byte_stream_open() {
+  ::livekit::proto::ByteStreamOpenResponse* _msg = _internal_mutable_byte_stream_open();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.byte_stream_open)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamWriterWriteResponse byte_stream_write = 61;
+inline bool FfiResponse::_internal_has_byte_stream_write() const {
+  return message_case() == kByteStreamWrite;
+}
+inline bool FfiResponse::has_byte_stream_write() const {
+  return _internal_has_byte_stream_write();
+}
+inline void FfiResponse::set_has_byte_stream_write() {
+  _impl_._oneof_case_[0] = kByteStreamWrite;
+}
+inline ::livekit::proto::ByteStreamWriterWriteResponse* FfiResponse::release_byte_stream_write() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.byte_stream_write)
+  if (_internal_has_byte_stream_write()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterWriteResponse* temp = _impl_.message_.byte_stream_write_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamWriterWriteResponse& FfiResponse::_internal_byte_stream_write() const {
+  return _internal_has_byte_stream_write()
+      ? *_impl_.message_.byte_stream_write_
+      : reinterpret_cast< ::livekit::proto::ByteStreamWriterWriteResponse&>(::livekit::proto::_ByteStreamWriterWriteResponse_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamWriterWriteResponse& FfiResponse::byte_stream_write() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.byte_stream_write)
+  return _internal_byte_stream_write();
+}
+inline ::livekit::proto::ByteStreamWriterWriteResponse* FfiResponse::unsafe_arena_release_byte_stream_write() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.byte_stream_write)
+  if (_internal_has_byte_stream_write()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterWriteResponse* temp = _impl_.message_.byte_stream_write_;
+    _impl_.message_.byte_stream_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_byte_stream_write(::livekit::proto::ByteStreamWriterWriteResponse* byte_stream_write) {
+  clear_message();
+  if (byte_stream_write) {
+    set_has_byte_stream_write();
+    _impl_.message_.byte_stream_write_ = byte_stream_write;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.byte_stream_write)
+}
+inline ::livekit::proto::ByteStreamWriterWriteResponse* FfiResponse::_internal_mutable_byte_stream_write() {
+  if (!_internal_has_byte_stream_write()) {
+    clear_message();
+    set_has_byte_stream_write();
+    _impl_.message_.byte_stream_write_ = CreateMaybeMessage< ::livekit::proto::ByteStreamWriterWriteResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_write_;
+}
+inline ::livekit::proto::ByteStreamWriterWriteResponse* FfiResponse::mutable_byte_stream_write() {
+  ::livekit::proto::ByteStreamWriterWriteResponse* _msg = _internal_mutable_byte_stream_write();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.byte_stream_write)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamWriterCloseResponse byte_stream_close = 62;
+inline bool FfiResponse::_internal_has_byte_stream_close() const {
+  return message_case() == kByteStreamClose;
+}
+inline bool FfiResponse::has_byte_stream_close() const {
+  return _internal_has_byte_stream_close();
+}
+inline void FfiResponse::set_has_byte_stream_close() {
+  _impl_._oneof_case_[0] = kByteStreamClose;
+}
+inline ::livekit::proto::ByteStreamWriterCloseResponse* FfiResponse::release_byte_stream_close() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.byte_stream_close)
+  if (_internal_has_byte_stream_close()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterCloseResponse* temp = _impl_.message_.byte_stream_close_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamWriterCloseResponse& FfiResponse::_internal_byte_stream_close() const {
+  return _internal_has_byte_stream_close()
+      ? *_impl_.message_.byte_stream_close_
+      : reinterpret_cast< ::livekit::proto::ByteStreamWriterCloseResponse&>(::livekit::proto::_ByteStreamWriterCloseResponse_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamWriterCloseResponse& FfiResponse::byte_stream_close() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.byte_stream_close)
+  return _internal_byte_stream_close();
+}
+inline ::livekit::proto::ByteStreamWriterCloseResponse* FfiResponse::unsafe_arena_release_byte_stream_close() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.byte_stream_close)
+  if (_internal_has_byte_stream_close()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterCloseResponse* temp = _impl_.message_.byte_stream_close_;
+    _impl_.message_.byte_stream_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_byte_stream_close(::livekit::proto::ByteStreamWriterCloseResponse* byte_stream_close) {
+  clear_message();
+  if (byte_stream_close) {
+    set_has_byte_stream_close();
+    _impl_.message_.byte_stream_close_ = byte_stream_close;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.byte_stream_close)
+}
+inline ::livekit::proto::ByteStreamWriterCloseResponse* FfiResponse::_internal_mutable_byte_stream_close() {
+  if (!_internal_has_byte_stream_close()) {
+    clear_message();
+    set_has_byte_stream_close();
+    _impl_.message_.byte_stream_close_ = CreateMaybeMessage< ::livekit::proto::ByteStreamWriterCloseResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_close_;
+}
+inline ::livekit::proto::ByteStreamWriterCloseResponse* FfiResponse::mutable_byte_stream_close() {
+  ::livekit::proto::ByteStreamWriterCloseResponse* _msg = _internal_mutable_byte_stream_close();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.byte_stream_close)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamOpenResponse text_stream_open = 63;
+inline bool FfiResponse::_internal_has_text_stream_open() const {
+  return message_case() == kTextStreamOpen;
+}
+inline bool FfiResponse::has_text_stream_open() const {
+  return _internal_has_text_stream_open();
+}
+inline void FfiResponse::set_has_text_stream_open() {
+  _impl_._oneof_case_[0] = kTextStreamOpen;
+}
+inline ::livekit::proto::TextStreamOpenResponse* FfiResponse::release_text_stream_open() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.text_stream_open)
+  if (_internal_has_text_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamOpenResponse* temp = _impl_.message_.text_stream_open_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamOpenResponse& FfiResponse::_internal_text_stream_open() const {
+  return _internal_has_text_stream_open()
+      ? *_impl_.message_.text_stream_open_
+      : reinterpret_cast< ::livekit::proto::TextStreamOpenResponse&>(::livekit::proto::_TextStreamOpenResponse_default_instance_);
+}
+inline const ::livekit::proto::TextStreamOpenResponse& FfiResponse::text_stream_open() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.text_stream_open)
+  return _internal_text_stream_open();
+}
+inline ::livekit::proto::TextStreamOpenResponse* FfiResponse::unsafe_arena_release_text_stream_open() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.text_stream_open)
+  if (_internal_has_text_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamOpenResponse* temp = _impl_.message_.text_stream_open_;
+    _impl_.message_.text_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_text_stream_open(::livekit::proto::TextStreamOpenResponse* text_stream_open) {
+  clear_message();
+  if (text_stream_open) {
+    set_has_text_stream_open();
+    _impl_.message_.text_stream_open_ = text_stream_open;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.text_stream_open)
+}
+inline ::livekit::proto::TextStreamOpenResponse* FfiResponse::_internal_mutable_text_stream_open() {
+  if (!_internal_has_text_stream_open()) {
+    clear_message();
+    set_has_text_stream_open();
+    _impl_.message_.text_stream_open_ = CreateMaybeMessage< ::livekit::proto::TextStreamOpenResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_open_;
+}
+inline ::livekit::proto::TextStreamOpenResponse* FfiResponse::mutable_text_stream_open() {
+  ::livekit::proto::TextStreamOpenResponse* _msg = _internal_mutable_text_stream_open();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.text_stream_open)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamWriterWriteResponse text_stream_write = 64;
+inline bool FfiResponse::_internal_has_text_stream_write() const {
+  return message_case() == kTextStreamWrite;
+}
+inline bool FfiResponse::has_text_stream_write() const {
+  return _internal_has_text_stream_write();
+}
+inline void FfiResponse::set_has_text_stream_write() {
+  _impl_._oneof_case_[0] = kTextStreamWrite;
+}
+inline ::livekit::proto::TextStreamWriterWriteResponse* FfiResponse::release_text_stream_write() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.text_stream_write)
+  if (_internal_has_text_stream_write()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterWriteResponse* temp = _impl_.message_.text_stream_write_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamWriterWriteResponse& FfiResponse::_internal_text_stream_write() const {
+  return _internal_has_text_stream_write()
+      ? *_impl_.message_.text_stream_write_
+      : reinterpret_cast< ::livekit::proto::TextStreamWriterWriteResponse&>(::livekit::proto::_TextStreamWriterWriteResponse_default_instance_);
+}
+inline const ::livekit::proto::TextStreamWriterWriteResponse& FfiResponse::text_stream_write() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.text_stream_write)
+  return _internal_text_stream_write();
+}
+inline ::livekit::proto::TextStreamWriterWriteResponse* FfiResponse::unsafe_arena_release_text_stream_write() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.text_stream_write)
+  if (_internal_has_text_stream_write()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterWriteResponse* temp = _impl_.message_.text_stream_write_;
+    _impl_.message_.text_stream_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_text_stream_write(::livekit::proto::TextStreamWriterWriteResponse* text_stream_write) {
+  clear_message();
+  if (text_stream_write) {
+    set_has_text_stream_write();
+    _impl_.message_.text_stream_write_ = text_stream_write;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.text_stream_write)
+}
+inline ::livekit::proto::TextStreamWriterWriteResponse* FfiResponse::_internal_mutable_text_stream_write() {
+  if (!_internal_has_text_stream_write()) {
+    clear_message();
+    set_has_text_stream_write();
+    _impl_.message_.text_stream_write_ = CreateMaybeMessage< ::livekit::proto::TextStreamWriterWriteResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_write_;
+}
+inline ::livekit::proto::TextStreamWriterWriteResponse* FfiResponse::mutable_text_stream_write() {
+  ::livekit::proto::TextStreamWriterWriteResponse* _msg = _internal_mutable_text_stream_write();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.text_stream_write)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamWriterCloseResponse text_stream_close = 65;
+inline bool FfiResponse::_internal_has_text_stream_close() const {
+  return message_case() == kTextStreamClose;
+}
+inline bool FfiResponse::has_text_stream_close() const {
+  return _internal_has_text_stream_close();
+}
+inline void FfiResponse::set_has_text_stream_close() {
+  _impl_._oneof_case_[0] = kTextStreamClose;
+}
+inline ::livekit::proto::TextStreamWriterCloseResponse* FfiResponse::release_text_stream_close() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.text_stream_close)
+  if (_internal_has_text_stream_close()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterCloseResponse* temp = _impl_.message_.text_stream_close_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamWriterCloseResponse& FfiResponse::_internal_text_stream_close() const {
+  return _internal_has_text_stream_close()
+      ? *_impl_.message_.text_stream_close_
+      : reinterpret_cast< ::livekit::proto::TextStreamWriterCloseResponse&>(::livekit::proto::_TextStreamWriterCloseResponse_default_instance_);
+}
+inline const ::livekit::proto::TextStreamWriterCloseResponse& FfiResponse::text_stream_close() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.text_stream_close)
+  return _internal_text_stream_close();
+}
+inline ::livekit::proto::TextStreamWriterCloseResponse* FfiResponse::unsafe_arena_release_text_stream_close() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.text_stream_close)
+  if (_internal_has_text_stream_close()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterCloseResponse* temp = _impl_.message_.text_stream_close_;
+    _impl_.message_.text_stream_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_text_stream_close(::livekit::proto::TextStreamWriterCloseResponse* text_stream_close) {
+  clear_message();
+  if (text_stream_close) {
+    set_has_text_stream_close();
+    _impl_.message_.text_stream_close_ = text_stream_close;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.text_stream_close)
+}
+inline ::livekit::proto::TextStreamWriterCloseResponse* FfiResponse::_internal_mutable_text_stream_close() {
+  if (!_internal_has_text_stream_close()) {
+    clear_message();
+    set_has_text_stream_close();
+    _impl_.message_.text_stream_close_ = CreateMaybeMessage< ::livekit::proto::TextStreamWriterCloseResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_close_;
+}
+inline ::livekit::proto::TextStreamWriterCloseResponse* FfiResponse::mutable_text_stream_close() {
+  ::livekit::proto::TextStreamWriterCloseResponse* _msg = _internal_mutable_text_stream_close();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.text_stream_close)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendBytesResponse send_bytes = 66;
+inline bool FfiResponse::_internal_has_send_bytes() const {
+  return message_case() == kSendBytes;
+}
+inline bool FfiResponse::has_send_bytes() const {
+  return _internal_has_send_bytes();
+}
+inline void FfiResponse::set_has_send_bytes() {
+  _impl_._oneof_case_[0] = kSendBytes;
+}
+inline ::livekit::proto::StreamSendBytesResponse* FfiResponse::release_send_bytes() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiResponse.send_bytes)
+  if (_internal_has_send_bytes()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendBytesResponse* temp = _impl_.message_.send_bytes_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_bytes_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendBytesResponse& FfiResponse::_internal_send_bytes() const {
+  return _internal_has_send_bytes()
+      ? *_impl_.message_.send_bytes_
+      : reinterpret_cast< ::livekit::proto::StreamSendBytesResponse&>(::livekit::proto::_StreamSendBytesResponse_default_instance_);
+}
+inline const ::livekit::proto::StreamSendBytesResponse& FfiResponse::send_bytes() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiResponse.send_bytes)
+  return _internal_send_bytes();
+}
+inline ::livekit::proto::StreamSendBytesResponse* FfiResponse::unsafe_arena_release_send_bytes() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiResponse.send_bytes)
+  if (_internal_has_send_bytes()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendBytesResponse* temp = _impl_.message_.send_bytes_;
+    _impl_.message_.send_bytes_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiResponse::unsafe_arena_set_allocated_send_bytes(::livekit::proto::StreamSendBytesResponse* send_bytes) {
+  clear_message();
+  if (send_bytes) {
+    set_has_send_bytes();
+    _impl_.message_.send_bytes_ = send_bytes;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiResponse.send_bytes)
+}
+inline ::livekit::proto::StreamSendBytesResponse* FfiResponse::_internal_mutable_send_bytes() {
+  if (!_internal_has_send_bytes()) {
+    clear_message();
+    set_has_send_bytes();
+    _impl_.message_.send_bytes_ = CreateMaybeMessage< ::livekit::proto::StreamSendBytesResponse >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_bytes_;
+}
+inline ::livekit::proto::StreamSendBytesResponse* FfiResponse::mutable_send_bytes() {
+  ::livekit::proto::StreamSendBytesResponse* _msg = _internal_mutable_send_bytes();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiResponse.send_bytes)
+  return _msg;
+}
+
 inline bool FfiResponse::has_message() const {
   return message_case() != MESSAGE_NOT_SET;
 }
@@ -12917,6 +15866,930 @@ inline ::livekit::proto::SendStreamTrailerCallback* FfiEvent::_internal_mutable_
 inline ::livekit::proto::SendStreamTrailerCallback* FfiEvent::mutable_send_stream_trailer() {
   ::livekit::proto::SendStreamTrailerCallback* _msg = _internal_mutable_send_stream_trailer();
   // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.send_stream_trailer)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderEvent byte_stream_reader_event = 28;
+inline bool FfiEvent::_internal_has_byte_stream_reader_event() const {
+  return message_case() == kByteStreamReaderEvent;
+}
+inline bool FfiEvent::has_byte_stream_reader_event() const {
+  return _internal_has_byte_stream_reader_event();
+}
+inline void FfiEvent::set_has_byte_stream_reader_event() {
+  _impl_._oneof_case_[0] = kByteStreamReaderEvent;
+}
+inline ::livekit::proto::ByteStreamReaderEvent* FfiEvent::release_byte_stream_reader_event() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.byte_stream_reader_event)
+  if (_internal_has_byte_stream_reader_event()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderEvent* temp = _impl_.message_.byte_stream_reader_event_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_reader_event_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderEvent& FfiEvent::_internal_byte_stream_reader_event() const {
+  return _internal_has_byte_stream_reader_event()
+      ? *_impl_.message_.byte_stream_reader_event_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderEvent&>(::livekit::proto::_ByteStreamReaderEvent_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderEvent& FfiEvent::byte_stream_reader_event() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.byte_stream_reader_event)
+  return _internal_byte_stream_reader_event();
+}
+inline ::livekit::proto::ByteStreamReaderEvent* FfiEvent::unsafe_arena_release_byte_stream_reader_event() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.byte_stream_reader_event)
+  if (_internal_has_byte_stream_reader_event()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderEvent* temp = _impl_.message_.byte_stream_reader_event_;
+    _impl_.message_.byte_stream_reader_event_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_byte_stream_reader_event(::livekit::proto::ByteStreamReaderEvent* byte_stream_reader_event) {
+  clear_message();
+  if (byte_stream_reader_event) {
+    set_has_byte_stream_reader_event();
+    _impl_.message_.byte_stream_reader_event_ = byte_stream_reader_event;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.byte_stream_reader_event)
+}
+inline ::livekit::proto::ByteStreamReaderEvent* FfiEvent::_internal_mutable_byte_stream_reader_event() {
+  if (!_internal_has_byte_stream_reader_event()) {
+    clear_message();
+    set_has_byte_stream_reader_event();
+    _impl_.message_.byte_stream_reader_event_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderEvent >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_reader_event_;
+}
+inline ::livekit::proto::ByteStreamReaderEvent* FfiEvent::mutable_byte_stream_reader_event() {
+  ::livekit::proto::ByteStreamReaderEvent* _msg = _internal_mutable_byte_stream_reader_event();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.byte_stream_reader_event)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderReadAllCallback byte_stream_reader_read_all = 29;
+inline bool FfiEvent::_internal_has_byte_stream_reader_read_all() const {
+  return message_case() == kByteStreamReaderReadAll;
+}
+inline bool FfiEvent::has_byte_stream_reader_read_all() const {
+  return _internal_has_byte_stream_reader_read_all();
+}
+inline void FfiEvent::set_has_byte_stream_reader_read_all() {
+  _impl_._oneof_case_[0] = kByteStreamReaderReadAll;
+}
+inline ::livekit::proto::ByteStreamReaderReadAllCallback* FfiEvent::release_byte_stream_reader_read_all() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.byte_stream_reader_read_all)
+  if (_internal_has_byte_stream_reader_read_all()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadAllCallback* temp = _impl_.message_.byte_stream_reader_read_all_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_reader_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderReadAllCallback& FfiEvent::_internal_byte_stream_reader_read_all() const {
+  return _internal_has_byte_stream_reader_read_all()
+      ? *_impl_.message_.byte_stream_reader_read_all_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderReadAllCallback&>(::livekit::proto::_ByteStreamReaderReadAllCallback_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderReadAllCallback& FfiEvent::byte_stream_reader_read_all() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.byte_stream_reader_read_all)
+  return _internal_byte_stream_reader_read_all();
+}
+inline ::livekit::proto::ByteStreamReaderReadAllCallback* FfiEvent::unsafe_arena_release_byte_stream_reader_read_all() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.byte_stream_reader_read_all)
+  if (_internal_has_byte_stream_reader_read_all()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderReadAllCallback* temp = _impl_.message_.byte_stream_reader_read_all_;
+    _impl_.message_.byte_stream_reader_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_byte_stream_reader_read_all(::livekit::proto::ByteStreamReaderReadAllCallback* byte_stream_reader_read_all) {
+  clear_message();
+  if (byte_stream_reader_read_all) {
+    set_has_byte_stream_reader_read_all();
+    _impl_.message_.byte_stream_reader_read_all_ = byte_stream_reader_read_all;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.byte_stream_reader_read_all)
+}
+inline ::livekit::proto::ByteStreamReaderReadAllCallback* FfiEvent::_internal_mutable_byte_stream_reader_read_all() {
+  if (!_internal_has_byte_stream_reader_read_all()) {
+    clear_message();
+    set_has_byte_stream_reader_read_all();
+    _impl_.message_.byte_stream_reader_read_all_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderReadAllCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_reader_read_all_;
+}
+inline ::livekit::proto::ByteStreamReaderReadAllCallback* FfiEvent::mutable_byte_stream_reader_read_all() {
+  ::livekit::proto::ByteStreamReaderReadAllCallback* _msg = _internal_mutable_byte_stream_reader_read_all();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.byte_stream_reader_read_all)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamReaderWriteToFileCallback byte_stream_reader_write_to_file = 30;
+inline bool FfiEvent::_internal_has_byte_stream_reader_write_to_file() const {
+  return message_case() == kByteStreamReaderWriteToFile;
+}
+inline bool FfiEvent::has_byte_stream_reader_write_to_file() const {
+  return _internal_has_byte_stream_reader_write_to_file();
+}
+inline void FfiEvent::set_has_byte_stream_reader_write_to_file() {
+  _impl_._oneof_case_[0] = kByteStreamReaderWriteToFile;
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileCallback* FfiEvent::release_byte_stream_reader_write_to_file() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.byte_stream_reader_write_to_file)
+  if (_internal_has_byte_stream_reader_write_to_file()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderWriteToFileCallback* temp = _impl_.message_.byte_stream_reader_write_to_file_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_reader_write_to_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamReaderWriteToFileCallback& FfiEvent::_internal_byte_stream_reader_write_to_file() const {
+  return _internal_has_byte_stream_reader_write_to_file()
+      ? *_impl_.message_.byte_stream_reader_write_to_file_
+      : reinterpret_cast< ::livekit::proto::ByteStreamReaderWriteToFileCallback&>(::livekit::proto::_ByteStreamReaderWriteToFileCallback_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamReaderWriteToFileCallback& FfiEvent::byte_stream_reader_write_to_file() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.byte_stream_reader_write_to_file)
+  return _internal_byte_stream_reader_write_to_file();
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileCallback* FfiEvent::unsafe_arena_release_byte_stream_reader_write_to_file() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.byte_stream_reader_write_to_file)
+  if (_internal_has_byte_stream_reader_write_to_file()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamReaderWriteToFileCallback* temp = _impl_.message_.byte_stream_reader_write_to_file_;
+    _impl_.message_.byte_stream_reader_write_to_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_byte_stream_reader_write_to_file(::livekit::proto::ByteStreamReaderWriteToFileCallback* byte_stream_reader_write_to_file) {
+  clear_message();
+  if (byte_stream_reader_write_to_file) {
+    set_has_byte_stream_reader_write_to_file();
+    _impl_.message_.byte_stream_reader_write_to_file_ = byte_stream_reader_write_to_file;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.byte_stream_reader_write_to_file)
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileCallback* FfiEvent::_internal_mutable_byte_stream_reader_write_to_file() {
+  if (!_internal_has_byte_stream_reader_write_to_file()) {
+    clear_message();
+    set_has_byte_stream_reader_write_to_file();
+    _impl_.message_.byte_stream_reader_write_to_file_ = CreateMaybeMessage< ::livekit::proto::ByteStreamReaderWriteToFileCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_reader_write_to_file_;
+}
+inline ::livekit::proto::ByteStreamReaderWriteToFileCallback* FfiEvent::mutable_byte_stream_reader_write_to_file() {
+  ::livekit::proto::ByteStreamReaderWriteToFileCallback* _msg = _internal_mutable_byte_stream_reader_write_to_file();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.byte_stream_reader_write_to_file)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamOpenCallback byte_stream_open = 31;
+inline bool FfiEvent::_internal_has_byte_stream_open() const {
+  return message_case() == kByteStreamOpen;
+}
+inline bool FfiEvent::has_byte_stream_open() const {
+  return _internal_has_byte_stream_open();
+}
+inline void FfiEvent::set_has_byte_stream_open() {
+  _impl_._oneof_case_[0] = kByteStreamOpen;
+}
+inline ::livekit::proto::ByteStreamOpenCallback* FfiEvent::release_byte_stream_open() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.byte_stream_open)
+  if (_internal_has_byte_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamOpenCallback* temp = _impl_.message_.byte_stream_open_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamOpenCallback& FfiEvent::_internal_byte_stream_open() const {
+  return _internal_has_byte_stream_open()
+      ? *_impl_.message_.byte_stream_open_
+      : reinterpret_cast< ::livekit::proto::ByteStreamOpenCallback&>(::livekit::proto::_ByteStreamOpenCallback_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamOpenCallback& FfiEvent::byte_stream_open() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.byte_stream_open)
+  return _internal_byte_stream_open();
+}
+inline ::livekit::proto::ByteStreamOpenCallback* FfiEvent::unsafe_arena_release_byte_stream_open() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.byte_stream_open)
+  if (_internal_has_byte_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamOpenCallback* temp = _impl_.message_.byte_stream_open_;
+    _impl_.message_.byte_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_byte_stream_open(::livekit::proto::ByteStreamOpenCallback* byte_stream_open) {
+  clear_message();
+  if (byte_stream_open) {
+    set_has_byte_stream_open();
+    _impl_.message_.byte_stream_open_ = byte_stream_open;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.byte_stream_open)
+}
+inline ::livekit::proto::ByteStreamOpenCallback* FfiEvent::_internal_mutable_byte_stream_open() {
+  if (!_internal_has_byte_stream_open()) {
+    clear_message();
+    set_has_byte_stream_open();
+    _impl_.message_.byte_stream_open_ = CreateMaybeMessage< ::livekit::proto::ByteStreamOpenCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_open_;
+}
+inline ::livekit::proto::ByteStreamOpenCallback* FfiEvent::mutable_byte_stream_open() {
+  ::livekit::proto::ByteStreamOpenCallback* _msg = _internal_mutable_byte_stream_open();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.byte_stream_open)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamWriterWriteCallback byte_stream_writer_write = 32;
+inline bool FfiEvent::_internal_has_byte_stream_writer_write() const {
+  return message_case() == kByteStreamWriterWrite;
+}
+inline bool FfiEvent::has_byte_stream_writer_write() const {
+  return _internal_has_byte_stream_writer_write();
+}
+inline void FfiEvent::set_has_byte_stream_writer_write() {
+  _impl_._oneof_case_[0] = kByteStreamWriterWrite;
+}
+inline ::livekit::proto::ByteStreamWriterWriteCallback* FfiEvent::release_byte_stream_writer_write() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.byte_stream_writer_write)
+  if (_internal_has_byte_stream_writer_write()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterWriteCallback* temp = _impl_.message_.byte_stream_writer_write_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_writer_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamWriterWriteCallback& FfiEvent::_internal_byte_stream_writer_write() const {
+  return _internal_has_byte_stream_writer_write()
+      ? *_impl_.message_.byte_stream_writer_write_
+      : reinterpret_cast< ::livekit::proto::ByteStreamWriterWriteCallback&>(::livekit::proto::_ByteStreamWriterWriteCallback_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamWriterWriteCallback& FfiEvent::byte_stream_writer_write() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.byte_stream_writer_write)
+  return _internal_byte_stream_writer_write();
+}
+inline ::livekit::proto::ByteStreamWriterWriteCallback* FfiEvent::unsafe_arena_release_byte_stream_writer_write() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.byte_stream_writer_write)
+  if (_internal_has_byte_stream_writer_write()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterWriteCallback* temp = _impl_.message_.byte_stream_writer_write_;
+    _impl_.message_.byte_stream_writer_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_byte_stream_writer_write(::livekit::proto::ByteStreamWriterWriteCallback* byte_stream_writer_write) {
+  clear_message();
+  if (byte_stream_writer_write) {
+    set_has_byte_stream_writer_write();
+    _impl_.message_.byte_stream_writer_write_ = byte_stream_writer_write;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.byte_stream_writer_write)
+}
+inline ::livekit::proto::ByteStreamWriterWriteCallback* FfiEvent::_internal_mutable_byte_stream_writer_write() {
+  if (!_internal_has_byte_stream_writer_write()) {
+    clear_message();
+    set_has_byte_stream_writer_write();
+    _impl_.message_.byte_stream_writer_write_ = CreateMaybeMessage< ::livekit::proto::ByteStreamWriterWriteCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_writer_write_;
+}
+inline ::livekit::proto::ByteStreamWriterWriteCallback* FfiEvent::mutable_byte_stream_writer_write() {
+  ::livekit::proto::ByteStreamWriterWriteCallback* _msg = _internal_mutable_byte_stream_writer_write();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.byte_stream_writer_write)
+  return _msg;
+}
+
+// .livekit.proto.ByteStreamWriterCloseCallback byte_stream_writer_close = 33;
+inline bool FfiEvent::_internal_has_byte_stream_writer_close() const {
+  return message_case() == kByteStreamWriterClose;
+}
+inline bool FfiEvent::has_byte_stream_writer_close() const {
+  return _internal_has_byte_stream_writer_close();
+}
+inline void FfiEvent::set_has_byte_stream_writer_close() {
+  _impl_._oneof_case_[0] = kByteStreamWriterClose;
+}
+inline ::livekit::proto::ByteStreamWriterCloseCallback* FfiEvent::release_byte_stream_writer_close() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.byte_stream_writer_close)
+  if (_internal_has_byte_stream_writer_close()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterCloseCallback* temp = _impl_.message_.byte_stream_writer_close_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.byte_stream_writer_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::ByteStreamWriterCloseCallback& FfiEvent::_internal_byte_stream_writer_close() const {
+  return _internal_has_byte_stream_writer_close()
+      ? *_impl_.message_.byte_stream_writer_close_
+      : reinterpret_cast< ::livekit::proto::ByteStreamWriterCloseCallback&>(::livekit::proto::_ByteStreamWriterCloseCallback_default_instance_);
+}
+inline const ::livekit::proto::ByteStreamWriterCloseCallback& FfiEvent::byte_stream_writer_close() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.byte_stream_writer_close)
+  return _internal_byte_stream_writer_close();
+}
+inline ::livekit::proto::ByteStreamWriterCloseCallback* FfiEvent::unsafe_arena_release_byte_stream_writer_close() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.byte_stream_writer_close)
+  if (_internal_has_byte_stream_writer_close()) {
+    clear_has_message();
+    ::livekit::proto::ByteStreamWriterCloseCallback* temp = _impl_.message_.byte_stream_writer_close_;
+    _impl_.message_.byte_stream_writer_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_byte_stream_writer_close(::livekit::proto::ByteStreamWriterCloseCallback* byte_stream_writer_close) {
+  clear_message();
+  if (byte_stream_writer_close) {
+    set_has_byte_stream_writer_close();
+    _impl_.message_.byte_stream_writer_close_ = byte_stream_writer_close;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.byte_stream_writer_close)
+}
+inline ::livekit::proto::ByteStreamWriterCloseCallback* FfiEvent::_internal_mutable_byte_stream_writer_close() {
+  if (!_internal_has_byte_stream_writer_close()) {
+    clear_message();
+    set_has_byte_stream_writer_close();
+    _impl_.message_.byte_stream_writer_close_ = CreateMaybeMessage< ::livekit::proto::ByteStreamWriterCloseCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.byte_stream_writer_close_;
+}
+inline ::livekit::proto::ByteStreamWriterCloseCallback* FfiEvent::mutable_byte_stream_writer_close() {
+  ::livekit::proto::ByteStreamWriterCloseCallback* _msg = _internal_mutable_byte_stream_writer_close();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.byte_stream_writer_close)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendFileCallback send_file = 34;
+inline bool FfiEvent::_internal_has_send_file() const {
+  return message_case() == kSendFile;
+}
+inline bool FfiEvent::has_send_file() const {
+  return _internal_has_send_file();
+}
+inline void FfiEvent::set_has_send_file() {
+  _impl_._oneof_case_[0] = kSendFile;
+}
+inline ::livekit::proto::StreamSendFileCallback* FfiEvent::release_send_file() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.send_file)
+  if (_internal_has_send_file()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendFileCallback* temp = _impl_.message_.send_file_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendFileCallback& FfiEvent::_internal_send_file() const {
+  return _internal_has_send_file()
+      ? *_impl_.message_.send_file_
+      : reinterpret_cast< ::livekit::proto::StreamSendFileCallback&>(::livekit::proto::_StreamSendFileCallback_default_instance_);
+}
+inline const ::livekit::proto::StreamSendFileCallback& FfiEvent::send_file() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.send_file)
+  return _internal_send_file();
+}
+inline ::livekit::proto::StreamSendFileCallback* FfiEvent::unsafe_arena_release_send_file() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.send_file)
+  if (_internal_has_send_file()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendFileCallback* temp = _impl_.message_.send_file_;
+    _impl_.message_.send_file_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_send_file(::livekit::proto::StreamSendFileCallback* send_file) {
+  clear_message();
+  if (send_file) {
+    set_has_send_file();
+    _impl_.message_.send_file_ = send_file;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.send_file)
+}
+inline ::livekit::proto::StreamSendFileCallback* FfiEvent::_internal_mutable_send_file() {
+  if (!_internal_has_send_file()) {
+    clear_message();
+    set_has_send_file();
+    _impl_.message_.send_file_ = CreateMaybeMessage< ::livekit::proto::StreamSendFileCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_file_;
+}
+inline ::livekit::proto::StreamSendFileCallback* FfiEvent::mutable_send_file() {
+  ::livekit::proto::StreamSendFileCallback* _msg = _internal_mutable_send_file();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.send_file)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamReaderEvent text_stream_reader_event = 35;
+inline bool FfiEvent::_internal_has_text_stream_reader_event() const {
+  return message_case() == kTextStreamReaderEvent;
+}
+inline bool FfiEvent::has_text_stream_reader_event() const {
+  return _internal_has_text_stream_reader_event();
+}
+inline void FfiEvent::set_has_text_stream_reader_event() {
+  _impl_._oneof_case_[0] = kTextStreamReaderEvent;
+}
+inline ::livekit::proto::TextStreamReaderEvent* FfiEvent::release_text_stream_reader_event() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.text_stream_reader_event)
+  if (_internal_has_text_stream_reader_event()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderEvent* temp = _impl_.message_.text_stream_reader_event_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_reader_event_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamReaderEvent& FfiEvent::_internal_text_stream_reader_event() const {
+  return _internal_has_text_stream_reader_event()
+      ? *_impl_.message_.text_stream_reader_event_
+      : reinterpret_cast< ::livekit::proto::TextStreamReaderEvent&>(::livekit::proto::_TextStreamReaderEvent_default_instance_);
+}
+inline const ::livekit::proto::TextStreamReaderEvent& FfiEvent::text_stream_reader_event() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.text_stream_reader_event)
+  return _internal_text_stream_reader_event();
+}
+inline ::livekit::proto::TextStreamReaderEvent* FfiEvent::unsafe_arena_release_text_stream_reader_event() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.text_stream_reader_event)
+  if (_internal_has_text_stream_reader_event()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderEvent* temp = _impl_.message_.text_stream_reader_event_;
+    _impl_.message_.text_stream_reader_event_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_text_stream_reader_event(::livekit::proto::TextStreamReaderEvent* text_stream_reader_event) {
+  clear_message();
+  if (text_stream_reader_event) {
+    set_has_text_stream_reader_event();
+    _impl_.message_.text_stream_reader_event_ = text_stream_reader_event;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.text_stream_reader_event)
+}
+inline ::livekit::proto::TextStreamReaderEvent* FfiEvent::_internal_mutable_text_stream_reader_event() {
+  if (!_internal_has_text_stream_reader_event()) {
+    clear_message();
+    set_has_text_stream_reader_event();
+    _impl_.message_.text_stream_reader_event_ = CreateMaybeMessage< ::livekit::proto::TextStreamReaderEvent >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_reader_event_;
+}
+inline ::livekit::proto::TextStreamReaderEvent* FfiEvent::mutable_text_stream_reader_event() {
+  ::livekit::proto::TextStreamReaderEvent* _msg = _internal_mutable_text_stream_reader_event();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.text_stream_reader_event)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamReaderReadAllCallback text_stream_reader_read_all = 36;
+inline bool FfiEvent::_internal_has_text_stream_reader_read_all() const {
+  return message_case() == kTextStreamReaderReadAll;
+}
+inline bool FfiEvent::has_text_stream_reader_read_all() const {
+  return _internal_has_text_stream_reader_read_all();
+}
+inline void FfiEvent::set_has_text_stream_reader_read_all() {
+  _impl_._oneof_case_[0] = kTextStreamReaderReadAll;
+}
+inline ::livekit::proto::TextStreamReaderReadAllCallback* FfiEvent::release_text_stream_reader_read_all() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.text_stream_reader_read_all)
+  if (_internal_has_text_stream_reader_read_all()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadAllCallback* temp = _impl_.message_.text_stream_reader_read_all_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_reader_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamReaderReadAllCallback& FfiEvent::_internal_text_stream_reader_read_all() const {
+  return _internal_has_text_stream_reader_read_all()
+      ? *_impl_.message_.text_stream_reader_read_all_
+      : reinterpret_cast< ::livekit::proto::TextStreamReaderReadAllCallback&>(::livekit::proto::_TextStreamReaderReadAllCallback_default_instance_);
+}
+inline const ::livekit::proto::TextStreamReaderReadAllCallback& FfiEvent::text_stream_reader_read_all() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.text_stream_reader_read_all)
+  return _internal_text_stream_reader_read_all();
+}
+inline ::livekit::proto::TextStreamReaderReadAllCallback* FfiEvent::unsafe_arena_release_text_stream_reader_read_all() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.text_stream_reader_read_all)
+  if (_internal_has_text_stream_reader_read_all()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamReaderReadAllCallback* temp = _impl_.message_.text_stream_reader_read_all_;
+    _impl_.message_.text_stream_reader_read_all_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_text_stream_reader_read_all(::livekit::proto::TextStreamReaderReadAllCallback* text_stream_reader_read_all) {
+  clear_message();
+  if (text_stream_reader_read_all) {
+    set_has_text_stream_reader_read_all();
+    _impl_.message_.text_stream_reader_read_all_ = text_stream_reader_read_all;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.text_stream_reader_read_all)
+}
+inline ::livekit::proto::TextStreamReaderReadAllCallback* FfiEvent::_internal_mutable_text_stream_reader_read_all() {
+  if (!_internal_has_text_stream_reader_read_all()) {
+    clear_message();
+    set_has_text_stream_reader_read_all();
+    _impl_.message_.text_stream_reader_read_all_ = CreateMaybeMessage< ::livekit::proto::TextStreamReaderReadAllCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_reader_read_all_;
+}
+inline ::livekit::proto::TextStreamReaderReadAllCallback* FfiEvent::mutable_text_stream_reader_read_all() {
+  ::livekit::proto::TextStreamReaderReadAllCallback* _msg = _internal_mutable_text_stream_reader_read_all();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.text_stream_reader_read_all)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamOpenCallback text_stream_open = 37;
+inline bool FfiEvent::_internal_has_text_stream_open() const {
+  return message_case() == kTextStreamOpen;
+}
+inline bool FfiEvent::has_text_stream_open() const {
+  return _internal_has_text_stream_open();
+}
+inline void FfiEvent::set_has_text_stream_open() {
+  _impl_._oneof_case_[0] = kTextStreamOpen;
+}
+inline ::livekit::proto::TextStreamOpenCallback* FfiEvent::release_text_stream_open() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.text_stream_open)
+  if (_internal_has_text_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamOpenCallback* temp = _impl_.message_.text_stream_open_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamOpenCallback& FfiEvent::_internal_text_stream_open() const {
+  return _internal_has_text_stream_open()
+      ? *_impl_.message_.text_stream_open_
+      : reinterpret_cast< ::livekit::proto::TextStreamOpenCallback&>(::livekit::proto::_TextStreamOpenCallback_default_instance_);
+}
+inline const ::livekit::proto::TextStreamOpenCallback& FfiEvent::text_stream_open() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.text_stream_open)
+  return _internal_text_stream_open();
+}
+inline ::livekit::proto::TextStreamOpenCallback* FfiEvent::unsafe_arena_release_text_stream_open() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.text_stream_open)
+  if (_internal_has_text_stream_open()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamOpenCallback* temp = _impl_.message_.text_stream_open_;
+    _impl_.message_.text_stream_open_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_text_stream_open(::livekit::proto::TextStreamOpenCallback* text_stream_open) {
+  clear_message();
+  if (text_stream_open) {
+    set_has_text_stream_open();
+    _impl_.message_.text_stream_open_ = text_stream_open;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.text_stream_open)
+}
+inline ::livekit::proto::TextStreamOpenCallback* FfiEvent::_internal_mutable_text_stream_open() {
+  if (!_internal_has_text_stream_open()) {
+    clear_message();
+    set_has_text_stream_open();
+    _impl_.message_.text_stream_open_ = CreateMaybeMessage< ::livekit::proto::TextStreamOpenCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_open_;
+}
+inline ::livekit::proto::TextStreamOpenCallback* FfiEvent::mutable_text_stream_open() {
+  ::livekit::proto::TextStreamOpenCallback* _msg = _internal_mutable_text_stream_open();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.text_stream_open)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamWriterWriteCallback text_stream_writer_write = 38;
+inline bool FfiEvent::_internal_has_text_stream_writer_write() const {
+  return message_case() == kTextStreamWriterWrite;
+}
+inline bool FfiEvent::has_text_stream_writer_write() const {
+  return _internal_has_text_stream_writer_write();
+}
+inline void FfiEvent::set_has_text_stream_writer_write() {
+  _impl_._oneof_case_[0] = kTextStreamWriterWrite;
+}
+inline ::livekit::proto::TextStreamWriterWriteCallback* FfiEvent::release_text_stream_writer_write() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.text_stream_writer_write)
+  if (_internal_has_text_stream_writer_write()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterWriteCallback* temp = _impl_.message_.text_stream_writer_write_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_writer_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamWriterWriteCallback& FfiEvent::_internal_text_stream_writer_write() const {
+  return _internal_has_text_stream_writer_write()
+      ? *_impl_.message_.text_stream_writer_write_
+      : reinterpret_cast< ::livekit::proto::TextStreamWriterWriteCallback&>(::livekit::proto::_TextStreamWriterWriteCallback_default_instance_);
+}
+inline const ::livekit::proto::TextStreamWriterWriteCallback& FfiEvent::text_stream_writer_write() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.text_stream_writer_write)
+  return _internal_text_stream_writer_write();
+}
+inline ::livekit::proto::TextStreamWriterWriteCallback* FfiEvent::unsafe_arena_release_text_stream_writer_write() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.text_stream_writer_write)
+  if (_internal_has_text_stream_writer_write()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterWriteCallback* temp = _impl_.message_.text_stream_writer_write_;
+    _impl_.message_.text_stream_writer_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_text_stream_writer_write(::livekit::proto::TextStreamWriterWriteCallback* text_stream_writer_write) {
+  clear_message();
+  if (text_stream_writer_write) {
+    set_has_text_stream_writer_write();
+    _impl_.message_.text_stream_writer_write_ = text_stream_writer_write;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.text_stream_writer_write)
+}
+inline ::livekit::proto::TextStreamWriterWriteCallback* FfiEvent::_internal_mutable_text_stream_writer_write() {
+  if (!_internal_has_text_stream_writer_write()) {
+    clear_message();
+    set_has_text_stream_writer_write();
+    _impl_.message_.text_stream_writer_write_ = CreateMaybeMessage< ::livekit::proto::TextStreamWriterWriteCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_writer_write_;
+}
+inline ::livekit::proto::TextStreamWriterWriteCallback* FfiEvent::mutable_text_stream_writer_write() {
+  ::livekit::proto::TextStreamWriterWriteCallback* _msg = _internal_mutable_text_stream_writer_write();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.text_stream_writer_write)
+  return _msg;
+}
+
+// .livekit.proto.TextStreamWriterCloseCallback text_stream_writer_close = 39;
+inline bool FfiEvent::_internal_has_text_stream_writer_close() const {
+  return message_case() == kTextStreamWriterClose;
+}
+inline bool FfiEvent::has_text_stream_writer_close() const {
+  return _internal_has_text_stream_writer_close();
+}
+inline void FfiEvent::set_has_text_stream_writer_close() {
+  _impl_._oneof_case_[0] = kTextStreamWriterClose;
+}
+inline ::livekit::proto::TextStreamWriterCloseCallback* FfiEvent::release_text_stream_writer_close() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.text_stream_writer_close)
+  if (_internal_has_text_stream_writer_close()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterCloseCallback* temp = _impl_.message_.text_stream_writer_close_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.text_stream_writer_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::TextStreamWriterCloseCallback& FfiEvent::_internal_text_stream_writer_close() const {
+  return _internal_has_text_stream_writer_close()
+      ? *_impl_.message_.text_stream_writer_close_
+      : reinterpret_cast< ::livekit::proto::TextStreamWriterCloseCallback&>(::livekit::proto::_TextStreamWriterCloseCallback_default_instance_);
+}
+inline const ::livekit::proto::TextStreamWriterCloseCallback& FfiEvent::text_stream_writer_close() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.text_stream_writer_close)
+  return _internal_text_stream_writer_close();
+}
+inline ::livekit::proto::TextStreamWriterCloseCallback* FfiEvent::unsafe_arena_release_text_stream_writer_close() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.text_stream_writer_close)
+  if (_internal_has_text_stream_writer_close()) {
+    clear_has_message();
+    ::livekit::proto::TextStreamWriterCloseCallback* temp = _impl_.message_.text_stream_writer_close_;
+    _impl_.message_.text_stream_writer_close_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_text_stream_writer_close(::livekit::proto::TextStreamWriterCloseCallback* text_stream_writer_close) {
+  clear_message();
+  if (text_stream_writer_close) {
+    set_has_text_stream_writer_close();
+    _impl_.message_.text_stream_writer_close_ = text_stream_writer_close;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.text_stream_writer_close)
+}
+inline ::livekit::proto::TextStreamWriterCloseCallback* FfiEvent::_internal_mutable_text_stream_writer_close() {
+  if (!_internal_has_text_stream_writer_close()) {
+    clear_message();
+    set_has_text_stream_writer_close();
+    _impl_.message_.text_stream_writer_close_ = CreateMaybeMessage< ::livekit::proto::TextStreamWriterCloseCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.text_stream_writer_close_;
+}
+inline ::livekit::proto::TextStreamWriterCloseCallback* FfiEvent::mutable_text_stream_writer_close() {
+  ::livekit::proto::TextStreamWriterCloseCallback* _msg = _internal_mutable_text_stream_writer_close();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.text_stream_writer_close)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendTextCallback send_text = 40;
+inline bool FfiEvent::_internal_has_send_text() const {
+  return message_case() == kSendText;
+}
+inline bool FfiEvent::has_send_text() const {
+  return _internal_has_send_text();
+}
+inline void FfiEvent::set_has_send_text() {
+  _impl_._oneof_case_[0] = kSendText;
+}
+inline ::livekit::proto::StreamSendTextCallback* FfiEvent::release_send_text() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.send_text)
+  if (_internal_has_send_text()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendTextCallback* temp = _impl_.message_.send_text_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_text_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendTextCallback& FfiEvent::_internal_send_text() const {
+  return _internal_has_send_text()
+      ? *_impl_.message_.send_text_
+      : reinterpret_cast< ::livekit::proto::StreamSendTextCallback&>(::livekit::proto::_StreamSendTextCallback_default_instance_);
+}
+inline const ::livekit::proto::StreamSendTextCallback& FfiEvent::send_text() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.send_text)
+  return _internal_send_text();
+}
+inline ::livekit::proto::StreamSendTextCallback* FfiEvent::unsafe_arena_release_send_text() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.send_text)
+  if (_internal_has_send_text()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendTextCallback* temp = _impl_.message_.send_text_;
+    _impl_.message_.send_text_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_send_text(::livekit::proto::StreamSendTextCallback* send_text) {
+  clear_message();
+  if (send_text) {
+    set_has_send_text();
+    _impl_.message_.send_text_ = send_text;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.send_text)
+}
+inline ::livekit::proto::StreamSendTextCallback* FfiEvent::_internal_mutable_send_text() {
+  if (!_internal_has_send_text()) {
+    clear_message();
+    set_has_send_text();
+    _impl_.message_.send_text_ = CreateMaybeMessage< ::livekit::proto::StreamSendTextCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_text_;
+}
+inline ::livekit::proto::StreamSendTextCallback* FfiEvent::mutable_send_text() {
+  ::livekit::proto::StreamSendTextCallback* _msg = _internal_mutable_send_text();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.send_text)
+  return _msg;
+}
+
+// .livekit.proto.StreamSendBytesCallback send_bytes = 41;
+inline bool FfiEvent::_internal_has_send_bytes() const {
+  return message_case() == kSendBytes;
+}
+inline bool FfiEvent::has_send_bytes() const {
+  return _internal_has_send_bytes();
+}
+inline void FfiEvent::set_has_send_bytes() {
+  _impl_._oneof_case_[0] = kSendBytes;
+}
+inline ::livekit::proto::StreamSendBytesCallback* FfiEvent::release_send_bytes() {
+  // @@protoc_insertion_point(field_release:livekit.proto.FfiEvent.send_bytes)
+  if (_internal_has_send_bytes()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendBytesCallback* temp = _impl_.message_.send_bytes_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.message_.send_bytes_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::livekit::proto::StreamSendBytesCallback& FfiEvent::_internal_send_bytes() const {
+  return _internal_has_send_bytes()
+      ? *_impl_.message_.send_bytes_
+      : reinterpret_cast< ::livekit::proto::StreamSendBytesCallback&>(::livekit::proto::_StreamSendBytesCallback_default_instance_);
+}
+inline const ::livekit::proto::StreamSendBytesCallback& FfiEvent::send_bytes() const {
+  // @@protoc_insertion_point(field_get:livekit.proto.FfiEvent.send_bytes)
+  return _internal_send_bytes();
+}
+inline ::livekit::proto::StreamSendBytesCallback* FfiEvent::unsafe_arena_release_send_bytes() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:livekit.proto.FfiEvent.send_bytes)
+  if (_internal_has_send_bytes()) {
+    clear_has_message();
+    ::livekit::proto::StreamSendBytesCallback* temp = _impl_.message_.send_bytes_;
+    _impl_.message_.send_bytes_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FfiEvent::unsafe_arena_set_allocated_send_bytes(::livekit::proto::StreamSendBytesCallback* send_bytes) {
+  clear_message();
+  if (send_bytes) {
+    set_has_send_bytes();
+    _impl_.message_.send_bytes_ = send_bytes;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:livekit.proto.FfiEvent.send_bytes)
+}
+inline ::livekit::proto::StreamSendBytesCallback* FfiEvent::_internal_mutable_send_bytes() {
+  if (!_internal_has_send_bytes()) {
+    clear_message();
+    set_has_send_bytes();
+    _impl_.message_.send_bytes_ = CreateMaybeMessage< ::livekit::proto::StreamSendBytesCallback >(GetArenaForAllocation());
+  }
+  return _impl_.message_.send_bytes_;
+}
+inline ::livekit::proto::StreamSendBytesCallback* FfiEvent::mutable_send_bytes() {
+  ::livekit::proto::StreamSendBytesCallback* _msg = _internal_mutable_send_bytes();
+  // @@protoc_insertion_point(field_mutable:livekit.proto.FfiEvent.send_bytes)
   return _msg;
 }
 

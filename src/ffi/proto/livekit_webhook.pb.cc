@@ -75,16 +75,16 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_livekit_5fwebhook_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\025livekit_webhook.proto\022\007livekit\032\024liveki"
   "t_models.proto\032\024livekit_egress.proto\032\025li"
-  "vekit_ingress.proto\"\227\002\n\014WebhookEvent\022\r\n\005"
+  "vekit_ingress.proto\"\233\002\n\014WebhookEvent\022\r\n\005"
   "event\030\001 \001(\t\022\033\n\004room\030\002 \001(\0132\r.livekit.Room"
   "\022-\n\013participant\030\003 \001(\0132\030.livekit.Particip"
   "antInfo\022(\n\013egress_info\030\t \001(\0132\023.livekit.E"
   "gressInfo\022*\n\014ingress_info\030\n \001(\0132\024.liveki"
   "t.IngressInfo\022!\n\005track\030\010 \001(\0132\022.livekit.T"
   "rackInfo\022\n\n\002id\030\006 \001(\t\022\022\n\ncreated_at\030\007 \001(\003"
-  "\022\023\n\013num_dropped\030\013 \001(\005BFZ#github.com/live"
-  "kit/protocol/livekit\252\002\rLiveKit.Proto\352\002\016L"
-  "iveKit::Protob\006proto3"
+  "\022\027\n\013num_dropped\030\013 \001(\005B\002\030\001BFZ#github.com/"
+  "livekit/protocol/livekit\252\002\rLiveKit.Proto"
+  "\352\002\016LiveKit::Protob\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_livekit_5fwebhook_2eproto_deps[3] = {
   &::descriptor_table_livekit_5fegress_2eproto,
@@ -93,7 +93,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_livekit_5fwebhook_2
 };
 static ::_pbi::once_flag descriptor_table_livekit_5fwebhook_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_livekit_5fwebhook_2eproto = {
-    false, false, 461, descriptor_table_protodef_livekit_5fwebhook_2eproto,
+    false, false, 465, descriptor_table_protodef_livekit_5fwebhook_2eproto,
     "livekit_webhook.proto",
     &descriptor_table_livekit_5fwebhook_2eproto_once, descriptor_table_livekit_5fwebhook_2eproto_deps, 3, 1,
     schemas, file_default_instances, TableStruct_livekit_5fwebhook_2eproto::offsets,
@@ -386,7 +386,7 @@ const char* WebhookEvent::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         } else
           goto handle_unusual;
         continue;
-      // int32 num_dropped = 11;
+      // int32 num_dropped = 11 [deprecated = true];
       case 11:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 88)) {
           _impl_.num_dropped_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
@@ -484,7 +484,7 @@ uint8_t* WebhookEvent::_InternalSerialize(
         _Internal::ingress_info(this).GetCachedSize(), target, stream);
   }
 
-  // int32 num_dropped = 11;
+  // int32 num_dropped = 11 [deprecated = true];
   if (this->_internal_num_dropped() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(11, this->_internal_num_dropped(), target);
@@ -560,7 +560,7 @@ size_t WebhookEvent::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_created_at());
   }
 
-  // int32 num_dropped = 11;
+  // int32 num_dropped = 11 [deprecated = true];
   if (this->_internal_num_dropped() != 0) {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_num_dropped());
   }
