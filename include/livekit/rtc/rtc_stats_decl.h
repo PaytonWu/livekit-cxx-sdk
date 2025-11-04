@@ -17,8 +17,8 @@ namespace livekit::rtc
 
 struct RtcStats
 {
-    std::vector<proto::RtcStats> publisher_stats_{};
-    std::vector<proto::RtcStats> subscriber_stats_{};
+    std::vector<proto::RtcStats> publisher_stats{};
+    std::vector<proto::RtcStats> subscriber_stats{};
 };
 
 } // namespace livekit::rtc

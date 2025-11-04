@@ -232,7 +232,8 @@ auto Room::rtc_stats() const noexcept -> exec::task<std::expected<RtcStats, std:
 
     auto const & publisher_stats = event.get_session_stats().result().publisher_stats();
     auto const & subscriber_stats = event.get_session_stats().result().subscriber_stats();
-    co_return RtcStats{ std::vector<proto::RtcStats>(publisher_stats.begin(), publisher_stats.end()), std::vector<proto::RtcStats>(subscriber_stats.begin(), subscriber_stats.end()) };
+    co_return RtcStats{ std::vector<proto::RtcStats>{ publisher_stats.begin(), publisher_stats.end() },
+                        std::vector<proto::RtcStats>{ subscriber_stats.begin(), subscriber_stats.end() } };
 }
 
 auto Room::create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant

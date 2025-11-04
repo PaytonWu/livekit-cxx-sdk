@@ -13,7 +13,7 @@ namespace livekit::ffi
 
 FfiClient::FfiClient()
 {
-    livekit_ffi_initialize(ffi_event_callback, false, "livekit-cxx", LIVEKIT_CXX_SDK_VERSION);
+    livekit_ffi_initialize(ffi_event_callback, false, "livekit-cxx-sdk", LIVEKIT_CXX_SDK_VERSION);
 }
 
 auto FfiClient::next_thread_index() -> std::size_t
