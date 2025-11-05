@@ -75,6 +75,7 @@ struct RecvOperation
         std::optional<std::optional<T>> immediate_result;
         {
             std::lock_guard<std::mutex> lock(op.state->mutex);
+            // Always check queue first - even if sender is disconnected, there might be queued values
             if (!op.state->queue.empty())
             {
                 T value = std::move(op.state->queue.front());
@@ -83,12 +84,18 @@ struct RecvOperation
             }
             else if (op.state->sender_disconnected)
             {
+                // Only return nullopt if queue is empty AND sender is disconnected
                 immediate_result.emplace(std::nullopt);
             }
             else
             {
                 // Install a callback to complete when a value arrives or sender closes
-                op.state->waiting_callback = [rcvr = std::move(op.rcvr)](std::optional<T> v) mutable { stdexec::set_value(std::move(rcvr), std::move(v)); };
+                // The callback will be invoked from send() or destructor, and must signal run_loop
+                op.state->waiting_callback = [rcvr = std::move(op.rcvr)](std::optional<T> v) mutable {
+                    // set_value will call the receiver's set_value, which calls run_loop.finish()
+                    // This wakes up run_loop.run() which is waiting in sync_wait
+                    stdexec::set_value(std::move(rcvr), std::move(v));
+                };
             }
         }
 
@@ -125,6 +132,29 @@ public:
     {
     }
 
+    // Move constructor: shared_ptr move already nulls the source
+    UnboundedSender(UnboundedSender && other) noexcept : state(std::move(other.state))
+    {
+        // Ensure moved-from object has null state to prevent destructor from setting sender_disconnected
+        other.state = nullptr;
+    }
+
+    // Move assignment
+    UnboundedSender & operator=(UnboundedSender && other) noexcept
+    {
+        if (this != &other)
+        {
+            state = std::move(other.state);
+            // Ensure moved-from object has null state
+            other.state = nullptr;
+        }
+        return *this;
+    }
+
+    // Delete copy to prevent accidental copies
+    UnboundedSender(UnboundedSender const &) = delete;
+    UnboundedSender & operator=(UnboundedSender const &) = delete;
+
     bool send(T value)
     {
         if (!state)
@@ -152,7 +182,7 @@ public:
 
         if (to_notify)
         {
-            (*to_notify)(std::move(value));
+            (*to_notify)(std::optional<T>{ std::move(value) });
         }
         return true;
     }
@@ -201,6 +231,27 @@ public:
     {
     }
 
+    // Move constructor - ensure moved-from receiver doesn't mark as disconnected
+    UnboundedReceiver(UnboundedReceiver && other) noexcept : state(std::move(other.state))
+    {
+        other.state = nullptr;
+    }
+
+    // Move assignment
+    UnboundedReceiver & operator=(UnboundedReceiver && other) noexcept
+    {
+        if (this != &other)
+        {
+            state = std::move(other.state);
+            other.state = nullptr;
+        }
+        return *this;
+    }
+
+    // Delete copy
+    UnboundedReceiver(UnboundedReceiver const &) = delete;
+    UnboundedReceiver & operator=(UnboundedReceiver const &) = delete;
+
     RecvSender<T> recv()
     {
         return RecvSender<T>{ state };
@@ -227,9 +278,14 @@ std::pair<UnboundedSender<T>, UnboundedReceiver<T>> channel()
 int main()
 {
     std::cout << "[main] Creating channel and starting threads...\n";
-    auto [tx, rx] = channel<int>();
+    auto channel_pair = channel<int>();
+    auto tx = std::move(channel_pair.first);
+    auto rx = std::move(channel_pair.second);
 
-    std::jthread producer([tx = std::move(tx)]() mutable {
+    // Explicitly move tx to ensure proper move semantics
+    UnboundedSender<int> producer_tx = std::move(tx);
+
+    std::jthread producer([tx = std::move(producer_tx)]() mutable {
         std::this_thread::sleep_for(std::chrono::milliseconds(150));
         fmt::print("[sender] send 10\n");
         tx.send(10);
