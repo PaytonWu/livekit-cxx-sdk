@@ -54,18 +54,12 @@ auto livekit_category() noexcept -> std::error_category const &
             {
                 case LivekitErrorCode::Success:
                     return "success";
-                case LivekitErrorCode::PublishDataFailed:
-                    return "publish data failed";
-                case LivekitErrorCode::PublishDtmfFailed:
-                    return "publish dtmf failed";
                 case LivekitErrorCode::GetStatsFailed:
                     return "get stats failed";
                 case LivekitErrorCode::InvalidMediaData:
                     return "invalid media data";
                 case LivekitErrorCode::CaptureAudioFrameFailed:
                     return "capture audio frame failed";
-                case LivekitErrorCode::PublishTrackFailed:
-                    return "publish track failed";
                 case LivekitErrorCode::RemoteParticipantAlreadyExist:
                     return "remote participant already exist";
                 default:

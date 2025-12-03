@@ -27,6 +27,18 @@ auto livekit_rtc_category() noexcept -> std::error_category const &
                     return "rtc not connected";
                 case ErrorCode::RtcGetStatsFailed:
                     return "rtc get stats failed";
+                case ErrorCode::TrackPublicationNotFound:
+                    return "track publication not found";
+                case ErrorCode::ParticipantNotFound:
+                    return "local or remote participant not found";
+                case ErrorCode::PublishTrackFailed:
+                    return "publish track failed";
+                case ErrorCode::PublishDataFailed:
+                    return "publish data failed";
+                case ErrorCode::PublishDtmfFailed:
+                    return "publish dtmf failed";
+                case ErrorCode::ParticipantAlreadyExist:
+                    return "local or remote participant already exist";
                 default:
                     assert(false);
                     return "unknown error";

@@ -8,20 +8,23 @@
 
 #include "participant_fwd_decl.h"
 
+#include "sid_decl.h"
+#include "track_decl.h"
+#include "track_publication_decl.h"
+#include "error_decl.h"
+
 #include "livekit/ffi/ffi_handle.h"
 #include "livekit/ffi/proto/ffi.pb.h"
 #include "livekit/ffi/proto/participant.pb.h"
 #include "livekit/ffi/proto/room.pb.h"
 #include "livekit/utils/broadcast_queue.h"
-#include "sid_decl.h"
-#include "track_decl.h"
-#include "track_publication_decl.h"
 
 #include <abc/byte.h>
 #include <exec/static_thread_pool.hpp>
 #include <exec/task.hpp>
 
 #include <cstdint>
+#include <expected>
 #include <memory>
 #include <optional>
 #include <string>
@@ -48,7 +51,7 @@ public:
     auto identity() const noexcept -> std::string const &;
     auto metadata() const noexcept -> std::string const &;
     auto attributes() const -> std::unordered_map<std::string, std::string>;
-    auto kind() const noexcept  -> proto::ParticipantKind;
+    auto kind() const noexcept -> proto::ParticipantKind;
     auto disconnected_reason() const -> std::optional<proto::DisconnectReason>;
 
     virtual auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> = 0;
@@ -84,6 +87,9 @@ public:
     explicit RemoteParticipant(proto::OwnedParticipant const & owned_participant);
 
     auto add_track_publication(std::shared_ptr<RemoteTrackPublication> track_publication) -> void;
+    auto remove_track_publication(Sid const & sid) -> void;
+
+    auto track_publication(Sid const & sid) const -> std::expected<std::shared_ptr<TrackPublication>, std::error_code>;
 
     auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> override;
 };

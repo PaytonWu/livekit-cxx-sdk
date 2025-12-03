@@ -8,11 +8,12 @@
 
 #include "participant_decl.h"
 
-#include "livekit/error.h"
-#include "livekit/ffi/ffi_client.h"
+#include "error.h"
 #include "sid.h"
 #include "track.h"
 #include "track_publication.h"
+
+#include "livekit/ffi/ffi_client.h"
 
 #include <abc/scope_guard.h>
 
@@ -40,7 +41,7 @@ auto LocalParticipant::publish_track(LocalTrack auto & track, proto::TrackPublis
 
     if (event.publish_track().has_error())
     {
-        throw_error(LivekitErrorCode::PublishTrackFailed, event.publish_track().error());
+        abc::throw_error(make_error_code(rtc::ErrorCode::PublishTrackFailed), event.publish_track().error());
     }
 
     auto track_publication = std::make_shared<LocalTrackPublication>(event.publish_track().publication());

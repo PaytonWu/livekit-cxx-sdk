@@ -100,7 +100,7 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
     {
         if (remote_participants_.contains(pt.participant().info().identity()))
         {
-            throw_error(LivekitErrorCode::RemoteParticipantAlreadyExist, fmt::format("Remote particiaptn {} already exist", pt.participant().info().identity()));
+            abc::throw_error(make_error_code(ErrorCode::ParticipantAlreadyExist), fmt::format("Remote particiaptn {} already exist", pt.participant().info().identity()));
         }
 
         remote_participants_.emplace(pt.participant().info().identity(), RemoteParticipant{ pt.participant() });
@@ -158,6 +158,24 @@ auto Room::local_participant() const noexcept -> std::expected<std::reference_wr
 auto Room::remote_participants() const noexcept -> std::unordered_map<std::string, RemoteParticipant> const &
 {
     return remote_participants_;
+}
+
+auto Room::remote_participant(std::string const & participant_identity) const noexcept -> std::expected<std::reference_wrapper<RemoteParticipant const>, std::error_code>
+{
+    if (auto it = remote_participants_.find(participant_identity); it != remote_participants_.end())
+    {
+        return std::ref(it->second);
+    }
+    return std::unexpected{ make_error_code(ErrorCode::ParticipantNotFound) };
+}
+
+auto Room::remote_participant(std::string const & participant_identity) noexcept -> std::expected<std::reference_wrapper<RemoteParticipant>, std::error_code>
+{
+    if (auto it = remote_participants_.find(participant_identity); it != remote_participants_.end())
+    {
+        return std::ref(it->second);
+    }
+    return std::unexpected{ make_error_code(ErrorCode::ParticipantNotFound) };
 }
 
 auto Room::connection_state() const noexcept -> proto::ConnectionState
@@ -283,16 +301,24 @@ auto Room::listen_room_events() -> exec::task<void>
 
 auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
 {
+    bool emit_event = true;
     switch (room_event.message_case())
     {
         case proto::RoomEvent::MessageCase::kParticipantConnected:
         {
-            auto remote_participant = create_remote_participant(room_event.participant_connected().info());
-            // emit(proto::RoomEvent::MessageCase::kParticipantConnected, std::move(remote_participant));
+            create_remote_participant(room_event.participant_connected().info());
+
+            emit(room_event.message_case(), room_event);
+            emit_event = false;
+
             break;
         }
+
         case proto::RoomEvent::MessageCase::kParticipantDisconnected:
         {
+            emit(room_event.message_case(), room_event);
+            emit_event = false;
+
             auto remote_participant_id = room_event.participant_disconnected().participant_identity();
             RemoteParticipant remote_participant;
             if (auto it = remote_participants_.find(remote_participant_id); it != remote_participants_.end())
@@ -300,11 +326,81 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
                 remote_participant = std::move(it->second);
                 remote_participants_.erase(it);
             }
-            // emit(proto::RoomEvent::MessageCase::kParticipantDisconnected,
-            //      std::move(remote_participant),
-            //      proto::DisconnectReason_Name(room_event.participant_disconnected().disconnect_reason()));
+
             break;
         }
+
+        case proto::RoomEvent::MessageCase::kTrackPublished:
+        {
+            auto it = remote_participants_.find(room_event.track_published().participant_identity());
+            if (it != remote_participants_.end())
+            {
+                auto & remote_participant = it->second;
+                remote_participant.add_track_publication(std::make_shared<RemoteTrackPublication>(room_event.track_published().publication()));
+            }
+
+            emit(room_event.message_case(), room_event);
+            emit_event = false;
+
+            break;
+        }
+
+        case proto::RoomEvent::MessageCase::kTrackUnpublished:
+        {
+            emit(room_event.message_case(), room_event);
+            emit_event = false;
+
+            auto it = remote_participants_.find(room_event.track_published().participant_identity());
+            if (it != remote_participants_.end())
+            {
+                auto & remote_participant = it->second;
+                remote_participant.remove_track_publication(Sid{ room_event.track_unpublished().publication_sid() });
+            }
+
+            break;
+        }
+
+        case proto::RoomEvent::MessageCase::kTrackSubscribed:
+        {
+            auto it = remote_participants_.find(room_event.track_subscribed().participant_identity());
+            if (it != remote_participants_.end())
+            {
+                // auto & remote_participant = it->second;
+
+            }
+
+            // create_remote_track_subscription(room_event.track_subscribed().track_sid());
+            break;
+        }
+
+        case proto::RoomEvent::MessageCase::kTrackUnsubscribed:
+        {
+            // remove_remote_track_subscription(room_event.track_unsubscribed().track_sid());
+            break;
+        }
+
+        case proto::RoomEvent::MessageCase::kTrackSubscriptionFailed:
+        {
+            // create_remote_track_subscription_failed(room_event.track_subscription_failed().error(), room_event.track_subscription_failed().track_sid());
+            break;
+        }
+
+        case proto::RoomEvent::MessageCase::kTrackMuted:
+        {
+            // create_remote_track_muted(room_event.track_muted().publication_sid());
+            break;
+        }
+
+        case proto::RoomEvent::MessageCase::kTrackUnmuted:
+        {
+            // create_remote_track_unmuted(room_event.track_unmuted().publication_sid());
+            break;
+        }
+    }
+
+    if (emit_event)
+    {
+        emit(room_event.message_case(), room_event);
     }
 }
 

@@ -3,7 +3,6 @@
 
 #include <livekit/rtc/participant.h>
 
-#include <livekit/error.h>
 #include <livekit/ffi/ffi_client.h>
 #include <livekit/ffi/proto/ffi.pb.h>
 
@@ -86,7 +85,7 @@ auto LocalParticipant::publish_data(std::vector<abc::byte_t> const & data, bool 
 
     if (event.publish_data().has_error())
     {
-        throw_error(LivekitErrorCode::PublishDataFailed, event.publish_data().error());
+        abc::throw_error(make_error_code(ErrorCode::PublishDataFailed), event.publish_data().error());
     }
 
     co_return;
@@ -111,7 +110,7 @@ auto LocalParticipant::publish_dtmf(std::uint32_t const code, std::string const 
 
     if (event.publish_sip_dtmf().has_error())
     {
-        throw_error(LivekitErrorCode::PublishDtmfFailed, event.publish_sip_dtmf().error());
+        abc::throw_error(make_error_code(ErrorCode::PublishDtmfFailed), event.publish_sip_dtmf().error());
     }
 
     co_return;
@@ -125,6 +124,21 @@ auto LocalParticipant::track_publications() const -> std::unordered_map<Sid, std
 auto RemoteParticipant::add_track_publication(std::shared_ptr<RemoteTrackPublication> track_publication) -> void
 {
     track_publications_.emplace(track_publication->sid(), std::static_pointer_cast<TrackPublication>(track_publication));
+}
+
+auto RemoteParticipant::remove_track_publication(Sid const & sid) -> void
+{
+    track_publications_.erase(sid);
+}
+
+auto RemoteParticipant::track_publication(Sid const & sid) const -> std::expected<std::shared_ptr<TrackPublication>, std::error_code>
+{
+    if (auto it = track_publications_.find(sid); it != track_publications_.end())
+    {
+        return it->second;
+    }
+
+    return std::unexpected{ make_error_code(ErrorCode::TrackPublicationNotFound) };
 }
 
 auto RemoteParticipant::track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>>

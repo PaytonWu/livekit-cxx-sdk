@@ -101,6 +101,8 @@ public:
 
     auto local_participant() const noexcept -> std::expected<std::reference_wrapper<LocalParticipant const>, std::error_code>;
     auto remote_participants() const noexcept -> std::unordered_map<std::string, RemoteParticipant> const &;
+    auto remote_participant(std::string const & participant_identity) const noexcept -> std::expected<std::reference_wrapper<RemoteParticipant const>, std::error_code>;
+    auto remote_participant(std::string const & participant_identity) noexcept -> std::expected<std::reference_wrapper<RemoteParticipant>, std::error_code>;
     auto connection_state() const noexcept -> proto::ConnectionState;
     auto name() const noexcept -> std::string const &;
     auto metadata() const noexcept -> std::string const &;
@@ -111,6 +113,10 @@ public:
     auto departure_timeout() const noexcept -> std::chrono::seconds;
     auto empty_timeout() const noexcept -> std::chrono::seconds;
     auto rtc_stats() const noexcept -> exec::task<std::expected<RtcStats, std::error_code>>;
+    // auto register_byte_stream_handler(std::string_view topic, std::function<void(proto::ByteStreamReader)> handler) -> void;
+    // auto unregister_byte_stream_handler(std::string_view topic) -> void;
+    // auto register_text_stream_handler(std::string_view topic, std::function<void(proto::TextStreamReader)> handler) -> void;
+    // auto unregister_text_stream_handler(std::string_view topic) -> void;
 
 private:
     auto create_remote_participant(proto::OwnedParticipant const & owned_participant) -> RemoteParticipant;
