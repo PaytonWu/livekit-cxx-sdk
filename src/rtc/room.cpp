@@ -350,12 +350,10 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
             emit(room_event.message_case(), room_event);
             emit_event = false;
 
-            auto it = remote_participants_.find(room_event.track_published().participant_identity());
-            if (it != remote_participants_.end())
-            {
-                auto & remote_participant = it->second;
-                remote_participant.remove_track_publication(Sid{ room_event.track_unpublished().publication_sid() });
-            }
+            remote_participant(room_event.track_unpublished().participant_identity()).transform([&room_event](auto && rparticipant) {
+                rparticipant.get().remove_track_publication(Sid{ room_event.track_unpublished().publication_sid() });
+                return rparticipant;
+            });
 
             break;
         }
@@ -366,7 +364,6 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
             if (it != remote_participants_.end())
             {
                 // auto & remote_participant = it->second;
-
             }
 
             // create_remote_track_subscription(room_event.track_subscribed().track_sid());
