@@ -332,17 +332,12 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
 
         case proto::RoomEvent::MessageCase::kTrackPublished:
         {
-            auto it = remote_participants_.find(room_event.track_published().participant_identity());
-            if (it != remote_participants_.end())
-            {
-                auto & remote_participant = it->second;
-                remote_participant.add_track_publication(std::make_shared<RemoteTrackPublication>(room_event.track_published().publication()));
-            }
-
-            emit(room_event.message_case(), room_event);
-            emit_event = false;
-
-            break;
+            remote_participant(room_event.track_published().participant_identity())
+                .transform([](auto && rparticipant) { return rparticipant.get(); })
+                .transform([&room_event](auto && rparticipant) {
+                    rparticipant.add_track_publication(std::make_shared<RemoteTrackPublication>(room_event.track_published().publication()));
+                    return rparticipant;
+                });
         }
 
         case proto::RoomEvent::MessageCase::kTrackUnpublished:
@@ -350,23 +345,22 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
             emit(room_event.message_case(), room_event);
             emit_event = false;
 
-            remote_participant(room_event.track_unpublished().participant_identity()).transform([&room_event](auto && rparticipant) {
-                rparticipant.get().remove_track_publication(Sid{ room_event.track_unpublished().publication_sid() });
-                return rparticipant;
-            });
+            remote_participant(room_event.track_unpublished().participant_identity())
+                .transform([](auto && rparticipant) { return rparticipant.get(); })
+                .transform([&room_event](auto && rparticipant) {
+                    rparticipant.remove_track_publication(Sid{ room_event.track_unpublished().publication_sid() });
+                    return rparticipant;
+                });
 
             break;
         }
 
         case proto::RoomEvent::MessageCase::kTrackSubscribed:
         {
-            auto it = remote_participants_.find(room_event.track_subscribed().participant_identity());
-            if (it != remote_participants_.end())
-            {
-                // auto & remote_participant = it->second;
-            }
-
-            // create_remote_track_subscription(room_event.track_subscribed().track_sid());
+            // remote_participant(room_event.track_subscribed().participant_identity()).transform([&room_event](auto && rparticipant) {
+            //     rparticipant.get().add_track_subscription(std::make_shared<RemoteTrackSubscription>(room_event.track_subscribed().track().info().sid()));
+            //     return rparticipant;
+            // });
             break;
         }
 
