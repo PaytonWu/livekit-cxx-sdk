@@ -33,6 +33,11 @@ auto LocalTrackPublication::set_track(LocalTrack auto const & track) -> void
     track_ = track;
 }
 
+auto RemoteTrackPublication::set_track(RemoteTrack auto const & track) -> void
+{
+    track_ = track;
+}
+
 } // namespace livekit::rtc
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_PUBLICATION

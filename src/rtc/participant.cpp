@@ -116,14 +116,14 @@ auto LocalParticipant::publish_dtmf(std::uint32_t const code, std::string const 
     co_return;
 }
 
-auto LocalParticipant::track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>>
+auto LocalParticipant::track_publications() const -> std::unordered_map<Sid, LocalTrackPublication> const &
 {
     return track_publications_;
 }
 
-auto RemoteParticipant::add_track_publication(std::shared_ptr<RemoteTrackPublication> track_publication) -> void
+auto RemoteParticipant::add_track_publication(RemoteTrackPublication track_publication) -> void
 {
-    track_publications_.emplace(track_publication->sid(), std::static_pointer_cast<TrackPublication>(track_publication));
+    track_publications_.emplace(track_publication.sid(), std::move(track_publication));
 }
 
 auto RemoteParticipant::remove_track_publication(Sid const & sid) -> void
@@ -131,19 +131,28 @@ auto RemoteParticipant::remove_track_publication(Sid const & sid) -> void
     track_publications_.erase(sid);
 }
 
-auto RemoteParticipant::track_publication(Sid const & sid) const -> std::expected<std::shared_ptr<TrackPublication>, std::error_code>
+auto RemoteParticipant::track_publication(Sid const & sid) const -> std::expected<std::reference_wrapper<RemoteTrackPublication const>, std::error_code>
 {
     if (auto it = track_publications_.find(sid); it != track_publications_.end())
     {
-        return it->second;
+        return std::cref(it->second);
     }
 
-    return std::unexpected{ make_error_code(ErrorCode::TrackPublicationNotFound) };
+    return std::unexpected{ make_error_code(rtc::ErrorCode::TrackPublicationNotFound) };
 }
 
-auto RemoteParticipant::track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>>
+auto RemoteParticipant::track_publication(Sid const & sid) -> std::expected<std::reference_wrapper<RemoteTrackPublication>, std::error_code>
+{
+    if (auto it = track_publications_.find(sid); it != track_publications_.end())
+    {
+        return std::ref(it->second);
+    }
+
+    return std::unexpected{ make_error_code(rtc::ErrorCode::TrackPublicationNotFound) };
+}
+
+auto RemoteParticipant::track_publications() const -> std::unordered_map<Sid, RemoteTrackPublication> const &
 {
     return track_publications_;
 }
-
 } // namespace livekit::rtc

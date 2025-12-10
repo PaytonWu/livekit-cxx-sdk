@@ -32,7 +32,7 @@ public:
     FfiHandle(FfiHandle && other) noexcept;
     ~FfiHandle() noexcept;
 
-    auto operator=(FfiHandle const &) noexcept -> FfiHandle &;
+    auto operator=(FfiHandle const & other) noexcept -> FfiHandle &;
     auto operator=(FfiHandle && other) noexcept -> FfiHandle &;
 
     [[nodiscard]] auto id() const noexcept -> FfiHandleId;

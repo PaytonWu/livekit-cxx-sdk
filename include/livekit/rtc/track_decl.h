@@ -76,5 +76,8 @@ concept LocalTrack = std::derived_from<T, Track> && requires(T & t) {
     { t.sid(std::declval<Sid>()) } -> std::same_as<void>;
 };
 
+template <typename T>
+concept RemoteTrack = std::is_same_v<T, RemoteAudioTrack> || std::is_same_v<T, RemoteVideoTrack>;
+
 } // namespace livekit::rtc
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_DECL

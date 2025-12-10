@@ -6,7 +6,11 @@
 #include <livekit/ffi/ffi_client.h>
 #include <livekit/rtc/error.h>
 
+#include <livekit/ffi/proto/track.pb.h>
+
 #include <fmt/format.h>
+
+#include <cassert>
 
 namespace livekit::rtc
 {
@@ -107,8 +111,7 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
 
         for (auto const & tp : pt.publications())
         {
-            auto track_publication = std::make_shared<RemoteTrackPublication>(tp);
-            remote_participants_.at(pt.participant().info().identity()).add_track_publication(std::move(track_publication));
+            remote_participants_.at(pt.participant().info().identity()).add_track_publication(RemoteTrackPublication{ tp });
         }
     }
 
@@ -335,7 +338,7 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
             remote_participant(room_event.track_published().participant_identity())
                 .transform([](auto && rparticipant) { return rparticipant.get(); })
                 .transform([&room_event](auto && rparticipant) {
-                    rparticipant.add_track_publication(std::make_shared<RemoteTrackPublication>(room_event.track_published().publication()));
+                    rparticipant.add_track_publication(RemoteTrackPublication{ room_event.track_published().publication() });
                     return rparticipant;
                 });
         }
@@ -357,16 +360,37 @@ auto Room::on_room_event(proto::RoomEvent const & room_event) -> void
 
         case proto::RoomEvent::MessageCase::kTrackSubscribed:
         {
-            // remote_participant(room_event.track_subscribed().participant_identity()).transform([&room_event](auto && rparticipant) {
-            //     rparticipant.get().add_track_subscription(std::make_shared<RemoteTrackSubscription>(room_event.track_subscribed().track().info().sid()));
-            //     return rparticipant;
-            // });
+            remote_participant(room_event.track_subscribed().participant_identity())
+                .transform([](auto && rparticipant) { return rparticipant.get(); })
+                .and_then([&room_event](auto && rparticipant) { return rparticipant.track_publication(Sid{ room_event.track_subscribed().track().info().sid() }); })
+                .transform([](auto && rpublication) { return rpublication.get(); })
+                .transform([&room_event](auto && rpublication) {
+                    rpublication.set_subscribed(true);
+
+                    switch (room_event.track_subscribed().track().info().kind())
+                    {
+                        case proto::TrackKind::KIND_AUDIO:
+                        {
+                            rpublication.set_track(RemoteAudioTrack{ room_event.track_subscribed().track() });
+                            break;
+                        }
+                        case proto::TrackKind::KIND_VIDEO:
+                        {
+                            rpublication.set_track(RemoteVideoTrack{ room_event.track_subscribed().track() });
+                            break;
+                        }
+                        default:
+                        {
+                            assert(false);
+                            break;
+                        }
+                    }
+                });
             break;
         }
 
         case proto::RoomEvent::MessageCase::kTrackUnsubscribed:
         {
-            // remove_remote_track_subscription(room_event.track_unsubscribed().track_sid());
             break;
         }
 

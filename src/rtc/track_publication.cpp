@@ -25,4 +25,18 @@ RemoteTrackPublication::RemoteTrackPublication(proto::OwnedTrackPublication cons
 {
 }
 
+
+
+auto RemoteTrackPublication::set_subscribed(bool subscribed) noexcept -> bool
+{
+    bool old_subscribed = subscribed_;
+    subscribed_ = subscribed;
+    return old_subscribed;
+}
+
+auto RemoteTrackPublication::subscribed() const noexcept -> bool
+{
+    return subscribed_;
+}
+
 } // namespace livekit::rtc

@@ -33,6 +33,8 @@ public:
     explicit TrackPublication(proto::OwnedTrackPublication const & owned_track_publication);
     TrackPublication(TrackPublication &&) = default;
     auto operator=(TrackPublication &&) -> TrackPublication & = default;
+    TrackPublication(TrackPublication const &) = default;
+    auto operator=(TrackPublication const &) -> TrackPublication & = default;
     virtual ~TrackPublication() = default;
 
     template <proto::TrackKind TrackKindValue>
@@ -62,8 +64,16 @@ public:
 
 class RemoteTrackPublication : public TrackPublication
 {
+private:
+    bool subscribed_{false};
+
 public:
     explicit RemoteTrackPublication(proto::OwnedTrackPublication const & owned_track_publication);
+
+    auto set_track(RemoteTrack auto const & track) -> void;
+
+    auto set_subscribed(bool subscribed) noexcept -> bool;
+    auto subscribed() const noexcept -> bool;
 };
 
 } // namespace livekit::rtc

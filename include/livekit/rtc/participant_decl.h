@@ -8,10 +8,10 @@
 
 #include "participant_fwd_decl.h"
 
+#include "error_decl.h"
 #include "sid_decl.h"
 #include "track_decl.h"
 #include "track_publication_decl.h"
-#include "error_decl.h"
 
 #include "livekit/ffi/ffi_handle.h"
 #include "livekit/ffi/proto/ffi.pb.h"
@@ -54,14 +54,14 @@ public:
     auto kind() const noexcept -> proto::ParticipantKind;
     auto disconnected_reason() const -> std::optional<proto::DisconnectReason>;
 
-    virtual auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> = 0;
+    // virtual auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> = 0;
 };
 
 class LocalParticipant : public Participant
 {
 private:
     utils::BroadcastQueue<proto::FfiEvent> * room_event_queue_{ nullptr };
-    std::unordered_map<Sid, std::shared_ptr<TrackPublication>> track_publications_{};
+    std::unordered_map<Sid, LocalTrackPublication> track_publications_{};
 
 public:
     explicit LocalParticipant(proto::OwnedParticipant const & owned_participant, utils::BroadcastQueue<proto::FfiEvent> * room_event_queue);
@@ -73,25 +73,27 @@ public:
 
     auto publish_track(LocalTrack auto & track, proto::TrackPublishOptions const & options = {}) -> exec::task<LocalTrackPublication>;
 
-    auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> override;
+    auto track_publications() const -> std::unordered_map<Sid, LocalTrackPublication> const &;
+    // auto track_publication(Sid const & sid) const -> std::expected<LocalTrackPublication const, std::error_code>;
 };
 
 class RemoteParticipant : public Participant
 {
 private:
-    std::unordered_map<Sid, std::shared_ptr<TrackPublication>> track_publications_{};
+    std::unordered_map<Sid, RemoteTrackPublication> track_publications_{};
 
 public:
     RemoteParticipant() = default;
 
     explicit RemoteParticipant(proto::OwnedParticipant const & owned_participant);
 
-    auto add_track_publication(std::shared_ptr<RemoteTrackPublication> track_publication) -> void;
+    auto add_track_publication(RemoteTrackPublication track_publication) -> void;
     auto remove_track_publication(Sid const & sid) -> void;
 
-    auto track_publication(Sid const & sid) const -> std::expected<std::shared_ptr<TrackPublication>, std::error_code>;
+    auto track_publication(Sid const & sid) const -> std::expected<std::reference_wrapper<RemoteTrackPublication const>, std::error_code>;
+    auto track_publication(Sid const & sid) -> std::expected<std::reference_wrapper<RemoteTrackPublication>, std::error_code>;
 
-    auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> override;
+    auto track_publications() const -> std::unordered_map<Sid, RemoteTrackPublication> const &;
 };
 
 } // namespace livekit::rtc
