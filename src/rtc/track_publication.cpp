@@ -17,6 +17,11 @@ auto TrackPublication::sid() const -> Sid
     return Sid{ info_.sid() };
 }
 
+auto TrackPublication::reset_track() noexcept -> void
+{
+    track_ = std::monostate{};
+}
+
 LocalTrackPublication::LocalTrackPublication(proto::OwnedTrackPublication const & owned_track_publication) : TrackPublication{ owned_track_publication }
 {
 }
@@ -24,8 +29,6 @@ LocalTrackPublication::LocalTrackPublication(proto::OwnedTrackPublication const 
 RemoteTrackPublication::RemoteTrackPublication(proto::OwnedTrackPublication const & owned_track_publication) : TrackPublication{ owned_track_publication }
 {
 }
-
-
 
 auto RemoteTrackPublication::set_subscribed(bool subscribed) noexcept -> bool
 {

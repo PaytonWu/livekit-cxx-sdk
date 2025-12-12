@@ -35,12 +35,12 @@ public:
     auto operator=(TrackPublication &&) -> TrackPublication & = default;
     TrackPublication(TrackPublication const &) = default;
     auto operator=(TrackPublication const &) -> TrackPublication & = default;
+
+protected:
     virtual ~TrackPublication() = default;
 
-    template <proto::TrackKind TrackKindValue>
-    auto track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_AUDIO, LocalAudioTrack> const &;
-    template <proto::TrackKind TrackKindValue>
-    auto track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_VIDEO, LocalVideoTrack> const &;
+public:
+    auto reset_track() noexcept -> void;
 
     auto sid() const -> Sid;
     auto name() const noexcept -> std::string const &;
@@ -59,16 +59,27 @@ class LocalTrackPublication : public TrackPublication
 {
 public:
     explicit LocalTrackPublication(proto::OwnedTrackPublication const & owned_track_publication);
+
+    template <proto::TrackKind TrackKindValue>
+    auto track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_AUDIO, LocalAudioTrack> const &;
+    template <proto::TrackKind TrackKindValue>
+    auto track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_VIDEO, LocalVideoTrack> const &;
+
     auto set_track(LocalTrack auto const & track) -> void;
 };
 
 class RemoteTrackPublication : public TrackPublication
 {
 private:
-    bool subscribed_{false};
+    bool subscribed_{ false };
 
 public:
     explicit RemoteTrackPublication(proto::OwnedTrackPublication const & owned_track_publication);
+
+    template <proto::TrackKind TrackKindValue>
+    auto track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_AUDIO, RemoteAudioTrack> const &;
+    template <proto::TrackKind TrackKindValue>
+    auto track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_VIDEO, RemoteVideoTrack> const &;
 
     auto set_track(RemoteTrack auto const & track) -> void;
 

@@ -17,13 +17,13 @@ namespace livekit::rtc
 {
 
 template <proto::TrackKind TrackKindValue>
-auto TrackPublication::track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_AUDIO, LocalAudioTrack> const &
+auto LocalTrackPublication::track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_AUDIO, LocalAudioTrack> const &
 {
     return std::get<LocalAudioTrack>(track_);
 }
 
 template <proto::TrackKind TrackKindValue>
-auto TrackPublication::track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_VIDEO, LocalVideoTrack> const &
+auto LocalTrackPublication::track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_VIDEO, LocalVideoTrack> const &
 {
     return std::get<LocalVideoTrack>(track_);
 }
@@ -31,6 +31,18 @@ auto TrackPublication::track() const -> std::enable_if_t<TrackKindValue == proto
 auto LocalTrackPublication::set_track(LocalTrack auto const & track) -> void
 {
     track_ = track;
+}
+
+template <proto::TrackKind TrackKindValue>
+auto RemoteTrackPublication::track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_AUDIO, RemoteAudioTrack> const &
+{
+    return std::get<RemoteAudioTrack>(track_);
+}
+
+template <proto::TrackKind TrackKindValue>
+auto RemoteTrackPublication::track() const -> std::enable_if_t<TrackKindValue == proto::TrackKind::KIND_VIDEO, RemoteVideoTrack> const &
+{
+    return std::get<RemoteAudioTrack>(track_);
 }
 
 auto RemoteTrackPublication::set_track(RemoteTrack auto const & track) -> void

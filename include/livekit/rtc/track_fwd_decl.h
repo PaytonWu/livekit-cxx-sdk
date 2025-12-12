@@ -17,11 +17,6 @@ class LocalVideoTrack;
 class RemoteAudioTrack;
 class RemoteVideoTrack;
 
-// using LocalTrack = std::variant<LocalAudioTrack, LocalVideoTrack>;
-// using RemoteTrack = std::variant<RemoteAudioTrack, RemoteVideoTrack>;
-// using AudioTrack = std::variant<LocalAudioTrack, RemoteAudioTrack>;
-// using VideoTrack = std::variant<LocalVideoTrack, RemoteVideoTrack>;
-
 }
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_FWD_DECL

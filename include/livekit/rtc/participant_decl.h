@@ -53,8 +53,6 @@ public:
     auto attributes() const -> std::unordered_map<std::string, std::string>;
     auto kind() const noexcept -> proto::ParticipantKind;
     auto disconnected_reason() const -> std::optional<proto::DisconnectReason>;
-
-    // virtual auto track_publications() const -> std::unordered_map<Sid, std::shared_ptr<TrackPublication>> = 0;
 };
 
 class LocalParticipant : public Participant
