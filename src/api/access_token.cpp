@@ -633,11 +633,11 @@ AccessToken::AccessToken(std::optional<std::string> api_key, std::optional<std::
     claims_.issuer = api_key_;
 }
 
-auto AccessToken::with_ttl(std::chrono::duration<int64_t> ttl) -> AccessToken &
+auto AccessToken::with_ttl(std::chrono::seconds ttl) -> AccessToken &
 {
     auto now = std::chrono::system_clock::now();
     auto now_seconds = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
-    auto exp_seconds = now_seconds + std::chrono::duration_cast<std::chrono::seconds>(ttl).count();
+    auto exp_seconds = now_seconds + ttl.count();
     claims_.expires_at = static_cast<std::size_t>(exp_seconds);
 
     return *this;

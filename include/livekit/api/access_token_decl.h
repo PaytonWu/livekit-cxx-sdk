@@ -127,7 +127,7 @@ public:
 
     AccessToken(std::optional<std::string> api_key = std::nullopt, std::optional<std::string> api_secret = std::nullopt);
 
-    auto with_ttl(std::chrono::duration<int64_t> ttl) -> AccessToken &;
+    auto with_ttl(std::chrono::seconds ttl) -> AccessToken &;
     auto with_grants(VideoGrants const & grants) -> AccessToken &;
     auto with_sip_grants(SIPGrants const & grants) -> AccessToken &;
     auto with_identity(std::string const & identity) -> AccessToken &;
