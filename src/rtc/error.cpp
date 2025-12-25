@@ -41,6 +41,8 @@ auto livekit_rtc_category() noexcept -> std::error_category const &
                     return "publish dtmf failed";
                 case ErrorCode::ParticipantAlreadyExist:
                     return "local or remote participant already exist";
+                case ErrorCode::TrackOperationNotAvailable:
+                    return "track operation not available for this track type";
                 default:
                     assert(false);
                     return "unknown error";

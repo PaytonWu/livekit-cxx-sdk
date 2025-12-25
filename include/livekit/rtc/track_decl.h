@@ -19,6 +19,8 @@
 #include <exec/task.hpp>
 
 #include <concepts>
+#include <expected>
+#include <system_error>
 #include <variant>
 #include <vector>
 
@@ -65,7 +67,7 @@ public:
     auto stream_state() const -> proto::StreamState;
     auto muted() const -> bool;
 
-    auto get_stats() const -> exec::task<std::vector<proto::RtcStats>>;
+    auto get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>;
 
     auto is_enabled() const -> bool;
     auto enable() -> void;
@@ -111,7 +113,7 @@ public:
     auto stream_state() const -> proto::StreamState;
     auto muted() const -> bool;
 
-    auto get_stats() const -> exec::task<std::vector<proto::RtcStats>>;
+    auto get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>;
 
     auto is_enabled() const -> bool;
     auto enable() -> void;
@@ -149,14 +151,14 @@ public:
     auto kind() const -> proto::TrackKind;
     auto stream_state() const -> proto::StreamState;
     auto muted() const -> bool;
-    auto get_stats() const -> exec::task<std::vector<proto::RtcStats>>;
+    auto get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>;
 
     auto is_enabled() const -> bool;
-    auto enable() -> void;
-    auto disable() -> void;
+    auto enable() -> std::expected<void, std::error_code>;
+    auto disable() -> std::expected<void, std::error_code>;
     auto is_remote() const -> bool;
-    auto mute() -> void;
-    auto unmute() -> void;
+    auto mute() -> std::expected<void, std::error_code>;
+    auto unmute() -> std::expected<void, std::error_code>;
 };
 
 template <typename T>

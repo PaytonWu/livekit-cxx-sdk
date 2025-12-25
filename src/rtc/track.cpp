@@ -10,7 +10,6 @@
 #include <livekit/rtc/error.h>
 
 #include <cassert>
-#include <stdexcept>
 
 namespace livekit::rtc
 {
@@ -72,19 +71,19 @@ auto Track::muted() const -> bool
     return std::visit([](auto const & track) { return track.muted(); }, track_);
 }
 
-auto Track::get_stats() const -> exec::task<std::vector<proto::RtcStats>>
+auto Track::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
 {
     if (std::holds_alternative<RemoteAudioTrack>(track_))
     {
-        return std::get<RemoteAudioTrack>(track_).get_stats();
+        co_return co_await std::get<RemoteAudioTrack>(track_).get_stats();
     }
     else if (std::holds_alternative<RemoteVideoTrack>(track_))
     {
-        return std::get<RemoteVideoTrack>(track_).get_stats();
+        co_return co_await std::get<RemoteVideoTrack>(track_).get_stats();
     }
     else
     {
-        throw std::runtime_error("get_stats() only available on remote tracks");
+        co_return std::unexpected(make_error_code(ErrorCode::TrackGetStatsFailed));
     }
 }
 
@@ -105,33 +104,35 @@ auto Track::is_enabled() const -> bool
         track_);
 }
 
-auto Track::enable() -> void
+auto Track::enable() -> std::expected<void, std::error_code>
 {
-    std::visit(
-        [](auto & track) -> void {
+    return std::visit(
+        [](auto & track) -> std::expected<void, std::error_code> {
             if constexpr (requires { track.enable(); })
             {
                 track.enable();
+                return {};
             }
             else
             {
-                throw std::runtime_error("enable() only available on remote tracks");
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
             }
         },
         track_);
 }
 
-auto Track::disable() -> void
+auto Track::disable() -> std::expected<void, std::error_code>
 {
-    std::visit(
-        [](auto & track) -> void {
+    return std::visit(
+        [](auto & track) -> std::expected<void, std::error_code> {
             if constexpr (requires { track.disable(); })
             {
                 track.disable();
+                return {};
             }
             else
             {
-                throw std::runtime_error("disable() only available on remote tracks");
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
             }
         },
         track_);
@@ -142,33 +143,35 @@ auto Track::is_remote() const -> bool
     return std::visit([](auto const & track) { return track.is_remote(); }, track_);
 }
 
-auto Track::mute() -> void
+auto Track::mute() -> std::expected<void, std::error_code>
 {
-    std::visit(
-        [](auto & track) -> void {
+    return std::visit(
+        [](auto & track) -> std::expected<void, std::error_code> {
             if constexpr (requires { track.mute(); })
             {
                 track.mute();
+                return {};
             }
             else
             {
-                throw std::runtime_error("mute() only available on local tracks");
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
             }
         },
         track_);
 }
 
-auto Track::unmute() -> void
+auto Track::unmute() -> std::expected<void, std::error_code>
 {
-    std::visit(
-        [](auto & track) -> void {
+    return std::visit(
+        [](auto & track) -> std::expected<void, std::error_code> {
             if constexpr (requires { track.unmute(); })
             {
                 track.unmute();
+                return {};
             }
             else
             {
-                throw std::runtime_error("unmute() only available on local tracks");
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
             }
         },
         track_);
@@ -291,7 +294,7 @@ auto RemoteAudioTrack::muted() const -> bool
     return track_inner_->muted();
 }
 
-auto RemoteAudioTrack::get_stats() const -> exec::task<std::vector<proto::RtcStats>>
+auto RemoteAudioTrack::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
 {
     proto::FfiRequest req;
     auto * get_stats = req.mutable_get_stats();
@@ -307,7 +310,7 @@ auto RemoteAudioTrack::get_stats() const -> exec::task<std::vector<proto::RtcSta
 
     if (event.get_stats().has_error())
     {
-        throw_error(rtc::ErrorCode::TrackGetStatsFailed, event.get_stats().error());
+        co_return std::unexpected(make_error_code(ErrorCode::TrackGetStatsFailed));
     }
 
     auto const & stats = event.get_stats().stats();
@@ -466,7 +469,7 @@ auto RemoteVideoTrack::muted() const -> bool
     return track_inner_->muted();
 }
 
-auto RemoteVideoTrack::get_stats() const -> exec::task<std::vector<proto::RtcStats>>
+auto RemoteVideoTrack::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
 {
     proto::FfiRequest req;
     auto * get_stats = req.mutable_get_stats();
@@ -482,7 +485,7 @@ auto RemoteVideoTrack::get_stats() const -> exec::task<std::vector<proto::RtcSta
 
     if (event.get_stats().has_error())
     {
-        throw_error(rtc::ErrorCode::TrackGetStatsFailed, event.get_stats().error());
+        co_return std::unexpected(make_error_code(ErrorCode::TrackGetStatsFailed));
     }
 
     auto const & stats = event.get_stats().stats();

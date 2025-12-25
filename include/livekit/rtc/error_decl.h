@@ -23,6 +23,7 @@ enum class ErrorCode
     PublishDataFailed,
     PublishDtmfFailed,
     ParticipantAlreadyExist,
+    TrackOperationNotAvailable,
 };
 
 auto livekit_rtc_category() noexcept -> std::error_category const &;
