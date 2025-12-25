@@ -9,5 +9,6 @@
 #include "track_decl.h"
 
 #include "sid.h"
+#include "track_inner.h"
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK

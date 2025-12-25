@@ -7,41 +7,291 @@
 #include <livekit/ffi/ffi_client.h>
 #include <livekit/ffi/proto/ffi.pb.h>
 #include <livekit/rtc/audio_source.h>
-#include <livekit/rtc/sid.h>
+#include <livekit/rtc/error.h>
+
+#include <cassert>
+#include <stdexcept>
 
 namespace livekit::rtc
 {
 
-Track::Track(proto::OwnedTrack const & owned_track) : track_info_{ owned_track.info() }, ffi_handle_{ owned_track.handle().id() }
+Track::Track(proto::OwnedTrack const & owned_track)
+    : track_{ [&owned_track]() -> std::variant<LocalAudioTrack, LocalVideoTrack, RemoteAudioTrack, RemoteVideoTrack> {
+        auto const & info = owned_track.info();
+        bool const is_remote = info.remote();
+        proto::TrackKind const kind = info.kind();
+
+        if (is_remote)
+        {
+            if (kind == proto::TrackKind::KIND_AUDIO)
+            {
+                return RemoteAudioTrack{ owned_track };
+            }
+            else // KIND_VIDEO
+            {
+                return RemoteVideoTrack{ owned_track };
+            }
+        }
+        else
+        {
+            if (kind == proto::TrackKind::KIND_AUDIO)
+            {
+                return LocalAudioTrack{ owned_track };
+            }
+            else // KIND_VIDEO
+            {
+                return LocalVideoTrack{ owned_track };
+            }
+        }
+    }() }
 {
 }
 
 auto Track::sid() const -> Sid
 {
-    return Sid{ track_info_.sid() };
+    return std::visit([](auto const & track) { return track.sid(); }, track_);
 }
 
 auto Track::name() const -> std::string const &
 {
-    return track_info_.name();
+    return std::visit([](auto const & track) -> std::string const & { return track.name(); }, track_);
 }
 
 auto Track::kind() const -> proto::TrackKind
 {
-    return track_info_.kind();
+    return std::visit([](auto const & track) { return track.kind(); }, track_);
 }
 
 auto Track::stream_state() const -> proto::StreamState
 {
-    return track_info_.stream_state();
+    return std::visit([](auto const & track) { return track.stream_state(); }, track_);
 }
 
 auto Track::muted() const -> bool
 {
-    return track_info_.muted();
+    return std::visit([](auto const & track) { return track.muted(); }, track_);
 }
 
 auto Track::get_stats() const -> exec::task<std::vector<proto::RtcStats>>
+{
+    if (std::holds_alternative<RemoteAudioTrack>(track_))
+    {
+        return std::get<RemoteAudioTrack>(track_).get_stats();
+    }
+    else if (std::holds_alternative<RemoteVideoTrack>(track_))
+    {
+        return std::get<RemoteVideoTrack>(track_).get_stats();
+    }
+    else
+    {
+        throw std::runtime_error("get_stats() only available on remote tracks");
+    }
+}
+
+auto Track::is_enabled() const -> bool
+{
+    return std::visit(
+        [](auto const & track) -> bool {
+            if constexpr (requires { track.is_enabled(); })
+            {
+                return track.is_enabled();
+            }
+            else
+            {
+                // Local tracks are always enabled (they don't have enable/disable)
+                return true;
+            }
+        },
+        track_);
+}
+
+auto Track::enable() -> void
+{
+    std::visit(
+        [](auto & track) -> void {
+            if constexpr (requires { track.enable(); })
+            {
+                track.enable();
+            }
+            else
+            {
+                throw std::runtime_error("enable() only available on remote tracks");
+            }
+        },
+        track_);
+}
+
+auto Track::disable() -> void
+{
+    std::visit(
+        [](auto & track) -> void {
+            if constexpr (requires { track.disable(); })
+            {
+                track.disable();
+            }
+            else
+            {
+                throw std::runtime_error("disable() only available on remote tracks");
+            }
+        },
+        track_);
+}
+
+auto Track::is_remote() const -> bool
+{
+    return std::visit([](auto const & track) { return track.is_remote(); }, track_);
+}
+
+auto Track::mute() -> void
+{
+    std::visit(
+        [](auto & track) -> void {
+            if constexpr (requires { track.mute(); })
+            {
+                track.mute();
+            }
+            else
+            {
+                throw std::runtime_error("mute() only available on local tracks");
+            }
+        },
+        track_);
+}
+
+auto Track::unmute() -> void
+{
+    std::visit(
+        [](auto & track) -> void {
+            if constexpr (requires { track.unmute(); })
+            {
+                track.unmute();
+            }
+            else
+            {
+                throw std::runtime_error("unmute() only available on local tracks");
+            }
+        },
+        track_);
+}
+
+LocalAudioTrack::LocalAudioTrack(proto::OwnedTrack const & owned_track) : track_inner_{ std::make_shared<TrackInner>(owned_track) }, ffi_handle_{ owned_track.handle().id() }
+{
+}
+
+auto LocalAudioTrack::create(std::string_view name, AudioSource const & source) -> LocalAudioTrack
+{
+    proto::FfiRequest req;
+    auto * create_audio_track = req.mutable_create_audio_track();
+    create_audio_track->set_name(name.data(), name.size());
+    create_audio_track->set_source_handle(source.ffi_handle().id());
+
+    auto resp = ffi::FfiClient::request(req);
+    return LocalAudioTrack{ resp.create_audio_track().track() };
+}
+
+auto LocalAudioTrack::sid() const -> Sid
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->sid();
+}
+
+auto LocalAudioTrack::sid(Sid const & sid) -> void
+{
+    assert(track_inner_ != nullptr);
+    track_inner_->sid(sid);
+}
+
+auto LocalAudioTrack::name() const -> std::string const &
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->name();
+}
+
+auto LocalAudioTrack::kind() const -> proto::TrackKind
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->kind();
+}
+
+auto LocalAudioTrack::stream_state() const -> proto::StreamState
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->stream_state();
+}
+
+auto LocalAudioTrack::muted() const -> bool
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->muted();
+}
+
+auto LocalAudioTrack::mute() -> void
+{
+    assert(track_inner_ != nullptr);
+
+    proto::FfiRequest req;
+    auto * local_track_mute = req.mutable_local_track_mute();
+    local_track_mute->set_track_handle(this->ffi_handle_.id());
+    local_track_mute->set_mute(true);
+
+    ffi::FfiClient::request(req);
+    this->track_inner_->muted(true);
+}
+
+auto LocalAudioTrack::unmute() -> void
+{
+    assert(track_inner_ != nullptr);
+
+    proto::FfiRequest req;
+    auto * local_track_mute = req.mutable_local_track_mute();
+    local_track_mute->set_track_handle(ffi_handle_.id());
+    local_track_mute->set_mute(false);
+
+    ffi::FfiClient::request(req);
+    this->track_inner_->muted(false);
+}
+
+auto LocalAudioTrack::is_remote() const -> bool
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->remote();
+}
+
+RemoteAudioTrack::RemoteAudioTrack(proto::OwnedTrack const & owned_track) : track_inner_{ std::make_shared<TrackInner>(owned_track) }, ffi_handle_{ owned_track.handle().id() }
+{
+}
+
+auto RemoteAudioTrack::sid() const -> Sid
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->sid();
+}
+
+auto RemoteAudioTrack::name() const -> std::string const &
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->name();
+}
+
+auto RemoteAudioTrack::kind() const -> proto::TrackKind
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->kind();
+}
+
+auto RemoteAudioTrack::stream_state() const -> proto::StreamState
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->stream_state();
+}
+
+auto RemoteAudioTrack::muted() const -> bool
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->muted();
+}
+
+auto RemoteAudioTrack::get_stats() const -> exec::task<std::vector<proto::RtcStats>>
 {
     proto::FfiRequest req;
     auto * get_stats = req.mutable_get_stats();
@@ -57,65 +307,223 @@ auto Track::get_stats() const -> exec::task<std::vector<proto::RtcStats>>
 
     if (event.get_stats().has_error())
     {
-        throw_error(LivekitErrorCode::GetStatsFailed, event.get_stats().error());
+        throw_error(rtc::ErrorCode::TrackGetStatsFailed, event.get_stats().error());
     }
 
     auto const & stats = event.get_stats().stats();
     co_return std::vector<proto::RtcStats>{ stats.begin(), stats.end() };
 }
 
-LocalAudioTrack::LocalAudioTrack(proto::OwnedTrack const & owned_track) : Track{ owned_track }
+auto RemoteAudioTrack::is_enabled() const -> bool
 {
+    assert(track_inner_ != nullptr);
+    // Note: In Rust, this calls rtc_track.enabled(), but in C++ we don't have direct RTC track access.
+    // The EnableRemoteTrackResponse returns the enabled state, but we can't easily query it here.
+    // For now, we assume tracks are enabled by default. A proper implementation would track this state
+    // or provide a way to query it through FFI.
+    return true;
 }
 
-auto LocalAudioTrack::create(std::string_view name, AudioSource const & source) -> LocalAudioTrack
+auto RemoteAudioTrack::enable() -> void
 {
+    assert(track_inner_ != nullptr);
     proto::FfiRequest req;
-    auto * create_audio_track = req.mutable_create_audio_track();
-    create_audio_track->set_name(name.data(), name.size());
-    create_audio_track->set_source_handle(source.ffi_handle().id());
+    auto * enable_remote_track = req.mutable_enable_remote_track();
+    enable_remote_track->set_track_handle(ffi_handle_.id());
+    enable_remote_track->set_enabled(true);
 
-    auto resp = ffi::FfiClient::request(req);
-    return LocalAudioTrack{ resp.create_audio_track().track() };
+    ffi::FfiClient::request(req);
 }
 
-auto LocalAudioTrack::mute() -> void
+auto RemoteAudioTrack::disable() -> void
 {
+    assert(track_inner_ != nullptr);
+    proto::FfiRequest req;
+    auto * enable_remote_track = req.mutable_enable_remote_track();
+    enable_remote_track->set_track_handle(ffi_handle_.id());
+    enable_remote_track->set_enabled(false);
+
+    ffi::FfiClient::request(req);
+}
+
+auto RemoteAudioTrack::is_remote() const -> bool
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->remote();
+}
+
+LocalVideoTrack::LocalVideoTrack(proto::OwnedTrack const & owned_track) : track_inner_{ std::make_shared<TrackInner>(owned_track) }, ffi_handle_{ owned_track.handle().id() }
+{
+}
+
+auto LocalVideoTrack::sid() const -> Sid
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->sid();
+}
+
+auto LocalVideoTrack::sid(Sid const & sid) -> void
+{
+    assert(track_inner_ != nullptr);
+    track_inner_->sid(sid);
+}
+
+// auto LocalVideoTrack::source() const -> VideoSource
+// {
+//     assert(track_inner_ != nullptr);
+//     return track_inner_->source();
+// }
+
+auto LocalVideoTrack::name() const -> std::string const &
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->name();
+}
+
+auto LocalVideoTrack::kind() const -> proto::TrackKind
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->kind();
+}
+
+auto LocalVideoTrack::stream_state() const -> proto::StreamState
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->stream_state();
+}
+
+auto LocalVideoTrack::muted() const -> bool
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->muted();
+}
+
+auto LocalVideoTrack::mute() -> void
+{
+    assert(track_inner_ != nullptr);
+
     proto::FfiRequest req;
     auto * local_track_mute = req.mutable_local_track_mute();
     local_track_mute->set_track_handle(this->ffi_handle_.id());
     local_track_mute->set_mute(true);
 
     ffi::FfiClient::request(req);
-    this->track_info_.set_muted(true);
+    track_inner_->muted(true);
 }
 
-auto LocalAudioTrack::unmute() -> void
+auto LocalVideoTrack::unmute() -> void
 {
+    assert(track_inner_ != nullptr);
+
     proto::FfiRequest req;
     auto * local_track_mute = req.mutable_local_track_mute();
     local_track_mute->set_track_handle(this->ffi_handle_.id());
     local_track_mute->set_mute(false);
 
     ffi::FfiClient::request(req);
-    this->track_info_.set_muted(false);
+    track_inner_->muted(false);
 }
 
-auto LocalAudioTrack::sid(Sid sid) -> void
+auto LocalVideoTrack::is_remote() const -> bool
 {
-    this->track_info_.set_sid(sid.value());
+    assert(track_inner_ != nullptr);
+    assert(!track_inner_->remote());
+
+    return track_inner_->remote();
 }
 
-LocalVideoTrack::LocalVideoTrack(proto::OwnedTrack const & owned_track) : Track{ owned_track }
-{
-}
-
-RemoteAudioTrack::RemoteAudioTrack(proto::OwnedTrack const & owned_track) : Track{ owned_track }
-{
-}
-
-RemoteVideoTrack::RemoteVideoTrack(proto::OwnedTrack const & owned_track) : Track{ owned_track }
+RemoteVideoTrack::RemoteVideoTrack(proto::OwnedTrack const & owned_track) : track_inner_{ std::make_shared<TrackInner>(owned_track) }, ffi_handle_{ owned_track.handle().id() }
 {
 }
 
+auto RemoteVideoTrack::sid() const -> Sid
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->sid();
+}
+
+auto RemoteVideoTrack::name() const -> std::string const &
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->name();
+}
+
+auto RemoteVideoTrack::kind() const -> proto::TrackKind
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->kind();
+}
+
+auto RemoteVideoTrack::stream_state() const -> proto::StreamState
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->stream_state();
+}
+
+auto RemoteVideoTrack::muted() const -> bool
+{
+    assert(track_inner_ != nullptr);
+    return track_inner_->muted();
+}
+
+auto RemoteVideoTrack::get_stats() const -> exec::task<std::vector<proto::RtcStats>>
+{
+    proto::FfiRequest req;
+    auto * get_stats = req.mutable_get_stats();
+    get_stats->set_track_handle(ffi_handle_.id());
+
+    auto queue = ffi::FfiClient::instance().subscribe();
+    auto resp = ffi::FfiClient::request(req);
+    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
+        return event.has_get_stats() && event.get_stats().has_async_id() && resp.has_get_stats() && resp.get_stats().has_async_id() &&
+               event.get_stats().async_id() == resp.get_stats().async_id();
+    });
+    ffi::FfiClient::instance().unsubscribe(queue);
+
+    if (event.get_stats().has_error())
+    {
+        throw_error(rtc::ErrorCode::TrackGetStatsFailed, event.get_stats().error());
+    }
+
+    auto const & stats = event.get_stats().stats();
+    co_return std::vector<proto::RtcStats>{ stats.begin(), stats.end() };
+}
+
+auto RemoteVideoTrack::is_enabled() const -> bool
+{
+    assert(track_inner_ != nullptr);
+    // Note: Same issue as RemoteAudioTrack - we can't easily query the enabled state.
+    // For now, we assume tracks are enabled by default. A proper implementation would track this state.
+    return true;
+}
+
+auto RemoteVideoTrack::enable() -> void
+{
+    assert(track_inner_ != nullptr);
+    proto::FfiRequest req;
+    auto * enable_remote_track = req.mutable_enable_remote_track();
+    enable_remote_track->set_track_handle(ffi_handle_.id());
+    enable_remote_track->set_enabled(true);
+
+    ffi::FfiClient::request(req);
+}
+
+auto RemoteVideoTrack::disable() -> void
+{
+    assert(track_inner_ != nullptr);
+    proto::FfiRequest req;
+    auto * enable_remote_track = req.mutable_enable_remote_track();
+    enable_remote_track->set_track_handle(ffi_handle_.id());
+    enable_remote_track->set_enabled(false);
+
+    ffi::FfiClient::request(req);
+}
+
+auto RemoteVideoTrack::is_remote() const -> bool
+{
+    assert(track_inner_ != nullptr);
+    assert(track_inner_->remote());
+
+    return track_inner_->remote();
+}
 } // namespace livekit::rtc

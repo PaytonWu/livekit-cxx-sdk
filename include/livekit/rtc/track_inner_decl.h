@@ -24,11 +24,14 @@ public:
     explicit TrackInner(proto::OwnedTrack const & owned_track);
 
     auto sid() const -> Sid;
+    auto sid(Sid const & value) -> void;
+
     auto name() const -> std::string const &;
     auto kind() const -> proto::TrackKind;
     auto remote() const -> bool;
     auto stream_state() const -> proto::StreamState;
     auto muted() const -> bool;
+    auto muted(bool value) -> void;
 };
 
 }

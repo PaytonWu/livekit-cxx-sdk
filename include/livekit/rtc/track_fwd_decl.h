@@ -11,12 +11,13 @@
 namespace livekit::rtc
 {
 
-class Track;
 class LocalAudioTrack;
 class LocalVideoTrack;
 class RemoteAudioTrack;
 class RemoteVideoTrack;
 
-}
+class Track;
+
+} // namespace livekit::rtc
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_FWD_DECL

@@ -14,6 +14,11 @@ auto TrackInner::sid() const -> Sid
     return Sid{ track_info_.sid() };
 }
 
+auto TrackInner::sid(Sid const & value) -> void
+{
+    track_info_.set_sid(value.value());
+}
+
 auto TrackInner::name() const -> std::string const &
 {
     return track_info_.name();
@@ -37,6 +42,11 @@ auto TrackInner::stream_state() const -> proto::StreamState
 auto TrackInner::muted() const -> bool
 {
     return track_info_.muted();
+}
+
+auto TrackInner::muted(bool value) -> void
+{
+    track_info_.set_muted(value);
 }
 
 } // namespace livekit::rtc

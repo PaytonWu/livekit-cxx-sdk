@@ -10,6 +10,7 @@
 
 #include "audio_source_decl.h"
 #include "sid_decl.h"
+#include "track_inner_decl.h"
 
 #include "livekit/ffi/ffi_handle.h"
 #include "livekit/ffi/proto/stats.pb.h"
@@ -18,19 +19,130 @@
 #include <exec/task.hpp>
 
 #include <concepts>
+#include <variant>
 #include <vector>
 
 namespace livekit::rtc
 {
 
-class Track
+class LocalAudioTrack
 {
-protected:
-    proto::TrackInfo track_info_;
+private:
+    std::shared_ptr<TrackInner> track_inner_;
     ffi::FfiHandle ffi_handle_;
 
 public:
+    explicit LocalAudioTrack(proto::OwnedTrack const & owned_track);
+
+    static auto create(std::string_view name, AudioSource const & source) -> LocalAudioTrack;
+
+    auto sid() const -> Sid;
+    auto sid(Sid const & sid) -> void;
+
+    auto name() const -> std::string const &;
+    auto kind() const -> proto::TrackKind;
+    auto stream_state() const -> proto::StreamState;
+    auto muted() const -> bool;
+
+    auto mute() -> void;
+    auto unmute() -> void;
+
+    auto is_remote() const -> bool;
+};
+
+class RemoteAudioTrack
+{
+private:
+    std::shared_ptr<TrackInner> track_inner_;
+    ffi::FfiHandle ffi_handle_;
+
+public:
+    explicit RemoteAudioTrack(proto::OwnedTrack const & owned_track);
+
+    auto sid() const -> Sid;
+    auto name() const -> std::string const &;
+    auto kind() const -> proto::TrackKind;
+    auto stream_state() const -> proto::StreamState;
+    auto muted() const -> bool;
+
+    auto get_stats() const -> exec::task<std::vector<proto::RtcStats>>;
+
+    auto is_enabled() const -> bool;
+    auto enable() -> void;
+    auto disable() -> void;
+    auto is_remote() const -> bool;
+};
+
+class LocalVideoTrack
+{
+private:
+    std::shared_ptr<TrackInner> track_inner_;
+    ffi::FfiHandle ffi_handle_;
+
+public:
+    explicit LocalVideoTrack(proto::OwnedTrack const & owned_track);
+
+    auto sid() const -> Sid;
+    auto sid(Sid const & sid) -> void;
+    // auto source() const -> VideoSource;
+    auto name() const -> std::string const &;
+    auto kind() const -> proto::TrackKind;
+    auto stream_state() const -> proto::StreamState;
+    auto muted() const -> bool;
+
+    auto mute() -> void;
+    auto unmute() -> void;
+
+    auto is_remote() const -> bool;
+};
+
+class RemoteVideoTrack
+{
+private:
+    std::shared_ptr<TrackInner> track_inner_;
+    ffi::FfiHandle ffi_handle_;
+
+public:
+    explicit RemoteVideoTrack(proto::OwnedTrack const & owned_track);
+
+    auto sid() const -> Sid;
+    auto name() const -> std::string const &;
+    auto kind() const -> proto::TrackKind;
+    auto stream_state() const -> proto::StreamState;
+    auto muted() const -> bool;
+
+    auto get_stats() const -> exec::task<std::vector<proto::RtcStats>>;
+
+    auto is_enabled() const -> bool;
+    auto enable() -> void;
+    auto disable() -> void;
+    auto is_remote() const -> bool;
+};
+
+/*
+#[derive(Clone, Debug)]
+pub enum Track {
+    LocalAudio(LocalAudioTrack),
+    LocalVideo(LocalVideoTrack),
+    RemoteAudio(RemoteAudioTrack),
+    RemoteVideo(RemoteVideoTrack),
+}
+*/
+class Track
+{
+private:
+    std::variant<LocalAudioTrack, LocalVideoTrack, RemoteAudioTrack, RemoteVideoTrack> track_;
+
+public:
     explicit Track(proto::OwnedTrack const & owned_track);
+
+    // Copy semantics (equivalent to Rust's Clone)
+    Track(Track const &) = default;
+    auto operator=(Track const &) -> Track & = default;
+
+    // Move semantics
+    Track(Track &&) = default;
+    auto operator=(Track &&) -> Track & = default;
 
     auto sid() const -> Sid;
     auto name() const -> std::string const &;
@@ -38,35 +150,13 @@ public:
     auto stream_state() const -> proto::StreamState;
     auto muted() const -> bool;
     auto get_stats() const -> exec::task<std::vector<proto::RtcStats>>;
-};
 
-class LocalAudioTrack : public Track
-{
-public:
-    explicit LocalAudioTrack(proto::OwnedTrack const & owned_track);
-
-    static auto create(std::string_view name, AudioSource const & source) -> LocalAudioTrack;
+    auto is_enabled() const -> bool;
+    auto enable() -> void;
+    auto disable() -> void;
+    auto is_remote() const -> bool;
     auto mute() -> void;
     auto unmute() -> void;
-    auto sid(Sid sid) -> void;
-};
-
-class LocalVideoTrack : public Track
-{
-public:
-    explicit LocalVideoTrack(proto::OwnedTrack const & owned_track);
-};
-
-class RemoteAudioTrack : public Track
-{
-public:
-    explicit RemoteAudioTrack(proto::OwnedTrack const & owned_track);
-};
-
-class RemoteVideoTrack : public Track
-{
-public:
-    explicit RemoteVideoTrack(proto::OwnedTrack const & owned_track);
 };
 
 template <typename T>
