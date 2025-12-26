@@ -6,15 +6,16 @@
 
 #pragma once
 
-#include <variant>
-
 namespace livekit::rtc
 {
 
 class LocalAudioTrack;
 class LocalVideoTrack;
+class AudioTrack;
+
 class RemoteAudioTrack;
 class RemoteVideoTrack;
+class VideoTrack;
 
 class Track;
 

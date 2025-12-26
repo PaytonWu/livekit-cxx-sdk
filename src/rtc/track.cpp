@@ -14,169 +14,6 @@
 namespace livekit::rtc
 {
 
-Track::Track(proto::OwnedTrack const & owned_track)
-    : track_{ [&owned_track]() -> std::variant<LocalAudioTrack, LocalVideoTrack, RemoteAudioTrack, RemoteVideoTrack> {
-        auto const & info = owned_track.info();
-        bool const is_remote = info.remote();
-        proto::TrackKind const kind = info.kind();
-
-        if (is_remote)
-        {
-            if (kind == proto::TrackKind::KIND_AUDIO)
-            {
-                return RemoteAudioTrack{ owned_track };
-            }
-            else // KIND_VIDEO
-            {
-                return RemoteVideoTrack{ owned_track };
-            }
-        }
-        else
-        {
-            if (kind == proto::TrackKind::KIND_AUDIO)
-            {
-                return LocalAudioTrack{ owned_track };
-            }
-            else // KIND_VIDEO
-            {
-                return LocalVideoTrack{ owned_track };
-            }
-        }
-    }() }
-{
-}
-
-auto Track::sid() const -> Sid
-{
-    return std::visit([](auto const & track) { return track.sid(); }, track_);
-}
-
-auto Track::name() const -> std::string const &
-{
-    return std::visit([](auto const & track) -> std::string const & { return track.name(); }, track_);
-}
-
-auto Track::kind() const -> proto::TrackKind
-{
-    return std::visit([](auto const & track) { return track.kind(); }, track_);
-}
-
-auto Track::stream_state() const -> proto::StreamState
-{
-    return std::visit([](auto const & track) { return track.stream_state(); }, track_);
-}
-
-auto Track::muted() const -> bool
-{
-    return std::visit([](auto const & track) { return track.muted(); }, track_);
-}
-
-auto Track::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
-{
-    if (std::holds_alternative<RemoteAudioTrack>(track_))
-    {
-        co_return co_await std::get<RemoteAudioTrack>(track_).get_stats();
-    }
-    else if (std::holds_alternative<RemoteVideoTrack>(track_))
-    {
-        co_return co_await std::get<RemoteVideoTrack>(track_).get_stats();
-    }
-    else
-    {
-        co_return std::unexpected(make_error_code(ErrorCode::TrackGetStatsFailed));
-    }
-}
-
-auto Track::is_enabled() const -> bool
-{
-    return std::visit(
-        [](auto const & track) -> bool {
-            if constexpr (requires { track.is_enabled(); })
-            {
-                return track.is_enabled();
-            }
-            else
-            {
-                // Local tracks are always enabled (they don't have enable/disable)
-                return true;
-            }
-        },
-        track_);
-}
-
-auto Track::enable() -> std::expected<void, std::error_code>
-{
-    return std::visit(
-        [](auto & track) -> std::expected<void, std::error_code> {
-            if constexpr (requires { track.enable(); })
-            {
-                track.enable();
-                return {};
-            }
-            else
-            {
-                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
-            }
-        },
-        track_);
-}
-
-auto Track::disable() -> std::expected<void, std::error_code>
-{
-    return std::visit(
-        [](auto & track) -> std::expected<void, std::error_code> {
-            if constexpr (requires { track.disable(); })
-            {
-                track.disable();
-                return {};
-            }
-            else
-            {
-                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
-            }
-        },
-        track_);
-}
-
-auto Track::is_remote() const -> bool
-{
-    return std::visit([](auto const & track) { return track.is_remote(); }, track_);
-}
-
-auto Track::mute() -> std::expected<void, std::error_code>
-{
-    return std::visit(
-        [](auto & track) -> std::expected<void, std::error_code> {
-            if constexpr (requires { track.mute(); })
-            {
-                track.mute();
-                return {};
-            }
-            else
-            {
-                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
-            }
-        },
-        track_);
-}
-
-auto Track::unmute() -> std::expected<void, std::error_code>
-{
-    return std::visit(
-        [](auto & track) -> std::expected<void, std::error_code> {
-            if constexpr (requires { track.unmute(); })
-            {
-                track.unmute();
-                return {};
-            }
-            else
-            {
-                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
-            }
-        },
-        track_);
-}
-
 LocalAudioTrack::LocalAudioTrack(proto::OwnedTrack const & owned_track) : track_inner_{ std::make_shared<TrackInner>(owned_track) }, ffi_handle_{ owned_track.handle().id() }
 {
 }
@@ -226,6 +63,30 @@ auto LocalAudioTrack::muted() const -> bool
 {
     assert(track_inner_ != nullptr);
     return track_inner_->muted();
+}
+
+auto LocalAudioTrack::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
+{
+    proto::FfiRequest req;
+    auto * get_stats = req.mutable_get_stats();
+    get_stats->set_track_handle(ffi_handle_.id());
+
+    auto queue = ffi::FfiClient::instance().subscribe();
+    auto resp = ffi::FfiClient::request(req);
+
+    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
+        return event.has_get_stats() && event.get_stats().has_async_id() && resp.has_get_stats() && resp.get_stats().has_async_id() &&
+               event.get_stats().async_id() == resp.get_stats().async_id();
+    });
+    ffi::FfiClient::instance().unsubscribe(queue);
+
+    if (event.get_stats().has_error())
+    {
+        co_return std::unexpected(make_error_code(ErrorCode::TrackGetStatsFailed));
+    }
+
+    auto const & stats = event.get_stats().stats();
+    co_return std::vector<proto::RtcStats>{ stats.begin(), stats.end() };
 }
 
 auto LocalAudioTrack::mute() -> void
@@ -355,6 +216,125 @@ auto RemoteAudioTrack::is_remote() const -> bool
     return track_inner_->remote();
 }
 
+AudioTrack::AudioTrack(proto::OwnedTrack const & owned_track)
+    : track_{ [&owned_track]() -> std::variant<LocalAudioTrack, RemoteAudioTrack> {
+        auto const & info = owned_track.info();
+        bool const is_remote = info.remote();
+        proto::TrackKind const kind = info.kind();
+
+        if (is_remote)
+        {
+            return RemoteAudioTrack{ owned_track };
+        }
+        else
+        {
+            return LocalAudioTrack{ owned_track };
+        }
+    }() }
+{
+}
+
+auto AudioTrack::sid() const -> Sid
+{
+    return std::visit([](auto const & track) { return track.sid(); }, track_);
+}
+
+auto AudioTrack::name() const -> std::string const &
+{
+    return std::visit([](auto const & track) -> std::string const & { return track.name(); }, track_);
+}
+
+auto AudioTrack::kind() const -> proto::TrackKind
+{
+    return std::visit([](auto const & track) { return track.kind(); }, track_);
+}
+
+auto AudioTrack::stream_state() const -> proto::StreamState
+{
+    return std::visit([](auto const & track) { return track.stream_state(); }, track_);
+}
+
+auto AudioTrack::muted() const -> bool
+{
+    return std::visit([](auto const & track) { return track.muted(); }, track_);
+}
+
+auto AudioTrack::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
+{
+    return std::visit([](auto const & track) -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>> { return track.get_stats(); }, track_);
+}
+
+auto AudioTrack::is_enabled() const -> bool
+{
+    return std::visit(
+        [](auto const & track) -> bool {
+            if constexpr (requires { track.is_enabled(); })
+            {
+                return track.is_enabled();
+            }
+            else
+            {
+                return true;
+            }
+        },
+        track_);
+}
+
+auto AudioTrack::enable() -> void
+{
+    return std::visit(
+        [](auto & track) -> void {
+            if constexpr (requires { track.enable(); })
+            {
+                track.enable();
+            }
+        },
+        track_);
+}
+
+auto AudioTrack::disable() -> void
+{
+    return std::visit([](auto & track) -> void {
+            if constexpr (requires { track.disable(); })
+            {
+                track.disable();
+            }
+        },
+        track_);
+}
+
+auto AudioTrack::mute() -> std::expected<void, std::error_code>
+{
+    return std::visit([](auto & track) -> std::expected<void, std::error_code> {
+            if constexpr (requires { track.mute(); })
+            {
+                track.mute();
+                return {};
+            }
+            else
+            {
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
+            }
+        },
+        track_);
+}
+
+auto AudioTrack::unmute() -> std::expected<void, std::error_code>
+{
+    return std::visit([](auto & track) -> std::expected<void, std::error_code> {
+            if constexpr (requires { track.unmute(); })
+            {
+                track.unmute();
+                return {};
+            }
+            else
+            {
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
+            }
+        },
+        track_);
+}
+
 LocalVideoTrack::LocalVideoTrack(proto::OwnedTrack const & owned_track) : track_inner_{ std::make_shared<TrackInner>(owned_track) }, ffi_handle_{ owned_track.handle().id() }
 {
 }
@@ -399,6 +379,29 @@ auto LocalVideoTrack::muted() const -> bool
 {
     assert(track_inner_ != nullptr);
     return track_inner_->muted();
+}
+
+auto LocalVideoTrack::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
+{
+    proto::FfiRequest req;
+    auto * get_stats = req.mutable_get_stats();
+    get_stats->set_track_handle(ffi_handle_.id());
+
+    auto queue = ffi::FfiClient::instance().subscribe();
+    auto resp = ffi::FfiClient::request(req);
+    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
+        return event.has_get_stats() && event.get_stats().has_async_id() && resp.has_get_stats() && resp.get_stats().has_async_id() &&
+               event.get_stats().async_id() == resp.get_stats().async_id();
+    });
+    ffi::FfiClient::instance().unsubscribe(queue);
+
+    if (event.get_stats().has_error())
+    {
+        co_return std::unexpected(make_error_code(ErrorCode::TrackGetStatsFailed));
+    }
+
+    auto const & stats = event.get_stats().stats();
+    co_return std::vector<proto::RtcStats>{ stats.begin(), stats.end() };
 }
 
 auto LocalVideoTrack::mute() -> void
@@ -529,4 +532,279 @@ auto RemoteVideoTrack::is_remote() const -> bool
 
     return track_inner_->remote();
 }
+
+VideoTrack::VideoTrack(proto::OwnedTrack const & owned_track)
+    : track_{ [&owned_track]() -> std::variant<LocalVideoTrack, RemoteVideoTrack> {
+        auto const & info = owned_track.info();
+        bool const is_remote = info.remote();
+        proto::TrackKind const kind = info.kind();
+
+        if (is_remote)
+        {
+            return RemoteVideoTrack{ owned_track };
+        }
+        else
+        {
+            return LocalVideoTrack{ owned_track };
+        }
+    }() }
+{
+}
+
+auto VideoTrack::sid() const -> Sid
+{
+    return std::visit([](auto const & track) { return track.sid(); }, track_);
+}
+
+auto VideoTrack::name() const -> std::string const &
+{
+    return std::visit([](auto const & track) -> std::string const & { return track.name(); }, track_);
+}
+
+auto VideoTrack::kind() const -> proto::TrackKind
+{
+    return std::visit([](auto const & track) { return track.kind(); }, track_);
+}
+
+auto VideoTrack::stream_state() const -> proto::StreamState
+{
+    return std::visit([](auto const & track) { return track.stream_state(); }, track_);
+}
+
+auto VideoTrack::muted() const -> bool
+{
+    return std::visit([](auto const & track) { return track.muted(); }, track_);
+}
+
+auto VideoTrack::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
+{
+    return std::visit([](auto const & track) -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>> { return track.get_stats(); }, track_);
+}
+
+auto VideoTrack::is_enabled() const -> bool
+{
+    return std::visit([](auto const & track) -> bool {
+            if constexpr (requires { track.is_enabled(); })
+            {
+                return track.is_enabled();
+            }
+            else
+            {
+                return true;
+            }
+        },
+        track_);
+}
+
+auto VideoTrack::enable() -> void
+{
+    return std::visit([](auto & track) -> void {
+            if constexpr (requires { track.enable(); })
+            {
+                track.enable();
+            }
+        },
+        track_);
+}
+
+auto VideoTrack::disable() -> void
+{
+    return std::visit([](auto & track) -> void {
+            if constexpr (requires { track.disable(); })
+            {
+                track.disable();
+            }
+        },
+        track_);
+}
+
+auto VideoTrack::is_remote() const -> bool
+{
+    return std::visit([](auto const & track) { return track.is_remote(); }, track_);
+}
+
+auto VideoTrack::mute() -> std::expected<void, std::error_code>
+{
+    return std::visit([](auto & track) -> std::expected<void, std::error_code> {
+            if constexpr (requires { track.mute(); })
+            {
+                track.mute();
+                return {};
+            }
+            else
+            {
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
+            }
+        },
+        track_);
+}
+
+auto VideoTrack::unmute() -> std::expected<void, std::error_code>
+{
+    return std::visit([](auto & track) -> std::expected<void, std::error_code> {
+            if constexpr (requires { track.unmute(); })
+            {
+                track.unmute();
+                return {};
+            }
+            else
+            {
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
+            }
+        },
+        track_);
+}
+
+Track::Track(proto::OwnedTrack const & owned_track)
+    : track_{ [&owned_track]() -> std::variant<LocalAudioTrack, LocalVideoTrack, RemoteAudioTrack, RemoteVideoTrack> {
+        auto const & info = owned_track.info();
+        bool const is_remote = info.remote();
+        proto::TrackKind const kind = info.kind();
+
+        if (is_remote)
+        {
+            if (kind == proto::TrackKind::KIND_AUDIO)
+            {
+                return RemoteAudioTrack{ owned_track };
+            }
+            else // KIND_VIDEO
+            {
+                return RemoteVideoTrack{ owned_track };
+            }
+        }
+        else
+        {
+            if (kind == proto::TrackKind::KIND_AUDIO)
+            {
+                return LocalAudioTrack{ owned_track };
+            }
+            else // KIND_VIDEO
+            {
+                return LocalVideoTrack{ owned_track };
+            }
+        }
+    }() }
+{
+}
+
+auto Track::sid() const -> Sid
+{
+    return std::visit([](auto const & track) { return track.sid(); }, track_);
+}
+
+auto Track::name() const -> std::string const &
+{
+    return std::visit([](auto const & track) -> std::string const & { return track.name(); }, track_);
+}
+
+auto Track::kind() const -> proto::TrackKind
+{
+    return std::visit([](auto const & track) { return track.kind(); }, track_);
+}
+
+auto Track::stream_state() const -> proto::StreamState
+{
+    return std::visit([](auto const & track) { return track.stream_state(); }, track_);
+}
+
+auto Track::muted() const -> bool
+{
+    return std::visit([](auto const & track) { return track.muted(); }, track_);
+}
+
+auto Track::get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>
+{
+    return std::visit([](auto const & track) -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>> { return track.get_stats(); }, track_);
+}
+
+auto Track::is_enabled() const -> bool
+{
+    return std::visit(
+        [](auto const & track) -> bool {
+            if constexpr (requires { track.is_enabled(); })
+            {
+                return track.is_enabled();
+            }
+            else
+            {
+                // Local tracks are always enabled (they don't have enable/disable)
+                return true;
+            }
+        },
+        track_);
+}
+
+auto Track::enable() -> std::expected<void, std::error_code>
+{
+    return std::visit(
+        [](auto & track) -> std::expected<void, std::error_code> {
+            if constexpr (requires { track.enable(); })
+            {
+                track.enable();
+                return {};
+            }
+            else
+            {
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
+            }
+        },
+        track_);
+}
+
+auto Track::disable() -> std::expected<void, std::error_code>
+{
+    return std::visit(
+        [](auto & track) -> std::expected<void, std::error_code> {
+            if constexpr (requires { track.disable(); })
+            {
+                track.disable();
+                return {};
+            }
+            else
+            {
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
+            }
+        },
+        track_);
+}
+
+auto Track::is_remote() const -> bool
+{
+    return std::visit([](auto const & track) { return track.is_remote(); }, track_);
+}
+
+auto Track::mute() -> std::expected<void, std::error_code>
+{
+    return std::visit(
+        [](auto & track) -> std::expected<void, std::error_code> {
+            if constexpr (requires { track.mute(); })
+            {
+                track.mute();
+                return {};
+            }
+            else
+            {
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
+            }
+        },
+        track_);
+}
+
+auto Track::unmute() -> std::expected<void, std::error_code>
+{
+    return std::visit(
+        [](auto & track) -> std::expected<void, std::error_code> {
+            if constexpr (requires { track.unmute(); })
+            {
+                track.unmute();
+                return {};
+            }
+            else
+            {
+                return std::unexpected(make_error_code(ErrorCode::TrackOperationNotAvailable));
+            }
+        },
+        track_);
+}
+
 } // namespace livekit::rtc

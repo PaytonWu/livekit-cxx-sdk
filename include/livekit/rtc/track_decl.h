@@ -46,6 +46,8 @@ public:
     auto stream_state() const -> proto::StreamState;
     auto muted() const -> bool;
 
+    auto get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>;
+
     auto mute() -> void;
     auto unmute() -> void;
 
@@ -75,6 +77,30 @@ public:
     auto is_remote() const -> bool;
 };
 
+class AudioTrack
+{
+private:
+    std::variant<LocalAudioTrack, RemoteAudioTrack> track_;
+
+public:
+    explicit AudioTrack(proto::OwnedTrack const & owned_track);
+
+    auto sid() const -> Sid;
+    auto name() const -> std::string const &;
+    auto kind() const -> proto::TrackKind;
+    auto stream_state() const -> proto::StreamState;
+    auto muted() const -> bool;
+
+    auto get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>;
+
+    auto is_enabled() const -> bool;
+    auto enable() -> void;
+    auto disable() -> void;
+    auto is_remote() const -> bool;
+    auto mute() -> std::expected<void, std::error_code>;
+    auto unmute() -> std::expected<void, std::error_code>;
+};
+
 class LocalVideoTrack
 {
 private:
@@ -91,6 +117,8 @@ public:
     auto kind() const -> proto::TrackKind;
     auto stream_state() const -> proto::StreamState;
     auto muted() const -> bool;
+
+    auto get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>;
 
     auto mute() -> void;
     auto unmute() -> void;
@@ -121,6 +149,30 @@ public:
     auto is_remote() const -> bool;
 };
 
+class VideoTrack
+{
+private:
+    std::variant<LocalVideoTrack, RemoteVideoTrack> track_;
+
+public:
+    explicit VideoTrack(proto::OwnedTrack const & owned_track);
+
+    auto sid() const -> Sid;
+    auto name() const -> std::string const &;
+    auto kind() const -> proto::TrackKind;
+    auto stream_state() const -> proto::StreamState;
+    auto muted() const -> bool;
+
+    auto get_stats() const -> exec::task<std::expected<std::vector<proto::RtcStats>, std::error_code>>;
+
+    auto is_enabled() const -> bool;
+    auto enable() -> void;
+    auto disable() -> void;
+    auto is_remote() const -> bool;
+    auto mute() -> std::expected<void, std::error_code>;
+    auto unmute() -> std::expected<void, std::error_code>;
+};
+
 /*
 #[derive(Clone, Debug)]
 pub enum Track {
@@ -137,14 +189,6 @@ private:
 
 public:
     explicit Track(proto::OwnedTrack const & owned_track);
-
-    // Copy semantics (equivalent to Rust's Clone)
-    Track(Track const &) = default;
-    auto operator=(Track const &) -> Track & = default;
-
-    // Move semantics
-    Track(Track &&) = default;
-    auto operator=(Track &&) -> Track & = default;
 
     auto sid() const -> Sid;
     auto name() const -> std::string const &;
