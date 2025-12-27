@@ -44,9 +44,14 @@ auto TrackInner::muted() const -> bool
     return track_info_.muted();
 }
 
-auto TrackInner::muted(bool value) -> void
+auto TrackInner::mute() -> void
 {
-    track_info_.set_muted(value);
+    track_info_.set_muted(true);
+}
+
+auto TrackInner::unmute() -> void
+{
+    track_info_.set_muted(false);
 }
 
 } // namespace livekit::rtc

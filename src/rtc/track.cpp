@@ -99,7 +99,7 @@ auto LocalAudioTrack::mute() -> void
     local_track_mute->set_mute(true);
 
     ffi::FfiClient::request(req);
-    this->track_inner_->muted(true);
+    this->track_inner_->mute();
 }
 
 auto LocalAudioTrack::unmute() -> void
@@ -112,7 +112,7 @@ auto LocalAudioTrack::unmute() -> void
     local_track_mute->set_mute(false);
 
     ffi::FfiClient::request(req);
-    this->track_inner_->muted(false);
+    this->track_inner_->unmute();
 }
 
 auto LocalAudioTrack::is_remote() const -> bool
@@ -414,7 +414,7 @@ auto LocalVideoTrack::mute() -> void
     local_track_mute->set_mute(true);
 
     ffi::FfiClient::request(req);
-    track_inner_->muted(true);
+    track_inner_->mute();
 }
 
 auto LocalVideoTrack::unmute() -> void
@@ -427,7 +427,7 @@ auto LocalVideoTrack::unmute() -> void
     local_track_mute->set_mute(false);
 
     ffi::FfiClient::request(req);
-    track_inner_->muted(false);
+    track_inner_->unmute();
 }
 
 auto LocalVideoTrack::is_remote() const -> bool

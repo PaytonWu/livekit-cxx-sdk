@@ -31,7 +31,9 @@ public:
     auto remote() const -> bool;
     auto stream_state() const -> proto::StreamState;
     auto muted() const -> bool;
-    auto muted(bool value) -> void;
+
+    auto mute() -> void;
+    auto unmute() -> void;
 };
 
 }
