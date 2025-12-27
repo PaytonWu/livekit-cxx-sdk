@@ -1,0 +1,19 @@
+# https://clangd.llvm.org/config
+# This configuration uses compile_commands.json as the primary source of truth.
+# The compile_commands.json is symlinked from build/linux-gcc-x64-debug/compile_commands.json
+# and contains absolute include paths for all source files.
+#
+# When clangd analyzes a header file, it infers the compile command from the nearest
+# .cpp file in compile_commands.json, which already has the correct absolute include paths.
+
+CompileFlags:
+  CompilationDatabase: .
+  Add:
+    # Minimal fallback: only C++ standard and error settings
+    # Include paths come from compile_commands.json which has absolute paths
+    - "-std=c++23"
+    - "-ferror-limit=0"
+
+Diagnostics:
+  Suppress:
+    - "unused-includes"

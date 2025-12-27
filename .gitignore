@@ -45,3 +45,6 @@ cmake-build-debug/*
 include/livekit/version.h
 third-party/libs/livekit_ffi.h
 third-party/libs/LICENSE.md
+
+# Clangd - host-specific, contains absolute paths
+compile_commands.json

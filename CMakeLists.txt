@@ -24,6 +24,33 @@ set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# Automatically create symlink to compile_commands.json in project root for clangd
+# This makes clangd work across different hosts without checking in host-specific paths
+# The symlink uses a relative path, so it works regardless of where the project is located
+set(COMPILE_COMMANDS_PATH "${CMAKE_BINARY_DIR}/compile_commands.json")
+set(SYMLINK_PATH "${CMAKE_SOURCE_DIR}/compile_commands.json")
+
+# Calculate relative path from project root to build directory
+file(RELATIVE_PATH RELATIVE_PATH "${CMAKE_SOURCE_DIR}" "${COMPILE_COMMANDS_PATH}")
+
+# Remove existing symlink/file if it exists
+if(EXISTS "${SYMLINK_PATH}")
+    file(REMOVE "${SYMLINK_PATH}")
+endif()
+
+# Create symlink using relative path (works across different hosts)
+execute_process(
+    COMMAND ${CMAKE_COMMAND} -E create_symlink "${RELATIVE_PATH}" "${SYMLINK_PATH}"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    RESULT_VARIABLE SYMLINK_RESULT
+    OUTPUT_QUIET
+    ERROR_QUIET
+)
+
+if(SYMLINK_RESULT EQUAL 0)
+    message(STATUS "Created compile_commands.json symlink for clangd: ${RELATIVE_PATH}")
+endif()
+
 set(LIVEKIT_CXX_SDK_LIBRARY livekit_cxx_sdk)
 set(LIVEKIT_CXX_FFI_LIBRARY livekit_cxx_ffi)
 set(LIVEKIT_CXX_PROTO_LIBRARY livekit_cxx_proto)
