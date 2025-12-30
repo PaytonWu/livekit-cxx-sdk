@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include "ffi_queue_fwd_decl.h"
+#include "ffi_queue_fwd_decl.h" // IWYU pragma: export
 
-#include "../utils/async_queue_decl.h"
+#include "livekit/utils/async_queue_decl.h"
 
 #include <memory>
 #include <mutex>

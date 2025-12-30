@@ -8,7 +8,7 @@
 
 #include "ffi_handle_fwd_decl.h"
 
-#include "ffi.h"
+#include <livekit_ffi.h>
 
 #include <abc/reference_counter.h>
 

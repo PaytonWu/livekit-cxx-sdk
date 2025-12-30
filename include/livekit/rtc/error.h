@@ -6,6 +6,6 @@
 
 #pragma once
 
-#include "error_decl.h"
+#include "error_decl.h" // IWYU pragma: export
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_ERROR

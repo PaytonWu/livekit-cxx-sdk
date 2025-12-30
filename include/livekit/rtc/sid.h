@@ -8,7 +8,7 @@
 
 #include "sid_decl.h"
 
-#include "livekit/utils/strong_typed_value.h"
+#include "livekit/utils/strong_typed_value.h" // IWYU pragma: export
 
 namespace fmt
 {

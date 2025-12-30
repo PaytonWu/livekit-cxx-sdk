@@ -2,21 +2,15 @@
 // Distributed under the MIT License (http://opensource.org/licenses/MIT)
 
 #include <livekit/api/access_token.h>
-#include <livekit/api/error.h>
 
+#include <livekit/api/error.h>
 #include <livekit/error.h>
 #include <livekit/ffi/proto/livekit_room.pb.h>
 
 #include <google/protobuf/util/json_util.h>
 #include <jwt-cpp/traits/nlohmann-json/traits.h>
 
-#include <any>
 #include <cstdlib>
-#include <sstream>
-#include <stdexcept>
-#include <typeindex>
-#include <typeinfo>
-#include <variant>
 
 namespace livekit::api
 {

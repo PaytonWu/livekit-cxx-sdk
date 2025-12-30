@@ -6,13 +6,12 @@
 
 #pragma once
 
-#include "audio_source_fwd_decl.h"
+#include "audio_source_fwd_decl.h" // IWYU pragma: export
 
 #include "audio_frame_decl.h"
 
-#include "livekit/ffi/ffi_handle.h"
-#include "livekit/ffi/proto/ffi.pb.h"
-#include "livekit/utils/event_loop.h"
+#include "livekit/ffi/ffi_handle_decl.h"
+#include "livekit/utils/event_loop_decl.h"
 
 #include <exec/task.hpp>
 

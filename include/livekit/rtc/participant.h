@@ -9,8 +9,8 @@
 #include "participant_decl.h"
 
 #include "error.h"
-#include "sid.h"
-#include "track.h"
+#include "sid.h"   // IWYU pragma: export
+#include "track.h" // IWYU pragma: export
 #include "track_publication.h"
 
 #include "livekit/ffi/ffi_client.h"

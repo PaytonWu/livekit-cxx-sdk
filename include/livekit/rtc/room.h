@@ -6,14 +6,15 @@
 
 #pragma once
 
-#include "room_decl.h"
+#include "room_decl.h" // IWYU pragma: export
 
-#include "event_emitter.h"
-#include "participant.h"
-#include "rtc_stats.h"
+#include "event_emitter.h" // IWYU pragma: export
+#include "participant.h"   // IWYU pragma: export
+#include "rtc_stats.h"     // IWYU pragma: export
 
-#include "livekit/e2ee.h"
-#include "livekit/ffi/ffi_handle.h"
-#include "livekit/utils/async_queue.h"
+#include "livekit/e2ee.h"                  // IWYU pragma: export
+#include "livekit/ffi/ffi_handle.h"        // IWYU pragma: export
+#include "livekit/utils/async_queue.h"     // IWYU pragma: export
+#include "livekit/utils/broadcast_queue.h" // IWYU pragma: export
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_ROOM

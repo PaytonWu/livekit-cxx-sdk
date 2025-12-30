@@ -13,7 +13,3 @@ CompileFlags:
     # Include paths come from compile_commands.json which has absolute paths
     - "-std=c++23"
     - "-ferror-limit=0"
-
-Diagnostics:
-  Suppress:
-    - "unused-includes"

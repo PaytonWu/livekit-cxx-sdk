@@ -12,7 +12,7 @@
 #include "sid_decl.h"
 #include "track_inner_decl.h"
 
-#include "livekit/ffi/ffi_handle.h"
+#include "livekit/ffi/ffi_handle_decl.h"
 #include "livekit/ffi/proto/stats.pb.h"
 #include "livekit/ffi/proto/track.pb.h"
 

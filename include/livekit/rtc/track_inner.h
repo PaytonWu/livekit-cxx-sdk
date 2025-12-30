@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "track_inner_decl.h"
+#include "track_inner_decl.h" // IWYU pragma: export
 
-#include "sid.h"
+#include "sid.h" // IWYU pragma: export
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_INNER

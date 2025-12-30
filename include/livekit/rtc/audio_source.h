@@ -6,8 +6,10 @@
 
 #pragma once
 
-#include "audio_source_decl.h"
+#include "audio_source_decl.h" // IWYU pragma: export
 
-#include "audio_frame.h"
+#include "audio_frame.h"              // IWYU pragma: export
+#include "livekit/ffi/ffi_handle.h"   // IWYU pragma: export
+#include "livekit/utils/event_loop.h" // IWYU pragma: export
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_AUDIO_SOURCE

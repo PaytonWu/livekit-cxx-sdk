@@ -8,7 +8,7 @@
 
 #include "participant_fwd_decl.h"
 
-#include "error_decl.h"
+
 #include "sid_decl.h"
 #include "track_decl.h"
 #include "track_publication_decl.h"
@@ -17,7 +17,7 @@
 #include "livekit/ffi/proto/ffi.pb.h"
 #include "livekit/ffi/proto/participant.pb.h"
 #include "livekit/ffi/proto/room.pb.h"
-#include "livekit/utils/broadcast_queue.h"
+#include "livekit/utils/broadcast_queue_decl.h"
 
 #include <abc/byte.h>
 #include <exec/static_thread_pool.hpp>
@@ -25,7 +25,6 @@
 
 #include <cstdint>
 #include <expected>
-#include <memory>
 #include <optional>
 #include <string>
 #include <unordered_map>

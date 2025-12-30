@@ -8,10 +8,10 @@
 
 #include "track_publication_decl.h"
 
-#include "sid.h"
-#include "track.h"
+#include "sid.h"   // IWYU pragma: export
+#include "track.h" // IWYU pragma: export
 
-#include "livekit/ffi/ffi_handle.h"
+#include "livekit/ffi/ffi_handle.h" // IWYU pragma: export
 
 namespace livekit::rtc
 {

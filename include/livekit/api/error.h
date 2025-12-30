@@ -6,6 +6,7 @@
 
 #pragma once
 
-#include "error_decl.h"
+// Forwarding header: includes error_decl.h to provide the full error API
+#include "error_decl.h" // IWYU pragma: export
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_API_ERROR

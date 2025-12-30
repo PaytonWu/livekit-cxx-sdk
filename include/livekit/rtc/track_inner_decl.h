@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "track_inner_fwd_decl.h"
+#include "track_inner_fwd_decl.h" // IWYU pragma: export
 
 #include "sid_decl.h"
 

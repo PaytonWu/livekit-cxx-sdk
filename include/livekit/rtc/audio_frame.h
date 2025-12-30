@@ -6,6 +6,6 @@
 
 #pragma once
 
-#include "audio_frame_decl.h"
+#include "audio_frame_decl.h" // IWYU pragma: export
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_AUDIO_FRAME

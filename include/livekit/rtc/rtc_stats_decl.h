@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "rtc_stats_fwd_decl.h"
+#include "rtc_stats_fwd_decl.h" // IWYU pragma: export
 
 #include "livekit/ffi/proto/stats.pb.h"
 

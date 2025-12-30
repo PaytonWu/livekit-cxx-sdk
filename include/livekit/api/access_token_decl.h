@@ -13,14 +13,12 @@
 #include <abc/type_traits.h>
 #include <nlohmann/json.hpp>
 
-#include <any>
 #include <chrono>
 #include <expected>
 #include <map>
 #include <optional>
 #include <string>
 #include <system_error>
-#include <variant>
 #include <vector>
 
 namespace livekit::api
@@ -149,9 +147,7 @@ private:
 class TokenVerifier
 {
 public:
-    explicit TokenVerifier(std::optional<std::string> api_key = std::nullopt,
-                           std::optional<std::string> api_secret = std::nullopt,
-                           std::chrono::seconds leeway = DEFAULT_LEEWAY);
+    explicit TokenVerifier(std::optional<std::string> api_key = std::nullopt, std::optional<std::string> api_secret = std::nullopt, std::chrono::seconds leeway = DEFAULT_LEEWAY);
 
     auto verify(std::string const & token) const -> std::expected<Claims, std::error_code>;
 

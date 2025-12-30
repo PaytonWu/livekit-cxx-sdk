@@ -8,7 +8,7 @@
 
 #include "ffi_queue_decl.h"
 
-#include "livekit/utils/async_queue.h"
+#include "livekit/utils/async_queue.h" // IWYU pragma: export
 
 #include <exception>
 
@@ -21,9 +21,9 @@ auto FfiQueue<T>::put(T const & item) -> void
     std::lock_guard<std::mutex> lock(mutex_);
     for (auto & queue : subscribers_) {
         try {
-            [[maybe_unused]] auto result = queue->enqueue(item);
-        } catch (std::exception const & e) {
-            std::cerr << "error putting to queue: " << e.what() << std::endl;   // todo: log to file.
+            [[maybe_unused]] auto _ = queue->enqueue(item);
+        } catch (std::exception const & /*e*/) {
+            // std::cerr << "error putting to queue: " << e.what() << std::endl;   // todo: log to file.
         }
     }
 }

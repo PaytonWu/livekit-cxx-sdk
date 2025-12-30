@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "ffi_handle_decl.h"
+#include "ffi_handle_decl.h" // IWYU pragma: export
 
-#include "ffi.h"
+#include "ffi.h" // IWYU pragma: export
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_FFI_FFI_HANDLE

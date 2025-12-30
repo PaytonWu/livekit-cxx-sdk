@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "event_emitter_fwd_decl.h"
+#include "event_emitter_fwd_decl.h" // IWYU pragma: export
 
 #include <atomic>
 #include <cstddef>
