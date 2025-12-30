@@ -10,3 +10,6 @@
 [submodule "third-party/jwt-cpp"]
 	path = third-party/jwt-cpp
 	url = https://github.com/Thalhammer/jwt-cpp.git
+[submodule "third-party/proxy"]
+	path = third-party/proxy
+	url = https://github.com/microsoft/proxy.git
