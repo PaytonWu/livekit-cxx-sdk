@@ -13,10 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+set -e
 
-FFI_PROTOCOL=third-party/rust-sdks/livekit-ffi/protocol
-LIVEKIT_PROTOCOL=third-party/rust-sdks/livekit-protocol/protocol/protobufs
-OUT_CPP=include/livekit/ffi/proto/
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+FFI_PROTOCOL=$PROJECT_ROOT/third-party/rust-sdks/livekit-ffi/protocol
+LIVEKIT_PROTOCOL=$PROJECT_ROOT/third-party/rust-sdks/livekit-protocol/protocol/protobufs
+OUT_CPP=$PROJECT_ROOT/include/livekit/ffi/proto/
 
 # Create the output directory if it doesn't exist
 mkdir -p $OUT_CPP
@@ -49,4 +53,4 @@ protoc \
     $LIVEKIT_PROTOCOL/livekit_agent.proto \
     $LIVEKIT_PROTOCOL/livekit_metrics.proto
 
-mv ${OUT_CPP}*.cc src/ffi/proto/
+mv ${OUT_CPP}*.cc $PROJECT_ROOT/src/ffi/proto/
