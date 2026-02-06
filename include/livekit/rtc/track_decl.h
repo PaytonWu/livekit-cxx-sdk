@@ -20,6 +20,7 @@
 
 #include <concepts>
 #include <expected>
+#include <format>
 #include <system_error>
 #include <variant>
 #include <vector>
@@ -216,4 +217,59 @@ template <typename T>
 concept RemoteTrack = std::is_same_v<T, RemoteAudioTrack> || std::is_same_v<T, RemoteVideoTrack>;
 
 } // namespace livekit::rtc
+
+namespace std
+{
+
+template <>
+struct formatter<livekit::rtc::LocalAudioTrack>
+{
+    template <typename FormatContext>
+    auto format(livekit::rtc::LocalAudioTrack const & track, FormatContext & ctx) const -> typename FormatContext::iterator;
+};
+
+template <>
+struct formatter<livekit::rtc::RemoteAudioTrack>
+{
+    template <typename FormatContext>
+    auto format(livekit::rtc::RemoteAudioTrack const & track, FormatContext & ctx) const -> typename FormatContext::iterator;
+};
+
+template <>
+struct formatter<livekit::rtc::LocalVideoTrack>
+{
+    template <typename FormatContext>
+    auto format(livekit::rtc::LocalVideoTrack const & track, FormatContext & ctx) const -> typename FormatContext::iterator;
+};
+
+template <>
+struct formatter<livekit::rtc::RemoteVideoTrack>
+{
+    template <typename FormatContext>
+    auto format(livekit::rtc::RemoteVideoTrack const & track, FormatContext & ctx) const -> typename FormatContext::iterator;
+};
+
+template <>
+struct formatter<livekit::rtc::AudioTrack>
+{
+    template <typename FormatContext>
+    auto format(livekit::rtc::AudioTrack const & track, FormatContext & ctx) const -> typename FormatContext::iterator;
+};
+
+template <>
+struct formatter<livekit::rtc::VideoTrack>
+{
+    template <typename FormatContext>
+    auto format(livekit::rtc::VideoTrack const & track, FormatContext & ctx) const -> typename FormatContext::iterator;
+};
+
+template <>
+struct formatter<livekit::rtc::Track>
+{
+    template <typename FormatContext>
+    auto format(livekit::rtc::Track const & track, FormatContext & ctx) const -> typename FormatContext::iterator;
+};
+
+} // namespace std
+
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_DECL

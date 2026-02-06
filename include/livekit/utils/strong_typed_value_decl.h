@@ -10,6 +10,7 @@
 
 #include <compare>
 #include <concepts>
+#include <format>
 
 namespace livekit::utils
 {
@@ -53,5 +54,20 @@ public:
 };
 
 } // namespace livekit::utils
+
+namespace std
+{
+
+template <typename T, typename Tag>
+struct formatter<livekit::utils::StrongTypedValue<T, Tag>>
+{
+    template <typename FormatContext>
+    auto format(livekit::utils::StrongTypedValue<T, Tag> const & value, FormatContext & ctx) const -> format_context::iterator
+    {
+        return std::format_to(ctx.out(), "{}", value.value());
+    }
+};
+
+} // namespace std
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_UTILS_STRONG_TYPED_VALUE_DECL
