@@ -17,10 +17,10 @@
 #include "livekit/ffi/proto/track.pb.h"
 
 #include <exec/task.hpp>
+#include <fmt/format.h>
 
 #include <concepts>
 #include <expected>
-#include <format>
 #include <system_error>
 #include <variant>
 #include <vector>
@@ -218,7 +218,7 @@ concept RemoteTrack = std::is_same_v<T, RemoteAudioTrack> || std::is_same_v<T, R
 
 } // namespace livekit::rtc
 
-namespace std
+namespace fmt
 {
 
 template <>
@@ -270,6 +270,6 @@ struct formatter<livekit::rtc::Track>
     auto format(livekit::rtc::Track const & track, FormatContext & ctx) const -> typename FormatContext::iterator;
 };
 
-} // namespace std
+} // namespace fmt
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_DECL

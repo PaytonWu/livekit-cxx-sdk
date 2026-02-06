@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <format>
+#include <fmt/format.h>
 
 namespace livekit::rtc
 {
@@ -24,7 +24,7 @@ class Track;
 
 } // namespace livekit::rtc
 
-namespace std
+namespace fmt
 {
 
 template <>
@@ -48,6 +48,6 @@ struct formatter<livekit::rtc::VideoTrack>;
 template <>
 struct formatter<livekit::rtc::Track>;
 
-} // namespace std
+} // namespace fmt
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK_FWD_DECL

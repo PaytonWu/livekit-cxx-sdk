@@ -13,7 +13,7 @@
 
 #include "livekit/ffi/ffi_handle.h" // IWYU pragma: export
 
-namespace std
+namespace fmt
 {
 
 template <typename FormatContext>
@@ -43,20 +43,20 @@ auto formatter<livekit::rtc::RemoteVideoTrack>::format(livekit::rtc::RemoteVideo
 template <typename FormatContext>
 auto formatter<livekit::rtc::AudioTrack>::format(livekit::rtc::AudioTrack const & track, FormatContext & ctx) const -> typename FormatContext::iterator
 {
-    return std::format_to(ctx.out(), "rtc::AudioTrack(sid={}, name={})", track.sid(), track.name());
+    return std::format_to(ctx.out(), "rtc::AudioTrack(sid={}, name={}, remote={})", track.sid(), track.name(), track.is_remote());
 }
 
 template <typename FormatContext>
 auto formatter<livekit::rtc::VideoTrack>::format(livekit::rtc::VideoTrack const & track, FormatContext & ctx) const -> typename FormatContext::iterator
 {
-    return std::format_to(ctx.out(), "rtc::VideoTrack(sid={}, name={})", track.sid(), track.name());
+    return std::format_to(ctx.out(), "rtc::VideoTrack(sid={}, name={}, remote={})", track.sid(), track.name(), track.is_remote());
 }
 
 template <typename FormatContext>
 auto formatter<livekit::rtc::Track>::format(livekit::rtc::Track const & track, FormatContext & ctx) const -> typename FormatContext::iterator
 {
-    return std::format_to(ctx.out(), "rtc::Track(sid={}, name={})", track.sid(), track.name());
+    return std::format_to(ctx.out(), "rtc::Track(sid={}, name={}, remote={})", track.sid(), track.name(), track.is_remote());
 }
-} // namespace std
+} // namespace fmt
 
 #endif // LIVEKIT_CXX_SDK_INCLUDE_LIVEKIT_RTC_TRACK
