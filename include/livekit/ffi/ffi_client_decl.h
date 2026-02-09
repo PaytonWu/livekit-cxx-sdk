@@ -11,8 +11,8 @@
 #include "ffi_queue_decl.h"
 #include "proto/ffi.pb.h"
 
-#include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
+#include <stdexec/execution.hpp>
 
 #include <atomic>
 
@@ -31,10 +31,12 @@ private:
     FfiClient();
 
     auto next_thread_index() -> std::size_t;
-    
+
     friend auto ffi_event_callback(std::uint8_t const *, std::size_t) -> void;
 
     static auto match_ffi_event(proto::FfiResponse const & response, proto::FfiEvent const & event) -> bool;
+
+    auto subscribe() -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>;
 
 public:
     static auto instance() -> FfiClient &;
@@ -43,7 +45,6 @@ public:
 
     auto async_request(proto::FfiRequest const & request) -> exec::task<proto::FfiEvent>;
 
-    auto subscribe() -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>;
     auto subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>;
     auto unsubscribe(std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>> const & queue) -> void;
 };
