@@ -27,6 +27,8 @@ auto livekit_rtc_category() noexcept -> std::error_category const &
                     return "rtc not connected";
                 case ErrorCode::RtcGetStatsFailed:
                     return "rtc get stats failed";
+                case ErrorCode::RtcGetSessionStatsFailed:
+                    return "rtc get session stats failed";
                 case ErrorCode::TrackGetStatsFailed:
                     return "track get stats failed";
                 case ErrorCode::TrackPublicationNotFound:

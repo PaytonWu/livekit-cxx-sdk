@@ -30,8 +30,7 @@ auto LocalParticipant::publish_track(LocalTrack auto & track, proto::TrackPublis
     auto * op = publish_track->mutable_options();
     op->CopyFrom(options);
 
-    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
-
+    auto event = co_await ffi::FfiClient::instance().async_request(req);
     if (event.publish_track().has_error())
     {
         abc::throw_error(make_error_code(rtc::ErrorCode::PublishTrackFailed), event.publish_track().error());

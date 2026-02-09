@@ -16,6 +16,7 @@ enum class ErrorCode
     Success = 0,
     RtcNotConnected,
     RtcGetStatsFailed,
+    RtcGetSessionStatsFailed,
     TrackGetStatsFailed,
     TrackPublicationNotFound,
     ParticipantNotFound,

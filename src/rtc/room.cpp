@@ -83,8 +83,7 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
 
     event_queue_ = livekit::ffi::FfiClient::instance().subscribe(scheduler_);
 
-    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
-
+    auto event = co_await ffi::FfiClient::instance().async_request(req);
     if (event.connect().has_error())
     {
         ffi::FfiClient::instance().unsubscribe(event_queue_);
@@ -237,6 +236,10 @@ auto Room::rtc_stats() const noexcept -> exec::task<std::expected<RtcStats, std:
     get_session_stats->set_room_handle(ffi_handle_->id());
 
     auto event = co_await ffi::FfiClient::instance().async_request(req);
+    if (event.get_session_stats().has_error())
+    {
+        co_return std::unexpected{ make_error_code(ErrorCode::RtcGetSessionStatsFailed) };
+    }
 
     auto const & publisher_stats = event.get_session_stats().result().publisher_stats();
     auto const & subscriber_stats = event.get_session_stats().result().subscriber_stats();

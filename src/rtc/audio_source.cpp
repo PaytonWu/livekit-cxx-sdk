@@ -62,8 +62,7 @@ auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
     auto * buffer = capture_frame->mutable_buffer();
     buffer->CopyFrom(frame.into_proto());
 
-    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(request);
-
+    auto event = co_await ffi::FfiClient::instance().async_request(request);
     if (event.capture_audio_frame().has_error())
     {
         throw_error(LivekitErrorCode::CaptureAudioFrameFailed, event.capture_audio_frame().error());

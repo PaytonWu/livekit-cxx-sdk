@@ -75,8 +75,7 @@ auto LocalParticipant::publish_data(std::vector<abc::byte_t> const & data, bool 
         publish_data->set_topic(topic.value());
     }
 
-    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
-
+    auto event = co_await ffi::FfiClient::instance().async_request(req);
     if (event.publish_data().has_error())
     {
         abc::throw_error(make_error_code(ErrorCode::PublishDataFailed), event.publish_data().error());
@@ -94,8 +93,7 @@ auto LocalParticipant::publish_dtmf(std::uint32_t const code, std::string const 
     publish_dtmf->set_code(code);
     publish_dtmf->set_digit(digit);
 
-    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
-
+    auto event = co_await ffi::FfiClient::instance().async_request(req);
     if (event.publish_sip_dtmf().has_error())
     {
         abc::throw_error(make_error_code(ErrorCode::PublishDtmfFailed), event.publish_sip_dtmf().error());
