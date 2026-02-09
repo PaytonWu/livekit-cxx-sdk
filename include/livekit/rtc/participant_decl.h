@@ -8,10 +8,10 @@
 
 #include "participant_fwd_decl.h"
 
-
 #include "sid_decl.h"
 #include "track_decl.h"
 #include "track_publication_decl.h"
+#include "transcription_decl.h"
 
 #include "livekit/ffi/ffi_handle.h"
 #include "livekit/ffi/proto/ffi.pb.h"
@@ -69,6 +69,7 @@ public:
     auto publish_dtmf(std::uint32_t code, std::string const & digit) -> exec::task<void>;
 
     auto publish_track(LocalTrack auto & track, proto::TrackPublishOptions const & options = {}) -> exec::task<LocalTrackPublication>;
+    auto publish_transcription(Transcription const & transcription) -> exec::task<void>;
 
     auto track_publications() const -> std::unordered_map<Sid, LocalTrackPublication> const &;
     // auto track_publication(Sid const & sid) const -> std::expected<LocalTrackPublication const, std::error_code>;

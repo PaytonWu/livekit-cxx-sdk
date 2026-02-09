@@ -12,10 +12,9 @@
 #include "sid.h"   // IWYU pragma: export
 #include "track.h" // IWYU pragma: export
 #include "track_publication.h"
+#include "transcription.h" // IWYU pragma: export
 
 #include "livekit/ffi/ffi_client.h"
-
-#include <abc/scope_guard.h>
 
 namespace livekit::rtc
 {
