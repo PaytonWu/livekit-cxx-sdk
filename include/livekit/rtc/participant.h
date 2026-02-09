@@ -30,28 +30,20 @@ auto LocalParticipant::publish_track(LocalTrack auto & track, proto::TrackPublis
     auto * op = publish_track->mutable_options();
     op->CopyFrom(options);
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto unsub = abc::make_scope_exit([&queue]() { ffi::FfiClient::instance().unsubscribe(queue); });
-
-    auto resp = ffi::FfiClient::request(req);
-    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
-        return event.has_publish_track() && event.publish_track().has_async_id() && resp.has_publish_track() && resp.publish_track().has_async_id() &&
-               event.publish_track().async_id() == resp.publish_track().async_id();
-    });
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
 
     if (event.publish_track().has_error())
     {
         abc::throw_error(make_error_code(rtc::ErrorCode::PublishTrackFailed), event.publish_track().error());
     }
 
-    auto track_publication = std::make_shared<LocalTrackPublication>(event.publish_track().publication());
-    track_publication->set_track(track);
-    track.sid(track_publication->sid());
+    auto track_publication = LocalTrackPublication{ event.publish_track().publication() };
+    track_publication.set_track(track);
+    track.sid(track_publication.sid());
 
-    track_publications_[track_publication->sid()] = track_publication;
-    queue->task_done();
+    track_publications_[track_publication.sid()] = track_publication;
 
-    co_return *track_publication;
+    co_return track_publication;
 }
 
 } // namespace livekit::rtc

@@ -34,10 +34,14 @@ private:
     
     friend auto ffi_event_callback(std::uint8_t const *, std::size_t) -> void;
 
+    static auto match_ffi_event(proto::FfiResponse const & response, proto::FfiEvent const & event) -> bool;
+
 public:
     static auto instance() -> FfiClient &;
 
     static auto request(proto::FfiRequest const & request) -> proto::FfiResponse;
+
+    auto async_request(proto::FfiRequest const & request) -> exec::task<proto::FfiEvent>;
 
     auto subscribe() -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>;
     auto subscribe(exec::static_thread_pool::scheduler scheduler) -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>;

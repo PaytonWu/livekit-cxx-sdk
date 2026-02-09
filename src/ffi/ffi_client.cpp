@@ -27,6 +27,41 @@ auto FfiClient::instance() -> FfiClient &
     return instance;
 }
 
+auto FfiClient::match_ffi_event(proto::FfiResponse const & response, proto::FfiEvent const & event) -> bool
+{
+    switch (response.message_case())
+    {
+        case proto::FfiResponse::MessageCase::kConnect:
+            return event.has_connect() && event.connect().has_async_id() && response.connect().has_async_id() &&
+                   event.connect().async_id() == response.connect().async_id();
+        case proto::FfiResponse::MessageCase::kDisconnect:
+            return event.has_disconnect() && event.disconnect().has_async_id() && response.disconnect().has_async_id() &&
+                   event.disconnect().async_id() == response.disconnect().async_id();
+        case proto::FfiResponse::MessageCase::kPublishTrack:
+            return event.has_publish_track() && event.publish_track().has_async_id() && response.publish_track().has_async_id() &&
+                   event.publish_track().async_id() == response.publish_track().async_id();
+        case proto::FfiResponse::MessageCase::kPublishData:
+            return event.has_publish_data() && event.publish_data().has_async_id() && response.publish_data().has_async_id() &&
+                   event.publish_data().async_id() == response.publish_data().async_id();
+        case proto::FfiResponse::MessageCase::kPublishSipDtmf:
+            return event.has_publish_sip_dtmf() && event.publish_sip_dtmf().has_async_id() && response.publish_sip_dtmf().has_async_id() &&
+                   event.publish_sip_dtmf().async_id() == response.publish_sip_dtmf().async_id();
+        case proto::FfiResponse::MessageCase::kCaptureAudioFrame:
+            return event.has_capture_audio_frame() && event.capture_audio_frame().has_async_id() && response.capture_audio_frame().has_async_id() &&
+                   event.capture_audio_frame().async_id() == response.capture_audio_frame().async_id();
+        case proto::FfiResponse::MessageCase::kGetStats:
+            return event.has_get_stats() && event.get_stats().has_async_id() && response.get_stats().has_async_id() &&
+                   event.get_stats().async_id() == response.get_stats().async_id();
+        case proto::FfiResponse::MessageCase::kGetSessionStats:
+            return event.has_get_session_stats() && event.get_session_stats().has_async_id() && response.get_session_stats().has_async_id() &&
+                   event.get_session_stats().async_id() == response.get_session_stats().async_id();
+        default:
+            break;
+    }
+
+    return false;
+}
+
 auto FfiClient::request(proto::FfiRequest const & request) -> proto::FfiResponse
 {
     auto const bytes = request.SerializeAsString();
@@ -45,6 +80,20 @@ auto FfiClient::request(proto::FfiRequest const & request) -> proto::FfiResponse
     livekit_ffi_drop_handle(handle);
 
     return response;
+}
+
+auto FfiClient::async_request(proto::FfiRequest const & request) -> exec::task<proto::FfiEvent>
+{
+    auto queue = subscribe();
+    auto response = FfiClient::request(request);
+
+    proto::FfiEvent event = co_await queue->wait_for([&response](proto::FfiEvent const & ev) {
+        return match_ffi_event(response, ev);
+    });
+
+    unsubscribe(queue);
+
+    co_return event;
 }
 
 auto FfiClient::subscribe() -> std::shared_ptr<utils::AsyncQueue<proto::FfiEvent>>

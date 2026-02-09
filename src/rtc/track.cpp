@@ -71,14 +71,7 @@ auto LocalAudioTrack::get_stats() const -> exec::task<std::expected<std::vector<
     auto * get_stats = req.mutable_get_stats();
     get_stats->set_track_handle(ffi_handle_.id());
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto resp = ffi::FfiClient::request(req);
-
-    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
-        return event.has_get_stats() && event.get_stats().has_async_id() && resp.has_get_stats() && resp.get_stats().has_async_id() &&
-               event.get_stats().async_id() == resp.get_stats().async_id();
-    });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
 
     if (event.get_stats().has_error())
     {
@@ -162,13 +155,7 @@ auto RemoteAudioTrack::get_stats() const -> exec::task<std::expected<std::vector
     auto * get_stats = req.mutable_get_stats();
     get_stats->set_track_handle(ffi_handle_.id());
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto resp = ffi::FfiClient::request(req);
-    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
-        return event.has_get_stats() && event.get_stats().has_async_id() && resp.has_get_stats() && resp.get_stats().has_async_id() &&
-               event.get_stats().async_id() == resp.get_stats().async_id();
-    });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
 
     if (event.get_stats().has_error())
     {
@@ -389,13 +376,7 @@ auto LocalVideoTrack::get_stats() const -> exec::task<std::expected<std::vector<
     auto * get_stats = req.mutable_get_stats();
     get_stats->set_track_handle(ffi_handle_.id());
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto resp = ffi::FfiClient::request(req);
-    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
-        return event.has_get_stats() && event.get_stats().has_async_id() && resp.has_get_stats() && resp.get_stats().has_async_id() &&
-               event.get_stats().async_id() == resp.get_stats().async_id();
-    });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
 
     if (event.get_stats().has_error())
     {
@@ -480,13 +461,7 @@ auto RemoteVideoTrack::get_stats() const -> exec::task<std::expected<std::vector
     auto * get_stats = req.mutable_get_stats();
     get_stats->set_track_handle(ffi_handle_.id());
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto resp = ffi::FfiClient::request(req);
-    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
-        return event.has_get_stats() && event.get_stats().has_async_id() && resp.has_get_stats() && resp.get_stats().has_async_id() &&
-               event.get_stats().async_id() == resp.get_stats().async_id();
-    });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
 
     if (event.get_stats().has_error())
     {

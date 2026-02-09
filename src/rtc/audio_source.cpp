@@ -62,13 +62,7 @@ auto AudioSource::capture_frame(AudioFrame const & frame) -> exec::task<void>
     auto * buffer = capture_frame->mutable_buffer();
     buffer->CopyFrom(frame.into_proto());
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto response = ffi::FfiClient::request(request);
-    proto::FfiEvent event = co_await queue->wait_for([&response](proto::FfiEvent const & event) {
-        return event.has_capture_audio_frame() && event.capture_audio_frame().has_async_id() && response.has_capture_audio_frame() &&
-               response.capture_audio_frame().has_async_id() && event.capture_audio_frame().async_id() == response.capture_audio_frame().async_id();
-    });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(request);
 
     if (event.capture_audio_frame().has_error())
     {

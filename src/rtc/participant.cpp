@@ -75,13 +75,7 @@ auto LocalParticipant::publish_data(std::vector<abc::byte_t> const & data, bool 
         publish_data->set_topic(topic.value());
     }
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto resp = ffi::FfiClient::request(req);
-    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
-        return event.has_publish_data() && event.publish_data().has_async_id() && resp.has_publish_data() && resp.publish_data().has_async_id() &&
-               event.publish_data().async_id() == resp.publish_data().async_id();
-    });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
 
     if (event.publish_data().has_error())
     {
@@ -100,13 +94,7 @@ auto LocalParticipant::publish_dtmf(std::uint32_t const code, std::string const 
     publish_dtmf->set_code(code);
     publish_dtmf->set_digit(digit);
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto resp = ffi::FfiClient::request(req);
-    proto::FfiEvent event = co_await queue->wait_for([&resp](proto::FfiEvent const & event) {
-        return event.has_publish_sip_dtmf() && event.publish_sip_dtmf().has_async_id() && resp.has_publish_sip_dtmf() && resp.publish_sip_dtmf().has_async_id() &&
-               event.publish_sip_dtmf().async_id() == resp.publish_sip_dtmf().async_id();
-    });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
 
     if (event.publish_sip_dtmf().has_error())
     {

@@ -83,10 +83,7 @@ auto Room::connect(std::string_view const url, std::string_view const token, Roo
 
     event_queue_ = livekit::ffi::FfiClient::instance().subscribe(scheduler_);
 
-    auto queue = ffi::FfiClient::instance().subscribe(scheduler_);
-    auto response = livekit::ffi::FfiClient::request(req);
-    proto::FfiEvent event = co_await queue->wait_for([&response](auto const & ev) { return ev.has_connect() && ev.connect().async_id() == response.connect().async_id(); });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    proto::FfiEvent event = co_await ffi::FfiClient::instance().async_request(req);
 
     if (event.connect().has_error())
     {
@@ -135,10 +132,7 @@ auto Room::disconnect() -> exec::task<void>
     auto * disconnect = req.mutable_disconnect();
     disconnect->set_room_handle(ffi_handle_->id());
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto resp = ffi::FfiClient::request(req);
-    co_await queue->wait_for([&resp](auto const & ev) { return ev.has_disconnect() && ev.disconnect().async_id() == resp.disconnect().async_id(); });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    [[maybe_unused]] auto event = co_await ffi::FfiClient::instance().async_request(req);
 
     co_await async_scope_.on_empty();
 
@@ -242,14 +236,7 @@ auto Room::rtc_stats() const noexcept -> exec::task<std::expected<RtcStats, std:
     auto * get_session_stats = req.mutable_get_session_stats();
     get_session_stats->set_room_handle(ffi_handle_->id());
 
-    auto queue = ffi::FfiClient::instance().subscribe();
-    auto resp = ffi::FfiClient::request(req);
-
-    auto event = co_await queue->wait_for([&resp](auto const & ev) {
-        return ev.has_get_session_stats() && ev.get_session_stats().has_async_id() && resp.has_get_session_stats() && resp.get_session_stats().has_async_id() &&
-               ev.get_session_stats().async_id() == resp.get_session_stats().async_id();
-    });
-    ffi::FfiClient::instance().unsubscribe(queue);
+    auto event = co_await ffi::FfiClient::instance().async_request(req);
 
     auto const & publisher_stats = event.get_session_stats().result().publisher_stats();
     auto const & subscriber_stats = event.get_session_stats().result().subscriber_stats();
